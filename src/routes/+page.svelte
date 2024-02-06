@@ -1,3 +1,2 @@
-<h1>Welcome to your library project</h1>
-<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>A design system for purists</h1>
+<p>Radically minimal UI components, that you can copy directly into your project. Diète is for uncompromising, free-spirited app makers who want to remain independent.</p>
