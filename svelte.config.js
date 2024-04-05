@@ -3,12 +3,9 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 
 function cssPreprocess() {
 	const vite = vitePreprocess()
-	const viteScript = vite.script
 	const viteStyle = vite.style
 	return {
-		async script(args) {
-			return viteScript(args)
-		},
+		...vite,
 		async style(args) {
 			const preprocessedStyle = await viteStyle(args)
 			if (args.filename.includes('/routes/') && args.filename.endsWith('.svelte')) {
