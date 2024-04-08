@@ -22,7 +22,7 @@ function cssPreprocess() {
 				fs.writeFileSync(cssFilePath, preprocessedStyle.code)
 			}
 			return preprocessedStyle
-		}
+		},
 	}
 }
 
