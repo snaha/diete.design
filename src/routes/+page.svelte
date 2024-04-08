@@ -3,6 +3,7 @@
 
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
+	import Switch from '$lib/components/switch.svelte'
 </script>
 
 <h1>A design system for purists</h1>
@@ -208,6 +209,16 @@
 			<Checkbox dimension="small" label="Checkbox" checked />
 			<Checkbox dimension="small" label="Checkbox" disabled />
 			<Checkbox dimension="small" label="Checkbox" checked disabled />
+		</div>
+	</div>
+</section>
+<section>
+	<div class="row">
+		<div class="col">
+			<Switch>Switch button</Switch>
+			<Switch checked>Switch button</Switch>
+			<Switch disabled>Switch button</Switch>
+			<Switch checked disabled>Switch button</Switch>
 		</div>
 	</div>
 </section>
