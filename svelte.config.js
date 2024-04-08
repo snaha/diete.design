@@ -8,7 +8,6 @@ function cssPreprocess() {
 	const vite = vitePreprocess()
 	const viteStyle = vite.style
 
-
 	return {
 		...vite,
 		async style(args) {
@@ -17,7 +16,7 @@ function cssPreprocess() {
 			if (match && match.length === 3) {
 				const compPath = match[1]
 				const compName = match[2]
-				
+
 				const path = `${DIST_DIR}${compPath}`
 				fs.mkdirSync(path, { recursive: true })
 
