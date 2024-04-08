@@ -1,15 +1,25 @@
 import adapter from '@sveltejs/adapter-auto'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
+import fs from 'fs'
+
+const DIST_DIR = './css'
 
 function cssPreprocess() {
 	const vite = vitePreprocess()
 	const viteStyle = vite.style
+
+	const path = `${DIST_DIR}`
+	fs.mkdirSync(path, { recursive: true })
+
 	return {
 		...vite,
 		async style(args) {
 			const preprocessedStyle = await viteStyle(args)
-			if (args.filename.includes('/routes/') && args.filename.endsWith('.svelte')) {
-				console.debug('style', { filename: args.filename, css: preprocessedStyle.code })
+			const match = args.filename.match(/^.*\/src\/lib\/components\/(.*)\.svelte/)
+			if (match && match[1]) {
+				const compName = match[1]
+				const cssFilePath = `${path}/${compName}.css`
+				fs.writeFileSync(cssFilePath, preprocessedStyle.code)
 			}
 			return preprocessedStyle
 		}
