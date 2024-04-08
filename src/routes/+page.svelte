@@ -2,6 +2,7 @@
 	import { Checkmark, ArrowRight } from 'carbon-icons-svelte'
 
 	import Button from '$lib/components/ui/button.svelte'
+	import Checkbox from '$lib/components/checkbox.svelte'
 </script>
 
 <h1>A design system for purists</h1>
@@ -180,6 +181,10 @@
 			<Button size="small" variant="darkoverlay" disabled>Dark overlay disabled</Button>
 		</div>
 	</div>
+</section>
+<section>
+	<h1>Checkbox</h1>
+	<Checkbox label="Checkbox" />
 </section>
 
 <style>
