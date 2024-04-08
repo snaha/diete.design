@@ -8,16 +8,19 @@ function cssPreprocess() {
 	const vite = vitePreprocess()
 	const viteStyle = vite.style
 
-	const path = `${DIST_DIR}`
-	fs.mkdirSync(path, { recursive: true })
 
 	return {
 		...vite,
 		async style(args) {
 			const preprocessedStyle = await viteStyle(args)
-			const match = args.filename.match(/^.*\/src\/lib\/components\/(.*)\.svelte/)
-			if (match && match[1]) {
-				const compName = match[1]
+			const match = args.filename.match(/^.*\/src\/lib\/components(.*\/)(.*)\.svelte/)
+			if (match && match.length === 3) {
+				const compPath = match[1]
+				const compName = match[2]
+				
+				const path = `${DIST_DIR}${compPath}`
+				fs.mkdirSync(path, { recursive: true })
+
 				const cssFilePath = `${path}/${compName}.css`
 				fs.writeFileSync(cssFilePath, preprocessedStyle.code)
 			}
