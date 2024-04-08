@@ -4,6 +4,7 @@
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
 	import Radio from '$lib/components/ui/radio.svelte'
+	import Typography from '$lib/components/typography.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 </script>
 
@@ -268,6 +269,22 @@
 			<Switch dimension="small" label="Switch button" checked />
 			<Switch dimension="small" label="Switch button" disabled />
 			<Switch dimension="small" label="Switch button" checked disabled />
+		</div>
+		<h1>Typography</h1>
+		<div class="row">
+			<div class="col">
+				<Typography variant="h1" element="h1">h1 Title</Typography>
+				<Typography variant="h2" element="h2">h2 Title</Typography>
+				<Typography variant="h3" element="h3">h3 Title</Typography>
+				<Typography variant="h4" element="h4">h4 Title</Typography>
+				<Typography variant="h5" element="h5">h5 Title</Typography>
+				<Typography variant="h6" element="h6">h6 Title</Typography>
+			</div>
+			<div class="col">
+				<Typography variant="large-paragraph" element="p">Large paragraph</Typography>
+				<Typography variant="paragraph" element="p">Paragraph</Typography>
+				<Typography variant="small-paragraph" element="p">small-paragraph</Typography>
+			</div>
 		</div>
 	</div>
 </section>
