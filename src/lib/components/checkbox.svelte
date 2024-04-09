@@ -8,23 +8,21 @@
 </script>
 
 <div class="root">
-	<input type="checkbox" {...restProps} id={labelFor} />
-	<span class="checkmark">
-		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-			<rect
-				width="24"
-				height="24"
-				fill="black"
-				fill-opacity="0.5"
-				style="mix-blend-mode:multiply"
-			/>
-			<path
-				d="M9.75 18L3 11.25L4.0605 10.1895L9.75 15.8782L19.9395 5.68945L21 6.74995L9.75 18Z"
-				fill="#F9F9F9"
-			/>
-		</svg>
-	</span>
-	<label for={labelFor}>{label}</label>
+	<input type="checkbox" {...restProps} id={labelFor} class="checkmark"/>
+	<svg width="24" height="24" viewBox="0 0 24 24">
+		<rect
+			width="24"
+			height="24"
+			fill="black"
+			fill-opacity="0.7"
+			style="mix-blend-mode:multiply"
+		/>
+		<path
+			d="M9.75 18L3 11.25L4.0605 10.1895L9.75 15.8782L19.9395 5.68945L21 6.74995L9.75 18Z"
+			fill="#F9F9F9"
+		/>
+	</svg>
+	<label class="label" for={labelFor}>{label}</label>
 </div>
 
 <style lang="postcss">
@@ -34,27 +32,43 @@
 		align-items: center;
 		gap: 0.5rem;
 		position: relative;
+	}	
+	input[type='checkbox'] {
+		appearance: none;
+		margin: 0;
+		&:checked{
+			appearance: none;
+		}
+		&:checked.checkmark{
+            border: none;
+        }
+		&:checked + svg{
+			display: block;
+		}
+		&:disabled.checkmark,&:disabled ~ svg,&:disabled ~ .label{
+			opacity: 0.25;
+			cursor: not-allowed;
+		}
 	}
 	.checkmark {
 		display: flex;
-		align-items: center;
-		position: absolute;
+		align-items: flex-start;
+		width: 1.5rem;
+		height: 1.5rem;		
+		border: 1px solid var(--colors-ultra-high);
 		border-radius: 0.25rem;
-		opacity: 0;
-		svg {
-			border-radius: 0.25rem;
-		}
+		cursor: pointer;
+		z-index: 1;
+	}
+	svg{
+		position: absolute;
+		top: 0,75rem;
+		left: 0.75rem;
+		border-radius: 0.25rem;
+		display: none;
 	}
 
-	input[type='checkbox'] {
-		position: relative;
-		width: 1.5rem;
-		height: 1.5rem;
-		margin: 0;
-		&:checked {
-			.checkmark {
-				opacity: 1;
-			}
-		}
+	.label{
+		cursor: pointer;
 	}
 </style>

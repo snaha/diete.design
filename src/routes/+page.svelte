@@ -183,8 +183,14 @@
 	</div>
 </section>
 <section>
-	<h1>Checkbox</h1>
-	<Checkbox label="Checkbox" />
+	<div class="row">
+		<div class="col">
+			<Checkbox label="Checkbox" />
+			<Checkbox label="Checkbox" checked />
+			<Checkbox label="Checkbox" disabled />
+			<Checkbox label="Checkbox" checked disabled />
+		</div>
+	</div>
 </section>
 
 <style>
@@ -197,7 +203,6 @@
 		gap: 1rem;
 		padding-bottom: 5rem;
 	}
-
 	.col {
 		display: flex;
 		flex-direction: column;
