@@ -285,6 +285,23 @@
 				<Typography variant="paragraph" element="p">Paragraph</Typography>
 				<Typography variant="small-paragraph" element="p">small-paragraph</Typography>
 			</div>
+			<Typography variant="large" element="p">Large paragraph</Typography>
+			<Typography variant="default" element="p">Paragraph</Typography>
+			<Typography variant="small" element="p">Small-paragraph</Typography>
+		</div>
+		<div class="col">
+			<Typography>Sans</Typography>
+			<Typography style="italic">Sans Italic</Typography>
+			<Typography weight="bold">Sans Bold</Typography>
+			<Typography weight="bold" style="italic">Sans Bold</Typography>
+			<Typography font="serif">Serif</Typography>
+			<Typography font="serif" style="italic">Serif Italic</Typography>
+			<Typography font="serif" weight="bold">Serif Bold</Typography>
+			<Typography font="serif" weight="bold" style="italic">Serif Bold</Typography>
+			<Typography font="mono">Mono</Typography>
+			<Typography font="mono" style="italic">Mono Italic</Typography>
+			<Typography font="mono" weight="bold">Mono Bold</Typography>
+			<Typography font="mono" weight="bold" style="italic">Mono Bold</Typography>
 		</div>
 	</div>
 </section>
