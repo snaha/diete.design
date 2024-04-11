@@ -219,6 +219,24 @@
 				</div>
 			</div>
 		</div>
+		<div class="col">
+			<Radio name="rbL" content="large">Radio button</Radio>
+			<Radio name="rbL" checked content="large">Radio button</Radio>
+			<Radio disabled content="large">Radio button</Radio>
+			<Radio disabled checked content="large">Radio button</Radio>
+		</div>
+		<div class="col">
+			<Radio name="rbC" content="compact">Radio button</Radio>
+			<Radio name="rbC" checked content="compact">Radio button</Radio>
+			<Radio disabled content="compact">Radio button</Radio>
+			<Radio disabled checked content="compact">Radio button</Radio>
+		</div>
+		<div class="col">
+			<Radio name="rbS" content="small">Radio button</Radio>
+			<Radio name="rbS" checked content="small">Radio button</Radio>
+			<Radio disabled content="small">Radio button</Radio>
+			<Radio disabled checked content="small">Radio button</Radio>
+		</div>
 	</div>
 </section>
 <section>
