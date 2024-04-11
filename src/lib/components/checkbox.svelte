@@ -9,13 +9,6 @@
 
 <div class="root">
 	<input type="checkbox" {...restProps} id={labelFor} class="checkmark" />
-	<svg width="24" height="24" viewBox="0 0 24 24">
-		<rect width="24" height="24" fill="black" fill-opacity="0.7" style="mix-blend-mode:multiply" />
-		<path
-			d="M9.75 18L3 11.25L4.0605 10.1895L9.75 15.8782L19.9395 5.68945L21 6.74995L9.75 18Z"
-			fill="#F9F9F9"
-		/>
-	</svg>
 	<label class="label" for={labelFor}>{label}</label>
 </div>
 
@@ -30,23 +23,9 @@
 	input[type='checkbox'] {
 		appearance: none;
 		margin: 0;
-		&:checked {
-			appearance: none;
-		}
-		&:checked.checkmark {
-			border: none;
-		}
-		&:checked + svg {
-			display: block;
-		}
-		&:disabled.checkmark,
-		&:disabled ~ svg,
-		&:disabled ~ .label {
-			opacity: 0.25;
-			cursor: not-allowed;
-		}
 	}
-	.checkmark {
+	.checkmark::before {
+		content: '';
 		display: flex;
 		align-items: flex-start;
 		width: 1.5rem;
@@ -54,17 +33,37 @@
 		border: 1px solid var(--colors-ultra-high);
 		border-radius: 0.25rem;
 		cursor: pointer;
-		z-index: 1;
 	}
-	svg {
+	.checkmark:checked::before {
+		border: 1px solid var(--colors-high);
+		background: var(--colors-high);
+	}
+	.checkmark:checked::after {
+		content: '';
 		position: absolute;
-		top: 0, 75rem;
-		left: 0.75rem;
-		border-radius: 0.25rem;
-		display: none;
+		top: 13px;
+		left: 20px;
+		border-bottom: 2px solid var(--colors-ultra-low);
+		border-right: 2px solid var(--colors-ultra-low);
+		transform: rotate(45deg);
+		width: 0.5rem;
+		height: 1rem;
 	}
 
+	.checkmark:checked:disabled::before,
+	.checkmark:disabled::before,
+	.checkmark:disabled ~ label {
+		cursor: not-allowed;
+		opacity: 0.25;
+	}
+	.checkmark:checked:disabled::after {
+		cursor: not-allowed;
+	}
 	.label {
+		font-family: sans-serif;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		letter-spacing: 0.02rem;
 		cursor: pointer;
 	}
 </style>
