@@ -52,7 +52,7 @@
 		border: 1px solid var(--colors-ultra-high);
 		cursor: pointer;
 		text-decoration: none;
-		font-family: Arial;
+		font-family: var(--font-family-sans-serif);
 		font-style: normal;
 		font-weight: 400;
 		&:disabled {
