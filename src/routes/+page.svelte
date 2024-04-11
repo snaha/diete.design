@@ -44,11 +44,6 @@
 			<Button variant="ghost" disabled>Ghost disabled</Button>
 		</div>
 		<div class="col">
-			<Button variant="ghost">Ghost</Button>
-			<Button variant="ghost" active>Ghost active</Button>
-			<Button variant="ghost" disabled>Ghost disabled</Button>
-		</div>
-		<div class="col">
 			<Button variant="overlay">Overlay</Button>
 			<Button variant="overlay" active>Overlay active</Button>
 			<Button variant="overlay" disabled>Overlay disabled</Button>
@@ -84,11 +79,6 @@
 			<Button size="large" variant="secondary">Secondary</Button>
 			<Button size="large" variant="secondary" active>Secondary active</Button>
 			<Button size="large" variant="secondary" disabled>Secondary disabled</Button>
-		</div>
-		<div class="col">
-			<Button size="large" variant="ghost">Ghost</Button>
-			<Button size="large" variant="ghost" active>Ghost active</Button>
-			<Button size="large" variant="ghost" disabled>Ghost disabled</Button>
 		</div>
 		<div class="col">
 			<Button size="large" variant="ghost">Ghost</Button>
@@ -138,11 +128,6 @@
 			<Button size="compact" variant="ghost" disabled>Ghost disabled</Button>
 		</div>
 		<div class="col">
-			<Button size="compact" variant="ghost">Ghost</Button>
-			<Button size="compact" variant="ghost" active>Ghost active</Button>
-			<Button size="compact" variant="ghost" disabled>Ghost disabled</Button>
-		</div>
-		<div class="col">
 			<Button size="compact" variant="overlay">Overlay</Button>
 			<Button size="compact" variant="overlay" active>Overlay active</Button>
 			<Button size="compact" variant="overlay" disabled>Overlay disabled</Button>
@@ -178,11 +163,6 @@
 			<Button size="small" variant="secondary">Secondary</Button>
 			<Button size="small" variant="secondary" active>Secondary active</Button>
 			<Button size="small" variant="secondary" disabled>Secondary disabled</Button>
-		</div>
-		<div class="col">
-			<Button size="small" variant="ghost">Ghost</Button>
-			<Button size="small" variant="ghost" active>Ghost active</Button>
-			<Button size="small" variant="ghost" disabled>Ghost disabled</Button>
 		</div>
 		<div class="col">
 			<Button size="small" variant="ghost">Ghost</Button>
