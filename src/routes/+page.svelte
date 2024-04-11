@@ -220,6 +220,24 @@
 			<Switch disabled>Switch button</Switch>
 			<Switch checked disabled>Switch button</Switch>
 		</div>
+		<div class="col">
+			<Switch compact="large">Switch button</Switch>
+			<Switch compact="large" checked>Switch button</Switch>
+			<Switch compact="large" disabled>Switch button</Switch>
+			<Switch compact="large" checked disabled>Switch button</Switch>
+		</div>
+		<div class="col">
+			<Switch compact="compact">Switch button</Switch>
+			<Switch compact="compact" checked>Switch button</Switch>
+			<Switch compact="compact" disabled>Switch button</Switch>
+			<Switch compact="compact" checked disabled>Switch button</Switch>
+		</div>
+		<div class="col">
+			<Switch compact="small">Switch button</Switch>
+			<Switch compact="small" checked>Switch button</Switch>
+			<Switch compact="small" disabled>Switch button</Switch>
+			<Switch compact="small" checked disabled>Switch button</Switch>
+		</div>
 	</div>
 </section>
 
