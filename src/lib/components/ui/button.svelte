@@ -25,7 +25,7 @@
 		active,
 		disabled,
 		href,
-		class: className,
+		class: className = '',
 		...restProps
 	}: AnchorElement | ButtonElement = $props()
 </script>
