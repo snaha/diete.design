@@ -2,7 +2,7 @@
 	import { Checkmark, ArrowRight } from 'carbon-icons-svelte'
 
 	import Button from '$lib/components/ui/button.svelte'
-	import Checkbox from '$lib/components/checkbox.svelte'
+	import Checkbox from '$lib/components/ui/checkbox.svelte'
 </script>
 
 <h1>A design system for purists</h1>
