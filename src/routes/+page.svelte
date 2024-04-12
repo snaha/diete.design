@@ -2,6 +2,7 @@
 	import { Checkmark, ArrowRight } from 'carbon-icons-svelte'
 
 	import Button from '$lib/components/ui/button.svelte'
+	import Checkbox from '$lib/components/ui/checkbox.svelte'
 </script>
 
 <h1>A design system for purists</h1>
@@ -181,6 +182,35 @@
 		</div>
 	</div>
 </section>
+<section>
+	<h1>Checkbox</h1>
+	<div class="row">
+		<div class="col">
+			<Checkbox label="Checkbox" />
+			<Checkbox label="Checkbox" checked />
+			<Checkbox label="Checkbox" disabled />
+			<Checkbox label="Checkbox" checked disabled />
+		</div>
+		<div class="col">
+			<Checkbox dimension="large" label="Checkbox" />
+			<Checkbox dimension="large" label="Checkbox" checked />
+			<Checkbox dimension="large" label="Checkbox" disabled />
+			<Checkbox dimension="large" label="Checkbox" checked disabled />
+		</div>
+		<div class="col">
+			<Checkbox dimension="compact" label="Checkbox" />
+			<Checkbox dimension="compact" label="Checkbox" checked />
+			<Checkbox dimension="compact" label="Checkbox" disabled />
+			<Checkbox dimension="compact" label="Checkbox" checked disabled />
+		</div>
+		<div class="col">
+			<Checkbox dimension="small" label="Checkbox" />
+			<Checkbox dimension="small" label="Checkbox" checked />
+			<Checkbox dimension="small" label="Checkbox" disabled />
+			<Checkbox dimension="small" label="Checkbox" checked disabled />
+		</div>
+	</div>
+</section>
 
 <style>
 	.row {
@@ -192,7 +222,6 @@
 		gap: 1rem;
 		padding-bottom: 5rem;
 	}
-
 	.col {
 		display: flex;
 		flex-direction: column;
