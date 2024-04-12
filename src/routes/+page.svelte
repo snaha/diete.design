@@ -221,22 +221,22 @@
 			<Switch checked disabled>Switch button</Switch>
 		</div>
 		<div class="col">
-			<Switch compact="large">Switch button</Switch>
-			<Switch compact="large" checked>Switch button</Switch>
-			<Switch compact="large" disabled>Switch button</Switch>
-			<Switch compact="large" checked disabled>Switch button</Switch>
+			<Switch layout="large">Switch button</Switch>
+			<Switch layout="large" checked>Switch button</Switch>
+			<Switch layout="large" disabled>Switch button</Switch>
+			<Switch layout="large" checked disabled>Switch button</Switch>
 		</div>
 		<div class="col">
-			<Switch compact="compact">Switch button</Switch>
-			<Switch compact="compact" checked>Switch button</Switch>
-			<Switch compact="compact" disabled>Switch button</Switch>
-			<Switch compact="compact" checked disabled>Switch button</Switch>
+			<Switch layout="compact">Switch button</Switch>
+			<Switch layout="compact" checked>Switch button</Switch>
+			<Switch layout="compact" disabled>Switch button</Switch>
+			<Switch layout="compact" checked disabled>Switch button</Switch>
 		</div>
 		<div class="col">
-			<Switch compact="small">Switch button</Switch>
-			<Switch compact="small" checked>Switch button</Switch>
-			<Switch compact="small" disabled>Switch button</Switch>
-			<Switch compact="small" checked disabled>Switch button</Switch>
+			<Switch layout="small">Switch button</Switch>
+			<Switch layout="small" checked>Switch button</Switch>
+			<Switch layout="small" disabled>Switch button</Switch>
+			<Switch layout="small" checked disabled>Switch button</Switch>
 		</div>
 	</div>
 </section>

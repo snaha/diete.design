@@ -1,21 +1,23 @@
 <script lang="ts">
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	type Content = 'default' | 'large' | 'compact' | 'small'
+	type Layout = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
 		labelFor?: string
-		compact?: Content
+		layout?: Layout
+		class?: string
 	}
 	let {
 		labelFor = Math.random().toString(16),
-		compact = 'default',
+		layout = 'default',
 		checked,
+		class: classProp = '',
 		...restProps
 	}: Props = $props()
 </script>
 
-<div class="root {compact}">
-	<input type="checkbox" class="switch {compact}" id={labelFor} {...restProps} bind:checked />
-	<label for={labelFor} class={compact}><slot /></label>
+<div class="root {layout} {classProp}">
+	<input type="checkbox" class="switch {layout}" id={labelFor} {...restProps} bind:checked />
+	<label for={labelFor} class={layout}><slot /></label>
 </div>
 
 <style lang="postcss">
