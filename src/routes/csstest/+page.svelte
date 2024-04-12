@@ -1,6 +1,13 @@
 <script lang="ts">
-	import css from '$lib/../../static/css/ui/button.css?raw'
+	import { onMount } from 'svelte'
+	let css: string | undefined
+
+	onMount(async () => {
+		const response = await fetch('/css/ui/button.css')
+		css = await response.text()
+	})
 </script>
+
 <code>
-	{css}
+	{css ? css : 'Loading...'}
 </code>
