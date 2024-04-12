@@ -3,6 +3,7 @@
 
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
+	import Input from '$lib/components/input.svelte'
 	import Radio from '$lib/components/ui/radio.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
@@ -304,6 +305,10 @@
 		</div>
 	</div>
 </section>
+<Input placeholder="Input label">This is some helper text.</Input>
+<Input placeholder="Input label" layout="large">This is some helper text.</Input>
+<Input placeholder="Input label" layout="compact" active>This is some helper text.</Input>
+<Input placeholder="Input label" layout="small">This is some helper text.</Input>
 
 <style>
 	.row {
