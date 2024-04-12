@@ -81,8 +81,9 @@
 		outline: none;
 	}
 	.input::placeholder {
-		text-align: center;
+		text-align: left;
 		color: transparent;
+		opacity: 0;
 	}
 	.label.default {
 		font-size: var(--font-size);
@@ -122,20 +123,16 @@
 		background: var(--colors-base);
 	}
 	.input.default:focus + .label,
-	.input.default:not(:placeholder-shown) + .label {
-		transform: translateY(-0.75rem);
-	}
+	.input.default:not(:placeholder-shown) + .label,
 	.input.large:focus + .label,
 	.input.large:not(:placeholder-shown) + .label {
 		transform: translateY(-0.75rem);
 	}
 	.input.compact:focus + .label,
-	.input.compact:not(:placeholder-shown) + .label {
-		transform: translateY(-0.5rem);
-	}
+	.input.compact:not(:placeholder-shown) + .label,
 	.input.small:focus + .label,
 	.input.small:not(:placeholder-shown) + .label {
-		transform: translateY(-0.25rem);
+		transform: translateY(-0.5rem);
 	}
 	.input:focus + .label,
 	.input:not(:placeholder-shown) + .label {
