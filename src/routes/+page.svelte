@@ -3,7 +3,7 @@
 
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
-	import Radio from '$lib/components/radio.svelte'
+	import Radio from '$lib/components/ui/radio.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 </script>
 
@@ -210,32 +210,35 @@
 			<Checkbox dimension="small" label="Checkbox" checked />
 			<Checkbox dimension="small" label="Checkbox" disabled />
 			<Checkbox dimension="small" label="Checkbox" checked disabled />
-			<div class="row">
-				<div class="col">
-					<Radio name="rb">Radio button</Radio>
-					<Radio name="rb" checked>Radio button</Radio>
-					<Radio disabled>Radio button</Radio>
-					<Radio disabled checked>Radio button</Radio>
-				</div>
-			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<h1>Radio button</h1>
+	<div class="row">
+		<div class="col">
+			<Radio label="Radio button" name="rb" />
+			<Radio label="Radio button" name="rb" checked />
+			<Radio label="Radio button" disabled />
+			<Radio label="Radio button" checked disabled />
 		</div>
 		<div class="col">
-			<Radio name="rbL" layout="large">Radio button</Radio>
-			<Radio name="rbL" checked layout="large">Radio button</Radio>
-			<Radio disabled layout="large">Radio button</Radio>
-			<Radio disabled checked layout="large">Radio button</Radio>
+			<Radio dimension="large" label="Radio button" name="rbL" />
+			<Radio dimension="large" label="Radio button" name="rbL" checked />
+			<Radio dimension="large" label="Radio button" disabled />
+			<Radio dimension="large" label="Radio button" checked disabled />
 		</div>
 		<div class="col">
-			<Radio name="rbC" layout="compact">Radio button</Radio>
-			<Radio name="rbC" checked layout="compact">Radio button</Radio>
-			<Radio disabled layout="compact">Radio button</Radio>
-			<Radio disabled checked layout="compact">Radio button</Radio>
+			<Radio dimension="compact" label="Radio button" name="rbC" />
+			<Radio dimension="compact" label="Radio button" name="rbC" checked />
+			<Radio dimension="compact" label="Radio button" disabled />
+			<Radio dimension="compact" label="Radio button" checked disabled />
 		</div>
 		<div class="col">
-			<Radio name="rbS" layout="small">Radio button</Radio>
-			<Radio name="rbS" checked layout="small">Radio button</Radio>
-			<Radio disabled layout="small">Radio button</Radio>
-			<Radio disabled checked layout="small">Radio button</Radio>
+			<Radio dimension="small" label="Radio button" name="rbS" />
+			<Radio dimension="small" label="Radio button" name="rbS" checked />
+			<Radio dimension="small" label="Radio button" disabled />
+			<Radio dimension="small" label="Radio button" checked disabled />
 		</div>
 	</div>
 </section>
