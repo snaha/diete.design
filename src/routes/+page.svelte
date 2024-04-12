@@ -183,6 +183,7 @@
 	</div>
 </section>
 <section>
+	<h1>Checkbox</h1>
 	<div class="row">
 		<div class="col">
 			<Checkbox label="Checkbox" />
