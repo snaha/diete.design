@@ -1,16 +1,22 @@
 <script lang="ts">
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	type Content = 'default' | 'large' | 'compact' | 'small'
+	type Layout = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
 		labelFor?: string
-		content?: Content
+		layout?: Layout
+		class?: string
 	}
-	let { labelFor = Math.random().toString(16), content = 'default', ...restProps }: Props = $props()
+	let {
+		labelFor = Math.random().toString(16),
+		layout = 'default',
+		class: classProp = '',
+		...restProps
+	}: Props = $props()
 </script>
 
-<div class="root {content}">
-	<input type="radio" class="radio {content}" {...restProps} id={labelFor} />
-	<label for={labelFor} class={content}><slot /></label>
+<div class="root {layout} {classProp}">
+	<input type="radio" class="radio {layout}" {...restProps} id={labelFor} />
+	<label for={labelFor} class={layout}><slot /></label>
 </div>
 
 <style lang="postcss">
