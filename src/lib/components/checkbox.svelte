@@ -67,7 +67,7 @@
 		cursor: not-allowed;
 	}
 	label {
-		font-family: sans-serif;
+		font-family: var(--font-family-sans-serif);
 		cursor: pointer;
 		color: var(--colors-ultra-high);
 	}
