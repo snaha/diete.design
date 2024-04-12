@@ -191,22 +191,22 @@
 			<Checkbox label="Checkbox" checked disabled />
 		</div>
 		<div class="col">
-			<Checkbox content="large" label="Checkbox" />
-			<Checkbox content="large" label="Checkbox" checked />
-			<Checkbox content="large" label="Checkbox" disabled />
-			<Checkbox content="large" label="Checkbox" checked disabled />
+			<Checkbox layout="large" label="Checkbox" />
+			<Checkbox layout="large" label="Checkbox" checked />
+			<Checkbox layout="large" label="Checkbox" disabled />
+			<Checkbox layout="large" label="Checkbox" checked disabled />
 		</div>
 		<div class="col">
-			<Checkbox content="compact" label="Checkbox" />
-			<Checkbox content="compact" label="Checkbox" checked />
-			<Checkbox content="compact" label="Checkbox" disabled />
-			<Checkbox content="compact" label="Checkbox" checked disabled />
+			<Checkbox layout="compact" label="Checkbox" />
+			<Checkbox layout="compact" label="Checkbox" checked />
+			<Checkbox layout="compact" label="Checkbox" disabled />
+			<Checkbox layout="compact" label="Checkbox" checked disabled />
 		</div>
 		<div class="col">
-			<Checkbox content="small" label="Checkbox" />
-			<Checkbox content="small" label="Checkbox" checked />
-			<Checkbox content="small" label="Checkbox" disabled />
-			<Checkbox content="small" label="Checkbox" checked disabled />
+			<Checkbox layout="small" label="Checkbox" />
+			<Checkbox layout="small" label="Checkbox" checked />
+			<Checkbox layout="small" label="Checkbox" disabled />
+			<Checkbox layout="small" label="Checkbox" checked disabled />
 		</div>
 	</div>
 </section>

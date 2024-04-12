@@ -1,22 +1,22 @@
 <script lang="ts">
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	type Content = 'default' | 'large' | 'compact' | 'small'
+	type Layout = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
 		label: string
 		labelFor?: string
-		content?: Content
+		layout?: Layout
 	}
 	let {
 		label,
 		labelFor = Math.random().toString(16),
-		content = 'default',
+		layout = 'default',
 		...restProps
 	}: Props = $props()
 </script>
 
-<div class="root {content}">
-	<input type="checkbox" {...restProps} id={labelFor} class="checkmark {content}" />
-	<label class="label {content}" for={labelFor}>{label}</label>
+<div class="root {layout}">
+	<input type="checkbox" {...restProps} id={labelFor} class="checkmark {layout}" />
+	<label class="label {layout}" for={labelFor}>{label}</label>
 </div>
 
 <style lang="postcss">
