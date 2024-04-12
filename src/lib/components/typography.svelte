@@ -11,6 +11,7 @@
 		font?: Font
 		weight?: Weight
 		style?: Style
+		class?: string
 	}
 	type Props = (HTMLAttributes<HTMLHeadingElement> | HTMLAttributes<HTMLParagraphElement>) &
 		CustomProps
@@ -20,14 +21,14 @@
 		font = 'sans',
 		weight = 'standart',
 		style = 'normal',
-		class: classProps,
+		class: classProp = '',
 		...restProps
 	}: Props = $props()
 </script>
 
 <svelte:element
 	this={element}
-	class={`root ${font} ${weight} ${style} ${variant} ${classProps}`}
+	class={`root ${font} ${weight} ${style} ${variant} ${classProp}`}
 	{...restProps}
 >
 	<slot />
@@ -40,13 +41,13 @@
 		padding: 0;
 	}
 	.sans {
-		font-family: sans-serif;
+		font-family: var(--font-family-sans-serif);
 	}
 	.serif {
-		font-family: serif;
+		font-family: var(--font-family-serif);
 	}
 	.mono {
-		font-family: monospace;
+		font-family: var(--font-family-monospace);
 	}
 	.standart {
 		font-weight: 400;
