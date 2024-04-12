@@ -5,16 +5,18 @@
 		label: string
 		labelFor?: string
 		layout?: Layout
+		class?: string
 	}
 	let {
 		label,
 		labelFor = Math.random().toString(16),
 		layout = 'default',
+		class: classProp = '',
 		...restProps
 	}: Props = $props()
 </script>
 
-<div class="root {layout}">
+<div class="root {layout} {classProp}">
 	<input type="checkbox" {...restProps} id={labelFor} class="checkmark {layout}" />
 	<label class="label {layout}" for={labelFor}>{label}</label>
 </div>
