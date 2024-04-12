@@ -14,4 +14,4 @@ package-lock.json
 yarn.lock
 
 # Ignore generated files
-/static/css
+/static/generated/css

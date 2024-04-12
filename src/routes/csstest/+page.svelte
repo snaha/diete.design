@@ -3,7 +3,7 @@
 	let css: string | undefined
 
 	onMount(async () => {
-		const response = await fetch('/css/ui/button.css')
+		const response = await fetch('/generated/css/ui/button.css')
 		css = await response.text()
 	})
 </script>

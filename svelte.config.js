@@ -2,7 +2,7 @@ import adapter from '@sveltejs/adapter-auto'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 import fs from 'fs'
 
-const DIST_DIR = './static/css'
+const DIST_DIR = './static/generated/css'
 
 function cssPreprocess() {
 	const vite = vitePreprocess()
