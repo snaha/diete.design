@@ -27,17 +27,6 @@
 		align-items: center;
 		gap: 0.5rem;
 	}
-	.root.default,
-	.root.large {
-		padding: 0.75rem;
-	}
-	.root.compact,
-	.root.small {
-		padding: 0.5rem;
-	}
-	.root.small {
-		gap: 0.25rem;
-	}
 	input[type='radio'] {
 		position: relative;
 		appearance: none;
@@ -129,8 +118,8 @@
 	}
 	.small {
 		&.root {
-			gap: 0.25rem;
 			padding: 0.5rem;
+			gap: 0.25rem;
 		}
 		label {
 			font-size: var(--font-size-small);
