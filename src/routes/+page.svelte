@@ -57,128 +57,128 @@
 	</div>
 	<div class="row">
 		<div class="col">
-			<Button size="large">Strong</Button>
-			<Button size="large" active>Strong active</Button>
-			<Button size="large" disabled>Strong disabled</Button>
+			<Button dimension="large">Strong</Button>
+			<Button dimension="large" active>Strong active</Button>
+			<Button dimension="large" disabled>Strong disabled</Button>
 		</div>
 		<div class="col">
-			<Button size="large"><Checkmark size={32} /></Button>
-			<Button size="large" active><Checkmark size={32} /></Button>
-			<Button size="large" disabled><Checkmark size={32} /></Button>
+			<Button dimension="large"><Checkmark size={32} /></Button>
+			<Button dimension="large" active><Checkmark size={32} /></Button>
+			<Button dimension="large" disabled><Checkmark size={32} /></Button>
 		</div>
 		<div class="col">
-			<Button size="large"><Checkmark size={32} />Strong</Button>
-			<Button size="large" active><Checkmark size={32} />Strong active</Button>
-			<Button size="large" disabled><Checkmark size={32} />Strong disabled</Button>
+			<Button dimension="large"><Checkmark size={32} />Strong</Button>
+			<Button dimension="large" active><Checkmark size={32} />Strong active</Button>
+			<Button dimension="large" disabled><Checkmark size={32} />Strong disabled</Button>
 		</div>
 		<div class="col">
-			<Button size="large">Strong<ArrowRight size={32} /></Button>
-			<Button size="large" active>Strong active<ArrowRight size={32} /></Button>
-			<Button size="large" disabled>Strong disabled<ArrowRight size={32} /></Button>
+			<Button dimension="large">Strong<ArrowRight size={32} /></Button>
+			<Button dimension="large" active>Strong active<ArrowRight size={32} /></Button>
+			<Button dimension="large" disabled>Strong disabled<ArrowRight size={32} /></Button>
 		</div>
 		<div class="col">
-			<Button size="large" variant="secondary">Secondary</Button>
-			<Button size="large" variant="secondary" active>Secondary active</Button>
-			<Button size="large" variant="secondary" disabled>Secondary disabled</Button>
+			<Button dimension="large" variant="secondary">Secondary</Button>
+			<Button dimension="large" variant="secondary" active>Secondary active</Button>
+			<Button dimension="large" variant="secondary" disabled>Secondary disabled</Button>
 		</div>
 		<div class="col">
-			<Button size="large" variant="ghost">Ghost</Button>
-			<Button size="large" variant="ghost" active>Ghost active</Button>
-			<Button size="large" variant="ghost" disabled>Ghost disabled</Button>
+			<Button dimension="large" variant="ghost">Ghost</Button>
+			<Button dimension="large" variant="ghost" active>Ghost active</Button>
+			<Button dimension="large" variant="ghost" disabled>Ghost disabled</Button>
 		</div>
 		<div class="col">
-			<Button size="large" variant="overlay">Overlay</Button>
-			<Button size="large" variant="overlay" active>Overlay active</Button>
-			<Button size="large" variant="overlay" disabled>Overlay disabled</Button>
+			<Button dimension="large" variant="overlay">Overlay</Button>
+			<Button dimension="large" variant="overlay" active>Overlay active</Button>
+			<Button dimension="large" variant="overlay" disabled>Overlay disabled</Button>
 		</div>
 		<div class="col">
-			<Button size="large" variant="darkoverlay">Dark overlay</Button>
-			<Button size="large" variant="darkoverlay" active>Dark overlay active</Button>
-			<Button size="large" variant="darkoverlay" disabled>Dark overlay disabled</Button>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-			<Button size="compact">Strong</Button>
-			<Button size="compact" active>Strong active</Button>
-			<Button size="compact" disabled>Strong disabled</Button>
-		</div>
-		<div class="col">
-			<Button size="compact"><Checkmark size={24} /></Button>
-			<Button size="compact" active><Checkmark size={24} /></Button>
-			<Button size="compact" disabled><Checkmark size={24} /></Button>
-		</div>
-		<div class="col">
-			<Button size="compact"><Checkmark size={24} />Strong</Button>
-			<Button size="compact" active><Checkmark size={24} />Strong active</Button>
-			<Button size="compact" disabled><Checkmark size={24} />Strong disabled</Button>
-		</div>
-		<div class="col">
-			<Button size="compact">Strong<ArrowRight size={24} /></Button>
-			<Button size="compact" active>Strong active<ArrowRight size={24} /></Button>
-			<Button size="compact" disabled>Strong disabled<ArrowRight size={24} /></Button>
-		</div>
-		<div class="col">
-			<Button size="compact" variant="secondary">Secondary</Button>
-			<Button size="compact" variant="secondary" active>Secondary active</Button>
-			<Button size="compact" variant="secondary" disabled>Secondary disabled</Button>
-		</div>
-		<div class="col">
-			<Button size="compact" variant="ghost">Ghost</Button>
-			<Button size="compact" variant="ghost" active>Ghost active</Button>
-			<Button size="compact" variant="ghost" disabled>Ghost disabled</Button>
-		</div>
-		<div class="col">
-			<Button size="compact" variant="overlay">Overlay</Button>
-			<Button size="compact" variant="overlay" active>Overlay active</Button>
-			<Button size="compact" variant="overlay" disabled>Overlay disabled</Button>
-		</div>
-		<div class="col">
-			<Button size="compact" variant="darkoverlay">Dark overlay</Button>
-			<Button size="compact" variant="darkoverlay" active>Dark overlay active</Button>
-			<Button size="compact" variant="darkoverlay" disabled>Dark overlay disabled</Button>
+			<Button dimension="large" variant="darkoverlay">Dark overlay</Button>
+			<Button dimension="large" variant="darkoverlay" active>Dark overlay active</Button>
+			<Button dimension="large" variant="darkoverlay" disabled>Dark overlay disabled</Button>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col">
-			<Button size="small">Strong</Button>
-			<Button size="small" active>Strong active</Button>
-			<Button size="small" disabled>Strong disabled</Button>
+			<Button dimension="compact">Strong</Button>
+			<Button dimension="compact" active>Strong active</Button>
+			<Button dimension="compact" disabled>Strong disabled</Button>
 		</div>
 		<div class="col">
-			<Button size="small"><Checkmark size={16} /></Button>
-			<Button size="small" active><Checkmark size={16} /></Button>
-			<Button size="small" disabled><Checkmark size={16} /></Button>
+			<Button dimension="compact"><Checkmark size={24} /></Button>
+			<Button dimension="compact" active><Checkmark size={24} /></Button>
+			<Button dimension="compact" disabled><Checkmark size={24} /></Button>
 		</div>
 		<div class="col">
-			<Button size="small"><Checkmark size={16} />Strong</Button>
-			<Button size="small" active><Checkmark size={16} />Strong active</Button>
-			<Button size="small" disabled><Checkmark size={16} />Strong disabled</Button>
+			<Button dimension="compact"><Checkmark size={24} />Strong</Button>
+			<Button dimension="compact" active><Checkmark size={24} />Strong active</Button>
+			<Button dimension="compact" disabled><Checkmark size={24} />Strong disabled</Button>
 		</div>
 		<div class="col">
-			<Button size="small">Strong<ArrowRight size={16} /></Button>
-			<Button size="small" active>Strong active<ArrowRight size={16} /></Button>
-			<Button size="small" disabled>Strong disabled<ArrowRight size={16} /></Button>
+			<Button dimension="compact">Strong<ArrowRight size={24} /></Button>
+			<Button dimension="compact" active>Strong active<ArrowRight size={24} /></Button>
+			<Button dimension="compact" disabled>Strong disabled<ArrowRight size={24} /></Button>
 		</div>
 		<div class="col">
-			<Button size="small" variant="secondary">Secondary</Button>
-			<Button size="small" variant="secondary" active>Secondary active</Button>
-			<Button size="small" variant="secondary" disabled>Secondary disabled</Button>
+			<Button dimension="compact" variant="secondary">Secondary</Button>
+			<Button dimension="compact" variant="secondary" active>Secondary active</Button>
+			<Button dimension="compact" variant="secondary" disabled>Secondary disabled</Button>
 		</div>
 		<div class="col">
-			<Button size="small" variant="ghost">Ghost</Button>
-			<Button size="small" variant="ghost" active>Ghost active</Button>
-			<Button size="small" variant="ghost" disabled>Ghost disabled</Button>
+			<Button dimension="compact" variant="ghost">Ghost</Button>
+			<Button dimension="compact" variant="ghost" active>Ghost active</Button>
+			<Button dimension="compact" variant="ghost" disabled>Ghost disabled</Button>
 		</div>
 		<div class="col">
-			<Button size="small" variant="overlay">Overlay</Button>
-			<Button size="small" variant="overlay" active>Overlay active</Button>
-			<Button size="small" variant="overlay" disabled>Overlay disabled</Button>
+			<Button dimension="compact" variant="overlay">Overlay</Button>
+			<Button dimension="compact" variant="overlay" active>Overlay active</Button>
+			<Button dimension="compact" variant="overlay" disabled>Overlay disabled</Button>
 		</div>
 		<div class="col">
-			<Button size="small" variant="darkoverlay">Dark overlay</Button>
-			<Button size="small" variant="darkoverlay" active>Dark overlay active</Button>
-			<Button size="small" variant="darkoverlay" disabled>Dark overlay disabled</Button>
+			<Button dimension="compact" variant="darkoverlay">Dark overlay</Button>
+			<Button dimension="compact" variant="darkoverlay" active>Dark overlay active</Button>
+			<Button dimension="compact" variant="darkoverlay" disabled>Dark overlay disabled</Button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<Button dimension="small">Strong</Button>
+			<Button dimension="small" active>Strong active</Button>
+			<Button dimension="small" disabled>Strong disabled</Button>
+		</div>
+		<div class="col">
+			<Button dimension="small"><Checkmark size={16} /></Button>
+			<Button dimension="small" active><Checkmark size={16} /></Button>
+			<Button dimension="small" disabled><Checkmark size={16} /></Button>
+		</div>
+		<div class="col">
+			<Button dimension="small"><Checkmark size={16} />Strong</Button>
+			<Button dimension="small" active><Checkmark size={16} />Strong active</Button>
+			<Button dimension="small" disabled><Checkmark size={16} />Strong disabled</Button>
+		</div>
+		<div class="col">
+			<Button dimension="small">Strong<ArrowRight size={16} /></Button>
+			<Button dimension="small" active>Strong active<ArrowRight size={16} /></Button>
+			<Button dimension="small" disabled>Strong disabled<ArrowRight size={16} /></Button>
+		</div>
+		<div class="col">
+			<Button dimension="small" variant="secondary">Secondary</Button>
+			<Button dimension="small" variant="secondary" active>Secondary active</Button>
+			<Button dimension="small" variant="secondary" disabled>Secondary disabled</Button>
+		</div>
+		<div class="col">
+			<Button dimension="small" variant="ghost">Ghost</Button>
+			<Button dimension="small" variant="ghost" active>Ghost active</Button>
+			<Button dimension="small" variant="ghost" disabled>Ghost disabled</Button>
+		</div>
+		<div class="col">
+			<Button dimension="small" variant="overlay">Overlay</Button>
+			<Button dimension="small" variant="overlay" active>Overlay active</Button>
+			<Button dimension="small" variant="overlay" disabled>Overlay disabled</Button>
+		</div>
+		<div class="col">
+			<Button dimension="small" variant="darkoverlay">Dark overlay</Button>
+			<Button dimension="small" variant="darkoverlay" active>Dark overlay active</Button>
+			<Button dimension="small" variant="darkoverlay" disabled>Dark overlay disabled</Button>
 		</div>
 	</div>
 </section>

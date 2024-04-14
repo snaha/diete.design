@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
 	type Variant = 'strong' | 'secondary' | 'ghost' | 'overlay' | 'darkoverlay'
-	type Size = 'default' | 'large' | 'compact' | 'small'
+	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Props = {
 		variant?: Variant
 		active?: boolean
 		class?: string | null
-		size?: Size
+		dimension?: Dimension
 	}
 	interface AnchorElement extends HTMLAnchorAttributes, Props {
 		href?: HTMLAnchorAttributes['href']
@@ -20,7 +20,7 @@
 		disabled?: boolean
 	}
 	let {
-		size = 'default',
+		dimension = 'default',
 		variant = 'strong',
 		active,
 		disabled,
@@ -32,7 +32,7 @@
 
 <svelte:element
 	this={href ? 'a' : 'button'}
-	class={`${size} ${variant} ${className}`}
+	class={`${dimension} ${variant} ${className}`}
 	{href}
 	class:active
 	{disabled}
