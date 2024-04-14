@@ -4,7 +4,7 @@
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
 	import Radio from '$lib/components/ui/radio.svelte'
-	import Typography from '$lib/components/typography.svelte'
+	import Typography from '$lib/components/ui/typography.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 </script>
 
