@@ -63,21 +63,21 @@
 	.default {
 		min-width: 3rem;
 		padding: 0.75rem;
-		font-dimension: 1rem;
+		font-size: 1rem;
 		line-height: 1.5rem;
 		letter-spacing: 0.02rem;
 	}
 	.large {
 		min-width: 3.5rem;
 		padding: 0.75rem;
-		font-dimension: 1.5rem;
+		font-size: 1.5rem;
 		line-height: 2rem;
 		letter-spacing: 0.03rem;
 	}
 	.compact {
 		min-width: 2.5rem;
 		padding: 0.5rem;
-		font-dimension: 1rem;
+		font-size: 1rem;
 		line-height: 1.5rem;
 		letter-spacing: 0.02rem;
 	}
@@ -85,7 +85,7 @@
 		gap: 0.25rem;
 		min-width: 2rem;
 		padding: 0.5rem;
-		font-dimension: 0.75rem;
+		font-size: 0.75rem;
 		line-height: 1rem;
 		letter-spacing: 0.0375rem;
 	}
