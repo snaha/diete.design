@@ -1,5 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
+	import Highlight from 'svelte-highlight'
+	import cssLanguage from 'svelte-highlight/languages/css'
+	import 'svelte-highlight/styles/ascetic.css'
+
 	let css: string | undefined
 
 	onMount(async () => {
@@ -8,6 +12,4 @@
 	})
 </script>
 
-<code>
-	{css ? css : 'Loading...'}
-</code>
+<Highlight language={cssLanguage} code={css ? css : 'Loading...'} />
