@@ -3,6 +3,7 @@
 
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
+	import Radio from '$lib/components/ui/radio.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 </script>
 
@@ -209,6 +210,35 @@
 			<Checkbox dimension="small" label="Checkbox" checked />
 			<Checkbox dimension="small" label="Checkbox" disabled />
 			<Checkbox dimension="small" label="Checkbox" checked disabled />
+		</div>
+	</div>
+</section>
+<section>
+	<h1>Radio button</h1>
+	<div class="row">
+		<div class="col">
+			<Radio label="Radio button" name="rb" />
+			<Radio label="Radio button" name="rb" checked />
+			<Radio label="Radio button" disabled />
+			<Radio label="Radio button" checked disabled />
+		</div>
+		<div class="col">
+			<Radio dimension="large" label="Radio button" name="rbL" />
+			<Radio dimension="large" label="Radio button" name="rbL" checked />
+			<Radio dimension="large" label="Radio button" disabled />
+			<Radio dimension="large" label="Radio button" checked disabled />
+		</div>
+		<div class="col">
+			<Radio dimension="compact" label="Radio button" name="rbC" />
+			<Radio dimension="compact" label="Radio button" name="rbC" checked />
+			<Radio dimension="compact" label="Radio button" disabled />
+			<Radio dimension="compact" label="Radio button" checked disabled />
+		</div>
+		<div class="col">
+			<Radio dimension="small" label="Radio button" name="rbS" />
+			<Radio dimension="small" label="Radio button" name="rbS" checked />
+			<Radio dimension="small" label="Radio button" disabled />
+			<Radio dimension="small" label="Radio button" checked disabled />
 		</div>
 	</div>
 </section>
