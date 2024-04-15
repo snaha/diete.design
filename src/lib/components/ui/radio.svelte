@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	type dimension = 'default' | 'large' | 'compact' | 'small'
+	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
 		label: string
 		labelFor?: string
-		dimension?: dimension
+		dimension?: Dimension
 		class?: string
 	}
 	let {
