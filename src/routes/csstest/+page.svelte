@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte'
 	import Highlight from 'svelte-highlight'
 	import cssLanguage from 'svelte-highlight/languages/css'
-	import ascetic from 'svelte-highlight/styles/ascetic'
+	import 'svelte-highlight/styles/ascetic.css'
 
 	let css: string | undefined
 
@@ -11,9 +11,5 @@
 		css = await response.text()
 	})
 </script>
-
-<svelte:head>
-	{@html ascetic}
-</svelte:head>
 
 <Highlight language={cssLanguage} code={css ? css : 'Loading...'} />
