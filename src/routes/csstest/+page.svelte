@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import Highlight from "svelte-highlight"
-	import cssLanguage from "svelte-highlight/languages/css"
-	import ascetic from "svelte-highlight/styles/ascetic"
+	import Highlight from 'svelte-highlight'
+	import cssLanguage from 'svelte-highlight/languages/css'
+	import ascetic from 'svelte-highlight/styles/ascetic'
 
 	let css: string | undefined
 
