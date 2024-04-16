@@ -61,6 +61,15 @@
 				line-height: var(--line-height-small);
 			}
 		}
+		&:disabled {
+			opacity: 0.25;
+			cursor: not-allowed;
+			& + label {
+				background: transparent;
+				opacity: 0.25;
+				cursor: not-allowed;
+			}
+		}
 	}
 	input::placeholder {
 		text-align: center;
