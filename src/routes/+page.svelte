@@ -270,38 +270,37 @@
 			<Switch dimension="small" label="Switch button" disabled />
 			<Switch dimension="small" label="Switch button" checked disabled />
 		</div>
-		<h1>Typography</h1>
-		<div class="row">
-			<div class="col">
-				<Typography variant="h1" element="h1">h1 Title</Typography>
-				<Typography variant="h2" element="h2">h2 Title</Typography>
-				<Typography variant="h3" element="h3">h3 Title</Typography>
-				<Typography variant="h4" element="h4">h4 Title</Typography>
-				<Typography variant="h5" element="h5">h5 Title</Typography>
-				<Typography variant="h6" element="h6">h6 Title</Typography>
-			</div>
-			<div class="col">
-				<Typography variant="large-paragraph" element="p">Large paragraph</Typography>
-				<Typography variant="paragraph" element="p">Paragraph</Typography>
-				<Typography variant="small-paragraph" element="p">small-paragraph</Typography>
-			</div>
+	</div>
+</section>
+<section>
+	<h1>Typography</h1>
+	<div class="row">
+		<div class="col">
+			<Typography variant="h1" element="h1">h1 Title</Typography>
+			<Typography variant="h2" element="h2">h2 Title</Typography>
+			<Typography variant="h3" element="h3">h3 Title</Typography>
+			<Typography variant="h4" element="h4">h4 Title</Typography>
+			<Typography variant="h5" element="h5">h5 Title</Typography>
+			<Typography variant="h6" element="h6">h6 Title</Typography>
+		</div>
+		<div class="col">
 			<Typography variant="large" element="p">Large paragraph</Typography>
 			<Typography variant="default" element="p">Paragraph</Typography>
 			<Typography variant="small" element="p">Small-paragraph</Typography>
 		</div>
 		<div class="col">
 			<Typography>Sans</Typography>
-			<Typography style="italic">Sans Italic</Typography>
-			<Typography weight="bold">Sans Bold</Typography>
-			<Typography weight="bold" style="italic">Sans Bold</Typography>
+			<Typography italic>Sans Italic</Typography>
+			<Typography bold>Sans Bold</Typography>
+			<Typography bold italic>Sans Bold</Typography>
 			<Typography font="serif">Serif</Typography>
-			<Typography font="serif" style="italic">Serif Italic</Typography>
-			<Typography font="serif" weight="bold">Serif Bold</Typography>
-			<Typography font="serif" weight="bold" style="italic">Serif Bold</Typography>
+			<Typography font="serif" italic>Serif Italic</Typography>
+			<Typography font="serif" bold>Serif Bold</Typography>
+			<Typography font="serif" bold italic>Serif Bold</Typography>
 			<Typography font="mono">Mono</Typography>
-			<Typography font="mono" style="italic">Mono Italic</Typography>
-			<Typography font="mono" weight="bold">Mono Bold</Typography>
-			<Typography font="mono" weight="bold" style="italic">Mono Bold</Typography>
+			<Typography font="mono" italic>Mono Italic</Typography>
+			<Typography font="mono" bold>Mono Bold</Typography>
+			<Typography font="mono" bold italic>Mono Bold</Typography>
 		</div>
 	</div>
 </section>

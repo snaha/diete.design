@@ -1,16 +1,14 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements'
 	type Font = 'sans' | 'serif' | 'mono'
-	type Weight = 'standart' | 'bold'
-	type Style = 'normal' | 'italic'
 	type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'large' | 'default' | 'small'
 	type Element = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
 	interface CustomProps {
 		variant?: Variant
 		element?: Element
 		font?: Font
-		weight?: Weight
-		style?: Style
+		bold?: boolean
+		italic?: boolean
 		class?: string
 	}
 	type Props = (HTMLAttributes<HTMLHeadingElement> | HTMLAttributes<HTMLParagraphElement>) &
@@ -19,8 +17,8 @@
 		variant = 'default',
 		element = 'span',
 		font = 'sans',
-		weight = 'standart',
-		style = 'normal',
+		bold = false,
+		italic = false,
 		class: classProp = '',
 		...restProps
 	}: Props = $props()
@@ -28,7 +26,9 @@
 
 <svelte:element
 	this={element}
-	class={`root ${font} ${weight} ${style} ${variant} ${classProp}`}
+	class:bold
+	class:italic
+	class={`root ${font} ${variant} ${classProp}`}
 	{...restProps}
 >
 	<slot />
@@ -39,6 +39,8 @@
 		color: var(--colors-ultra-high);
 		margin: 0;
 		padding: 0;
+		font-weight: 400;
+		font-style: normal;
 	}
 	.sans {
 		font-family: var(--font-family-sans-serif);
@@ -49,14 +51,8 @@
 	.mono {
 		font-family: var(--font-family-monospace);
 	}
-	.standart {
-		font-weight: 400;
-	}
 	.bold {
 		font-weight: 700;
-	}
-	.normal {
-		font-style: normal;
 	}
 	.italic {
 		font-style: italic;
