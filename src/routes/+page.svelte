@@ -4,17 +4,18 @@
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
 	import Radio from '$lib/components/ui/radio.svelte'
+	import Typography from '$lib/components/ui/typography.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 </script>
 
-<h1>A design system for purists</h1>
-<p>
+<Typography variant="h1">A design system for purists</Typography>
+<Typography variant="default" element="p">
 	Radically minimal UI components, that you can copy directly into your project. Diète is for
 	uncompromising, free-spirited app makers who want to remain independent.
-</p>
+</Typography>
 
 <section>
-	<h1>Button</h1>
+	<Typography variant="h1">Button</Typography>
 	<div class="row">
 		<div class="col">
 			<Button>Strong</Button>
@@ -185,7 +186,7 @@
 	</div>
 </section>
 <section>
-	<h1>Checkbox</h1>
+	<Typography variant="h1">Checkbox</Typography>
 	<div class="row">
 		<div class="col">
 			<Checkbox label="Checkbox" />
@@ -214,7 +215,7 @@
 	</div>
 </section>
 <section>
-	<h1>Radio button</h1>
+	<Typography variant="h1">Radio button</Typography>
 	<div class="row">
 		<div class="col">
 			<Radio label="Radio button" name="rb" />
@@ -243,7 +244,7 @@
 	</div>
 </section>
 <section>
-	<h1>Switch</h1>
+	<Typography variant="h1">Switch</Typography>
 	<div class="row">
 		<div class="col">
 			<Switch label="Switch button" />
@@ -268,6 +269,38 @@
 			<Switch dimension="small" label="Switch button" checked />
 			<Switch dimension="small" label="Switch button" disabled />
 			<Switch dimension="small" label="Switch button" checked disabled />
+		</div>
+	</div>
+</section>
+<section>
+	<Typography variant="h1">Typography</Typography>
+	<div class="row">
+		<div class="col">
+			<Typography variant="h1">h1 Title</Typography>
+			<Typography variant="h2">h2 Title</Typography>
+			<Typography variant="h3">h3 Title</Typography>
+			<Typography variant="h4">h4 Title</Typography>
+			<Typography variant="h5">h5 Title</Typography>
+			<Typography variant="h6">h6 Title</Typography>
+		</div>
+		<div class="col">
+			<Typography variant="large" element="p">Large paragraph</Typography>
+			<Typography variant="default" element="p">Paragraph</Typography>
+			<Typography variant="small" element="p">Small-paragraph</Typography>
+		</div>
+		<div class="col">
+			<Typography>Sans</Typography>
+			<Typography italic>Sans Italic</Typography>
+			<Typography bold>Sans Bold</Typography>
+			<Typography bold italic>Sans Bold Italic</Typography>
+			<Typography font="serif">Serif</Typography>
+			<Typography font="serif" italic>Serif Italic</Typography>
+			<Typography font="serif" bold>Serif Bold</Typography>
+			<Typography font="serif" bold italic>Serif Bold Italic</Typography>
+			<Typography font="mono">Mono</Typography>
+			<Typography font="mono" italic>Mono Italic</Typography>
+			<Typography font="mono" bold>Mono Bold</Typography>
+			<Typography font="mono" bold italic>Mono Bold Italic</Typography>
 		</div>
 	</div>
 </section>
