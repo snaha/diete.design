@@ -305,10 +305,53 @@
 		</div>
 	</div>
 </section>
-<Input placeholder="Input label">This is some helper text.</Input>
-<Input placeholder="Input label" dimension="large">This is some helper text.</Input>
-<Input placeholder="Input label" dimension="compact" active>This is some helper text.</Input>
-<Input placeholder="Input label" dimension="small">This is some helper text.</Input>
+<section>
+	<h1>Input</h1>
+	<div class="row">
+		<div class="col">
+			<Input placeholder="Input label">This is some helper text.</Input>
+			<Input placeholder="Input label" value="With text">This is some helper text.</Input>
+			<Input placeholder="Input label" value="Disabled" disabled>This is some helper text.</Input>
+			<Input placeholder="Input label" value="With unit" unit="%">This is some helper text.</Input>
+		</div>
+		<div class="col">
+			<Input placeholder="Input label" dimension="large">This is some helper text.</Input>
+			<Input placeholder="Input label" dimension="large" value="With text">
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="large" value="Disabled" disabled>
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="large" value="With unit" unit="%">
+				This is some helper text.
+			</Input>
+		</div>
+		<div class="col">
+			<Input placeholder="Input label" dimension="compact">This is some helper text.</Input>
+			<Input placeholder="Input label" dimension="compact" value="With text">
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="compact" value="Disabled" disabled>
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="compact" value="With unit" unit="%">
+				This is some helper text.
+			</Input>
+		</div>
+		<div class="col">
+			<Input placeholder="Input label" dimension="small">This is some helper text.</Input>
+			<Input placeholder="Input label" dimension="small" value="With text">
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="small" value="Disabled" disabled>
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="small" value="With unit" unit="%">
+				This is some helper text.
+			</Input>
+		</div>
+	</div>
+</section>
 
 <style>
 	.row {

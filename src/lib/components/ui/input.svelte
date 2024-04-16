@@ -6,6 +6,7 @@
 		labelFor?: string
 		dimension?: Dimension
 		active?: boolean
+		unit?: string
 		class?: string
 	}
 	let {
