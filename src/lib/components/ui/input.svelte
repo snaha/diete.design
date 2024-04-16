@@ -61,7 +61,7 @@
 				line-height: var(--line-height-small);
 			}
 		}
-		&:not(:focus){
+		&:not(:focus) {
 			color: var(--colors-ultra-high);
 		}
 		&:disabled {
