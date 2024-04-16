@@ -12,6 +12,7 @@
 		labelFor = Math.random().toString(16),
 		placeholder,
 		value,
+		unit,
 		dimension = 'default',
 		class: classProp = '',
 		...restProps
@@ -23,6 +24,9 @@
 	<label for={labelFor}>
 		{placeholder}
 	</label>
+	{#if unit}
+		<span>{unit}</span>
+	{/if}
 	<div class="helper-text">
 		<slot />
 	</div>
@@ -72,6 +76,9 @@
 		color: var(--colors-high);
 		background: var(--colors-low);
 	}
+	span {
+		position: absolute;
+	}
 	.default {
 		label {
 			font-size: var(--font-size);
@@ -96,6 +103,14 @@
 					transform: translateY(-0.75rem);
 				}
 			}
+		}
+		span {
+			top: 0.75rem;
+			right: 0.75rem;
+			padding: 0.75rem;
+			font-size: var(--font-size);
+			line-height: var(--line-height);
+			letter-spacing: var(--letter-spacing);
 		}
 	}
 	.large {
@@ -123,6 +138,14 @@
 				}
 			}
 		}
+		span {
+			top: 0.75rem;
+			right: 0.75rem;
+			padding: 0.75rem;
+			font-size: var(--font-size-large);
+			line-height: var(--line-height-large);
+			letter-spacing: var(--letter-spacing-large);
+		}
 	}
 	.compact {
 		label {
@@ -149,6 +172,14 @@
 				}
 			}
 		}
+		span {
+			top: 0.5rem;
+			right: 0.5rem;
+			padding: 0.5rem;
+			font-size: var(--font-size);
+			line-height: var(--line-height);
+			letter-spacing: var(--letter-spacing);
+		}
 	}
 	.small {
 		label {
@@ -174,6 +205,14 @@
 					transform: translateY(-0.5rem);
 				}
 			}
+		}
+		span {
+			top: 0.5rem;
+			right: 0.5rem;
+			padding: 0.5rem;
+			font-size: var(--font-size-small);
+			line-height: var(--line-height-small);
+			letter-spacing: var(--letter-spacing-small);
 		}
 	}
 	.helper-text {
