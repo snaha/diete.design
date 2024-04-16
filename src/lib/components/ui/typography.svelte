@@ -13,9 +13,29 @@
 	}
 	type Props = (HTMLAttributes<HTMLHeadingElement> | HTMLAttributes<HTMLParagraphElement>) &
 		CustomProps
+
+	function getDefaultElement(variant: Variant) {
+		switch (variant) {
+			case 'h1':
+				return 'h1'
+			case 'h2':
+				return 'h2'
+			case 'h3':
+				return 'h3'
+			case 'h4':
+				return 'h4'
+			case 'h5':
+				return 'h5'
+			case 'h6':
+				return 'h6'
+			default:
+				return 'span'
+		}
+	}
+
 	let {
 		variant = 'default',
-		element = 'span',
+		element = getDefaultElement(variant),
 		font = 'sans',
 		bold = false,
 		italic = false,

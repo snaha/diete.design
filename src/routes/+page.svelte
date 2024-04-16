@@ -8,14 +8,14 @@
 	import Switch from '$lib/components/ui/switch.svelte'
 </script>
 
-<h1>A design system for purists</h1>
-<p>
+<Typography variant="h1">A design system for purists</Typography>
+<Typography variant="default" element="p">
 	Radically minimal UI components, that you can copy directly into your project. Diète is for
 	uncompromising, free-spirited app makers who want to remain independent.
-</p>
+</Typography>
 
 <section>
-	<h1>Button</h1>
+	<Typography variant="h1">Button</Typography>
 	<div class="row">
 		<div class="col">
 			<Button>Strong</Button>
@@ -186,7 +186,7 @@
 	</div>
 </section>
 <section>
-	<h1>Checkbox</h1>
+	<Typography variant="h1">Checkbox</Typography>
 	<div class="row">
 		<div class="col">
 			<Checkbox label="Checkbox" />
@@ -215,7 +215,7 @@
 	</div>
 </section>
 <section>
-	<h1>Radio button</h1>
+	<Typography variant="h1">Radio button</Typography>
 	<div class="row">
 		<div class="col">
 			<Radio label="Radio button" name="rb" />
@@ -244,7 +244,7 @@
 	</div>
 </section>
 <section>
-	<h1>Switch</h1>
+	<Typography variant="h1">Switch</Typography>
 	<div class="row">
 		<div class="col">
 			<Switch label="Switch button" />
@@ -273,15 +273,15 @@
 	</div>
 </section>
 <section>
-	<h1>Typography</h1>
+	<Typography variant="h1">Typography</Typography>
 	<div class="row">
 		<div class="col">
-			<Typography variant="h1" element="h1">h1 Title</Typography>
-			<Typography variant="h2" element="h2">h2 Title</Typography>
-			<Typography variant="h3" element="h3">h3 Title</Typography>
-			<Typography variant="h4" element="h4">h4 Title</Typography>
-			<Typography variant="h5" element="h5">h5 Title</Typography>
-			<Typography variant="h6" element="h6">h6 Title</Typography>
+			<Typography variant="h1">h1 Title</Typography>
+			<Typography variant="h2">h2 Title</Typography>
+			<Typography variant="h3">h3 Title</Typography>
+			<Typography variant="h4">h4 Title</Typography>
+			<Typography variant="h5">h5 Title</Typography>
+			<Typography variant="h6">h6 Title</Typography>
 		</div>
 		<div class="col">
 			<Typography variant="large" element="p">Large paragraph</Typography>
