@@ -47,6 +47,7 @@
 		&:focus {
 			border: 1px solid var(--colors-high);
 			background: var(--colors-base);
+			color: var(--colors-top);
 			outline: none;
 			& + label {
 				background: var(--colors-base);
@@ -55,11 +56,13 @@
 			}
 		}
 		&:not(:placeholder-shown) {
-			color: var(--colors-ultra-high);
 			& + label {
 				font-size: var(--font-size-small);
 				line-height: var(--line-height-small);
 			}
+		}
+		&:not(:focus){
+			color: var(--colors-ultra-high);
 		}
 		&:disabled {
 			opacity: 0.25;
