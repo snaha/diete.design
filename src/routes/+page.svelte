@@ -292,15 +292,15 @@
 			<Typography>Sans</Typography>
 			<Typography italic>Sans Italic</Typography>
 			<Typography bold>Sans Bold</Typography>
-			<Typography bold italic>Sans Bold</Typography>
+			<Typography bold italic>Sans Bold Italic</Typography>
 			<Typography font="serif">Serif</Typography>
 			<Typography font="serif" italic>Serif Italic</Typography>
 			<Typography font="serif" bold>Serif Bold</Typography>
-			<Typography font="serif" bold italic>Serif Bold</Typography>
+			<Typography font="serif" bold italic>Serif Bold Italic</Typography>
 			<Typography font="mono">Mono</Typography>
 			<Typography font="mono" italic>Mono Italic</Typography>
 			<Typography font="mono" bold>Mono Bold</Typography>
-			<Typography font="mono" bold italic>Mono Bold</Typography>
+			<Typography font="mono" bold italic>Mono Bold Italic</Typography>
 		</div>
 	</div>
 </section>
