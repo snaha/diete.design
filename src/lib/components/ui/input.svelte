@@ -5,7 +5,6 @@
 	interface Props extends HTMLInputAttributes {
 		labelFor?: string
 		dimension?: Dimension
-		active?: boolean
 		unit?: string
 		class?: string
 	}
@@ -41,7 +40,6 @@
 		background: var(--colors-low);
 		border: 1px solid var(--colors-low);
 		border-radius: 0.25rem;
-		max-width: 35rem;
 		&:focus {
 			border: 1px solid var(--colors-high);
 			background: var(--colors-base);
