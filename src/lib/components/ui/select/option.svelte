@@ -13,7 +13,6 @@
 	let button = $state<HTMLButtonElement | undefined>()
 
 	const updateLabel = () => {
-		console.log(button)
 		if (button && button.childNodes.length > 0) {
 			const filteredNodes = Array.from(button.childNodes).filter(
 				(node) => node.nodeType !== Node.COMMENT_NODE,
