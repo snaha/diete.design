@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import Highlight from 'svelte-highlight'
-	import cssLanguage from 'svelte-highlight/languages/css'
-	import 'svelte-highlight/styles/ascetic.css'
+	import button from '$lib/components/ui/button.svelte?raw'
+	import Code from '$lib/components/custom/code.svelte'
 
 	let css: string | undefined
 
@@ -12,4 +11,4 @@
 	})
 </script>
 
-<Highlight language={cssLanguage} code={css ? css : 'Loading...'} />
+<Code language="svelte" code={button} />
