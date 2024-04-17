@@ -7,6 +7,8 @@
 	import Radio from '$lib/components/ui/radio.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
+	import Select from '$lib/components/ui/select/select.svelte'
+	import Option from '$lib/components/ui/select/option.svelte'
 </script>
 
 <Typography variant="h1">A design system for purists</Typography>
@@ -306,7 +308,7 @@
 	</div>
 </section>
 <section>
-	<h1>Input</h1>
+	<Typography variant="h1">Input</Typography>
 	<div class="row">
 		<div class="col">
 			<Input placeholder="Input label">This is some helper text.</Input>
@@ -353,7 +355,7 @@
 	</div>
 </section>
 <section>
-	<h1>Input (horizontal)</h1>
+	<Typography variant="h1">Input (horizontal)</Typography>
 	<div class="row">
 		<div class="col">
 			<Input layout="horizontal" placeholder="Placeholder">Input label</Input>
@@ -424,6 +426,106 @@
 				value="With unit"
 				unit="%">Input label</Input
 			>
+		</div>
+	</div>
+</section>
+<section>
+	<Typography variant="h1">Select</Typography>
+	<div class="row">
+		<div class="col">
+			<Select placeholder="Select label" helperText="This is some helper text.">
+				<Option value="1">Label 1</Option>
+				<Option value="2">Label 2</Option>
+				<Option value="3">Label 3</Option>
+				<Option value="4">Label 4</Option>
+				<Option value="5">Label 5</Option>
+				<Option value="6">Label 6</Option>
+				<Option value="7">Label 7</Option>
+			</Select>
+			<Select value="2" placeholder="Select label" helperText="This is some helper text.">
+				<Option value="1">Label 1</Option>
+				<Option value="2">Label 2</Option>
+				<Option value="3">Label 3</Option>
+				<Option value="4">Label 4</Option>
+				<Option value="5">Label 5</Option>
+				<Option value="6">Label 6</Option>
+				<Option value="7">Label 7</Option>
+			</Select>
+		</div>
+		<div class="col">
+			<Select dimension="large" placeholder="Select label" helperText="This is some helper text.">
+				<Option value="1">Label 1</Option>
+				<Option value="2">Label 2</Option>
+				<Option value="3">Label 3</Option>
+				<Option value="4">Label 4</Option>
+				<Option value="5">Label 5</Option>
+				<Option value="6">Label 6</Option>
+				<Option value="7">Label 7</Option>
+			</Select>
+			<Select
+				value="2"
+				dimension="large"
+				placeholder="Select label"
+				helperText="This is some helper text."
+			>
+				<Option value="1">Label 1</Option>
+				<Option value="2">Label 2</Option>
+				<Option value="3">Label 3</Option>
+				<Option value="4">Label 4</Option>
+				<Option value="5">Label 5</Option>
+				<Option value="6">Label 6</Option>
+				<Option value="7">Label 7</Option>
+			</Select>
+		</div>
+		<div class="col">
+			<Select dimension="compact" placeholder="Select label" helperText="This is some helper text.">
+				<Option value="1">Label 1</Option>
+				<Option value="2">Label 2</Option>
+				<Option value="3">Label 3</Option>
+				<Option value="4">Label 4</Option>
+				<Option value="5">Label 5</Option>
+				<Option value="6">Label 6</Option>
+				<Option value="7">Label 7</Option>
+			</Select>
+			<Select
+				value="2"
+				dimension="compact"
+				placeholder="Select label"
+				helperText="This is some helper text."
+			>
+				<Option value="1">Label 1</Option>
+				<Option value="2">Label 2</Option>
+				<Option value="3">Label 3</Option>
+				<Option value="4">Label 4</Option>
+				<Option value="5">Label 5</Option>
+				<Option value="6">Label 6</Option>
+				<Option value="7">Label 7</Option>
+			</Select>
+		</div>
+		<div class="col">
+			<Select dimension="small" placeholder="Select label" helperText="This is some helper text.">
+				<Option value="1">Label 1</Option>
+				<Option value="2">Label 2</Option>
+				<Option value="3">Label 3</Option>
+				<Option value="4">Label 4</Option>
+				<Option value="5">Label 5</Option>
+				<Option value="6">Label 6</Option>
+				<Option value="7">Label 7</Option>
+			</Select>
+			<Select
+				value="2"
+				dimension="small"
+				placeholder="Select label"
+				helperText="This is some helper text."
+			>
+				<Option value="1">Label 1</Option>
+				<Option value="2">Label 2</Option>
+				<Option value="3">Label 3</Option>
+				<Option value="4">Label 4</Option>
+				<Option value="5">Label 5</Option>
+				<Option value="6">Label 6</Option>
+				<Option value="7">Label 7</Option>
+			</Select>
 		</div>
 	</div>
 </section>
