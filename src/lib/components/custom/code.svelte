@@ -34,9 +34,9 @@
 <div class="container">
 	<div class="inside">
 		{#if language === 'css'}
-			<Highlight class={classProp} {...restProps} language={css} {code} />
+			<Highlight class="highlight {classProp}" {...restProps} language={css} {code} />
 		{:else}
-			<HighlightSvelte class="highlight" {code} />
+			<HighlightSvelte class="highlight {classProp}" {code} />
 		{/if}
 	</div>
 	<div class="copy-button">
