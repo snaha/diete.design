@@ -23,11 +23,13 @@
 	}: Props = $props()
 
 	let buttonIcon = $state('copy')
+	let buttonIconTimeout: number | undefined = undefined
 
 	function onclick() {
 		navigator.clipboard.writeText(code)
 		buttonIcon = 'checkmark'
-		setTimeout(() => (buttonIcon = 'copy'), 2000)
+		clearTimeout(buttonIconTimeout)
+		buttonIconTimeout = setTimeout(() => (buttonIcon = 'copy'), 2000)
 	}
 </script>
 
