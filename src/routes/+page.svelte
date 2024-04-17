@@ -352,6 +352,81 @@
 		</div>
 	</div>
 </section>
+<section>
+	<h1>Input (horizontal)</h1>
+	<div class="row">
+		<div class="col">
+			<Input layout="horizontal" placeholder="Placeholder">Input label</Input>
+			<Input layout="horizontal" placeholder="Placeholder" value="With text">Input label</Input>
+			<Input layout="horizontal" placeholder="Placeholder" value="Disabled" disabled
+				>Input label</Input
+			>
+			<Input layout="horizontal" placeholder="Placeholder" value="With unit" unit="%"
+				>Input label</Input
+			>
+		</div>
+		<div class="col">
+			<Input layout="horizontal" dimension="large" placeholder="Placeholder">Input label</Input>
+			<Input layout="horizontal" dimension="large" placeholder="Placeholder" value="With text"
+				>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="large"
+				placeholder="Placeholder"
+				value="Disabled"
+				disabled>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="large"
+				placeholder="Placeholder"
+				value="With unit"
+				unit="%">Input label</Input
+			>
+		</div>
+		<div class="col">
+			<Input layout="horizontal" dimension="compact" placeholder="Placeholder">Input label</Input>
+			<Input layout="horizontal" dimension="compact" placeholder="Placeholder" value="With text"
+				>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="compact"
+				placeholder="Placeholder"
+				value="Disabled"
+				disabled>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="compact"
+				placeholder="Placeholder"
+				value="With unit"
+				unit="%">Input label</Input
+			>
+		</div>
+		<div class="col">
+			<Input layout="horizontal" dimension="small" placeholder="Placeholder">Input label</Input>
+			<Input layout="horizontal" dimension="small" placeholder="Placeholder" value="With text"
+				>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="small"
+				placeholder="Placeholder"
+				value="Disabled"
+				disabled>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="small"
+				placeholder="Placeholder"
+				value="With unit"
+				unit="%">Input label</Input
+			>
+		</div>
+	</div>
+</section>
 
 <style>
 	.row {
