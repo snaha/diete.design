@@ -16,35 +16,41 @@
 		dimension = 'default',
 		layout = 'vertical',
 		unit,
+		type,
 		class: classProp = '',
 		...restProps
 	}: Props = $props()
 </script>
 
-<div class="root {layout} {dimension} {classProp}">
-	<div class="wrapper">
-		<input id={labelFor} bind:value {placeholder} {...restProps} />
-		{#if layout === 'vertical'}
-			<label for={labelFor}>
-				{placeholder}
-			</label>
-		{:else}
-			<label for={labelFor}>
-				<slot />
-			</label>
-		{/if}
+{#if layout == 'vertical'}
+	<div class="root {layout} {dimension} {classProp}">
+		<input id={labelFor} bind:value {placeholder} {type} {...restProps} />
+		<label class="label" for={labelFor}>
+			{placeholder}
+		</label>
 		{#if unit}
-			<span>{unit}</span>
+			<label class="unit" for={labelFor}>{unit}</label>
 		{/if}
-	</div>
-	{#if layout === 'vertical'}
 		<div class="helper-text">
 			<slot />
 		</div>
-	{/if}
-</div>
+	</div>
+{:else}
+	<div class="root {layout} {dimension} {classProp}">
+		<input id={labelFor} bind:value {placeholder} {type} {...restProps} />
+		<label class="label" for={labelFor}>
+			<slot />
+		</label>
+		{#if unit}
+			<label for={labelFor} class="unit">{unit}</label>
+		{/if}
+	</div>
+{/if}
 
 <style lang="postcss">
+	input[type='number']::-webkit-inner-spin-button {
+		appearance: none;
+	}
 	.vertical {
 		&.root {
 			position: relative;
@@ -52,6 +58,7 @@
 			font-family: var(--font-family-sans-serif);
 			display: flex;
 			flex-direction: column;
+			gap: 0.5rem;
 		}
 		input {
 			background: var(--colors-low);
@@ -62,21 +69,21 @@
 				background: var(--colors-base);
 				color: var(--colors-top);
 				outline: none;
-				& + label {
+				& + .label {
 					background: var(--colors-base);
 					font-size: var(--font-size-small);
 					line-height: var(--line-height-small);
 				}
-				& ~ span {
+				& ~ .unit {
 					opacity: 1;
 				}
 			}
 			&:not(:placeholder-shown) {
-				& + label {
+				& + .label {
 					font-size: var(--font-size-small);
 					line-height: var(--line-height-small);
 				}
-				& ~ span {
+				& ~ .unit {
 					opacity: 1;
 				}
 			}
@@ -86,19 +93,24 @@
 			&:disabled {
 				opacity: 0.25;
 				cursor: not-allowed;
-				& + label {
+				& + .label {
 					background: transparent;
+					opacity: 0.25;
+					cursor: not-allowed;
+				}
+				& ~ .unit {
 					opacity: 0.25;
 					cursor: not-allowed;
 				}
 			}
 		}
+
 		input::placeholder {
 			text-align: center;
 			color: transparent;
 			user-select: none;
 		}
-		label {
+		.label {
 			position: absolute;
 			left: 0.75rem;
 			user-select: none;
@@ -109,14 +121,15 @@
 			background: var(--colors-low);
 			cursor: text;
 		}
-		span {
+		.unit {
 			position: absolute;
 			user-select: none;
 			opacity: 0;
 			transition: opacity 0.25s;
+			cursor: text;
 		}
 		&.default {
-			label {
+			.label {
 				font-size: var(--font-size);
 				line-height: var(--line-height);
 				letter-spacing: var(--letter-spacing);
@@ -129,18 +142,18 @@
 				padding: 1.5rem 0.75rem;
 				&:focus {
 					padding: 2.25rem 0.75rem 0.75rem;
-					& + label {
+					& + .label {
 						transform: translateY(-0.75rem);
 					}
 				}
 				&:not(:placeholder-shown) {
 					padding: 2.25rem 0.75rem 0.75rem;
-					& + label {
+					& + .label {
 						transform: translateY(-0.75rem);
 					}
 				}
 			}
-			span {
+			.unit {
 				top: 0.75rem;
 				right: 0.75rem;
 				padding: 0.75rem;
@@ -150,7 +163,7 @@
 			}
 		}
 		&.large {
-			label {
+			.label {
 				font-size: var(--font-size-large);
 				line-height: var(--line-height-large);
 				letter-spacing: var(--letter-spacing-large);
@@ -163,18 +176,18 @@
 				padding: 1.5rem 0.75rem;
 				&:focus {
 					padding: 2.25rem 0.75rem 0.75rem;
-					& + label {
+					& + .label {
 						transform: translateY(-0.75rem);
 					}
 				}
 				&:not(:placeholder-shown) {
 					padding: 2.25rem 0.75rem 0.75rem;
-					& + label {
+					& + .label {
 						transform: translateY(-0.75rem);
 					}
 				}
 			}
-			span {
+			.unit {
 				top: 0.75rem;
 				right: 0.75rem;
 				padding: 0.75rem;
@@ -184,7 +197,7 @@
 			}
 		}
 		&.compact {
-			label {
+			.label {
 				font-size: var(--font-size);
 				line-height: var(--line-height);
 				letter-spacing: var(--letter-spacing);
@@ -203,12 +216,12 @@
 				}
 				&:not(:placeholder-shown) {
 					padding: 1.5rem 0.75rem 0.5rem;
-					& + label {
+					& + .label {
 						transform: translateY(-0.5rem);
 					}
 				}
 			}
-			span {
+			.unit {
 				top: 0.5rem;
 				right: 0.5rem;
 				padding: 0.5rem;
@@ -218,7 +231,7 @@
 			}
 		}
 		&.small {
-			label {
+			.label {
 				font-size: var(--font-size-small);
 				line-height: var(--line-height-small);
 				letter-spacing: var(--letter-spacing-small);
@@ -231,18 +244,18 @@
 				padding: 1rem 0.75rem;
 				&:focus {
 					padding: 1.5rem 0.75rem 0.5rem;
-					& + label {
+					& + .label {
 						transform: translateY(-0.5rem);
 					}
 				}
 				&:not(:placeholder-shown) {
 					padding: 1.5rem 0.75rem 0.5rem;
-					& + label {
+					& + .label {
 						transform: translateY(-0.5rem);
 					}
 				}
 			}
-			span {
+			.unit {
 				top: 0.5rem;
 				right: 0.5rem;
 				padding: 0.5rem;
@@ -251,14 +264,18 @@
 				letter-spacing: var(--letter-spacing-small);
 			}
 		}
+		.helper-text {
+			font-size: var(--font-size-small);
+			line-height: var(--line-height-small);
+			letter-spacing: var(--letter-spacing-small);
+			padding: 0 0.75rem;
+		}
 	}
 	.horizontal {
 		&.root {
 			color: var(--colors-ultra-high);
 			font-family: var(--font-family-sans-serif);
 			position: relative;
-		}
-		.wrapper {
 			display: flex;
 			flex-direction: row-reverse;
 			align-items: center;
@@ -276,11 +293,11 @@
 				background: var(--colors-base);
 				color: var(--colors-top);
 				outline: none;
-				& ~ span {
+				& ~ .unit {
 					opacity: 1;
 				}
 			}
-			&:not(:placeholder-shown) ~ span {
+			&:not(:placeholder-shown) ~ .unit {
 				opacity: 1;
 			}
 			&:not(:focus) {
@@ -289,14 +306,18 @@
 			&:disabled {
 				opacity: 0.25;
 				cursor: not-allowed;
-				& + label {
+				& + .label {
 					background: transparent;
+					opacity: 0.25;
+					cursor: not-allowed;
+				}
+				& ~ .unit {
 					opacity: 0.25;
 					cursor: not-allowed;
 				}
 			}
 		}
-		label {
+		.label {
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
@@ -305,11 +326,12 @@
 			color: var(--colors-high);
 			cursor: pointer;
 		}
-		span {
+		.unit {
 			position: absolute;
 			user-select: none;
 			opacity: 0;
 			transition: opacity 0.25s;
+			cursor: text;
 		}
 		&.default {
 			input {
@@ -318,7 +340,7 @@
 				letter-spacing: var(--letter-spacing);
 				padding: 0.75rem;
 			}
-			span {
+			.unit {
 				top: 0.75rem;
 				right: 0.75rem;
 				font-size: var(--font-size);
@@ -333,7 +355,7 @@
 				letter-spacing: var(--letter-spacing-large);
 				padding: 0.75rem;
 			}
-			span {
+			.unit {
 				top: 0.75rem;
 				right: 0.75rem;
 				font-size: var(--font-size-large);
@@ -348,7 +370,7 @@
 				letter-spacing: var(--letter-spacing);
 				padding: 0.5rem;
 			}
-			span {
+			.unit {
 				top: 0.5rem;
 				right: 0.5rem;
 				font-size: var(--font-size);
@@ -363,7 +385,7 @@
 				letter-spacing: var(--letter-spacing-small);
 				padding: 0.5rem;
 			}
-			span {
+			.unit {
 				top: 0.5rem;
 				right: 0.5rem;
 				font-size: var(--font-size-small);
@@ -371,11 +393,5 @@
 				letter-spacing: var(--letter-spacing-small);
 			}
 		}
-	}
-	.helper-text {
-		font-size: var(--font-size-small);
-		line-height: var(--line-height-small);
-		letter-spacing: var(--letter-spacing-small);
-		padding: 0.5rem 0.75rem;
 	}
 </style>
