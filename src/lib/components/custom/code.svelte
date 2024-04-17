@@ -8,7 +8,7 @@
 	import '$lib/components/custom/highlight-diete.css'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
-	interface Props extends HTMLAttributes<HTMLElement> {
+	interface Props extends HTMLAttributes<HTMLPreElement> {
 		dimension?: Dimension
 		class?: string
 		code: string
