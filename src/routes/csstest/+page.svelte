@@ -109,8 +109,7 @@
 
 <hr/>
 
-
-<section id="choose-a-button-type">
+<section id="use">
 	<Typography variant="h4" bold>
 		Use
 	</Typography>
@@ -119,6 +118,43 @@
 		<TabContent value="Svelte"><Code language="svelte" code={button} /></TabContent>
 		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
 	</TabBar>	
+</section>
+
+<hr/>
+
+<section id="implement">
+	<Typography variant="h4" bold>
+		Implement
+	</Typography>
+
+	<TabBar dimension="small">
+		<TabContent value="Svelte"><Code language="svelte" code={button} /></TabContent>
+		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
+	</TabBar>	
+</section>
+
+<hr/>
+
+<section id="choose-a-button-type">
+	<Typography variant="h4" bold>
+		Choose a button type
+	</Typography>
+</section>
+
+<hr/>
+
+<section id="about-sizes">
+	<Typography variant="h4" bold>
+		About sizes
+	</Typography>
+</section>
+
+<hr/>
+
+<section id="footer">
+	<Typography>
+		Made by diete. Source code is available on <a href="https://github.com/diete-design/diete.design">Github</a>.
+	</Typography>
 </section>
 
 <style lang="postcss">
@@ -133,6 +169,8 @@
 		border-style: solid;
 		border-width: 1px;
 		appearance: none;
+		margin-top: 32px;
+		margin-bottom: 32px;
 	}
 	.examples {
 		background: var(--colors-low);
