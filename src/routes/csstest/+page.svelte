@@ -13,7 +13,7 @@
 	})
 </script>
 
-<TabBar>
+<TabBar dimension="small">
 	<TabContent value="Svelte"><Code language="svelte" code={button} /></TabContent>
 	<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
 </TabBar>

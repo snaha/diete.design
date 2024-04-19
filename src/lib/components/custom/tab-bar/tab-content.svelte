@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { getContext, onMount } from 'svelte'
+	import { getContext, onMount, type Snippet } from 'svelte'
 	import type { TabStore } from './tab-store.svelte'
 
 	type Props = {
 		value: string
+		children: Snippet
 	}
 
-	let { value }: Props = $props()
+	let { value, children }: Props = $props()
 
 	const store = getContext<TabStore>('tab-store')
 	let selected = $derived(store.items[store.selected] === value)
@@ -18,7 +19,9 @@
 
 {#if selected}
 	<div id="tab">
-		<slot />
+		{#if children}
+			{@render children()}
+		{/if}
 	</div>
 {/if}
 

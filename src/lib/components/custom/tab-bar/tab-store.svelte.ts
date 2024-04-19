@@ -19,6 +19,10 @@ export function withTabStore(): TabStore {
 		items,
 
 		addItem(item) {
+			if (items.includes(item)) {
+				console.warn(`Duplicate tab item, ignored: ${item}`)
+				return
+			}
 			items.push(item)
 		},
 	}
