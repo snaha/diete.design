@@ -9,6 +9,8 @@
 	import Switch from '$lib/components/ui/switch.svelte'
 	import Select from '$lib/components/ui/select/select.svelte'
 	import Option from '$lib/components/ui/select/option.svelte'
+	import MenuTitle from '$lib/components/ui/menu/menuTitle.svelte'
+	import MenuItem from '$lib/components/ui/menu/menuItem.svelte'
 </script>
 
 <Typography variant="h1">A design system for purists</Typography>
@@ -17,7 +19,7 @@
 	uncompromising, free-spirited app makers who want to remain independent.
 </Typography>
 
-<section>
+<section id="button">
 	<Typography variant="h1">Button</Typography>
 	<div class="row">
 		<div class="col">
@@ -188,7 +190,7 @@
 		</div>
 	</div>
 </section>
-<section>
+<section id="checkbox">
 	<Typography variant="h1">Checkbox</Typography>
 	<div class="row">
 		<div class="col">
@@ -217,7 +219,7 @@
 		</div>
 	</div>
 </section>
-<section>
+<section id="radio">
 	<Typography variant="h1">Radio button</Typography>
 	<div class="row">
 		<div class="col">
@@ -246,7 +248,7 @@
 		</div>
 	</div>
 </section>
-<section>
+<section id="switch">
 	<Typography variant="h1">Switch</Typography>
 	<div class="row">
 		<div class="col">
@@ -275,7 +277,7 @@
 		</div>
 	</div>
 </section>
-<section>
+<section id="typography">
 	<Typography variant="h1">Typography</Typography>
 	<div class="row">
 		<div class="col">
@@ -545,6 +547,92 @@
 				<Option value="6">Label 6</Option>
 				<Option value="7">Label 7</Option>
 			</Select>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="row">
+		<div class="col">
+			<MenuTitle title content="Organic taiyaki">
+				<MenuItem href="#button" content="Button"></MenuItem>
+				<MenuItem href="#checkbox" content="Checkbox" />
+				<MenuItem href="#radio" content="Radio button" />
+				<MenuItem href="#switch" content="Switch" />
+				<MenuItem href="#typography" content="Typography" />
+			</MenuTitle>
+			<MenuTitle title content="Organic taiyaki" open />
+		</div>
+		<div class="col">
+			<MenuTitle title content="Organic taiyaki" dimension="large">
+				<MenuItem dimension="large" href="#button" content="Button" />
+				<MenuItem dimension="large" href="#checkbox" content="Checkbox" />
+				<MenuItem dimension="large" href="#radio" content="Radio button" />
+				<MenuItem dimension="large" href="#switch" content="Switch" />
+				<MenuItem dimension="large" href="#typography" content="Typography" />
+			</MenuTitle>
+			<MenuTitle title content="Organic taiyaki" dimension="large" open />
+		</div>
+		<div class="col">
+			<MenuTitle title content="Organic taiyaki" dimension="compact">
+				<MenuItem dimension="compact" href="#button" content="Button" />
+				<MenuItem dimension="compact" href="#checkbox" content="Checkbox" />
+				<MenuItem dimension="compact" href="#radio" content="Radio button" />
+				<MenuItem dimension="compact" href="#switch" content="Switch" />
+				<MenuItem dimension="compact" href="#typography" content="Typography" />
+			</MenuTitle>
+			<MenuTitle title content="Organic taiyaki" dimension="compact" open />
+		</div>
+		<div class="col">
+			<MenuTitle title content="Organic taiyaki" dimension="small">
+				<MenuItem dimension="small" href="#button" content="Button" />
+				<MenuItem dimension="small" href="#checkbox" content="Checkbox" />
+				<MenuItem dimension="small" href="#radio" content="Radio button" />
+				<MenuItem dimension="small" href="#switch" content="Switch" />
+				<MenuItem dimension="small" href="#typography" content="Typography" />
+			</MenuTitle>
+			<MenuTitle title content="Organic taiyaki" dimension="small" open />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<MenuTitle content="Organic taiyaki">
+				<MenuItem href="#button" content="Button" />
+				<MenuItem href="#checkbox" content="Checkbox" />
+				<MenuItem href="#radio" content="Radio button" />
+				<MenuItem href="#switch" content="Switch" />
+				<MenuItem href="#typography" content="Typography" />
+			</MenuTitle>
+			<MenuTitle content="Organic taiyaki" open />
+		</div>
+		<div class="col">
+			<MenuTitle content="Organic taiyaki" dimension="large">
+				<MenuItem dimension="large" href="#button" content="Button" />
+				<MenuItem dimension="large" href="#checkbox" content="Checkbox" />
+				<MenuItem dimension="large" href="#radio" content="Radio button" />
+				<MenuItem dimension="large" href="#switch" content="Switch" />
+				<MenuItem dimension="large" href="#typography" content="Typography" />
+			</MenuTitle>
+			<MenuTitle content="Organic taiyaki" dimension="large" open />
+		</div>
+		<div class="col">
+			<MenuTitle content="Organic taiyaki" dimension="compact">
+				<MenuItem dimension="compact" href="#button" content="Button" />
+				<MenuItem dimension="compact" href="#checkbox" content="Checkbox" />
+				<MenuItem dimension="compact" href="#radio" content="Radio button" />
+				<MenuItem dimension="compact" href="#switch" content="Switch" />
+				<MenuItem dimension="compact" href="#typography" content="Typography" />
+			</MenuTitle>
+			<MenuTitle content="Organic taiyaki" dimension="compact" open />
+		</div>
+		<div class="col">
+			<MenuTitle content="Organic taiyaki" dimension="small">
+				<MenuItem dimension="small" href="#button" content="Button" />
+				<MenuItem dimension="small" href="#checkbox" content="Checkbox" />
+				<MenuItem dimension="small" href="#radio" content="Radio button" />
+				<MenuItem dimension="small" href="#switch" content="Switch" />
+				<MenuItem dimension="small" href="#typography" content="Typography" />
+			</MenuTitle>
+			<MenuTitle content="Organic taiyaki" dimension="small" open />
 		</div>
 	</div>
 </section>
