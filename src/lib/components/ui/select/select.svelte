@@ -106,7 +106,9 @@
 	</div>
 	{#if children}
 		<div class="options" class:hidden={!store.open}>
-			{@render children()}
+			<div>
+				{@render children()}
+			</div>
 		</div>
 	{/if}
 	{#if helperText}
@@ -294,16 +296,19 @@
 		position: absolute;
 		top: calc(100% - 1.25rem);
 		left: 0;
-		/* FIXME: remove the calc and solve this with nesting */
-		width: calc(100% - 18px);
 		border-radius: 0.25rem;
 		border: 1px solid var(--colors-low);
 		background: var(--colors-base);
 		z-index: 1;
-		padding: 0.5rem;
-		display: flex;
-		flex-direction: column;
-		justify-content: stretch;
+		width: 100%;
+
+		div {
+			padding: 0.5rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: stretch;
+			align-items: stretch;
+		}
 	}
 	.hidden {
 		display: none;
