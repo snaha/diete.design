@@ -7,9 +7,40 @@
 	import Typography from '$lib/components/ui/typography.svelte'
 	import Button from '$lib/components/ui/button.svelte'
 	import VerticalContainer from '$lib/components/custom/vertical-container.svelte'
-	import { Checkmark, ArrowRight, Close, Information, ChevronRight, Save, OverflowMenuVertical, Launch, CaretRight, TrashCan, SidePanelOpen } from 'carbon-icons-svelte'
+	import {
+		Checkmark,
+		ArrowRight,
+		Close,
+		Information,
+		ChevronRight,
+		Save,
+		OverflowMenuVertical,
+		Launch,
+		CaretRight,
+		TrashCan,
+		SidePanelOpen,
+	} from 'carbon-icons-svelte'
+	import Switch from '$lib/components/ui/switch.svelte'
 
-	let css: string = 'Loading...'
+	type Variant = 'strong' | 'secondary' | 'ghost' | 'overlay' | 'darkoverlay'
+	type Dimension = 'default' | 'large' | 'compact' | 'small'
+
+	let css: string = $state('Loading...')
+
+	let variant: Variant = $state('strong')
+	let dimension: Dimension = $state('default')
+	let leftIcon: boolean = $state(true)
+	let rightIcon: boolean = $state(false)
+	let useCode = $derived(
+		`<script lang="ts">
+import Button from '$lib/components/ui/button.svelte'
+${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
+</script` +
+			`>
+
+<Button variant="${variant}" dimension="${dimension}">${leftIcon ? `<Close/>` : ''}Close${rightIcon ? `<Close/>` : ''}</Button>
+`,
+	)
 
 	onMount(async () => {
 		const response = await fetch('/generated/css/ui/button.css')
@@ -18,142 +49,169 @@
 </script>
 
 <section>
-	<Typography variant="h2" bold>
-		Button
-	</Typography>
+	<Typography variant="h2" bold>Button</Typography>
 	<Typography variant="large">
-	Buttons allow people to perform an instantaneous action, with a single tap/click.
+		Buttons allow people to perform an instantaneous action, with a single tap/click.
 	</Typography>
 </section>
 
 <VerticalContainer>
-<section>
-	<p>
-		There are 9 types of buttons available.
-		<br>
-		→<Button href="#choose-a-button-type" variant="ghost">Choose a button type</Button>	
-	</p>
-	
-	<p>
-		Each button is available in 4 sizes: Default, Large, Compact and Small.
-		<br>
-		→<Button href="#about-sizes" variant="ghost">About sizes</Button>			
-	</p>
+	<section>
+		<p>
+			There are 9 types of buttons available.
+			<br />
+			→<Button href="#choose-a-button-type" variant="ghost">Choose a button type</Button>
+		</p>
 
-	<p>
-	Different button types and sizes can be combined on the same screen to create hierarchy and direct attention to the most important actions.
-	</p>
+		<p>
+			Each button is available in 4 sizes: Default, Large, Compact and Small.
+			<br />
+			→<Button href="#about-sizes" variant="ghost">About sizes</Button>
+		</p>
 
-	<p>
-	Overlay buttons should be used to display a button floating over content (image or text for example).
-	</p>
-</section>
-<section class="examples">
-	<p>
-		<Typography variant="small" bold>1. Strong button</Typography>
-		<Button variant="strong">Strong button</Button>
-		<Button variant="strong"><Checkmark size={24}/>Confirm</Button>
-		<Button variant="strong">Proceed<ArrowRight size={24}/></Button>
-	</p>
+		<p>
+			Different button types and sizes can be combined on the same screen to create hierarchy and
+			direct attention to the most important actions.
+		</p>
 
-	<p>
-		<Typography variant="small" bold>2. Outline button</Typography>
-		<Button variant="secondary">Button</Button>
-		<Button variant="secondary"><Close size={24}/>Cancel</Button>
-		<Button variant="secondary">Next<ArrowRight size={24}/></Button>
-	</p>
+		<p>
+			Overlay buttons should be used to display a button floating over content (image or text for
+			example).
+		</p>
+	</section>
+	<section class="examples">
+		<p>
+			<Typography variant="small" bold>1. Strong button</Typography>
+			<Button variant="strong">Strong button</Button>
+			<Button variant="strong"><Checkmark size={24} />Confirm</Button>
+			<Button variant="strong">Proceed<ArrowRight size={24} /></Button>
+		</p>
 
-	<p>
-		<Typography variant="small" bold>3. Ghost button</Typography>
-		<Button variant="ghost">Ghost button</Button>
-		<Button variant="ghost"><Information size={24}/>Info</Button>
-		<Button variant="ghost">More<ChevronRight size={24}/></Button>
-	</p>
+		<p>
+			<Typography variant="small" bold>2. Outline button</Typography>
+			<Button variant="secondary">Button</Button>
+			<Button variant="secondary"><Close size={24} />Cancel</Button>
+			<Button variant="secondary">Next<ArrowRight size={24} /></Button>
+		</p>
 
-	<p>
-		<Typography variant="small" bold>4. Strong icon button</Typography>
-		<Button variant="strong"><Save size={24}/></Button>
-	</p>
+		<p>
+			<Typography variant="small" bold>3. Ghost button</Typography>
+			<Button variant="ghost">Ghost button</Button>
+			<Button variant="ghost"><Information size={24} />Info</Button>
+			<Button variant="ghost">More<ChevronRight size={24} /></Button>
+		</p>
 
-	<p>
-		<Typography variant="small" bold>5. Icon button</Typography>
-		<Button variant="ghost"><OverflowMenuVertical size={24}/></Button>
-	</p>
+		<p>
+			<Typography variant="small" bold>4. Strong icon button</Typography>
+			<Button variant="strong"><Save size={24} /></Button>
+		</p>
 
-	<p>
-		<Typography variant="small" bold>6. Dark overlay button</Typography>
-		<Button variant="darkoverlay">Overlay</Button>
-		<Button variant="darkoverlay"><Checkmark size={24}/>Done</Button>
-		<Button variant="darkoverlay">Next<ArrowRight size={24}/></Button>
-	</p>
+		<p>
+			<Typography variant="small" bold>5. Icon button</Typography>
+			<Button variant="ghost"><OverflowMenuVertical size={24} /></Button>
+		</p>
 
-	<p>
-		<Typography variant="small" bold>7. Light overlay button</Typography>
-		<Button variant="overlay">Overlay</Button>
-		<Button variant="overlay"><Launch size={24}/>Open</Button>
-		<Button variant="overlay">See all<CaretRight size={24}/></Button>
-	</p>
+		<p>
+			<Typography variant="small" bold>6. Dark overlay button</Typography>
+			<Button variant="darkoverlay">Overlay</Button>
+			<Button variant="darkoverlay"><Checkmark size={24} />Done</Button>
+			<Button variant="darkoverlay">Next<ArrowRight size={24} /></Button>
+		</p>
 
-	<p>
-		<Typography variant="small" bold>8. Dark overlay icon button</Typography>
-		<Button variant="darkoverlay"><TrashCan size={24}/></Button>
-	</p>
+		<p>
+			<Typography variant="small" bold>7. Light overlay button</Typography>
+			<Button variant="overlay">Overlay</Button>
+			<Button variant="overlay"><Launch size={24} />Open</Button>
+			<Button variant="overlay">See all<CaretRight size={24} /></Button>
+		</p>
 
-	<p>
-		<Typography variant="small" bold>8. Light overlay icon button</Typography>
-		<Button variant="overlay"><SidePanelOpen size={24}/></Button>
-	</p>
+		<p>
+			<Typography variant="small" bold>8. Dark overlay icon button</Typography>
+			<Button variant="darkoverlay"><TrashCan size={24} /></Button>
+		</p>
 
-</section>
+		<p>
+			<Typography variant="small" bold>8. Light overlay icon button</Typography>
+			<Button variant="overlay"><SidePanelOpen size={24} /></Button>
+		</p>
+	</section>
 </VerticalContainer>
 
-<hr/>
+<hr />
 
 <section id="use">
-	<Typography variant="h4" bold>
-		Use
-	</Typography>
+	<Typography variant="h4" bold>Use</Typography>
 
-	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={button} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
-	</TabBar>	
+	<VerticalContainer>
+		<section>
+			Button type
+			<br />
+			Button size
+			<br />
+			<Switch
+				checked={leftIcon}
+				label="Left icon"
+				onchange={(e) => leftIcon = (e.target as HTMLInputElement).checked}
+			></Switch>
+			<br />
+			<Switch
+				checked={rightIcon}
+				label="Right icon"
+				onchange={(e) => rightIcon = (e.target as HTMLInputElement).checked}
+			></Switch>
+		</section>
+
+		<section>
+			<TabBar dimension="small">
+				<TabContent value="Preview">
+					<div class="preview preview-tab">
+						<Button {variant} {dimension}>
+							{#if leftIcon}
+								<Close size={24} />
+							{/if}
+							Close
+							{#if rightIcon}
+								<Close size={24} />
+							{/if}
+						</Button>
+					</div>
+				</TabContent>
+				<TabContent value="Svelte"><Code language="svelte" code={useCode} class="preview-tab" /></TabContent>
+			</TabBar>
+		</section>
+	</VerticalContainer>
 </section>
 
-<hr/>
+<hr />
 
 <section id="implement">
-	<Typography variant="h4" bold>
-		Implement
-	</Typography>
+	<Typography variant="h4" bold>Implement</Typography>
 
 	<TabBar dimension="small">
 		<TabContent value="Svelte"><Code language="svelte" code={button} /></TabContent>
 		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
-	</TabBar>	
+	</TabBar>
 </section>
 
-<hr/>
+<hr />
 
 <section id="choose-a-button-type">
-	<Typography variant="h4" bold>
-		Choose a button type
-	</Typography>
+	<Typography variant="h4" bold>Choose a button type</Typography>
 </section>
 
-<hr/>
+<hr />
 
 <section id="about-sizes">
-	<Typography variant="h4" bold>
-		About sizes
-	</Typography>
+	<Typography variant="h4" bold>About sizes</Typography>
 </section>
 
-<hr/>
+<hr />
 
 <section id="footer">
 	<Typography>
-		Made by diete. Source code is available on <a href="https://github.com/diete-design/diete.design">Github</a>.
+		Made by diete. Source code is available on <a
+			href="https://github.com/diete-design/diete.design">Github</a
+		>.
 	</Typography>
 </section>
 
@@ -184,5 +242,14 @@
 		margin-bottom: 0px;
 		margin-top: 0px;
 	}
-
+	.preview {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--colors-low);
+	}
+	:global(.preview-tab) {
+		height: 288px;
+	}
 </style>
