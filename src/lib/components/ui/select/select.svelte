@@ -16,6 +16,7 @@
 		dimension = 'default',
 		placeholder,
 		value,
+		children,
 		...restProps
 	}: Props = $props()
 
@@ -103,9 +104,11 @@
 			<CaretDown size={dimension === 'small' ? 16 : 24} />
 		{/if}
 	</div>
-	<div class="options" class:hidden={!store.open}>
-		<slot />
-	</div>
+	{#if children}
+		<div class="options" class:hidden={!store.open}>
+			{@render children()}
+		</div>
+	{/if}
 	{#if helperText}
 		<div class="helper-text">
 			{helperText}
@@ -152,6 +155,19 @@
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
+		}
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.25;
+			& + .label {
+				cursor: not-allowed;
+				opacity: 0.25;
+				background: transparent;
+			}
+			& ~ .icon {
+				cursor: not-allowed;
+				opacity: 0.25;
+			}
 		}
 	}
 	.label {
