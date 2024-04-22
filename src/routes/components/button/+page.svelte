@@ -176,7 +176,9 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 						</Button>
 					</div>
 				</TabContent>
-				<TabContent value="Svelte"><Code language="svelte" code={useCode} class="preview-tab" /></TabContent>
+				<TabContent value="Svelte"
+					><Code language="svelte" code={useCode} class="preview-tab" /></TabContent
+				>
 			</TabBar>
 		</section>
 	</VerticalContainer>
