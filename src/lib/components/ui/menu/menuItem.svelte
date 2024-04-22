@@ -1,15 +1,16 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte'
+	import { getContext } from 'svelte'
 	import type { HTMLAnchorAttributes } from 'svelte/elements'
-	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	import type { Dimension, MenuStore } from './menu-store.svelte'
 	interface Props extends HTMLAnchorAttributes {
-		dimension?: Dimension
-		children?: Snippet
+		dimensions?: Dimension
 	}
-	let { dimension = 'default', children, ...restProps }: Props = $props()
+	let { dimensions, children, ...restProps }: Props = $props()
+
+	const store = getContext<MenuStore>('menu-store')
 </script>
 
-<a {...restProps} class={dimension}>
+<a {...restProps} class={dimensions ?? store.size}>
 	{#if children}
 		{@render children()}
 	{/if}

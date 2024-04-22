@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte'
+	import { setContext, type Snippet } from 'svelte'
 	import { ChevronDown } from 'carbon-icons-svelte'
 	import Typography from '../typography.svelte'
-	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	import { withMenuStore, type Dimension } from './menu-store.svelte'
 	interface Props {
 		open?: boolean
 		title?: boolean
@@ -12,6 +12,12 @@
 	}
 	let { open = false, title = false, dimension = 'default', children, content }: Props = $props()
 	let labelFor = Math.random().toString(16)
+	const store = withMenuStore(dimension)
+	setContext('menu-store', store)
+
+	$effect(() => {
+		store.size = dimension
+	})
 </script>
 
 <div class="root {dimension}">
@@ -59,6 +65,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			transition: transform 0.3s ease-in-out;
 		}
 		label {
 			cursor: pointer;
@@ -68,7 +75,7 @@
 			& ~ .panel {
 				display: grid;
 				grid-template-rows: 0fr;
-				transition: all 0.5s ease-in-out;
+				transition: all 0.3s ease-in-out;
 				div {
 					overflow: hidden;
 				}
@@ -77,7 +84,7 @@
 				grid-template-rows: 1fr;
 			}
 			&:checked + .wrapper > .icon {
-				transform: rotate(180deg);
+				transform: rotate(-180deg);
 			}
 		}
 	}
