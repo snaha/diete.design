@@ -1,38 +1,23 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
-	import { ChevronUp, ChevronDown } from 'carbon-icons-svelte'
+	import { ChevronDown } from 'carbon-icons-svelte'
 	import Typography from '../typography.svelte'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props {
 		open?: boolean
 		title?: boolean
 		dimension?: Dimension
-		content: string
 		children?: Snippet
+		content: string
 	}
 	let { open = false, title = false, dimension = 'default', children, content }: Props = $props()
-	let isOpen = $state(open)
+	let labelFor = Math.random().toString(16)
 </script>
 
 <div class="root {dimension}">
-	<div
-		class="wrapper"
-		onclick={() => {
-			isOpen = !isOpen
-		}}
-		onkeydown={(e) => {
-			e.preventDefault()
-			e.stopPropagation()
-			if (!isOpen && e.key === 'ArrowDown') {
-				isOpen = true
-			} else if (isOpen && e.key === 'Escape') {
-				isOpen = false
-			}
-		}}
-		role="button"
-		tabindex="0"
-	>
-		<div class="title">
+	<input type="checkbox" id={labelFor} checked={open} />
+	<div class="wrapper">
+		<label class="title" for={labelFor}>
 			{#if title}
 				<Typography variant={dimension === 'large' ? 'h4' : dimension === 'small' ? 'h6' : 'h5'}
 					>{content}</Typography
@@ -43,17 +28,17 @@
 					>{content}</Typography
 				>
 			{/if}
-		</div>
-		{#if !isOpen}
+		</label>
+		<label class="icon" for={labelFor}>
 			<ChevronDown size={dimension === 'small' ? 16 : 24} />
-		{:else}
-			<ChevronUp size={dimension === 'small' ? 16 : 24} />
-		{/if}
+		</label>
 	</div>
-	<div class="panel" class:isOpen>
-		{#if children}
-			{@render children()}
-		{/if}
+	<div class="panel">
+		<div>
+			{#if children}
+				{@render children()}
+			{/if}
+		</div>
 	</div>
 </div>
 
@@ -62,10 +47,6 @@
 		display: flex;
 		flex-direction: column;
 		position: relative;
-		gap: 0.5rem;
-		&.small {
-			gap: 0.25rem;
-		}
 		color: var(--colors-ultra-high);
 		.wrapper {
 			display: flex;
@@ -73,15 +54,48 @@
 			align-items: center;
 			justify-content: space-between;
 			gap: 0.5rem;
-			padding: 0.75rem;
+		}
+		.icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		label {
 			cursor: pointer;
 		}
-		.panel {
+		input[type='checkbox'] {
 			display: none;
-			overflow: hidden;
+			& ~ .panel {
+				display: grid;
+				grid-template-rows: 0fr;
+				transition: all 0.5s ease-in-out;
+				div {
+					overflow: hidden;
+				}
+			}
+			&:checked ~ .panel {
+				grid-template-rows: 1fr;
+			}
+			&:checked + .wrapper > .icon {
+				transform: rotate(180deg);
+			}
 		}
-		.isOpen.panel {
-			display: block;
+	}
+	.small {
+		.wrapper {
+			gap: 0.25rem;
+		}
+	}
+	.default,
+	.large {
+		.wrapper {
+			padding: 0.75rem;
+		}
+	}
+	.compact,
+	.small {
+		.wrapper {
+			padding: 0.5rem;
 		}
 	}
 </style>

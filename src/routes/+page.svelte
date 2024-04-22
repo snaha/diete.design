@@ -554,41 +554,41 @@
 	<div class="row">
 		<div class="col">
 			<MenuTitle title content="Organic taiyaki">
-				<MenuItem href="#button" content="Button"></MenuItem>
-				<MenuItem href="#checkbox" content="Checkbox" />
-				<MenuItem href="#radio" content="Radio button" />
-				<MenuItem href="#switch" content="Switch" />
-				<MenuItem href="#typography" content="Typography" />
+				<MenuItem href="#button">Button</MenuItem>
+				<MenuItem href="#checkbox">Checkbox</MenuItem>
+				<MenuItem href="#radio">Radio button</MenuItem>
+				<MenuItem href="#switch">Switch</MenuItem>
+				<MenuItem href="#typography">Typography</MenuItem>
 			</MenuTitle>
 			<MenuTitle title content="Organic taiyaki" open />
 		</div>
 		<div class="col">
 			<MenuTitle title content="Organic taiyaki" dimension="large">
-				<MenuItem dimension="large" href="#button" content="Button" />
-				<MenuItem dimension="large" href="#checkbox" content="Checkbox" />
-				<MenuItem dimension="large" href="#radio" content="Radio button" />
-				<MenuItem dimension="large" href="#switch" content="Switch" />
-				<MenuItem dimension="large" href="#typography" content="Typography" />
+				<MenuItem dimension="large" href="#button">Button</MenuItem>
+				<MenuItem dimension="large" href="#checkbox">Checkbox</MenuItem>
+				<MenuItem dimension="large" href="#radio">Radio button</MenuItem>
+				<MenuItem dimension="large" href="#switch">Switch</MenuItem>
+				<MenuItem dimension="large" href="#typography">Typography</MenuItem>
 			</MenuTitle>
 			<MenuTitle title content="Organic taiyaki" dimension="large" open />
 		</div>
 		<div class="col">
 			<MenuTitle title content="Organic taiyaki" dimension="compact">
-				<MenuItem dimension="compact" href="#button" content="Button" />
-				<MenuItem dimension="compact" href="#checkbox" content="Checkbox" />
-				<MenuItem dimension="compact" href="#radio" content="Radio button" />
-				<MenuItem dimension="compact" href="#switch" content="Switch" />
-				<MenuItem dimension="compact" href="#typography" content="Typography" />
+				<MenuItem dimension="compact" href="#button">Button</MenuItem>
+				<MenuItem dimension="compact" href="#checkbox">Checkbox</MenuItem>
+				<MenuItem dimension="compact" href="#radio">Radio button</MenuItem>
+				<MenuItem dimension="compact" href="#switch">Switch</MenuItem>
+				<MenuItem dimension="compact" href="#typography">Typography</MenuItem>
 			</MenuTitle>
 			<MenuTitle title content="Organic taiyaki" dimension="compact" open />
 		</div>
 		<div class="col">
 			<MenuTitle title content="Organic taiyaki" dimension="small">
-				<MenuItem dimension="small" href="#button" content="Button" />
-				<MenuItem dimension="small" href="#checkbox" content="Checkbox" />
-				<MenuItem dimension="small" href="#radio" content="Radio button" />
-				<MenuItem dimension="small" href="#switch" content="Switch" />
-				<MenuItem dimension="small" href="#typography" content="Typography" />
+				<MenuItem dimension="small" href="#button">Button</MenuItem>
+				<MenuItem dimension="small" href="#checkbox">Checkbox</MenuItem>
+				<MenuItem dimension="small" href="#radio">Radio button</MenuItem>
+				<MenuItem dimension="small" href="#switch">Switch</MenuItem>
+				<MenuItem dimension="small" href="#typography">Typography</MenuItem>
 			</MenuTitle>
 			<MenuTitle title content="Organic taiyaki" dimension="small" open />
 		</div>
@@ -596,41 +596,41 @@
 	<div class="row">
 		<div class="col">
 			<MenuTitle content="Organic taiyaki">
-				<MenuItem href="#button" content="Button" />
-				<MenuItem href="#checkbox" content="Checkbox" />
-				<MenuItem href="#radio" content="Radio button" />
-				<MenuItem href="#switch" content="Switch" />
-				<MenuItem href="#typography" content="Typography" />
+				<MenuItem href="#button">Button</MenuItem>
+				<MenuItem href="#checkbox">Checkbox</MenuItem>
+				<MenuItem href="#radio">Radio button</MenuItem>
+				<MenuItem href="#switch">Switch</MenuItem>
+				<MenuItem href="#typography">Typography</MenuItem>
 			</MenuTitle>
 			<MenuTitle content="Organic taiyaki" open />
 		</div>
 		<div class="col">
 			<MenuTitle content="Organic taiyaki" dimension="large">
-				<MenuItem dimension="large" href="#button" content="Button" />
-				<MenuItem dimension="large" href="#checkbox" content="Checkbox" />
-				<MenuItem dimension="large" href="#radio" content="Radio button" />
-				<MenuItem dimension="large" href="#switch" content="Switch" />
-				<MenuItem dimension="large" href="#typography" content="Typography" />
+				<MenuItem dimension="large" href="#button">Button</MenuItem>
+				<MenuItem dimension="large" href="#checkbox">Checkbox</MenuItem>
+				<MenuItem dimension="large" href="#radio">Radio button</MenuItem>
+				<MenuItem dimension="large" href="#switch">Switch</MenuItem>
+				<MenuItem dimension="large" href="#typography">Typography</MenuItem>
 			</MenuTitle>
 			<MenuTitle content="Organic taiyaki" dimension="large" open />
 		</div>
 		<div class="col">
 			<MenuTitle content="Organic taiyaki" dimension="compact">
-				<MenuItem dimension="compact" href="#button" content="Button" />
-				<MenuItem dimension="compact" href="#checkbox" content="Checkbox" />
-				<MenuItem dimension="compact" href="#radio" content="Radio button" />
-				<MenuItem dimension="compact" href="#switch" content="Switch" />
-				<MenuItem dimension="compact" href="#typography" content="Typography" />
+				<MenuItem dimension="compact" href="#button">Button</MenuItem>
+				<MenuItem dimension="compact" href="#checkbox">Checkbox</MenuItem>
+				<MenuItem dimension="compact" href="#radio">Radio button</MenuItem>
+				<MenuItem dimension="compact" href="#switch">Switch</MenuItem>
+				<MenuItem dimension="compact" href="#typography">Typography</MenuItem>
 			</MenuTitle>
 			<MenuTitle content="Organic taiyaki" dimension="compact" open />
 		</div>
 		<div class="col">
 			<MenuTitle content="Organic taiyaki" dimension="small">
-				<MenuItem dimension="small" href="#button" content="Button" />
-				<MenuItem dimension="small" href="#checkbox" content="Checkbox" />
-				<MenuItem dimension="small" href="#radio" content="Radio button" />
-				<MenuItem dimension="small" href="#switch" content="Switch" />
-				<MenuItem dimension="small" href="#typography" content="Typography" />
+				<MenuItem dimension="small" href="#button">Button</MenuItem>
+				<MenuItem dimension="small" href="#checkbox">Checkbox</MenuItem>
+				<MenuItem dimension="small" href="#radio">Radio button</MenuItem>
+				<MenuItem dimension="small" href="#switch">Switch</MenuItem>
+				<MenuItem dimension="small" href="#typography">Typography</MenuItem>
 			</MenuTitle>
 			<MenuTitle content="Organic taiyaki" dimension="small" open />
 		</div>

@@ -3,71 +3,55 @@
 	import type { HTMLAnchorAttributes } from 'svelte/elements'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLAnchorAttributes {
-		content: string
 		dimension?: Dimension
 		children?: Snippet
 	}
-	let { content, dimension = 'default', children, ...restProps }: Props = $props()
+	let { dimension = 'default', children, ...restProps }: Props = $props()
 </script>
 
-<div class="root {dimension}">
-	<a {...restProps}>
-		{content}
-		{#if children}
-			{@render children()}
-		{/if}
-	</a>
-</div>
+<a {...restProps} class={dimension}>
+	{#if children}
+		{@render children()}
+	{/if}
+</a>
 
 <style lang="postcss">
-	.root {
+	a {
 		display: flex;
-		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0.5rem;
+		text-decoration: none;
 		font-family: var(--font-family-sans-serif);
-		width: 100%;
-		a {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			color: var(--colors-ultra-high);
-			text-decoration: none;
-			border-radius: 0.25rem;
-			&:active,
-			&:hover {
-				background: var(--colors-low);
-			}
+		color: var(--colors-ultra-high);
+		border-radius: 0.25rem;
+
+		&:active {
+			background: var(--colors-low);
 		}
 	}
 	.default {
-		a {
-			padding: 0.75rem;
-			font-size: var(--font-size);
-			line-height: var(--line-height);
-			letter-spacing: var(--letter-spacing);
-		}
+		padding: 0.75rem;
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
 	}
 	.large {
-		a {
-			padding: 0.75rem;
-			font-size: var(--font-size-large);
-			line-height: var(--line-height-large);
-			letter-spacing: var(--letter-spacing-large);
-		}
+		padding: 0.5rem 0.75rem;
+		font-size: var(--font-size-large);
+		line-height: var(--line-height-large);
+		letter-spacing: var(--letter-spacing-large);
 	}
 	.compact {
-		a {
-			padding: 0.5rem;
-			font-size: var(--font-size);
-			line-height: var(--line-height);
-			letter-spacing: var(--letter-spacing);
-		}
+		padding: 0.5rem;
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
 	}
 	.small {
-		a {
-			padding: 0.5rem;
-			font-size: var(--font-size-small);
-			line-height: var(--line-height-small);
-			letter-spacing: var(--letter-spacing-small);
-		}
+		padding: 0.25rem 0.5rem;
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
+		letter-spacing: var(--letter-spacing-small);
 	}
 </style>
