@@ -3,6 +3,7 @@
 
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
+	import Input from '$lib/components/ui/input.svelte'
 	import Radio from '$lib/components/ui/radio.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
@@ -301,6 +302,128 @@
 			<Typography font="mono" italic>Mono Italic</Typography>
 			<Typography font="mono" bold>Mono Bold</Typography>
 			<Typography font="mono" bold italic>Mono Bold Italic</Typography>
+		</div>
+	</div>
+</section>
+<section>
+	<h1>Input</h1>
+	<div class="row">
+		<div class="col">
+			<Input placeholder="Input label">This is some helper text.</Input>
+			<Input placeholder="Input label" value="With text">This is some helper text.</Input>
+			<Input placeholder="Input label" value="Disabled" disabled>This is some helper text.</Input>
+			<Input placeholder="Input label" value="With unit" unit="%">This is some helper text.</Input>
+		</div>
+		<div class="col">
+			<Input placeholder="Input label" dimension="large">This is some helper text.</Input>
+			<Input placeholder="Input label" dimension="large" value="With text">
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="large" value="Disabled" disabled>
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="large" value="With unit" unit="%">
+				This is some helper text.
+			</Input>
+		</div>
+		<div class="col">
+			<Input placeholder="Input label" dimension="compact">This is some helper text.</Input>
+			<Input placeholder="Input label" dimension="compact" value="With text">
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="compact" value="Disabled" disabled>
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="compact" value="With unit" unit="%">
+				This is some helper text.
+			</Input>
+		</div>
+		<div class="col">
+			<Input placeholder="Input label" dimension="small">This is some helper text.</Input>
+			<Input placeholder="Input label" dimension="small" value="With text">
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="small" value="Disabled" disabled>
+				This is some helper text.
+			</Input>
+			<Input placeholder="Input label" dimension="small" value="With unit" unit="%">
+				This is some helper text.
+			</Input>
+		</div>
+	</div>
+</section>
+<section>
+	<h1>Input (horizontal)</h1>
+	<div class="row">
+		<div class="col">
+			<Input layout="horizontal" placeholder="Placeholder">Input label</Input>
+			<Input layout="horizontal" placeholder="Placeholder" value="With text">Input label</Input>
+			<Input layout="horizontal" placeholder="Placeholder" value="Disabled" disabled
+				>Input label</Input
+			>
+			<Input layout="horizontal" placeholder="Placeholder" value="With unit" unit="%"
+				>Input label</Input
+			>
+		</div>
+		<div class="col">
+			<Input layout="horizontal" dimension="large" placeholder="Placeholder">Input label</Input>
+			<Input layout="horizontal" dimension="large" placeholder="Placeholder" value="With text"
+				>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="large"
+				placeholder="Placeholder"
+				value="Disabled"
+				disabled>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="large"
+				placeholder="Placeholder"
+				value="With unit"
+				unit="%">Input label</Input
+			>
+		</div>
+		<div class="col">
+			<Input layout="horizontal" dimension="compact" placeholder="Placeholder">Input label</Input>
+			<Input layout="horizontal" dimension="compact" placeholder="Placeholder" value="With text"
+				>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="compact"
+				placeholder="Placeholder"
+				value="Disabled"
+				disabled>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="compact"
+				placeholder="Placeholder"
+				value="With unit"
+				unit="%">Input label</Input
+			>
+		</div>
+		<div class="col">
+			<Input layout="horizontal" dimension="small" placeholder="Placeholder">Input label</Input>
+			<Input layout="horizontal" dimension="small" placeholder="Placeholder" value="With text"
+				>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="small"
+				placeholder="Placeholder"
+				value="Disabled"
+				disabled>Input label</Input
+			>
+			<Input
+				layout="horizontal"
+				dimension="small"
+				placeholder="Placeholder"
+				value="With unit"
+				unit="%">Input label</Input
+			>
 		</div>
 	</div>
 </section>
