@@ -96,13 +96,13 @@
 	<label class="label" for={labelFor}>
 		{placeholder}
 	</label>
-	<div class="icon">
+	<label for={labelFor} class="icon">
 		{#if store.open}
 			<CaretUp size={dimension === 'small' ? 16 : 24} />
 		{:else}
 			<CaretDown size={dimension === 'small' ? 16 : 24} />
 		{/if}
-	</div>
+	</label>
 	<div class="wrapper">
 		{#if children}
 			<div class="options" class:hidden={!store.open}>
@@ -186,6 +186,7 @@
 		position: absolute;
 		width: 1.5rem;
 		height: 1.5rem;
+		cursor: pointer;
 	}
 	.default {
 		.select {
