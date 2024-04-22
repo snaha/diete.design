@@ -1,28 +1,19 @@
 <script lang="ts">
-	import type { SelectStore } from './selectStore.svelte'
+	import type { SelectStore } from './select-store.svelte'
 	import { getContext } from 'svelte'
 	import type { HTMLButtonAttributes } from 'svelte/elements'
 
 	interface Props extends HTMLButtonAttributes {
 		value: string
 	}
-	let { value, ...restProps }: Props = $props()
+	let { value, children, ...restProps }: Props = $props()
 
 	const store = getContext<SelectStore>('select-store')
 
 	let button = $state<HTMLButtonElement | undefined>()
 
-	const updateLabel = () => {
-		if (button && button.childNodes.length > 0) {
-			const filteredNodes = Array.from(button.childNodes).filter(
-				(node) => node.nodeType !== Node.COMMENT_NODE,
-			)
-			const content = filteredNodes.map((node) => node.nodeValue).join('')
-			store.registerValue(value, content)
-		}
-	}
 	$effect(() => {
-		updateLabel()
+		store.registerValue(value, button?.innerText)
 	})
 	let selected = $derived(store.value === value)
 </script>
@@ -40,7 +31,11 @@
 	class:selected
 	{...restProps}
 >
-	<slot />
+	{#if children}
+		{@render children()}
+	{:else}
+		{value}
+	{/if}
 </button>
 
 <style lang="postcss">

@@ -433,7 +433,7 @@
 	<Typography variant="h1">Select</Typography>
 	<div class="row">
 		<div class="col">
-			<Select placeholder="Select label" helperText="This is some helper text.">
+			<Select placeholder="Select label" helperText="Without any default value.">
 				<Option value="1">Label 1</Option>
 				<Option value="2">Label 2</Option>
 				<Option value="3">Label 3</Option>
@@ -442,7 +442,7 @@
 				<Option value="6">Label 6</Option>
 				<Option value="7">Label 7</Option>
 			</Select>
-			<Select value="2" placeholder="Select label" helperText="This is some helper text.">
+			<Select value="2" placeholder="Select label" helperText="With default value.">
 				<Option value="1">Label 1</Option>
 				<Option value="2">Label 2</Option>
 				<Option value="3">Label 3</Option>
@@ -451,6 +451,25 @@
 				<Option value="6">Label 6</Option>
 				<Option value="7">Label 7</Option>
 			</Select>
+			<Select value="2" placeholder="Select label" helperText="Disabled." disabled>
+				<Option value="1">Label 1</Option>
+				<Option value="2">Label 2</Option>
+				<Option value="3">Label 3</Option>
+				<Option value="4">Label 4</Option>
+				<Option value="5">Label 5</Option>
+				<Option value="6">Label 6</Option>
+				<Option value="7">Label 7</Option>
+			</Select>
+			<Select value="2" placeholder="Select label" helperText="No labels, just values.">
+				<Option value="1" />
+				<Option value="2" />
+				<Option value="3" />
+				<Option value="4" />
+				<Option value="5" />
+				<Option value="6" />
+				<Option value="7" />
+			</Select>
+			<Select helperText="No options." />
 		</div>
 		<div class="col">
 			<Select dimension="large" placeholder="Select label" helperText="This is some helper text.">

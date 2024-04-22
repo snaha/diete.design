@@ -2,7 +2,7 @@
 	import type { HTMLInputAttributes } from 'svelte/elements'
 	import { CaretDown, CaretUp } from 'carbon-icons-svelte'
 	import { setContext } from 'svelte'
-	import { withSelectStore } from './selectStore.svelte'
+	import { withSelectStore } from './select-store.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
@@ -21,6 +21,8 @@
 
 	const store = withSelectStore(dimension, value)
 	setContext('select-store', store)
+
+	// Close the select when user clicks outside
 	$effect(() => {
 		function closeMenu() {
 			if (store.open) store.open = false
@@ -32,9 +34,15 @@
 			window.removeEventListener('click', closeMenu)
 		}
 	})
+
+	// Update store dimension if the dimension dynamically changes
+	$effect(() => {
+		store.size = dimension
+	})
+
+	// Bind store value to the value prop
 	$effect(() => {
 		value = store.value
-		store.size = dimension
 	})
 </script>
 
@@ -42,32 +50,42 @@
 	<input
 		value={store.value ? store.labels[store.value] ?? store.value : value}
 		class="select"
-		onclick={(e) => {
-			e.preventDefault()
-			e.stopPropagation()
-			store.open = !store.open
+		onclick={() => {
+			if (!store.open) setTimeout(() => (store.open = true))
 		}}
 		onkeydown={(e) => {
-			if (e.key === 'ArrowDown') {
-				e.preventDefault()
-				e.stopPropagation()
-				if (!store.open) {
-					store.open = true
-				} else {
-					const values = Object.keys(store.labels)
-					const index = store.value ? values.indexOf(store.value) : 0
-					store.value = values[(index + 1) % values.length]
+			switch (e.key) {
+				case 'ArrowDown': {
+					e.preventDefault()
+					if (!store.open) {
+						store.open = true
+					} else {
+						const values = Object.keys(store.labels)
+						const index = store.value ? values.indexOf(store.value) : -1
+						store.value = values[(index + 1) % values.length]
+					}
+					break
 				}
-			} else if (e.key === 'ArrowUp' && store.open) {
-				e.preventDefault()
-				e.stopPropagation()
-				const values = Object.keys(store.labels)
-				const index = store.value ? values.indexOf(store.value) : 0
-				store.value = values[index - 1 < 0 ? values.length - 1 : index - 1]
-			} else if ((e.key === 'Enter' || e.key === 'Escape') && store.open) {
-				e.preventDefault()
-				e.stopPropagation()
-				store.open = false
+
+				case 'ArrowUp': {
+					e.preventDefault()
+					if (!store.open) {
+						store.open = true
+					} else {
+						const values = Object.keys(store.labels)
+						const index = store.value ? values.indexOf(store.value) : 0
+						if (index - 1 < 0) store.value = values[index - 1]
+						else store.value = values[values.length - 1]
+					}
+					break
+				}
+				case 'Enter':
+				case 'Escape': {
+					if (store.open) {
+						e.preventDefault()
+						store.open = false
+					}
+				}
 			}
 		}}
 		id={labelFor}
