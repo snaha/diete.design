@@ -1,6 +1,7 @@
 import adapter from '@sveltejs/adapter-auto'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 import fs from 'fs'
+import * as prettier from 'prettier'
 
 const DIST_DIR = './static/generated/css'
 
@@ -11,6 +12,7 @@ function cssPreprocess() {
 	return {
 		...vite,
 		async style(args) {
+			const prettierOptions = await prettier.resolveConfig('.prettierrc')
 			const preprocessedStyle = await viteStyle(args)
 			const match = args.filename.match(/^.*\/src\/lib\/components(.*\/)(.*)\.svelte/)
 			if (match && match.length === 3) {
@@ -21,7 +23,11 @@ function cssPreprocess() {
 				fs.mkdirSync(path, { recursive: true })
 
 				const cssFilePath = `${path}/${compName}.css`
-				fs.writeFileSync(cssFilePath, preprocessedStyle.code)
+				const prettifiedCode = await prettier.format(preprocessedStyle.code, {
+					...prettierOptions,
+					parser: 'css',
+				})
+				fs.writeFileSync(cssFilePath, prettifiedCode)
 			}
 			return preprocessedStyle
 		},
