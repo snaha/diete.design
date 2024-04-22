@@ -1,22 +1,27 @@
 <script lang="ts">
-	import type { HTMLInputAttributes } from 'svelte/elements'
+	import type { HTMLAttributes } from 'svelte/elements'
 	import { CaretDown, CaretUp } from 'carbon-icons-svelte'
 	import { setContext } from 'svelte'
 	import { withSelectStore } from './select-store.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
-	interface Props extends HTMLInputAttributes {
+	interface Props extends Omit<HTMLAttributes<HTMLInputElement>, 'onchange' | 'oninput'> {
 		helperText?: string
 		labelFor?: string
 		dimension?: Dimension
+		value?: string
+		onchange?: (value?: string) => void
+		oninput?: (value?: string) => void
 	}
 	let {
 		helperText,
 		labelFor = Math.random().toString(16),
 		dimension = 'default',
 		placeholder,
-		value,
+		value = $bindable(),
 		children,
+		onchange,
+		oninput,
 		...restProps
 	}: Props = $props()
 
@@ -44,6 +49,8 @@
 	// Bind store value to the value prop
 	$effect(() => {
 		value = store.value
+		if (oninput) oninput(store.value)
+		if (onchange) onchange(store.value)
 	})
 </script>
 
