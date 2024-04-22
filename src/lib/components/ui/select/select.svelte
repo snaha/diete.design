@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type { HTMLAttributes } from 'svelte/elements'
+	import type { HTMLInputAttributes } from 'svelte/elements'
 	import { CaretDown, CaretUp } from 'carbon-icons-svelte'
 	import { setContext } from 'svelte'
 	import { withSelectStore } from './select-store.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
-	interface Props extends Omit<HTMLAttributes<HTMLInputElement>, 'onchange' | 'oninput'> {
+	interface Props extends Omit<HTMLInputAttributes, 'onchange' | 'oninput'> {
 		helperText?: string
 		labelFor?: string
 		dimension?: Dimension
