@@ -162,10 +162,12 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 			<Switch
 				checked={leftIcon}
 				label="Left icon"
+				onchange={(e) => leftIcon = (e?.target as HTMLInputElement).checked}
 			></Switch>
 			<Switch
 				checked={rightIcon}
 				label="Right icon"
+				onchange={(e) => rightIcon = (e?.target as HTMLInputElement).checked}
 			></Switch>
 		</section>
 
