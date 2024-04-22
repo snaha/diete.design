@@ -21,6 +21,8 @@
 		SidePanelOpen,
 	} from 'carbon-icons-svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
+	import Select from '$lib/components/ui/select/select.svelte'
+	import Option from '$lib/components/ui/select/option.svelte'
 
 	type Variant = 'strong' | 'secondary' | 'ghost' | 'overlay' | 'darkoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
@@ -143,21 +145,27 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	<Typography variant="h4" bold>Use</Typography>
 
 	<VerticalContainer>
-		<section>
-			Button type
-			<br />
-			Button size
-			<br />
+		<section class="controls">
+			<Select value={variant} placeholder="Button type">
+				<Option value="strong">Strong button</Option>
+				<Option value="secondary">Outline button</Option>
+				<Option value="ghost">Ghost button</Option>
+			</Select>
+
+			<Select value={dimension} placeholder="Button size">
+				<Option value="default">Default</Option>
+				<Option value="large">Large</Option>
+				<Option value="compact">Compact</Option>
+				<Option value="small">Small</Option>
+			</Select>
+
 			<Switch
 				checked={leftIcon}
 				label="Left icon"
-				onchange={(e) => leftIcon = (e.target as HTMLInputElement).checked}
 			></Switch>
-			<br />
 			<Switch
 				checked={rightIcon}
 				label="Right icon"
-				onchange={(e) => rightIcon = (e.target as HTMLInputElement).checked}
 			></Switch>
 		</section>
 
@@ -253,5 +261,10 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	}
 	:global(.preview-tab) {
 		height: 288px;
+	}
+	.controls {
+		display: flex;
+		flex-direction: column;
+		gap: 16px
 	}
 </style>
