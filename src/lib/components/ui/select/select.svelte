@@ -75,7 +75,7 @@
 					} else {
 						const values = Object.keys(store.labels)
 						const index = store.value ? values.indexOf(store.value) : 0
-						if (index - 1 < 0) store.value = values[index - 1]
+						if (index - 1 >= 0) store.value = values[index - 1]
 						else store.value = values[values.length - 1]
 					}
 					break

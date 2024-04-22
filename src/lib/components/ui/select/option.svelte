@@ -21,11 +21,8 @@
 <button
 	class="ghost {store.size}"
 	bind:this={button}
-	onclick={(e: MouseEvent) => {
+	onclick={() => {
 		if (!store.open) return
-		e.preventDefault()
-		e.stopPropagation()
-		store.open = false
 		store.value = value
 	}}
 	class:selected
