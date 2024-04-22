@@ -67,7 +67,6 @@
 					}
 					break
 				}
-
 				case 'ArrowUp': {
 					e.preventDefault()
 					if (!store.open) {
@@ -104,13 +103,15 @@
 			<CaretDown size={dimension === 'small' ? 16 : 24} />
 		{/if}
 	</div>
-	{#if children}
-		<div class="options" class:hidden={!store.open}>
-			<div>
-				{@render children()}
+	<div class="wrapper">
+		{#if children}
+			<div class="options" class:hidden={!store.open}>
+				<div>
+					{@render children()}
+				</div>
 			</div>
-		</div>
-	{/if}
+		{/if}
+	</div>
 	{#if helperText}
 		<div class="helper-text">
 			{helperText}
@@ -144,7 +145,7 @@
 		}
 		&:focus {
 			outline: none;
-			border: 1px solid var(--colors-high);
+			border: 1px solid var(--colors-low);
 			background: var(--colors-base);
 			& + .label {
 				background: var(--colors-base);
@@ -292,17 +293,21 @@
 		letter-spacing: var(--letter-spacing-small);
 		padding: 0.5rem 0.75rem 0;
 	}
+	.wrapper {
+		position: relative;
+	}
 	.options {
 		position: absolute;
-		top: calc(100% - 1.25rem);
+		top: 100%;
 		left: 0;
-		border-radius: 0.25rem;
-		border: 1px solid var(--colors-low);
 		background: var(--colors-base);
 		z-index: 1;
 		width: 100%;
+		margin-top: 0.25rem;
 
 		div {
+			border: 1px solid var(--colors-low);
+			border-radius: 0.25rem;
 			padding: 0.5rem;
 			display: flex;
 			flex-direction: column;
