@@ -5,13 +5,11 @@
 	import { withSelectStore } from './select-store.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
-	interface Props extends Omit<HTMLInputAttributes, 'onchange' | 'oninput'> {
+	interface Props extends HTMLInputAttributes {
 		helperText?: string
 		labelFor?: string
 		dimension?: Dimension
 		value?: string
-		onchange?: (value?: string) => void
-		oninput?: (value?: string) => void
 	}
 	let {
 		helperText,
@@ -20,8 +18,6 @@
 		placeholder,
 		value = $bindable(),
 		children,
-		onchange,
-		oninput,
 		...restProps
 	}: Props = $props()
 
@@ -49,8 +45,6 @@
 	// Bind store value to the value prop
 	$effect(() => {
 		value = store.value
-		if (oninput) oninput(store.value)
-		if (onchange) onchange(store.value)
 	})
 </script>
 
