@@ -152,13 +152,13 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 
 	<VerticalContainer>
 		<section class="controls">
-			<Select value={variant} placeholder="Button type">
+			<Select bind:value={variant} placeholder="Button type">
 				<Option value="strong">Strong button</Option>
 				<Option value="secondary">Outline button</Option>
 				<Option value="ghost">Ghost button</Option>
 			</Select>
 
-			<Select value={dimension} placeholder="Button size">
+			<Select bind:value={dimension} placeholder="Button size">
 				<Option value="default">Default</Option>
 				<Option value="large">Large</Option>
 				<Option value="compact">Compact</Option>
