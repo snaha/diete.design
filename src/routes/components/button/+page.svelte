@@ -267,6 +267,6 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	.controls {
 		display: flex;
 		flex-direction: column;
-		gap: 16px
+		gap: 16px;
 	}
 </style>
