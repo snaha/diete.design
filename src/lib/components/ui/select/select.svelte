@@ -9,13 +9,14 @@
 		helperText?: string
 		labelFor?: string
 		dimension?: Dimension
+		value?: string
 	}
 	let {
 		helperText,
 		labelFor = Math.random().toString(16),
 		dimension = 'default',
 		placeholder,
-		value,
+		value = $bindable(),
 		children,
 		...restProps
 	}: Props = $props()
