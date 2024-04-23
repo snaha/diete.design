@@ -33,6 +33,8 @@
 	let dimension: Dimension = $state('default')
 	let leftIcon: boolean = $state(true)
 	let rightIcon: boolean = $state(false)
+
+	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
 		`<script lang="ts">
 import Button from '$lib/components/ui/button.svelte'
@@ -59,80 +61,83 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 
 <VerticalContainer>
 	<section>
-		<p>
+		<Typography>
 			There are 9 types of buttons available.
 			<br />
-			→<Button href="#choose-a-button-type" variant="ghost">Choose a button type</Button>
-		</p>
+			→<a href="#choose-a-button-type">Choose a button type</a>
 
-		<p>
+			<br />
+			<br />
+
 			Each button is available in 4 sizes: Default, Large, Compact and Small.
 			<br />
-			→<Button href="#about-sizes" variant="ghost">About sizes</Button>
-		</p>
+			→<a href="#about-sizes">About sizes</a>
 
-		<p>
+			<br />
+			<br />
+
 			Different button types and sizes can be combined on the same screen to create hierarchy and
 			direct attention to the most important actions.
-		</p>
 
-		<p>
+			<br />
+			<br />
+
 			Overlay buttons should be used to display a button floating over content (image or text for
 			example).
-		</p>
+		</Typography>
 	</section>
 	<section class="examples">
-		<p>
+		<p class="example-row">
 			<Typography variant="small" bold>1. Strong button</Typography>
 			<Button variant="strong">Strong button</Button>
 			<Button variant="strong"><Checkmark size={24} />Confirm</Button>
 			<Button variant="strong">Proceed<ArrowRight size={24} /></Button>
 		</p>
 
-		<p>
+		<p class="example-row">
 			<Typography variant="small" bold>2. Outline button</Typography>
 			<Button variant="secondary">Button</Button>
 			<Button variant="secondary"><Close size={24} />Cancel</Button>
 			<Button variant="secondary">Next<ArrowRight size={24} /></Button>
 		</p>
 
-		<p>
+		<p class="example-row">
 			<Typography variant="small" bold>3. Ghost button</Typography>
 			<Button variant="ghost">Ghost button</Button>
 			<Button variant="ghost"><Information size={24} />Info</Button>
 			<Button variant="ghost">More<ChevronRight size={24} /></Button>
 		</p>
 
-		<p>
+		<p class="example-row">
 			<Typography variant="small" bold>4. Strong icon button</Typography>
 			<Button variant="strong"><Save size={24} /></Button>
 		</p>
 
-		<p>
+		<p class="example-row">
 			<Typography variant="small" bold>5. Icon button</Typography>
 			<Button variant="ghost"><OverflowMenuVertical size={24} /></Button>
 		</p>
 
-		<p>
+		<p class="example-row">
 			<Typography variant="small" bold>6. Dark overlay button</Typography>
 			<Button variant="darkoverlay">Overlay</Button>
 			<Button variant="darkoverlay"><Checkmark size={24} />Done</Button>
 			<Button variant="darkoverlay">Next<ArrowRight size={24} /></Button>
 		</p>
 
-		<p>
+		<p class="example-row">
 			<Typography variant="small" bold>7. Light overlay button</Typography>
 			<Button variant="overlay">Overlay</Button>
 			<Button variant="overlay"><Launch size={24} />Open</Button>
 			<Button variant="overlay">See all<CaretRight size={24} /></Button>
 		</p>
 
-		<p>
+		<p class="example-row">
 			<Typography variant="small" bold>8. Dark overlay icon button</Typography>
 			<Button variant="darkoverlay"><TrashCan size={24} /></Button>
 		</p>
 
-		<p>
+		<p class="example-row">
 			<Typography variant="small" bold>8. Light overlay icon button</Typography>
 			<Button variant="overlay"><SidePanelOpen size={24} /></Button>
 		</p>
@@ -142,7 +147,8 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 <hr />
 
 <section id="use">
-	<Typography variant="h4" bold>Use</Typography>
+	<Typography class="title" variant="h4" bold>Use</Typography>
+	<div class="title" />
 
 	<VerticalContainer>
 		<section class="controls">
@@ -171,10 +177,10 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 			></Switch>
 		</section>
 
-		<section>
+		<section class="preview">
 			<TabBar dimension="small">
 				<TabContent value="Preview">
-					<div class="preview preview-tab">
+					<div class="preview-tabs preview-tab">
 						<Button {variant} {dimension}>
 							{#if leftIcon}
 								<Close size={24} />
@@ -197,7 +203,8 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 <hr />
 
 <section id="implement">
-	<Typography variant="h4" bold>Implement</Typography>
+	<Typography class="title" variant="h4" bold>Implement</Typography>
+	<div class="title" />
 
 	<TabBar dimension="small">
 		<TabContent value="Svelte"><Code language="svelte" code={button} /></TabContent>
@@ -208,13 +215,15 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 <hr />
 
 <section id="choose-a-button-type">
-	<Typography variant="h4" bold>Choose a button type</Typography>
+	<Typography class="title" variant="h4" bold>Choose a button type</Typography>
+	<div class="title" />
 </section>
 
 <hr />
 
 <section id="about-sizes">
-	<Typography variant="h4" bold>About sizes</Typography>
+	<Typography class="title" variant="h4" bold>About sizes</Typography>
+	<div class="title" />
 </section>
 
 <hr />
@@ -232,14 +241,16 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 		display: flex;
 		flex-direction: column;
 		font-family: var(--font-family-sans-serif);
-		flex: 0.5;
+		margin-bottom: 32px;
+	}
+	:global(.title) {
+		margin-bottom: 32px;
 	}
 	hr {
 		color: var(--colors-low);
 		border-style: solid;
 		border-width: 1px;
 		appearance: none;
-		margin-top: 32px;
 		margin-bottom: 32px;
 	}
 	.examples {
@@ -253,8 +264,12 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 		gap: 16px;
 		margin-bottom: 0px;
 		margin-top: 0px;
+		flex: 1;
 	}
 	.preview {
+		flex: 1;
+	}
+	.preview-tabs {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -268,5 +283,9 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
+	}
+	.example-row {
+		display: flex;
+		flex-wrap: wrap;
 	}
 </style>

@@ -146,7 +146,7 @@
 		}
 		&:focus {
 			outline: none;
-			border: 1px solid var(--colors-high);
+			border: 1px solid var(--colors-low);
 			background: var(--colors-base);
 			& + .label {
 				background: var(--colors-base);

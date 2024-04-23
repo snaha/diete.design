@@ -16,11 +16,13 @@
 
 <style lang="postcss">
 	.vertical-container {
-		display: flex;
-		flex-direction: row;
+		display: grid;
 		gap: 16px;
-		flex: 1;
-		margin-top: 16px;
-		margin-bottom: 16px;
+		grid-template-columns: 1fr;
+	}
+	@media only screen and (min-device-width: 961px) {
+		.vertical-container {
+			grid-template-columns: 1fr 1fr;
+		}
 	}
 </style>
