@@ -55,6 +55,8 @@
 		font-family: var(--font-family-sans-serif);
 		font-style: normal;
 		font-weight: 400;
+		white-space: nowrap;
+		flex-shrink: 0;
 		&:disabled {
 			cursor: not-allowed;
 			opacity: 0.25;
