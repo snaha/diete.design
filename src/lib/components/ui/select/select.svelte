@@ -114,13 +114,21 @@
 	<label class="label" for={labelFor}>
 		{placeholder}
 	</label>
-	<label for={labelFor} class="icon">
+	<div
+		class="icon"
+		onclick={() => {
+			if (!store.open) setTimeout(() => (store.open = true))
+		}}
+		onkeydown={() => {}}
+		role="button"
+		tabindex="-1"
+	>
 		{#if store.open}
 			<CaretUp size={dimension === 'small' ? 16 : 24} />
 		{:else}
 			<CaretDown size={dimension === 'small' ? 16 : 24} />
 		{/if}
-	</label>
+	</div>
 	<div class="wrapper">
 		{#if children}
 			<div class="options" class:hidden={!store.open}>
