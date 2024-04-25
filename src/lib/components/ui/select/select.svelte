@@ -22,19 +22,25 @@
 		...restProps
 	}: Props = $props()
 
+	let input: HTMLInputElement | undefined = $state(undefined)
+
 	const store = withSelectStore(dimension, value)
 	setContext('select-store', store)
 
-	// Close the select when user clicks outside
+	// Close the select when user clicks outside, when user clicks on the tab button
 	$effect(() => {
 		function closeMenu() {
 			if (store.open) store.open = false
 		}
 
 		window.addEventListener('click', closeMenu)
+		window.addEventListener('keydown', (e) => {
+			if (e.key === 'Tab') closeMenu()
+		})
 
 		return () => {
 			window.removeEventListener('click', closeMenu)
+			window.removeEventListener('keydown', closeMenu)
 		}
 	})
 
@@ -58,6 +64,7 @@
 
 <div class="root {dimension} {className}">
 	<input
+		bind:this={input}
 		value={store.value ? store.labels[store.value] ?? store.value : value}
 		class="select"
 		onclick={() => {
@@ -117,6 +124,7 @@
 	<button
 		class="icon"
 		onclick={() => {
+			input?.focus()
 			if (!store.open) setTimeout(() => (store.open = true))
 		}}
 		tabindex="-1"
@@ -145,6 +153,9 @@
 
 <style lang="postcss">
 	.root {
+		--transition-delay: 125ms;
+		--transition: 250ms;
+
 		font-family: var(--font-family-sans-serif);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
@@ -160,6 +171,8 @@
 		appearance: none;
 		border: 1px solid var(--colors-low);
 		background: var(--colors-low);
+		transition: background var(--transition);
+		transition-delay: var(--transition-delay);
 		border-radius: 0.25rem;
 		flex-grow: 1;
 		cursor: pointer;
@@ -172,6 +185,8 @@
 			border: 1px solid var(--colors-low);
 			background: var(--colors-base);
 			& + .label {
+				transition: all var(--transition);
+				transition-delay: var(--transition-delay);
 				background: var(--colors-base);
 				font-size: var(--font-size-small);
 				line-height: var(--line-height-small);
@@ -200,7 +215,7 @@
 	.label {
 		position: absolute;
 		transform-origin: left center;
-		transition: transform 0.25s;
+		transition: transform var(--transition);
 		border-radius: 0.25rem;
 		background: var(--colors-low);
 		color: var(--colors-high);
@@ -234,6 +249,8 @@
 		.label {
 			top: 1.5rem;
 			left: 0.75rem;
+			transition: all var(--transition);
+			transition-delay: var(--transition-delay);
 		}
 		.icon {
 			top: 1.5rem;
@@ -260,6 +277,8 @@
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
+			transition: all var(--transition);
+			transition-delay: var(--transition-delay);
 		}
 		.icon {
 			top: 1.75rem;
@@ -283,6 +302,8 @@
 		.label {
 			top: 1rem;
 			left: 0.5rem;
+			transition: all var(--transition);
+			transition-delay: var(--transition-delay);
 		}
 		.icon {
 			top: 1rem;
@@ -309,6 +330,8 @@
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
+			transition: all var(--transition);
+			transition-delay: var(--transition-delay);
 		}
 		.icon {
 			top: 1rem;
