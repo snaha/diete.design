@@ -1,16 +1,26 @@
 <script lang="ts">
-	import { setContext, type Snippet } from 'svelte'
+	import { setContext } from 'svelte'
+	import type { HTMLAttributes } from 'svelte/elements'
 	import { ChevronDown } from 'carbon-icons-svelte'
 	import Typography from '../typography.svelte'
 	import { withMenuStore, type Dimension } from './menu-store.svelte'
-	interface Props {
+
+	interface Props extends HTMLAttributes<HTMLElement> {
 		open?: boolean
-		title?: boolean
+		bold?: boolean
 		dimension?: Dimension
-		children?: Snippet
 		content: string
+		element: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
 	}
-	let { open = false, title = false, dimension = 'default', children, content }: Props = $props()
+	let {
+		open = $bindable(false),
+		bold = false,
+		dimension = 'default',
+		children,
+		content,
+		element,
+		...restProps
+	}: Props = $props()
 	let labelFor = Math.random().toString(16)
 	const store = withMenuStore(dimension)
 	setContext('menu-store', store)
@@ -18,22 +28,33 @@
 	$effect(() => {
 		store.size = dimension
 	})
+
+	let variant: 'h4' | 'h6' | 'h5' | 'large' | 'default' | 'small' = $derived.by(() => {
+		if (bold) {
+			switch (dimension) {
+				case 'large':
+					return 'h4'
+				case 'small':
+					return 'h6'
+			}
+			return 'h5'
+		} else {
+			switch (dimension) {
+				case 'large':
+					return 'large'
+				case 'small':
+					return 'small'
+			}
+			return 'default'
+		}
+	})
 </script>
 
-<div class="root {dimension}">
+<div class="root {dimension}" {...restProps}>
 	<input type="checkbox" id={labelFor} checked={open} />
 	<div class="wrapper">
 		<label class="title" for={labelFor}>
-			{#if title}
-				<Typography variant={dimension === 'large' ? 'h4' : dimension === 'small' ? 'h6' : 'h5'}
-					>{content}</Typography
-				>
-			{:else}
-				<Typography
-					variant={dimension === 'large' ? 'large' : dimension === 'small' ? 'small' : 'default'}
-					>{content}</Typography
-				>
-			{/if}
+			<Typography {element} {variant}>{content}</Typography>
 		</label>
 		<label class="icon" for={labelFor}>
 			<ChevronDown size={dimension === 'small' ? 16 : 24} />
