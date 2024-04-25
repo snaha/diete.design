@@ -141,6 +141,8 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 		<Option value="strong">Strong button</Option>
 		<Option value="secondary">Outline button</Option>
 		<Option value="ghost">Ghost button</Option>
+		<Option value="overlay">Overlay button</Option>
+		<Option value="darkoverlay">Dark overlay button</Option>
 	</Select>
 
 	<Select bind:value={dimension} placeholder="Button size">
