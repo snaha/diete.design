@@ -53,141 +53,141 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 </script>
 
 {#snippet description()}
-<Typography>
-	There are 9 types of buttons available.
-	<br />
-	→<a href="#choose-a-button-type">Choose a button type</a>
+	<Typography>
+		There are 9 types of buttons available.
+		<br />
+		→<a href="#choose-a-button-type">Choose a button type</a>
 
-	<br />
-	<br />
+		<br />
+		<br />
 
-	Each button is available in 4 sizes: Default, Large, Compact and Small.
-	<br />
-	→<a href="#about-sizes">About sizes</a>
+		Each button is available in 4 sizes: Default, Large, Compact and Small.
+		<br />
+		→<a href="#about-sizes">About sizes</a>
 
-	<br />
-	<br />
+		<br />
+		<br />
 
-	Different button types and sizes can be combined on the same screen to create hierarchy and
-	direct attention to the most important actions.
+		Different button types and sizes can be combined on the same screen to create hierarchy and
+		direct attention to the most important actions.
 
-	<br />
-	<br />
+		<br />
+		<br />
 
-	Overlay buttons should be used to display a button floating over content (image or text for
-	example).
-</Typography>
+		Overlay buttons should be used to display a button floating over content (image or text for
+		example).
+	</Typography>
 {/snippet}
 
 {#snippet examples()}
-<p class="example-row">
-	<Typography variant="small" bold>1. Strong button</Typography>
-	<Button variant="strong">Strong button</Button>
-	<Button variant="strong"><Checkmark size={24} />Confirm</Button>
-	<Button variant="strong">Proceed<ArrowRight size={24} /></Button>
-</p>
+	<p class="example-row">
+		<Typography variant="small" bold>1. Strong button</Typography>
+		<Button variant="strong">Strong button</Button>
+		<Button variant="strong"><Checkmark size={24} />Confirm</Button>
+		<Button variant="strong">Proceed<ArrowRight size={24} /></Button>
+	</p>
 
-<p class="example-row">
-	<Typography variant="small" bold>2. Outline button</Typography>
-	<Button variant="secondary">Button</Button>
-	<Button variant="secondary"><Close size={24} />Cancel</Button>
-	<Button variant="secondary">Next<ArrowRight size={24} /></Button>
-</p>
+	<p class="example-row">
+		<Typography variant="small" bold>2. Outline button</Typography>
+		<Button variant="secondary">Button</Button>
+		<Button variant="secondary"><Close size={24} />Cancel</Button>
+		<Button variant="secondary">Next<ArrowRight size={24} /></Button>
+	</p>
 
-<p class="example-row">
-	<Typography variant="small" bold>3. Ghost button</Typography>
-	<Button variant="ghost">Ghost button</Button>
-	<Button variant="ghost"><Information size={24} />Info</Button>
-	<Button variant="ghost">More<ChevronRight size={24} /></Button>
-</p>
+	<p class="example-row">
+		<Typography variant="small" bold>3. Ghost button</Typography>
+		<Button variant="ghost">Ghost button</Button>
+		<Button variant="ghost"><Information size={24} />Info</Button>
+		<Button variant="ghost">More<ChevronRight size={24} /></Button>
+	</p>
 
-<p class="example-row">
-	<Typography variant="small" bold>4. Strong icon button</Typography>
-	<Button variant="strong"><Save size={24} /></Button>
-</p>
+	<p class="example-row">
+		<Typography variant="small" bold>4. Strong icon button</Typography>
+		<Button variant="strong"><Save size={24} /></Button>
+	</p>
 
-<p class="example-row">
-	<Typography variant="small" bold>5. Icon button</Typography>
-	<Button variant="ghost"><OverflowMenuVertical size={24} /></Button>
-</p>
+	<p class="example-row">
+		<Typography variant="small" bold>5. Icon button</Typography>
+		<Button variant="ghost"><OverflowMenuVertical size={24} /></Button>
+	</p>
 
-<p class="example-row">
-	<Typography variant="small" bold>6. Dark overlay button</Typography>
-	<Button variant="darkoverlay">Overlay</Button>
-	<Button variant="darkoverlay"><Checkmark size={24} />Done</Button>
-	<Button variant="darkoverlay">Next<ArrowRight size={24} /></Button>
-</p>
+	<p class="example-row">
+		<Typography variant="small" bold>6. Dark overlay button</Typography>
+		<Button variant="darkoverlay">Overlay</Button>
+		<Button variant="darkoverlay"><Checkmark size={24} />Done</Button>
+		<Button variant="darkoverlay">Next<ArrowRight size={24} /></Button>
+	</p>
 
-<p class="example-row">
-	<Typography variant="small" bold>7. Light overlay button</Typography>
-	<Button variant="overlay">Overlay</Button>
-	<Button variant="overlay"><Launch size={24} />Open</Button>
-	<Button variant="overlay">See all<CaretRight size={24} /></Button>
-</p>
+	<p class="example-row">
+		<Typography variant="small" bold>7. Light overlay button</Typography>
+		<Button variant="overlay">Overlay</Button>
+		<Button variant="overlay"><Launch size={24} />Open</Button>
+		<Button variant="overlay">See all<CaretRight size={24} /></Button>
+	</p>
 
-<p class="example-row">
-	<Typography variant="small" bold>8. Dark overlay icon button</Typography>
-	<Button variant="darkoverlay"><TrashCan size={24} /></Button>
-</p>
+	<p class="example-row">
+		<Typography variant="small" bold>8. Dark overlay icon button</Typography>
+		<Button variant="darkoverlay"><TrashCan size={24} /></Button>
+	</p>
 
-<p class="example-row">
-	<Typography variant="small" bold>8. Light overlay icon button</Typography>
-	<Button variant="overlay"><SidePanelOpen size={24} /></Button>
-</p>
+	<p class="example-row">
+		<Typography variant="small" bold>8. Light overlay icon button</Typography>
+		<Button variant="overlay"><SidePanelOpen size={24} /></Button>
+	</p>
 {/snippet}
 
 {#snippet controls()}
-<Select bind:value={variant} placeholder="Button type">
-	<Option value="strong">Strong button</Option>
-	<Option value="secondary">Outline button</Option>
-	<Option value="ghost">Ghost button</Option>
-</Select>
+	<Select bind:value={variant} placeholder="Button type">
+		<Option value="strong">Strong button</Option>
+		<Option value="secondary">Outline button</Option>
+		<Option value="ghost">Ghost button</Option>
+	</Select>
 
-<Select bind:value={dimension} placeholder="Button size">
-	<Option value="default">Default</Option>
-	<Option value="large">Large</Option>
-	<Option value="compact">Compact</Option>
-	<Option value="small">Small</Option>
-</Select>
+	<Select bind:value={dimension} placeholder="Button size">
+		<Option value="default">Default</Option>
+		<Option value="large">Large</Option>
+		<Option value="compact">Compact</Option>
+		<Option value="small">Small</Option>
+	</Select>
 
-<Switch
-	checked={leftIcon}
-	label="Left icon"
-	onchange={(e) => leftIcon = (e?.target as HTMLInputElement).checked}
-></Switch>
-<Switch
-	checked={rightIcon}
-	label="Right icon"
-	onchange={(e) => rightIcon = (e?.target as HTMLInputElement).checked}
-></Switch>
+	<Switch
+		checked={leftIcon}
+		label="Left icon"
+		onchange={(e) => leftIcon = (e?.target as HTMLInputElement).checked}
+	></Switch>
+	<Switch
+		checked={rightIcon}
+		label="Right icon"
+		onchange={(e) => rightIcon = (e?.target as HTMLInputElement).checked}
+	></Switch>
 {/snippet}
 
 {#snippet preview()}
-<TabBar dimension="small">
-	<TabContent value="Preview">
-		<div class="preview-tabs preview-tab">
-			<Button {variant} {dimension}>
-				{#if leftIcon}
-					<Close size={24} />
-				{/if}
-				Close
-				{#if rightIcon}
-					<Close size={24} />
-				{/if}
-			</Button>
-		</div>
-	</TabContent>
-	<TabContent value="Svelte"
-		><Code language="svelte" code={useCode} class="preview-tab" /></TabContent
-	>
-</TabBar>
+	<TabBar dimension="small">
+		<TabContent value="Preview">
+			<div class="preview-tabs preview-tab">
+				<Button {variant} {dimension}>
+					{#if leftIcon}
+						<Close size={24} />
+					{/if}
+					Close
+					{#if rightIcon}
+						<Close size={24} />
+					{/if}
+				</Button>
+			</div>
+		</TabContent>
+		<TabContent value="Svelte"
+			><Code language="svelte" code={useCode} class="preview-tab" /></TabContent
+		>
+	</TabBar>
 {/snippet}
 
 {#snippet implement()}
-<TabBar dimension="small">
-	<TabContent value="Svelte"><Code language="svelte" code={button} /></TabContent>
-	<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
-</TabBar>
+	<TabBar dimension="small">
+		<TabContent value="Svelte"><Code language="svelte" code={button} /></TabContent>
+		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
+	</TabBar>
 {/snippet}
 
 <ComponentTemplate

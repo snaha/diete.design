@@ -3,19 +3,29 @@
 	import VerticalContainer from '$lib/components/custom/vertical-container.svelte'
 	import type { Snippet } from 'svelte'
 
-    type Props = {
-        name: string
-        tagline: string
-        description: Snippet
-        examples: Snippet
-        controls: Snippet
-        preview: Snippet
-        implement: Snippet
-        choose?: Snippet
-        sizes?: Snippet
-    }
+	type Props = {
+		name: string
+		tagline: string
+		description: Snippet
+		examples: Snippet
+		controls: Snippet
+		preview: Snippet
+		implement: Snippet
+		choose?: Snippet
+		sizes?: Snippet
+	}
 
-    const { name, tagline, description, examples, controls, preview, implement, choose, sizes }: Props = $props()
+	const {
+		name,
+		tagline,
+		description,
+		examples,
+		controls,
+		preview,
+		implement,
+		choose,
+		sizes,
+	}: Props = $props()
 </script>
 
 <section>
@@ -27,10 +37,10 @@
 
 <VerticalContainer>
 	<section class="description">
-        {@render description()}
+		{@render description()}
 	</section>
 	<section class="examples">
-        {@render examples()}
+		{@render examples()}
 	</section>
 </VerticalContainer>
 
@@ -42,11 +52,11 @@
 
 	<VerticalContainer>
 		<section class="controls">
-            {@render controls()}
+			{@render controls()}
 		</section>
 
 		<section class="preview">
-            {@render preview()}
+			{@render preview()}
 		</section>
 	</VerticalContainer>
 </section>
@@ -56,29 +66,29 @@
 <section id="implement">
 	<Typography class="title" variant="h4" bold>Implement</Typography>
 	<div class="title" />
-    {@render implement()}
+	{@render implement()}
 </section>
 
 <hr />
 
 {#if choose}
-<section id="choose-a-button-type">
-	<Typography class="title" variant="h4" bold>Choose a button type</Typography>
-	<div class="title" />
-    {@render choose()}
-</section>
+	<section id="choose-a-button-type">
+		<Typography class="title" variant="h4" bold>Choose a button type</Typography>
+		<div class="title" />
+		{@render choose()}
+	</section>
 
-<hr />
+	<hr />
 {/if}
 
 {#if sizes}
-<section id="about-sizes">
-	<Typography class="title" variant="h4" bold>About sizes</Typography>
-	<div class="title" />
-    {@render sizes()}
-</section>
+	<section id="about-sizes">
+		<Typography class="title" variant="h4" bold>About sizes</Typography>
+		<div class="title" />
+		{@render sizes()}
+	</section>
 
-<hr />
+	<hr />
 {/if}
 
 <section id="footer">
