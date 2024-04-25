@@ -12,12 +12,13 @@
 		labelFor = Math.random().toString(16),
 		dimension = 'default',
 		class: classProp = '',
+		checked = $bindable(),
 		...restProps
 	}: Props = $props()
 </script>
 
 <div class="root {dimension} {classProp}">
-	<input type="checkbox" {...restProps} id={labelFor} />
+	<input type="checkbox" {...restProps} id={labelFor} bind:checked />
 	<label for={labelFor}>{label}</label>
 </div>
 
