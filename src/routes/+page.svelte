@@ -561,13 +561,14 @@
 				<MenuItem href="#typography">Typography</MenuItem>
 			</MenuTitle>
 			<MenuTitle bold content="Opened" open>
-				<MenuItem href="#button">Button</MenuItem>
+				<MenuItem href="#button" disabled>Button</MenuItem>
 				<MenuItem href="#checkbox">Checkbox</MenuItem>
 				<MenuItem href="#radio">Radio button</MenuItem>
 				<MenuItem href="#switch">Switch</MenuItem>
 				<MenuItem href="#typography">Typography</MenuItem>
 			</MenuTitle>
-			<MenuTitle bold content="Disabled" disabled>
+			<MenuTitle bold content="Disabled" disabled />
+			<MenuTitle bold content="Open disabled" open disabled>
 				<MenuItem href="#button">Button</MenuItem>
 				<MenuItem href="#checkbox">Checkbox</MenuItem>
 				<MenuItem href="#radio">Radio button</MenuItem>

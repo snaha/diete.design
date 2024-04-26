@@ -9,24 +9,27 @@
 		open?: boolean
 		bold?: boolean
 		dimension?: Dimension
+		element?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
+		disabled?: boolean
 		content: string
-		element: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
 	}
 	let {
 		open = $bindable(false),
 		bold = false,
 		dimension = 'default',
+		element = 'span',
 		children,
 		content,
-		element,
+		disabled,
 		...restProps
 	}: Props = $props()
 	let labelFor = Math.random().toString(16)
-	const store = withMenuStore(dimension)
+	const store = withMenuStore(dimension, disabled)
 	setContext('menu-store', store)
 
 	$effect(() => {
 		store.size = dimension
+		store.disabled = disabled
 	})
 
 	let variant: 'h4' | 'h6' | 'h5' | 'large' | 'default' | 'small' = $derived.by(() => {
@@ -51,7 +54,7 @@
 </script>
 
 <div class="root {dimension}" {...restProps}>
-	<input type="checkbox" id={labelFor} checked={open} />
+	<input type="checkbox" id={labelFor} checked={open} {disabled} />
 	<div class="wrapper">
 		<label class="title" for={labelFor}>
 			<Typography {element} {variant}>{content}</Typography>
@@ -75,6 +78,7 @@
 		flex-direction: column;
 		position: relative;
 		color: var(--colors-ultra-high);
+		width: 100%;
 		.wrapper {
 			display: flex;
 			flex-direction: row;
@@ -98,6 +102,8 @@
 				grid-template-rows: 0fr;
 				transition: all 0.3s ease-in-out;
 				div {
+					display: flex;
+					flex-direction: column;
 					overflow: hidden;
 				}
 			}
@@ -106,6 +112,10 @@
 			}
 			&:checked + .wrapper > .icon {
 				transform: rotate(-180deg);
+			}
+			&:disabled + .wrapper > label {
+				cursor: not-allowed;
+				opacity: 0.25;
 			}
 		}
 	}

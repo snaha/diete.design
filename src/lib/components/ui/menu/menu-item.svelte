@@ -1,58 +1,22 @@
 <script lang="ts">
 	import { getContext } from 'svelte'
-	import type { HTMLAnchorAttributes } from 'svelte/elements'
-	import type { Dimension, MenuStore } from './menu-store.svelte'
-	interface Props extends HTMLAnchorAttributes {
-		dimensions?: Dimension
-	}
-	let { dimensions, children, ...restProps }: Props = $props()
+	import type { MenuStore } from './menu-store.svelte'
+	import Button, { type Props as ButtonProps } from '../button.svelte'
+	let { dimension,disabled, ...restProps }: ButtonProps = $props()
 
 	const store = getContext<MenuStore>('menu-store')
 </script>
 
-<a {...restProps} class={dimensions ?? store.size}>
-	{#if children}
-		{@render children()}
-	{/if}
-</a>
+<Button
+	class="menu-item"
+	variant="ghost"
+	dimension={dimension ?? store.size}
+	disabled={disabled ?? store.disabled}
+	{...restProps}
+/>
 
 <style lang="postcss">
-	a {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 0.5rem;
-		text-decoration: none;
-		font-family: var(--font-family-sans-serif);
-		color: var(--colors-ultra-high);
-		border-radius: 0.25rem;
-
-		&:active {
-			background: var(--colors-low);
-		}
-	}
-	.default {
-		padding: 0.75rem;
-		font-size: var(--font-size);
-		line-height: var(--line-height);
-		letter-spacing: var(--letter-spacing);
-	}
-	.large {
-		padding: 0.5rem 0.75rem;
-		font-size: var(--font-size-large);
-		line-height: var(--line-height-large);
-		letter-spacing: var(--letter-spacing-large);
-	}
-	.compact {
-		padding: 0.5rem;
-		font-size: var(--font-size);
-		line-height: var(--line-height);
-		letter-spacing: var(--letter-spacing);
-	}
-	.small {
-		padding: 0.25rem 0.5rem;
-		font-size: var(--font-size-small);
-		line-height: var(--line-height-small);
-		letter-spacing: var(--letter-spacing-small);
+	:global(.menu-item) {
+		justify-content: space-between !important;
 	}
 </style>
