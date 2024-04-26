@@ -9,15 +9,8 @@
 </script>
 
 <Button
-	class="menu-item"
 	variant="ghost"
 	dimension={dimension ?? store.size}
 	disabled={disabled ?? store.disabled}
 	{...restProps}
 />
-
-<style lang="postcss">
-	:global(.menu-item) {
-		justify-content: space-between !important;
-	}
-</style>
