@@ -11,7 +11,7 @@
 	interface AnchorElement extends HTMLAnchorAttributes, ButtonProps {
 		href?: HTMLAnchorAttributes['href']
 		type?: never
-		disabled?: never
+		disabled?: boolean
 	}
 
 	interface ButtonElement extends HTMLButtonAttributes, ButtonProps {
@@ -34,22 +34,41 @@
 	}: Props = $props()
 </script>
 
-<svelte:element
-	this={href ? 'a' : 'button'}
-	class={`${dimension} ${variant} ${className}`}
-	{href}
-	class:active
-	{disabled}
-	{...restProps}
->
-	<slot />
-</svelte:element>
+<span class={`root ${className}`} class:disabled>
+	<svelte:element
+		this={href ? 'a' : 'button'}
+		class={`${dimension} ${variant}`}
+		class:active
+		{href}
+		{disabled}
+		{...restProps}
+	>
+		<slot />
+	</svelte:element>
+</span>
 
 <style lang="postcss">
+	.root {
+		display: inline-flex;
+		flex-direction: row;
+		flex-grow: 1;
+		justify-content: stretch;
+		align-items: stretch;
+
+		&.disabled {
+			cursor: not-allowed;
+			opacity: 0.25;
+
+			a,
+			button {
+				pointer-events: none;
+			}
+		}
+	}
 	button,
 	a {
 		display: inline-flex;
-		justify-content: center;
+		justify-content: left;
 		align-items: center;
 		gap: 0.5rem;
 		border-radius: 0.25rem;
@@ -61,10 +80,7 @@
 		font-weight: 400;
 		white-space: nowrap;
 		flex-shrink: 0;
-		&:disabled {
-			cursor: not-allowed;
-			opacity: 0.25;
-		}
+		flex-grow: 1;
 	}
 	.default {
 		min-width: 3rem;
