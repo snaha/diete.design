@@ -46,6 +46,13 @@
 	$effect(() => {
 		value = store.value
 	})
+	$effect(() => {
+		if (!store.open && store.value === undefined) {
+			store.marked = undefined
+		} else {
+			store.marked = store.value
+		}
+	})
 </script>
 
 <div class="root {dimension}">
@@ -63,8 +70,8 @@
 						store.open = true
 					} else {
 						const values = Object.keys(store.labels)
-						const index = store.value ? values.indexOf(store.value) : -1
-						store.value = values[(index + 1) % values.length]
+						const index = store.marked ? values.indexOf(store.marked) : -1
+						store.marked = values[(index + 1) % values.length]
 					}
 					break
 				}
@@ -74,13 +81,22 @@
 						store.open = true
 					} else {
 						const values = Object.keys(store.labels)
-						const index = store.value ? values.indexOf(store.value) : 0
-						if (index - 1 >= 0) store.value = values[index - 1]
-						else store.value = values[values.length - 1]
+						const index = store.marked ? values.indexOf(store.marked) : 0
+						if (index - 1 >= 0) store.marked = values[index - 1]
+						else store.marked = values[values.length - 1]
 					}
 					break
 				}
-				case 'Enter':
+				case 'Enter': {
+					e.preventDefault()
+					if (!store.open) {
+						store.open = true
+					} else {
+						store.value = store.marked
+						store.open = false
+					}
+					break
+				}
 				case 'Escape': {
 					if (store.open) {
 						e.preventDefault()
