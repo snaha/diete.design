@@ -1,24 +1,28 @@
-<script lang="ts">
+<script lang="ts" context="module">
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
 	type Variant = 'strong' | 'secondary' | 'ghost' | 'overlay' | 'darkoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
-	type Props = {
+	type ButtonProps = {
 		variant?: Variant
 		active?: boolean
 		class?: string | null
 		dimension?: Dimension
 	}
-	interface AnchorElement extends HTMLAnchorAttributes, Props {
+	interface AnchorElement extends HTMLAnchorAttributes, ButtonProps {
 		href?: HTMLAnchorAttributes['href']
 		type?: never
 		disabled?: never
 	}
 
-	interface ButtonElement extends HTMLButtonAttributes, Props {
+	interface ButtonElement extends HTMLButtonAttributes, ButtonProps {
 		type?: HTMLButtonAttributes['type']
 		href?: never
 		disabled?: boolean
 	}
+	export type Props = AnchorElement | ButtonElement
+</script>
+
+<script lang="ts">
 	let {
 		dimension = 'default',
 		variant = 'strong',
@@ -27,7 +31,7 @@
 		href,
 		class: className = '',
 		...restProps
-	}: AnchorElement | ButtonElement = $props()
+	}: Props = $props()
 </script>
 
 <svelte:element

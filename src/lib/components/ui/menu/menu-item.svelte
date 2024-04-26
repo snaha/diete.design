@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte'
 	import type { MenuStore } from './menu-store.svelte'
 	import Button, { type Props as ButtonProps } from '../button.svelte'
-	let { dimension,disabled, ...restProps }: ButtonProps = $props()
+	let { dimension, disabled, ...restProps }: ButtonProps = $props()
 
 	const store = getContext<MenuStore>('menu-store')
 </script>
