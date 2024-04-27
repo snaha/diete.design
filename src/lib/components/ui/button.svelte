@@ -1,24 +1,28 @@
-<script lang="ts">
+<script lang="ts" context="module">
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
 	type Variant = 'strong' | 'secondary' | 'ghost' | 'overlay' | 'darkoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
-	type Props = {
+	type ButtonProps = {
 		variant?: Variant
 		active?: boolean
 		class?: string | null
 		dimension?: Dimension
 	}
-	interface AnchorElement extends HTMLAnchorAttributes, Props {
+	interface AnchorElement extends HTMLAnchorAttributes, ButtonProps {
 		href?: HTMLAnchorAttributes['href']
 		type?: never
-		disabled?: never
+		disabled?: boolean
 	}
 
-	interface ButtonElement extends HTMLButtonAttributes, Props {
+	interface ButtonElement extends HTMLButtonAttributes, ButtonProps {
 		type?: HTMLButtonAttributes['type']
 		href?: never
 		disabled?: boolean
 	}
+	export type Props = AnchorElement | ButtonElement
+</script>
+
+<script lang="ts">
 	let {
 		dimension = 'default',
 		variant = 'strong',
@@ -27,25 +31,44 @@
 		href,
 		class: className = '',
 		...restProps
-	}: AnchorElement | ButtonElement = $props()
+	}: Props = $props()
 </script>
 
-<svelte:element
-	this={href ? 'a' : 'button'}
-	class={`${dimension} ${variant} ${className}`}
-	{href}
-	class:active
-	{disabled}
-	{...restProps}
->
-	<slot />
-</svelte:element>
+<span class={`root ${className}`} class:disabled>
+	<svelte:element
+		this={href ? 'a' : 'button'}
+		class={`${dimension} ${variant}`}
+		class:active
+		{href}
+		{disabled}
+		{...restProps}
+	>
+		<slot />
+	</svelte:element>
+</span>
 
 <style lang="postcss">
+	.root {
+		display: inline-flex;
+		flex-direction: row;
+		flex-grow: 1;
+		justify-content: stretch;
+		align-items: stretch;
+
+		&.disabled {
+			cursor: not-allowed;
+			opacity: 0.25;
+
+			a,
+			button {
+				pointer-events: none;
+			}
+		}
+	}
 	button,
 	a {
 		display: inline-flex;
-		justify-content: center;
+		justify-content: left;
 		align-items: center;
 		gap: 0.5rem;
 		border-radius: 0.25rem;
@@ -57,10 +80,7 @@
 		font-weight: 400;
 		white-space: nowrap;
 		flex-shrink: 0;
-		&:disabled {
-			cursor: not-allowed;
-			opacity: 0.25;
-		}
+		flex-grow: 1;
 	}
 	.default {
 		min-width: 3rem;
