@@ -15,6 +15,7 @@
 	$effect(() => {
 		store.registerValue(value, button?.innerText)
 	})
+	let marked = $derived(store.marked === value)
 	let selected = $derived(store.value === value)
 </script>
 
@@ -23,9 +24,15 @@
 	bind:this={button}
 	onclick={() => {
 		if (!store.open) return
+		store.marked = value
 		store.value = value
 	}}
+	onmouseenter={() => {
+		store.marked = value
+	}}
 	class:selected
+	class:marked
+	tabindex="-1"
 	{...restProps}
 >
 	{#if children}
@@ -56,9 +63,12 @@
 		background: transparent;
 		color: var(--colors-ultra-high);
 
+		&.marked:not(:disabled),
+		&.marked:not(:disabled).selected:not(:disabled) {
+			border: 1px solid var(--colors-ultra-high);
+		}
 		&:active:not(:disabled),
-		&.selected:not(:disabled),
-		&:hover {
+		&.selected:not(:disabled) {
 			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
 			color: var(--colors-high);
