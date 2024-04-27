@@ -550,7 +550,8 @@
 		</div>
 	</div>
 </section>
-<section>
+<section id="menu">
+	<Typography variant="h1">Menu</Typography>
 	<div class="row">
 		<div class="col">
 			<MenuTitle bold content="Closed">
