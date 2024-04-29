@@ -29,22 +29,24 @@
 			</MenuTitle>
 		{/if}
 	</div>
-	<div class="content">
+	<div class="right">
 		<div class="header">
 			<div class="dark-mode-button-container">
 				<Button variant="ghost"><Light size={24} /></Button>
 			</div>
 		</div>
 
-		<slot />
+		<div class="content">
+			<slot />
 
-		<section id="footer">
-			<Typography>
-				Made by diete. Source code is available on <a
-					href="https://github.com/diete-design/diete.design">Github</a
-				>.
-			</Typography>
-		</section>
+			<section id="footer">
+				<Typography>
+					Made by diete. Source code is available on <a
+						href="https://github.com/diete-design/diete.design">Github</a
+					>.
+				</Typography>
+			</section>
+		</div>
 	</div>
 </div>
 
@@ -73,15 +75,23 @@
 		transition: background-color 0.25s;
 		transition: min-width 0.25s;
 	}
+	.right {
+		flex-direction: column;
+		display: flex;
+		flex-grow: 1;
+	}
 	.content {
 		margin-left: 16px;
 		margin-right: 16px;
+		margin-bottom: 80px;
+		max-width: 1136px;
 	}
 	.header {
 		height: 80px;
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
+		margin-right: 16px;
 	}
 	.dark-mode-button-container {
 	}
