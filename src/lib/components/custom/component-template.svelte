@@ -48,7 +48,7 @@
 
 <section id="use">
 	<Typography class="title" variant="h4" bold>Use</Typography>
-	<div class="title" />
+	<div class="title-vspace" />
 
 	<VerticalContainer>
 		<section class="controls">
