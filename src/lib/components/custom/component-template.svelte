@@ -65,7 +65,7 @@
 
 <section id="implement">
 	<Typography class="title" variant="h4" bold>Implement</Typography>
-	<div class="title" />
+	<div class="title-vspace" />
 	{@render implement()}
 </section>
 
@@ -74,7 +74,7 @@
 {#if choose}
 	<section id="choose-a-button-type">
 		<Typography class="title" variant="h4" bold>Choose a button type</Typography>
-		<div class="title" />
+		<div class="title-vspace" />
 		{@render choose()}
 	</section>
 
@@ -84,7 +84,7 @@
 {#if sizes}
 	<section id="about-sizes">
 		<Typography class="title" variant="h4" bold>About sizes</Typography>
-		<div class="title" />
+		<div class="title-vspace" />
 		{@render sizes()}
 	</section>
 
@@ -98,7 +98,7 @@
 		font-family: var(--font-family-sans-serif);
 		margin-bottom: 32px;
 	}
-	:global(.title) {
+	.title-vspace {
 		margin-bottom: 32px;
 	}
 	hr {
