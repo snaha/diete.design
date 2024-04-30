@@ -96,22 +96,22 @@
 		display: flex;
 		flex-direction: column;
 		font-family: var(--font-family-sans-serif);
-		margin-bottom: 32px;
+		margin-bottom: var(--double-padding);
 	}
 	.title-vspace {
-		margin-bottom: 32px;
+		margin-bottom: var(--double-padding);
 	}
 	hr {
 		color: var(--colors-low);
 		border-style: solid;
 		border-width: 1px;
 		appearance: none;
-		margin-bottom: 32px;
+		margin-bottom: var(--double-padding);
 	}
 	.examples {
 		background: var(--colors-low);
-		padding: 16px;
-		gap: 16px;
+		padding: var(--padding);
+		gap: var(--padding);
 	}
 	.preview {
 		flex: 1;
@@ -119,6 +119,6 @@
 	.controls {
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: var(--padding);
 	}
 </style>

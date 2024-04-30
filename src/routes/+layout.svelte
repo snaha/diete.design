@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
@@ -7,45 +7,68 @@
 	import '../app.pcss'
 
 	let isMenuOpen = $state(false)
+	let innerWidth: number | undefined = $state()
+
+	const mobileWidth = 700
+
+	function menuOnClick() {
+		// close the menu after a click on mobile
+		if (innerWidth && innerWidth < mobileWidth) {
+			isMenuOpen = false
+		}
+	}
 </script>
 
-<div class="container">
-	<div class="menu-{isMenuOpen ? 'open' : 'closed'}">
-		<div class="menu-button-container">
-			<Button variant="ghost" onclick={() => (isMenuOpen = !isMenuOpen)}>
-				{#if isMenuOpen}
-					<SidePanelCloseFilled size={24} />
-				{:else}
-					<SidePanelOpenFilled size={24} />
-				{/if}
-			</Button>
-		</div>
+<svelte:window bind:innerWidth={innerWidth} />
 
+<div class="menu-button-container">
+	<Button variant={isMenuOpen ? 'ghost' : 'overlay'} onclick={() => (isMenuOpen = !isMenuOpen)}>
 		{#if isMenuOpen}
-			<MenuTitle content="Diète" bold></MenuTitle>
-			<MenuTitle content="Elements" bold></MenuTitle>
-			<MenuTitle content="Basic components" bold open>
-				<MenuItem href="/components/button">Button</MenuItem>
-			</MenuTitle>
+			<SidePanelCloseFilled size={24} />
+		{:else}
+			<SidePanelOpenFilled size={24} />
+		{/if}
+	</Button>
+</div>
+
+<div class="dark-mode-button-container">
+	<Button variant="overlay"><Light size={24} /></Button>
+</div>
+
+<div class="container">
+	<div class="menu-{isMenuOpen ? 'open' : 'closed'}-placeholder">
+		{#if isMenuOpen}
+			<div class="menu-header"></div>
+			<div class="menu">
+				<MenuTitle content="Diète" bold>
+					<MenuItem href="/" onclick={menuOnClick}>Intro</MenuItem>
+				</MenuTitle>
+				<MenuTitle content="Elements" bold></MenuTitle>
+				<MenuTitle content="Basic components" bold open>
+					<MenuItem href="/components/button" onclick={menuOnClick}>Button</MenuItem>
+				</MenuTitle>
+			</div>
 		{/if}
 	</div>
 	<div class="right">
-		<div class="header">
-			<div class="dark-mode-button-container">
-				<Button variant="ghost"><Light size={24} /></Button>
+		<div class="header"></div>
+
+		<div class="content-container">
+			<div class="content-margin" />
+
+			<div class="content">
+				<slot />
+
+				<section id="footer">
+					<Typography>
+						Made by diete. Source code is available on <a
+							href="https://github.com/diete-design/diete.design">Github</a
+						>.
+					</Typography>
+				</section>
 			</div>
-		</div>
 
-		<div class="content">
-			<slot />
-
-			<section id="footer">
-				<Typography>
-					Made by diete. Source code is available on <a
-						href="https://github.com/diete-design/diete.design">Github</a
-					>.
-				</Typography>
-			</section>
+			<div class="content-margin" />
 		</div>
 	</div>
 </div>
@@ -54,45 +77,92 @@
 	:global(body) {
 		margin: 0;
 	}
+	:root {
+		--header-size: 80px;
+		--sidebar-size: 238px;
+		--max-content-width: 1136px;
+	}
 	.container {
 		display: flex;
 		flex-direction: row;
 	}
 	.menu-button-container {
-		padding-left: 16px;
-		padding-top: 16px;
-		padding-bottom: 16px;
+		position: fixed;
+		left: var(--padding);
+		top: var(--padding);
+		z-index: 100;
 	}
-	.menu-open {
+	.dark-mode-button-container {
+		position: fixed;
+		right: var(--padding);
+		top: var(--padding);
+		z-index: 100;
+	}
+	.menu {
+		position: fixed;
+		top: var(--header-size);
+		left: 0px;
+		bottom: 0px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		min-width: var(--sidebar-size);
 		background-color: var(--colors-low);
-		min-width: 238px;
+	}
+	.menu-header {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		height: var(--header-size);
+		min-width: var(--sidebar-size);
+		background-color: var(--colors-low);
+	}
+	.menu-open-placeholder {
+		background-color: var(--colors-low);
+		min-width: var(--sidebar-size);
+		transition: background-color 0.25s;
+		transition: min-width 0.25s;
+		margin-top: var(--header-size);
+	}
+	.menu-closed-placeholder {
+		background-color: var(--colors-base);
+		min-width: 0px;
 		transition: background-color 0.25s;
 		transition: min-width 0.25s;
 	}
-	.menu-closed {
-		background-color: var(--colors-base);
-		min-width: 136px;
-		transition: background-color 0.25s;
-		transition: min-width 0.25s;
+	@media only screen and (max-device-width: 700px) {
+		.menu-open-placeholder {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			bottom: 0px;
+			transition: none;
+			background-color: var(--colors-low);
+			z-index: 1;
+		}
+		.menu-closed-placeholder {
+			background-color: var(--colors-base);
+			min-width: 0px;
+			transition: none;
+		}
 	}
 	.right {
 		flex-direction: column;
 		display: flex;
 		flex-grow: 1;
 	}
+	.content-container {
+		display: flex;
+		flex-direction: row;
+	}
+	.content-margin {
+		min-width: var(--padding);
+		flex-grow: 1;
+	}
 	.content {
-		margin-left: 16px;
-		margin-right: 16px;
-		margin-bottom: 80px;
-		max-width: 1136px;
+		margin-bottom: var(--header-size);
+		max-width: var(--max-content-width);
 	}
 	.header {
-		height: 80px;
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		margin-right: 16px;
-	}
-	.dark-mode-button-container {
+		height: var(--header-size);
 	}
 </style>

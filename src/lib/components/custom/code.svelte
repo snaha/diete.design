@@ -62,6 +62,7 @@
 		background: var(--colors-top);
 		position: relative;
 		max-height: 50vh;
+		max-width: calc(100vw - var(--double-padding));
 	}
 
 	.inside {
@@ -69,15 +70,17 @@
 		align-self: stretch;
 		flex-grow: 1;
 		overflow: auto;
+		display: flex;
 	}
 
 	.copy-button {
 		position: absolute;
-		top: 16px;
-		right: 16px;
+		top: var(--padding);
+		right: var(--padding);
 		color: var(--colors-base);
 		z-index: 1;
 	}
+
 	:global(.highlight) {
 		margin: 0;
 	}
