@@ -119,15 +119,13 @@
 	.menu-open-placeholder {
 		background-color: var(--colors-low);
 		min-width: var(--sidebar-size);
-		transition: background-color 0.25s;
-		transition: min-width 0.25s;
+		transition: background-color 0.25s, min-width 0.25s;
 		margin-top: var(--header-size);
 	}
 	.menu-closed-placeholder {
 		background-color: var(--colors-base);
 		min-width: 0px;
-		transition: background-color 0.25s;
-		transition: min-width 0.25s;
+		transition: background-color 0.25s, min-width 0.25s;
 	}
 	@media only screen and (max-device-width: 700px) {
 		.menu-open-placeholder {
