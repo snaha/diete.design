@@ -20,7 +20,7 @@
 </script>
 
 <button
-	class="ghost {className} {store.size}"
+	class="ghost {store.size} {className}"
 	bind:this={button}
 	onclick={() => {
 		if (!store.open) return
