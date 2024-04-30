@@ -59,7 +59,7 @@
 		function closeMenu() {
 			if (store.open) store.open = false
 		}
-		
+
 		window.addEventListener('click', closeMenu)
 
 		return () => {
