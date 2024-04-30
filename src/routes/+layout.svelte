@@ -77,6 +77,11 @@
 	:global(body) {
 		margin: 0;
 	}
+	:root {
+		--header-size: 80px;
+		--sidebar-size: 238px;
+		--max-content-width: 1136px;
+	}
 	.container {
 		--header-size: 80px;
 		--sidebar-size: 238px;
