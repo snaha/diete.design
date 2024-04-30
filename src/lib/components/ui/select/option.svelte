@@ -30,6 +30,13 @@
 	onmouseenter={() => {
 		store.marked = value
 	}}
+	onmouseleave={() => {
+		if (store.value) {
+			store.marked = store.value
+		} else {
+			store.marked = undefined
+		}
+	}}
 	class:selected
 	class:marked
 	tabindex="-1"

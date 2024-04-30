@@ -104,7 +104,12 @@
 					} else {
 						const values = Object.keys(store.labels)
 						const index = store.marked ? values.indexOf(store.marked) : -1
-						store.marked = values[(index + 1) % values.length]
+						if (!expandedTop) {
+							store.marked = values[(index + 1) % values.length]
+						} else {
+							if (index - 1 >= 0) store.marked = values[index - 1]
+							else store.marked = values[values.length - 1]
+						}
 					}
 					break
 				}
@@ -115,8 +120,10 @@
 					} else {
 						const values = Object.keys(store.labels)
 						const index = store.marked ? values.indexOf(store.marked) : 0
-						if (index - 1 >= 0) store.marked = values[index - 1]
-						else store.marked = values[values.length - 1]
+						if (!expandedTop) {
+							if (index - 1 >= 0) store.marked = values[index - 1]
+							else store.marked = values[values.length - 1]
+						} else store.marked = values[(index + 1) % values.length]
 					}
 					break
 				}
@@ -367,6 +374,9 @@
 			top: auto;
 			margin-top: 0;
 			margin-bottom: calc(var(--select-height) + 0.25rem);
+			div {
+				flex-direction: column-reverse;
+			}
 		}
 
 		div {
