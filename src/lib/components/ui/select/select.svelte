@@ -24,6 +24,33 @@
 	const store = withSelectStore(dimension, value)
 	setContext('select-store', store)
 
+	let select: HTMLInputElement | undefined = $state(undefined)
+	let options: HTMLDivElement | undefined = $state(undefined)
+	let selectHeight: number = $state(0)
+	let windowHeight: number = $state(0)
+	let optionsHeight: number = $state(0)
+	let expandedTop: boolean = $state(false)
+	$effect(() => {
+		options?.style.setProperty('--select-height', `${selectHeight.toString()}px`)
+	})
+	$effect(() => {
+		function canExpandBottom() {
+			if (select) {
+				const selectBottom = select.getBoundingClientRect().bottom
+				if (windowHeight - selectBottom < optionsHeight) {
+					expandedTop = true
+				} else {
+					expandedTop = false
+				}
+			}
+		}
+
+		select?.addEventListener('click', canExpandBottom)
+		return () => {
+			select?.removeEventListener('click', canExpandBottom)
+		}
+	})
+
 	// Close the select when user clicks outside
 	$effect(() => {
 		function closeMenu() {
@@ -55,8 +82,11 @@
 	})
 </script>
 
+<svelte:window bind:innerHeight={windowHeight} />
 <div class="root {dimension}">
 	<input
+		bind:offsetHeight={selectHeight}
+		bind:this={select}
 		value={store.value ? store.labels[store.value] ?? store.value : value}
 		class="select"
 		onclick={() => {
@@ -122,7 +152,14 @@
 	</label>
 	<div class="wrapper">
 		{#if children}
-			<div class="options" class:hidden={!store.open}>
+			<div class="options height" bind:offsetHeight={optionsHeight}>
+				<div>
+					{@render children()}
+				</div>
+			</div>
+		{/if}
+		{#if children}
+			<div class="options" class:hidden={!store.open} class:expandedTop bind:this={options}>
 				<div>
 					{@render children()}
 				</div>
@@ -138,6 +175,7 @@
 
 <style lang="postcss">
 	.root {
+		--select-height: 0;
 		font-family: var(--font-family-sans-serif);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
@@ -322,6 +360,12 @@
 		z-index: 1;
 		width: 100%;
 		margin-top: 0.25rem;
+		&.expandedTop {
+			bottom: 100%;
+			top: auto;
+			margin-top: 0;
+			margin-bottom: calc(var(--select-height) + 0.25rem);
+		}
 
 		div {
 			border: 1px solid var(--colors-low);
@@ -332,6 +376,10 @@
 			justify-content: stretch;
 			align-items: stretch;
 		}
+	}
+	.height {
+		opacity: 0;
+		z-index: -1;
 	}
 	.hidden {
 		display: none;
