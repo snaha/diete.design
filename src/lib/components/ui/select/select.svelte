@@ -17,6 +17,7 @@
 		dimension = 'default',
 		placeholder,
 		value = $bindable(),
+		class: className = '',
 		children,
 		...restProps
 	}: Props = $props()
@@ -55,7 +56,7 @@
 	})
 </script>
 
-<div class="root {dimension}">
+<div class="root {dimension} {className}">
 	<input
 		value={store.value ? store.labels[store.value] ?? store.value : value}
 		class="select"

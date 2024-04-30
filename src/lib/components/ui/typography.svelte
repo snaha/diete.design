@@ -9,7 +9,6 @@
 		font?: Font
 		bold?: boolean
 		italic?: boolean
-		class?: string
 	}
 	type Props = (HTMLAttributes<HTMLHeadingElement> | HTMLAttributes<HTMLParagraphElement>) &
 		CustomProps
@@ -39,7 +38,7 @@
 		font = 'sans',
 		bold = false,
 		italic = false,
-		class: classProp = '',
+		class: className = '',
 		...restProps
 	}: Props = $props()
 </script>
@@ -48,7 +47,7 @@
 	this={element}
 	class:bold
 	class:italic
-	class={`root ${font} ${variant} ${classProp}`}
+	class={`root ${font} ${variant} ${className}`}
 	{...restProps}
 >
 	<slot />

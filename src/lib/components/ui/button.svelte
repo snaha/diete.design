@@ -5,7 +5,6 @@
 	type ButtonProps = {
 		variant?: Variant
 		active?: boolean
-		class?: string | null
 		dimension?: Dimension
 	}
 	interface AnchorElement extends HTMLAnchorAttributes, ButtonProps {

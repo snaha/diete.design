@@ -6,7 +6,7 @@
 	interface Props extends HTMLButtonAttributes {
 		value: string
 	}
-	let { value, children, ...restProps }: Props = $props()
+	let { value, children, class: className = '', ...restProps }: Props = $props()
 
 	const store = getContext<SelectStore>('select-store')
 
@@ -20,7 +20,7 @@
 </script>
 
 <button
-	class="ghost {store.size}"
+	class="ghost {store.size} {className}"
 	bind:this={button}
 	onclick={() => {
 		if (!store.open) return

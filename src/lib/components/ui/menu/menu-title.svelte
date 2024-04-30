@@ -18,9 +18,10 @@
 		bold = false,
 		dimension = 'default',
 		element = 'span',
-		children,
-		content,
 		disabled,
+		content,
+		children,
+		class: className = '',
 		...restProps
 	}: Props = $props()
 	let labelFor = Math.random().toString(16)
@@ -53,7 +54,7 @@
 	})
 </script>
 
-<div class="root {dimension}" {...restProps}>
+<div class="root {dimension} {className}" {...restProps}>
 	<input type="checkbox" id={labelFor} checked={open} {disabled} />
 	<div class="wrapper">
 		<label class="title" for={labelFor}>
