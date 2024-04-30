@@ -19,7 +19,7 @@
 	}
 </script>
 
-<svelte:window bind:innerWidth={innerWidth} />
+<svelte:window bind:innerWidth />
 
 <div class="menu-button-container">
 	<Button variant={isMenuOpen ? 'ghost' : 'overlay'} onclick={() => (isMenuOpen = !isMenuOpen)}>
