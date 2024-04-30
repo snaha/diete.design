@@ -7,7 +7,6 @@
 		dimension?: Dimension
 		layout?: Layout
 		unit?: string
-		class?: string
 	}
 	let {
 		labelFor = Math.random().toString(16),
@@ -17,13 +16,13 @@
 		layout = 'vertical',
 		unit,
 		type,
-		class: classProp = '',
+		class: className = '',
 		...restProps
 	}: Props = $props()
 </script>
 
 {#if layout == 'vertical'}
-	<div class="root {layout} {dimension} {classProp}">
+	<div class="root {layout} {dimension} {className}">
 		<input id={labelFor} bind:value {placeholder} {type} {...restProps} />
 		<label class="label" for={labelFor}>
 			{placeholder}
@@ -36,7 +35,7 @@
 		</div>
 	</div>
 {:else}
-	<div class="root {layout} {dimension} {classProp}">
+	<div class="root {layout} {dimension} {className}">
 		<input id={labelFor} bind:value {placeholder} {type} {...restProps} />
 		<label class="label" for={labelFor}>
 			<slot />

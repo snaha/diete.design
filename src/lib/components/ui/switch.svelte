@@ -5,19 +5,18 @@
 		label: string
 		labelFor?: string
 		dimension?: Dimension
-		class?: string
 	}
 	let {
 		label,
 		labelFor = Math.random().toString(16),
 		dimension = 'default',
-		class: classProp = '',
+		class: className = '',
 		checked = $bindable(),
 		...restProps
 	}: Props = $props()
 </script>
 
-<div class="root {dimension} {classProp}">
+<div class="root {dimension} {className}">
 	<input type="checkbox" {...restProps} id={labelFor} bind:checked />
 	<label for={labelFor}>{label}</label>
 </div>
