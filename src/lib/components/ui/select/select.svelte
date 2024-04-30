@@ -37,16 +37,20 @@
 		function canExpandBottom() {
 			if (select) {
 				const selectBottom = select.getBoundingClientRect().bottom
-				if (windowHeight - selectBottom < optionsHeight) {
-					expandedTop = true
-				} else {
+				if (windowHeight - selectBottom > optionsHeight) {
 					expandedTop = false
+				} else {
+					expandedTop = true
 				}
 			}
 		}
+
+		select?.addEventListener('click', canExpandBottom)
 		window.addEventListener('scroll', canExpandBottom)
+
 		return () => {
 			window.removeEventListener('scroll', canExpandBottom)
+			select?.removeEventListener('click', canExpandBottom)
 		}
 	})
 
@@ -55,7 +59,7 @@
 		function closeMenu() {
 			if (store.open) store.open = false
 		}
-
+		
 		window.addEventListener('click', closeMenu)
 
 		return () => {
@@ -174,7 +178,6 @@
 
 <style lang="postcss">
 	.root {
-		--select-height: 0;
 		font-family: var(--font-family-sans-serif);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
