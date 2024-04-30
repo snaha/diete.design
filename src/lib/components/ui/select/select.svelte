@@ -44,10 +44,9 @@
 				}
 			}
 		}
-
-		select?.addEventListener('click', canExpandBottom)
+		window.addEventListener('scroll', canExpandBottom)
 		return () => {
-			select?.removeEventListener('click', canExpandBottom)
+			window.removeEventListener('scroll', canExpandBottom)
 		}
 	})
 
