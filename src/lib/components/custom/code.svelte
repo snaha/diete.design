@@ -62,6 +62,7 @@
 		background: var(--colors-top);
 		position: relative;
 		max-height: 50vh;
+		min-height: 288px;
 		max-width: calc(100vw - var(--double-padding));
 	}
 
