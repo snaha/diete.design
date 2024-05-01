@@ -105,8 +105,9 @@
 		bottom: 0px;
 		overflow-x: hidden;
 		overflow-y: auto;
-		min-width: var(--sidebar-size);
+		min-width: calc(var(--sidebar-size) - var(--double-padding));
 		background-color: var(--colors-low);
+		padding: var(--padding);
 	}
 	.menu-header {
 		position: fixed;
