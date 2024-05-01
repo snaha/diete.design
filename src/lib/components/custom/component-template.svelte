@@ -66,7 +66,9 @@
 <section id="implement">
 	<Typography class="title" variant="h4" bold>Implement</Typography>
 	<div class="title-vspace" />
-	{@render implement()}
+	<VerticalContainer>
+		{@render implement()}
+	</VerticalContainer>
 </section>
 
 <hr />

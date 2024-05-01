@@ -19,20 +19,25 @@
 	}
 </script>
 
-<ul>
-	{#each store.items as item, i}
-		<li>
-			<Button variant="ghost" active={store.selected === i} {dimension} onclick={() => selectTab(i)}
-				>{item}</Button
-			>
-		</li>
-	{/each}
-</ul>
+<div class="tab-container">
+	<ul>
+		{#each store.items as item, i}
+			<li>
+				<Button
+					variant="ghost"
+					active={store.selected === i}
+					{dimension}
+					onclick={() => selectTab(i)}>{item}</Button
+				>
+			</li>
+		{/each}
+	</ul>
 
-<div id="tab">
-	{#if children}
-		{@render children()}
-	{/if}
+	<div class="tab-content">
+		{#if children}
+			{@render children()}
+		{/if}
+	</div>
 </div>
 
 <style>
@@ -44,5 +49,9 @@
 		margin-bottom: 16px;
 		list-style: none;
 		gap: 16px;
+	}
+	.tab-container {
+		display: flex;
+		flex-direction: column;
 	}
 </style>
