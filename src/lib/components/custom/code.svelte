@@ -62,10 +62,7 @@
 		background: var(--colors-top);
 		position: relative;
 		max-height: 50vh;
-<<<<<<< HEAD
 		min-height: 288px;
-=======
->>>>>>> 894a817 (feat: responsive layout / mobile support)
 		max-width: calc(100vw - var(--double-padding));
 	}
 
