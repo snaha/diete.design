@@ -36,7 +36,7 @@
 <div class="dark-mode-button-container">
 	<Dropdown left>
 		<Button variant="overlay" slot="button"><Light size={24} /></Button>
-		<ThemeSelector/>
+		<ThemeSelector />
 	</Dropdown>
 </div>
 

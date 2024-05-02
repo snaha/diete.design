@@ -3,7 +3,7 @@ import { writable, type Writable } from 'svelte/store'
 
 interface Theme {
 	baseColor: string
-    isDarkMode: boolean
+	isDarkMode: boolean
 }
 
 interface ThemeStore extends Writable<Theme> {
@@ -12,15 +12,15 @@ interface ThemeStore extends Writable<Theme> {
 
 function createThemeStore(): ThemeStore {
 	const baseColor = '#fefefe'
-    const isDarkMode = false
+	const isDarkMode = false
 	const store = writable<Theme>({ baseColor, isDarkMode })
 
 	return {
 		...store,
 		setColor: (newColor: string, newMode: boolean) => {
 			store.update((theme) => ({ ...theme, baseColor: newColor, isDarkMode: newMode }))
-            changeColors(newColor, newMode)
-		}
+			changeColors(newColor, newMode)
+		},
 	}
 }
 

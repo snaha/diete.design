@@ -1,15 +1,11 @@
 <script lang="ts">
-    type Props = {
-        disabled?: boolean
-        up?: boolean
-        left?: boolean
-    }
+	type Props = {
+		disabled?: boolean
+		up?: boolean
+		left?: boolean
+	}
 
-    let {
-        disabled = false,
-        up = false,
-        left = false,
-    }: Props = $props()
+	let { disabled = false, up = false, left = false }: Props = $props()
 
 	let showDropdown = $state(false)
 	let dropdownElement: HTMLElement
@@ -66,7 +62,7 @@
 			aria-labelledby="dropdown-button"
 		>
 			<slot />
-        </div>
+		</div>
 	</div>
 </div>
 
