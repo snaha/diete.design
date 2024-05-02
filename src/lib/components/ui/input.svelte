@@ -11,7 +11,7 @@
 	let {
 		labelFor = Math.random().toString(16),
 		placeholder,
-		value,
+		value = $bindable(),
 		dimension = 'default',
 		layout = 'vertical',
 		unit,

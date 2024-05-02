@@ -29,6 +29,9 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^7.5.0
     version: 7.5.0(eslint@8.57.0)(typescript@5.4.4)
+  '@waku-objects/luminance':
+    specifier: ^2.0.1
+    version: 2.0.1
   autoprefixer:
     specifier: ^10.4.19
     version: 10.4.19(postcss@8.4.38)
@@ -867,6 +870,10 @@ packages:
       estree-walker: 3.0.3
       loupe: 2.3.7
       pretty-format: 29.7.0
+    dev: true
+
+  /@waku-objects/luminance@2.0.1:
+    resolution: {integrity: sha512-/zmMsR9nXXzV5uwpMYxOjMzSOOyQFi6vqMuPBkvF0+XCnOHXFR6y/ONX2DeBkMLkvoueDG8rwADvZpyyvU3bWA==}
     dev: true
 
   /acorn-jsx@5.3.2(acorn@8.11.3):

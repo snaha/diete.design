@@ -39,6 +39,7 @@
 		"@types/eslint": "^8.56.7",
 		"@typescript-eslint/eslint-plugin": "^7.5.0",
 		"@typescript-eslint/parser": "^7.5.0",
+		"@waku-objects/luminance": "^2.0.1",
 		"autoprefixer": "^10.4.19",
 		"carbon-icons-svelte": "^12.6.0",
 		"eslint": "^8.57.0",
