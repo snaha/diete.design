@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Select from '../ui/select/select.svelte'
-	import Option from '../ui/select/option.svelte'
 	import Input from '../ui/input.svelte'
+	import Radio from '../ui/radio.svelte'
 	import { ColorPalette } from 'carbon-icons-svelte'
 	import { theme } from '$lib/stores/theme'
 	import { calculateLuminance } from '@waku-objects/luminance'
+	import Typography from '../ui/typography.svelte'
 
-	type Mode = 'light' | 'dark'
+	type Mode = 'light' | 'dark' | 'auto'
 
 	let baseColor = $state($theme.baseColor)
 	let mode: Mode = $state($theme.isDarkMode ? 'dark' : 'light')
@@ -27,10 +27,13 @@
 </script>
 
 <div class="theme-selector">
-	<Select bind:value={mode} placeholder="Appearance">
-		<Option value="light">Light</Option>
-		<Option value="dark">Dark</Option>
-	</Select>
+	<Typography>Appearance</Typography>
+	<div class="container">
+		<Radio label="Light" name="light" checked={mode === 'light'} onclick={() => (mode = 'light')} />
+		<Radio label="Dark" name="dark" checked={mode === 'dark'} onclick={() => (mode = 'dark')} />
+		<Radio label="Auto" name="auto" checked={mode === 'auto'} onclick={() => (mode = 'auto')} />
+	</div>
+
 	<div class="container">
 		<div class="grow">
 			<Input bind:value={baseColor} type="text" placeholder="RGB color code" />
@@ -59,7 +62,7 @@
 	.container {
 		display: flex;
 		flex-direction: row;
-		justify-content: center;
+		justify-content: stretch;
 		align-items: center;
 		gap: var(--padding);
 	}
