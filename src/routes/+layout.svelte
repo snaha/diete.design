@@ -77,12 +77,11 @@
 	:global(body) {
 		margin: 0;
 	}
-	:root {
+	.container {
 		--header-size: 80px;
 		--sidebar-size: 238px;
 		--max-content-width: 1136px;
-	}
-	.container {
+
 		display: flex;
 		flex-direction: row;
 	}
