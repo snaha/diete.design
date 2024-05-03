@@ -102,7 +102,6 @@
 		border-radius: var(--border-radius);
 		border: none;
 	}
-
 	.palette-icon {
 		position: absolute;
 		inset: 50% auto auto 50%;
@@ -114,7 +113,6 @@
 			fill: inherit;
 		}
 	}
-
 	.palette-overlay {
 		position: absolute;
 		inset: 50% auto auto 50%;
