@@ -5,24 +5,24 @@
 	import { theme } from '$lib/stores/theme'
 	import { calculateLuminance } from '@waku-objects/luminance'
 	import Typography from '../ui/typography.svelte'
-
-	type Mode = 'light' | 'dark' | 'auto'
+	import { getEffectiveColorMode, type Mode } from '$lib/utils/colors'
 
 	let baseColor = $state($theme.baseColor)
-	let mode: Mode = $state($theme.isDarkMode ? 'dark' : 'light')
+	let mode: Mode = $state($theme.mode)
+	let effectiveMode: Mode = $derived(getEffectiveColorMode(mode))
+
 	let fill = $derived(
 		calculateLuminance(baseColor) > 0.5
-			? mode === 'dark'
+			? effectiveMode === 'dark'
 				? 'fill: var(--colors-base)'
 				: 'fill: var(--colors-top)'
-			: mode === 'dark'
+			: effectiveMode === 'dark'
 				? 'fill: var(--colors-top)'
 				: 'fill: var(--colors-base)',
 	)
 
 	$effect(() => {
-		const isDarkMode = mode === 'dark' ? true : false
-		theme.setColor(baseColor, isDarkMode)
+		theme.setColor(baseColor, mode)
 	})
 </script>
 
@@ -31,12 +31,17 @@
 	<div class="container">
 		<Radio label="Light" name="light" checked={mode === 'light'} onclick={() => (mode = 'light')} />
 		<Radio label="Dark" name="dark" checked={mode === 'dark'} onclick={() => (mode = 'dark')} />
-		<Radio label="Auto" name="auto" checked={mode === 'auto'} onclick={() => (mode = 'auto')} />
+		<Radio
+			label="Auto"
+			name="system"
+			checked={mode === 'system'}
+			onclick={() => (mode = 'system')}
+		/>
 	</div>
 
 	<div class="container">
 		<div class="grow">
-			<Input bind:value={baseColor} type="text" placeholder="RGB color code" />
+			<Input bind:value={baseColor} type="text" placeholder="Accent color (hex)" />
 		</div>
 		<label>
 			<div class="palette-overlay" />

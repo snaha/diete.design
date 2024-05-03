@@ -1,4 +1,8 @@
 import { getClosestColor } from '@waku-objects/luminance'
+import { browser } from '$app/environment'
+
+export type Mode = 'light' | 'dark' | 'system'
+export type EffectiveMode = 'light' | 'dark'
 
 interface Color {
 	name: string
@@ -60,22 +64,37 @@ const lightColorVars: Color[] = [
 ]
 
 export function changeColors(baseColor: string, isDarkMode: boolean) {
+	if (!browser) {
+		return
+	}
+
 	const colors = isDarkMode ? darkColorVars : lightColorVars
 	const targetPrecision = 0.001
 
 	colors.forEach(({ name, luminance }) => {
 		const color = getClosestColor(baseColor, luminance, targetPrecision)
 		document.documentElement.style.setProperty(name, color)
-		console.debug({ name, color })
 	})
 
 	const darkOverlay = getClosestColor(baseColor, colors.slice(-1)[0].luminance, targetPrecision)
 	const darkOpacity = Math.round(256 * (isDarkMode ? 0.95 : 0.7)).toString(16)
 	document.documentElement.style.setProperty('--colors-dark-overlay', darkOverlay + darkOpacity)
-	console.debug({ darkOverlay, darkOpacity })
 
 	const baseOverlay = getClosestColor(baseColor, colors[0].luminance, targetPrecision)
 	const baseOpacity = Math.round(256 * (isDarkMode ? 0.7 : 0.95)).toString(16)
 	document.documentElement.style.setProperty('--colors-base-overlay', baseOverlay + baseOpacity)
-	console.debug({ baseOverlay, baseOpacity })
+}
+
+export function isDarkSchemePreferred() {
+	if (!browser) {
+		return false
+	}
+	return window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches ?? false
+}
+
+export function getEffectiveColorMode(mode: Mode): EffectiveMode {
+	if (mode === 'dark' || mode === 'light') {
+		return mode
+	}
+	return isDarkSchemePreferred() ? 'dark' : 'light'
 }
