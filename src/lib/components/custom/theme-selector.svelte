@@ -108,10 +108,9 @@
 		transform: translate(-50%, -50%);
 		line-height: 0;
 		fill: var(--colors-top);
-
-		:global(svg) {
-			fill: inherit;
-		}
+	}
+	.palette-icon :global(svg) {
+		fill: inherit;
 	}
 	.palette-overlay {
 		position: absolute;
