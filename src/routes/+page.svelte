@@ -437,7 +437,7 @@
 		<div class="col">
 			<Select placeholder="Select label">
 				{#snippet helperText()}
-					<span>Without any default value.</span>
+					Without any default value.
 				{/snippet}
 				<Option value="1">Label 1</Option>
 				<Option value="2">Label 2</Option>
