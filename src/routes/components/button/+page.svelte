@@ -139,11 +139,15 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 {/snippet}
 
 {#snippet helperTextButtonType()}
-	<Typography variant="small">More info on button types: <a href="#choose-a-button-type">Choose a button type</a></Typography>
+	<Typography variant="small"
+		>More info on button types: <a href="#choose-a-button-type">Choose a button type</a></Typography
+	>
 {/snippet}
 
 {#snippet helperTextButtonSizes()}
-	<Typography variant="small">Learn more about button size: <a href="#button-sizes">About sizes</a></Typography>
+	<Typography variant="small"
+		>Learn more about button size: <a href="#button-sizes">About sizes</a></Typography
+	>
 {/snippet}
 
 {#snippet controls()}
@@ -195,11 +199,11 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 {/snippet}
 
 {#snippet choose()}
-<Typography></Typography>
+	<Typography></Typography>
 {/snippet}
 
 {#snippet sizes()}
-<Typography></Typography>
+	<Typography></Typography>
 {/snippet}
 
 <ComponentTemplate
