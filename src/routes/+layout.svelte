@@ -5,6 +5,8 @@
 	import Button from '$lib/components/ui/button.svelte'
 	import { Light, SidePanelCloseFilled, SidePanelOpenFilled } from 'carbon-icons-svelte'
 	import '../app.pcss'
+	import Dropdown from '$lib/components/custom/dropdown.svelte'
+	import ThemeSelector from '$lib/components/custom/theme-selector.svelte'
 
 	let isMenuOpen = $state(false)
 	let innerWidth: number | undefined = $state()
@@ -32,7 +34,10 @@
 </div>
 
 <div class="dark-mode-button-container">
-	<Button variant="overlay"><Light size={24} /></Button>
+	<Dropdown left>
+		<Button variant="overlay" slot="button"><Light size={24} /></Button>
+		<ThemeSelector />
+	</Dropdown>
 </div>
 
 <div class="container">
@@ -74,9 +79,6 @@
 </div>
 
 <style lang="postcss">
-	:global(body) {
-		margin: 0;
-	}
 	.container {
 		--header-size: 80px;
 		--sidebar-size: 238px;
