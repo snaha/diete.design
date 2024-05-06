@@ -139,15 +139,11 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 {/snippet}
 
 {#snippet helperTextButtonType()}
-	<Typography variant="small"
-		>More info on button types: <a href="#choose-a-button-type">Choose a button type</a></Typography
-	>
+	More info on button types: <a href="#choose-a-button-type">Choose a button type</a>
 {/snippet}
 
 {#snippet helperTextButtonSizes()}
-	<Typography variant="small"
-		>Learn more about button size: <a href="#button-sizes">About sizes</a></Typography
-	>
+	Learn more about button size: <a href="#button-sizes">About sizes</a>
 {/snippet}
 
 {#snippet controls()}
