@@ -33,14 +33,16 @@
 			if (store.open) store.open = false
 		}
 
-		window.addEventListener('click', closeMenu)
-		window.addEventListener('keydown', (e) => {
+		function closeMenuKeyboard(e: KeyboardEvent) {
 			if (e.key === 'Tab') closeMenu()
-		})
+		}
+
+		window.addEventListener('click', closeMenu)
+		window.addEventListener('keydown', closeMenuKeyboard)
 
 		return () => {
 			window.removeEventListener('click', closeMenu)
-			window.removeEventListener('keydown', closeMenu)
+			window.removeEventListener('keydown', closeMenuKeyboard)
 		}
 	})
 
