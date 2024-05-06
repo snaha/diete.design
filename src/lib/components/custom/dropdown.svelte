@@ -56,7 +56,9 @@
 
 	<div class={`root`} aria-hidden={!showDropdown}>
 		<div
-			class={`${showDropdown ? '' : 'hidden'} ${up ? 'up' : ''} ${left ? 'left' : ''}`}
+			class:hidden={!showDropdown}
+			class:up
+			class:left
 			id={dropdownId}
 			role="listbox"
 			aria-labelledby="dropdown-button"
