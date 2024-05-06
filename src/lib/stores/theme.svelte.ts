@@ -13,7 +13,7 @@ function updateColors(baseColor: string, mode: Mode) {
 
 export function withThemeStore(): Theme {
 	let baseColor = $state('#fefefe')
-	let mode = $state('system') as Mode
+	let mode: Mode = $state('system')
 
 	return {
 		get baseColor() {
