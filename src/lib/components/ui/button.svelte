@@ -50,7 +50,7 @@
 	.root {
 		display: inline-flex;
 		flex-direction: row;
-		flex-grow: 1;
+		flex-grow: 0;
 		justify-content: stretch;
 		align-items: stretch;
 
