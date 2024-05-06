@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { HTMLInputAttributes } from 'svelte/elements'
 	import { CaretDown, CaretUp } from 'carbon-icons-svelte'
-	import { setContext } from 'svelte'
+	import { setContext, type Snippet } from 'svelte'
 	import { withSelectStore } from './select-store.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
-		helperText?: string
+		helperText?: Snippet
 		labelFor?: string
 		dimension?: Dimension
 		value?: string
@@ -148,7 +148,7 @@
 	</div>
 	{#if helperText}
 		<div class="helper-text">
-			{helperText}
+			{@render helperText()}
 		</div>
 	{/if}
 </div>
