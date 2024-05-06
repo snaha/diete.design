@@ -79,18 +79,6 @@
 </div>
 
 <style lang="postcss">
-	:global(body) {
-		margin: 0;
-		background-color: var(--colors-base);
-	}
-	:global(a) {
-		color: var(--colors-top);
-	}
-	:root {
-		--header-size: 80px;
-		--sidebar-size: 238px;
-		--max-content-width: 1136px;
-	}
 	.container {
 		--header-size: 80px;
 		--sidebar-size: 238px;
