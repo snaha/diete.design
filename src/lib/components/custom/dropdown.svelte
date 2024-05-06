@@ -91,7 +91,6 @@
 			}
 
 			&.left {
-				/* inset: auto auto 50px 0; */
 				top: 4px;
 				right: 0;
 				bottom: auto;
