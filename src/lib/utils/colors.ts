@@ -66,7 +66,7 @@ const lightColorVars: Color[] = [
 function invertColors(colors: Color[]): Color[] {
 	return colors.map((color, i) => ({
 		name: color.name,
-		luminance: lightColorVars[lightColorVars.length - 1 - i].luminance,
+		luminance: colors[colors.length - 1 - i].luminance,
 	}))
 }
 
