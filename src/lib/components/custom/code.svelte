@@ -59,7 +59,7 @@
 		justify-content: stretch;
 		align-items: stretch;
 		isolation: isolate;
-		background: var(--colors-top);
+		background: var(--colors-dark-base);
 		position: relative;
 		max-height: 50vh;
 		min-height: 288px;
@@ -67,7 +67,7 @@
 	}
 
 	.inside {
-		background: var(--colors-top);
+		background: var(--colors-dark-base);
 		align-self: stretch;
 		flex-grow: 1;
 		overflow: auto;
@@ -78,7 +78,7 @@
 		position: absolute;
 		top: var(--padding);
 		right: var(--padding);
-		color: var(--colors-base);
+		color: var(--colors-dark-top);
 		z-index: 1;
 	}
 

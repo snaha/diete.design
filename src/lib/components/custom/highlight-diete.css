@@ -40,8 +40,8 @@ code.hljs {
 	padding: 3px 5px;
 }
 .hljs {
-	color: var(--colors-base);
-	background: var(--colors-top);
+	color: var(--colors-dark-top);
+	background: var(--colors-dark-base);
 }
 .hljs::selection,
 .hljs ::selection {

@@ -63,17 +63,32 @@ const lightColorVars: Color[] = [
 	},
 ]
 
+function invertColors(colors: Color[]): Color[] {
+	return colors.map((color, i) => ({
+		name: color.name,
+		luminance: lightColorVars[lightColorVars.length - 1 - i].luminance,
+	}))
+}
+
 export function changeColors(baseColor: string, isDarkMode: boolean) {
 	if (!browser) {
 		return
 	}
 
-	const colors = isDarkMode ? darkColorVars : lightColorVars
 	const targetPrecision = 0.001
 
+	const colors = isDarkMode ? darkColorVars : lightColorVars
 	colors.forEach(({ name, luminance }) => {
 		const color = getClosestColor(baseColor, luminance, targetPrecision)
 		document.documentElement.style.setProperty(name, color)
+	})
+
+	const darkColors = isDarkMode ? darkColorVars : invertColors(lightColorVars)
+
+	darkColors.forEach(({ name, luminance }) => {
+		const darkName = name.replace('--colors', '--colors-dark')
+		const color = getClosestColor(baseColor, luminance, targetPrecision)
+		document.documentElement.style.setProperty(darkName, color)
 	})
 
 	const darkOverlay = getClosestColor(baseColor, colors.slice(-1)[0].luminance, targetPrecision)
