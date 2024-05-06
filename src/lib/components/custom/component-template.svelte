@@ -111,7 +111,7 @@
 		margin-bottom: var(--double-padding);
 	}
 	.examples {
-		background: var(--colors-low);
+		background: var(--colors-ultra-low);
 		padding: var(--padding);
 		gap: var(--padding);
 	}

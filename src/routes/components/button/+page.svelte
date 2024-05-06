@@ -220,7 +220,7 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		background-color: var(--colors-low);
+		background-color: var(--colors-ultra-low);
 	}
 	:global(.preview-tab) {
 		height: 288px;
