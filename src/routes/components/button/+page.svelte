@@ -42,7 +42,9 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 </script` +
 			`>
 
-<Button variant="${variant}" dimension="${dimension}">${leftIcon ? `<Close/>` : ''}Close${rightIcon ? `<Close/>` : ''}</Button>
+<Button variant="${variant}" dimension="${dimension}">
+	${leftIcon ? `<Close/>` : ''}Close${rightIcon ? `<Close/>` : ''}
+</Button>
 `,
 	)
 

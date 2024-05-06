@@ -18,11 +18,6 @@
 	.vertical-container {
 		display: grid;
 		gap: 16px;
-		grid-template-columns: 1fr;
-	}
-	@media only screen and (min-device-width: 961px) {
-		.vertical-container {
-			grid-template-columns: 1fr 1fr;
-		}
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 	}
 </style>

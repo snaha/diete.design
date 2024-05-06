@@ -48,7 +48,7 @@
 
 <section id="use">
 	<Typography class="title" variant="h4" bold>Use</Typography>
-	<div class="title" />
+	<div class="title-vspace" />
 
 	<VerticalContainer>
 		<section class="controls">
@@ -65,8 +65,10 @@
 
 <section id="implement">
 	<Typography class="title" variant="h4" bold>Implement</Typography>
-	<div class="title" />
-	{@render implement()}
+	<div class="title-vspace" />
+	<VerticalContainer>
+		{@render implement()}
+	</VerticalContainer>
 </section>
 
 <hr />
@@ -74,7 +76,7 @@
 {#if choose}
 	<section id="choose-a-button-type">
 		<Typography class="title" variant="h4" bold>Choose a button type</Typography>
-		<div class="title" />
+		<div class="title-vspace" />
 		{@render choose()}
 	</section>
 
@@ -84,7 +86,7 @@
 {#if sizes}
 	<section id="about-sizes">
 		<Typography class="title" variant="h4" bold>About sizes</Typography>
-		<div class="title" />
+		<div class="title-vspace" />
 		{@render sizes()}
 	</section>
 
@@ -96,22 +98,22 @@
 		display: flex;
 		flex-direction: column;
 		font-family: var(--font-family-sans-serif);
-		margin-bottom: 32px;
+		margin-bottom: var(--double-padding);
 	}
-	:global(.title) {
-		margin-bottom: 32px;
+	.title-vspace {
+		margin-bottom: var(--double-padding);
 	}
 	hr {
 		color: var(--colors-low);
 		border-style: solid;
 		border-width: 1px;
 		appearance: none;
-		margin-bottom: 32px;
+		margin-bottom: var(--double-padding);
 	}
 	.examples {
 		background: var(--colors-low);
-		padding: 16px;
-		gap: 16px;
+		padding: var(--padding);
+		gap: var(--padding);
 	}
 	.preview {
 		flex: 1;
@@ -119,6 +121,6 @@
 	.controls {
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: var(--padding);
 	}
 </style>
