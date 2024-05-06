@@ -37,8 +37,7 @@ function initializeTheme() {
 	const theme = withThemeStore()
 
 	// this would be better to do with CSS media queries to avoid initial flash
-	const effectiveMode = getEffectiveColorMode(theme.mode)
-	changeColors(theme.baseColor, effectiveMode === 'dark')
+	updateColors(theme.baseColor, theme.mode)
 
 	if (browser) {
 		const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')

@@ -8,12 +8,10 @@
 	import { getEffectiveColorMode } from '$lib/utils/colors'
 
 	let theme = withThemeStore()
-	let baseColor = $state(theme.baseColor)
-	let mode = $state(theme.mode)
-	let effectiveMode = $derived(getEffectiveColorMode(mode))
+	let effectiveMode = $derived(getEffectiveColorMode(theme.mode))
 
 	let fill = $derived(
-		calculateLuminance(baseColor) > 0.5
+		calculateLuminance(theme.baseColor) > 0.5
 			? effectiveMode === 'dark'
 				? 'fill: var(--colors-base)'
 				: 'fill: var(--colors-top)'
@@ -21,36 +19,41 @@
 				? 'fill: var(--colors-top)'
 				: 'fill: var(--colors-base)',
 	)
-
-	$effect(() => {
-		theme.baseColor = baseColor
-		theme.mode = mode
-	})
 </script>
 
 <div class="theme-selector">
 	<Typography>Appearance</Typography>
 	<div class="container">
-		<Radio label="Light" name="light" checked={mode === 'light'} onclick={() => (mode = 'light')} />
-		<Radio label="Dark" name="dark" checked={mode === 'dark'} onclick={() => (mode = 'dark')} />
+		<Radio
+			label="Light"
+			name="light"
+			checked={theme.mode === 'light'}
+			onclick={() => (theme.mode = 'light')}
+		/>
+		<Radio
+			label="Dark"
+			name="dark"
+			checked={theme.mode === 'dark'}
+			onclick={() => (theme.mode = 'dark')}
+		/>
 		<Radio
 			label="Auto"
 			name="system"
-			checked={mode === 'system'}
-			onclick={() => (mode = 'system')}
+			checked={theme.mode === 'system'}
+			onclick={() => (theme.mode = 'system')}
 		/>
 	</div>
 
 	<div class="container">
 		<div class="grow">
-			<Input bind:value={baseColor} type="text" placeholder="Accent color (hex)" />
+			<Input bind:value={theme.baseColor} type="text" placeholder="Accent color (hex)" />
 		</div>
 		<label>
 			<div class="palette-overlay" />
 			<div class="palette-icon" style={fill}>
 				<ColorPalette size={24} />
 			</div>
-			<input type="color" bind:value={baseColor} id="color" pattern="#(\d{3}|\d{6})" />
+			<input type="color" bind:value={theme.baseColor} id="color" pattern="#(\d{3}|\d{6})" />
 		</label>
 	</div>
 </div>
