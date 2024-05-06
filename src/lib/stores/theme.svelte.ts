@@ -7,8 +7,8 @@ interface Theme {
 }
 
 function updateColors(baseColor: string, mode: Mode) {
-    const effectiveMode = getEffectiveColorMode(mode)
-    changeColors(baseColor, effectiveMode === 'dark')
+	const effectiveMode = getEffectiveColorMode(mode)
+	changeColors(baseColor, effectiveMode === 'dark')
 }
 
 export function withThemeStore(): Theme {
@@ -16,25 +16,25 @@ export function withThemeStore(): Theme {
 	let mode = $state('system') as Mode
 
 	return {
-        get baseColor() {
-            return baseColor
-        },
-        set baseColor(value: string) {
-            baseColor = value
-            updateColors(baseColor, mode)
-        },
-        get mode() {
-            return mode
-        },
-        set mode(value: Mode) {
-            mode = value
-            updateColors(baseColor, mode)
-        }
+		get baseColor() {
+			return baseColor
+		},
+		set baseColor(value: string) {
+			baseColor = value
+			updateColors(baseColor, mode)
+		},
+		get mode() {
+			return mode
+		},
+		set mode(value: Mode) {
+			mode = value
+			updateColors(baseColor, mode)
+		},
 	}
 }
 
 function initializeTheme() {
-    const theme = withThemeStore()
+	const theme = withThemeStore()
 
 	// this would be better to do with CSS media queries to avoid initial flash
 	const effectiveMode = getEffectiveColorMode(theme.mode)
@@ -44,11 +44,11 @@ function initializeTheme() {
 		const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')
 		// recommended method for newer browsers: specify event-type as first argument
 		darkModePreference.addEventListener('change', () => {
-            if (theme.mode !== 'system') {
-                return
-            }
-            updateColors(theme.baseColor, theme.mode)
-        })
+			if (theme.mode !== 'system') {
+				return
+			}
+			updateColors(theme.baseColor, theme.mode)
+		})
 	}
 }
 

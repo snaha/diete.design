@@ -7,7 +7,7 @@
 	import Typography from '../ui/typography.svelte'
 	import { getEffectiveColorMode } from '$lib/utils/colors'
 
-    let theme = withThemeStore()
+	let theme = withThemeStore()
 	let baseColor = $state(theme.baseColor)
 	let mode = $state(theme.mode)
 	let effectiveMode = $derived(getEffectiveColorMode(mode))
@@ -24,7 +24,7 @@
 
 	$effect(() => {
 		theme.baseColor = baseColor
-        theme.mode = mode
+		theme.mode = mode
 	})
 </script>
 
