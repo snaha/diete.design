@@ -347,7 +347,7 @@
 		font-size: var(--font-size-small);
 		line-height: var(--line-height-small);
 		letter-spacing: var(--letter-spacing-small);
-		padding: 0.5rem 0.75rem 0;
+		padding: 0.5rem 0 0;
 	}
 	.wrapper {
 		position: relative;

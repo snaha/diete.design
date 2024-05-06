@@ -138,8 +138,16 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	</p>
 {/snippet}
 
+{#snippet helperTextButtonType()}
+	More info on button types: <a href="#choose-a-button-type">Choose a button type</a>
+{/snippet}
+
+{#snippet helperTextButtonSizes()}
+	Learn more about button size: <a href="#button-sizes">About sizes</a>
+{/snippet}
+
 {#snippet controls()}
-	<Select bind:value={variant} placeholder="Button type">
+	<Select bind:value={variant} placeholder="Button type" helperText={helperTextButtonType}>
 		<Option value="strong">Strong button</Option>
 		<Option value="secondary">Outline button</Option>
 		<Option value="ghost">Ghost button</Option>
@@ -147,7 +155,7 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 		<Option value="darkoverlay">Dark overlay button</Option>
 	</Select>
 
-	<Select bind:value={dimension} placeholder="Button size">
+	<Select bind:value={dimension} placeholder="Button size" helperText={helperTextButtonSizes}>
 		<Option value="default">Default</Option>
 		<Option value="large">Large</Option>
 		<Option value="compact">Compact</Option>
@@ -186,6 +194,14 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	</TabBar>
 {/snippet}
 
+{#snippet choose()}
+	<Typography></Typography>
+{/snippet}
+
+{#snippet sizes()}
+	<Typography></Typography>
+{/snippet}
+
 <ComponentTemplate
 	name="Button"
 	tagline="Buttons allow people to perform an instantaneous action, with a single tap/click."
@@ -194,6 +210,8 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	{controls}
 	{preview}
 	{implement}
+	{choose}
+	{sizes}
 />
 
 <style lang="postcss">
