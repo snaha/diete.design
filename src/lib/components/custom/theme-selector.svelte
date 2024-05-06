@@ -2,12 +2,11 @@
 	import Input from '../ui/input.svelte'
 	import Radio from '../ui/radio.svelte'
 	import { ColorPalette } from 'carbon-icons-svelte'
-	import { withThemeStore } from '$lib/stores/theme.svelte'
+	import { theme } from '$lib/stores/theme.svelte'
 	import { calculateLuminance } from '@waku-objects/luminance'
 	import Typography from '../ui/typography.svelte'
 	import { getEffectiveColorMode } from '$lib/utils/colors'
 
-	let theme = withThemeStore()
 	let effectiveMode = $derived(getEffectiveColorMode(theme.mode))
 
 	let fill = $derived(

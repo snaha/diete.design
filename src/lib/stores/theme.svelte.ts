@@ -11,7 +11,7 @@ function updateColors(baseColor: string, mode: Mode) {
 	changeColors(baseColor, effectiveMode === 'dark')
 }
 
-export function withThemeStore(): Theme {
+function withThemeStore(): Theme {
 	let baseColor = $state('#fefefe')
 	let mode: Mode = $state('system')
 
@@ -33,9 +33,7 @@ export function withThemeStore(): Theme {
 	}
 }
 
-function initializeTheme() {
-	const theme = withThemeStore()
-
+function initializeTheme(theme: Theme) {
 	// this would be better to do with CSS media queries to avoid initial flash
 	updateColors(theme.baseColor, theme.mode)
 
@@ -51,4 +49,6 @@ function initializeTheme() {
 	}
 }
 
-initializeTheme()
+export const theme = withThemeStore()
+
+initializeTheme(theme)
