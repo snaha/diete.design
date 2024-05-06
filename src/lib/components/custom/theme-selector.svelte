@@ -2,14 +2,15 @@
 	import Input from '../ui/input.svelte'
 	import Radio from '../ui/radio.svelte'
 	import { ColorPalette } from 'carbon-icons-svelte'
-	import { theme } from '$lib/stores/theme'
+	import { withThemeStore } from '$lib/stores/theme.svelte'
 	import { calculateLuminance } from '@waku-objects/luminance'
 	import Typography from '../ui/typography.svelte'
-	import { getEffectiveColorMode, type Mode } from '$lib/utils/colors'
+	import { getEffectiveColorMode } from '$lib/utils/colors'
 
-	let baseColor = $state($theme.baseColor)
-	let mode: Mode = $state($theme.mode)
-	let effectiveMode: Mode = $derived(getEffectiveColorMode(mode))
+    let theme = withThemeStore()
+	let baseColor = $state(theme.baseColor)
+	let mode = $state(theme.mode)
+	let effectiveMode = $derived(getEffectiveColorMode(mode))
 
 	let fill = $derived(
 		calculateLuminance(baseColor) > 0.5
@@ -22,7 +23,8 @@
 	)
 
 	$effect(() => {
-		theme.setColor(baseColor, mode)
+		theme.baseColor = baseColor
+        theme.mode = mode
 	})
 </script>
 
