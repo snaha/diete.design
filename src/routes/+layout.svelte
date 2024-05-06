@@ -23,6 +23,10 @@
 	}
 
 	function isActivePage(path: string) {
+		// for some reason using $page is now an error
+		// https://github.com/sveltejs/eslint-plugin-svelte/issues/652#issuecomment-2028495896
+
+		// eslint-disable-next-line svelte/valid-compile
 		return path === $page.url.pathname
 	}
 
