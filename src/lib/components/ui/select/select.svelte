@@ -173,13 +173,14 @@
 		appearance: none;
 		border: 1px solid var(--colors-low);
 		background: var(--colors-low);
+		color: var(--colors-ultra-high);
 		transition: background var(--transition);
 		transition-delay: var(--transition-delay);
 		border-radius: 0.25rem;
 		flex-grow: 1;
 		cursor: pointer;
 		&::placeholder {
-			color: transparent;
+			color: var(--colors-high);
 			user-select: none;
 		}
 		&:focus {
