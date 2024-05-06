@@ -449,7 +449,7 @@
 			</Select>
 			<Select value="2" placeholder="Select label">
 				{#snippet helperText()}
-					<span>With default value.</span>
+					With default value.
 				{/snippet}
 				<Option value="1">Label 1</Option>
 				<Option value="2">Label 2</Option>
@@ -461,7 +461,7 @@
 			</Select>
 			<Select value="2" placeholder="Select label" disabled>
 				{#snippet helperText()}
-					<span>Disabled.</span>
+					Disabled.
 				{/snippet}
 				<Option value="1">Label 1</Option>
 				<Option value="2">Label 2</Option>
@@ -473,7 +473,7 @@
 			</Select>
 			<Select value="2" placeholder="Select label">
 				{#snippet helperText()}
-					<span>No labels, just values.</span>
+					No labels, just values.
 				{/snippet}
 				<Option value="1" />
 				<Option value="2" />
@@ -485,14 +485,14 @@
 			</Select>
 			<Select>
 				{#snippet helperText()}
-					<span>No options.</span>
+					No options.
 				{/snippet}
 			</Select>
 		</div>
 		<div class="col">
 			<Select dimension="large" placeholder="Select label">
 				{#snippet helperText()}
-					<span>This is some helper text.</span>
+					This is some helper text.
 				{/snippet}
 				<Option value="1">Label 1</Option>
 				<Option value="2">Label 2</Option>
@@ -504,7 +504,7 @@
 			</Select>
 			<Select value="2" dimension="large" placeholder="Select label">
 				{#snippet helperText()}
-					<span>This is some helper text.</span>
+					This is some helper text.
 				{/snippet}
 				<Option value="1">Label 1</Option>
 				<Option value="2">Label 2</Option>
@@ -518,7 +518,7 @@
 		<div class="col">
 			<Select dimension="compact" placeholder="Select label">
 				{#snippet helperText()}
-					<span>This is some helper text.</span>
+					This is some helper text.
 				{/snippet}
 				<Option value="1">Label 1</Option>
 				<Option value="2">Label 2</Option>
@@ -530,7 +530,7 @@
 			</Select>
 			<Select value="2" dimension="compact" placeholder="Select label">
 				{#snippet helperText()}
-					<span>This is some helper text.</span>
+					This is some helper text.
 				{/snippet}
 				<Option value="1">Label 1</Option>
 				<Option value="2">Label 2</Option>
@@ -544,7 +544,7 @@
 		<div class="col">
 			<Select dimension="small" placeholder="Select label">
 				{#snippet helperText()}
-					<span>This is some helper text.</span>
+					This is some helper text.
 				{/snippet}
 				<Option value="1">Label 1</Option>
 				<Option value="2">Label 2</Option>
@@ -556,7 +556,7 @@
 			</Select>
 			<Select value="2" dimension="small" placeholder="Select label">
 				{#snippet helperText()}
-					<span>This is some helper text.</span>
+					This is some helper text.
 				{/snippet}
 				<Option value="1">Label 1</Option>
 				<Option value="2">Label 2</Option>
