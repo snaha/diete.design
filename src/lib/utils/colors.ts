@@ -91,7 +91,7 @@ export function changeColors(baseColor: string, isDarkMode: boolean) {
 		document.documentElement.style.setProperty(darkName, color)
 	})
 
-	const darkOverlay = getClosestColor(baseColor, colors.slice(-1)[0].luminance, targetPrecision)
+	const darkOverlay = getClosestColor(baseColor, darkColorVars[0].luminance, targetPrecision)
 	const darkOpacity = Math.round(256 * (isDarkMode ? 0.95 : 0.7)).toString(16)
 	document.documentElement.style.setProperty('--colors-dark-overlay', darkOverlay + darkOpacity)
 
