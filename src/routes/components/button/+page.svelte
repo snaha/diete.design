@@ -138,15 +138,11 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	</p>
 {/snippet}
 
-{#snippet helperTextButtonType()}
-	More info on button types: <a href="#choose-a-button-type">Choose a button type</a>
-{/snippet}
-
-{#snippet helperTextButtonSizes()}
-	Learn more about button size: <a href="#button-sizes">About sizes</a>
-{/snippet}
-
 {#snippet controls()}
+	{#snippet helperTextButtonType()}
+		More info on button types: <a href="#choose-a-button-type">Choose a button type</a>
+	{/snippet}
+
 	<Select bind:value={variant} placeholder="Button type" helperText={helperTextButtonType}>
 		<Option value="strong">Strong button</Option>
 		<Option value="secondary">Outline button</Option>
@@ -154,6 +150,10 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 		<Option value="overlay">Overlay button</Option>
 		<Option value="darkoverlay">Dark overlay button</Option>
 	</Select>
+
+	{#snippet helperTextButtonSizes()}
+		Learn more about button size: <a href="#about-sizes">About sizes</a>
+	{/snippet}
 
 	<Select bind:value={dimension} placeholder="Button size" helperText={helperTextButtonSizes}>
 		<Option value="default">Default</Option>
