@@ -118,29 +118,33 @@
 	}
 
 	.strong {
+		border: 1px solid var(--colors-ultra-high);
 		background: var(--colors-ultra-high);
 		color: var(--colors-ultra-low);
 
-		&:hover:not(:disabled),
-		&.hover:not(:disabled) {
-			border: 1px solid var(--colors-top);
-			background: var(--colors-top);
-			color: var(--colors-base);
+		&:focus:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			border: 1px solid transparent;
+			background: var(--colors-base);
+			color: var(--colors-top);
 		}
 
-		&:focus:active:not(:disabled),
-		&.focus.active:not(:disabled) {
+		&:active:not(:disabled),
+		&.active:not(:disabled) {
 			border: 1px solid var(--colors-high);
 			background: var(--colors-high);
 			color: var(--colors-base);
 			outline: none;
 		}
 
-		&:focus:not(:disabled),
-		&.focus:not(:disabled) {
-			outline: 4px solid var(--colors-top);
-			background: var(--colors-base);
-			color: var(--colors-top);
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-top);
+			background: var(--colors-top);
+			color: var(--colors-base);
+			outline: none;
 		}
 	}
 	.secondary {
@@ -148,10 +152,12 @@
 		background: none;
 		color: var(--colors-ultra-high);
 
-		&:hover:not(:disabled),
-		&.hover:not(:disabled) {
-			border: 1px solid var(--colors-top);
-			background: var(--colors-low);
+		&:focus:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			border: 1px solid transparent;
+			background: var(--colors-base);
 			color: var(--colors-top);
 		}
 
@@ -160,13 +166,15 @@
 			border: 1px solid var(--colors-high);
 			background: var(--colors-low);
 			color: var(--colors-high);
+			outline: none;
 		}
 
-		&:focus:not(:disabled),
-		&.focus:not(:disabled) {
-			border: 4px solid var(--colors-top);
-			background: var(--colors-base);
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-top);
+			background: var(--colors-low);
 			color: var(--colors-top);
+			outline: none;
 		}
 	}
 	.ghost {
@@ -174,10 +182,11 @@
 		background: transparent;
 		color: var(--colors-ultra-high);
 
-		&:hover:not(:disabled),
-		&.hover:not(:disabled) {
-			border: 1px solid var(--colors-low);
-			background: var(--colors-low);
+		&:focus:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			background: var(--colors-base);
 			color: var(--colors-top);
 		}
 
@@ -186,13 +195,15 @@
 			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
 			color: var(--colors-high);
+			outline: none;
 		}
 
-		&:focus:not(:disabled),
-		&.focus:not(:disabled) {
-			border: 4px solid var(--colors-top);
-			background: var(--colors-base);
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-low);
+			background: var(--colors-low);
 			color: var(--colors-top);
+			outline: none;
 		}
 	}
 	.overlay {
@@ -200,10 +211,12 @@
 		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 
-		&:hover:not(:disabled),
-		&.hover:not(:disabled) {
-			border: 1px solid var(--colors-low);
-			background: var(--colors-low);
+		&:focus:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			border: 1px solid transparent;
+			background: var(--colors-base);
 			color: var(--colors-top);
 		}
 
@@ -212,37 +225,45 @@
 			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
 			color: var(--colors-high);
+			outline: none;
 		}
 
-		&:focus:not(:disabled),
-		&.focus:not(:disabled) {
-			border: 4px solid var(--colors-top);
-			background: var(--colors-base);
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-low);
+			background: var(--colors-low);
 			color: var(--colors-top);
+			outline: none;
 		}
 	}
 	.darkoverlay {
 		border: 1px solid var(--colors-dark-overlay);
 		background: var(--colors-dark-overlay);
-		color: var(--colors-dark-top);
+		color: var(--colors-light);
 
-		&:hover:not(:disabled),
-		&.hover:not(:disabled) {
-			border: 1px solid var(--colors-dark-base);
-			background: var(--colors-dark-base);
+		&:focus:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			border: 1px solid transparent;
+			background: var(--colors-base);
+			color: var(--colors-top);
 		}
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
 			border: 1px solid var(--colors-dark);
 			background: var(--colors-dark);
+			color: var(--colors-light);
+			outline: none;
 		}
 
-		&:focus:not(:disabled),
-		&.focus:not(:disabled) {
-			border: 4px solid var(--colors-top);
-			background: var(--colors-base);
-			color: var(--colors-top);
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-dark-base);
+			background: var(--colors-dark-base);
+			color: var(--colors-light);
+			outline: none;
 		}
 	}
 </style>
