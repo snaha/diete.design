@@ -24,7 +24,6 @@
 	.root {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
 	}
 	input[type='radio'] {
 		position: relative;
@@ -60,6 +59,7 @@
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		cursor: pointer;
+		padding-left: 0.5rem;
 	}
 	.default {
 		&.root {
