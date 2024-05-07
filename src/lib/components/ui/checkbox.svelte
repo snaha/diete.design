@@ -3,7 +3,6 @@
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
 		label: string
-		labelFor?: string
 		dimension?: Dimension
 		hover?: boolean
 		active?: boolean
@@ -11,7 +10,6 @@
 	}
 	let {
 		label,
-		labelFor = Math.random().toString(16),
 		dimension = 'default',
 		hover,
 		active,
@@ -20,11 +18,10 @@
 		...restProps
 	}: Props = $props()
 
-	let checkbox: HTMLInputElement | undefined = $state()
-	let root: HTMLDivElement | undefined = $state()
-
+	let checkbox: HTMLInputElement | undefined = $state(undefined)
+	let root: HTMLDivElement | undefined = $state(undefined)
 	function onclick() {
-		if (checkbox) {
+		if (checkbox && !checkbox.disabled) {
 			checkbox.checked = !checkbox.checked
 		}
 	}
@@ -36,19 +33,28 @@
 </script>
 
 <div
-	class="root {dimension} {checkbox?.disabled ? 'disabled' : ''} {className}"
+	class="root {dimension} {className}"
 	class:hover
 	class:active
 	class:focus
 	{onclick}
 	{onkeypress}
 	role="checkbox"
-	aria-checked={checkbox?.checked}
-	tabindex={!checkbox?.disabled ? 0 : -1}
+	aria-checked="true"
+	tabindex="0"
 	bind:this={root}
 >
-	<input type="checkbox" {...restProps} id={labelFor} bind:this={checkbox} tabindex={-1} />
-	<label for={labelFor}>{label}</label>
+	<input
+		type="checkbox"
+		onclick={() => {
+			onclick()
+			root?.focus()
+		}}
+		bind:this={checkbox}
+		tabindex="-1"
+		{...restProps}
+	/>
+	{label}
 </div>
 
 <style lang="postcss">
@@ -58,18 +64,21 @@
 		gap: 0.5rem;
 		border-radius: 0.25rem;
 		cursor: pointer;
-		position: relative;
-		z-index: 10;
-		&:focus:not(.disabled),
-		&.focus:not(.disabled),
-		&:focus-visible:not(.disabled) {
+		font-family: var(--font-family-sans-serif);
+		color: var(--colors-ultra-high);
+		&:focus {
+			outline: none;
+		}
+		&:has(input[type='checkbox']:checked) {
+			color: var(--colors-high);
+		}
+		&:focus:has(input[type='checkbox']:not(:disabled)),
+		&:focus-visible:has(input[type='checkbox']:not(:disabled)),
+		&.focus:has(input[type='checkbox']:not(:disabled)) {
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
 			background: var(--colors-base);
-
-			label {
-				color: var(--colors-top);
-			}
+			color: var(--colors-top);
 
 			input[type='checkbox']::before {
 				border: 1px solid var(--colors-top);
@@ -78,20 +87,25 @@
 				border: 1px solid var(--colors-top);
 				background: var(--colors-top);
 			}
-			input[type='checkbox']:checked ~ label {
+			&:has(input[type='checkbox']:checked) {
 				color: var(--colors-top);
 			}
 		}
-		&:active:not(.disabled),
-		&.active:not(.disabled) {
+		&:has(input[type='checkbox']:disabled) {
+			opacity: 0.25;
+			cursor: not-allowed;
+		}
+		&:active:has(input[type='checkbox']:not(:disabled)),
+		&.active:has(input[type='checkbox']:not(:disabled)) {
 			outline: none;
 		}
-		&:hover:not(.disabled),
-		&.hover:not(.disabled),
-		&:active:not(.disabled),
-		&.active:not(.disabled) {
-			label {
-				color: var(--colors-high);
+		&:hover:has(input[type='checkbox']:not(:disabled)),
+		&.hover:has(input[type='checkbox']:not(:disabled)),
+		&:active:has(input[type='checkbox']:not(:disabled)),
+		&.active:has(input[type='checkbox']:not(:disabled)) {
+			color: var(--colors-high);
+			&:has(input[type='checkbox']:checked) {
+				color: var(--colors-ultra-high);
 			}
 			input[type='checkbox']::before {
 				border: 1px solid var(--colors-high);
@@ -100,9 +114,6 @@
 				border: 1px solid var(--colors-ultra-high);
 				background: var(--colors-ultra-high);
 			}
-			input[type='checkbox']:checked ~ label {
-				color: var(--colors-ultra-high);
-			}
 		}
 	}
 	input[type='checkbox'] {
@@ -110,6 +121,9 @@
 		margin: 0;
 		position: relative;
 		z-index: 0;
+	}
+	input[type='checkbox']:focus {
+		outline: none;
 	}
 	input[type='checkbox']::before {
 		content: '';
@@ -123,9 +137,6 @@
 		border: 1px solid var(--colors-high);
 		background: var(--colors-high);
 	}
-	input[type='checkbox']:checked ~ label {
-		color: var(--colors-high);
-	}
 	input[type='checkbox']:checked::after {
 		content: '';
 		position: absolute;
@@ -137,25 +148,16 @@
 	}
 
 	input[type='checkbox']:checked:disabled::before,
-	input[type='checkbox']:disabled::before,
-	input[type='checkbox']:disabled ~ label {
+	input[type='checkbox']:disabled::before {
 		cursor: not-allowed;
-		opacity: 0.25;
 	}
 	input[type='checkbox']:checked:disabled::after {
 		cursor: not-allowed;
-	}
-	label {
-		font-family: var(--font-family-sans-serif);
-		cursor: pointer;
-		color: var(--colors-ultra-high);
 	}
 
 	.default {
 		&.root {
 			padding: 0.75rem;
-		}
-		label {
 			font-size: 1rem;
 			line-height: 1.5rem;
 			letter-spacing: 0.02rem;
@@ -172,8 +174,6 @@
 	.large {
 		&.root {
 			padding: 0.75rem;
-		}
-		label {
 			font-size: 1.5rem;
 			line-height: 1rem;
 			letter-spacing: 0.03rem;
@@ -192,8 +192,6 @@
 	.compact {
 		&.root {
 			padding: 0.5rem;
-		}
-		label {
 			font-size: 1rem;
 			line-height: 1.5rem;
 			letter-spacing: 0.02rem;
@@ -211,8 +209,6 @@
 		&.root {
 			gap: 0.25rem;
 			padding: 0.5rem;
-		}
-		label {
 			font-size: 0.75rem;
 			line-height: 1rem;
 			letter-spacing: 0.0375rem;
