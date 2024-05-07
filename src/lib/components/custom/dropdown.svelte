@@ -1,11 +1,16 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte'
+	import Button from '$lib/components/ui/button.svelte'
+
 	type Props = {
 		disabled?: boolean
 		up?: boolean
 		left?: boolean
+		button: Snippet
+		children: Snippet
 	}
 
-	let { disabled = false, up = false, left = false }: Props = $props()
+	let { disabled = false, up = false, left = false, button, children }: Props = $props()
 
 	let showDropdown = $state(false)
 	let dropdownElement: HTMLElement
@@ -51,7 +56,7 @@
 	aria-controls={dropdownId}
 >
 	<div on:click={onClick} on:keypress={onClick} role="button" tabindex={0}>
-		<slot name="button" disabled active={showDropdown} />
+		<Button variant="overlay" active={showDropdown}>{@render button()}</Button>
 	</div>
 
 	<div class={`root`} aria-hidden={!showDropdown}>
@@ -63,7 +68,7 @@
 			role="listbox"
 			aria-labelledby="dropdown-button"
 		>
-			<slot />
+			{@render children()}
 		</div>
 	</div>
 </div>
