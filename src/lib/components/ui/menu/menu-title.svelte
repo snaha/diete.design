@@ -84,8 +84,11 @@
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			justify-content: space-between;
-			gap: 0.5rem;
+			justify-content: stretch;
+		}
+		.title {
+			flex-grow: 1;
+			padding-right: 0.5rem;
 		}
 		.icon {
 			display: flex;
