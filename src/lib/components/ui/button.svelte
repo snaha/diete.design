@@ -160,11 +160,11 @@
 	.darkoverlay {
 		border: 1px solid var(--colors-dark-overlay);
 		background: var(--colors-dark-overlay);
-		color: var(--colors-base);
+		color: var(--colors-dark-top);
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
-			border: 1px solid var(--colors-top);
-			background: var(--colors-top);
+			border: 1px solid var(--colors-dark-base);
+			background: var(--colors-dark-base);
 		}
 	}
 </style>
