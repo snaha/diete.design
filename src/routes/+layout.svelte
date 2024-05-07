@@ -7,11 +7,28 @@
 	import '../app.pcss'
 	import Dropdown from '$lib/components/custom/dropdown.svelte'
 	import ThemeSelector from '$lib/components/custom/theme-selector.svelte'
+	import { page } from '$app/stores'
 
 	let isMenuOpen = $state(false)
 	let innerWidth: number | undefined = $state()
 
 	const mobileWidth = 700
+
+	const dietePages = {
+		'/': 'Intro',
+	}
+
+	const basicComponentPages = {
+		'/components/button': 'Button',
+	}
+
+	function isActivePage(path: string) {
+		// for some reason using $page is now an error
+		// https://github.com/sveltejs/eslint-plugin-svelte/issues/652#issuecomment-2028495896
+
+		// eslint-disable-next-line svelte/valid-compile
+		return path === $page.url.pathname
+	}
 
 	function menuOnClick() {
 		// close the menu after a click on mobile
@@ -46,11 +63,19 @@
 			<div class="menu-header"></div>
 			<div class="menu">
 				<MenuTitle content="Diète" bold>
-					<MenuItem href="/" onclick={menuOnClick}>Intro</MenuItem>
+					{#each Object.entries(dietePages) as [path, title]}
+						<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}
+							>{title}</MenuItem
+						>
+					{/each}
 				</MenuTitle>
 				<MenuTitle content="Elements" bold></MenuTitle>
 				<MenuTitle content="Basic components" bold open>
-					<MenuItem href="/components/button" onclick={menuOnClick}>Button</MenuItem>
+					{#each Object.entries(basicComponentPages) as [path, title]}
+						<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}
+							>{title}</MenuItem
+						>
+					{/each}
 				</MenuTitle>
 			</div>
 		{/if}
@@ -107,7 +132,7 @@
 		overflow-x: hidden;
 		overflow-y: auto;
 		min-width: calc(var(--sidebar-size) - var(--double-padding));
-		background-color: var(--colors-low);
+		background-color: var(--colors-ultra-low);
 		padding: var(--padding);
 	}
 	.menu-header {
@@ -116,7 +141,7 @@
 		left: 0px;
 		height: var(--header-size);
 		min-width: var(--sidebar-size);
-		background-color: var(--colors-low);
+		background-color: var(--colors-ultra-low);
 	}
 	.menu-open-placeholder {
 		background-color: var(--colors-low);
