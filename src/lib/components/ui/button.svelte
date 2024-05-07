@@ -126,6 +126,7 @@
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
 			border: 1px solid transparent;
 			background: var(--colors-base);
 			color: var(--colors-top);
@@ -155,6 +156,7 @@
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
 			border: 1px solid transparent;
 			background: var(--colors-base);
 			color: var(--colors-top);
@@ -184,6 +186,7 @@
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
 			background: var(--colors-base);
 			color: var(--colors-top);
 		}
@@ -212,6 +215,7 @@
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
 			border: 1px solid transparent;
 			background: var(--colors-base);
 			color: var(--colors-top);
@@ -241,6 +245,7 @@
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
 			border: 1px solid transparent;
 			background: var(--colors-base);
 			color: var(--colors-top);
