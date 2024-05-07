@@ -87,7 +87,6 @@
 			justify-content: stretch;
 		}
 		.title {
-			display: flex;
 			flex-grow: 1;
 			padding-right: 0.5rem;
 		}
