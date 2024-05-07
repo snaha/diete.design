@@ -3,22 +3,62 @@
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
 		label: string
-		labelFor?: string
 		dimension?: Dimension
+		hover?: boolean
+		active?: boolean
+		focus?: boolean
 	}
 	let {
 		label,
-		labelFor = Math.random().toString(16),
 		dimension = 'default',
+		hover,
+		active,
+		focus,
 		class: className = '',
 		checked = $bindable(),
 		...restProps
 	}: Props = $props()
+
+	let checkbox: HTMLInputElement | undefined = $state(undefined)
+	let root: HTMLDivElement | undefined = $state(undefined)
+	function onclick() {
+		if (checkbox) {
+			if (checkbox && !checkbox.disabled) {
+				checkbox.checked = !checkbox.checked
+			}
+		}
+	}
+	function onkeypress(event: KeyboardEvent) {
+		if (event.key === 'Enter') {
+			onclick()
+		}
+	}
 </script>
 
-<div class="root {dimension} {className}">
-	<input type="checkbox" {...restProps} id={labelFor} bind:checked />
-	<label for={labelFor}>{label}</label>
+<div
+	class="root {dimension} {className}"
+	class:hover
+	class:active
+	class:focus
+	{onclick}
+	{onkeypress}
+	role="checkbox"
+	aria-checked="true"
+	tabindex={!checkbox?.disabled ? 1 : 0}
+	bind:this={root}
+>
+	<input
+		type="checkbox"
+		{...restProps}
+		onclick={() => {
+			onclick()
+			root?.focus()
+		}}
+		bind:checked
+		bind:this={checkbox}
+		tabindex="-1"
+	/>
+	{label}
 </div>
 
 <style lang="postcss">
@@ -26,6 +66,67 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
+		border-radius: 0.25rem;
+		color: var(--colors-ultra-high);
+		font-family: var(--font-family-sans-serif);
+		cursor: pointer;
+		&:focus {
+			outline: none;
+		}
+		&:has(input[type='checkbox']:checked) {
+			color: var(--colors-high);
+		}
+		&:has(input[type='checkbox']:disabled) {
+			opacity: 0.25;
+			cursor: not-allowed;
+		}
+		&:focus:has(input[type='checkbox']:not(:disabled)),
+		&:focus-visible:has(input[type='checkbox']:not(:disabled)),
+		&.focus:has(input[type='checkbox']:not(:disabled)) {
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			background: var(--colors-base);
+			color: var(--colors-top);
+			input[type='checkbox'] {
+				border: 1px solid var(--colors-top);
+				&::after {
+					background: var(--colors-top);
+				}
+				&:checked {
+					border: 1px solid var(--colors-top);
+					background: var(--colors-top);
+				}
+				&:checked::after {
+					background: var(--colors-base);
+				}
+			}
+		}
+		&:active:has(input[type='checkbox']:not(:disabled)),
+		&.active:has(input[type='checkbox']:not(:disabled)) {
+			outline: none;
+		}
+		&:hover:has(input[type='checkbox']:not(:disabled)),
+		&.hover:has(input[type='checkbox']:not(:disabled)),
+		&:active:has(input[type='checkbox']:not(:disabled)),
+		&.active:has(input[type='checkbox']:not(:disabled)) {
+			color: var(--colors-high);
+			&:has(input[type='checkbox']:checked) {
+				color: var(--colors-ultra-high);
+			}
+			input[type='checkbox'] {
+				border: 1px solid var(--colors-high);
+				&::after {
+					background: var(--colors-high);
+				}
+				&:checked {
+					border: 1px solid var(--colors-ultra-high);
+					background: var(--colors-ultra-high);
+				}
+				&:checked::after {
+					background: var(--colors-base);
+				}
+			}
+		}
 	}
 	input[type='checkbox'] {
 		appearance: none;
@@ -33,7 +134,7 @@
 		border: 1px solid var(--colors-ultra-high);
 		border-radius: 1rem;
 		background: transparent;
-		transition: all 0.35s ease;
+		transition: transform 0.35s ease;
 		cursor: pointer;
 		position: relative;
 		margin: 0;
@@ -45,7 +146,7 @@
 			transform: translateY(-50%);
 			border-radius: 50%;
 			background: var(--colors-ultra-high);
-			transition: all 0.35s cubic-bezier(0.5, 0.1, 0.75, 1.35);
+			transition: transform 0.35s cubic-bezier(0.5, 0.1, 0.75, 1.35);
 		}
 		&:checked {
 			background: var(--colors-high);
@@ -54,25 +155,13 @@
 		&:checked::after {
 			background: var(--colors-ultra-low);
 		}
-		&:checked + label {
-			color: var(--colors-high);
-		}
-		&:disabled,
-		&:disabled + label {
-			opacity: 0.25;
+		&:disabled {
 			cursor: not-allowed;
 		}
-	}
-	label {
-		color: var(--colors-ultra-high);
-		font-family: var(--font-family-sans-serif);
-		cursor: pointer;
 	}
 	.default {
 		&.root {
 			padding: 0.75rem;
-		}
-		label {
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -93,8 +182,6 @@
 	.large {
 		&.root {
 			padding: 0.75rem;
-		}
-		label {
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
@@ -115,8 +202,6 @@
 	.compact {
 		&.root {
 			padding: 0.5rem;
-		}
-		label {
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -138,8 +223,6 @@
 		&.root {
 			gap: 0.25rem;
 			padding: 0.5rem;
-		}
-		label {
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
