@@ -5,6 +5,8 @@
 	type ButtonProps = {
 		variant?: Variant
 		active?: boolean
+		hover?: boolean
+		focus?: boolean
 		dimension?: Dimension
 	}
 	interface AnchorElement extends HTMLAnchorAttributes, ButtonProps {
@@ -26,6 +28,8 @@
 		dimension = 'default',
 		variant = 'strong',
 		active,
+		hover,
+		focus,
 		disabled,
 		href,
 		class: className = '',
@@ -38,6 +42,8 @@
 		this={href ? 'a' : 'button'}
 		class={`${dimension} ${variant}`}
 		class:active
+		class:hover
+		class:focus
 		{href}
 		{disabled}
 		{...restProps}
@@ -115,11 +121,26 @@
 		background: var(--colors-ultra-high);
 		color: var(--colors-ultra-low);
 
-		&:active:not(:disabled),
-		&.active:not(:disabled) {
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-top);
+			background: var(--colors-top);
+			color: var(--colors-base);
+		}
+
+		&:focus:active:not(:disabled),
+		&.focus.active:not(:disabled) {
 			border: 1px solid var(--colors-high);
 			background: var(--colors-high);
 			color: var(--colors-base);
+			outline: none;
+		}
+
+		&:focus:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			background: var(--colors-base);
+			color: var(--colors-top);
 		}
 	}
 	.secondary {
@@ -127,10 +148,25 @@
 		background: none;
 		color: var(--colors-ultra-high);
 
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-top);
+			background: var(--colors-low);
+			color: var(--colors-top);
+		}
+
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
 			border: 1px solid var(--colors-high);
+			background: var(--colors-low);
 			color: var(--colors-high);
+		}
+
+		&:focus:not(:disabled),
+		&.focus:not(:disabled) {
+			border: 4px solid var(--colors-top);
+			background: var(--colors-base);
+			color: var(--colors-top);
 		}
 	}
 	.ghost {
@@ -138,17 +174,12 @@
 		background: transparent;
 		color: var(--colors-ultra-high);
 
-		&:active:not(:disabled),
-		&.active:not(:disabled) {
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
 			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
-			color: var(--colors-high);
+			color: var(--colors-top);
 		}
-	}
-	.overlay {
-		border: 1px solid var(--colors-base);
-		background: var(--colors-base);
-		color: var(--colors-ultra-high);
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
@@ -156,15 +187,62 @@
 			background: var(--colors-low);
 			color: var(--colors-high);
 		}
+
+		&:focus:not(:disabled),
+		&.focus:not(:disabled) {
+			border: 4px solid var(--colors-top);
+			background: var(--colors-base);
+			color: var(--colors-top);
+		}
+	}
+	.overlay {
+		border: 1px solid var(--colors-base);
+		background: var(--colors-base);
+		color: var(--colors-ultra-high);
+
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-low);
+			background: var(--colors-low);
+			color: var(--colors-top);
+		}
+
+		&:active:not(:disabled),
+		&.active:not(:disabled) {
+			border: 1px solid var(--colors-low);
+			background: var(--colors-low);
+			color: var(--colors-high);
+		}
+
+		&:focus:not(:disabled),
+		&.focus:not(:disabled) {
+			border: 4px solid var(--colors-top);
+			background: var(--colors-base);
+			color: var(--colors-top);
+		}
 	}
 	.darkoverlay {
 		border: 1px solid var(--colors-dark-overlay);
 		background: var(--colors-dark-overlay);
 		color: var(--colors-dark-top);
-		&:active:not(:disabled),
-		&.active:not(:disabled) {
+
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
 			border: 1px solid var(--colors-dark-base);
 			background: var(--colors-dark-base);
+		}
+
+		&:active:not(:disabled),
+		&.active:not(:disabled) {
+			border: 1px solid var(--colors-dark);
+			background: var(--colors-dark);
+		}
+
+		&:focus:not(:disabled),
+		&.focus:not(:disabled) {
+			border: 4px solid var(--colors-top);
+			background: var(--colors-base);
+			color: var(--colors-top);
 		}
 	}
 </style>
