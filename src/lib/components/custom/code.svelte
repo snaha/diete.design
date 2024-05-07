@@ -64,6 +64,7 @@
 		max-height: 50vh;
 		min-height: 288px;
 		max-width: calc(100vw - var(--double-padding));
+		border: var(--colors-dark-low) 1px solid;
 	}
 
 	.inside {
