@@ -239,7 +239,7 @@
 	.darkoverlay {
 		border: 1px solid var(--colors-dark-overlay);
 		background: var(--colors-dark-overlay);
-		color: var(--colors-light);
+		color: var(--colors-dark-top);
 
 		&:focus:not(:disabled),
 		&:focus-visible:not(:disabled),
@@ -248,21 +248,21 @@
 			outline-offset: -4px;
 			border: 1px solid transparent;
 			background: var(--colors-base);
-			color: var(--colors-top);
+			color: var(--colors-dark-top);
 		}
 
 		&:hover:not(:disabled),
 		&.hover:not(:disabled) {
 			border: 1px solid var(--colors-dark-base);
 			background: var(--colors-dark-base);
-			color: var(--colors-light);
+			color: var(--colors-dark-top);
 		}
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
-			border: 1px solid var(--colors-dark);
-			background: var(--colors-dark);
-			color: var(--colors-light);
+			border: 1px solid var(--colors-dark-base);
+			background: var(--colors-dark-base);
+			color: var(--colors-dark-top);
 			outline: none;
 		}
 	}
