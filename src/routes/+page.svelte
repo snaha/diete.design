@@ -259,28 +259,52 @@
 		<Typography variant="h1">Checkbox</Typography>
 		<div class="row">
 			<div class="col">
-				<Checkbox label="Checkbox" />
-				<Checkbox label="Checkbox" checked />
-				<Checkbox label="Checkbox" disabled />
-				<Checkbox label="Checkbox" checked disabled />
+				<Checkbox label="Unselected" />
+				<Checkbox label="Hover unselected" hover />
+				<Checkbox label="Pressed unselected" active />
+				<Checkbox label="Focused unselected" focus />
+				<Checkbox label="Disabled unselected" disabled />
+				<Checkbox label="Selected" checked />
+				<Checkbox label="Hover selected" checked hover />
+				<Checkbox label="Pressed selected" checked active />
+				<Checkbox label="Focused selected" checked focus />
+				<Checkbox label="Disabled selected" checked disabled />
 			</div>
 			<div class="col">
-				<Checkbox dimension="large" label="Checkbox" />
-				<Checkbox dimension="large" label="Checkbox" checked />
-				<Checkbox dimension="large" label="Checkbox" disabled />
-				<Checkbox dimension="large" label="Checkbox" checked disabled />
+				<Checkbox dimension="large" label="Unselected" />
+				<Checkbox dimension="large" label="Hover unselected" hover />
+				<Checkbox dimension="large" label="Pressed unselected" active />
+				<Checkbox dimension="large" label="Focused unselected" focus />
+				<Checkbox dimension="large" label="Disabled unselected" disabled />
+				<Checkbox dimension="large" label="Selected" checked />
+				<Checkbox dimension="large" label="Hover selected" checked hover />
+				<Checkbox dimension="large" label="Pressed selected" checked active />
+				<Checkbox dimension="large" label="Focused selected" checked focus />
+				<Checkbox dimension="large" label="Disabled selected" checked disabled />
 			</div>
 			<div class="col">
-				<Checkbox dimension="compact" label="Checkbox" />
-				<Checkbox dimension="compact" label="Checkbox" checked />
-				<Checkbox dimension="compact" label="Checkbox" disabled />
-				<Checkbox dimension="compact" label="Checkbox" checked disabled />
+				<Checkbox dimension="compact" label="Unselected" />
+				<Checkbox dimension="compact" label="Hover unselected" hover />
+				<Checkbox dimension="compact" label="Pressed unselected" active />
+				<Checkbox dimension="compact" label="Focused unselected" focus />
+				<Checkbox dimension="compact" label="Disabled unselected" disabled />
+				<Checkbox dimension="compact" label="Selected" checked />
+				<Checkbox dimension="compact" label="Hover selected" checked hover />
+				<Checkbox dimension="compact" label="Pressed selected" checked active />
+				<Checkbox dimension="compact" label="Focused selected" checked focus />
+				<Checkbox dimension="compact" label="Disabled selected" checked disabled />
 			</div>
 			<div class="col">
-				<Checkbox dimension="small" label="Checkbox" />
-				<Checkbox dimension="small" label="Checkbox" checked />
-				<Checkbox dimension="small" label="Checkbox" disabled />
-				<Checkbox dimension="small" label="Checkbox" checked disabled />
+				<Checkbox dimension="small" label="Unselected" />
+				<Checkbox dimension="small" label="Hover unselected" hover />
+				<Checkbox dimension="small" label="Pressed unselected" active />
+				<Checkbox dimension="small" label="Focused unselected" focus />
+				<Checkbox dimension="small" label="Disabled unselected" disabled />
+				<Checkbox dimension="small" label="Selected" checked />
+				<Checkbox dimension="small" label="Hover selected" checked hover />
+				<Checkbox dimension="small" label="Pressed selected" checked active />
+				<Checkbox dimension="small" label="Focused selected" checked focus />
+				<Checkbox dimension="small" label="Disabled selected" checked disabled />
 			</div>
 		</div>
 	</section>

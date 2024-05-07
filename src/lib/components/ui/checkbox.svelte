@@ -5,18 +5,49 @@
 		label: string
 		labelFor?: string
 		dimension?: Dimension
+		hover?: boolean
+		active?: boolean
+		focus?: boolean
 	}
 	let {
 		label,
 		labelFor = Math.random().toString(16),
 		dimension = 'default',
+		hover,
+		active,
+		focus,
 		class: className = '',
 		...restProps
 	}: Props = $props()
+
+	let checkbox: HTMLInputElement | undefined = $state()
+	let root: HTMLDivElement | undefined = $state()
+
+	function onclick() {
+		if (checkbox) {
+			checkbox.checked = !checkbox.checked
+		}
+	}
+	function onkeypress(event: KeyboardEvent) {
+		if (event.key === 'Enter') {
+			onclick()
+		}
+	}
 </script>
 
-<div class="root {dimension} {className}">
-	<input type="checkbox" {...restProps} id={labelFor} />
+<div
+	class="root {dimension} {checkbox?.disabled ? 'disabled' : ''} {className}"
+	class:hover
+	class:active
+	class:focus
+	{onclick}
+	{onkeypress}
+	role="checkbox"
+	aria-checked={checkbox?.checked}
+	tabindex={!checkbox?.disabled ? 0 : -1}
+	bind:this={root}
+>
+	<input type="checkbox" {...restProps} id={labelFor} bind:this={checkbox} tabindex={-1} />
 	<label for={labelFor}>{label}</label>
 </div>
 
@@ -25,11 +56,60 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
+		border-radius: 0.25rem;
+		cursor: pointer;
+		position: relative;
+		z-index: 10;
+		&:focus:not(.disabled),
+		&.focus:not(.disabled),
+		&:focus-visible:not(.disabled) {
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			background: var(--colors-base);
+
+			label {
+				color: var(--colors-top);
+			}
+
+			input[type='checkbox']::before {
+				border: 1px solid var(--colors-top);
+			}
+			input[type='checkbox']:checked::before {
+				border: 1px solid var(--colors-top);
+				background: var(--colors-top);
+			}
+			input[type='checkbox']:checked ~ label {
+				color: var(--colors-top);
+			}
+		}
+		&:active:not(.disabled),
+		&.active:not(.disabled) {
+			outline: none;
+		}
+		&:hover:not(.disabled),
+		&.hover:not(.disabled),
+		&:active:not(.disabled),
+		&.active:not(.disabled) {
+			label {
+				color: var(--colors-high);
+			}
+			input[type='checkbox']::before {
+				border: 1px solid var(--colors-high);
+			}
+			input[type='checkbox']:checked::before {
+				border: 1px solid var(--colors-ultra-high);
+				background: var(--colors-ultra-high);
+			}
+			input[type='checkbox']:checked ~ label {
+				color: var(--colors-ultra-high);
+			}
+		}
 	}
 	input[type='checkbox'] {
 		appearance: none;
 		margin: 0;
 		position: relative;
+		z-index: 0;
 	}
 	input[type='checkbox']::before {
 		content: '';
@@ -43,7 +123,7 @@
 		border: 1px solid var(--colors-high);
 		background: var(--colors-high);
 	}
-	input[type='checkbox']:checked::before ~ label {
+	input[type='checkbox']:checked ~ label {
 		color: var(--colors-high);
 	}
 	input[type='checkbox']:checked::after {
@@ -70,6 +150,7 @@
 		cursor: pointer;
 		color: var(--colors-ultra-high);
 	}
+
 	.default {
 		&.root {
 			padding: 0.75rem;
