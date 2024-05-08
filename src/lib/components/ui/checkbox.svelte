@@ -17,45 +17,12 @@
 		class: className = '',
 		...restProps
 	}: Props = $props()
-
-	let checkbox: HTMLInputElement | undefined = $state(undefined)
-	let root: HTMLDivElement | undefined = $state(undefined)
-	function onclick() {
-		if (checkbox && !checkbox.disabled) {
-			checkbox.checked = !checkbox.checked
-		}
-	}
-	function onkeypress(event: KeyboardEvent) {
-		if (event.key === 'Enter') {
-			onclick()
-		}
-	}
 </script>
 
-<div
-	class="root {dimension} {className}"
-	class:hover
-	class:active
-	class:focus
-	{onclick}
-	{onkeypress}
-	role="checkbox"
-	aria-checked="true"
-	tabindex="0"
-	bind:this={root}
->
-	<input
-		type="checkbox"
-		onclick={() => {
-			onclick()
-			root?.focus()
-		}}
-		bind:this={checkbox}
-		tabindex="-1"
-		{...restProps}
-	/>
+<label class="root {dimension} {className}" class:hover class:active class:focus>
+	<input type="checkbox" {...restProps} />
 	{label}
-</div>
+</label>
 
 <style lang="postcss">
 	.root {
@@ -72,8 +39,8 @@
 		&:has(input[type='checkbox']:checked) {
 			color: var(--colors-high);
 		}
-		&:focus:has(input[type='checkbox']:not(:disabled)),
-		&:focus-visible:has(input[type='checkbox']:not(:disabled)),
+		&:has(input[type='checkbox']:not(:disabled):focus),
+		&:has(input[type='checkbox']:not(:disabled):focus-visible),
 		&.focus:has(input[type='checkbox']:not(:disabled)) {
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
