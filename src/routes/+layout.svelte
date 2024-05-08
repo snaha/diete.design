@@ -24,19 +24,19 @@
 		},
 	}
 
+	// for some reason using $page is now an error
+	// https://github.com/sveltejs/eslint-plugin-svelte/issues/652#issuecomment-2028495896
+
+	// eslint-disable-next-line svelte/valid-compile
 	const pathname = $derived($page.url.pathname)
 	let menuTitleIsOpen = $state(makeMenuItemOpenMapping())
 
 	$effect(() => {
-		pathname;
+		pathname
 		menuTitleIsOpen = makeMenuItemOpenMapping()
 	})
 
 	function isActivePage(path: string) {
-		// for some reason using $page is now an error
-		// https://github.com/sveltejs/eslint-plugin-svelte/issues/652#issuecomment-2028495896
-
-		// eslint-disable-next-line svelte/valid-compile
 		return path === pathname
 	}
 
