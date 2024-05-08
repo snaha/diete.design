@@ -3,27 +3,84 @@
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
 		label: string
-		labelFor?: string
 		dimension?: Dimension
+		hover?: boolean
+		active?: boolean
+		focus?: boolean
 	}
 	let {
 		label,
-		labelFor = Math.random().toString(16),
 		dimension = 'default',
+		hover,
+		active,
+		focus,
 		class: className = '',
 		...restProps
 	}: Props = $props()
 </script>
 
-<div class="root {dimension} {className}">
-	<input type="radio" {...restProps} id={labelFor} />
-	<label for={labelFor}>{label}</label>
-</div>
+<label class="root {dimension} {className}" class:hover class:active class:focus>
+	<input type="radio" tabindex="0" {...restProps} />
+	{label}
+</label>
 
 <style lang="postcss">
 	.root {
 		display: flex;
 		align-items: center;
+		border-radius: 0.25rem;
+		color: var(--colors-ultra-high);
+		font-family: var(--font-family-sans-serif);
+		cursor: pointer;
+		gap: 0.5rem;
+		&:has(input[type='radio']:checked) {
+			color: var(--colors-high);
+		}
+		&:has(input[type='radio']:disabled) {
+			cursor: not-allowed;
+			opacity: 0.25;
+		}
+		&:has(input[type='radio']:not(:disabled):focus),
+		&:has(input[type='radio']:not(:disabled):focus-visible),
+		&.focus:has(input[type='radio']:not(:disabled)) {
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			background: var(--colors-base);
+			color: var(--colors-top);
+			input[type='radio'] {
+				border: 1px solid var(--colors-top);
+				&:checked {
+					border: 1px solid var(--colors-top);
+					background: var(--colors-base);
+				}
+				&:checked::after {
+					background: var(--colors-top);
+				}
+			}
+		}
+		&:active:has(input[type='radio']:not(:disabled)),
+		&.active:has(input[type='radio']:not(:disabled)) {
+			outline: none;
+		}
+		&:hover:has(input[type='radio']:not(:disabled)),
+		&.hover:has(input[type='radio']:not(:disabled)),
+		&:active:has(input[type='radio']:not(:disabled)),
+		&.active:has(input[type='radio']:not(:disabled)) {
+			color: var(--colors-high);
+			&:has(input[type='radio']:checked) {
+				color: var(--colors-ultra-high);
+			}
+			input[type='radio'] {
+				border: 1px solid var(--colors-high);
+				&:checked {
+					border: 1px solid var(--colors-ultra-high);
+					background: var(--colors-base);
+				}
+				&:checked::after {
+					background: var(--colors-ultra-high);
+				}
+			}
+		}
 	}
 	input[type='radio'] {
 		position: relative;
@@ -32,6 +89,10 @@
 		border: 1px solid var(--colors-ultra-high);
 		border-radius: 50%;
 		cursor: pointer;
+		&:focus,
+		&:focus-visible {
+			outline: none;
+		}
 		&:checked {
 			border-color: var(--colors-high);
 		}
@@ -46,26 +107,13 @@
 			border-radius: 50%;
 			background-color: var(--colors-high);
 		}
-		&:checked + label {
-			color: var(--colors-high);
-		}
-		&:disabled,
-		&:disabled + label {
+		&:disabled {
 			cursor: not-allowed;
-			opacity: 0.25;
 		}
-	}
-	label {
-		color: var(--colors-ultra-high);
-		font-family: var(--font-family-sans-serif);
-		cursor: pointer;
-		padding-left: 0.5rem;
 	}
 	.default {
 		&.root {
 			padding: 0.75rem;
-		}
-		label {
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -82,8 +130,6 @@
 	.large {
 		&.root {
 			padding: 0.75rem;
-		}
-		label {
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
@@ -100,8 +146,6 @@
 	.compact {
 		&.root {
 			padding: 0.5rem;
-		}
-		label {
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -119,8 +163,6 @@
 		&.root {
 			padding: 0.5rem;
 			gap: 0.25rem;
-		}
-		label {
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);

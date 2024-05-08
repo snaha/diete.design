@@ -288,28 +288,52 @@
 		<Typography variant="h1">Radio button</Typography>
 		<div class="row">
 			<div class="col">
-				<Radio label="Radio button" name="rb" />
-				<Radio label="Radio button" name="rb" checked />
-				<Radio label="Radio button" disabled />
-				<Radio label="Radio button" checked disabled />
+				<Radio label="Unselected" />
+				<Radio label="Hover unselected" hover />
+				<Radio label="Pressed unselected" active />
+				<Radio label="Focus unselected" focus />
+				<Radio label="Focus unselected" disabled />
+				<Radio label="Selected" checked />
+				<Radio label="Hover selected" hover checked />
+				<Radio label="Pressed selected" active checked />
+				<Radio label="Focus selected" focus checked />
+				<Radio label="Disabled selected" disabled checked />
 			</div>
 			<div class="col">
-				<Radio dimension="large" label="Radio button" name="rbL" />
-				<Radio dimension="large" label="Radio button" name="rbL" checked />
-				<Radio dimension="large" label="Radio button" disabled />
-				<Radio dimension="large" label="Radio button" checked disabled />
+				<Radio dimension="large" label="Unselected" />
+				<Radio dimension="large" label="Hover unselected" hover />
+				<Radio dimension="large" label="Pressed unselected" active />
+				<Radio dimension="large" label="Focus unselected" focus />
+				<Radio dimension="large" label="Focus unselected" disabled />
+				<Radio dimension="large" label="Selected" checked />
+				<Radio dimension="large" label="Hover selected" hover checked />
+				<Radio dimension="large" label="Pressed selected" active checked />
+				<Radio dimension="large" label="Focus selected" focus checked />
+				<Radio dimension="large" label="Disabled selected" disabled checked />
 			</div>
 			<div class="col">
-				<Radio dimension="compact" label="Radio button" name="rbC" />
-				<Radio dimension="compact" label="Radio button" name="rbC" checked />
-				<Radio dimension="compact" label="Radio button" disabled />
-				<Radio dimension="compact" label="Radio button" checked disabled />
+				<Radio dimension="compact" label="Unselected" />
+				<Radio dimension="compact" label="Hover unselected" hover />
+				<Radio dimension="compact" label="Pressed unselected" active />
+				<Radio dimension="compact" label="Focus unselected" focus />
+				<Radio dimension="compact" label="Focus unselected" disabled />
+				<Radio dimension="compact" label="Selected" checked />
+				<Radio dimension="compact" label="Hover selected" hover checked />
+				<Radio dimension="compact" label="Pressed selected" active checked />
+				<Radio dimension="compact" label="Focus selected" focus checked />
+				<Radio dimension="compact" label="Disabled selected" disabled checked />
 			</div>
 			<div class="col">
-				<Radio dimension="small" label="Radio button" name="rbS" />
-				<Radio dimension="small" label="Radio button" name="rbS" checked />
-				<Radio dimension="small" label="Radio button" disabled />
-				<Radio dimension="small" label="Radio button" checked disabled />
+				<Radio dimension="small" label="Unselected" />
+				<Radio dimension="small" label="Hover unselected" hover />
+				<Radio dimension="small" label="Pressed unselected" active />
+				<Radio dimension="small" label="Focus unselected" focus />
+				<Radio dimension="small" label="Focus unselected" disabled />
+				<Radio dimension="small" label="Selected" checked />
+				<Radio dimension="small" label="Hover selected" hover checked />
+				<Radio dimension="small" label="Pressed selected" active checked />
+				<Radio dimension="small" label="Focus selected" focus checked />
+				<Radio dimension="small" label="Disabled selected" disabled checked />
 			</div>
 		</div>
 	</section>
