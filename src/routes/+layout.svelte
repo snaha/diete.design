@@ -14,20 +14,42 @@
 
 	const mobileWidth = 700
 
-	const dietePages = {
-		'/': 'Intro',
+	const menu: { [title: string]: { [path: string]: string } } = {
+		Diète: {
+			'/': 'Intro',
+		},
+		Elements: {},
+		'Basic components': {
+			'/components/button': 'Button',
+		},
 	}
 
-	const basicComponentPages = {
-		'/components/button': 'Button',
-	}
+	// for some reason using $page is now an error
+	// https://github.com/sveltejs/eslint-plugin-svelte/issues/652#issuecomment-2028495896
+
+	// eslint-disable-next-line svelte/valid-compile
+	const pathname = $derived($page.url.pathname)
+	let menuTitleIsOpen = $state(makeMenuItemOpenMapping())
+
+	$effect(() => {
+		pathname
+		menuTitleIsOpen = makeMenuItemOpenMapping()
+	})
 
 	function isActivePage(path: string) {
-		// for some reason using $page is now an error
-		// https://github.com/sveltejs/eslint-plugin-svelte/issues/652#issuecomment-2028495896
+		return path === pathname
+	}
 
-		// eslint-disable-next-line svelte/valid-compile
-		return path === $page.url.pathname
+	function isActivePageInMenu(title: string) {
+		return Object.keys(menu[title] || {}).some((path) => isActivePage(path))
+	}
+
+	function makeMenuItemOpenMapping() {
+		const menuOpen: { [title: string]: boolean } = {}
+
+		Object.keys(menu).forEach((menu) => (menuOpen[menu] = isActivePageInMenu(menu)))
+
+		return menuOpen
 	}
 
 	function menuOnClick() {
@@ -64,21 +86,15 @@
 		{#if isMenuOpen}
 			<div class="menu-header"></div>
 			<div class="menu">
-				<MenuTitle content="Diète" bold>
-					{#each Object.entries(dietePages) as [path, title]}
-						<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}
-							>{title}</MenuItem
-						>
-					{/each}
-				</MenuTitle>
-				<MenuTitle content="Elements" bold></MenuTitle>
-				<MenuTitle content="Basic components" bold open>
-					{#each Object.entries(basicComponentPages) as [path, title]}
-						<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}
-							>{title}</MenuItem
-						>
-					{/each}
-				</MenuTitle>
+				{#each Object.entries(menu) as [title, pages]}
+					<MenuTitle content={title} bold bind:open={menuTitleIsOpen[title]}>
+						{#each Object.entries(pages) as [path, title]}
+							<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}
+								>{title}</MenuItem
+							>
+						{/each}
+					</MenuTitle>
+				{/each}
 			</div>
 		{/if}
 	</div>
