@@ -33,13 +33,12 @@
 		cursor: pointer;
 		font-family: var(--font-family-sans-serif);
 		color: var(--colors-ultra-high);
-		&:focus {
-			outline: none;
-		}
 		&:has(input[type='checkbox']:checked) {
 			color: var(--colors-high);
 		}
-		&:has(input[type='checkbox']:not(:disabled):focus),
+		&:has(input[type='checkbox']:not(:disabled):focus) {
+			outline: none;
+		}
 		&:has(input[type='checkbox']:not(:disabled):focus-visible),
 		&.focus:has(input[type='checkbox']:not(:disabled)) {
 			outline: 4px solid var(--colors-top);
