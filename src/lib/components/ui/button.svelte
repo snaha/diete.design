@@ -5,6 +5,8 @@
 	type ButtonProps = {
 		variant?: Variant
 		active?: boolean
+		hover?: boolean
+		focus?: boolean
 		dimension?: Dimension
 	}
 	interface AnchorElement extends HTMLAnchorAttributes, ButtonProps {
@@ -26,6 +28,8 @@
 		dimension = 'default',
 		variant = 'strong',
 		active,
+		hover,
+		focus,
 		disabled,
 		href,
 		class: className = '',
@@ -38,6 +42,8 @@
 		this={href ? 'a' : 'button'}
 		class={`${dimension} ${variant}`}
 		class:active
+		class:hover
+		class:focus
 		{href}
 		{disabled}
 		{...restProps}
@@ -112,14 +118,33 @@
 	}
 
 	.strong {
+		border: 1px solid var(--colors-ultra-high);
 		background: var(--colors-ultra-high);
 		color: var(--colors-ultra-low);
+
+		&:focus:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			border: 1px solid transparent;
+			background: var(--colors-base);
+			color: var(--colors-top);
+		}
+
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-top);
+			background: var(--colors-top);
+			color: var(--colors-base);
+		}
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
 			border: 1px solid var(--colors-high);
 			background: var(--colors-high);
 			color: var(--colors-base);
+			outline: none;
 		}
 	}
 	.secondary {
@@ -127,10 +152,29 @@
 		background: none;
 		color: var(--colors-ultra-high);
 
+		&:focus:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			border: 1px solid transparent;
+			background: var(--colors-base);
+			color: var(--colors-top);
+		}
+
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-top);
+			background: var(--colors-low);
+			color: var(--colors-top);
+		}
+
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
 			border: 1px solid var(--colors-high);
+			background: var(--colors-low);
 			color: var(--colors-high);
+			outline: none;
 		}
 	}
 	.ghost {
@@ -138,11 +182,28 @@
 		background: transparent;
 		color: var(--colors-ultra-high);
 
+		&:focus:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			background: var(--colors-base);
+			color: var(--colors-top);
+		}
+
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-low);
+			background: var(--colors-low);
+			color: var(--colors-top);
+		}
+
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
 			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
 			color: var(--colors-high);
+			outline: none;
 		}
 	}
 	.overlay {
@@ -150,21 +211,59 @@
 		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 
+		&:focus:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			border: 1px solid transparent;
+			background: var(--colors-base);
+			color: var(--colors-top);
+		}
+
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-low);
+			background: var(--colors-low);
+			color: var(--colors-top);
+		}
+
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
 			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
 			color: var(--colors-high);
+			outline: none;
 		}
 	}
 	.darkoverlay {
 		border: 1px solid var(--colors-dark-overlay);
 		background: var(--colors-dark-overlay);
 		color: var(--colors-dark-top);
+
+		&:focus:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-dark-top);
+			outline-offset: -4px;
+			border: 1px solid transparent;
+			background: var(--colors-dark-base);
+			color: var(--colors-dark-top);
+		}
+
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-dark-base);
+			background: var(--colors-dark-base);
+			color: var(--colors-dark-top);
+		}
+
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
 			border: 1px solid var(--colors-dark-base);
 			background: var(--colors-dark-base);
+			color: var(--colors-dark-top);
+			outline: none;
 		}
 	}
 </style>

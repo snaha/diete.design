@@ -25,168 +25,232 @@
 		<div class="row">
 			<div class="col">
 				<Button>Strong</Button>
+				<Button hover>Strong hover</Button>
 				<Button active>Strong active</Button>
+				<Button focus>Strong focus</Button>
 				<Button disabled>Strong disabled</Button>
 			</div>
 			<div class="col">
 				<Button><Checkmark size={24} /></Button>
+				<Button hover><Checkmark size={24} /></Button>
 				<Button active><Checkmark size={24} /></Button>
+				<Button focus><Checkmark size={24} /></Button>
 				<Button disabled><Checkmark size={24} /></Button>
 			</div>
 			<div class="col">
 				<Button><Checkmark size={24} />Strong</Button>
+				<Button hover><Checkmark size={24} />Strong hover</Button>
 				<Button active><Checkmark size={24} />Strong active</Button>
+				<Button focus><Checkmark size={24} />Strong focus</Button>
 				<Button disabled><Checkmark size={24} />Strong disabled</Button>
 			</div>
 			<div class="col">
 				<Button>Strong<ArrowRight size={24} /></Button>
+				<Button hover>Strong hover<ArrowRight size={24} /></Button>
 				<Button active>Strong active<ArrowRight size={24} /></Button>
+				<Button focus>Strong focus<ArrowRight size={24} /></Button>
 				<Button disabled>Strong disabled<ArrowRight size={24} /></Button>
 			</div>
 			<div class="col">
 				<Button variant="secondary">Secondary</Button>
+				<Button variant="secondary" hover>Secondary hover</Button>
 				<Button variant="secondary" active>Secondary active</Button>
+				<Button variant="secondary" focus>Secondary focus</Button>
 				<Button variant="secondary" disabled>Secondary disabled</Button>
 			</div>
 			<div class="col">
 				<Button variant="ghost">Ghost</Button>
+				<Button variant="ghost" hover>Ghost hover</Button>
 				<Button variant="ghost" active>Ghost active</Button>
+				<Button variant="ghost" focus>Ghost focus</Button>
 				<Button variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
 				<Button variant="overlay">Overlay</Button>
+				<Button variant="overlay" hover>Overlay hover</Button>
 				<Button variant="overlay" active>Overlay active</Button>
+				<Button variant="overlay" focus>Overlay focus</Button>
 				<Button variant="overlay" disabled>Overlay disabled</Button>
 			</div>
 			<div class="col">
 				<Button variant="darkoverlay">Dark overlay</Button>
+				<Button variant="darkoverlay" hover>Dark overlay hover</Button>
 				<Button variant="darkoverlay" active>Dark overlay active</Button>
+				<Button variant="darkoverlay" focus>Dark overlay focus</Button>
 				<Button variant="darkoverlay" disabled>Dark overlay disabled</Button>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<Button dimension="large">Strong</Button>
+				<Button dimension="large" hover>Strong hover</Button>
 				<Button dimension="large" active>Strong active</Button>
+				<Button dimension="large" focus>Strong focus</Button>
 				<Button dimension="large" disabled>Strong disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="large"><Checkmark size={32} /></Button>
+				<Button dimension="large" hover><Checkmark size={32} /></Button>
 				<Button dimension="large" active><Checkmark size={32} /></Button>
+				<Button dimension="large" focus><Checkmark size={32} /></Button>
 				<Button dimension="large" disabled><Checkmark size={32} /></Button>
 			</div>
 			<div class="col">
 				<Button dimension="large"><Checkmark size={32} />Strong</Button>
+				<Button dimension="large" hover><Checkmark size={32} />Strong hover</Button>
 				<Button dimension="large" active><Checkmark size={32} />Strong active</Button>
+				<Button dimension="large" focus><Checkmark size={32} />Strong focus</Button>
 				<Button dimension="large" disabled><Checkmark size={32} />Strong disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="large">Strong<ArrowRight size={32} /></Button>
+				<Button dimension="large" hover>Strong hover<ArrowRight size={32} /></Button>
 				<Button dimension="large" active>Strong active<ArrowRight size={32} /></Button>
+				<Button dimension="large" focus>Strong focus<ArrowRight size={32} /></Button>
 				<Button dimension="large" disabled>Strong disabled<ArrowRight size={32} /></Button>
 			</div>
 			<div class="col">
 				<Button dimension="large" variant="secondary">Secondary</Button>
+				<Button dimension="large" variant="secondary" hover>Secondary hover</Button>
 				<Button dimension="large" variant="secondary" active>Secondary active</Button>
+				<Button dimension="large" variant="secondary" focus>Secondary focus</Button>
 				<Button dimension="large" variant="secondary" disabled>Secondary disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="large" variant="ghost">Ghost</Button>
+				<Button dimension="large" variant="ghost" hover>Ghost hover</Button>
 				<Button dimension="large" variant="ghost" active>Ghost active</Button>
+				<Button dimension="large" variant="ghost" focus>Ghost focus</Button>
 				<Button dimension="large" variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="large" variant="overlay">Overlay</Button>
+				<Button dimension="large" variant="overlay" hover>Overlay hover</Button>
 				<Button dimension="large" variant="overlay" active>Overlay active</Button>
+				<Button dimension="large" variant="overlay" focus>Overlay focus</Button>
 				<Button dimension="large" variant="overlay" disabled>Overlay disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="large" variant="darkoverlay">Dark overlay</Button>
+				<Button dimension="large" variant="darkoverlay" hover>Dark overlay hover</Button>
 				<Button dimension="large" variant="darkoverlay" active>Dark overlay active</Button>
+				<Button dimension="large" variant="darkoverlay" focus>Dark overlay focus</Button>
 				<Button dimension="large" variant="darkoverlay" disabled>Dark overlay disabled</Button>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<Button dimension="compact">Strong</Button>
+				<Button dimension="compact" hover>Strong hover</Button>
 				<Button dimension="compact" active>Strong active</Button>
+				<Button dimension="compact" focus>Strong focus</Button>
 				<Button dimension="compact" disabled>Strong disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="compact"><Checkmark size={24} /></Button>
+				<Button dimension="compact" hover><Checkmark size={24} /></Button>
 				<Button dimension="compact" active><Checkmark size={24} /></Button>
+				<Button dimension="compact" focus><Checkmark size={24} /></Button>
 				<Button dimension="compact" disabled><Checkmark size={24} /></Button>
 			</div>
 			<div class="col">
 				<Button dimension="compact"><Checkmark size={24} />Strong</Button>
+				<Button dimension="compact" hover><Checkmark size={24} />Strong hover</Button>
 				<Button dimension="compact" active><Checkmark size={24} />Strong active</Button>
+				<Button dimension="compact" focus><Checkmark size={24} />Strong focus</Button>
 				<Button dimension="compact" disabled><Checkmark size={24} />Strong disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="compact">Strong<ArrowRight size={24} /></Button>
+				<Button dimension="compact" hover>Strong hover<ArrowRight size={24} /></Button>
 				<Button dimension="compact" active>Strong active<ArrowRight size={24} /></Button>
+				<Button dimension="compact" focus>Strong focus<ArrowRight size={24} /></Button>
 				<Button dimension="compact" disabled>Strong disabled<ArrowRight size={24} /></Button>
 			</div>
 			<div class="col">
 				<Button dimension="compact" variant="secondary">Secondary</Button>
+				<Button dimension="compact" variant="secondary" hover>Secondary hover</Button>
 				<Button dimension="compact" variant="secondary" active>Secondary active</Button>
+				<Button dimension="compact" variant="secondary" focus>Secondary focus</Button>
 				<Button dimension="compact" variant="secondary" disabled>Secondary disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="compact" variant="ghost">Ghost</Button>
+				<Button dimension="compact" variant="ghost" hover>Ghost hover</Button>
 				<Button dimension="compact" variant="ghost" active>Ghost active</Button>
+				<Button dimension="compact" variant="ghost" focus>Ghost focus</Button>
 				<Button dimension="compact" variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="compact" variant="overlay">Overlay</Button>
+				<Button dimension="compact" variant="overlay" hover>Overlay hover</Button>
 				<Button dimension="compact" variant="overlay" active>Overlay active</Button>
+				<Button dimension="compact" variant="overlay" focus>Overlay focus</Button>
 				<Button dimension="compact" variant="overlay" disabled>Overlay disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="compact" variant="darkoverlay">Dark overlay</Button>
+				<Button dimension="compact" variant="darkoverlay" hover>Dark overlay hover</Button>
 				<Button dimension="compact" variant="darkoverlay" active>Dark overlay active</Button>
+				<Button dimension="compact" variant="darkoverlay" focus>Dark overlay focus</Button>
 				<Button dimension="compact" variant="darkoverlay" disabled>Dark overlay disabled</Button>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<Button dimension="small">Strong</Button>
+				<Button dimension="small" hover>Strong hover</Button>
 				<Button dimension="small" active>Strong active</Button>
+				<Button dimension="small" focus>Strong focus</Button>
 				<Button dimension="small" disabled>Strong disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="small"><Checkmark size={16} /></Button>
+				<Button dimension="small"><Checkmark size={16} />Strong</Button>
 				<Button dimension="small" active><Checkmark size={16} /></Button>
+				<Button dimension="small" disabled><Checkmark size={16} /></Button>
 				<Button dimension="small" disabled><Checkmark size={16} /></Button>
 			</div>
 			<div class="col">
 				<Button dimension="small"><Checkmark size={16} />Strong</Button>
+				<Button dimension="small" hover><Checkmark size={16} />Strong hover</Button>
 				<Button dimension="small" active><Checkmark size={16} />Strong active</Button>
+				<Button dimension="small" focus><Checkmark size={16} />Strong focus</Button>
 				<Button dimension="small" disabled><Checkmark size={16} />Strong disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="small">Strong<ArrowRight size={16} /></Button>
+				<Button dimension="small" hover>Strong hover<ArrowRight size={16} /></Button>
 				<Button dimension="small" active>Strong active<ArrowRight size={16} /></Button>
+				<Button dimension="small" focus>Strong focus<ArrowRight size={16} /></Button>
 				<Button dimension="small" disabled>Strong disabled<ArrowRight size={16} /></Button>
 			</div>
 			<div class="col">
 				<Button dimension="small" variant="secondary">Secondary</Button>
+				<Button dimension="small" variant="secondary" hover>Secondary hover</Button>
 				<Button dimension="small" variant="secondary" active>Secondary active</Button>
+				<Button dimension="small" variant="secondary" focus>Secondary focus</Button>
 				<Button dimension="small" variant="secondary" disabled>Secondary disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="small" variant="ghost">Ghost</Button>
+				<Button dimension="small" variant="ghost" hover>Ghost hover</Button>
 				<Button dimension="small" variant="ghost" active>Ghost active</Button>
+				<Button dimension="small" variant="ghost" focus>Ghost focus</Button>
 				<Button dimension="small" variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="small" variant="overlay">Overlay</Button>
+				<Button dimension="small" variant="overlay" hover>Overlay hover</Button>
 				<Button dimension="small" variant="overlay" active>Overlay active</Button>
+				<Button dimension="small" variant="overlay" focus>Overlay focus</Button>
 				<Button dimension="small" variant="overlay" disabled>Overlay disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="small" variant="darkoverlay">Dark overlay</Button>
+				<Button dimension="small" variant="darkoverlay" hover>Dark overlay hover</Button>
 				<Button dimension="small" variant="darkoverlay" active>Dark overlay active</Button>
+				<Button dimension="small" variant="darkoverlay" focus>Dark overlay focus</Button>
 				<Button dimension="small" variant="darkoverlay" disabled>Dark overlay disabled</Button>
 			</div>
 		</div>
