@@ -143,7 +143,7 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 {/snippet}
 
 {#snippet helperTextButtonSizes()}
-	Learn more about button size: <a href="#button-sizes">About sizes</a>
+	Learn more about button size: <a href="#about-sizes">About sizes</a>
 {/snippet}
 
 {#snippet controls()}
