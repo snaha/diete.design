@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	import { WarningAltFilled, Information } from 'carbon-icons-svelte'
+	import { WarningAltFilled, Information, Subtract, Add } from 'carbon-icons-svelte'
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
@@ -14,6 +14,7 @@
 		hover?: boolean
 		active?: boolean
 		focus?: boolean
+		controls?: boolean
 	}
 	let {
 		label,
@@ -27,18 +28,20 @@
 		hover,
 		active,
 		focus,
+		controls,
 		type,
 		class: className = '',
 		children,
 		...restProps
 	}: Props = $props()
+	let inputValue: number = $state(value)
 </script>
 
-<div class="root {layout} {dimension} {className}">
+<div class="root {layout} {dimension} {className}" class:controls>
 	<label class="label" for={labelFor}>
 		{label}
 	</label>
-	{#if children && layout === 'horizontal'}
+	{#if children && layout === 'horizontal' && layout !== 'horizontal'}
 		<div class="helper-button">
 			<Information size={dimension === 'small' ? 16 : 24} />
 		</div>
@@ -50,7 +53,7 @@
 			class:hover
 			class:focus
 			class:error
-			bind:value
+			bind:value={inputValue}
 			{placeholder}
 			{type}
 			{...restProps}
@@ -62,6 +65,18 @@
 			<label class="error-icon" for={labelFor}>
 				<WarningAltFilled size={dimension === 'small' ? 16 : 24} />
 			</label>
+		{/if}
+		{#if controls && type === 'number'}
+			<div class="control-buttons">
+				<button class="substract" onclick={() => (inputValue -= 1)}
+					><Subtract size={dimension === 'small' ? 16 : 24} /></button
+				>
+				<button class="add" onclick={() => (inputValue += 1)}
+					><Add size={dimension === 'small' ? 16 : 24} /></button
+				>
+			</div>
+		{/if}
+		{#if error}
 			<div class="error-message">
 				{@render error()}
 			</div>
@@ -91,6 +106,16 @@
 			align-items: center;
 		}
 	}
+	.controls {
+		.wrapper {
+			gap: 0;
+			flex-direction: row;
+			input[type='number'] {
+				border-radius: 0.25rem 0 0 0.25rem;
+			}
+		}
+	}
+
 	.root {
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
@@ -113,7 +138,29 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.25rem;
+		.control-buttons {
+			display: flex;
+			flex-direction: row;
+		}
+		button {
+			display: flex;
+			align-items: center;
+			margin: 0;
+			background: transparent;
+			color: var(--colors-ultra-high);
+		}
+		.substract {
+			border-radius: 0;
+			border: 1px solid var(--colors-ultra-high);
+			border-left: none;
+		}
+		.add {
+			border-radius: 0 0.25rem 0.25rem 0;
+			border: 1px solid var(--colors-ultra-high);
+			border-left: none;
+		}
 		input {
+			position: relative;
 			border: 1px solid var(--colors-ultra-high);
 			border-radius: 0.25rem;
 			background: transparent;
@@ -126,9 +173,13 @@
 				opacity: 0.25;
 				cursor: not-allowed;
 				& ~ .unit,
-				& ~ .error-icon {
+				& ~ .error-icon,
+				& ~ .control-buttons {
 					opacity: 0.25;
 					cursor: not-allowed;
+				}
+				& ~ .control-buttons > button {
+					pointer-events: none;
 				}
 			}
 			&:focus:not(:disabled),
@@ -140,6 +191,7 @@
 				color: var(--colors-top);
 				& ~ .unit {
 					color: var(--colors-top);
+					opacity: 1;
 				}
 			}
 			&:active:not(:disabled),
@@ -159,15 +211,16 @@
 				outline-offset: -2px;
 			}
 		}
-		.unit {
-			position: absolute;
-			cursor: text;
-		}
-		.error-icon {
-			position: absolute;
-			color: var(--colors-top);
-			cursor: text;
-		}
+	}
+	.unit {
+		opacity: 0.5;
+		position: absolute;
+		cursor: text;
+	}
+	.error-icon {
+		position: absolute;
+		color: var(--colors-top);
+		cursor: text;
 	}
 	.default {
 		.label {
@@ -184,12 +237,23 @@
 			letter-spacing: var(--letter-spacing);
 			padding: 0.75rem;
 		}
+		button {
+			padding: 0.75rem;
+			font-size: var(--font-size);
+			line-height: var(--line-height);
+			letter-spacing: var(--letter-spacing);
+		}
 		.unit {
 			top: 0.75rem;
 			right: 0.75rem;
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
+		}
+		&.controls {
+			.unit {
+				right: 6.875rem;
+			}
 		}
 		.error-icon {
 			top: 0.75rem;
@@ -211,6 +275,12 @@
 			letter-spacing: var(--letter-spacing-large);
 			padding: 0.75rem;
 		}
+		button {
+			padding: 0.75rem;
+			font-size: var(--font-size-large);
+			line-height: var(--line-height-large);
+			letter-spacing: var(--letter-spacing-large);
+		}
 		.unit {
 			top: 0.75rem;
 			right: 0.75rem;
@@ -218,8 +288,13 @@
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
 		}
+		&.controls {
+			.unit {
+				right: 6.875rem;
+			}
+		}
 		.error-icon {
-			top: 0.75rem;
+			top: 1rem;
 			right: 0.75rem;
 		}
 		.error-message {
@@ -243,12 +318,23 @@
 			letter-spacing: var(--letter-spacing);
 			padding: 0.5rem;
 		}
+		button {
+			padding: 0.5rem;
+			font-size: var(--font-size);
+			line-height: var(--line-height);
+			letter-spacing: var(--letter-spacing);
+		}
 		.unit {
 			top: 0.5rem;
 			right: 0.5rem;
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
+		}
+		&.controls {
+			.unit {
+				right: 5.625rem;
+			}
 		}
 		.error-icon {
 			top: 0.5rem;
@@ -270,12 +356,23 @@
 			letter-spacing: var(--letter-spacing-small);
 			padding: 0.5rem;
 		}
+		button {
+			padding: 0.5rem;
+			font-size: var(--font-size-small);
+			line-height: var(--line-height-small);
+			letter-spacing: var(--letter-spacing-small);
+		}
 		.unit {
 			top: 0.5rem;
 			right: 0.5rem;
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
+		}
+		&.controls {
+			.unit {
+				right: 4.625rem;
+			}
 		}
 		.error-icon {
 			top: 0.5rem;
