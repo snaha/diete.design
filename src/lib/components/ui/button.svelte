@@ -244,10 +244,10 @@
 		&:focus:not(:disabled),
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
-			outline: 4px solid var(--colors-top);
+			outline: 4px solid var(--colors-dark-top);
 			outline-offset: -4px;
 			border: 1px solid transparent;
-			background: var(--colors-base);
+			background: var(--colors-dark-base);
 			color: var(--colors-dark-top);
 		}
 
