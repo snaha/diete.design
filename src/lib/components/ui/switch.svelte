@@ -41,7 +41,9 @@
 			opacity: 0.25;
 			cursor: not-allowed;
 		}
-		&:has(input[type='checkbox']:not(:disabled):focus),
+		&:has(input[type='checkbox']:not(:disabled):focus) {
+			outline: none;
+		}
 		&:has(input[type='checkbox']:not(:disabled):focus-visible),
 		&.focus:has(input[type='checkbox']:not(:disabled)) {
 			outline: 4px solid var(--colors-top);
