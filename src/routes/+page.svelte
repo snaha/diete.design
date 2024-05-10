@@ -317,28 +317,52 @@
 		<Typography variant="h1">Switch</Typography>
 		<div class="row">
 			<div class="col">
-				<Switch label="Switch button" />
-				<Switch label="Switch button" checked />
-				<Switch label="Switch button" disabled />
-				<Switch label="Switch button" checked disabled />
+				<Switch label="Off" />
+				<Switch label="Hover off" hover />
+				<Switch label="Active off" active />
+				<Switch label="Focus off" focus />
+				<Switch label="Disabled off" disabled />
+				<Switch label="On" checked />
+				<Switch label="Hover on" checked hover />
+				<Switch label="Active on" checked active />
+				<Switch label="Focus on" checked focus />
+				<Switch label="Disabled on" checked disabled />
 			</div>
 			<div class="col">
-				<Switch dimension="large" label="Switch button" />
-				<Switch dimension="large" label="Switch button" checked />
-				<Switch dimension="large" label="Switch button" disabled />
-				<Switch dimension="large" label="Switch button" checked disabled />
+				<Switch dimension="large" label="Off" />
+				<Switch dimension="large" label="Hover off" hover />
+				<Switch dimension="large" label="Active off" active />
+				<Switch dimension="large" label="Focus off" focus />
+				<Switch dimension="large" label="Disabled off" disabled />
+				<Switch dimension="large" label="On" checked />
+				<Switch dimension="large" label="Hover on" checked hover />
+				<Switch dimension="large" label="Active on" checked active />
+				<Switch dimension="large" label="Focus on" checked focus />
+				<Switch dimension="large" label="Disabled on" checked disabled />
 			</div>
 			<div class="col">
-				<Switch dimension="compact" label="Switch button" />
-				<Switch dimension="compact" label="Switch button" checked />
-				<Switch dimension="compact" label="Switch button" disabled />
-				<Switch dimension="compact" label="Switch button" checked disabled />
+				<Switch dimension="compact" label="Off" />
+				<Switch dimension="compact" label="Hover off" hover />
+				<Switch dimension="compact" label="Active off" active />
+				<Switch dimension="compact" label="Focus off" focus />
+				<Switch dimension="compact" label="Disabled off" disabled />
+				<Switch dimension="compact" label="On" checked />
+				<Switch dimension="compact" label="Hover on" checked hover />
+				<Switch dimension="compact" label="Active on" checked active />
+				<Switch dimension="compact" label="Focus on" checked focus />
+				<Switch dimension="compact" label="Disabled on" checked disabled />
 			</div>
 			<div class="col">
-				<Switch dimension="small" label="Switch button" />
-				<Switch dimension="small" label="Switch button" checked />
-				<Switch dimension="small" label="Switch button" disabled />
-				<Switch dimension="small" label="Switch button" checked disabled />
+				<Switch dimension="small" label="Off" />
+				<Switch dimension="small" label="Hover off" hover />
+				<Switch dimension="small" label="Active off" active />
+				<Switch dimension="small" label="Focus off" focus />
+				<Switch dimension="small" label="Disabled off" disabled />
+				<Switch dimension="small" label="On" checked />
+				<Switch dimension="small" label="Hover on" checked hover />
+				<Switch dimension="small" label="Active on" checked active />
+				<Switch dimension="small" label="Focus on" checked focus />
+				<Switch dimension="small" label="Disabled on" checked disabled />
 			</div>
 		</div>
 	</section>
