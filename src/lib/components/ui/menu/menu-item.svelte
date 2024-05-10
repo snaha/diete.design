@@ -12,5 +12,6 @@
 	variant="ghost"
 	dimension={dimension ?? store.size}
 	disabled={disabled ?? store.disabled}
+	tabindex={disabled || store.disabled || !store.open ? -1 : 0}
 	{...restProps}
 />

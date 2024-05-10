@@ -1,12 +1,18 @@
 export interface MenuStore {
 	size: Dimension
+	open: boolean
 	disabled?: boolean
 }
 
 export type Dimension = 'default' | 'large' | 'compact' | 'small'
-export function withMenuStore(dimension: Dimension, inactive?: boolean): MenuStore {
+export function withMenuStore(
+	dimension: Dimension,
+	isOpen: boolean,
+	inactive?: boolean,
+): MenuStore {
 	let size = $state<Dimension>(dimension)
 	let disabled = $state<boolean | undefined>(inactive)
+	let open = $state(isOpen)
 
 	return {
 		get size() {
@@ -20,6 +26,12 @@ export function withMenuStore(dimension: Dimension, inactive?: boolean): MenuSto
 		},
 		set disabled(newValue) {
 			disabled = newValue
+		},
+		get open() {
+			return open
+		},
+		set open(newValue) {
+			open = newValue
 		},
 	}
 }
