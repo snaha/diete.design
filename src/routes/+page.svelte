@@ -1034,6 +1034,202 @@
 			</div>
 		</div>
 	</section>
+	<section>
+		<Typography variant="h1">Select (horizontal)</Typography>
+		<div class="row">
+			<div class="col">
+				<Select layout="horizontal" label="Select label" placeholder="Placeholder">
+					{#snippet helperText()}
+						Without any default value.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+				<Select layout="horizontal" value="2" label="Select label" placeholder="Placeholder">
+					{#snippet helperText()}
+						With default value.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+				<Select layout="horizontal" value="2" label="Select label" placeholder="Placeholder" hover>
+					{#snippet helperText()}
+						Hover.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+				<Select layout="horizontal" value="2" label="Select label" placeholder="Placeholder" active>
+					{#snippet helperText()}
+						Pressed.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+				<Select layout="horizontal" value="2" label="Select label" placeholder="Placeholder" focus>
+					{#snippet helperText()}
+						Focus.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+				<Select
+					layout="horizontal"
+					value="2"
+					label="Select label"
+					placeholder="Placeholder"
+					disabled
+				>
+					{#snippet helperText()}
+						Disabled.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+			</div>
+			<div class="col">
+				<Select
+					layout="horizontal"
+					dimension="large"
+					label="Select label"
+					placeholder="Placeholder"
+				>
+					{#snippet helperText()}
+						This is some helper text.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+				<Select
+					layout="horizontal"
+					value="2"
+					dimension="large"
+					label="Select label"
+					placeholder="Placeholder"
+				>
+					{#snippet helperText()}
+						This is some helper text.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+			</div>
+			<div class="col">
+				<Select
+					layout="horizontal"
+					dimension="compact"
+					label="Select label"
+					placeholder="Placeholder"
+				>
+					{#snippet helperText()}
+						This is some helper text.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+				<Select
+					layout="horizontal"
+					value="2"
+					dimension="compact"
+					label="Select label"
+					placeholder="Placeholder"
+				>
+					{#snippet helperText()}
+						This is some helper text.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+			</div>
+			<div class="col">
+				<Select
+					layout="horizontal"
+					dimension="small"
+					label="Select label"
+					placeholder="Placeholder"
+				>
+					{#snippet helperText()}
+						This is some helper text.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+				<Select
+					layout="horizontal"
+					value="2"
+					dimension="small"
+					label="Select label"
+					placeholder="Placeholder"
+				>
+					{#snippet helperText()}
+						This is some helper text.
+					{/snippet}
+					<Option value="1">Label 1</Option>
+					<Option value="2">Label 2</Option>
+					<Option value="3">Label 3</Option>
+					<Option value="4">Label 4</Option>
+					<Option value="5">Label 5</Option>
+					<Option value="6">Label 6</Option>
+					<Option value="7">Label 7</Option>
+				</Select>
+			</div>
+		</div>
+	</section>
 	<section id="menu">
 		<Typography variant="h1">Menu</Typography>
 		<div class="row">

@@ -5,6 +5,7 @@
 	import { withSelectStore } from './select-store.svelte'
 	import Option from './option.svelte'
 
+	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
 		helperText?: Snippet
@@ -12,6 +13,7 @@
 		labelFor?: string
 		dimension?: Dimension
 		value?: string
+		layout?: Layout
 		hover?: boolean
 		active?: boolean
 		focus?: boolean
@@ -23,6 +25,7 @@
 		dimension = 'default',
 		placeholder,
 		value = $bindable(),
+		layout = 'vertical',
 		hover,
 		active,
 		focus,
@@ -86,7 +89,7 @@
 	})
 </script>
 
-<div class="root {dimension} {className}">
+<div class="root {dimension} {layout} {className}">
 	<label class="label" for={labelFor}>
 		{label}
 	</label>
@@ -182,7 +185,7 @@
 			{/if}
 		</div>
 	</div>
-	{#if helperText}
+	{#if helperText && layout === 'vertical'}
 		<div class="helper-text">
 			{@render helperText()}
 		</div>
@@ -190,15 +193,20 @@
 </div>
 
 <style lang="postcss">
+	.vertical {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	.horizontal {
+		flex-direction: row;
+		align-items: center;
+	}
 	.root {
 		--transition-delay: 50ms;
 		--transition: 0;
-
 		font-family: var(--font-family-sans-serif);
 		color: var(--colors-ultra-high);
 		display: flex;
-		flex-direction: column;
-		align-items: stretch;
 		justify-content: center;
 		gap: 0.5rem;
 	}
