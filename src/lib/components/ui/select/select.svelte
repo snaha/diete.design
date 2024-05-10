@@ -3,34 +3,54 @@
 	import { CaretDown, CaretUp } from 'carbon-icons-svelte'
 	import { setContext, type Snippet } from 'svelte'
 	import { withSelectStore } from './select-store.svelte'
+	import Option from './option.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
 		helperText?: Snippet
+		label?: string
 		labelFor?: string
 		dimension?: Dimension
 		value?: string
+		hover?: boolean
+		active?: boolean
+		focus?: boolean
 	}
 	let {
 		helperText,
+		label,
 		labelFor = Math.random().toString(16),
 		dimension = 'default',
 		placeholder,
 		value = $bindable(),
+		hover,
+		active,
+		focus,
 		class: className = '',
 		children,
 		...restProps
 	}: Props = $props()
 
-	let input: HTMLInputElement | undefined = $state(undefined)
+	let focused: boolean = $state(false)
+	let input: HTMLInputElement
+	let icon: HTMLButtonElement
 
 	const store = withSelectStore(dimension, value)
 	setContext('select-store', store)
 
+	// Focused input when user clicks on caret,Unfocused input when user clicks outside input or caret
 	// Close the select when user clicks outside, when user clicks on the tab button
 	$effect(() => {
 		function closeMenu() {
 			if (store.open) store.open = false
+		}
+		function focus(e: MouseEvent) {
+			const target = e.target as unknown as Node
+			if (input?.contains(target) || icon?.contains(target)) {
+				focused = true
+			} else {
+				focused = false
+			}
 		}
 
 		function closeMenuKeyboard(e: KeyboardEvent) {
@@ -39,10 +59,12 @@
 
 		window.addEventListener('click', closeMenu)
 		window.addEventListener('keydown', closeMenuKeyboard)
+		window.addEventListener('mousedown', focus)
 
 		return () => {
 			window.removeEventListener('click', closeMenu)
 			window.removeEventListener('keydown', closeMenuKeyboard)
+			window.removeEventListener('mousedown', focus)
 		}
 	})
 
@@ -65,86 +87,100 @@
 </script>
 
 <div class="root {dimension} {className}">
-	<input
-		bind:this={input}
-		value={store.value ? store.labels[store.value] ?? store.value : value}
-		class="select"
-		onclick={() => {
-			if (!store.open) setTimeout(() => (store.open = true))
-		}}
-		onkeydown={(e) => {
-			switch (e.key) {
-				case 'ArrowDown': {
-					e.preventDefault()
-					if (!store.open) {
-						store.open = true
-					} else {
-						const values = Object.keys(store.labels)
-						const index = store.marked ? values.indexOf(store.marked) : -1
-						store.marked = values[(index + 1) % values.length]
-					}
-					break
-				}
-				case 'ArrowUp': {
-					e.preventDefault()
-					if (!store.open) {
-						store.open = true
-					} else {
-						const values = Object.keys(store.labels)
-						const index = store.marked ? values.indexOf(store.marked) : 0
-						if (index - 1 >= 0) store.marked = values[index - 1]
-						else store.marked = values[values.length - 1]
-					}
-					break
-				}
-				case 'Enter': {
-					e.preventDefault()
-					if (!store.open) {
-						store.open = true
-					} else {
-						store.value = store.marked
-						store.open = false
-					}
-					break
-				}
-				case 'Escape': {
-					if (store.open) {
-						e.preventDefault()
-						store.open = false
-					}
-				}
-			}
-		}}
-		id={labelFor}
-		{placeholder}
-		readonly
-		{...restProps}
-	/>
 	<label class="label" for={labelFor}>
-		{placeholder}
+		{label}
 	</label>
-	<button
-		class="icon"
-		onclick={() => {
-			input?.focus()
-			if (!store.open) setTimeout(() => (store.open = true))
-		}}
-		tabindex="-1"
-	>
-		{#if store.open}
-			<CaretUp size={dimension === 'small' ? 16 : 24} />
-		{:else}
-			<CaretDown size={dimension === 'small' ? 16 : 24} />
-		{/if}
-	</button>
-	<div class="wrapper">
-		{#if children}
-			<div class="options" class:hidden={!store.open}>
+	<div>
+		<input
+			bind:this={input}
+			value={store.value ? store.labels[store.value] ?? store.value : value}
+			class="select"
+			class:hover
+			class:active
+			class:focus
+			class:focused
+			onclick={() => {
+				if (!store.open)
+					setTimeout(() => {
+						store.open = true
+					})
+			}}
+			onkeydown={(e) => {
+				switch (e.key) {
+					case 'ArrowDown': {
+						e.preventDefault()
+						if (!store.open) {
+							store.open = true
+						} else {
+							const values = Object.keys(store.labels)
+							const index = store.marked ? values.indexOf(store.marked) : -1
+							store.marked = values[(index + 1) % values.length]
+						}
+						break
+					}
+					case 'ArrowUp': {
+						e.preventDefault()
+						if (!store.open) {
+							store.open = true
+						} else {
+							const values = Object.keys(store.labels)
+							const index = store.marked ? values.indexOf(store.marked) : 0
+							if (index - 1 >= 0) store.marked = values[index - 1]
+							else store.marked = values[values.length - 1]
+						}
+						break
+					}
+					case 'Enter': {
+						e.preventDefault()
+						if (!store.open) {
+							store.open = true
+						} else {
+							store.value = store.marked
+							store.open = false
+						}
+						break
+					}
+					case 'Escape': {
+						if (store.open) {
+							e.preventDefault()
+							store.open = false
+						}
+					}
+				}
+			}}
+			id={labelFor}
+			{placeholder}
+			readonly
+			{...restProps}
+		/>
+		<div class="wrapper">
+			<button
+				bind:this={icon}
+				class="icon"
+				onclick={() => {
+					if (!store.open) setTimeout(() => (store.open = true))
+				}}
+				onmouseenter={() => (hover = true)}
+				onmouseleave={() => (hover = false)}
+				tabindex="-1"
+			>
 				<div>
-					{@render children()}
+					{#if store.open}
+						<CaretUp size={dimension === 'small' ? 16 : 24} />
+					{:else}
+						<CaretDown size={dimension === 'small' ? 16 : 24} />
+					{/if}
 				</div>
-			</div>
-		{/if}
+			</button>
+			{#if children}
+				<div class="options" class:hidden={!store.open}>
+					<div>
+						<Option class="placeholder" value="placeholder">{placeholder}</Option>
+						{@render children()}
+					</div>
+				</div>
+			{/if}
+		</div>
 	</div>
 	{#if helperText}
 		<div class="helper-text">
@@ -155,81 +191,84 @@
 
 <style lang="postcss">
 	.root {
-		--transition-delay: 125ms;
-		--transition: 250ms;
+		--transition-delay: 50ms;
+		--transition: 0;
 
 		font-family: var(--font-family-sans-serif);
-		font-size: var(--font-size);
-		line-height: var(--line-height);
-		letter-spacing: var(--letter-spacing);
 		color: var(--colors-ultra-high);
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
 		justify-content: center;
-		position: relative;
+		gap: 0.5rem;
 	}
 	.select {
 		appearance: none;
-		border: 1px solid var(--colors-low);
-		background: var(--colors-low);
+		border: 1px solid var(--colors-ultra-high);
+		background: transparent;
 		color: var(--colors-ultra-high);
-		transition: background var(--transition);
-		transition-delay: var(--transition-delay);
 		border-radius: 0.25rem;
 		flex-grow: 1;
 		cursor: pointer;
 		&::placeholder {
-			color: var(--colors-high);
-			user-select: none;
+			color: var(--colors-ultra-high);
+			opacity: 0.5;
 		}
-		&:focus {
-			outline: none;
-			border: 1px solid var(--colors-low);
-			background: var(--colors-base);
-			& + .label {
-				transition: all var(--transition);
-				transition-delay: var(--transition-delay);
-				background: var(--colors-base);
-				font-size: var(--font-size-small);
-				line-height: var(--line-height-small);
-				letter-spacing: var(--letter-spacing-small);
+		&:hover:not(:disabled),
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			border: 1px solid var(--colors-top);
+			background: var(--colors-low);
+			color: var(--colors-top);
+			& + .wrapper > button {
+				color: var(--colors-top);
 			}
 		}
-		&:not(:placeholder-shown) + .label {
-			font-size: var(--font-size-small);
-			line-height: var(--line-height-small);
-			letter-spacing: var(--letter-spacing-small);
+		&:active:not(:disabled),
+		&.active:not(:disabled) {
+			outline: none;
+			border: 1px solid var(--colors-high);
+			background: var(--colors-low);
+			color: var(--colors-high);
+			& + .wrapper > button {
+				color: var(--colors-high);
+			}
+		}
+		&:focus:not(:disabled),
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled),
+		&.focused:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			background: var(--colors-base);
+			color: var(--colors-top);
+			& + .wrapper > button {
+				color: var(--colors-top);
+			}
 		}
 		&:disabled {
 			cursor: not-allowed;
 			opacity: 0.25;
-			& + .label {
-				cursor: not-allowed;
-				opacity: 0.25;
-				background: transparent;
-			}
-			& ~ .icon {
-				cursor: not-allowed;
-				opacity: 0.25;
+			& + .wrapper > button {
+				pointer-events: none;
+				div {
+					cursor: not-allowed;
+					opacity: 0.25;
+				}
 			}
 		}
 	}
 	.label {
-		position: absolute;
-		transform-origin: left center;
-		transition: transform var(--transition);
-		border-radius: 0.25rem;
-		background: var(--colors-low);
-		color: var(--colors-high);
 		cursor: pointer;
+		width: fit-content;
 	}
-	.icon {
+	button {
 		margin: 0;
 		padding: 0;
 		border: none;
 		outline: none;
 		background-color: transparent;
+		color: var(--colors-ultra-high);
 		position: absolute;
 		width: 1.5rem;
 		height: 1.5rem;
@@ -237,107 +276,69 @@
 	}
 	.default {
 		.select {
-			padding: 1.5rem 0.75rem;
+			padding: 0.75rem;
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
-			&:focus,
-			&:not(:placeholder-shown) {
-				padding: 2.25rem 0.75rem 0.75rem;
-				& + .label {
-					transform: translateY(-0.75rem);
-				}
-			}
 		}
 		.label {
-			top: 1.5rem;
-			left: 0.75rem;
-			transition: all var(--transition);
-			transition-delay: var(--transition-delay);
+			font-size: var(--font-size);
+			line-height: var(--line-height);
+			letter-spacing: var(--letter-spacing);
 		}
-		.icon {
-			top: 1.5rem;
+		button {
+			bottom: 0.75rem;
 			right: 0.75rem;
 		}
 	}
 	.large {
 		.select {
-			padding: 1.5rem 0.75rem;
+			padding: 0.75rem;
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
-			&:focus,
-			&:not(:placeholder-shown) {
-				padding: 2.25rem 0.75rem 0.75rem;
-				& + .label {
-					transform: translateY(-0.75rem);
-				}
-			}
 		}
 		.label {
-			top: 1.5rem;
-			left: 0.75rem;
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
-			transition: all var(--transition);
-			transition-delay: var(--transition-delay);
 		}
-		.icon {
-			top: 1.75rem;
+		button {
+			bottom: 1rem;
 			right: 0.75rem;
 		}
 	}
 	.compact {
 		.select {
-			padding: 1rem 0.5rem;
+			padding: 0.5rem;
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
-			&:focus,
-			&:not(:placeholder-shown) {
-				padding: 1.5rem 0.5rem 0.5rem;
-				& + .label {
-					transform: translateY(-0.5rem);
-				}
-			}
 		}
 		.label {
-			top: 1rem;
-			left: 0.5rem;
-			transition: all var(--transition);
-			transition-delay: var(--transition-delay);
+			font-size: var(--font-size);
+			line-height: var(--line-height);
+			letter-spacing: var(--letter-spacing);
 		}
-		.icon {
-			top: 1rem;
+		button {
+			bottom: 0.5rem;
 			right: 0.5rem;
 		}
 	}
 	.small {
 		.select {
-			padding: 1rem 0.5rem;
+			padding: 0.5rem;
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
-			&:focus,
-			&:not(:placeholder-shown) {
-				padding: 1.5rem 0.5rem 0.5rem;
-				& + .label {
-					transform: translateY(-0.5rem);
-				}
-			}
 		}
 		.label {
-			top: 1rem;
-			left: 0.5rem;
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
-			transition: all var(--transition);
-			transition-delay: var(--transition-delay);
 		}
-		.icon {
-			top: 1rem;
+		button {
+			bottom: 0.5rem;
 			right: 0.5rem;
 			width: 1rem;
 			height: 1rem;
@@ -347,7 +348,6 @@
 		font-size: var(--font-size-small);
 		line-height: var(--line-height-small);
 		letter-spacing: var(--letter-spacing-small);
-		padding: 0.5rem 0 0;
 	}
 	.wrapper {
 		position: relative;
@@ -362,6 +362,10 @@
 		margin-top: 0.25rem;
 
 		div {
+			:global(.placeholder) {
+				pointer-events: none;
+				opacity: 0.5;
+			}
 			border: 1px solid var(--colors-low);
 			border-radius: 0.25rem;
 			padding: 0.5rem;

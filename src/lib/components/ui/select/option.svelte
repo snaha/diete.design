@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Checkmark } from 'carbon-icons-svelte'
 	import type { SelectStore } from './select-store.svelte'
 	import { getContext } from 'svelte'
 	import type { HTMLButtonAttributes } from 'svelte/elements'
@@ -40,12 +41,15 @@
 	{:else}
 		{value}
 	{/if}
+	{#if selected}
+		<Checkmark size={store.size === 'small' ? 16 : 24} />
+	{/if}
 </button>
 
 <style lang="postcss">
 	button {
 		display: inline-flex;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 		gap: 0.5rem;
 		border-radius: 0.25rem;
@@ -62,16 +66,9 @@
 		border: 1px solid transparent;
 		background: transparent;
 		color: var(--colors-ultra-high);
-
 		&.marked:not(:disabled),
 		&.marked:not(:disabled).selected:not(:disabled) {
-			border: 1px solid var(--colors-ultra-high);
-		}
-		&:active:not(:disabled),
-		&.selected:not(:disabled) {
-			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
-			color: var(--colors-high);
 		}
 	}
 	.default {
