@@ -66,11 +66,11 @@
 				<Button variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
-				<Button variant="overlay">Overlay</Button>
-				<Button variant="overlay" hover>Overlay hover</Button>
-				<Button variant="overlay" active>Overlay active</Button>
-				<Button variant="overlay" focus>Overlay focus</Button>
-				<Button variant="overlay" disabled>Overlay disabled</Button>
+				<Button variant="solid">Solid</Button>
+				<Button variant="solid" hover>Solid hover</Button>
+				<Button variant="solid" active>Solid active</Button>
+				<Button variant="solid" focus>Solid focus</Button>
+				<Button variant="solid" disabled>Solid disabled</Button>
 			</div>
 			<div class="col">
 				<Button variant="darkoverlay">Dark overlay</Button>
@@ -124,11 +124,11 @@
 				<Button dimension="large" variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
-				<Button dimension="large" variant="overlay">Overlay</Button>
-				<Button dimension="large" variant="overlay" hover>Overlay hover</Button>
-				<Button dimension="large" variant="overlay" active>Overlay active</Button>
-				<Button dimension="large" variant="overlay" focus>Overlay focus</Button>
-				<Button dimension="large" variant="overlay" disabled>Overlay disabled</Button>
+				<Button dimension="large" variant="solid">Solid</Button>
+				<Button dimension="large" variant="solid" hover>Solid hover</Button>
+				<Button dimension="large" variant="solid" active>Solid active</Button>
+				<Button dimension="large" variant="solid" focus>Solid focus</Button>
+				<Button dimension="large" variant="solid" disabled>Solid disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="large" variant="darkoverlay">Dark overlay</Button>
@@ -182,11 +182,11 @@
 				<Button dimension="compact" variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
-				<Button dimension="compact" variant="overlay">Overlay</Button>
-				<Button dimension="compact" variant="overlay" hover>Overlay hover</Button>
-				<Button dimension="compact" variant="overlay" active>Overlay active</Button>
-				<Button dimension="compact" variant="overlay" focus>Overlay focus</Button>
-				<Button dimension="compact" variant="overlay" disabled>Overlay disabled</Button>
+				<Button dimension="compact" variant="solid">Solid</Button>
+				<Button dimension="compact" variant="solid" hover>Solid hover</Button>
+				<Button dimension="compact" variant="solid" active>Solid active</Button>
+				<Button dimension="compact" variant="solid" focus>Solid focus</Button>
+				<Button dimension="compact" variant="solid" disabled>Solid disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="compact" variant="darkoverlay">Dark overlay</Button>
@@ -240,11 +240,11 @@
 				<Button dimension="small" variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
-				<Button dimension="small" variant="overlay">Overlay</Button>
-				<Button dimension="small" variant="overlay" hover>Overlay hover</Button>
-				<Button dimension="small" variant="overlay" active>Overlay active</Button>
-				<Button dimension="small" variant="overlay" focus>Overlay focus</Button>
-				<Button dimension="small" variant="overlay" disabled>Overlay disabled</Button>
+				<Button dimension="small" variant="solid">Solid</Button>
+				<Button dimension="small" variant="solid" hover>Solid hover</Button>
+				<Button dimension="small" variant="solid" active>Solid active</Button>
+				<Button dimension="small" variant="solid" focus>Solid focus</Button>
+				<Button dimension="small" variant="solid" disabled>Solid disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="small" variant="darkoverlay">Dark overlay</Button>

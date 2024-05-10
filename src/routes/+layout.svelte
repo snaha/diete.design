@@ -63,7 +63,7 @@
 <svelte:window bind:innerWidth />
 
 <div class="menu-button-container">
-	<Button variant={isMenuOpen ? 'ghost' : 'overlay'} onclick={() => (isMenuOpen = !isMenuOpen)}>
+	<Button variant={isMenuOpen ? 'ghost' : 'solid'} onclick={() => (isMenuOpen = !isMenuOpen)}>
 		{#if isMenuOpen}
 			<SidePanelCloseFilled size={24} />
 		{:else}

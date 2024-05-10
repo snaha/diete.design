@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
-	type Variant = 'strong' | 'secondary' | 'ghost' | 'overlay' | 'darkoverlay'
+	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type ButtonProps = {
 		variant?: Variant
@@ -122,7 +122,6 @@
 		background: var(--colors-ultra-high);
 		color: var(--colors-ultra-low);
 
-		&:focus:not(:disabled),
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
@@ -144,7 +143,6 @@
 			border: 1px solid var(--colors-high);
 			background: var(--colors-high);
 			color: var(--colors-base);
-			outline: none;
 		}
 	}
 	.secondary {
@@ -152,7 +150,6 @@
 		background: none;
 		color: var(--colors-ultra-high);
 
-		&:focus:not(:disabled),
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
@@ -174,7 +171,6 @@
 			border: 1px solid var(--colors-high);
 			background: var(--colors-low);
 			color: var(--colors-high);
-			outline: none;
 		}
 	}
 	.ghost {
@@ -182,7 +178,6 @@
 		background: transparent;
 		color: var(--colors-ultra-high);
 
-		&:focus:not(:disabled),
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
@@ -203,15 +198,13 @@
 			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
 			color: var(--colors-high);
-			outline: none;
 		}
 	}
-	.overlay {
+	.solid {
 		border: 1px solid var(--colors-base);
 		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 
-		&:focus:not(:disabled),
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
@@ -233,7 +226,6 @@
 			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
 			color: var(--colors-high);
-			outline: none;
 		}
 	}
 	.darkoverlay {
@@ -241,14 +233,13 @@
 		background: var(--colors-dark-overlay);
 		color: var(--colors-dark-top);
 
-		&:focus:not(:disabled),
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
-			outline: 4px solid var(--colors-dark-top);
+			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
 			border: 1px solid transparent;
-			background: var(--colors-dark-base);
-			color: var(--colors-dark-top);
+			background: var(--colors-base);
+			color: var(--colors-top);
 		}
 
 		&:hover:not(:disabled),
@@ -263,7 +254,6 @@
 			border: 1px solid var(--colors-dark-base);
 			background: var(--colors-dark-base);
 			color: var(--colors-dark-top);
-			outline: none;
 		}
 	}
 </style>
