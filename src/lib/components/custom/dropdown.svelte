@@ -45,6 +45,10 @@
 	function onClick() {
 		if (!disabled) showDropdown = !showDropdown
 	}
+
+	function onKeyPress() {
+		// omit keypress because onClick will be dispatched anyways
+	}
 </script>
 
 <div
@@ -54,8 +58,9 @@
 	aria-haspopup="listbox"
 	aria-expanded={showDropdown}
 	aria-controls={dropdownId}
+	tabindex={-1}
 >
-	<div on:click={onClick} on:keypress={onClick} role="button" tabindex={0}>
+	<div on:click={onClick} on:keypress={onKeyPress} role="button" tabindex={-1}>
 		<Button variant="solid" active={showDropdown}>{@render button()}</Button>
 	</div>
 
@@ -67,6 +72,7 @@
 			id={dropdownId}
 			role="listbox"
 			aria-labelledby="dropdown-button"
+			tabindex={-1}
 		>
 			{@render children()}
 		</div>
