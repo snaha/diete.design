@@ -73,6 +73,11 @@
 		flex-grow: 1;
 		overflow: auto;
 		display: flex;
+
+		&:focus-visible:not(:disabled) {
+			outline: 4px solid var(--colors-dark-top);
+			outline-offset: -4px;
+		}
 	}
 
 	.copy-button {
