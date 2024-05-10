@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
-	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay'
+	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay' | 'lightoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type ButtonProps = {
 		variant?: Variant
@@ -118,7 +118,7 @@
 	}
 
 	.strong {
-		border: 1px solid var(--colors-ultra-high);
+		border: 1px solid transparent;
 		background: var(--colors-ultra-high);
 		color: var(--colors-ultra-low);
 
@@ -126,21 +126,18 @@
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
-			border: 1px solid transparent;
 			background: var(--colors-base);
 			color: var(--colors-top);
 		}
 
 		&:hover:not(:disabled),
 		&.hover:not(:disabled) {
-			border: 1px solid var(--colors-top);
 			background: var(--colors-top);
 			color: var(--colors-base);
 		}
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
-			border: 1px solid var(--colors-high);
 			background: var(--colors-high);
 			color: var(--colors-base);
 		}
@@ -188,20 +185,18 @@
 
 		&:hover:not(:disabled),
 		&.hover:not(:disabled) {
-			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
 			color: var(--colors-top);
 		}
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
-			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
 			color: var(--colors-high);
 		}
 	}
 	.solid {
-		border: 1px solid var(--colors-base);
+		border: 1px solid transparent;
 		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 
@@ -209,27 +204,24 @@
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
-			border: 1px solid transparent;
 			background: var(--colors-base);
 			color: var(--colors-top);
 		}
 
 		&:hover:not(:disabled),
 		&.hover:not(:disabled) {
-			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
 			color: var(--colors-top);
 		}
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
-			border: 1px solid var(--colors-low);
 			background: var(--colors-low);
 			color: var(--colors-high);
 		}
 	}
 	.darkoverlay {
-		border: 1px solid var(--colors-dark-overlay);
+		border: 1px solid transparent;
 		background: var(--colors-dark-overlay);
 		color: var(--colors-dark-top);
 
@@ -237,23 +229,46 @@
 		&.focus:not(:disabled) {
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
-			border: 1px solid transparent;
 			background: var(--colors-base);
 			color: var(--colors-top);
 		}
 
 		&:hover:not(:disabled),
 		&.hover:not(:disabled) {
-			border: 1px solid var(--colors-dark-base);
 			background: var(--colors-dark-base);
 			color: var(--colors-dark-top);
 		}
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
-			border: 1px solid var(--colors-dark-base);
 			background: var(--colors-dark-base);
 			color: var(--colors-dark-top);
+		}
+	}
+
+	.lightoverlay {
+		border: 1px solid transparent;
+		background: var(--colors-light-overlay);
+		color: var(--colors-light-top);
+
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			background: var(--colors-base);
+			color: var(--colors-top);
+		}
+
+		&:hover:not(:disabled),
+		&.hover:not(:disabled) {
+			background: var(--colors-light-base);
+			color: var(--colors-light-top);
+		}
+
+		&:active:not(:disabled),
+		&.active:not(:disabled) {
+			background: var(--colors-light-base);
+			color: var(--colors-light-top);
 		}
 	}
 </style>

@@ -24,7 +24,7 @@
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
 
-	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay'
+	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay' | 'lightoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 
 	let css: string = $state('Loading...')
@@ -56,7 +56,7 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 
 {#snippet description()}
 	<Typography>
-		There are 9 types of buttons available.
+		There are 6 types of buttons available.
 		<br />
 		→<a href="#choose-a-button-type">Choose a button type</a>
 
@@ -76,8 +76,8 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 		<br />
 		<br />
 
-		Overlay buttons should be used to display a button floating over content (image or text for
-		example).
+		Solid and overlay buttons should be used to display a button floating over content (image or
+		text for example).
 	</Typography>
 {/snippet}
 
@@ -121,19 +121,31 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	</p>
 
 	<p class="example-row">
-		<Typography variant="small" bold>7. Solid button</Typography>
+		<Typography variant="small" bold>7. Light overlay button</Typography>
+		<Button variant="lightoverlay">Overlay</Button>
+		<Button variant="lightoverlay"><Checkmark size={24} />Done</Button>
+		<Button variant="lightoverlay">Next<ArrowRight size={24} /></Button>
+	</p>
+
+	<p class="example-row">
+		<Typography variant="small" bold>8. Solid button</Typography>
 		<Button variant="solid">Solid</Button>
 		<Button variant="solid"><Launch size={24} />Open</Button>
 		<Button variant="solid">See all<CaretRight size={24} /></Button>
 	</p>
 
 	<p class="example-row">
-		<Typography variant="small" bold>8. Dark overlay icon button</Typography>
+		<Typography variant="small" bold>9. Dark overlay icon button</Typography>
 		<Button variant="darkoverlay"><TrashCan size={24} /></Button>
 	</p>
 
 	<p class="example-row">
-		<Typography variant="small" bold>9. Solid icon button</Typography>
+		<Typography variant="small" bold>10. Light overlay icon button</Typography>
+		<Button variant="lightoverlay"><TrashCan size={24} /></Button>
+	</p>
+
+	<p class="example-row">
+		<Typography variant="small" bold>11. Solid icon button</Typography>
 		<Button variant="solid"><SidePanelOpen size={24} /></Button>
 	</p>
 {/snippet}
@@ -153,6 +165,7 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 		<Option value="ghost">Ghost button</Option>
 		<Option value="solid">Solid button</Option>
 		<Option value="darkoverlay">Dark overlay button</Option>
+		<Option value="lightoverlay">Light overlay button</Option>
 	</Select>
 
 	<Select bind:value={dimension} placeholder="Button size" helperText={helperTextButtonSizes}>
