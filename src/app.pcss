@@ -69,3 +69,8 @@ body {
 a {
 	color: var(--colors-top);
 }
+* {
+	&:focus-visible:not(:disabled) {
+		outline: 4px solid var(--colors-top);
+	}
+}
