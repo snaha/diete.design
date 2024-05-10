@@ -56,7 +56,7 @@
 	aria-controls={dropdownId}
 >
 	<div on:click={onClick} on:keypress={onClick} role="button" tabindex={0}>
-		<Button variant="overlay" active={showDropdown}>{@render button()}</Button>
+		<Button variant="solid" active={showDropdown}>{@render button()}</Button>
 	</div>
 
 	<div class={`root`} aria-hidden={!showDropdown}>

@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
-	type Variant = 'strong' | 'secondary' | 'ghost' | 'overlay' | 'darkoverlay'
+	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type ButtonProps = {
 		variant?: Variant
@@ -200,7 +200,7 @@
 			color: var(--colors-high);
 		}
 	}
-	.overlay {
+	.solid {
 		border: 1px solid var(--colors-base);
 		background: var(--colors-base);
 		color: var(--colors-ultra-high);

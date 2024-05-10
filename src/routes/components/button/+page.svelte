@@ -24,7 +24,7 @@
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
 
-	type Variant = 'strong' | 'secondary' | 'ghost' | 'overlay' | 'darkoverlay'
+	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 
 	let css: string = $state('Loading...')
@@ -121,10 +121,10 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	</p>
 
 	<p class="example-row">
-		<Typography variant="small" bold>7. Light overlay button</Typography>
-		<Button variant="overlay">Overlay</Button>
-		<Button variant="overlay"><Launch size={24} />Open</Button>
-		<Button variant="overlay">See all<CaretRight size={24} /></Button>
+		<Typography variant="small" bold>7. Solid button</Typography>
+		<Button variant="solid">Solid</Button>
+		<Button variant="solid"><Launch size={24} />Open</Button>
+		<Button variant="solid">See all<CaretRight size={24} /></Button>
 	</p>
 
 	<p class="example-row">
@@ -133,8 +133,8 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	</p>
 
 	<p class="example-row">
-		<Typography variant="small" bold>8. Light overlay icon button</Typography>
-		<Button variant="overlay"><SidePanelOpen size={24} /></Button>
+		<Typography variant="small" bold>9. Solid icon button</Typography>
+		<Button variant="solid"><SidePanelOpen size={24} /></Button>
 	</p>
 {/snippet}
 
@@ -151,7 +151,7 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 		<Option value="strong">Strong button</Option>
 		<Option value="secondary">Outline button</Option>
 		<Option value="ghost">Ghost button</Option>
-		<Option value="overlay">Overlay button</Option>
+		<Option value="solid">Solid button</Option>
 		<Option value="darkoverlay">Dark overlay button</Option>
 	</Select>
 
