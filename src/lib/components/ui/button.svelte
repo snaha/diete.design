@@ -235,11 +235,11 @@
 
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
-			outline: 4px solid var(--colors-dark-base);
+			outline: 4px solid var(--colors-dark-top);
 			outline-offset: -4px;
 			border: 1px solid transparent;
-			background: var(--colors-dark-top);
-			color: var(--colors-dark-base);
+			background: var(--colors-dark-base);
+			color: var(--colors-dark-top);
 		}
 
 		&:hover:not(:disabled),
