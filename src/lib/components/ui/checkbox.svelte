@@ -19,13 +19,13 @@
 	}: Props = $props()
 </script>
 
-<label class="root {dimension} {className}" class:hover class:active class:focus>
+<label class="{dimension} {className}" class:hover class:active class:focus>
 	<input type="checkbox" {...restProps} />
 	{label}
 </label>
 
 <style lang="postcss">
-	.root {
+	label {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
@@ -122,7 +122,7 @@
 	}
 
 	.default {
-		&.root {
+		& {
 			padding: 0.75rem;
 			font-size: 1rem;
 			line-height: 1.5rem;
@@ -138,7 +138,7 @@
 		}
 	}
 	.large {
-		&.root {
+		& {
 			padding: 0.75rem;
 			font-size: 1.5rem;
 			line-height: 1rem;
@@ -156,7 +156,7 @@
 		}
 	}
 	.compact {
-		&.root {
+		& {
 			padding: 0.5rem;
 			font-size: 1rem;
 			line-height: 1.5rem;
@@ -172,7 +172,7 @@
 		}
 	}
 	.small {
-		&.root {
+		& {
 			gap: 0.25rem;
 			padding: 0.5rem;
 			font-size: 0.75rem;
