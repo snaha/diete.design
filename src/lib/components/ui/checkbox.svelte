@@ -3,33 +3,93 @@
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
 		label: string
-		labelFor?: string
 		dimension?: Dimension
+		hover?: boolean
+		active?: boolean
+		focus?: boolean
 	}
 	let {
 		label,
-		labelFor = Math.random().toString(16),
 		dimension = 'default',
+		hover,
+		active,
+		focus,
 		class: className = '',
 		...restProps
 	}: Props = $props()
 </script>
 
-<div class="root {dimension} {className}">
-	<input type="checkbox" {...restProps} id={labelFor} />
-	<label for={labelFor}>{label}</label>
-</div>
+<label class="{dimension} {className}" class:hover class:active class:focus>
+	<input type="checkbox" {...restProps} />
+	{label}
+</label>
 
 <style lang="postcss">
-	.root {
+	label {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
+		border-radius: 0.25rem;
+		cursor: pointer;
+		font-family: var(--font-family-sans-serif);
+		color: var(--colors-ultra-high);
+		&:has(input[type='checkbox']:checked) {
+			color: var(--colors-high);
+		}
+		&:has(input[type='checkbox']:not(:disabled):focus) {
+			outline: none;
+		}
+		&:has(input[type='checkbox']:not(:disabled):focus-visible),
+		&.focus:has(input[type='checkbox']:not(:disabled)) {
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			background: var(--colors-base);
+			color: var(--colors-top);
+
+			input[type='checkbox']::before {
+				border: 1px solid var(--colors-top);
+			}
+			input[type='checkbox']:checked::before {
+				border: 1px solid var(--colors-top);
+				background: var(--colors-top);
+			}
+			&:has(input[type='checkbox']:checked) {
+				color: var(--colors-top);
+			}
+		}
+		&:has(input[type='checkbox']:disabled) {
+			opacity: 0.25;
+			cursor: not-allowed;
+		}
+		&:active:has(input[type='checkbox']:not(:disabled)),
+		&.active:has(input[type='checkbox']:not(:disabled)) {
+			outline: none;
+		}
+		&:hover:has(input[type='checkbox']:not(:disabled)),
+		&.hover:has(input[type='checkbox']:not(:disabled)),
+		&:active:has(input[type='checkbox']:not(:disabled)),
+		&.active:has(input[type='checkbox']:not(:disabled)) {
+			color: var(--colors-high);
+			&:has(input[type='checkbox']:checked) {
+				color: var(--colors-ultra-high);
+			}
+			input[type='checkbox']::before {
+				border: 1px solid var(--colors-high);
+			}
+			input[type='checkbox']:checked::before {
+				border: 1px solid var(--colors-ultra-high);
+				background: var(--colors-ultra-high);
+			}
+		}
 	}
 	input[type='checkbox'] {
 		appearance: none;
 		margin: 0;
 		position: relative;
+		z-index: 0;
+	}
+	input[type='checkbox']:focus {
+		outline: none;
 	}
 	input[type='checkbox']::before {
 		content: '';
@@ -43,9 +103,6 @@
 		border: 1px solid var(--colors-high);
 		background: var(--colors-high);
 	}
-	input[type='checkbox']:checked::before ~ label {
-		color: var(--colors-high);
-	}
 	input[type='checkbox']:checked::after {
 		content: '';
 		position: absolute;
@@ -57,24 +114,16 @@
 	}
 
 	input[type='checkbox']:checked:disabled::before,
-	input[type='checkbox']:disabled::before,
-	input[type='checkbox']:disabled ~ label {
+	input[type='checkbox']:disabled::before {
 		cursor: not-allowed;
-		opacity: 0.25;
 	}
 	input[type='checkbox']:checked:disabled::after {
 		cursor: not-allowed;
 	}
-	label {
-		font-family: var(--font-family-sans-serif);
-		cursor: pointer;
-		color: var(--colors-ultra-high);
-	}
+
 	.default {
-		&.root {
+		& {
 			padding: 0.75rem;
-		}
-		label {
 			font-size: 1rem;
 			line-height: 1.5rem;
 			letter-spacing: 0.02rem;
@@ -89,10 +138,8 @@
 		}
 	}
 	.large {
-		&.root {
+		& {
 			padding: 0.75rem;
-		}
-		label {
 			font-size: 1.5rem;
 			line-height: 1rem;
 			letter-spacing: 0.03rem;
@@ -109,10 +156,8 @@
 		}
 	}
 	.compact {
-		&.root {
+		& {
 			padding: 0.5rem;
-		}
-		label {
 			font-size: 1rem;
 			line-height: 1.5rem;
 			letter-spacing: 0.02rem;
@@ -127,11 +172,9 @@
 		}
 	}
 	.small {
-		&.root {
+		& {
 			gap: 0.25rem;
 			padding: 0.5rem;
-		}
-		label {
 			font-size: 0.75rem;
 			line-height: 1rem;
 			letter-spacing: 0.0375rem;
