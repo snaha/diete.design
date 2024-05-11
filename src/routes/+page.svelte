@@ -79,6 +79,13 @@
 				<Button variant="darkoverlay" focus>Dark overlay focus</Button>
 				<Button variant="darkoverlay" disabled>Dark overlay disabled</Button>
 			</div>
+			<div class="col">
+				<Button variant="lightoverlay">Light overlay</Button>
+				<Button variant="lightoverlay" hover>Light overlay hover</Button>
+				<Button variant="lightoverlay" active>Light overlay active</Button>
+				<Button variant="lightoverlay" focus>Light overlay focus</Button>
+				<Button variant="lightoverlay" disabled>Light overlay disabled</Button>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col">
@@ -136,6 +143,13 @@
 				<Button dimension="large" variant="darkoverlay" active>Dark overlay active</Button>
 				<Button dimension="large" variant="darkoverlay" focus>Dark overlay focus</Button>
 				<Button dimension="large" variant="darkoverlay" disabled>Dark overlay disabled</Button>
+			</div>
+			<div class="col">
+				<Button dimension="large" variant="lightoverlay">Light overlay</Button>
+				<Button dimension="large" variant="lightoverlay" hover>Light overlay hover</Button>
+				<Button dimension="large" variant="lightoverlay" active>Light overlay active</Button>
+				<Button dimension="large" variant="lightoverlay" focus>Light overlay focus</Button>
+				<Button dimension="large" variant="lightoverlay" disabled>Light overlay disabled</Button>
 			</div>
 		</div>
 		<div class="row">
@@ -195,6 +209,13 @@
 				<Button dimension="compact" variant="darkoverlay" focus>Dark overlay focus</Button>
 				<Button dimension="compact" variant="darkoverlay" disabled>Dark overlay disabled</Button>
 			</div>
+			<div class="col">
+				<Button dimension="compact" variant="lightoverlay">Light overlay</Button>
+				<Button dimension="compact" variant="lightoverlay" hover>Light overlay hover</Button>
+				<Button dimension="compact" variant="lightoverlay" active>Light overlay active</Button>
+				<Button dimension="compact" variant="lightoverlay" focus>Light overlay focus</Button>
+				<Button dimension="compact" variant="lightoverlay" disabled>Light overlay disabled</Button>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col">
@@ -252,6 +273,13 @@
 				<Button dimension="small" variant="darkoverlay" active>Dark overlay active</Button>
 				<Button dimension="small" variant="darkoverlay" focus>Dark overlay focus</Button>
 				<Button dimension="small" variant="darkoverlay" disabled>Dark overlay disabled</Button>
+			</div>
+			<div class="col">
+				<Button dimension="small" variant="lightoverlay">Light overlay</Button>
+				<Button dimension="small" variant="lightoverlay" hover>Light overlay hover</Button>
+				<Button dimension="small" variant="lightoverlay" active>Light overlay active</Button>
+				<Button dimension="small" variant="lightoverlay" focus>Light overlay focus</Button>
+				<Button dimension="small" variant="lightoverlay" disabled>Light overlay disabled</Button>
 			</div>
 		</div>
 	</section>

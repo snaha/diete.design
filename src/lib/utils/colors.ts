@@ -91,13 +91,21 @@ export function changeColors(baseColor: string, isDarkMode: boolean) {
 		document.documentElement.style.setProperty(darkName, color)
 	})
 
+	const lightColors = invertColors(darkColors)
+
+	lightColors.forEach(({ name, luminance }) => {
+		const lightName = name.replace('--colors', '--colors-light')
+		const color = getClosestColor(baseColor, luminance, targetPrecision)
+		document.documentElement.style.setProperty(lightName, color)
+	})
+
 	const darkOverlay = getClosestColor(baseColor, darkColorVars[0].luminance, targetPrecision)
-	const darkOpacity = Math.round(256 * (isDarkMode ? 0.95 : 0.7)).toString(16)
+	const darkOpacity = Math.round(256 * 0.7).toString(16)
 	document.documentElement.style.setProperty('--colors-dark-overlay', darkOverlay + darkOpacity)
 
-	const baseOverlay = getClosestColor(baseColor, colors[0].luminance, targetPrecision)
-	const baseOpacity = Math.round(256 * (isDarkMode ? 0.7 : 0.95)).toString(16)
-	document.documentElement.style.setProperty('--colors-base-overlay', baseOverlay + baseOpacity)
+	const lightOverlay = getClosestColor(baseColor, lightColors[0].luminance, targetPrecision)
+	const lightOpacity = Math.round(256 * 0.7).toString(16)
+	document.documentElement.style.setProperty('--colors-light-overlay', lightOverlay + lightOpacity)
 }
 
 export function isDarkSchemePreferred() {
