@@ -20,7 +20,7 @@
 </script>
 
 <label class="{dimension} {className}" class:hover class:active class:focus>
-	<input type="radio" tabindex="0" {...restProps} />
+	<input type="radio" {...restProps} />
 	{label}
 </label>
 
@@ -33,34 +33,9 @@
 		font-family: var(--font-family-sans-serif);
 		cursor: pointer;
 		gap: 0.5rem;
-		&:has(input[type='radio']:checked) {
-			color: var(--colors-high);
-		}
 		&:has(input[type='radio']:disabled) {
 			cursor: not-allowed;
 			opacity: 0.25;
-		}
-		&:has(input[type='radio']:not(:disabled):focus),
-		&:has(input[type='radio']:not(:disabled):focus-visible),
-		&.focus:has(input[type='radio']:not(:disabled)) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
-			background: var(--colors-base);
-			color: var(--colors-top);
-			input[type='radio'] {
-				border: 1px solid var(--colors-top);
-				&:checked {
-					border: 1px solid var(--colors-top);
-					background: var(--colors-base);
-				}
-				&:checked::after {
-					background: var(--colors-top);
-				}
-			}
-		}
-		&:active:has(input[type='radio']:not(:disabled)),
-		&.active:has(input[type='radio']:not(:disabled)) {
-			outline: none;
 		}
 		&:hover:has(input[type='radio']:not(:disabled)),
 		&.hover:has(input[type='radio']:not(:disabled)),
@@ -78,6 +53,21 @@
 				}
 				&:checked::after {
 					background: var(--colors-ultra-high);
+				}
+			}
+		}
+		&:has(input[type='radio']:not(:disabled):focus-visible),
+		&.focus:has(input[type='radio']:not(:disabled)) {
+			color: var(--colors-top);
+			input[type='radio'] {
+				outline: 4px solid var(--colors-top);
+				outline-offset: -4px;
+				&:checked {
+					outline: 4px solid var(--colors-top);
+					outline-offset: -4px;
+				}
+				&:checked::after {
+					background: var(--colors-top);
 				}
 			}
 		}
@@ -117,6 +107,14 @@
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
+			&:has(input[type='radio']:not(:disabled):focus-visible),
+			&.focus:has(input[type='radio']:not(:disabled)) {
+				input[type='radio']:checked:after,
+				input[type='radio']:checked:after {
+					width: 0.625rem;
+					height: 0.625rem;
+				}
+			}
 		}
 		input[type='radio'] {
 			width: 1.5rem;
@@ -133,6 +131,14 @@
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
+			&:has(input[type='radio']:not(:disabled):focus-visible),
+			&.focus:has(input[type='radio']:not(:disabled)) {
+				input[type='radio']:checked:after,
+				input[type='radio']:checked:after {
+					width: 1rem;
+					height: 1rem;
+				}
+			}
 		}
 		input[type='radio'] {
 			width: 2rem;
@@ -149,6 +155,14 @@
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
+			&:has(input[type='radio']:not(:disabled):focus-visible),
+			&.focus:has(input[type='radio']:not(:disabled)) {
+				input[type='radio']:checked:after,
+				input[type='radio']:checked:after {
+					width: 0.625rem;
+					height: 0.625rem;
+				}
+			}
 		}
 		input[type='radio'] {
 			width: 1.5rem;
@@ -166,6 +180,14 @@
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
+			&:has(input[type='radio']:not(:disabled):focus-visible),
+			&.focus:has(input[type='radio']:not(:disabled)) {
+				input[type='radio']:checked:after,
+				input[type='radio']:checked:after {
+					width: 0.25rem;
+					height: 0.25rem;
+				}
+			}
 		}
 		input[type='radio'] {
 			width: 1rem;
