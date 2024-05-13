@@ -72,21 +72,12 @@
 		{/if}
 		{#if controls && type === 'number'}
 			<div class="control-buttons">
-				<Button
-					{dimension}
-					{disabled}
-					tabindex={-1}
-					variant="secondary"
-					onclick={() => (inputValue -= 1)}
-					><Subtract size={dimension === 'small' ? 16 : 24} /></Button
-				>
-				<Button
-					{dimension}
-					{disabled}
-					tabindex={-1}
-					variant="secondary"
-					onclick={() => (inputValue += 1)}><Add size={dimension === 'small' ? 16 : 24} /></Button
-				>
+				<Button {dimension} {disabled} variant="secondary" onclick={() => (inputValue -= 1)}>
+					<Subtract size={dimension === 'small' ? 16 : 24} />
+				</Button>
+				<Button {dimension} {disabled} variant="secondary" onclick={() => (inputValue += 1)}>
+					<Add size={dimension === 'small' ? 16 : 24} />
+				</Button>
 			</div>
 		{/if}
 		{#if error}
