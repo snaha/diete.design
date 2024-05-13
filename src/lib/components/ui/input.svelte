@@ -94,8 +94,12 @@
 </div>
 
 <style lang="postcss">
+	input[type='number']::-webkit-outer-spin-button,
 	input[type='number']::-webkit-inner-spin-button {
 		appearance: none;
+	}
+	input[type='number'] {
+		-moz-appearance: textfield;
 	}
 	.vertical {
 		&.root {
