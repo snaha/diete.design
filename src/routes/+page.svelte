@@ -4,13 +4,14 @@
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
 	import Input from '$lib/components/ui/input.svelte'
-	import Radio from '$lib/components/ui/radio.svelte'
+	import Radio from '$lib/components/ui/radio-button/radio.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 	import Select from '$lib/components/ui/select/select.svelte'
 	import Option from '$lib/components/ui/select/option.svelte'
 	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
+	import RadioList from '$lib/components/ui/radio-button/radio-list.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -288,52 +289,60 @@
 		<Typography variant="h1">Radio button</Typography>
 		<div class="row">
 			<div class="col">
-				<Radio label="Unselected" />
-				<Radio label="Hover unselected" hover />
-				<Radio label="Pressed unselected" active />
-				<Radio label="Focus unselected" focus />
-				<Radio label="Focus unselected" disabled />
-				<Radio label="Selected" checked />
-				<Radio label="Hover selected" hover checked />
-				<Radio label="Pressed selected" active checked />
-				<Radio label="Focus selected" focus checked />
-				<Radio label="Disabled selected" disabled checked />
+				<RadioList>
+					<Radio name="defaultD">Unselected</Radio>
+					<Radio name="hoverD" hover>Hover unselected</Radio>
+					<Radio name="activeD" active>Pressed unselected</Radio>
+					<Radio name="focusD" focus>Focus unselected</Radio>
+					<Radio name="disabledD" disabled>Focus unselected</Radio>
+					<Radio name="defaultD" checked>Selected</Radio>
+					<Radio name="hoverD" hover checked>Hover selected</Radio>
+					<Radio name="activeD" active checked>Pressed selected</Radio>
+					<Radio name="focusD" focus checked>Focus selected</Radio>
+					<Radio name="disabledD" disabled checked>Disabled selected</Radio>
+				</RadioList>
 			</div>
 			<div class="col">
-				<Radio dimension="large" label="Unselected" />
-				<Radio dimension="large" label="Hover unselected" hover />
-				<Radio dimension="large" label="Pressed unselected" active />
-				<Radio dimension="large" label="Focus unselected" focus />
-				<Radio dimension="large" label="Focus unselected" disabled />
-				<Radio dimension="large" label="Selected" checked />
-				<Radio dimension="large" label="Hover selected" hover checked />
-				<Radio dimension="large" label="Pressed selected" active checked />
-				<Radio dimension="large" label="Focus selected" focus checked />
-				<Radio dimension="large" label="Disabled selected" disabled checked />
+				<RadioList dimension="large">
+					<Radio name="defaultL">Unselected</Radio>
+					<Radio name="hoverL" hover>Hover unselected</Radio>
+					<Radio name="activeL" active>Pressed unselected</Radio>
+					<Radio name="focusL" focus>Focus unselected</Radio>
+					<Radio name="disabledL" disabled>Focus unselected</Radio>
+					<Radio name="defaultL" checked>Selected</Radio>
+					<Radio name="hoverL" hover checked>Hover selected</Radio>
+					<Radio name="activeL" active checked>Pressed selected</Radio>
+					<Radio name="focusL" focus checked>Focus selected</Radio>
+					<Radio name="disabledL" disabled checked>Disabled selected</Radio>
+				</RadioList>
 			</div>
 			<div class="col">
-				<Radio dimension="compact" label="Unselected" />
-				<Radio dimension="compact" label="Hover unselected" hover />
-				<Radio dimension="compact" label="Pressed unselected" active />
-				<Radio dimension="compact" label="Focus unselected" focus />
-				<Radio dimension="compact" label="Focus unselected" disabled />
-				<Radio dimension="compact" label="Selected" checked />
-				<Radio dimension="compact" label="Hover selected" hover checked />
-				<Radio dimension="compact" label="Pressed selected" active checked />
-				<Radio dimension="compact" label="Focus selected" focus checked />
-				<Radio dimension="compact" label="Disabled selected" disabled checked />
+				<RadioList dimension="compact">
+					<Radio name="defaultC">Unselected</Radio>
+					<Radio name="hoverC" hover>Hover unselected</Radio>
+					<Radio name="activeC" active>Pressed unselected</Radio>
+					<Radio name="focusC" focus>Focus unselected</Radio>
+					<Radio name="disabledC" disabled>Focus unselected</Radio>
+					<Radio name="defaultC" checked>Selected</Radio>
+					<Radio name="hoverC" hover checked>Hover selected</Radio>
+					<Radio name="activeC" active checked>Pressed selected</Radio>
+					<Radio name="focusC" focus checked>Focus selected</Radio>
+					<Radio name="disabledC" disabled checked>Disabled selected</Radio>
+				</RadioList>
 			</div>
 			<div class="col">
-				<Radio dimension="small" label="Unselected" />
-				<Radio dimension="small" label="Hover unselected" hover />
-				<Radio dimension="small" label="Pressed unselected" active />
-				<Radio dimension="small" label="Focus unselected" focus />
-				<Radio dimension="small" label="Focus unselected" disabled />
-				<Radio dimension="small" label="Selected" checked />
-				<Radio dimension="small" label="Hover selected" hover checked />
-				<Radio dimension="small" label="Pressed selected" active checked />
-				<Radio dimension="small" label="Focus selected" focus checked />
-				<Radio dimension="small" label="Disabled selected" disabled checked />
+				<RadioList dimension="small">
+					<Radio name="defaultS">Unselected</Radio>
+					<Radio name="hoverS" hover>Hover unselected</Radio>
+					<Radio name="activeS" active>Pressed unselected</Radio>
+					<Radio name="focusS" focus>Focus unselected</Radio>
+					<Radio name="disabledS" disabled>Focus unselected</Radio>
+					<Radio name="defaultS" checked>Selected</Radio>
+					<Radio name="hoverS" hover checked>Hover selected</Radio>
+					<Radio name="activeS" active checked>Pressed selected</Radio>
+					<Radio name="focusS" focus checked>Focus selected</Radio>
+					<Radio name="disabledS" disabled checked>Disabled selected</Radio>
+				</RadioList>
 			</div>
 		</div>
 	</section>
