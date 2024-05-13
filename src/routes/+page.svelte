@@ -715,6 +715,15 @@
 		<Typography variant="h1">Menu</Typography>
 		<div class="row">
 			<div class="col">
+				<MenuTitle bold content="List title"></MenuTitle>
+				<MenuTitle bold content="List title hover" hover></MenuTitle>
+				<MenuTitle bold content="List title pressed" active></MenuTitle>
+				<MenuTitle bold content="List title focus" focus></MenuTitle>
+				<MenuTitle bold content="List title disabled" disabled></MenuTitle>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
 				<MenuTitle bold content="Closed">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>

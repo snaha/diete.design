@@ -3,7 +3,7 @@
 	import type { MenuStore } from './menu-store.svelte'
 	import Button, { type Props } from '../button.svelte'
 
-	let { dimension, disabled, ...restProps }: Props = $props()
+	let { dimension, disabled, tabindex = 0, ...restProps }: Props = $props()
 
 	const store = getContext<MenuStore>('menu-store')
 </script>
@@ -12,5 +12,6 @@
 	variant="ghost"
 	dimension={dimension ?? store.size}
 	disabled={disabled ?? store.disabled}
+	tabindex={disabled || store.disabled || !store.open ? -1 : tabindex}
 	{...restProps}
 />

@@ -12,6 +12,9 @@
 		element?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
 		disabled?: boolean
 		content: string
+		hover?: boolean
+		active?: boolean
+		focus?: boolean
 	}
 	let {
 		open = $bindable(false),
@@ -20,17 +23,21 @@
 		element = 'span',
 		disabled,
 		content,
+		hover,
+		active,
+		focus,
 		children,
 		class: className = '',
 		...restProps
 	}: Props = $props()
 	let labelFor = Math.random().toString(16)
-	const store = withMenuStore(dimension, disabled)
+	const store = withMenuStore(dimension, open, disabled)
 	setContext('menu-store', store)
 
 	$effect(() => {
 		store.size = dimension
 		store.disabled = disabled
+		store.open = open
 	})
 
 	let variant: 'h4' | 'h6' | 'h5' | 'large' | 'default' | 'small' = $derived.by(() => {
@@ -55,22 +62,22 @@
 </script>
 
 <div class="root {dimension} {className}" {...restProps}>
-	<input type="checkbox" id={labelFor} checked={open} {disabled} />
-	<div class="wrapper">
+	<input type="checkbox" class:focus id={labelFor} bind:checked={open} {disabled} />
+	<div class="wrapper" class:hover class:active>
 		<label class="title" for={labelFor}>
-			<Typography {element} {variant}>{content}</Typography>
+			<Typography class="content" {element} {variant}>{content}</Typography>
 		</label>
 		<label class="icon" for={labelFor}>
 			<ChevronDown size={dimension === 'small' ? 16 : 24} />
 		</label>
 	</div>
-	<div class="panel">
-		<div>
-			{#if children}
+	{#if children}
+		<div class="panel">
+			<div>
 				{@render children()}
-			{/if}
+			</div>
 		</div>
-	</div>
+	{/if}
 </div>
 
 <style lang="postcss">
@@ -80,11 +87,45 @@
 		position: relative;
 		color: var(--colors-ultra-high);
 		width: 100%;
+
 		.wrapper {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
 			justify-content: stretch;
+			border-radius: 0.25rem;
+		}
+		&:has(input[type='checkbox']:not(:disabled)) {
+			.wrapper {
+				&:hover,
+				&.hover {
+					background: var(--colors-low);
+				}
+				&:active,
+				&.active {
+					background: var(--colors-low);
+					label {
+						color: var(--colors-high);
+						:global(.content) {
+							color: var(--colors-high);
+						}
+					}
+				}
+			}
+		}
+		&:has(input[type='checkbox']:not(:disabled):focus-visible),
+		&:has(input[type='checkbox']:not(:disabled).focus) {
+			.wrapper {
+				outline: 4px solid var(--colors-top);
+				outline-offset: -4px;
+				background: var(--colors-base);
+				label {
+					color: var(--colors-top);
+					:global(.content) {
+						color: var(--colors-top);
+					}
+				}
+			}
 		}
 		.title {
 			flex-grow: 1;
@@ -100,7 +141,9 @@
 			cursor: pointer;
 		}
 		input[type='checkbox'] {
-			display: none;
+			opacity: 0;
+			position: absolute;
+			z-index: 1;
 			& ~ .panel {
 				display: grid;
 				grid-template-rows: 0fr;
