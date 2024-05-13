@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Input from '../ui/input.svelte'
-	import Radio from '../ui/radio.svelte'
+	import Radio from '../ui/radio-button/radio.svelte'
 	import { ColorPalette } from 'carbon-icons-svelte'
 	import { theme } from '$lib/stores/theme.svelte'
 	import { calculateLuminance } from '@waku-objects/luminance'
-	import Typography from '../ui/typography.svelte'
 	import { getEffectiveColorMode } from '$lib/utils/colors'
+	import RadioList from '../ui/radio-button/radio-list.svelte'
 
 	let effectiveMode = $derived(getEffectiveColorMode(theme.mode))
 
@@ -21,27 +21,11 @@
 </script>
 
 <div class="theme-selector">
-	<Typography>Appearance</Typography>
-	<div class="container">
-		<Radio
-			label="Light"
-			name="light"
-			checked={theme.mode === 'light'}
-			onclick={() => (theme.mode = 'light')}
-		/>
-		<Radio
-			label="Dark"
-			name="dark"
-			checked={theme.mode === 'dark'}
-			onclick={() => (theme.mode = 'dark')}
-		/>
-		<Radio
-			label="Auto"
-			name="system"
-			checked={theme.mode === 'system'}
-			onclick={() => (theme.mode = 'system')}
-		/>
-	</div>
+	<RadioList bind:value={theme.mode} name="mode" layout="horizontal" label="Appearance">
+		<Radio value={'light'}>Light</Radio>
+		<Radio value={'dark'}>Dark</Radio>
+		<Radio value={'system'}>Auto</Radio>
+	</RadioList>
 
 	<div class="container">
 		<div class="grow">

@@ -1,27 +1,31 @@
 <script lang="ts">
+	import { getContext } from 'svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	import { type RadioStore } from './radio-store.svelte'
+
 	interface Props extends HTMLInputAttributes {
-		label: string
-		dimension?: Dimension
 		hover?: boolean
 		active?: boolean
 		focus?: boolean
 	}
 	let {
-		label,
-		dimension = 'default',
 		hover,
+		value = $bindable(),
 		active,
 		focus,
+		name = '',
+		children,
 		class: className = '',
 		...restProps
 	}: Props = $props()
+	const store = getContext<RadioStore>('radio-store')
 </script>
 
-<label class="root {dimension} {className}" class:hover class:active class:focus>
-	<input type="radio" {...restProps} />
-	{label}
+<label class="root {store.dimension} {className}" class:hover class:active class:focus>
+	<input type="radio" bind:group={store.value} {value} name={store?.name ?? name} {...restProps} />
+	{#if children}
+		{@render children()}
+	{/if}
 </label>
 
 <style lang="postcss">
