@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
 	import { WarningAltFilled, Information, Subtract, Add } from 'carbon-icons-svelte'
+	import Button from './button.svelte'
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	interface Props extends HTMLInputAttributes {
@@ -15,6 +16,7 @@
 		active?: boolean
 		focus?: boolean
 		controls?: boolean
+		disabled?: boolean
 	}
 	let {
 		label,
@@ -30,6 +32,7 @@
 		focus,
 		controls,
 		type,
+		disabled,
 		class: className = '',
 		children,
 		...restProps
@@ -41,7 +44,7 @@
 	<label class="label" for={labelFor}>
 		{label}
 	</label>
-	{#if children && layout === 'horizontal' && layout !== 'horizontal'}
+	{#if children && layout === 'horizontal' && type !== 'number'}
 		<div class="helper-button">
 			<Information size={dimension === 'small' ? 16 : 24} />
 		</div>
@@ -56,6 +59,7 @@
 			bind:value={inputValue}
 			{placeholder}
 			{type}
+			{disabled}
 			{...restProps}
 		/>
 		{#if unit && !error}
@@ -68,11 +72,22 @@
 		{/if}
 		{#if controls && type === 'number'}
 			<div class="control-buttons">
-				<button class="substract" onclick={() => (inputValue -= 1)}
-					><Subtract size={dimension === 'small' ? 16 : 24} /></button
+				<Button
+					{dimension}
+					{disabled}
+					tabindex={-1}
+					variant="secondary"
+					class="substract"
+					onclick={() => (inputValue -= 1)}
+					><Subtract size={dimension === 'small' ? 16 : 24} /></Button
 				>
-				<button class="add" onclick={() => (inputValue += 1)}
-					><Add size={dimension === 'small' ? 16 : 24} /></button
+				<Button
+					{dimension}
+					{disabled}
+					tabindex={-1}
+					variant="secondary"
+					class="add"
+					onclick={() => (inputValue += 1)}><Add size={dimension === 'small' ? 16 : 24} /></Button
 				>
 			</div>
 		{/if}
@@ -142,22 +157,18 @@
 			display: flex;
 			flex-direction: row;
 		}
-		button {
-			display: flex;
-			align-items: center;
-			margin: 0;
-			background: transparent;
-			color: var(--colors-ultra-high);
+
+		:global(.substract) {
+			:global(button) {
+				border-radius: 0;
+				border-left: none;
+			}
 		}
-		.substract {
-			border-radius: 0;
-			border: 1px solid var(--colors-ultra-high);
-			border-left: none;
-		}
-		.add {
-			border-radius: 0 0.25rem 0.25rem 0;
-			border: 1px solid var(--colors-ultra-high);
-			border-left: none;
+		:global(.add) {
+			:global(button) {
+				border-radius: 0 0.25rem 0.25rem 0;
+				border-left: none;
+			}
 		}
 		input {
 			position: relative;
@@ -173,13 +184,9 @@
 				opacity: 0.25;
 				cursor: not-allowed;
 				& ~ .unit,
-				& ~ .error-icon,
-				& ~ .control-buttons {
+				& ~ .error-icon {
 					opacity: 0.25;
 					cursor: not-allowed;
-				}
-				& ~ .control-buttons > button {
-					pointer-events: none;
 				}
 			}
 			&:focus:not(:disabled),
@@ -237,12 +244,6 @@
 			letter-spacing: var(--letter-spacing);
 			padding: 0.75rem;
 		}
-		button {
-			padding: 0.75rem;
-			font-size: var(--font-size);
-			line-height: var(--line-height);
-			letter-spacing: var(--letter-spacing);
-		}
 		.unit {
 			top: 0.75rem;
 			right: 0.75rem;
@@ -274,12 +275,6 @@
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
 			padding: 0.75rem;
-		}
-		button {
-			padding: 0.75rem;
-			font-size: var(--font-size-large);
-			line-height: var(--line-height-large);
-			letter-spacing: var(--letter-spacing-large);
 		}
 		.unit {
 			top: 0.75rem;
@@ -318,12 +313,6 @@
 			letter-spacing: var(--letter-spacing);
 			padding: 0.5rem;
 		}
-		button {
-			padding: 0.5rem;
-			font-size: var(--font-size);
-			line-height: var(--line-height);
-			letter-spacing: var(--letter-spacing);
-		}
 		.unit {
 			top: 0.5rem;
 			right: 0.5rem;
@@ -355,12 +344,6 @@
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
 			padding: 0.5rem;
-		}
-		button {
-			padding: 0.5rem;
-			font-size: var(--font-size-small);
-			line-height: var(--line-height-small);
-			letter-spacing: var(--letter-spacing-small);
 		}
 		.unit {
 			top: 0.5rem;
