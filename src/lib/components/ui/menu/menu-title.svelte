@@ -113,7 +113,6 @@
 				}
 			}
 		}
-		&:has(input[type='checkbox']:not(:disabled):focus),
 		&:has(input[type='checkbox']:not(:disabled):focus-visible),
 		&:has(input[type='checkbox']:not(:disabled).focus) {
 			.wrapper {
