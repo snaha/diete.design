@@ -77,7 +77,6 @@
 					{disabled}
 					tabindex={-1}
 					variant="secondary"
-					class="substract"
 					onclick={() => (inputValue -= 1)}
 					><Subtract size={dimension === 'small' ? 16 : 24} /></Button
 				>
@@ -86,7 +85,6 @@
 					{disabled}
 					tabindex={-1}
 					variant="secondary"
-					class="add"
 					onclick={() => (inputValue += 1)}><Add size={dimension === 'small' ? 16 : 24} /></Button
 				>
 			</div>
@@ -156,9 +154,7 @@
 		.control-buttons {
 			display: flex;
 			flex-direction: row;
-		}
 
-		:global(.substract) {
 			:global(button) {
 				border-radius: 0;
 				border-left: none;
@@ -169,17 +165,9 @@
 					border-left: none;
 				}
 			}
-		}
-		:global(.add) {
-			:global(button) {
-				border-radius: 0 0.25rem 0.25rem 0;
-				border-left: none;
 
-				&:hover,
-				&:active,
-				&:focus {
-					border-left: none;
-				}
+			& > :global(*:last-child) :global(button) {
+				border-radius: 0 0.25rem 0.25rem 0;
 			}
 		}
 		input {
