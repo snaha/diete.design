@@ -450,51 +450,90 @@
 			</div>
 		</div>
 	</section>
+	{#snippet error()}
+		This is an error message
+	{/snippet}
 	<section>
-		<Typography variant="h1">Input</Typography>
+		<Typography variant="h1">Input (vertical)</Typography>
 		<div class="row">
 			<div class="col">
-				<Input placeholder="Input label">This is some helper text.</Input>
-				<Input placeholder="Input label" value="With text">This is some helper text.</Input>
-				<Input placeholder="Input label" value="Disabled" disabled>This is some helper text.</Input>
-				<Input placeholder="Input label" value="With unit" unit="%">This is some helper text.</Input
+				<Input label="Input label" placeholder="Placeholder">This is an optional helper text</Input>
+				<Input label="Input label" value="With text">This is an optional helper text</Input>
+				<Input label="Input label" value="Hover" hover>This is an optional helper text</Input>
+				<Input label="Input label" value="Pressed" active>This is an optional helper text</Input>
+				<Input label="Input label" value="Focused" focus>This is an optional helper text</Input>
+				<Input label="Input label" value="Disabled" disabled>This is an optional helper text</Input>
+				<Input label="Input label" value="With error" {error}>This is an optional helper text</Input
 				>
 			</div>
 			<div class="col">
-				<Input placeholder="Input label" dimension="large">This is some helper text.</Input>
-				<Input placeholder="Input label" dimension="large" value="With text">
-					This is some helper text.
-				</Input>
-				<Input placeholder="Input label" dimension="large" value="Disabled" disabled>
-					This is some helper text.
-				</Input>
-				<Input placeholder="Input label" dimension="large" value="With unit" unit="%">
-					This is some helper text.
-				</Input>
+				<Input dimension="large" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
 			</div>
 			<div class="col">
-				<Input placeholder="Input label" dimension="compact">This is some helper text.</Input>
-				<Input placeholder="Input label" dimension="compact" value="With text">
-					This is some helper text.
-				</Input>
-				<Input placeholder="Input label" dimension="compact" value="Disabled" disabled>
-					This is some helper text.
-				</Input>
-				<Input placeholder="Input label" dimension="compact" value="With unit" unit="%">
-					This is some helper text.
-				</Input>
+				<Input dimension="compact" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="compact" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="compact" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input dimension="compact" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input dimension="compact" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input dimension="compact" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input dimension="compact" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
 			</div>
 			<div class="col">
-				<Input placeholder="Input label" dimension="small">This is some helper text.</Input>
-				<Input placeholder="Input label" dimension="small" value="With text">
-					This is some helper text.
-				</Input>
-				<Input placeholder="Input label" dimension="small" value="Disabled" disabled>
-					This is some helper text.
-				</Input>
-				<Input placeholder="Input label" dimension="small" value="With unit" unit="%">
-					This is some helper text.
-				</Input>
+				<Input dimension="small" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
 			</div>
 		</div>
 	</section>
@@ -502,73 +541,281 @@
 		<Typography variant="h1">Input (horizontal)</Typography>
 		<div class="row">
 			<div class="col">
-				<Input layout="horizontal" placeholder="Placeholder">Input label</Input>
-				<Input layout="horizontal" placeholder="Placeholder" value="With text">Input label</Input>
-				<Input layout="horizontal" placeholder="Placeholder" value="Disabled" disabled
-					>Input label</Input
+				<Input layout="horizontal" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
 				>
-				<Input layout="horizontal" placeholder="Placeholder" value="With unit" unit="%"
-					>Input label</Input
+				<Input layout="horizontal" label="Input label" value="With text"
+					>This is an optional helper text</Input
 				>
-			</div>
-			<div class="col">
-				<Input layout="horizontal" dimension="large" placeholder="Placeholder">Input label</Input>
-				<Input layout="horizontal" dimension="large" placeholder="Placeholder" value="With text"
-					>Input label</Input
+				<Input layout="horizontal" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
 				>
-				<Input
-					layout="horizontal"
-					dimension="large"
-					placeholder="Placeholder"
-					value="Disabled"
-					disabled>Input label</Input
+				<Input layout="horizontal" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
 				>
-				<Input
-					layout="horizontal"
-					dimension="large"
-					placeholder="Placeholder"
-					value="With unit"
-					unit="%">Input label</Input
+				<Input layout="horizontal" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input layout="horizontal" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input layout="horizontal" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
 				>
 			</div>
 			<div class="col">
-				<Input layout="horizontal" dimension="compact" placeholder="Placeholder">Input label</Input>
-				<Input layout="horizontal" dimension="compact" placeholder="Placeholder" value="With text"
-					>Input label</Input
+				<Input dimension="large" layout="horizontal" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" layout="horizontal" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" layout="horizontal" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" layout="horizontal" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" layout="horizontal" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" layout="horizontal" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input dimension="large" layout="horizontal" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
+			</div>
+			<div class="col">
+				<Input dimension="compact" layout="horizontal" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="compact" layout="horizontal" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="compact" layout="horizontal" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input dimension="compact" layout="horizontal" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input dimension="compact" layout="horizontal" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input dimension="compact" layout="horizontal" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
 				>
 				<Input
-					layout="horizontal"
 					dimension="compact"
-					placeholder="Placeholder"
-					value="Disabled"
-					disabled>Input label</Input
-				>
-				<Input
 					layout="horizontal"
-					dimension="compact"
-					placeholder="Placeholder"
-					value="With unit"
-					unit="%">Input label</Input
+					label="Input label"
+					value="With error"
+					{error}>This is an optional helper text</Input
 				>
 			</div>
 			<div class="col">
-				<Input layout="horizontal" dimension="small" placeholder="Placeholder">Input label</Input>
-				<Input layout="horizontal" dimension="small" placeholder="Placeholder" value="With text"
-					>Input label</Input
+				<Input dimension="small" layout="horizontal" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" layout="horizontal" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" layout="horizontal" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" layout="horizontal" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" layout="horizontal" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" layout="horizontal" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input dimension="small" layout="horizontal" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
+			</div>
+		</div>
+	</section>
+	<section>
+		<Typography variant="h1">Number input (vertical)</Typography>
+		<div class="row">
+			<div class="col">
+				<Input type="number" label="Number input" unit="EUR" placeholder="0"
+					>This is an optional helper text</Input
+				>
+				<Input type="number" label="Number input" unit="EUR" placeholder="0" value="1420"
+					>This is an optional helper text</Input
+				>
+				<Input type="number" label="Number input" unit="EUR" placeholder="0" value="1420" hover
+					>This is an optional helper text</Input
+				>
+				<Input type="number" label="Number input" unit="EUR" placeholder="0" value="1420" active
+					>This is an optional helper text</Input
+				>
+				<Input type="number" label="Number input" unit="EUR" placeholder="0" value="1420" focus
+					>This is an optional helper text</Input
+				>
+				<Input type="number" label="Number input" unit="EUR" placeholder="0" value="1420" disabled
+					>This is an optional helper text</Input
+				>
+			</div>
+			<div class="col">
+				<Input type="number" label="Number input" unit="EUR" placeholder="0" controls
+					>This is an optional helper text</Input
+				>
+				<Input type="number" label="Number input" unit="EUR" placeholder="0" value={1420} controls
+					>This is an optional helper text</Input
+				>
+				<Input
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value={1420}
+					hover
+					controls>This is an optional helper text</Input
+				>
+				<Input
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value={1420}
+					active
+					controls>This is an optional helper text</Input
+				>
+				<Input
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value={1420}
+					focus
+					controls>This is an optional helper text</Input
+				>
+				<Input
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value={1420}
+					disabled
+					controls>This is an optional helper text</Input
+				>
+			</div>
+		</div>
+	</section>
+	<section>
+		<Typography variant="h1">Number input (horizontal)</Typography>
+		<div class="row">
+			<div class="col">
+				<Input layout="horizontal" type="number" label="Number input" unit="EUR" placeholder="0"
+					>This is an optional helper text</Input
 				>
 				<Input
 					layout="horizontal"
-					dimension="small"
-					placeholder="Placeholder"
-					value="Disabled"
-					disabled>Input label</Input
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value="1420">This is an optional helper text</Input
 				>
 				<Input
 					layout="horizontal"
-					dimension="small"
-					placeholder="Placeholder"
-					value="With unit"
-					unit="%">Input label</Input
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value="1420"
+					hover>This is an optional helper text</Input
+				>
+				<Input
+					layout="horizontal"
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value="1420"
+					active>This is an optional helper text</Input
+				>
+				<Input
+					layout="horizontal"
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value="1420"
+					focus>This is an optional helper text</Input
+				>
+				<Input
+					layout="horizontal"
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value="1420"
+					disabled>This is an optional helper text</Input
+				>
+			</div>
+			<div class="col">
+				<Input
+					layout="horizontal"
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					controls>This is an optional helper text</Input
+				>
+				<Input
+					layout="horizontal"
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value={1420}
+					controls>This is an optional helper text</Input
+				>
+				<Input
+					layout="horizontal"
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value={1420}
+					hover
+					controls>This is an optional helper text</Input
+				>
+				<Input
+					layout="horizontal"
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value={1420}
+					active
+					controls>This is an optional helper text</Input
+				>
+				<Input
+					layout="horizontal"
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value={1420}
+					focus
+					controls>This is an optional helper text</Input
+				>
+				<Input
+					layout="horizontal"
+					type="number"
+					label="Number input"
+					unit="EUR"
+					placeholder="0"
+					value={1420}
+					disabled
+					controls>This is an optional helper text</Input
 				>
 			</div>
 		</div>
