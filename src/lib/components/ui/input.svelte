@@ -162,12 +162,24 @@
 			:global(button) {
 				border-radius: 0;
 				border-left: none;
+
+				&:hover,
+				&:active,
+				&:focus {
+					border-left: none;
+				}
 			}
 		}
 		:global(.add) {
 			:global(button) {
 				border-radius: 0 0.25rem 0.25rem 0;
 				border-left: none;
+
+				&:hover,
+				&:active,
+				&:focus {
+					border-left: none;
+				}
 			}
 		}
 		input {
