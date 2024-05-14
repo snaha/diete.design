@@ -12,6 +12,7 @@
 	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
+	import Slider from '$lib/components/slider.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -1337,6 +1338,25 @@
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
 				<MenuTitle content="Organic taiyaki" dimension="small" open />
+			</div>
+		</div>
+	</section>
+	<section>
+		<Typography variant="h1">Slider</Typography>
+		<div class="row">
+			<div class="col">
+				<Slider min="0" max="100">Slider label</Slider>
+				<Slider min="0" max="100" value="50">With initial value</Slider>
+				<Slider min="0" max="100" disabled>Disabled</Slider>
+			</div>
+			<div class="col">
+				<Slider min="0" max="100" dimension="large">Slider label</Slider>
+			</div>
+			<div class="col">
+				<Slider min="0" max="100" dimension="compact">Slider label</Slider>
+			</div>
+			<div class="col">
+				<Slider min="0" max="100" dimension="small">Slider label</Slider>
 			</div>
 		</div>
 	</section>
