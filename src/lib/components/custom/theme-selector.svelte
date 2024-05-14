@@ -5,7 +5,7 @@
 	import { theme } from '$lib/stores/theme.svelte'
 	import { calculateLuminance } from '@waku-objects/luminance'
 	import { getEffectiveColorMode } from '$lib/utils/colors'
-	import RadioList from '../ui/radio-button/radio-list.svelte'
+	import RadioGroup from '../ui/radio-button/radio-group.svelte'
 
 	let effectiveMode = $derived(getEffectiveColorMode(theme.mode))
 
@@ -21,14 +21,14 @@
 </script>
 
 <div class="theme-selector">
-	<RadioList bind:value={theme.mode} name="mode" layout="horizontal">
+	<RadioGroup bind:value={theme.mode} name="mode" layout="horizontal">
 		{#snippet label()}
 			Appearance
 		{/snippet}
 		<Radio value={'light'}>Light</Radio>
 		<Radio value={'dark'}>Dark</Radio>
 		<Radio value={'system'}>Auto</Radio>
-	</RadioList>
+	</RadioGroup>
 
 	<div class="container">
 		<div class="grow">

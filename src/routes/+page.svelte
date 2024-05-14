@@ -11,7 +11,7 @@
 	import Option from '$lib/components/ui/select/option.svelte'
 	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
-	import RadioList from '$lib/components/ui/radio-button/radio-list.svelte'
+	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -289,7 +289,7 @@
 		<Typography variant="h1">Radio button</Typography>
 		<div class="row">
 			<div class="col">
-				<RadioList>
+				<RadioGroup>
 					{#snippet helperText()}
 						Helper text
 					{/snippet}
@@ -306,10 +306,10 @@
 					<Radio name="activeD" active checked>Pressed selected</Radio>
 					<Radio name="focusD" focus checked>Focus selected</Radio>
 					<Radio name="disabledD" disabled checked>Disabled selected</Radio>
-				</RadioList>
+				</RadioGroup>
 			</div>
 			<div class="col">
-				<RadioList dimension="large">
+				<RadioGroup dimension="large">
 					{#snippet helperText()}
 						Helper text
 					{/snippet}
@@ -326,10 +326,10 @@
 					<Radio name="activeL" active checked>Pressed selected</Radio>
 					<Radio name="focusL" focus checked>Focus selected</Radio>
 					<Radio name="disabledL" disabled checked>Disabled selected</Radio>
-				</RadioList>
+				</RadioGroup>
 			</div>
 			<div class="col">
-				<RadioList dimension="compact">
+				<RadioGroup dimension="compact">
 					{#snippet helperText()}
 						Helper text
 					{/snippet}
@@ -346,10 +346,10 @@
 					<Radio name="activeC" active checked>Pressed selected</Radio>
 					<Radio name="focusC" focus checked>Focus selected</Radio>
 					<Radio name="disabledC" disabled checked>Disabled selected</Radio>
-				</RadioList>
+				</RadioGroup>
 			</div>
 			<div class="col">
-				<RadioList dimension="small">
+				<RadioGroup dimension="small">
 					{#snippet helperText()}
 						Helper text
 					{/snippet}
@@ -366,7 +366,7 @@
 					<Radio name="activeS" active checked>Pressed selected</Radio>
 					<Radio name="focusS" focus checked>Focus selected</Radio>
 					<Radio name="disabledS" disabled checked>Disabled selected</Radio>
-				</RadioList>
+				</RadioGroup>
 			</div>
 		</div>
 	</section>
