@@ -38,7 +38,7 @@
 	let input: HTMLInputElement
 	let icon: HTMLButtonElement
 
-	const store = withSelectStore(dimension, value)
+	const store = withSelectStore(dimension, value ?? placeholder ? '' : undefined)
 	setContext('select-store', store)
 
 	// Focused input when user clicks on caret,Unfocused input when user clicks outside input or caret
