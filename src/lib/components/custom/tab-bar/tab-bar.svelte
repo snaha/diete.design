@@ -44,11 +44,11 @@
 	ul {
 		display: flex;
 		flex-wrap: wrap;
-		padding-left: 0;
+		gap: 16px;
 		margin-top: 0px;
 		margin-bottom: 16px;
+		padding-left: 0;
 		list-style: none;
-		gap: 16px;
 	}
 	.tab-container {
 		display: flex;

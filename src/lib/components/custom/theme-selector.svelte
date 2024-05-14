@@ -48,12 +48,12 @@
 	.theme-selector {
 		display: flex;
 		flex-direction: column;
-		min-height: fit-content;
 		gap: var(--padding);
-		padding: var(--padding);
-		border-radius: 0.25rem;
 		border: 1px solid var(--colors-low);
+		border-radius: 0.25rem;
 		background-color: var(--colors-base);
+		padding: var(--padding);
+		min-height: fit-content;
 	}
 	.container {
 		display: flex;
@@ -63,40 +63,40 @@
 		gap: var(--padding);
 	}
 	label {
-		position: relative;
-		line-height: 0;
-		cursor: pointer;
-		border-radius: var(--border-radius);
-		overflow: hidden;
-		width: 3rem;
-		height: 3rem;
 		display: flex;
+		position: relative;
 		justify-content: center;
 		align-items: center;
+		cursor: pointer;
+		border-radius: var(--border-radius);
+		width: 3rem;
+		height: 3rem;
+		overflow: hidden;
+		line-height: 0;
 	}
 	input[type='color'] {
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
+		cursor: pointer;
+		border: none;
+		background-color: transparent;
+		padding: 0;
 		width: 3rem;
 		height: 3rem;
-		background-color: transparent;
-		border: none;
-		cursor: pointer;
-		padding: 0;
 	}
 	input[type='color']::-webkit-color-swatch {
-		border-radius: var(--border-radius);
 		border: none;
+		border-radius: var(--border-radius);
 	}
 	input[type='color']::-moz-color-swatch {
-		border-radius: var(--border-radius);
 		border: none;
+		border-radius: var(--border-radius);
 	}
 	.palette-icon {
 		position: absolute;
-		inset: 50% auto auto 50%;
 		transform: translate(-50%, -50%);
+		inset: 50% auto auto 50%;
 		line-height: 0;
 		fill: var(--colors-top);
 	}
@@ -105,11 +105,11 @@
 	}
 	.palette-overlay {
 		position: absolute;
-		inset: 50% auto auto 50%;
 		transform: translate(-50%, -50%);
 		z-index: 5;
+		inset: 50% auto auto 50%;
 		border-radius: var(--border-radius);
-		height: 3rem;
 		width: 3rem;
+		height: 3rem;
 	}
 </style>

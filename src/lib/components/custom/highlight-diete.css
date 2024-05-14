@@ -33,15 +33,15 @@
   */
 pre code.hljs {
 	display: block;
-	overflow-x: auto;
 	padding: 16px;
+	overflow-x: auto;
 }
 code.hljs {
 	padding: 3px 5px;
 }
 .hljs {
-	color: var(--colors-dark-top);
 	background: var(--colors-dark-base);
+	color: var(--colors-dark-top);
 }
 .hljs::selection,
 .hljs ::selection {
@@ -91,8 +91,8 @@ code.hljs {
 	color: #a0a0a0;
 }
 .hljs-strong {
-	font-weight: bold;
 	color: #a0a0a0;
+	font-weight: bold;
 }
 /* base0B - Strings, Inherited Class, Markup Code, Diff Inserted */
 .hljs-code,

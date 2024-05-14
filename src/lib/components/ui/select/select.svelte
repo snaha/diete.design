@@ -206,23 +206,23 @@
 	.root {
 		--transition-delay: 50ms;
 		--transition: 0;
-		font-family: var(--font-family-sans-serif);
-		color: var(--colors-ultra-high);
 		display: flex;
 		justify-content: center;
 		gap: 0.5rem;
+		color: var(--colors-ultra-high);
+		font-family: var(--font-family-sans-serif);
 	}
 	.select {
+		flex-grow: 1;
 		appearance: none;
+		cursor: pointer;
 		border: 1px solid var(--colors-ultra-high);
+		border-radius: 0.25rem;
 		background: transparent;
 		color: var(--colors-ultra-high);
-		border-radius: 0.25rem;
-		flex-grow: 1;
-		cursor: pointer;
 		&::placeholder {
-			color: var(--colors-ultra-high);
 			opacity: 0.5;
+			color: var(--colors-ultra-high);
 		}
 		&:hover:not(:disabled),
 		&:hover:not(:disabled),
@@ -257,13 +257,13 @@
 			}
 		}
 		&:disabled {
-			cursor: not-allowed;
 			opacity: 0.25;
+			cursor: not-allowed;
 			& + .wrapper > button {
 				pointer-events: none;
 				div {
-					cursor: not-allowed;
 					opacity: 0.25;
+					cursor: not-allowed;
 				}
 			}
 		}
@@ -273,16 +273,16 @@
 		width: fit-content;
 	}
 	button {
-		margin: 0;
-		padding: 0;
-		border: none;
-		outline: none;
-		background-color: transparent;
-		color: var(--colors-ultra-high);
 		position: absolute;
+		cursor: pointer;
+		margin: 0;
+		outline: none;
+		border: none;
+		background-color: transparent;
+		padding: 0;
 		width: 1.5rem;
 		height: 1.5rem;
-		cursor: pointer;
+		color: var(--colors-ultra-high);
 	}
 	.default {
 		.select {
@@ -297,8 +297,8 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		button {
-			bottom: 0.75rem;
 			right: 0.75rem;
+			bottom: 0.75rem;
 		}
 	}
 	.large {
@@ -314,8 +314,8 @@
 			letter-spacing: var(--letter-spacing-large);
 		}
 		button {
-			bottom: 1rem;
 			right: 0.75rem;
+			bottom: 1rem;
 		}
 	}
 	.compact {
@@ -331,8 +331,8 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		button {
-			bottom: 0.5rem;
 			right: 0.5rem;
+			bottom: 0.5rem;
 		}
 	}
 	.small {
@@ -348,8 +348,8 @@
 			letter-spacing: var(--letter-spacing-small);
 		}
 		button {
-			bottom: 0.5rem;
 			right: 0.5rem;
+			bottom: 0.5rem;
 			width: 1rem;
 			height: 1rem;
 		}
@@ -366,22 +366,22 @@
 		position: absolute;
 		top: 100%;
 		left: 0;
-		background: var(--colors-base);
 		z-index: 1;
-		width: 100%;
 		margin-top: 0.25rem;
+		background: var(--colors-base);
+		width: 100%;
 
 		div {
-			:global(.placeholder) {
-				opacity: 0.5;
-			}
-			border: 1px solid var(--colors-low);
-			border-radius: 0.25rem;
-			padding: 0.5rem;
 			display: flex;
 			flex-direction: column;
 			justify-content: stretch;
 			align-items: stretch;
+			border: 1px solid var(--colors-low);
+			border-radius: 0.25rem;
+			padding: 0.5rem;
+			:global(.placeholder) {
+				opacity: 0.5;
+			}
 		}
 	}
 	.hidden {

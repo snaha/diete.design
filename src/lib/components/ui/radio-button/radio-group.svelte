@@ -77,8 +77,8 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-		font-family: var(--font-family-sans-serif);
 		color: var(--colors-ultra-high);
+		font-family: var(--font-family-sans-serif);
 	}
 	.radio-group {
 		display: flex;

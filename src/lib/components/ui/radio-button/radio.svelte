@@ -32,14 +32,14 @@
 	label {
 		display: flex;
 		align-items: center;
+		gap: 0.5rem;
+		cursor: pointer;
 		border-radius: 0.25rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
-		cursor: pointer;
-		gap: 0.5rem;
 		&:has(input[type='radio']:disabled) {
-			cursor: not-allowed;
 			opacity: 0.25;
+			cursor: not-allowed;
 		}
 		&:hover:has(input[type='radio']:not(:disabled)),
 		&.hover:has(input[type='radio']:not(:disabled)),
@@ -79,10 +79,10 @@
 	input[type='radio'] {
 		position: relative;
 		appearance: none;
+		cursor: pointer;
 		margin: 0;
 		border: 1px solid var(--colors-ultra-high);
 		border-radius: 50%;
-		cursor: pointer;
 		&:focus,
 		&:focus-visible {
 			outline: none;
@@ -91,15 +91,15 @@
 			border-color: var(--colors-high);
 		}
 		&:checked::after {
-			content: '';
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			width: 1rem;
-			height: 1rem;
 			border-radius: 50%;
 			background-color: var(--colors-high);
+			width: 1rem;
+			height: 1rem;
+			content: '';
 		}
 		&:disabled {
 			cursor: not-allowed;
@@ -179,8 +179,8 @@
 	}
 	.small {
 		& {
-			padding: 0.5rem;
 			gap: 0.25rem;
+			padding: 0.5rem;
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);

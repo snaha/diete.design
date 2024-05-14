@@ -97,23 +97,23 @@
 	section {
 		display: flex;
 		flex-direction: column;
-		font-family: var(--font-family-sans-serif);
 		margin-bottom: var(--double-padding);
+		font-family: var(--font-family-sans-serif);
 	}
 	.title-vspace {
 		margin-bottom: var(--double-padding);
 	}
 	hr {
-		color: var(--colors-low);
-		border-style: solid;
-		border-width: 1px;
 		appearance: none;
 		margin-bottom: var(--double-padding);
+		border-width: 1px;
+		border-style: solid;
+		color: var(--colors-low);
 	}
 	.examples {
+		gap: var(--padding);
 		background: var(--colors-ultra-low);
 		padding: var(--padding);
-		gap: var(--padding);
 	}
 	.preview {
 		flex: 1;
