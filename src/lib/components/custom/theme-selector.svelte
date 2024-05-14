@@ -75,8 +75,6 @@
 		line-height: 0;
 	}
 	input[type='color'] {
-		-webkit-appearance: none;
-		-moz-appearance: none;
 		appearance: none;
 		cursor: pointer;
 		border: none;
