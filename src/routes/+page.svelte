@@ -290,6 +290,12 @@
 		<div class="row">
 			<div class="col">
 				<RadioList>
+					{#snippet helperText()}
+						Helper text
+					{/snippet}
+					{#snippet label()}
+						Default
+					{/snippet}
 					<Radio name="defaultD">Unselected</Radio>
 					<Radio name="hoverD" hover>Hover unselected</Radio>
 					<Radio name="activeD" active>Pressed unselected</Radio>
@@ -304,6 +310,12 @@
 			</div>
 			<div class="col">
 				<RadioList dimension="large">
+					{#snippet helperText()}
+						Helper text
+					{/snippet}
+					{#snippet label()}
+						Large
+					{/snippet}
 					<Radio name="defaultL">Unselected</Radio>
 					<Radio name="hoverL" hover>Hover unselected</Radio>
 					<Radio name="activeL" active>Pressed unselected</Radio>
@@ -318,6 +330,12 @@
 			</div>
 			<div class="col">
 				<RadioList dimension="compact">
+					{#snippet helperText()}
+						Helper text
+					{/snippet}
+					{#snippet label()}
+						Compact
+					{/snippet}
 					<Radio name="defaultC">Unselected</Radio>
 					<Radio name="hoverC" hover>Hover unselected</Radio>
 					<Radio name="activeC" active>Pressed unselected</Radio>
@@ -332,6 +350,12 @@
 			</div>
 			<div class="col">
 				<RadioList dimension="small">
+					{#snippet helperText()}
+						Helper text
+					{/snippet}
+					{#snippet label()}
+						Small
+					{/snippet}
 					<Radio name="defaultS">Unselected</Radio>
 					<Radio name="hoverS" hover>Hover unselected</Radio>
 					<Radio name="activeS" active>Pressed unselected</Radio>

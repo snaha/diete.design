@@ -10,7 +10,7 @@
 		layout?: Layout
 		value?: string
 		name?: string
-		label?: string
+		label?: Snippet
 		helperText?: Snippet
 	}
 	let {
@@ -33,7 +33,9 @@
 
 <div class="root {dimension}">
 	{#if label}
-		<Typography>{label}</Typography>
+		<Typography>
+			{@render label()}
+		</Typography>
 	{/if}
 	<div class="radio-group {layout}" role="radiogroup">
 		{#if children}
