@@ -132,78 +132,78 @@
 	}
 	.menu-button-container {
 		position: fixed;
-		left: var(--padding);
 		top: var(--padding);
+		left: var(--padding);
 		z-index: 100;
 	}
 	.dark-mode-button-container {
 		position: fixed;
-		right: var(--padding);
 		top: var(--padding);
+		right: var(--padding);
 		z-index: 100;
 	}
 	.menu {
 		position: fixed;
 		top: var(--header-size);
-		left: 0px;
 		bottom: 0px;
-		overflow-x: hidden;
-		overflow-y: auto;
-		min-width: calc(var(--sidebar-size) - var(--double-padding));
+		left: 0px;
 		background-color: var(--colors-ultra-low);
 		padding: var(--padding);
+		min-width: calc(var(--sidebar-size) - var(--double-padding));
+		overflow-x: hidden;
+		overflow-y: auto;
 	}
 	.menu-header {
 		position: fixed;
 		top: 0px;
 		left: 0px;
-		height: var(--header-size);
-		min-width: var(--sidebar-size);
 		background-color: var(--colors-ultra-low);
+		min-width: var(--sidebar-size);
+		height: var(--header-size);
 	}
 	.menu-open-placeholder {
-		background-color: var(--colors-low);
-		min-width: var(--sidebar-size);
 		transition:
 			background-color 0.25s,
 			min-width 0.25s;
 		margin-top: var(--header-size);
+		background-color: var(--colors-low);
+		min-width: var(--sidebar-size);
 	}
 	.menu-closed-placeholder {
-		background-color: var(--colors-base);
-		min-width: 0px;
 		transition:
 			background-color 0.25s,
 			min-width 0.25s;
+		background-color: var(--colors-base);
+		min-width: 0px;
 	}
 	@media only screen and (max-device-width: 700px) {
 		.menu-open-placeholder {
 			position: absolute;
-			left: 0px;
 			top: 0px;
 			bottom: 0px;
+			left: 0px;
+			z-index: 1;
 			transition: none;
 			background-color: var(--colors-low);
-			z-index: 1;
 		}
 		.menu-closed-placeholder {
+			transition: none;
 			background-color: var(--colors-base);
 			min-width: 0px;
-			transition: none;
 		}
 	}
 	.right {
-		flex-direction: column;
 		display: flex;
 		flex-grow: 1;
+		flex-direction: column;
 	}
 	.content-container {
 		display: flex;
 		flex-direction: row;
 	}
 	.content-margin {
-		min-width: var(--padding);
 		flex-grow: 1;
+		min-width: var(--padding);
 	}
 	.content {
 		margin-bottom: var(--header-size);

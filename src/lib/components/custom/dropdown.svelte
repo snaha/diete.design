@@ -85,13 +85,13 @@
 
 		div {
 			position: absolute;
+			z-index: 1;
+			backdrop-filter: blur(var(--blur));
 			inset: calc(100% + var(--spacing-6)) 0 auto auto;
+			box-shadow: 0 1px 5px 0 rgba(var(--color-accent-rgb, var(--color-dark-base-rgb)), 0.25);
+			border-radius: var(--border-radius);
 			width: max-content;
 			max-width: 450px;
-			z-index: 1;
-			border-radius: var(--border-radius);
-			box-shadow: 0 1px 5px 0 rgba(var(--color-accent-rgb, var(--color-dark-base-rgb)), 0.25);
-			backdrop-filter: blur(var(--blur));
 
 			&.hidden {
 				display: none;

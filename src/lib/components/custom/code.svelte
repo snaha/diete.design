@@ -55,32 +55,32 @@
 <style lang="postcss">
 	.container {
 		display: flex;
+		position: relative;
 		flex-direction: row;
 		justify-content: stretch;
 		align-items: stretch;
-		isolation: isolate;
-		background: var(--colors-dark-base);
-		position: relative;
-		max-height: 50vh;
-		min-height: 288px;
-		max-width: calc(100vw - var(--double-padding));
 		border: var(--colors-dark-low) 1px solid;
+		background: var(--colors-dark-base);
+		isolation: isolate;
+		max-width: calc(100vw - var(--double-padding));
+		min-height: 288px;
+		max-height: 50vh;
 	}
 
 	.inside {
-		background: var(--colors-dark-base);
-		align-self: stretch;
-		flex-grow: 1;
-		overflow: auto;
 		display: flex;
+		flex-grow: 1;
+		align-self: stretch;
+		background: var(--colors-dark-base);
+		overflow: auto;
 	}
 
 	.copy-button {
 		position: absolute;
 		top: var(--padding);
 		right: var(--padding);
-		color: var(--colors-dark-top);
 		z-index: 1;
+		color: var(--colors-dark-top);
 	}
 
 	:global(.highlight) {

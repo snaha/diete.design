@@ -55,14 +55,14 @@
 <style lang="postcss">
 	.root {
 		display: inline-flex;
-		flex-direction: row;
 		flex-grow: 0;
+		flex-direction: row;
 		justify-content: stretch;
 		align-items: stretch;
 
 		&.disabled {
-			cursor: not-allowed;
 			opacity: 0.25;
+			cursor: not-allowed;
 
 			a,
 			button {
@@ -73,45 +73,45 @@
 	button,
 	a {
 		display: inline-flex;
+		flex-grow: 1;
+		flex-shrink: 0;
 		justify-content: left;
 		align-items: center;
 		gap: 0.5rem;
-		border-radius: 0.25rem;
-		border: 1px solid var(--colors-ultra-high);
 		cursor: pointer;
-		text-decoration: none;
-		font-family: var(--font-family-sans-serif);
+		border: 1px solid var(--colors-ultra-high);
+		border-radius: 0.25rem;
 		font-style: normal;
 		font-weight: 400;
+		font-family: var(--font-family-sans-serif);
+		text-decoration: none;
 		white-space: nowrap;
-		flex-shrink: 0;
-		flex-grow: 1;
 	}
 	.default {
-		min-width: 3rem;
 		padding: 0.75rem;
+		min-width: 3rem;
 		font-size: 1rem;
 		line-height: 1.5rem;
 		letter-spacing: 0.02rem;
 	}
 	.large {
-		min-width: 3.5rem;
 		padding: 0.75rem;
+		min-width: 3.5rem;
 		font-size: 1.5rem;
 		line-height: 2rem;
 		letter-spacing: 0.03rem;
 	}
 	.compact {
-		min-width: 2.5rem;
 		padding: 0.5rem;
+		min-width: 2.5rem;
 		font-size: 1rem;
 		line-height: 1.5rem;
 		letter-spacing: 0.02rem;
 	}
 	.small {
 		gap: 0.25rem;
-		min-width: 2rem;
 		padding: 0.5rem;
+		min-width: 2rem;
 		font-size: 0.75rem;
 		line-height: 1rem;
 		letter-spacing: 0.0375rem;

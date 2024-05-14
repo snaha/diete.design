@@ -231,8 +231,8 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	.preview-tabs {
 		display: flex;
 		flex-direction: row;
-		align-items: center;
 		justify-content: center;
+		align-items: center;
 		background-color: var(--colors-ultra-low);
 	}
 	:global(.preview-tab) {
@@ -240,11 +240,11 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	}
 	.example-row {
 		display: flex;
+		flex: 1;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 16px;
-		margin-bottom: 0px;
 		margin-top: 0px;
-		flex: 1;
+		margin-bottom: 0px;
 	}
 </style>

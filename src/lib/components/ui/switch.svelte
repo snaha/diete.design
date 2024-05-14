@@ -30,10 +30,10 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
+		cursor: pointer;
 		border-radius: 0.25rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
-		cursor: pointer;
 		&:has(input[type='checkbox']:checked) {
 			color: var(--colors-high);
 		}
@@ -92,31 +92,31 @@
 		}
 	}
 	input[type='checkbox'] {
-		appearance: none;
 		display: flex;
+		position: relative;
+		appearance: none;
+		transition: transform 0.35s ease;
+		cursor: pointer;
+		margin: 0;
 		border: 1px solid var(--colors-ultra-high);
 		border-radius: 1rem;
 		background: transparent;
-		transition: transform 0.35s ease;
-		cursor: pointer;
-		position: relative;
-		margin: 0;
 		&:focus {
 			outline: none;
 		}
 		&::after {
-			content: '';
 			position: absolute;
 			top: 50%;
 			left: 0.2rem;
 			transform: translateY(-50%);
+			transition: transform 0.35s cubic-bezier(0.5, 0.1, 0.75, 1.35);
 			border-radius: 50%;
 			background: var(--colors-ultra-high);
-			transition: transform 0.35s cubic-bezier(0.5, 0.1, 0.75, 1.35);
+			content: '';
 		}
 		&:checked {
-			background: var(--colors-high);
 			border: 1px solid var(--colors-high);
+			background: var(--colors-high);
 		}
 		&:checked::after {
 			background: var(--colors-ultra-low);
@@ -198,9 +198,9 @@
 			height: 1rem;
 		}
 		input[type='checkbox']::after {
+			left: 2px;
 			width: 0.625rem;
 			height: 0.625rem;
-			left: 2px;
 		}
 		input[type='checkbox']:checked::after {
 			transform: translateY(-50%) translateX(10px);

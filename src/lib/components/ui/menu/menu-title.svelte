@@ -83,16 +83,16 @@
 <style lang="postcss">
 	.root {
 		display: flex;
-		flex-direction: column;
 		position: relative;
-		color: var(--colors-ultra-high);
+		flex-direction: column;
 		width: 100%;
+		color: var(--colors-ultra-high);
 
 		.wrapper {
 			display: flex;
 			flex-direction: row;
-			align-items: center;
 			justify-content: stretch;
+			align-items: center;
 			border-radius: 0.25rem;
 		}
 		&:has(input[type='checkbox']:not(:disabled)) {
@@ -133,16 +133,16 @@
 		}
 		.icon {
 			display: flex;
-			align-items: center;
 			justify-content: center;
+			align-items: center;
 			transition: transform 0.3s ease-in-out;
 		}
 		label {
 			cursor: pointer;
 		}
 		input[type='checkbox'] {
-			opacity: 0;
 			position: absolute;
+			opacity: 0;
 			z-index: 1;
 			& ~ .panel {
 				display: grid;
@@ -161,8 +161,8 @@
 				transform: rotate(-180deg);
 			}
 			&:disabled + .wrapper > label {
-				cursor: not-allowed;
 				opacity: 0.25;
+				cursor: not-allowed;
 			}
 		}
 	}

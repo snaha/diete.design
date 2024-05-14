@@ -17,7 +17,7 @@
 <style lang="postcss">
 	.vertical-container {
 		display: grid;
-		gap: 16px;
 		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 16px;
 	}
 </style>

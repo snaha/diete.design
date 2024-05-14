@@ -1350,9 +1350,9 @@
 	.row {
 		display: flex;
 		flex-direction: row;
+		flex-wrap: wrap;
 		justify-content: flex-start;
 		align-items: flex-start;
-		flex-wrap: wrap;
 		gap: 1rem;
 		padding-bottom: 5rem;
 	}

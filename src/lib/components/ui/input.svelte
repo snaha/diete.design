@@ -116,8 +116,8 @@
 	}
 	.controls {
 		.wrapper {
-			gap: 0;
 			flex-direction: row;
+			gap: 0;
 			input[type='number'] {
 				border-radius: 0.25rem 0 0 0.25rem;
 			}
@@ -125,16 +125,16 @@
 	}
 
 	.root {
+		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
-		gap: 0.5rem;
 	}
 	.label {
 		display: flex;
 		flex-direction: column;
-		color: var(--colors-ultra-high);
 		cursor: pointer;
 		width: fit-content;
+		color: var(--colors-ultra-high);
 	}
 	.helper-button {
 		display: flex;
@@ -142,8 +142,8 @@
 		cursor: pointer;
 	}
 	.wrapper {
-		position: relative;
 		display: flex;
+		position: relative;
 		flex-direction: column;
 		gap: 0.25rem;
 		.control-buttons {
@@ -151,8 +151,8 @@
 			flex-direction: row;
 
 			:global(button) {
-				border-radius: 0;
 				border-left: none;
+				border-radius: 0;
 
 				&:hover,
 				&:active,
@@ -172,8 +172,8 @@
 			background: transparent;
 			color: var(--colors-ultra-high);
 			&::placeholder {
-				color: var(--colors-ultra-high);
 				opacity: 0.5;
+				color: var(--colors-ultra-high);
 			}
 			&:disabled {
 				opacity: 0.25;
@@ -192,8 +192,8 @@
 				background: var(--colors-base);
 				color: var(--colors-top);
 				& ~ .unit {
-					color: var(--colors-top);
 					opacity: 1;
+					color: var(--colors-top);
 				}
 			}
 			&:active:not(:disabled),
@@ -215,14 +215,14 @@
 		}
 	}
 	.unit {
-		opacity: 0.5;
 		position: absolute;
+		opacity: 0.5;
 		cursor: text;
 	}
 	.error-icon {
 		position: absolute;
-		color: var(--colors-top);
 		cursor: text;
+		color: var(--colors-top);
 	}
 	.default {
 		.label {
@@ -234,10 +234,10 @@
 			padding: 0.75rem;
 		}
 		input {
+			padding: 0.75rem;
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
-			padding: 0.75rem;
 		}
 		.unit {
 			top: 0.75rem;
@@ -266,10 +266,10 @@
 			padding: 0.75rem;
 		}
 		input {
+			padding: 0.75rem;
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
-			padding: 0.75rem;
 		}
 		.unit {
 			top: 0.75rem;
@@ -303,10 +303,10 @@
 			padding: 0.5rem;
 		}
 		input {
+			padding: 0.5rem;
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
-			padding: 0.5rem;
 		}
 		.unit {
 			top: 0.5rem;
@@ -335,10 +335,10 @@
 			padding: 0.5rem;
 		}
 		input {
+			padding: 0.5rem;
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
-			padding: 0.5rem;
 		}
 		.unit {
 			top: 0.5rem;
@@ -366,8 +366,8 @@
 		border: 1px solid var(--colors-top);
 		border-radius: 0.25rem;
 		background: var(--colors-top);
-		color: var(--colors-base);
 		padding: 0.25rem 0.5rem;
+		color: var(--colors-base);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
 		letter-spacing: var(--letter-spacing);
