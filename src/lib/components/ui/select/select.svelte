@@ -178,7 +178,9 @@
 			{#if children}
 				<div class="options" class:hidden={!store.open}>
 					<div>
-						<Option class="placeholder" value="placeholder">{placeholder}</Option>
+						{#if placeholder}
+							<Option class="placeholder" value="">{placeholder}</Option>
+						{/if}
 						{@render children()}
 					</div>
 				</div>
@@ -371,7 +373,6 @@
 
 		div {
 			:global(.placeholder) {
-				pointer-events: none;
 				opacity: 0.5;
 			}
 			border: 1px solid var(--colors-low);

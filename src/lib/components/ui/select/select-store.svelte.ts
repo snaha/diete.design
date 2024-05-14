@@ -17,9 +17,7 @@ export function withSelectStore(dimension: Size, initialValue?: string): SelectS
 	function registerValue(newValue: string, newLabel?: string) {
 		if (labels[newValue]) return
 
-		if (newValue !== 'placeholder') {
-			labels[newValue] = newLabel ?? newValue
-		}
+		labels[newValue] = newLabel ?? newValue
 	}
 
 	return {
