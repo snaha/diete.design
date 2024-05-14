@@ -4,13 +4,14 @@
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
 	import Input from '$lib/components/ui/input.svelte'
-	import Radio from '$lib/components/ui/radio.svelte'
+	import Radio from '$lib/components/ui/radio-button/radio.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 	import Select from '$lib/components/ui/select/select.svelte'
 	import Option from '$lib/components/ui/select/option.svelte'
 	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
+	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -340,28 +341,84 @@
 		<Typography variant="h1">Radio button</Typography>
 		<div class="row">
 			<div class="col">
-				<Radio label="Radio button" name="rb" />
-				<Radio label="Radio button" name="rb" checked />
-				<Radio label="Radio button" disabled />
-				<Radio label="Radio button" checked disabled />
+				<RadioGroup>
+					{#snippet helperText()}
+						Helper text
+					{/snippet}
+					{#snippet label()}
+						Default
+					{/snippet}
+					<Radio name="defaultD">Unselected</Radio>
+					<Radio name="hoverD" hover>Hover unselected</Radio>
+					<Radio name="activeD" active>Pressed unselected</Radio>
+					<Radio name="focusD" focus>Focus unselected</Radio>
+					<Radio name="disabledD" disabled>Focus unselected</Radio>
+					<Radio name="defaultD" checked>Selected</Radio>
+					<Radio name="hoverD" hover checked>Hover selected</Radio>
+					<Radio name="activeD" active checked>Pressed selected</Radio>
+					<Radio name="focusD" focus checked>Focus selected</Radio>
+					<Radio name="disabledD" disabled checked>Disabled selected</Radio>
+				</RadioGroup>
 			</div>
 			<div class="col">
-				<Radio dimension="large" label="Radio button" name="rbL" />
-				<Radio dimension="large" label="Radio button" name="rbL" checked />
-				<Radio dimension="large" label="Radio button" disabled />
-				<Radio dimension="large" label="Radio button" checked disabled />
+				<RadioGroup dimension="large">
+					{#snippet helperText()}
+						Helper text
+					{/snippet}
+					{#snippet label()}
+						Large
+					{/snippet}
+					<Radio name="defaultL">Unselected</Radio>
+					<Radio name="hoverL" hover>Hover unselected</Radio>
+					<Radio name="activeL" active>Pressed unselected</Radio>
+					<Radio name="focusL" focus>Focus unselected</Radio>
+					<Radio name="disabledL" disabled>Focus unselected</Radio>
+					<Radio name="defaultL" checked>Selected</Radio>
+					<Radio name="hoverL" hover checked>Hover selected</Radio>
+					<Radio name="activeL" active checked>Pressed selected</Radio>
+					<Radio name="focusL" focus checked>Focus selected</Radio>
+					<Radio name="disabledL" disabled checked>Disabled selected</Radio>
+				</RadioGroup>
 			</div>
 			<div class="col">
-				<Radio dimension="compact" label="Radio button" name="rbC" />
-				<Radio dimension="compact" label="Radio button" name="rbC" checked />
-				<Radio dimension="compact" label="Radio button" disabled />
-				<Radio dimension="compact" label="Radio button" checked disabled />
+				<RadioGroup dimension="compact">
+					{#snippet helperText()}
+						Helper text
+					{/snippet}
+					{#snippet label()}
+						Compact
+					{/snippet}
+					<Radio name="defaultC">Unselected</Radio>
+					<Radio name="hoverC" hover>Hover unselected</Radio>
+					<Radio name="activeC" active>Pressed unselected</Radio>
+					<Radio name="focusC" focus>Focus unselected</Radio>
+					<Radio name="disabledC" disabled>Focus unselected</Radio>
+					<Radio name="defaultC" checked>Selected</Radio>
+					<Radio name="hoverC" hover checked>Hover selected</Radio>
+					<Radio name="activeC" active checked>Pressed selected</Radio>
+					<Radio name="focusC" focus checked>Focus selected</Radio>
+					<Radio name="disabledC" disabled checked>Disabled selected</Radio>
+				</RadioGroup>
 			</div>
 			<div class="col">
-				<Radio dimension="small" label="Radio button" name="rbS" />
-				<Radio dimension="small" label="Radio button" name="rbS" checked />
-				<Radio dimension="small" label="Radio button" disabled />
-				<Radio dimension="small" label="Radio button" checked disabled />
+				<RadioGroup dimension="small">
+					{#snippet helperText()}
+						Helper text
+					{/snippet}
+					{#snippet label()}
+						Small
+					{/snippet}
+					<Radio name="defaultS">Unselected</Radio>
+					<Radio name="hoverS" hover>Hover unselected</Radio>
+					<Radio name="activeS" active>Pressed unselected</Radio>
+					<Radio name="focusS" focus>Focus unselected</Radio>
+					<Radio name="disabledS" disabled>Focus unselected</Radio>
+					<Radio name="defaultS" checked>Selected</Radio>
+					<Radio name="hoverS" hover checked>Hover selected</Radio>
+					<Radio name="activeS" active checked>Pressed selected</Radio>
+					<Radio name="focusS" focus checked>Focus selected</Radio>
+					<Radio name="disabledS" disabled checked>Disabled selected</Radio>
+				</RadioGroup>
 			</div>
 		</div>
 	</section>
