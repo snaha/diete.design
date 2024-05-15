@@ -6,6 +6,10 @@
 		labelFor?: string
 		dimension?: Dimension
 		layout?: Layout
+		centered?: boolean
+		min?: number
+		max?: number
+		step?: number
 	}
 	let {
 		labelFor = Math.random().toString(16),
@@ -13,17 +17,24 @@
 		dimension = 'default',
 		layout = 'vertical',
 		value = 0,
+		min = 0,
+		max = 100,
+		step,
+		centered,
 		...restProps
 	}: Props = $props()
 
 	let slider: HTMLInputElement | undefined = $state(undefined)
+	let sliderContainer: HTMLDivElement | undefined = $state(undefined)
+	function updateValue() {
+		const range = max - min
+		const percent = ((value - min) / range) * 100
+		sliderContainer?.style.setProperty('--valuePercent', `${percent}%`)
+	}
 	$effect(() => {
-		slider?.style.setProperty('--valuePercent', `${value}%`)
+		updateValue()
 	})
 	$effect(() => {
-		function updateValue() {
-			slider?.style.setProperty('--valuePercent', `${value}%`)
-		}
 		slider?.addEventListener('input', updateValue)
 		return () => {
 			slider?.removeEventListener('input', updateValue)
@@ -32,171 +43,292 @@
 </script>
 
 <div class="root {dimension} {layout}">
-	<div class="wrapper">
-		<input type="range" id={labelFor} bind:value bind:this={slider} {...restProps} />
-		<span>{value}</span>
-		<div class="border"></div>
-	</div>
 	<label for={labelFor}>
 		{#if children}
 			{@render children()}
 		{/if}
 	</label>
+	<div class="wrapper">
+		{min}
+		<div class="slider-container" bind:this={sliderContainer}>
+			<input
+				type="range"
+				class:centered
+				id={labelFor}
+				bind:value
+				bind:this={slider}
+				{min}
+				{max}
+				{step}
+				{...restProps}
+			/>
+			<span class="value">
+				{value}
+			</span>
+			<div class="slider-background"></div>
+			<div class="slider-progress"></div>
+			{#if step}
+				<div class="slider-tick-container">
+					{#each Array.from({ length: step + 1 }) as _}
+						<span class="tick" />
+					{/each}
+				</div>
+			{/if}
+		</div>
+		{max}
+	</div>
 </div>
 
 <style lang="postcss">
 	.root {
+		display: flex;
+		gap: 0.5rem;
+		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
-	}
-	.vertical {
-		&.root {
-			display: flex;
-			flex-direction: column-reverse;
-			gap: 0.5rem;
+		&.vertical {
+			flex-direction: column;
 		}
-	}
-	.horizontal {
-		&.root {
-			display: flex;
-			flex-direction: row-reverse;
-			gap: 0.5rem;
+		&.horizontal {
+			flex-direction: row;
 		}
 	}
 	label {
-		color: var(--colors-ultra-high);
+		width: fit-content;
 	}
 	.wrapper {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		.range {
-			display: flex;
-			align-items: center;
-			overflow: hidden;
-		}
-		span {
-			min-width: 3rem;
+		padding: 0.75rem;
+		&:has(input:not(:disabled):active) {
 			color: var(--colors-high);
 		}
+		&:has(input:not(:disabled):hover) {
+			color: var(--colors-high);
+		}
+		&:has(input:not(:disabled):focus-visible) {
+			border-radius: 0.25rem;
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			color: var(--colors-top);
+		}
+	}
+	.slider-container {
+		--valuePercent: ;
+		display: flex;
+		align-items: center;
+		position: relative;
+	}
+	.value {
+		display: none;
+		position: absolute;
+		top: -1.75rem;
+		left: var(--valuePercent);
+		transform: translateX(calc(-1 * var(--valuePercent)));
+		padding: 0.25rem 0.5rem;
+		border-radius: 0.75rem;
+		background: var(--colors-top);
+		color: var(--colors-base);
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
+		letter-spacing: var(--letter-spacing-small);
 	}
 	input[type='range'] {
-		appearance: none;
+		-webkit-appearance: none;
+		width: 100%;
+		background: transparent;
 		margin: 0;
-		cursor: pointer;
-		&:disabled {
-			cursor: not-allowed;
-			opacity: 0.25;
-			& + span {
-				cursor: not-allowed;
-				opacity: 0.25;
+		&::-webkit-slider-thumb {
+			appearance: none;
+			background: var(--colors-ultra-high);
+			border-radius: 50%;
+			cursor: pointer;
+			border: none;
+			outline: none;
+			margin-bottom: 0;
+			position: relative;
+			z-index: 1;
+		}
+		&::-moz-range-thumb {
+			appearance: none;
+			background: var(--colors-ultra-high);
+			border-radius: 50%;
+			cursor: pointer;
+			border: none;
+			outline: none;
+			margin-bottom: 0;
+			position: relative;
+			z-index: 1;
+		}
+		&::-webkit-slider-runnable-track {
+			appearance: none;
+			width: 100%;
+		}
+		&::-moz-range-track {
+			appearance: none;
+			width: 100%;
+		}
+		&:hover:not(:disabled):not(:focus-visible),
+		&:active:not(:disabled):not(:focus-visible) {
+			&::-webkit-slider-thumb {
+				background: var(--colors-high);
+			}
+			&::-moz-range-thumb {
+				background: var(--colors-high);
+			}
+			& ~ .value {
+				display: block;
+			}
+			& ~ .slider-background {
+				background: var(--colors-high);
+			}
+			& ~ .slider-progress {
+				background: var(--colors-high);
+			}
+			& ~ .slider-tick-container > .tick {
+				background: var(--colors-high);
 			}
 		}
-		&:focus {
+		&:active:not(:disabled):focus-visible {
+			&::-webkit-slider-thumb {
+				background: var(--colors-top);
+			}
+			&::-moz-range-thumb {
+				background: var(--colors-top);
+			}
+		}
+		&:focus-visible {
 			outline: none;
+			&::-webkit-slider-thumb {
+				outline: 4px solid var(--colors-top);
+				outline-offset: -4px;
+				background: var(--colors-base);
+			}
+			&::-moz-range-thumb {
+				outline: 4px solid var(--colors-top);
+				outline-offset: -4px;
+				background: var(--colors-base);
+			}
+			& ~ .value {
+				display: block;
+			}
+			& ~ .slider-background {
+				background: var(--colors-top);
+			}
+			& ~ .slider-progress {
+				background: var(--colors-top);
+			}
+			& ~ .slider-tick-container > .tick {
+				background: var(--colors-top);
+			}
 		}
 	}
-	input[type='range']::-webkit-slider-runnable-track {
-		border-radius: 0.125rem;
-		min-height: 1px;
-		max-height: 4px;
-		background-image: linear-gradient(var(--colors-high), var(--colors-high)),
-			linear-gradient(var(--colors-ultra-high), var(--colors-ultra-high));
-		background-repeat: no-repeat no-repeat;
-		background-size:
-			var(--valuePercent) 4px,
-			100% 1px;
-		background-position: left;
-	}
-	input[type='range']::-moz-range-track {
-		border-radius: 0.125rem;
+	.slider-background {
+		position: absolute;
+		left: calc(var(--valuePercent));
 		height: 1px;
+		border-radius: 0.25rem;
 		background: var(--colors-ultra-high);
 	}
-	input[type='range']::-moz-range-progress {
-		border-radius: 0.125rem;
+	.slider-progress {
+		position: absolute;
 		height: 4px;
-		background: var(--colors-high);
+		border-radius: 0.25rem;
+		background-color: var(--colors-ultra-high);
 	}
-	input[type='range']::-webkit-slider-thumb {
-		appearance: none;
+	.slider-tick-container {
+		position: absolute;
+		left: 0.75rem;
+		width: calc(100% - 1.5rem);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.tick {
+		width: 4px;
+		height: 4px;
 		border-radius: 50%;
-		background-color: var(--colors-high);
+		background-color: var(--colors-ultra-high);
 	}
-	input[type='range']::-moz-range-thumb {
-		appearance: none;
-		border-radius: 50%;
-		background-color: var(--colors-high);
-		border: none;
-	}
+
 	.default,
 	.compact {
-		label,
-		span {
-			font-size: var(--font-size);
-			line-height: var(--line-height);
-			letter-spacing: var(--letter-spacing);
-		}
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+
 		input[type='range'] {
 			height: 1.5rem;
-			padding: 0 0.75rem;
+			&::-webkit-slider-thumb {
+				width: 1.5rem;
+				height: 1.5rem;
+			}
+			&::-moz-range-thumb {
+				width: 1.5rem;
+				height: 1.5rem;
+			}
 		}
-		input[type='range']::-webkit-slider-thumb {
-			width: 1.5rem;
-			height: 1.5rem;
-			margin-top: -10px;
+		.slider-background {
+			top: 11.5px;
+			width: calc(100% - var(--valuePercent) - 0.75rem);
 		}
-		input[type='range']::-moz-range-thumb {
-			width: 1.5rem;
-			height: 1.5rem;
-			margin-top: -10px;
+		.slider-progress {
+			top: 10px;
+			left: 0.75rem;
+			width: calc(var(--valuePercent) - 0.75rem);
 		}
 	}
 	.large {
-		label,
-		span {
-			font-size: var(--font-size-large);
-			line-height: var(--line-height-large);
-			letter-spacing: var(--letter-spacing-large);
-		}
+		font-size: var(--font-size-large);
+		line-height: var(--line-height-large);
+		letter-spacing: var(--letter-spacing-large);
 
 		input[type='range'] {
 			height: 2rem;
-			padding: 0 1rem;
+			&::-webkit-slider-thumb {
+				width: 2rem;
+				height: 2rem;
+			}
+			&::-moz-range-thumb {
+				width: 2rem;
+				height: 2rem;
+			}
 		}
-		input[type='range']::-webkit-slider-thumb {
-			width: 2rem;
-			height: 2rem;
-			margin-top: -14px;
+		.slider-background {
+			top: 15.5px;
+			width: calc(100% - var(--valuePercent) - 1rem);
 		}
-		input[type='range']::-moz-range-thumb {
-			width: 2rem;
-			height: 2rem;
-			margin-top: -14px;
+		.slider-progress {
+			top: 14px;
+			left: 1rem;
+			width: calc(var(--valuePercent) - 1rem);
 		}
 	}
 	.small {
-		&.root {
-			gap: 0.25rem;
-		}
-		label,
-		span {
-			font-size: var(--font-size-small);
-			line-height: var(--line-height-small);
-			letter-spacing: var(--letter-spacing-small);
-		}
+		gap: 0.25rem;
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
+		letter-spacing: var(--letter-spacing-small);
+
 		input[type='range'] {
 			height: 1rem;
-			padding: 0 0.5rem;
+			&::-webkit-slider-thumb {
+				width: 1rem;
+				height: 1rem;
+			}
+			&::-moz-range-thumb {
+				width: 1rem;
+				height: 1rem;
+			}
 		}
-		input[type='range']::-webkit-slider-thumb {
-			width: 1rem;
-			height: 1rem;
-			margin-top: -6px;
+		.slider-background {
+			top: 7.5px;
+			width: calc(100% - var(--valuePercent) - 0.5rem);
 		}
-		input[type='range']::-moz-range-thumb {
-			width: 1rem;
-			height: 1rem;
-			margin-top: -6px;
+		.slider-progress {
+			top: 6px;
+			left: 0.5rem;
+			width: calc(var(--valuePercent) - 0.5rem);
 		}
 	}
 </style>

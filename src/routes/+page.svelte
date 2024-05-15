@@ -1345,18 +1345,16 @@
 		<Typography variant="h1">Slider</Typography>
 		<div class="row">
 			<div class="col">
-				<Slider min="0" max="100">Slider label</Slider>
-				<Slider min="0" max="100" value="50">With initial value</Slider>
-				<Slider min="0" max="100" disabled>Disabled</Slider>
+				<Slider min={0} max={100} step={10}>Slider label</Slider>
 			</div>
 			<div class="col">
-				<Slider min="0" max="100" dimension="large">Slider label</Slider>
+				<Slider min={0} max={100} dimension="large">Slider label</Slider>
 			</div>
 			<div class="col">
-				<Slider min="0" max="100" dimension="compact">Slider label</Slider>
+				<Slider min={0} max={100} dimension="compact">Slider label</Slider>
 			</div>
 			<div class="col">
-				<Slider min="0" max="100" dimension="small">Slider label</Slider>
+				<Slider min={0} max={100} dimension="small">Slider label</Slider>
 			</div>
 		</div>
 	</section>
