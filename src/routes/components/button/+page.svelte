@@ -159,7 +159,7 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 {/snippet}
 
 {#snippet controls()}
-	<Select bind:value={variant} placeholder="Button type" helperText={helperTextButtonType}>
+	<Select bind:value={variant} label="Button type" helperText={helperTextButtonType}>
 		<Option value="strong">Strong button</Option>
 		<Option value="secondary">Outline button</Option>
 		<Option value="ghost">Ghost button</Option>
@@ -168,7 +168,7 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 		<Option value="lightoverlay">Light overlay button</Option>
 	</Select>
 
-	<Select bind:value={dimension} placeholder="Button size" helperText={helperTextButtonSizes}>
+	<Select bind:value={dimension} label="Button size" helperText={helperTextButtonSizes}>
 		<Option value="default">Default</Option>
 		<Option value="large">Large</Option>
 		<Option value="compact">Compact</Option>
