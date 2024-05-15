@@ -3,21 +3,12 @@
 	import Radio from '../ui/radio-button/radio.svelte'
 	import { ColorPalette } from 'carbon-icons-svelte'
 	import { theme } from '$lib/stores/theme.svelte'
-	import { calculateLuminance } from '@waku-objects/luminance'
-	import { getEffectiveColorMode } from '$lib/utils/colors'
 	import RadioGroup from '../ui/radio-button/radio-group.svelte'
+	import Button from '../ui/button.svelte'
 
-	let effectiveMode = $derived(getEffectiveColorMode(theme.mode))
-
-	let fill = $derived(
-		calculateLuminance(theme.baseColor) > 0.5
-			? effectiveMode === 'dark'
-				? 'fill: var(--colors-base)'
-				: 'fill: var(--colors-top)'
-			: effectiveMode === 'dark'
-				? 'fill: var(--colors-top)'
-				: 'fill: var(--colors-base)',
-	)
+	// without this line the dropdown does not appear...
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const mode = $derived(theme.mode)
 </script>
 
 <div class="theme-selector">
@@ -30,18 +21,24 @@
 		<Radio value={'system'}>Auto</Radio>
 	</RadioGroup>
 
-	<div class="container">
-		<div class="grow">
-			<Input bind:value={theme.baseColor} type="text" placeholder="Accent color (hex)" />
-		</div>
-		<label>
-			<div class="palette-overlay" />
-			<div class="palette-icon" style={fill}>
-				<ColorPalette size={24} />
-			</div>
-			<input type="color" bind:value={theme.baseColor} id="color" pattern="#(\d{3}|\d{6})" />
-		</label>
-	</div>
+	<Input
+		bind:value={theme.baseColor}
+		type="text"
+		placeholder="Accent color (hex)"
+		label="Accent color (hex)"
+		controls={true}
+	>
+		{#snippet buttons()}
+			<Button variant="secondary" style="padding: 0;">
+				<label>
+					<div class="palette-icon">
+						<ColorPalette size={24} />
+					</div>
+					<input type="color" bind:value={theme.baseColor} id="color" />
+				</label>
+			</Button>
+		{/snippet}
+	</Input>
 </div>
 
 <style>
@@ -55,20 +52,12 @@
 		padding: var(--padding);
 		min-height: fit-content;
 	}
-	.container {
-		display: flex;
-		flex-direction: row;
-		justify-content: stretch;
-		align-items: center;
-		gap: var(--padding);
-	}
 	label {
 		display: flex;
 		position: relative;
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
-		border-radius: var(--border-radius);
 		width: 3rem;
 		height: 3rem;
 		overflow: hidden;
@@ -76,20 +65,29 @@
 	}
 	input[type='color'] {
 		appearance: none;
+		visibility: hidden;
 		cursor: pointer;
 		border: none;
-		background-color: transparent;
+		background-color: var(--colors-top);
 		padding: 0;
-		width: 3rem;
-		height: 3rem;
+		width: 100%;
+		height: 100%;
 	}
-	input[type='color']::-webkit-color-swatch {
-		border: none;
-		border-radius: var(--border-radius);
+	input[type='color']::-webkit-color-swatch-wrapper {
+		box-sizing: border-box;
+		margin: 0;
+		border: 0;
+		padding: 0;
 	}
+	input[type='color']::-webkit-color-swatch,
 	input[type='color']::-moz-color-swatch {
+		margin: 0;
+		outline: 0;
 		border: none;
-		border-radius: var(--border-radius);
+		border-radius: 0 var(--border-radius) var(--border-radius) 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
 	}
 	.palette-icon {
 		position: absolute;
@@ -97,17 +95,5 @@
 		inset: 50% auto auto 50%;
 		line-height: 0;
 		fill: var(--colors-top);
-	}
-	.palette-icon :global(svg) {
-		fill: inherit;
-	}
-	.palette-overlay {
-		position: absolute;
-		transform: translate(-50%, -50%);
-		z-index: 5;
-		inset: 50% auto auto 50%;
-		border-radius: var(--border-radius);
-		width: 3rem;
-		height: 3rem;
 	}
 </style>
