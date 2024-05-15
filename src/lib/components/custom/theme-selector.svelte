@@ -3,12 +3,11 @@
 	import Radio from '../ui/radio-button/radio.svelte'
 	import { ColorPalette } from 'carbon-icons-svelte'
 	import { theme } from '$lib/stores/theme.svelte'
-	import { getEffectiveColorMode } from '$lib/utils/colors'
 	import RadioGroup from '../ui/radio-button/radio-group.svelte'
 	import Button from '../ui/button.svelte'
 
 	// without this line the dropdown does not appear...
-	let effectiveMode = $derived(getEffectiveColorMode(theme.mode))
+	const mode = $derived(theme.mode)
 </script>
 
 <div class="theme-selector">
