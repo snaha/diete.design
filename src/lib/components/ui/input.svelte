@@ -39,7 +39,6 @@
 		buttons,
 		...restProps
 	}: Props = $props()
-	let inputValue: number = $state(value)
 </script>
 
 <div class="root {layout} {dimension} {className}" class:controls>

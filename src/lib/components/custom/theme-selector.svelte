@@ -7,6 +7,7 @@
 	import Button from '../ui/button.svelte'
 
 	// without this line the dropdown does not appear...
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const mode = $derived(theme.mode)
 </script>
 
