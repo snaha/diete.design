@@ -17,6 +17,7 @@
 		focus?: boolean
 		controls?: boolean
 		disabled?: boolean
+		buttons?: Snippet
 	}
 	let {
 		label,
@@ -35,6 +36,7 @@
 		disabled,
 		class: className = '',
 		children,
+		buttons,
 		...restProps
 	}: Props = $props()
 	let inputValue: number = $state(value)
@@ -80,6 +82,11 @@
 				</Button>
 			</div>
 		{/if}
+		{#if buttons}
+			<div class="control-buttons">
+				{@render buttons()}					
+			</div>
+		{/if}
 		{#if error}
 			<div class="error-message">
 				{@render error()}
@@ -118,7 +125,7 @@
 		.wrapper {
 			flex-direction: row;
 			gap: 0;
-			input[type='number'] {
+			input {
 				border-radius: 0.25rem 0 0 0.25rem;
 			}
 		}

@@ -6,6 +6,7 @@
 	import { calculateLuminance } from '@waku-objects/luminance'
 	import { getEffectiveColorMode } from '$lib/utils/colors'
 	import RadioGroup from '../ui/radio-button/radio-group.svelte'
+	import Button from '../ui/button.svelte'
 
 	let effectiveMode = $derived(getEffectiveColorMode(theme.mode))
 
@@ -30,18 +31,19 @@
 		<Radio value={'system'}>Auto</Radio>
 	</RadioGroup>
 
-	<div class="container">
-		<div class="grow">
-			<Input bind:value={theme.baseColor} type="text" placeholder="Accent color (hex)" />
-		</div>
-		<label>
-			<div class="palette-overlay" />
-			<div class="palette-icon" style={fill}>
-				<ColorPalette size={24} />
-			</div>
-			<input type="color" bind:value={theme.baseColor} id="color" pattern="#(\d{3}|\d{6})" />
-		</label>
-	</div>
+	<Input bind:value={theme.baseColor} type="text" placeholder="Accent color (hex)" label="Accent color" controls={true}>
+		{#snippet buttons()}
+			<Button variant="secondary" style="padding: 0;">
+			<label>
+				<div class="palette-overlay" />
+				<div class="palette-icon" style={fill}>
+					<ColorPalette size={24} />
+				</div>
+				<input type="color" bind:value={theme.baseColor} id="color" pattern="#(\d{3}|\d{6})" />
+			</label>
+			</Button>
+		{/snippet}
+	</Input>
 </div>
 
 <style>
