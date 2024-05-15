@@ -58,7 +58,7 @@
 			class:hover
 			class:focus
 			class:error
-			bind:value={inputValue}
+			bind:value
 			{placeholder}
 			{type}
 			{disabled}
@@ -74,17 +74,17 @@
 		{/if}
 		{#if controls && type === 'number'}
 			<div class="control-buttons">
-				<Button {dimension} {disabled} variant="secondary" onclick={() => (inputValue -= 1)}>
+				<Button {dimension} {disabled} variant="secondary" onclick={() => (value -= 1)}>
 					<Subtract size={dimension === 'small' ? 16 : 24} />
 				</Button>
-				<Button {dimension} {disabled} variant="secondary" onclick={() => (inputValue += 1)}>
+				<Button {dimension} {disabled} variant="secondary" onclick={() => (value += 1)}>
 					<Add size={dimension === 'small' ? 16 : 24} />
 				</Button>
 			</div>
 		{/if}
 		{#if buttons}
 			<div class="control-buttons">
-				{@render buttons()}					
+				{@render buttons()}
 			</div>
 		{/if}
 		{#if error}
