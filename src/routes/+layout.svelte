@@ -149,7 +149,7 @@
 		left: 0px;
 		background-color: var(--colors-ultra-low);
 		padding: var(--padding);
-		min-width: calc(var(--sidebar-size) - var(--double-padding));
+		width: calc(var(--sidebar-size) - var(--double-padding));
 		overflow-x: hidden;
 		overflow-y: auto;
 	}
