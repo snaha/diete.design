@@ -64,8 +64,6 @@
 		line-height: 0;
 	}
 	input[type='color'] {
-		-webkit-appearance: none;
-		-moz-appearance: none;
 		appearance: none;
 		visibility: hidden;
 		cursor: pointer;
@@ -81,17 +79,8 @@
 		border: 0;
 		padding: 0;
 	}
-	input[type='color']::-webkit-color-swatch {
-		margin: 0;
-		outline: 0;
-		border: none;
-		border-radius: 0 var(--border-radius) var(--border-radius) 0;
-		padding: 0;
-		width: 100%;
-		height: 100%;
-	}
+	input[type='color']::-webkit-color-swatch,
 	input[type='color']::-moz-color-swatch {
-		display: flex;
 		margin: 0;
 		outline: 0;
 		border: none;
