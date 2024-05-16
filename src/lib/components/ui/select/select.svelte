@@ -93,7 +93,7 @@
 	<label class="label" for={labelFor}>
 		{label}
 	</label>
-	<div>
+	<div class="select-container">
 		<input
 			bind:this={input}
 			value={store.value ? store.labels[store.value] ?? store.value : value}
@@ -211,6 +211,10 @@
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
+		.select-container {
+			display: flex;
+			flex-direction: column;
+		}
 	}
 	.select {
 		flex-grow: 1;
