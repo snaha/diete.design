@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Layout = 'horizontal' | 'vertical'
@@ -10,17 +11,25 @@
 		min?: number
 		max?: number
 		step?: number
+		hover?: boolean
+		active?: boolean
+		focus?: boolean
+		helperText?: Snippet
 	}
 	let {
 		labelFor = Math.random().toString(16),
-		children,
 		dimension = 'default',
 		layout = 'vertical',
-		value = 0,
+		centered,
 		min = 0,
 		max = 100,
 		step,
-		centered,
+		hover,
+		active,
+		focus,
+		value = 0,
+		helperText,
+		children,
 		...restProps
 	}: Props = $props()
 
@@ -53,6 +62,9 @@
 		<div class="slider-container" bind:this={sliderContainer}>
 			<input
 				type="range"
+				class:hover
+				class:active
+				class:focus
 				class:centered
 				id={labelFor}
 				bind:value
@@ -69,7 +81,7 @@
 			<div class="slider-progress"></div>
 			{#if step}
 				<div class="slider-tick-container">
-					{#each Array.from({ length: step + 1 }) as _}
+					{#each Array.from({ length: (max - min) / step + 1 }) as _}
 						<span class="tick" />
 					{/each}
 				</div>
@@ -77,6 +89,11 @@
 		</div>
 		{max}
 	</div>
+	{#if helperText}
+		<div class="helper-text">
+			{@render helperText()}
+		</div>
+	{/if}
 </div>
 
 <style lang="postcss">
@@ -85,6 +102,7 @@
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
+		width: 100%;
 		&.vertical {
 			flex-direction: column;
 		}
@@ -94,48 +112,45 @@
 	}
 	label {
 		width: fit-content;
+		cursor: pointer;
 	}
 	.wrapper {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.75rem;
-		&:has(input:not(:disabled):active) {
+		&:has(input:not(:disabled):active),
+		&:has(input:not(:disabled).active) {
 			color: var(--colors-high);
 		}
-		&:has(input:not(:disabled):hover) {
+		&:has(input:not(:disabled):hover),
+		&:has(input:not(:disabled).hover) {
 			color: var(--colors-high);
 		}
-		&:has(input:not(:disabled):focus-visible) {
+		&:has(input:not(:disabled):focus-visible),
+		&:has(input:not(:disabled).focus) {
 			border-radius: 0.25rem;
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
 			color: var(--colors-top);
+			background-color: var(--colors-base);
+		}
+		&:has(input:disabled) {
+			opacity: 0.25;
+			cursor: not-allowed;
 		}
 	}
 	.slider-container {
 		--valuePercent: ;
 		display: flex;
 		align-items: center;
+		flex-grow: 1;
 		position: relative;
 	}
-	.value {
-		display: none;
-		position: absolute;
-		top: -1.75rem;
-		left: var(--valuePercent);
-		transform: translateX(calc(-1 * var(--valuePercent)));
-		padding: 0.25rem 0.5rem;
-		border-radius: 0.75rem;
-		background: var(--colors-top);
-		color: var(--colors-base);
-		font-size: var(--font-size-small);
-		line-height: var(--line-height-small);
-		letter-spacing: var(--letter-spacing-small);
-	}
+
 	input[type='range'] {
-		-webkit-appearance: none;
 		width: 100%;
+		-webkit-appearance: none;
 		background: transparent;
 		margin: 0;
 		&::-webkit-slider-thumb {
@@ -168,8 +183,23 @@
 			appearance: none;
 			width: 100%;
 		}
+		&:disabled::-webkit-slider-thumb {
+			cursor: not-allowed;
+		}
+		&:disabled::-moz-range-thumb {
+			cursor: not-allowed;
+		}
+		&:disabled::-webkit-slider-runnable-track {
+			cursor: not-allowed;
+		}
+		&:disabled::-moz-range-track {
+			cursor: not-allowed;
+		}
+
 		&:hover:not(:disabled):not(:focus-visible),
-		&:active:not(:disabled):not(:focus-visible) {
+		&:active:not(:disabled):not(:focus-visible),
+		&.hover:not(:disabled):not(:focus-visible),
+		&.active:not(:disabled):not(:focus-visible) {
 			&::-webkit-slider-thumb {
 				background: var(--colors-high);
 			}
@@ -177,7 +207,7 @@
 				background: var(--colors-high);
 			}
 			& ~ .value {
-				display: block;
+				display: inline-block;
 			}
 			& ~ .slider-background {
 				background: var(--colors-high);
@@ -189,15 +219,26 @@
 				background: var(--colors-high);
 			}
 		}
-		&:active:not(:disabled):focus-visible {
+		&:active:not(:disabled):focus-visible,
+		&.active:not(:disabled).focus {
 			&::-webkit-slider-thumb {
 				background: var(--colors-top);
 			}
 			&::-moz-range-thumb {
 				background: var(--colors-top);
 			}
+			& ~ .slider-background {
+				background: var(--colors-top);
+			}
+			& ~ .slider-progress {
+				background: var(--colors-top);
+			}
+			& ~ .slider-tick-container > .tick {
+				background: var(--colors-top);
+			}
 		}
-		&:focus-visible {
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
 			outline: none;
 			&::-webkit-slider-thumb {
 				outline: 4px solid var(--colors-top);
@@ -210,7 +251,7 @@
 				background: var(--colors-base);
 			}
 			& ~ .value {
-				display: block;
+				display: inline-block;
 			}
 			& ~ .slider-background {
 				background: var(--colors-top);
@@ -222,6 +263,20 @@
 				background: var(--colors-top);
 			}
 		}
+	}
+	.value {
+		display: none;
+		position: absolute;
+		top: -1.75rem;
+		left: var(--valuePercent);
+		transform: translateX(calc(-1 * var(--valuePercent)));
+		padding: 0.25rem 0.5rem;
+		border-radius: 0.75rem;
+		background: var(--colors-top);
+		color: var(--colors-base);
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
+		letter-spacing: var(--letter-spacing-small);
 	}
 	.slider-background {
 		position: absolute;
@@ -249,6 +304,11 @@
 		height: 4px;
 		border-radius: 50%;
 		background-color: var(--colors-ultra-high);
+	}
+	.helper-text {
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
+		letter-spacing: var(--letter-spacing-small);
 	}
 
 	.default,
@@ -294,6 +354,14 @@
 				height: 2rem;
 			}
 		}
+		.value {
+			top: -2.75rem;
+			border-radius: 1.25rem;
+			padding: 0.5rem 0.75rem;
+			font-size: var(--font-size);
+			line-height: var(--line-height);
+			letter-spacing: var(--letter-spacing);
+		}
 		.slider-background {
 			top: 15.5px;
 			width: calc(100% - var(--valuePercent) - 1rem);
@@ -302,6 +370,10 @@
 			top: 14px;
 			left: 1rem;
 			width: calc(var(--valuePercent) - 1rem);
+		}
+		.slider-tick-container {
+			left: 1rem;
+			width: calc(100% - 2rem);
 		}
 	}
 	.small {
@@ -329,6 +401,10 @@
 			top: 6px;
 			left: 0.5rem;
 			width: calc(var(--valuePercent) - 0.5rem);
+		}
+		.slider-tick-container {
+			left: 0.5rem;
+			width: calc(100% - 1rem);
 		}
 	}
 </style>
