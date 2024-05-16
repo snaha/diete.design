@@ -58,14 +58,13 @@
 		{/if}
 	</label>
 	<div class="wrapper">
-		{min}
-		<div class="slider-container" bind:this={sliderContainer}>
+		<span>{min}</span>
+		<div class="slider-container" class:centered bind:this={sliderContainer}>
 			<input
 				type="range"
 				class:hover
 				class:active
 				class:focus
-				class:centered
 				id={labelFor}
 				bind:value
 				bind:this={slider}
@@ -74,11 +73,15 @@
 				{step}
 				{...restProps}
 			/>
+			{#if centered}
+				<span class="center" />
+			{/if}
 			<span class="value">
 				{value}
 			</span>
 			<div class="slider-background"></div>
 			<div class="slider-progress"></div>
+			<div class="slider-progress-centered"></div>
 			{#if step}
 				<div class="slider-tick-container">
 					{#each Array.from({ length: (max - min) / step + 1 }) as _}
@@ -87,7 +90,7 @@
 				</div>
 			{/if}
 		</div>
-		{max}
+		<span class="max">{max}</span>
 	</div>
 	{#if helperText}
 		<div class="helper-text">
@@ -138,6 +141,11 @@
 		&:has(input:disabled) {
 			opacity: 0.25;
 			cursor: not-allowed;
+		}
+		&:has(.centered) {
+			.max::before {
+				content: '+';
+			}
 		}
 	}
 	.slider-container {
@@ -207,6 +215,9 @@
 			&::-moz-range-thumb {
 				background: var(--colors-high);
 			}
+			& ~ .center {
+				background: var(--colors-high);
+			}
 			& ~ .value {
 				display: inline-block;
 			}
@@ -214,6 +225,9 @@
 				background: var(--colors-high);
 			}
 			& ~ .slider-progress {
+				background: var(--colors-high);
+			}
+			& ~ .slider-progress-centered {
 				background: var(--colors-high);
 			}
 			& ~ .slider-tick-container > .tick {
@@ -228,10 +242,16 @@
 			&::-moz-range-thumb {
 				background: var(--colors-top);
 			}
+			& ~ .center {
+				background: var(--colors-top);
+			}
 			& ~ .slider-background {
 				background: var(--colors-top);
 			}
 			& ~ .slider-progress {
+				background: var(--colors-top);
+			}
+			& ~ .slider-progress-centered {
 				background: var(--colors-top);
 			}
 			& ~ .slider-tick-container > .tick {
@@ -251,6 +271,9 @@
 				outline-offset: -4px;
 				background: var(--colors-base);
 			}
+			& ~ .center {
+				background: var(--colors-top);
+			}
 			& ~ .value {
 				display: inline-block;
 			}
@@ -260,9 +283,29 @@
 			& ~ .slider-progress {
 				background: var(--colors-top);
 			}
+			& ~ .slider-progress-centered {
+				background: var(--colors-top);
+			}
 			& ~ .slider-tick-container > .tick {
 				background: var(--colors-top);
 			}
+		}
+	}
+	.centered {
+		.slider-background {
+			width: 100%;
+		}
+		.slider-progress {
+			border-radius: 0;
+		}
+		.center {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 0.125rem;
+			height: 1.5rem;
+			border-radius: 0.125rem;
+			background: var(--colors-ultra-high);
 		}
 	}
 	.value {
@@ -287,6 +330,12 @@
 		background: var(--colors-ultra-high);
 	}
 	.slider-progress {
+		position: absolute;
+		height: 4px;
+		border-radius: 0.25rem;
+		background-color: var(--colors-ultra-high);
+	}
+	.slider-progress-centered {
 		position: absolute;
 		height: 4px;
 		border-radius: 0.25rem;
@@ -329,6 +378,20 @@
 				height: 1.5rem;
 			}
 		}
+		.centered {
+			.slider-background {
+				width: calc(100% - 1.5rem);
+				left: 0.75rem;
+			}
+			.slider-progress {
+				left: var(--valuePercent);
+				width: calc((50% - var(--valuePercent)));
+			}
+			.slider-progress-centered {
+				right: calc(100% - var(--valuePercent));
+				width: calc((var(--valuePercent) - 50%));
+			}
+		}
 		.slider-background {
 			top: 11.5px;
 			width: calc(100% - var(--valuePercent) - 0.75rem);
@@ -353,6 +416,23 @@
 			&::-moz-range-thumb {
 				width: 2rem;
 				height: 2rem;
+			}
+		}
+		.centered {
+			.center {
+				height: 2rem;
+			}
+			.slider-background {
+				width: calc(100% - 1.5rem);
+				left: 0.75rem;
+			}
+			.slider-progress {
+				left: var(--valuePercent);
+				width: calc((50% - var(--valuePercent)));
+			}
+			.slider-progress-centered {
+				right: calc(100% - var(--valuePercent));
+				width: calc((var(--valuePercent) - 50%));
 			}
 		}
 		.value {
@@ -392,6 +472,23 @@
 			&::-moz-range-thumb {
 				width: 1rem;
 				height: 1rem;
+			}
+		}
+		.centered {
+			.center {
+				height: 1rem;
+			}
+			.slider-background {
+				width: calc(100% - 1.5rem);
+				left: 0.75rem;
+			}
+			.slider-progress {
+				left: var(--valuePercent);
+				width: calc((50% - var(--valuePercent)));
+			}
+			.slider-progress-centered {
+				right: calc(100% - var(--valuePercent));
+				width: calc((var(--valuePercent) - 50%));
 			}
 		}
 		.slider-background {
