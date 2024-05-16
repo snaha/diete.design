@@ -153,11 +153,12 @@
 		-webkit-appearance: none;
 		background: transparent;
 		margin: 0;
+		cursor: pointer;
 		&::-webkit-slider-thumb {
 			appearance: none;
 			background: var(--colors-ultra-high);
 			border-radius: 50%;
-			cursor: pointer;
+			cursor: grab;
 			border: none;
 			outline: none;
 			margin-bottom: 0;
@@ -168,7 +169,7 @@
 			appearance: none;
 			background: var(--colors-ultra-high);
 			border-radius: 50%;
-			cursor: pointer;
+			cursor: grab;
 			border: none;
 			outline: none;
 			margin-bottom: 0;
