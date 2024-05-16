@@ -368,6 +368,7 @@
 		left: 0;
 		z-index: 1;
 		margin-top: 0.25rem;
+		border-radius: 0.25rem;
 		background: var(--colors-base);
 		width: 100%;
 
