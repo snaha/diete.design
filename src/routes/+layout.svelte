@@ -21,6 +21,7 @@
 		Elements: {},
 		'Basic components': {
 			'/components/button': 'Button',
+			'/components/checkbox': 'Checkbox',
 		},
 	}
 
