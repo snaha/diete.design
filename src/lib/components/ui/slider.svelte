@@ -27,31 +27,16 @@
 		hover,
 		active,
 		focus,
-		value = 0,
+		value = $bindable(),
 		helperText,
 		children,
 		...restProps
 	}: Props = $props()
 
-	let slider: HTMLInputElement | undefined = $state(undefined)
-	let sliderContainer: HTMLDivElement | undefined = $state(undefined)
-	function updateValue() {
-		const range = max - min
-		const percent = ((value - min) / range) * 100
-		sliderContainer?.style.setProperty('--valuePercent', `${percent}%`)
-	}
-	$effect(() => {
-		updateValue()
-	})
-	$effect(() => {
-		slider?.addEventListener('input', updateValue)
-		return () => {
-			slider?.removeEventListener('input', updateValue)
-		}
-	})
+	let percent = $derived(((value - min) / Math.abs(max - min)) * 100)
 </script>
 
-<div class="root {dimension} {layout}">
+<div class="root {dimension} {layout}" style={`--valuePercent: ${percent}%`}>
 	<label for={labelFor}>
 		{#if children}
 			{@render children()}
@@ -59,7 +44,7 @@
 	</label>
 	<div class="wrapper">
 		<span>{min}</span>
-		<div class="slider-container" class:centered bind:this={sliderContainer}>
+		<div class="slider-container" class:centered>
 			<input
 				type="range"
 				class:hover
@@ -67,7 +52,6 @@
 				class:focus
 				id={labelFor}
 				bind:value
-				bind:this={slider}
 				{min}
 				{max}
 				{step}
@@ -149,7 +133,6 @@
 		}
 	}
 	.slider-container {
-		--valuePercent: ;
 		display: flex;
 		position: relative;
 		flex-grow: 1;
@@ -157,7 +140,7 @@
 	}
 
 	input[type='range'] {
-		-webkit-appearance: none;
+		appearance: none;
 		cursor: pointer;
 		margin: 0;
 		background: transparent;
@@ -242,18 +225,10 @@
 			&::-moz-range-thumb {
 				background: var(--colors-top);
 			}
-			& ~ .center {
-				background: var(--colors-top);
-			}
-			& ~ .slider-background {
-				background: var(--colors-top);
-			}
-			& ~ .slider-progress {
-				background: var(--colors-top);
-			}
-			& ~ .slider-progress-centered {
-				background: var(--colors-top);
-			}
+			& ~ .center,
+			& ~ .slider-background,
+			& ~ .slider-progress,
+			& ~ .slider-progress-centered,
 			& ~ .slider-tick-container > .tick {
 				background: var(--colors-top);
 			}
@@ -329,12 +304,7 @@
 		background: var(--colors-ultra-high);
 		height: 1px;
 	}
-	.slider-progress {
-		position: absolute;
-		border-radius: 0.25rem;
-		background-color: var(--colors-ultra-high);
-		height: 4px;
-	}
+	.slider-progress,
 	.slider-progress-centered {
 		position: absolute;
 		border-radius: 0.25rem;
