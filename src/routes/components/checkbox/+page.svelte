@@ -16,7 +16,7 @@
 	let css: string = $state('Loading...')
 
 	let dimension: Dimension = $state('default')
-    let label = $state('Check me!')
+	let label = $state('Check me!')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -43,26 +43,26 @@ import Checkbox from '$lib/components/ui/checkbox.svelte'
 {/snippet}
 
 {#snippet examples()}
-    <div class="example-row">
-        <Typography variant="small" bold>1. Default size checkbox</Typography>
-        <Checkbox dimension="default" label="checked" checked={true} />
-        <Checkbox dimension="default" label="unchecked"  />
-    </div>
-    <div class="example-row">
-        <Typography variant="small" bold>2. Large checkbox</Typography>
-        <Checkbox dimension="large" label="checked" checked={true} />
-        <Checkbox dimension="large" label="unchecked"  />
-    </div>
-    <div class="example-row">
-        <Typography variant="small" bold>3. Compact checkbox</Typography>
-        <Checkbox dimension="compact" label="checked" checked={true} />
-        <Checkbox dimension="compact" label="unchecked"  />
-    </div>
-    <div class="example-row">
-        <Typography variant="small" bold>4. Small checkbox</Typography>
-        <Checkbox dimension="small" label="checked" checked={true} />
-        <Checkbox dimension="small" label="unchecked"  />
-    </div>
+	<div class="example-row">
+		<Typography variant="small" bold>1. Default size checkbox</Typography>
+		<Checkbox dimension="default" label="checked" checked={true} />
+		<Checkbox dimension="default" label="unchecked" />
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>2. Large checkbox</Typography>
+		<Checkbox dimension="large" label="checked" checked={true} />
+		<Checkbox dimension="large" label="unchecked" />
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>3. Compact checkbox</Typography>
+		<Checkbox dimension="compact" label="checked" checked={true} />
+		<Checkbox dimension="compact" label="unchecked" />
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>4. Small checkbox</Typography>
+		<Checkbox dimension="small" label="checked" checked={true} />
+		<Checkbox dimension="small" label="unchecked" />
+	</div>
 {/snippet}
 
 {#snippet helperTextCheckboxSizes()}
@@ -77,7 +77,7 @@ import Checkbox from '$lib/components/ui/checkbox.svelte'
 		<Option value="small">Small</Option>
 	</Select>
 
-    <Input bind:value={label} label="Checkbox label" />
+	<Input bind:value={label} label="Checkbox label" />
 {/snippet}
 
 {#snippet preview()}
@@ -121,15 +121,13 @@ import Checkbox from '$lib/components/ui/checkbox.svelte'
 	:global(.preview-tab) {
 		height: 288px;
 	}
-    .example-row {
+	.example-row {
 		display: flex;
 		flex: 1;
 		flex-wrap: wrap;
-        flex-grow: 1;
 		align-items: center;
 		gap: 16px;
 		margin-top: 0px;
 		margin-bottom: 0px;
-        min-width: 321px;
 	}
 </style>
