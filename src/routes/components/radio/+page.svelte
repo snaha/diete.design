@@ -10,7 +10,6 @@
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
 	import Radio from '$lib/components/ui/radio-button/radio.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
-	import Typography from '$lib/components/ui/typography.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Layout = 'vertical' | 'horizontal'
@@ -26,8 +25,8 @@
 		`<script lang="ts">
     import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
     import Radio from '$lib/components/ui/radio-button/radio.svelte'
-</script` +
-			`>
+</script\>
+
 <RadioGroup dimesion="${dimension}" layout="${layout}" name="rb">
     {#snippet helperText()}
         This is an optional helper text
@@ -38,7 +37,6 @@
     <Radio>Radio label</Radio>
     <Radio>Radio label</Radio>
 </RadioGroup>
-
 `,
 	)
 
@@ -107,7 +105,7 @@
 {/snippet}
 
 <ComponentTemplate
-	name="Radio-button"
+	name="Radio"
 	tagline="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, sunt."
 	{description}
 	{examples}
@@ -127,13 +125,4 @@
 	:global(.preview-tab) {
 		height: 288px;
 	}
-	/* .example-row {
-		display: flex;
-		flex: 1;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 16px;
-		margin-top: 0px;
-		margin-bottom: 0px;
-	} */
 </style>
