@@ -52,6 +52,9 @@
 			return 'default'
 		}
 	})
+	$effect(()=>{
+		store.dimension = dimension
+	})
 </script>
 
 <div class="root {dimension}">
