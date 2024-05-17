@@ -21,6 +21,7 @@
 		Elements: {},
 		'Basic components': {
 			'/components/button': 'Button',
+			'/components/radio': 'Radio-button',
 		},
 	}
 
