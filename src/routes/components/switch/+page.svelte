@@ -23,7 +23,7 @@
 </script` +
 			`>
 
-<Switch label='Switch label' />
+<Switch dimension="${dimension}" label="Switch label" />
 `,
 	)
 
@@ -44,12 +44,8 @@
 
 {#snippet examples()}{/snippet}
 
-{#snippet helperTextSwitchSizes()}
-	Learn more about button size: <a href="#about-sizes">About sizes</a>
-{/snippet}
-
 {#snippet controls()}
-	<Select bind:value={dimension} label="Switch size" helperText={helperTextSwitchSizes}>
+	<Select bind:value={dimension} label="Switch size">
 		<Option value="default">Default</Option>
 		<Option value="large">Large</Option>
 		<Option value="compact">Compact</Option>
