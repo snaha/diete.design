@@ -12,6 +12,7 @@
 	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
+	import Slider from '$lib/components/ui/slider.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -1337,6 +1338,216 @@
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
 				<MenuTitle content="Organic taiyaki" dimension="small" open />
+			</div>
+		</div>
+	</section>
+	<section>
+		{#snippet helperText()}
+			This is an optional helper text
+		{/snippet}
+		<Typography variant="h1">Slider</Typography>
+		<div class="row">
+			<div class="col">
+				<Slider min={0} max={100} value={50} step={10} {helperText}>Slider label</Slider>
+				<Slider min={0} max={100} value={50} step={10} {helperText} hover>Slider label</Slider>
+				<Slider min={0} max={100} value={50} step={10} {helperText} active>Slider label</Slider>
+				<Slider min={0} max={100} value={50} step={10} {helperText} focus>Slider label</Slider>
+				<Slider min={0} max={100} value={50} step={10} {helperText} focus active
+					>Slider label</Slider
+				>
+				<Slider min={0} max={100} value={50} step={10} {helperText} disabled>Slider label</Slider>
+			</div>
+			<div class="col">
+				<Slider dimension="large" min={0} max={100} value={50} step={10} {helperText}
+					>Slider label</Slider
+				>
+				<Slider dimension="large" min={0} max={100} value={50} step={10} {helperText} hover
+					>Slider label</Slider
+				>
+				<Slider dimension="large" min={0} max={100} value={50} step={10} {helperText} active
+					>Slider label</Slider
+				>
+				<Slider dimension="large" min={0} max={100} value={50} step={10} {helperText} focus
+					>Slider label</Slider
+				>
+				<Slider dimension="large" min={0} max={100} value={50} step={10} {helperText} focus active
+					>Slider label</Slider
+				>
+				<Slider dimension="large" min={0} max={100} value={50} step={10} {helperText} disabled
+					>Slider label</Slider
+				>
+			</div>
+			<div class="col">
+				<Slider dimension="compact" min={0} max={100} value={50} step={10} {helperText}
+					>Slider label</Slider
+				>
+				<Slider dimension="compact" min={0} max={100} value={50} step={10} {helperText} hover
+					>Slider label</Slider
+				>
+				<Slider dimension="compact" min={0} max={100} value={50} step={10} {helperText} active
+					>Slider label</Slider
+				>
+				<Slider dimension="compact" min={0} max={100} value={50} step={10} {helperText} focus
+					>Slider label</Slider
+				>
+				<Slider dimension="compact" min={0} max={100} value={50} step={10} {helperText} focus active
+					>Slider label</Slider
+				>
+				<Slider dimension="compact" min={0} max={100} value={50} step={10} {helperText} disabled
+					>Slider label</Slider
+				>
+			</div>
+			<div class="col">
+				<Slider dimension="small" min={0} max={100} value={50} step={10} {helperText}
+					>Slider label</Slider
+				>
+				<Slider dimension="small" min={0} max={100} value={50} step={10} {helperText} hover
+					>Slider label</Slider
+				>
+				<Slider dimension="small" min={0} max={100} value={50} step={10} {helperText} active
+					>Slider label</Slider
+				>
+				<Slider dimension="small" min={0} max={100} value={50} step={10} {helperText} focus
+					>Slider label</Slider
+				>
+				<Slider dimension="small" min={0} max={100} value={50} step={10} {helperText} focus active
+					>Slider label</Slider
+				>
+				<Slider dimension="small" min={0} max={100} value={50} step={10} {helperText} disabled
+					>Slider label</Slider
+				>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<Slider min={-5} max={5} value={-3} step={1} {helperText} centered>Slider label</Slider>
+				<Slider min={-5} max={5} value={-3} step={1} {helperText} centered hover
+					>Slider label</Slider
+				>
+				<Slider min={-5} max={5} value={-3} step={1} {helperText} centered active
+					>Slider label</Slider
+				>
+				<Slider min={-5} max={5} value={-3} step={1} {helperText} centered focus
+					>Slider label</Slider
+				>
+				<Slider min={-5} max={5} value={-3} step={1} {helperText} centered focus active
+					>Slider label</Slider
+				>
+				<Slider min={-5} max={5} value={-3} step={1} {helperText} centered disabled
+					>Slider label</Slider
+				>
+			</div>
+			<div class="col">
+				<Slider dimension="large" min={-5} max={5} value={-3} step={1} {helperText} centered
+					>Slider label</Slider
+				>
+				<Slider dimension="large" min={-5} max={5} value={-3} step={1} {helperText} centered hover
+					>Slider label</Slider
+				>
+				<Slider dimension="large" min={-5} max={5} value={-3} step={1} {helperText} centered active
+					>Slider label</Slider
+				>
+				<Slider dimension="large" min={-5} max={5} value={-3} step={1} {helperText} centered focus
+					>Slider label</Slider
+				>
+				<Slider
+					dimension="large"
+					min={-5}
+					max={5}
+					value={-3}
+					step={1}
+					{helperText}
+					centered
+					focus
+					active>Slider label</Slider
+				>
+				<Slider
+					dimension="large"
+					min={-5}
+					max={5}
+					value={-3}
+					step={1}
+					{helperText}
+					centered
+					disabled>Slider label</Slider
+				>
+			</div>
+			<div class="col">
+				<Slider dimension="compact" min={-5} max={5} value={-3} step={1} {helperText} centered
+					>Slider label</Slider
+				>
+				<Slider dimension="compact" min={-5} max={5} value={-3} step={1} {helperText} centered hover
+					>Slider label</Slider
+				>
+				<Slider
+					dimension="compact"
+					min={-5}
+					max={5}
+					value={-3}
+					step={1}
+					{helperText}
+					centered
+					active>Slider label</Slider
+				>
+				<Slider dimension="compact" min={-5} max={5} value={-3} step={1} {helperText} centered focus
+					>Slider label</Slider
+				>
+				<Slider
+					dimension="compact"
+					min={-5}
+					max={5}
+					value={-3}
+					step={1}
+					{helperText}
+					centered
+					focus
+					active>Slider label</Slider
+				>
+				<Slider
+					dimension="compact"
+					min={-5}
+					max={5}
+					value={-3}
+					step={1}
+					{helperText}
+					centered
+					disabled>Slider label</Slider
+				>
+			</div>
+			<div class="col">
+				<Slider dimension="small" min={-5} max={5} value={-3} step={1} {helperText} centered
+					>Slider label</Slider
+				>
+				<Slider dimension="small" min={-5} max={5} value={-3} step={1} {helperText} centered hover
+					>Slider label</Slider
+				>
+				<Slider dimension="small" min={-5} max={5} value={-3} step={1} {helperText} centered active
+					>Slider label</Slider
+				>
+				<Slider dimension="small" min={-5} max={5} value={-3} step={1} {helperText} centered focus
+					>Slider label</Slider
+				>
+				<Slider
+					dimension="small"
+					min={-5}
+					max={5}
+					value={-3}
+					step={1}
+					{helperText}
+					centered
+					focus
+					active>Slider label</Slider
+				>
+				<Slider
+					dimension="small"
+					min={-5}
+					max={5}
+					value={-3}
+					step={1}
+					{helperText}
+					centered
+					disabled>Slider label</Slider
+				>
 			</div>
 		</div>
 	</section>

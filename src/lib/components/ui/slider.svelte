@@ -1,0 +1,479 @@
+<script lang="ts">
+	import type { Snippet } from 'svelte'
+	import type { HTMLInputAttributes } from 'svelte/elements'
+	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	type Layout = 'horizontal' | 'vertical'
+	interface Props extends HTMLInputAttributes {
+		labelFor?: string
+		dimension?: Dimension
+		layout?: Layout
+		centered?: boolean
+		min?: number
+		max?: number
+		step?: number
+		hover?: boolean
+		active?: boolean
+		focus?: boolean
+		helperText?: Snippet
+	}
+	let {
+		labelFor = Math.random().toString(16),
+		dimension = 'default',
+		layout = 'vertical',
+		centered,
+		min = 0,
+		max = 100,
+		step,
+		hover,
+		active,
+		focus,
+		value = $bindable(),
+		helperText,
+		children,
+		...restProps
+	}: Props = $props()
+
+	let percent = $derived(((value - min) / Math.abs(max - min)) * 100)
+</script>
+
+<div class="root {dimension} {layout}" style={`--valuePercent: ${percent}%`}>
+	<label for={labelFor}>
+		{#if children}
+			{@render children()}
+		{/if}
+	</label>
+	<div class="wrapper">
+		<span>{min}</span>
+		<div class="slider-container" class:centered>
+			<input
+				type="range"
+				class:hover
+				class:active
+				class:focus
+				id={labelFor}
+				bind:value
+				{min}
+				{max}
+				{step}
+				{...restProps}
+			/>
+			{#if centered}
+				<span class="center" />
+			{/if}
+			<span class="value">
+				{value}
+			</span>
+			<div class="slider-background"></div>
+			<div class="slider-progress"></div>
+			<div class="slider-progress-centered"></div>
+			{#if step}
+				<div class="slider-tick-container">
+					<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+					{#each Array.from({ length: (max - min) / step + 1 }) as _}
+						<span class="tick" />
+					{/each}
+				</div>
+			{/if}
+		</div>
+		<span class="max">{max}</span>
+	</div>
+	{#if helperText}
+		<div class="helper-text">
+			{@render helperText()}
+		</div>
+	{/if}
+</div>
+
+<style lang="postcss">
+	.root {
+		display: flex;
+		gap: 0.5rem;
+		width: 100%;
+		color: var(--colors-ultra-high);
+		font-family: var(--font-family-sans-serif);
+		&.vertical {
+			flex-direction: column;
+		}
+		&.horizontal {
+			flex-direction: row;
+		}
+	}
+	label {
+		cursor: pointer;
+		width: fit-content;
+	}
+	.wrapper {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem;
+		&:has(input:not(:disabled):active),
+		&:has(input:not(:disabled).active) {
+			color: var(--colors-high);
+		}
+		&:has(input:not(:disabled):hover),
+		&:has(input:not(:disabled).hover) {
+			color: var(--colors-high);
+		}
+		&:has(input:not(:disabled):focus-visible),
+		&:has(input:not(:disabled).focus) {
+			outline: 4px solid var(--colors-top);
+			outline-offset: -4px;
+			border-radius: 0.25rem;
+			background-color: var(--colors-base);
+			color: var(--colors-top);
+		}
+		&:has(input:disabled) {
+			opacity: 0.25;
+			cursor: not-allowed;
+		}
+		&:has(.centered) {
+			.max::before {
+				content: '+';
+			}
+		}
+	}
+	.slider-container {
+		display: flex;
+		position: relative;
+		flex-grow: 1;
+		align-items: center;
+	}
+
+	input[type='range'] {
+		appearance: none;
+		cursor: pointer;
+		margin: 0;
+		background: transparent;
+		width: 100%;
+		&::-webkit-slider-thumb {
+			position: relative;
+			appearance: none;
+			z-index: 1;
+			cursor: grab;
+			margin-bottom: 0;
+			outline: none;
+			border: none;
+			border-radius: 50%;
+			background: var(--colors-ultra-high);
+		}
+		&::-moz-range-thumb {
+			position: relative;
+			appearance: none;
+			z-index: 1;
+			cursor: grab;
+			margin-bottom: 0;
+			outline: none;
+			border: none;
+			border-radius: 50%;
+			background: var(--colors-ultra-high);
+		}
+		&::-webkit-slider-runnable-track {
+			appearance: none;
+			width: 100%;
+		}
+		&::-moz-range-track {
+			appearance: none;
+			width: 100%;
+		}
+		&:disabled::-webkit-slider-thumb {
+			cursor: not-allowed;
+		}
+		&:disabled::-moz-range-thumb {
+			cursor: not-allowed;
+		}
+		&:disabled::-webkit-slider-runnable-track {
+			cursor: not-allowed;
+		}
+		&:disabled::-moz-range-track {
+			cursor: not-allowed;
+		}
+
+		&:hover:not(:disabled):not(:focus-visible),
+		&:active:not(:disabled):not(:focus-visible),
+		&.hover:not(:disabled):not(:focus-visible),
+		&.active:not(:disabled):not(:focus-visible) {
+			&::-webkit-slider-thumb {
+				background: var(--colors-high);
+			}
+			&::-moz-range-thumb {
+				background: var(--colors-high);
+			}
+			& ~ .center {
+				background: var(--colors-high);
+			}
+			& ~ .value {
+				display: inline-block;
+			}
+			& ~ .slider-background {
+				background: var(--colors-high);
+			}
+			& ~ .slider-progress {
+				background: var(--colors-high);
+			}
+			& ~ .slider-progress-centered {
+				background: var(--colors-high);
+			}
+			& ~ .slider-tick-container > .tick {
+				background: var(--colors-high);
+			}
+		}
+		&:active:not(:disabled):focus-visible,
+		&.active:not(:disabled).focus {
+			&::-webkit-slider-thumb {
+				background: var(--colors-top);
+			}
+			&::-moz-range-thumb {
+				background: var(--colors-top);
+			}
+			& ~ .center,
+			& ~ .slider-background,
+			& ~ .slider-progress,
+			& ~ .slider-progress-centered,
+			& ~ .slider-tick-container > .tick {
+				background: var(--colors-top);
+			}
+		}
+		&:focus-visible:not(:disabled),
+		&.focus:not(:disabled) {
+			outline: none;
+			&::-webkit-slider-thumb {
+				outline: 4px solid var(--colors-top);
+				outline-offset: -4px;
+				background: var(--colors-base);
+			}
+			&::-moz-range-thumb {
+				outline: 4px solid var(--colors-top);
+				outline-offset: -4px;
+				background: var(--colors-base);
+			}
+			& ~ .center {
+				background: var(--colors-top);
+			}
+			& ~ .value {
+				display: inline-block;
+			}
+			& ~ .slider-background {
+				background: var(--colors-top);
+			}
+			& ~ .slider-progress {
+				background: var(--colors-top);
+			}
+			& ~ .slider-progress-centered {
+				background: var(--colors-top);
+			}
+			& ~ .slider-tick-container > .tick {
+				background: var(--colors-top);
+			}
+		}
+	}
+	.centered {
+		.slider-background {
+			width: 100%;
+		}
+		.slider-progress {
+			border-radius: 0;
+		}
+		.center {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			border-radius: 0.125rem;
+			background: var(--colors-ultra-high);
+			width: 0.125rem;
+			height: 1.5rem;
+		}
+	}
+	.value {
+		display: none;
+		position: absolute;
+		top: -1.75rem;
+		left: var(--valuePercent);
+		transform: translateX(calc(-1 * var(--valuePercent)));
+		border-radius: 0.75rem;
+		background: var(--colors-top);
+		padding: 0.25rem 0.5rem;
+		color: var(--colors-base);
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
+		letter-spacing: var(--letter-spacing-small);
+	}
+	.slider-background {
+		position: absolute;
+		left: calc(var(--valuePercent));
+		border-radius: 0.25rem;
+		background: var(--colors-ultra-high);
+		height: 1px;
+	}
+	.slider-progress,
+	.slider-progress-centered {
+		position: absolute;
+		border-radius: 0.25rem;
+		background-color: var(--colors-ultra-high);
+		height: 4px;
+	}
+	.slider-tick-container {
+		display: flex;
+		position: absolute;
+		left: 0.75rem;
+		justify-content: space-between;
+		align-items: center;
+		width: calc(100% - 1.5rem);
+	}
+	.tick {
+		border-radius: 50%;
+		background-color: var(--colors-ultra-high);
+		width: 4px;
+		height: 4px;
+	}
+	.helper-text {
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
+		letter-spacing: var(--letter-spacing-small);
+	}
+
+	.default,
+	.compact {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
+
+		input[type='range'] {
+			height: 1.5rem;
+			&::-webkit-slider-thumb {
+				width: 1.5rem;
+				height: 1.5rem;
+			}
+			&::-moz-range-thumb {
+				width: 1.5rem;
+				height: 1.5rem;
+			}
+		}
+		.centered {
+			.slider-background {
+				left: 0.75rem;
+				width: calc(100% - 1.5rem);
+			}
+			.slider-progress {
+				left: var(--valuePercent);
+				width: calc((50% - var(--valuePercent)));
+			}
+			.slider-progress-centered {
+				right: calc(100% - var(--valuePercent));
+				width: calc((var(--valuePercent) - 50%));
+			}
+		}
+		.slider-background {
+			top: 11.5px;
+			width: calc(100% - var(--valuePercent) - 0.75rem);
+		}
+		.slider-progress {
+			top: 10px;
+			left: 0.75rem;
+			width: calc(var(--valuePercent) - 0.75rem);
+		}
+	}
+	.large {
+		font-size: var(--font-size-large);
+		line-height: var(--line-height-large);
+		letter-spacing: var(--letter-spacing-large);
+
+		input[type='range'] {
+			height: 2rem;
+			&::-webkit-slider-thumb {
+				width: 2rem;
+				height: 2rem;
+			}
+			&::-moz-range-thumb {
+				width: 2rem;
+				height: 2rem;
+			}
+		}
+		.centered {
+			.center {
+				height: 2rem;
+			}
+			.slider-background {
+				left: 0.75rem;
+				width: calc(100% - 1.5rem);
+			}
+			.slider-progress {
+				left: var(--valuePercent);
+				width: calc((50% - var(--valuePercent)));
+			}
+			.slider-progress-centered {
+				right: calc(100% - var(--valuePercent));
+				width: calc((var(--valuePercent) - 50%));
+			}
+		}
+		.value {
+			top: -2.75rem;
+			border-radius: 1.25rem;
+			padding: 0.5rem 0.75rem;
+			font-size: var(--font-size);
+			line-height: var(--line-height);
+			letter-spacing: var(--letter-spacing);
+		}
+		.slider-background {
+			top: 15.5px;
+			width: calc(100% - var(--valuePercent) - 1rem);
+		}
+		.slider-progress {
+			top: 14px;
+			left: 1rem;
+			width: calc(var(--valuePercent) - 1rem);
+		}
+		.slider-tick-container {
+			left: 1rem;
+			width: calc(100% - 2rem);
+		}
+	}
+	.small {
+		gap: 0.25rem;
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
+		letter-spacing: var(--letter-spacing-small);
+
+		input[type='range'] {
+			height: 1rem;
+			&::-webkit-slider-thumb {
+				width: 1rem;
+				height: 1rem;
+			}
+			&::-moz-range-thumb {
+				width: 1rem;
+				height: 1rem;
+			}
+		}
+		.centered {
+			.center {
+				height: 1rem;
+			}
+			.slider-background {
+				left: 0.75rem;
+				width: calc(100% - 1.5rem);
+			}
+			.slider-progress {
+				left: var(--valuePercent);
+				width: calc((50% - var(--valuePercent)));
+			}
+			.slider-progress-centered {
+				right: calc(100% - var(--valuePercent));
+				width: calc((var(--valuePercent) - 50%));
+			}
+		}
+		.slider-background {
+			top: 7.5px;
+			width: calc(100% - var(--valuePercent) - 0.5rem);
+		}
+		.slider-progress {
+			top: 6px;
+			left: 0.5rem;
+			width: calc(var(--valuePercent) - 0.5rem);
+		}
+		.slider-tick-container {
+			left: 0.5rem;
+			width: calc(100% - 1rem);
+		}
+	}
+</style>
