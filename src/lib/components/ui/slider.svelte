@@ -103,9 +103,9 @@
 	.root {
 		display: flex;
 		gap: 0.5rem;
+		width: 100%;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
-		width: 100%;
 		&.vertical {
 			flex-direction: column;
 		}
@@ -114,8 +114,8 @@
 		}
 	}
 	label {
-		width: fit-content;
 		cursor: pointer;
+		width: fit-content;
 	}
 	.wrapper {
 		display: flex;
@@ -132,11 +132,11 @@
 		}
 		&:has(input:not(:disabled):focus-visible),
 		&:has(input:not(:disabled).focus) {
-			border-radius: 0.25rem;
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
-			color: var(--colors-top);
+			border-radius: 0.25rem;
 			background-color: var(--colors-base);
+			color: var(--colors-top);
 		}
 		&:has(input:disabled) {
 			opacity: 0.25;
@@ -151,38 +151,38 @@
 	.slider-container {
 		--valuePercent: ;
 		display: flex;
-		align-items: center;
-		flex-grow: 1;
 		position: relative;
+		flex-grow: 1;
+		align-items: center;
 	}
 
 	input[type='range'] {
-		width: 100%;
 		-webkit-appearance: none;
-		background: transparent;
-		margin: 0;
 		cursor: pointer;
+		margin: 0;
+		background: transparent;
+		width: 100%;
 		&::-webkit-slider-thumb {
-			appearance: none;
-			background: var(--colors-ultra-high);
-			border-radius: 50%;
-			cursor: grab;
-			border: none;
-			outline: none;
-			margin-bottom: 0;
 			position: relative;
+			appearance: none;
 			z-index: 1;
+			cursor: grab;
+			margin-bottom: 0;
+			outline: none;
+			border: none;
+			border-radius: 50%;
+			background: var(--colors-ultra-high);
 		}
 		&::-moz-range-thumb {
-			appearance: none;
-			background: var(--colors-ultra-high);
-			border-radius: 50%;
-			cursor: grab;
-			border: none;
-			outline: none;
-			margin-bottom: 0;
 			position: relative;
+			appearance: none;
 			z-index: 1;
+			cursor: grab;
+			margin-bottom: 0;
+			outline: none;
+			border: none;
+			border-radius: 50%;
+			background: var(--colors-ultra-high);
 		}
 		&::-webkit-slider-runnable-track {
 			appearance: none;
@@ -302,10 +302,10 @@
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
-			width: 0.125rem;
-			height: 1.5rem;
 			border-radius: 0.125rem;
 			background: var(--colors-ultra-high);
+			width: 0.125rem;
+			height: 1.5rem;
 		}
 	}
 	.value {
@@ -314,9 +314,9 @@
 		top: -1.75rem;
 		left: var(--valuePercent);
 		transform: translateX(calc(-1 * var(--valuePercent)));
-		padding: 0.25rem 0.5rem;
 		border-radius: 0.75rem;
 		background: var(--colors-top);
+		padding: 0.25rem 0.5rem;
 		color: var(--colors-base);
 		font-size: var(--font-size-small);
 		line-height: var(--line-height-small);
@@ -325,35 +325,35 @@
 	.slider-background {
 		position: absolute;
 		left: calc(var(--valuePercent));
-		height: 1px;
 		border-radius: 0.25rem;
 		background: var(--colors-ultra-high);
+		height: 1px;
 	}
 	.slider-progress {
 		position: absolute;
-		height: 4px;
 		border-radius: 0.25rem;
 		background-color: var(--colors-ultra-high);
+		height: 4px;
 	}
 	.slider-progress-centered {
 		position: absolute;
-		height: 4px;
 		border-radius: 0.25rem;
 		background-color: var(--colors-ultra-high);
+		height: 4px;
 	}
 	.slider-tick-container {
+		display: flex;
 		position: absolute;
 		left: 0.75rem;
-		width: calc(100% - 1.5rem);
-		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		width: calc(100% - 1.5rem);
 	}
 	.tick {
-		width: 4px;
-		height: 4px;
 		border-radius: 50%;
 		background-color: var(--colors-ultra-high);
+		width: 4px;
+		height: 4px;
 	}
 	.helper-text {
 		font-size: var(--font-size-small);
@@ -380,8 +380,8 @@
 		}
 		.centered {
 			.slider-background {
-				width: calc(100% - 1.5rem);
 				left: 0.75rem;
+				width: calc(100% - 1.5rem);
 			}
 			.slider-progress {
 				left: var(--valuePercent);
@@ -423,8 +423,8 @@
 				height: 2rem;
 			}
 			.slider-background {
-				width: calc(100% - 1.5rem);
 				left: 0.75rem;
+				width: calc(100% - 1.5rem);
 			}
 			.slider-progress {
 				left: var(--valuePercent);
@@ -479,8 +479,8 @@
 				height: 1rem;
 			}
 			.slider-background {
-				width: calc(100% - 1.5rem);
 				left: 0.75rem;
+				width: calc(100% - 1.5rem);
 			}
 			.slider-progress {
 				left: var(--valuePercent);
