@@ -52,7 +52,7 @@
 			return 'default'
 		}
 	})
-	$effect(()=>{
+	$effect(() => {
 		store.dimension = dimension
 	})
 </script>
