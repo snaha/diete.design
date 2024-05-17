@@ -68,6 +68,7 @@
 			<div class="slider-progress-centered"></div>
 			{#if step}
 				<div class="slider-tick-container">
+					<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 					{#each Array.from({ length: (max - min) / step + 1 }) as _}
 						<span class="tick" />
 					{/each}
