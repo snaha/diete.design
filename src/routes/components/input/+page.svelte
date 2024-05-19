@@ -8,21 +8,85 @@
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
 	import Input from '$lib/components/ui/input.svelte'
+	import Switch from '$lib/components/ui/switch.svelte'
+	import Checkbox from '$lib/components/ui/checkbox.svelte'
+	import { ColorPalette, ArrowLeft } from 'carbon-icons-svelte'
+	import { error } from '@sveltejs/kit'
+	import { Button } from '$lib/components'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	type Layout = 'vertical' | 'horizontal'
 
 	let css: string = $state('Loading...')
 
 	let dimension: Dimension = $state('default')
+	let layout: Layout = $state('vertical')
+	let label = $state('Input label')
+	let placeholder = $state('Placeholder')
+	let unit = $state(false)
+	let stringUnit = $state('Kg')
+	let errorMessage = $state(false)
+	let stringErrorMessage = $state('Error')
+	let controlButton = $state(false)
+	let colorButton = $state(false)
+	let arrowButton = $state(false)
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
 		`<script lang="ts">
-    import Button from '$lib/components/ui/button.svelte'
-</script` +
-			`>
-
-<Input dimension="${dimension}" label="Input label" placeholder="Placeholder">This is an optional helper text</Input>
+	import Input from '$lib/components/ui/input.svelte'${
+		colorButton
+			? `
+	import Button from '$lib/components/ui/button.svelte'
+	import { ColorPalette${arrowButton ? `, ArrowLeft` : ''} } from 'carbon-icons-svelte' `
+			: ''
+	}
+</script\>${
+			errorMessage
+				? `
+{#snippet error()}
+	${stringErrorMessage}
+{/snippet}`
+				: ''
+		}${
+			controlButton
+				? `
+{#snippet buttons()}${
+						colorButton
+							? `
+	<Button dimension="${dimension}" variant="secondary">
+		<ColorPalette size=${dimension === `small` ? '{16}' : '{24}'} />
+	</Button>`
+							: ''
+					}${
+						arrowButton
+							? `
+	<Button dimension="${dimension}" variant="secondary">
+		<ArrowLeft size=${dimension === `small` ? '{16}' : '{24}'} />
+	</Button>`
+							: ''
+					}
+{/snippet}`
+				: ''
+		}
+<Input 
+	dimension="${dimension}" 
+	layout="${layout}" 
+	label="${label}" 
+	placeholder="${placeholder}"${
+		unit
+			? `
+	unit="${stringUnit}"`
+			: ''
+	}${errorMessage ? '{error}' : ''}${
+		controlButton
+			? `
+	controls
+	{buttons} `
+			: ''
+	}>
+	This is an optional helper text
+</Input>
 `,
 	)
 
@@ -40,21 +104,66 @@
 {/snippet}
 {#snippet examples()}{/snippet}
 
+{#snippet helperTextInputSize()}
+	Learn more about button size: <a href="#about-sizes">About sizes</a>
+{/snippet}
+
 {#snippet controls()}
-	<Select bind:value={dimension} label="Size">
+	<Select bind:value={dimension} label="Size" helperText={helperTextInputSize}>
 		<Option value="default">Default</Option>
 		<Option value="large">Large</Option>
 		<Option value="compact">Compact</Option>
 		<Option value="small">Small</Option>
 	</Select>
+	<Select bind:value={layout} label="Layout">
+		<Option value="vertical">Vertical</Option>
+		<Option value="horizontal">Horizontal</Option>
+	</Select>
+	<Input bind:value={label} {label} />
+	<Input bind:value={placeholder} label="Placeholder" />
+	<Switch bind:checked={unit} label="With unit" />
+	{#if unit}
+		<Input label="Add unit" bind:value={stringUnit} />
+	{/if}
+	<Switch bind:checked={errorMessage} label="With error" />
+	{#if errorMessage}
+		<Input label="Add error" bind:value={stringErrorMessage} />
+	{/if}
+	<Switch bind:checked={controlButton} label="With controls" />
+	{#if controlButton}
+		<Checkbox bind:checked={colorButton} label="Color palete button" />
+		<Checkbox bind:checked={arrowButton} label="Arrow left button" />
+	{/if}
 {/snippet}
 
 {#snippet preview()}
 	<TabBar dimension="small">
 		<TabContent value="Preview">
 			<div class="preview-tabs preview-tab">
-				<Input {dimension} label="Input label" placeholder="Placeholder"
-					>This is an optional helper text</Input
+				{#snippet error()}
+					{stringErrorMessage}
+				{/snippet}
+				{#snippet buttons()}
+					{#if colorButton}
+						<Button {dimension} variant="secondary">
+							<ColorPalette size={dimension === 'small' ? 16 : 24} />
+						</Button>
+					{/if}
+					{#if arrowButton}
+						<Button {dimension} variant="secondary">
+							<ArrowLeft size={dimension === 'small' ? 16 : 24} />
+						</Button>
+					{/if}
+				{/snippet}
+				<Input
+					{dimension}
+					{layout}
+					{label}
+					{placeholder}
+					unit={unit ? stringUnit : ''}
+					error={errorMessage ? error : undefined}
+					controls={controlButton}
+					buttons={controlButton ? buttons : undefined}>This is an optional helper text</Input
 				>
 			</div>
 		</TabContent>
