@@ -12,15 +12,17 @@
 		label,
 		dimension = 'default',
 		hover,
+		checked = $bindable(),
 		active,
 		focus,
+
 		class: className = '',
 		...restProps
 	}: Props = $props()
 </script>
 
 <label class="{dimension} {className}" class:hover class:active class:focus>
-	<input type="checkbox" {...restProps} />
+	<input type="checkbox" bind:checked {...restProps} />
 	{label}
 </label>
 
