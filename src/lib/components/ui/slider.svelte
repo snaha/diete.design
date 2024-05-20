@@ -80,8 +80,12 @@
 			{#if step}
 				<div class="slider-tick-container">
 					<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-					{#each Array.from({ length: (max - min) / step + 1 }) as _}
-						<span class="tick"></span>
+					{#each Array.from({ length: (max - min) / step + 1 }) as _, i}
+						{#if i === (max - min) / step / 2 && centered}
+							<span class="tick__center"></span>
+						{:else}
+							<span class="tick"></span>
+						{/if}
 					{/each}
 				</div>
 			{/if}
@@ -313,6 +317,9 @@
 		.slider-progress {
 			border-radius: 0;
 		}
+		.slider-progress-centered {
+			border-radius: 0;
+		}
 		.center {
 			position: absolute;
 			left: 50%;
@@ -321,6 +328,9 @@
 			background: var(--colors-ultra-high);
 			width: 0.125rem;
 			height: 1.5rem;
+		}
+		.__center {
+			opacity: 0;
 		}
 	}
 	.value {
