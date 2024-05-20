@@ -11,7 +11,6 @@
 	import Switch from '$lib/components/ui/switch.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
 	import { ColorPalette, ArrowLeft } from 'carbon-icons-svelte'
-	import { error } from '@sveltejs/kit'
 	import { Button } from '$lib/components'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
@@ -19,7 +18,7 @@
 
 	let css: string = $state('Loading...')
 
-	let dimension: Dimension = $state('default')
+	let dimension: Dimension = $state('default' as Dimension)
 	let layout: Layout = $state('vertical')
 	let label = $state('Input label')
 	let placeholder = $state('Placeholder')
@@ -35,10 +34,20 @@
 	let useCode = $derived(
 		`<script lang="ts">
 	import Input from '$lib/components/ui/input.svelte'${
-		colorButton
+		colorButton || arrowButton
 			? `
-	import Button from '$lib/components/ui/button.svelte'
-	import { ColorPalette${arrowButton ? `, ArrowLeft` : ''} } from 'carbon-icons-svelte' `
+	import Button from '$lib/components/ui/button.svelte'${
+		colorButton && arrowButton
+			? `
+	import { ColorPalette, ArrowLeft } from 'carbon-icons-svelte' `
+			: arrowButton
+				? `
+	import { ArrowLeft } from 'carbon-icon-svelte'`
+				: colorButton
+					? `
+	import { ColorPalette } from 'carbon-icon-svelte'`
+					: ''
+	}`
 			: ''
 	}
 </script\>${
