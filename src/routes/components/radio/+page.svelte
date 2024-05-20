@@ -25,7 +25,8 @@
 		`<script lang="ts">
     import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
     import Radio from '$lib/components/ui/radio-button/radio.svelte'
-</script\>
+</script` +
+			`>
 
 <RadioGroup dimesion="${dimension}" layout="${layout}" name="rb">
     {#snippet helperText()}
