@@ -394,8 +394,8 @@
 				height: 2rem;
 			}
 			.slider-background {
-				left: 0.75rem;
-				width: calc(100% - 1.5rem);
+				left: 1rem;
+				width: calc(100% - 2rem);
 			}
 			.slider-progress {
 				left: var(--valuePercent);
@@ -450,8 +450,8 @@
 				height: 1rem;
 			}
 			.slider-background {
-				left: 0.75rem;
-				width: calc(100% - 1.5rem);
+				left: 0.5rem;
+				width: calc(100% - 1rem);
 			}
 			.slider-progress {
 				left: var(--valuePercent);
