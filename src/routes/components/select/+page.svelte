@@ -1,5 +1,6 @@
 <script lang="ts">
 	import select from '$lib/components/ui/select/select.svelte?raw'
+	import option from '$lib/components/ui/select/option.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
 	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
@@ -12,7 +13,8 @@
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 
-	let css: string = $state('Loading...')
+	let selectCss: string = $state('Loading...')
+	let optionCss: string = $state('Loading...')
 
 	let dimension: Dimension = $state('default')
 	let label: string = $state('Select label')
@@ -20,18 +22,24 @@
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
 		`<script lang="ts">
-    import Select from '$lib/components/ui/select/select.svelte'
+	import Select from '$lib/components/ui/select/select.svelte'
 </script` +
 			`>
-<Select dimension="${dimension}" label="${label}">
 
+<Select dimension="${dimension}" label="${label}">
+	<Option value='1'>Option 1</Option>
+	<Option value='2'>Option 2</Option>
+	<Option value='3'>Option 3</Option>
+	<Option value='4'>Option 4</Option>
 </Select>
 `,
 	)
 
 	onMount(async () => {
-		const response = await fetch('/generated/css/ui/select/select.css')
-		css = await response.text()
+		const selectResponse = await fetch('/generated/css/ui/select/select.css')
+		const optionResponse = await fetch('/generated/css/ui/select/option.css')
+		selectCss = await selectResponse.text()
+		optionCss = await optionResponse.text()
 	})
 </script>
 
@@ -79,7 +87,12 @@
 	<TabBar dimension="small">
 		<TabContent value="Preview">
 			<div class="preview-tabs preview-tab">
-				<Select {dimension} {label}></Select>
+				<Select {dimension} {label}>
+					<Option value="1">Option 1</Option>
+					<Option value="2">Option 2</Option>
+					<Option value="3">Option 3</Option>
+					<Option value="4">Option 4</Option>
+				</Select>
 			</div>
 		</TabContent>
 		<TabContent value="Svelte"
@@ -91,7 +104,11 @@
 {#snippet implement()}
 	<TabBar dimension="small">
 		<TabContent value="Svelte"><Code language="svelte" code={select} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
+		<TabContent value="CSS"><Code language="css" code={selectCss} /></TabContent>
+	</TabBar>
+	<TabBar dimension="small">
+		<TabContent value="Svelte"><Code language="svelte" code={option} /></TabContent>
+		<TabContent value="CSS"><Code language="css" code={optionCss} /></TabContent>
 	</TabBar>
 {/snippet}
 
