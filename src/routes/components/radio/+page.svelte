@@ -71,25 +71,26 @@
 	</Select>
 {/snippet}
 
+{#snippet helperText()}
+	This is an optional helper text
+{/snippet}
+{#snippet label()}
+	Radio group label
+{/snippet}
+
 {#snippet preview()}
 	<TabBar dimension="small">
 		<TabContent value="Preview">
 			<div class="preview-tabs preview-tab">
-				<RadioGroup {dimension} {layout} name="rb">
-					{#snippet helperText()}
-						This is an optional helper text
-					{/snippet}
-					{#snippet label()}
-						Radio group label
-					{/snippet}
+				<RadioGroup {dimension} {layout} name="rb" {helperText} {label}>
 					<Radio>Radio label</Radio>
 					<Radio>Radio label</Radio>
 				</RadioGroup>
 			</div>
 		</TabContent>
-		<TabContent value="Svelte"
-			><Code language="svelte" code={useCode} class="preview-tab" /></TabContent
-		>
+		<TabContent value="Svelte">
+			<Code language="svelte" code={useCode} class="preview-tab" />
+		</TabContent>
 	</TabBar>
 {/snippet}
 
