@@ -10,6 +10,8 @@
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
 	import Radio from '$lib/components/ui/radio-button/radio.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
+	import Switch from '$lib/components/ui/switch.svelte'
+	import Input from '$lib/components/ui/input.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Layout = 'vertical' | 'horizontal'
@@ -19,6 +21,8 @@
 
 	let dimension: Dimension = $state('default')
 	let layout: Layout = $state('vertical')
+	let withHelperText: boolean = $state(false)
+	let optionalHelperText: string = $state('This is an optional helper text')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -70,10 +74,14 @@
 		<Option value="vertical">Vertical</Option>
 		<Option value="horizontal">Horizontal</Option>
 	</Select>
+	<Switch bind:checked={withHelperText} label="With helper text" />
+	{#if withHelperText}
+		<Input bind:value={optionalHelperText} label="Helper text" />
+	{/if}
 {/snippet}
 
 {#snippet helperText()}
-	This is an optional helper text
+	{optionalHelperText}
 {/snippet}
 {#snippet label()}
 	Radio group label
@@ -83,7 +91,13 @@
 	<TabBar dimension="small">
 		<TabContent value="Preview">
 			<div class="preview-tabs preview-tab">
-				<RadioGroup {dimension} {layout} name="rb" {helperText} {label}>
+				<RadioGroup
+					{dimension}
+					{layout}
+					name="rb"
+					helperText={withHelperText ? helperText : undefined}
+					{label}
+				>
 					<Radio>Radio label</Radio>
 					<Radio>Radio label</Radio>
 				</RadioGroup>
