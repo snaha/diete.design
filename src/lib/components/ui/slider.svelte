@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Information } from 'carbon-icons-svelte'
 	import type { Snippet } from 'svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
@@ -44,6 +45,14 @@
 			{@render children()}
 		{/if}
 	</label>
+	{#if helperText && layout === 'horizontal'}
+		<div class="helper-button">
+			<div class="helper-text-horizontal">
+				{@render helperText()}
+			</div>
+			<Information size={dimension === 'small' ? 16 : 24} />
+		</div>
+	{/if}
 	<div class="wrapper">
 		<span>{min}</span>
 		<div class="slider-container" class:centered>
@@ -103,9 +112,35 @@
 	label {
 		cursor: pointer;
 		width: fit-content;
+		white-space: nowrap;
+	}
+	.helper-button {
+		position: relative;
+		cursor: help;
+		&:hover {
+			.helper-text-horizontal {
+				display: block;
+			}
+		}
+		.helper-text-horizontal {
+			display: none;
+			position: absolute;
+			top: -0.5rem;
+			left: 50%;
+			transform: translateX(-50%) translateY(-100%);
+			border-radius: 0.25rem;
+			background-color: var(--colors-top);
+			padding: 0.25rem 0.5rem;
+			color: var(--colors-base);
+			font-size: var(--font-size-small);
+			line-height: var(--line-height-small);
+			letter-spacing: var(--letter-spacing-small);
+			white-space: nowrap;
+		}
 	}
 	.wrapper {
 		display: flex;
+		flex-grow: 1;
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.75rem;
