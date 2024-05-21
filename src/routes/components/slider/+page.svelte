@@ -21,11 +21,12 @@
 	let label = $state('Slider label')
 	let withStep: boolean = $state(false)
 	let withSnap: boolean = $state(false)
-	let step: number = $state(0)
+	let step: number | undefined = $state(undefined)
 	let centered: boolean = $state(false)
 	let withHelperText: boolean = $state(false)
 	let optionalHelperText: string = $state('Helper text')
 	let layout: Layout = $state('vertical')
+	let value = $state(30)
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -65,27 +66,27 @@ ${
 {#snippet examples()}
 	<div class="example-row">
 		<Typography variant="small" bold>1. Default size slider</Typography>
-		<Slider dimension="default">Slider label</Slider>
+		<Slider dimension="default" bind:value>Slider label</Slider>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>1. Large size slider</Typography>
-		<Slider dimension="large">Slider label</Slider>
+		<Slider dimension="large" bind:value>Slider label</Slider>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>1. Compact size slider</Typography>
-		<Slider dimension="compact">Slider label</Slider>
+		<Slider dimension="compact" bind:value>Slider label</Slider>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>4. Small size slider</Typography>
-		<Slider dimension="small">Slider label</Slider>
+		<Slider dimension="small" bind:value>Slider label</Slider>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>1. Vertical layout</Typography>
-		<Slider layout="vertical">Slider label</Slider>
+		<Slider layout="vertical" bind:value>Slider label</Slider>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>2. Horizontal layout</Typography>
-		<Slider layout="horizontal">Slider label</Slider>
+		<Slider layout="horizontal" bind:value>Slider label</Slider>
 	</div>
 {/snippet}
 
@@ -107,8 +108,8 @@ ${
 	{/if}
 	<Switch bind:checked={withStep} label="With step" />
 	{#if withStep}
-		<Switch bind:checked={withSnap} label="With snapping" />
 		<Input bind:value={step} label="Number of step" />
+		<Switch bind:checked={withSnap} label="With snapping" />
 	{/if}
 	<Switch bind:checked={centered} label="Centered" />
 {/snippet}
@@ -127,8 +128,11 @@ ${
 					helperText={withHelperText ? helperText : undefined}
 					step={withStep ? step : undefined}
 					snap={withSnap ? true : undefined}
-					{centered}>{label}</Slider
+					{centered}
+					bind:value
 				>
+					{label}
+				</Slider>
 			</div>
 		</TabContent>
 		<TabContent value="Svelte"
