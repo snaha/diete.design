@@ -113,13 +113,14 @@ ${
 	<Switch bind:checked={centered} label="Centered" />
 {/snippet}
 
+{#snippet helperText()}
+	{optionalHelperText}
+{/snippet}
+
 {#snippet preview()}
 	<TabBar dimension="small">
 		<TabContent value="Preview">
 			<div class="preview-tabs preview-tab">
-				{#snippet helperText()}
-					{optionalHelperText}
-				{/snippet}
 				<Slider
 					{dimension}
 					{layout}
