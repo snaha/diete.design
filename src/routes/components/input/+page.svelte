@@ -12,6 +12,7 @@
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
 	import { ColorPalette, ArrowLeft } from 'carbon-icons-svelte'
 	import { Button } from '$lib/components'
+	import Typography from '$lib/components/ui/typography.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Layout = 'vertical' | 'horizontal'
@@ -29,6 +30,8 @@
 	let controlButton = $state(false)
 	let colorButton = $state(false)
 	let arrowButton = $state(false)
+	let withHelperText: boolean = $state(false)
+	let optionalHelperText: string = $state('Helper text')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -94,9 +97,13 @@
 	controls
 	{buttons} `
 			: ''
-	}>
-	This is an optional helper text
-</Input>
+	}${
+		withHelperText
+			? `>
+	${optionalHelperText}
+</Input>`
+			: '/>'
+	}
 `,
 	)
 
@@ -107,12 +114,39 @@
 </script>
 
 {#snippet description()}
-	Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem numquam aliquid fuga aperiam iure
-	quae neque a omnis delectus explicabo modi nam optio placeat eveniet dolores debitis accusantium
-	commodi asperiores voluptatem, adipisci alias ipsa inventore quos harum? Eaque eligendi, velit
-	atque porro accusantium, eveniet temporibus culpa exercitationem quas nobis iure?
+	<Typography>Each input is available in 4 sizes: Default, Large, Compact and Small</Typography>
+	<br />
+	<br />
+	<Typography>Input is available in vertical and horizontal layout</Typography>
+	<br />
+	<br />
 {/snippet}
-{#snippet examples()}{/snippet}
+{#snippet examples()}
+	<div class="example-row">
+		<Typography variant="small" bold>1. Default size input</Typography>
+		<Input dimension="default" label="Input label" />
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>2. Large size input</Typography>
+		<Input dimension="large" label="Input label" />
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>3. Compact size input</Typography>
+		<Input dimension="compact" label="Input label" />
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>4. Small size input</Typography>
+		<Input dimension="small" label="Input label" />
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>1. Vertical layout</Typography>
+		<Input layout="vertical" label="Input label" />
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>2. Horizontal layout</Typography>
+		<Input layout="horizontal" label="Input label" />
+	</div>
+{/snippet}
 
 {#snippet helperTextInputSize()}
 	Learn more about button size: <a href="#about-sizes">About sizes</a>
@@ -131,6 +165,10 @@
 	</Select>
 	<Input bind:value={label} {label} />
 	<Input bind:value={placeholder} label="Placeholder" />
+	<Switch bind:checked={withHelperText} label="With helper text" />
+	{#if withHelperText}
+		<Input label="Add helper text" bind:value={optionalHelperText} />
+	{/if}
 	<Switch bind:checked={unit} label="With unit" />
 	{#if unit}
 		<Input label="Add unit" bind:value={stringUnit} />
@@ -174,7 +212,11 @@
 					unit={unit ? stringUnit : ''}
 					error={errorMessage ? error : undefined}
 					controls={controlButton}
-					buttons={controlButton ? buttons : undefined}>This is an optional helper text</Input
+					buttons={controlButton ? buttons : undefined}
+				>
+					{#if withHelperText}
+						{optionalHelperText}
+					{/if}</Input
 				>
 			</div>
 		</TabContent>
@@ -193,7 +235,7 @@
 
 <ComponentTemplate
 	name="Input"
-	tagline="Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, quae?"
+	tagline="Input elements allow people to enter and edit text or data within a form."
 	{description}
 	{examples}
 	{controls}
