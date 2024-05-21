@@ -107,6 +107,7 @@
 		}
 		&.horizontal {
 			flex-direction: row;
+			align-items: center;
 		}
 	}
 	label {
