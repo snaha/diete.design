@@ -50,42 +50,46 @@
 			<Information size={dimension === 'small' ? 16 : 24} />
 		</div>
 	{/if}
-	<div class="wrapper">
-		<input
-			id={labelFor}
-			class:active
-			class:hover
-			class:focus
-			class:error
-			bind:value
-			{placeholder}
-			{type}
-			{disabled}
-			{...restProps}
-		/>
-		{#if unit && !error}
-			<label class="unit" for={labelFor}>{unit}</label>
-		{/if}
-		{#if error}
-			<label class="error-icon" for={labelFor}>
-				<WarningAltFilled size={dimension === 'small' ? 16 : 24} />
-			</label>
-		{/if}
-		{#if controls && type === 'number'}
-			<div class="control-buttons">
-				<Button {dimension} {disabled} variant="secondary" onclick={() => (value -= 1)}>
-					<Subtract size={dimension === 'small' ? 16 : 24} />
-				</Button>
-				<Button {dimension} {disabled} variant="secondary" onclick={() => (value += 1)}>
-					<Add size={dimension === 'small' ? 16 : 24} />
-				</Button>
+	<div class="col">
+		<div class="wrapper">
+			<div class="relative">
+				<input
+					id={labelFor}
+					class:active
+					class:hover
+					class:focus
+					class:error
+					bind:value
+					{placeholder}
+					{type}
+					{disabled}
+					{...restProps}
+				/>
+				{#if unit && !error}
+					<label class="unit" for={labelFor}>{unit}</label>
+				{/if}
+				{#if error}
+					<label class="error-icon" for={labelFor}>
+						<WarningAltFilled size={dimension === 'small' ? 16 : 24} />
+					</label>
+				{/if}
 			</div>
-		{/if}
-		{#if buttons}
-			<div class="control-buttons">
-				{@render buttons()}
-			</div>
-		{/if}
+			{#if controls && type === 'number'}
+				<div class="control-buttons">
+					<Button {dimension} {disabled} variant="secondary" onclick={() => (value -= 1)}>
+						<Subtract size={dimension === 'small' ? 16 : 24} />
+					</Button>
+					<Button {dimension} {disabled} variant="secondary" onclick={() => (value += 1)}>
+						<Add size={dimension === 'small' ? 16 : 24} />
+					</Button>
+				</div>
+			{/if}
+			{#if buttons}
+				<div class="control-buttons">
+					{@render buttons()}
+				</div>
+			{/if}
+		</div>
 		{#if error}
 			<div class="error-message">
 				{@render error()}
@@ -147,11 +151,23 @@
 		align-items: center;
 		cursor: pointer;
 	}
+	.col {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
 	.wrapper {
 		display: flex;
 		position: relative;
+		flex-grow: 1;
 		flex-direction: column;
 		gap: 0.25rem;
+		.relative {
+			display: flex;
+			position: relative;
+			flex-grow: 1;
+			flex-direction: row;
+		}
 		.control-buttons {
 			display: flex;
 			flex-direction: row;
@@ -172,7 +188,7 @@
 			}
 		}
 		input {
-			position: relative;
+			flex-grow: 1;
 			border: 1px solid var(--colors-ultra-high);
 			border-radius: 0.25rem;
 			background: transparent;
@@ -252,11 +268,6 @@
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
-		&.controls {
-			.unit {
-				right: 6.875rem;
-			}
-		}
 		.error-icon {
 			top: 0.75rem;
 			right: 0.75rem;
@@ -283,11 +294,6 @@
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
-		}
-		&.controls {
-			.unit {
-				right: 6.875rem;
-			}
 		}
 		.error-icon {
 			top: 1rem;
@@ -321,11 +327,6 @@
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
-		&.controls {
-			.unit {
-				right: 5.625rem;
-			}
-		}
 		.error-icon {
 			top: 0.5rem;
 			right: 0.5rem;
@@ -352,11 +353,6 @@
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
-		}
-		&.controls {
-			.unit {
-				right: 4.625rem;
-			}
 		}
 		.error-icon {
 			top: 0.5rem;
