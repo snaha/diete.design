@@ -14,6 +14,7 @@
 		hover?: boolean
 		active?: boolean
 		focus?: boolean
+		snap?: boolean
 		helperText?: Snippet
 	}
 	let {
@@ -27,6 +28,7 @@
 		hover,
 		active,
 		focus,
+		snap = false,
 		value = $bindable(),
 		helperText,
 		children,
@@ -54,7 +56,7 @@
 				bind:value
 				{min}
 				{max}
-				{step}
+				step={snap ? step : undefined}
 				{...restProps}
 			/>
 			{#if centered}

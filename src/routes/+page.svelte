@@ -1348,7 +1348,8 @@
 		<Typography variant="h1">Slider</Typography>
 		<div class="row">
 			<div class="col">
-				<Slider min={0} max={100} value={50} step={10} {helperText}>Slider label</Slider>
+				<Slider min={0} max={100} value={50} step={10} {helperText}>With step</Slider>
+				<Slider min={0} max={100} value={50} step={10} {helperText} snap>With snap step</Slider>
 				<Slider min={0} max={100} value={50} step={10} {helperText} hover>Slider label</Slider>
 				<Slider min={0} max={100} value={50} step={10} {helperText} active>Slider label</Slider>
 				<Slider min={0} max={100} value={50} step={10} {helperText} focus>Slider label</Slider>
@@ -1359,7 +1360,10 @@
 			</div>
 			<div class="col">
 				<Slider dimension="large" min={0} max={100} value={50} step={10} {helperText}
-					>Slider label</Slider
+					>With step</Slider
+				>
+				<Slider dimension="large" min={0} max={100} value={50} step={10} {helperText} snap
+					>With snap step</Slider
 				>
 				<Slider dimension="large" min={0} max={100} value={50} step={10} {helperText} hover
 					>Slider label</Slider
@@ -1379,7 +1383,10 @@
 			</div>
 			<div class="col">
 				<Slider dimension="compact" min={0} max={100} value={50} step={10} {helperText}
-					>Slider label</Slider
+					>With step</Slider
+				>
+				<Slider dimension="compact" min={0} max={100} value={50} step={10} {helperText} snap
+					>With snap step</Slider
 				>
 				<Slider dimension="compact" min={0} max={100} value={50} step={10} {helperText} hover
 					>Slider label</Slider
@@ -1399,7 +1406,10 @@
 			</div>
 			<div class="col">
 				<Slider dimension="small" min={0} max={100} value={50} step={10} {helperText}
-					>Slider label</Slider
+					>With step</Slider
+				>
+				<Slider dimension="small" min={0} max={100} value={50} step={10} {helperText} snap
+					>With snap step</Slider
 				>
 				<Slider dimension="small" min={0} max={100} value={50} step={10} {helperText} hover
 					>Slider label</Slider
