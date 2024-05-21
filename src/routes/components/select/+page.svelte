@@ -1,5 +1,6 @@
 <script lang="ts">
 	import select from '$lib/components/ui/select/select.svelte?raw'
+	import selectStore from '$lib/components/ui/select/select-store.svelte.ts?raw'
 	import option from '$lib/components/ui/select/option.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
 	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
@@ -70,7 +71,7 @@
 {/snippet}
 
 {#snippet helperTextSelectSizes()}
-	Learn more about size: <a href="#about-sizes">About sizes</a>
+	Learn more about select size: <a href="#about-sizes">About sizes</a>
 {/snippet}
 
 {#snippet controls()}
@@ -103,12 +104,19 @@
 
 {#snippet implement()}
 	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={select} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={selectCss} /></TabContent>
-	</TabBar>
-	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={option} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={optionCss} /></TabContent>
+		<TabContent value="Svelte">
+			<TabBar dimension="small">
+				<TabContent value="select"><Code language="svelte" code={select} /></TabContent>
+				<TabContent value="option"><Code language="svelte" code={option} /></TabContent>
+				<TabContent value="select-store"><Code language="svelte" code={selectStore} /></TabContent>
+			</TabBar>
+		</TabContent>
+		<TabContent value="CSS">
+			<TabBar dimension="small">
+				<TabContent value="select"><Code language="css" code={selectCss} /></TabContent>
+				<TabContent value="option"><Code language="css" code={optionCss} /></TabContent>
+			</TabBar>
+		</TabContent>
 	</TabBar>
 {/snippet}
 
