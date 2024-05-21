@@ -39,6 +39,7 @@
 		bold = false,
 		italic = false,
 		class: className = '',
+		children,
 		...restProps
 	}: Props = $props()
 </script>
@@ -50,7 +51,9 @@
 	class={`root ${font} ${variant} ${className}`}
 	{...restProps}
 >
-	<slot />
+	{#if children}
+		{@render children()}
+	{/if}
 </svelte:element>
 
 <style>

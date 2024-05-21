@@ -48,8 +48,6 @@
 
 <section id="use">
 	<Typography class="title" variant="h4" bold>Use</Typography>
-	<div class="title-vspace" />
-
 	<VerticalContainer>
 		<section class="controls">
 			{@render controls()}
@@ -65,7 +63,6 @@
 
 <section id="implement">
 	<Typography class="title" variant="h4" bold>Implement</Typography>
-	<div class="title-vspace" />
 	<VerticalContainer>
 		{@render implement()}
 	</VerticalContainer>
@@ -76,7 +73,6 @@
 {#if choose}
 	<section id="choose-a-button-type">
 		<Typography class="title" variant="h4" bold>Choose a button type</Typography>
-		<div class="title-vspace" />
 		{@render choose()}
 	</section>
 
@@ -86,7 +82,6 @@
 {#if sizes}
 	<section id="about-sizes">
 		<Typography class="title" variant="h4" bold>About sizes</Typography>
-		<div class="title-vspace" />
 		{@render sizes()}
 	</section>
 
@@ -99,9 +94,9 @@
 		flex-direction: column;
 		margin-bottom: var(--double-padding);
 		font-family: var(--font-family-sans-serif);
-	}
-	.title-vspace {
-		margin-bottom: var(--double-padding);
+		:global(.title) {
+			margin-bottom: var(--double-padding);
+		}
 	}
 	hr {
 		appearance: none;

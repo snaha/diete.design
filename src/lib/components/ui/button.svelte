@@ -33,6 +33,7 @@
 		disabled,
 		href,
 		class: className = '',
+		children,
 		...restProps
 	}: Props = $props()
 </script>
@@ -48,7 +49,9 @@
 		{disabled}
 		{...restProps}
 	>
-		<slot />
+		{#if children}
+			{@render children()}
+		{/if}
 	</svelte:element>
 </span>
 

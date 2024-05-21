@@ -60,7 +60,7 @@
 	aria-controls={dropdownId}
 	tabindex={-1}
 >
-	<div on:click={onClick} on:keypress={onKeyPress} role="button" tabindex={-1}>
+	<div onclick={onClick} onkeypress={onKeyPress} role="button" tabindex={-1}>
 		<Button variant="solid" active={showDropdown}>{@render button()}</Button>
 	</div>
 
