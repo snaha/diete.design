@@ -50,34 +50,35 @@
 	}`
 			: ''
 	}
-</script\>${
-			errorMessage
-				? `
+</script` +
+			`>${
+				errorMessage
+					? `
 {#snippet error()}
 	${stringErrorMessage}
 {/snippet}`
-				: ''
-		}${
-			controlButton
-				? `
+					: ''
+			}${
+				controlButton
+					? `
 {#snippet buttons()}${
-						colorButton
-							? `
+							colorButton
+								? `
 	<Button dimension="${dimension}" variant="secondary">
 		<ColorPalette size=${dimension === `small` ? '{16}' : '{24}'} />
 	</Button>`
-							: ''
-					}${
-						arrowButton
-							? `
+								: ''
+						}${
+							arrowButton
+								? `
 	<Button dimension="${dimension}" variant="secondary">
 		<ArrowLeft size=${dimension === `small` ? '{16}' : '{24}'} />
 	</Button>`
-							: ''
-					}
+								: ''
+						}
 {/snippet}`
-				: ''
-		}
+					: ''
+			}
 <Input 
 	dimension="${dimension}" 
 	layout="${layout}" 
@@ -145,25 +146,26 @@
 	{/if}
 {/snippet}
 
+{#snippet error()}
+	{stringErrorMessage}
+{/snippet}
+{#snippet buttons()}
+	{#if colorButton}
+		<Button {dimension} variant="secondary">
+			<ColorPalette size={dimension === 'small' ? 16 : 24} />
+		</Button>
+	{/if}
+	{#if arrowButton}
+		<Button {dimension} variant="secondary">
+			<ArrowLeft size={dimension === 'small' ? 16 : 24} />
+		</Button>
+	{/if}
+{/snippet}
+
 {#snippet preview()}
 	<TabBar dimension="small">
 		<TabContent value="Preview">
 			<div class="preview-tabs preview-tab">
-				{#snippet error()}
-					{stringErrorMessage}
-				{/snippet}
-				{#snippet buttons()}
-					{#if colorButton}
-						<Button {dimension} variant="secondary">
-							<ColorPalette size={dimension === 'small' ? 16 : 24} />
-						</Button>
-					{/if}
-					{#if arrowButton}
-						<Button {dimension} variant="secondary">
-							<ArrowLeft size={dimension === 'small' ? 16 : 24} />
-						</Button>
-					{/if}
-				{/snippet}
 				<Input
 					{dimension}
 					{layout}
