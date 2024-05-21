@@ -45,10 +45,10 @@
 	import { ColorPalette, ArrowLeft } from 'carbon-icons-svelte' `
 			: arrowButton
 				? `
-	import { ArrowLeft } from 'carbon-icon-svelte'`
+	import { ArrowLeft } from 'carbon-icons-svelte'`
 				: colorButton
 					? `
-	import { ColorPalette } from 'carbon-icon-svelte'`
+	import { ColorPalette } from 'carbon-icons-svelte'`
 					: ''
 	}`
 			: ''
