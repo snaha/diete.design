@@ -9,6 +9,8 @@
 	import ThemeSelector from '$lib/components/custom/theme-selector.svelte'
 	import { page } from '$app/stores'
 
+	let { children } = $props()
+
 	let isMenuOpen = $state(false)
 	let innerWidth: number | undefined = $state()
 
@@ -104,10 +106,10 @@
 		<div class="header"></div>
 
 		<div class="content-container">
-			<div class="content-margin" />
-
 			<div class="content">
-				<slot />
+				{#if children}
+					{@render children()}
+				{/if}
 
 				<section id="footer">
 					<Typography>
@@ -117,8 +119,6 @@
 					</Typography>
 				</section>
 			</div>
-
-			<div class="content-margin" />
 		</div>
 	</div>
 </div>
@@ -202,13 +202,11 @@
 	.content-container {
 		display: flex;
 		flex-direction: row;
-	}
-	.content-margin {
-		flex-grow: 1;
-		min-width: var(--padding);
+		justify-content: center;
 	}
 	.content {
 		margin-bottom: var(--header-size);
+		padding: 0 var(--padding);
 		max-width: var(--max-content-width);
 	}
 	.header {
