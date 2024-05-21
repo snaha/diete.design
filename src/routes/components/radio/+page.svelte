@@ -22,7 +22,9 @@
 	let dimension: Dimension = $state('default')
 	let layout: Layout = $state('vertical')
 	let withHelperText: boolean = $state(false)
+	let withLabel: boolean = $state(false)
 	let optionalHelperText: string = $state('This is an optional helper text')
+	let optionalLabel: string = $state('Radio group label')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -32,13 +34,21 @@
 </script` +
 			`>
 
-<RadioGroup dimesion="${dimension}" layout="${layout}" name="rb">
+<RadioGroup dimesion="${dimension}" layout="${layout}" name="rb">${
+				withHelperText
+					? `
     {#snippet helperText()}
-        This is an optional helper text
-    {/snippet}
+        ${optionalHelperText}
+    {/snippet}`
+					: ''
+			}${
+				withLabel
+					? `
     {#snippet label()}
-        Radio group label
-    {/snippet}
+        ${optionalLabel}
+    {/snippet}`
+					: ''
+			}
     <Radio>Radio label</Radio>
     <Radio>Radio label</Radio>
 </RadioGroup>
@@ -78,13 +88,17 @@
 	{#if withHelperText}
 		<Input bind:value={optionalHelperText} label="Helper text" />
 	{/if}
+	<Switch bind:checked={withLabel} label="With label" />
+	{#if withHelperText}
+		<Input bind:value={optionalLabel} label="Radio group label" />
+	{/if}
 {/snippet}
 
 {#snippet helperText()}
 	{optionalHelperText}
 {/snippet}
 {#snippet label()}
-	Radio group label
+	{optionalLabel}
 {/snippet}
 
 {#snippet preview()}
@@ -96,7 +110,7 @@
 					{layout}
 					name="rb"
 					helperText={withHelperText ? helperText : undefined}
-					{label}
+					label={withLabel ? label : undefined}
 				>
 					<Radio>Radio label</Radio>
 					<Radio>Radio label</Radio>
