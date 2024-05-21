@@ -353,14 +353,17 @@
 		background-color: var(--colors-ultra-high);
 		height: 4px;
 	}
+	.slider-progress-centered {
+		border-radius: 0;
+	}
 	.slider-tick-container {
 		display: flex;
 		position: absolute;
-		left: 0.75rem;
+		left: calc(0.75rem - 2px);
 		justify-content: space-between;
 		align-items: center;
 		z-index: 0;
-		width: calc(100% - 1.5rem);
+		width: calc(100% - 1.25rem);
 	}
 	.tick {
 		border-radius: 50%;
@@ -411,7 +414,7 @@
 		}
 		.slider-progress {
 			top: 10px;
-			left: 0.75rem;
+			left: calc(0.75rem - 2px);
 			width: calc(var(--valuePercent) - 0.75rem);
 		}
 	}
@@ -462,12 +465,12 @@
 		}
 		.slider-progress {
 			top: 14px;
-			left: 1rem;
+			left: calc(1rem - 2px);
 			width: calc(var(--valuePercent) - 1rem);
 		}
 		.slider-tick-container {
-			left: 1rem;
-			width: calc(100% - 2rem);
+			left: calc(1rem - 2px);
+			width: calc(100% - 1.75rem);
 		}
 	}
 	.small {
@@ -510,12 +513,12 @@
 		}
 		.slider-progress {
 			top: 6px;
-			left: 0.5rem;
+			left: calc(0.5rem - 2px);
 			width: calc(var(--valuePercent) - 0.5rem);
 		}
 		.slider-tick-container {
-			left: 0.5rem;
-			width: calc(100% - 1rem);
+			left: calc(0.5rem - 2px);
+			width: calc(100% - 0.75rem);
 		}
 	}
 </style>
