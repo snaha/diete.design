@@ -12,6 +12,7 @@
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 	import Input from '$lib/components/ui/input.svelte'
+	import Typography from '$lib/components/ui/typography.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Layout = 'vertical' | 'horizontal'
@@ -64,17 +65,66 @@
 </script>
 
 {#snippet description()}
-	Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi vitae explicabo, distinctio velit
-	nesciunt possimus dolorem exercitationem nobis aspernatur beatae animi culpa odit sequi eligendi
-	voluptate vel dolores, sint quos assumenda facilis? Nostrum, ipsum laudantium minus optio tempora
-	magnam dolorem suscipit vero explicabo, perferendis a voluptate aspernatur nesciunt. Sequi,
-	cumque!
+	<Typography
+		>Each radio group is available in 4 sizes: Default, Large, Compact and Small.</Typography
+	>
+	<br />
+	<br />
+	<Typography>Radio group is available in vertical and horizontal layout.</Typography>
+	<br />
+	<br />
+	<Typography>Radio group can have a label and helper text</Typography>
 {/snippet}
 
-{#snippet examples()}{/snippet}
-
+{#snippet examples()}
+	<div class="example-row">
+		<Typography variant="small" bold>1. Default size radio group</Typography>
+		<RadioGroup dimension="default" name="default">
+			<Radio>Choice 1</Radio>
+			<Radio>Choice 2</Radio>
+		</RadioGroup>
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>2. Large size radio group</Typography>
+		<RadioGroup dimension="large" name="large">
+			<Radio>Choice 1</Radio>
+			<Radio>Choice 2</Radio>
+		</RadioGroup>
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>3. Compact size radio group</Typography>
+		<RadioGroup dimension="compact" name="compact">
+			<Radio>Choice 1</Radio>
+			<Radio>Choice 2</Radio>
+		</RadioGroup>
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>4. Small size radio group</Typography>
+		<RadioGroup dimension="small" name="small">
+			<Radio>Choice 1</Radio>
+			<Radio>Choice 2</Radio>
+		</RadioGroup>
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>1. Vertical layout</Typography>
+		<RadioGroup layout="vertical" name="vertical">
+			<Radio>Choice 1</Radio>
+			<Radio>Choice 2</Radio>
+		</RadioGroup>
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>2. Horizontal layout</Typography>
+		<RadioGroup layout="horizontal" name="horizontal">
+			<Radio>Choice 1</Radio>
+			<Radio>Choice 2</Radio>
+		</RadioGroup>
+	</div>
+{/snippet}
+{#snippet helperTextRadioSize()}
+	Learn more about radio size: <a href="#about-sizes">About sizes</a>
+{/snippet}
 {#snippet controls()}
-	<Select bind:value={dimension} label="Size">
+	<Select bind:value={dimension} label="Size" helperText={helperTextRadioSize}>
 		<Option value="default">Default</Option>
 		<Option value="large">Large</Option>
 		<Option value="compact">Compact</Option>
@@ -136,7 +186,7 @@
 
 <ComponentTemplate
 	name="Radio"
-	tagline="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, sunt."
+	tagline="Choose one from two possible states"
 	{description}
 	{examples}
 	{controls}
@@ -154,5 +204,14 @@
 	}
 	:global(.preview-tab) {
 		height: 288px;
+	}
+	.example-row {
+		display: flex;
+		flex: 1;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 16px;
+		margin-top: 0px;
+		margin-bottom: 0px;
 	}
 </style>
