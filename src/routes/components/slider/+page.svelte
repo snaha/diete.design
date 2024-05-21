@@ -150,7 +150,7 @@ ${
 
 <ComponentTemplate
 	name="Slider"
-	tagline="Slide into seamless transitions with our innovative slider."
+	tagline="Sliders allow people to adjust a value within a specified range, with a single swipe or drag."
 	{description}
 	{examples}
 	{controls}
