@@ -25,6 +25,7 @@
 			'/components/button': 'Button',
 			'/components/checkbox': 'Checkbox',
 			'/components/radio': 'Radio',
+			'/components/slider': 'Slider',
 		},
 	}
 
