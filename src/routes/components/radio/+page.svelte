@@ -1,6 +1,7 @@
 <script lang="ts">
 	import radio from '$lib/components/ui/radio-button/radio.svelte?raw'
 	import radioGroup from '$lib/components/ui/radio-button/radio-group.svelte?raw'
+	import radioStore from '$lib/components/ui/radio-button/radio-store.svelte.ts?raw'
 	import Code from '$lib/components/custom/code.svelte'
 	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
@@ -175,12 +176,19 @@
 
 {#snippet implement()}
 	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={radioGroup} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={radioGroupCss} /></TabContent>
-	</TabBar>
-	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={radio} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={radioCss} /></TabContent>
+		<TabContent value="Svelte">
+			<TabBar dimension="small">
+				<TabContent value="radio-group"><Code language="svelte" code={radioGroup} /></TabContent>
+				<TabContent value="radio"><Code language="svelte" code={radio} /></TabContent>
+				<TabContent value="radio-store"><Code language="svelte" code={radioStore} /></TabContent>
+			</TabBar>
+		</TabContent>
+		<TabContent value="css">
+			<TabBar dimension="small">
+				<TabContent value="radio-group"><Code language="css" code={radioGroupCss} /></TabContent>
+				<TabContent value="radio"><Code language="css" code={radioCss} /></TabContent>
+			</TabBar>
+		</TabContent>
 	</TabBar>
 {/snippet}
 
