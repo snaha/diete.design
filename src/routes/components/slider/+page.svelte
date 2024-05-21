@@ -20,7 +20,7 @@
 	let dimension: Dimension = $state('default')
 	let label = $state('Slider label')
 	let withStep: boolean = $state(false)
-	// let withSnap: boolean = $state(false)
+	let withSnap: boolean = $state(false)
 	let step: number = $state(0)
 	let centered: boolean = $state(false)
 	let withHelperText: boolean = $state(false)
@@ -41,7 +41,7 @@ ${
 {/snippet}`
 		: ''
 }
-<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${centered ? ` centered` : ''}>${label}</Slider>
+<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${withSnap ? ` snap` : ''}${centered ? ` centered` : ''}>${label}</Slider>
 `,
 	)
 
@@ -107,8 +107,8 @@ ${
 	{/if}
 	<Switch bind:checked={withStep} label="With step" />
 	{#if withStep}
+		<Switch bind:checked={withSnap} label="With snapping" />
 		<Input bind:value={step} label="Number of step" />
-		<!-- <Switch bind:checked={withSnap} label="With snapping" /> -->
 	{/if}
 	<Switch bind:checked={centered} label="Centered" />
 {/snippet}
@@ -125,6 +125,7 @@ ${
 					{layout}
 					helperText={withHelperText ? helperText : undefined}
 					step={withStep ? step : undefined}
+					snap={withSnap ? true : undefined}
 					{centered}>{label}</Slider
 				>
 			</div>
@@ -143,8 +144,8 @@ ${
 {/snippet}
 
 <ComponentTemplate
-	name="Checkbox"
-	tagline="Choose one from two possible states"
+	name="Slider"
+	tagline="Slide into seamless transitions with our innovative slider."
 	{description}
 	{examples}
 	{controls}
