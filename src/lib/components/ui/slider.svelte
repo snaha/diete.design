@@ -142,6 +142,7 @@
 
 	input[type='range'] {
 		appearance: none;
+		z-index: 1;
 		cursor: pointer;
 		margin: 0;
 		background: transparent;
@@ -289,7 +290,7 @@
 		position: absolute;
 		top: -1.75rem;
 		left: var(--valuePercent);
-		transform: translateX(calc(-1 * var(--valuePercent)));
+		transform: translateX(calc(var(--valuePercent) * -1));
 		border-radius: 0.75rem;
 		background: var(--colors-top);
 		padding: 0.25rem 0.5rem;
@@ -301,6 +302,7 @@
 	.slider-background {
 		position: absolute;
 		left: calc(var(--valuePercent));
+		z-index: 0;
 		border-radius: 0.25rem;
 		background: var(--colors-ultra-high);
 		height: 1px;
@@ -308,6 +310,7 @@
 	.slider-progress,
 	.slider-progress-centered {
 		position: absolute;
+		z-index: 0;
 		border-radius: 0.25rem;
 		background-color: var(--colors-ultra-high);
 		height: 4px;
@@ -318,6 +321,7 @@
 		left: 0.75rem;
 		justify-content: space-between;
 		align-items: center;
+		z-index: 0;
 		width: calc(100% - 1.5rem);
 	}
 	.tick {
