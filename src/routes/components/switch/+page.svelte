@@ -9,12 +9,14 @@
 	import Select from '$lib/components/ui/select/select.svelte'
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
+	import Input from '$lib/components/ui/input.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 
 	let css: string = $state('Loading...')
 
 	let dimension: Dimension = $state('default')
+	let label: string = $state('Switch label')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -23,7 +25,7 @@
 </script` +
 			`>
 
-<Switch dimension="${dimension}" label="Switch label" />
+<Switch dimension="${dimension}" label="${label}" />
 `,
 	)
 
@@ -35,29 +37,49 @@
 
 {#snippet description()}
 	<Typography>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum cum corrupti, explicabo distinctio
-		accusamus, qui ab laborum placeat aliquid ipsam nulla iure rerum temporibus odit vero
-		praesentium quis dolorum iste beatae cumque quod! Quidem sint laudantium itaque optio voluptas
-		vero alias temporibus ipsa tempora, obcaecati neque quia quas doloremque placeat.
+		Each switch is available in 4 sizes: Default, Large, Compact and Small.
+		<br />
 	</Typography>
 {/snippet}
 
-{#snippet examples()}{/snippet}
+{#snippet examples()}
+	<div class="example-row">
+		<Typography variant="small" bold>1. Default size checkbox</Typography>
+		<Switch dimension="default" label="Switch label" />
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>2. Large size checkbox</Typography>
+		<Switch dimension="large" label="Switch label" />
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>3. Compact size checkbox</Typography>
+		<Switch dimension="compact" label="Switch label" />
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>4. Small size checkbox</Typography>
+		<Switch dimension="small" label="Switch label" />
+	</div>
+{/snippet}
+
+{#snippet helperTextSwitchSize()}
+	Learn more about switch size: <a href="#about-sizes">About sizes</a>
+{/snippet}
 
 {#snippet controls()}
-	<Select bind:value={dimension} label="Switch size">
+	<Select bind:value={dimension} label="Switch size" helperText={helperTextSwitchSize}>
 		<Option value="default">Default</Option>
 		<Option value="large">Large</Option>
 		<Option value="compact">Compact</Option>
 		<Option value="small">Small</Option>
 	</Select>
+	<Input bind:value={label} label="Add switch label" />
 {/snippet}
 
 {#snippet preview()}
 	<TabBar dimension="small">
 		<TabContent value="Preview">
 			<div class="preview-tabs preview-tab">
-				<Switch {dimension} label="Switch label" />
+				<Switch {dimension} {label} />
 			</div>
 		</TabContent>
 		<TabContent value="Svelte"
@@ -75,7 +97,7 @@
 
 <ComponentTemplate
 	name="Switch"
-	tagline="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat, esse."
+	tagline="Turn on or off"
 	{description}
 	{examples}
 	{controls}
@@ -94,7 +116,7 @@
 	:global(.preview-tab) {
 		height: 288px;
 	}
-	/* .example-row {
+	.example-row {
 		display: flex;
 		flex: 1;
 		flex-wrap: wrap;
@@ -102,5 +124,5 @@
 		gap: 16px;
 		margin-top: 0px;
 		margin-bottom: 0px;
-	} */
+	}
 </style>
