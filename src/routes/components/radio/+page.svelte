@@ -49,8 +49,8 @@
     {/snippet}`
 					: ''
 			}
-    <Radio>Radio label</Radio>
-    <Radio>Radio label</Radio>
+    <Radio>Choice 1</Radio>
+    <Radio>Choice 2</Radio>
 </RadioGroup>
 `,
 	)
@@ -112,8 +112,8 @@
 					helperText={withHelperText ? helperText : undefined}
 					label={withLabel ? label : undefined}
 				>
-					<Radio>Radio label</Radio>
-					<Radio>Radio label</Radio>
+					<Radio>Choice 1</Radio>
+					<Radio>Choice 2</Radio>
 				</RadioGroup>
 			</div>
 		</TabContent>
