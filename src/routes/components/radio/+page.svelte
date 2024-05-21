@@ -121,11 +121,9 @@
 		</RadioGroup>
 	</div>
 {/snippet}
-{#snippet helperTextRadioSize()}
-	Learn more about radio size: <a href="#about-sizes">About sizes</a>
-{/snippet}
+
 {#snippet controls()}
-	<Select bind:value={dimension} label="Size" helperText={helperTextRadioSize}>
+	<Select bind:value={dimension} label="Size">
 		<Option value="default">Default</Option>
 		<Option value="large">Large</Option>
 		<Option value="compact">Compact</Option>
