@@ -91,7 +91,7 @@
 		flex-direction: column;
 		margin-bottom: var(--double-padding);
 		font-family: var(--font-family-sans-serif);
-		:global(.title) {
+		& > :global(.title) {
 			margin-bottom: var(--double-padding);
 		}
 	}
