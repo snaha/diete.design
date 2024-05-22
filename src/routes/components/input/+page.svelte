@@ -179,7 +179,7 @@
 	{/if}
 	<Switch bind:checked={controlButton} label="With controls" />
 	{#if controlButton}
-		<Checkbox bind:checked={colorButton} label="Color palete button" />
+		<Checkbox bind:checked={colorButton} label="Color palette button" />
 		<Checkbox bind:checked={arrowButton} label="Arrow left button" />
 	{/if}
 {/snippet}
@@ -254,13 +254,4 @@
 	:global(.preview-tab) {
 		height: 288px;
 	}
-	/* .example-row {
-		display: flex;
-		flex: 1;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 16px;
-		margin-top: 0px;
-		margin-bottom: 0px;
-	} */
 </style>
