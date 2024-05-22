@@ -11,14 +11,22 @@
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
 	import Input from '$lib/components/ui/input.svelte'
+	import Switch from '$lib/components/ui/switch.svelte'
 
+	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 
 	let selectCss: string = $state('Loading...')
 	let optionCss: string = $state('Loading...')
 
 	let dimension: Dimension = $state('default')
+	let withLabel: boolean = $state(false)
 	let label: string = $state('Select label')
+	let withHelperText: boolean = $state(false)
+	let optionalHelperText: string = $state('Helper text')
+	let withPlaceholder: boolean = $state(false)
+	let placeholder: string = $state('Placeholder')
+	let layout: Layout = $state('vertical')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -26,8 +34,20 @@
 	import Select from '$lib/components/ui/select/select.svelte'
 </script` +
 			`>
-
-<Select dimension="${dimension}" label="${label}">
+${
+	withHelperText
+		? `
+{#snippet helperText()}
+	${optionalHelperText}
+{/snippet}`
+		: ''
+}
+<Select dimension="${dimension}" layout="${layout}"${withLabel ? ` label="${label}"` : ''}${withHelperText ? ` {helperText}` : ''}${withPlaceholder ? ` placeholder="${placeholder}"` : ''}>${
+				withPlaceholder
+					? `
+	<Option class="placeholder" value="">${placeholder}</Option>`
+					: ''
+			}
 	<Option value='1'>Option 1</Option>
 	<Option value='2'>Option 2</Option>
 	<Option value='3'>Option 3</Option>
@@ -54,19 +74,31 @@
 {#snippet examples()}
 	<div class="example-row">
 		<Typography variant="small" bold>1. Default size select</Typography>
-		<Select dimension="default" label="Select label" />
+		<Select dimension="default" label="Select label" placeholder="Placeholder">
+			<Option value="1">Option 1</Option>
+			<Option value="2">Option 2</Option>
+		</Select>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>1. large size select</Typography>
-		<Select dimension="large" label="Select label" />
+		<Select dimension="large" label="Select label" placeholder="Placeholder">
+			<Option value="1">Option 1</Option>
+			<Option value="2">Option 2</Option>
+		</Select>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>1. compact size select</Typography>
-		<Select dimension="compact" label="Select label" />
+		<Select dimension="compact" label="Select label" placeholder="Placeholder">
+			<Option value="1">Option 1</Option>
+			<Option value="2">Option 2</Option>
+		</Select>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>1. small size select</Typography>
-		<Select dimension="small" label="Select label" />
+		<Select dimension="small" label="Select label" placeholder="Placeholder">
+			<Option value="1">Option 1</Option>
+			<Option value="2">Option 2</Option>
+		</Select>
 	</div>
 {/snippet}
 
@@ -75,20 +107,43 @@
 {/snippet}
 
 {#snippet controls()}
-	<Select bind:value={dimension} label="Size" helperText={helperTextSelectSizes}>
+	<Select bind:value={dimension} label="Select size" helperText={helperTextSelectSizes}>
 		<Option value="default">Default</Option>
 		<Option value="large">Large</Option>
 		<Option value="compact">Compact</Option>
 		<Option value="small">Small</Option>
 	</Select>
-	<Input bind:value={label} label="Add label" />
+	<Select bind:value={layout} label="Layout">
+		<Option value="vertical">Vertical</Option>
+		<Option value="horizontal">Horizontal</Option>
+	</Select>
+	<Switch bind:checked={withLabel} label="With label" />
+	{#if withLabel}
+		<Input bind:value={label} label="Add label" />
+	{/if}
+	<Switch bind:checked={withHelperText} label="With helper text" />
+	{#if withHelperText}
+		<Input bind:value={optionalHelperText} label="Add helper text" />
+	{/if}
+	<Switch bind:checked={withPlaceholder} label="With placeholder" />
+	{#if withPlaceholder}
+		<Input bind:value={placeholder} label="Add placeholder" />
+	{/if}
 {/snippet}
-
+{#snippet helperText()}
+	{optionalHelperText}
+{/snippet}
 {#snippet preview()}
 	<TabBar dimension="small">
 		<TabContent value="Preview">
 			<div class="preview-tabs preview-tab">
-				<Select {dimension} {label}>
+				<Select
+					{dimension}
+					{layout}
+					label={withLabel ? label : undefined}
+					helperText={withHelperText ? helperText : undefined}
+					placeholder={withPlaceholder ? placeholder : undefined}
+				>
 					<Option value="1">Option 1</Option>
 					<Option value="2">Option 2</Option>
 					<Option value="3">Option 3</Option>
@@ -126,7 +181,7 @@
 
 <ComponentTemplate
 	name="Select"
-	tagline="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae, eveniet."
+	tagline="Select components allow people to choose one option from a dropdown list."
 	{description}
 	{examples}
 	{controls}
