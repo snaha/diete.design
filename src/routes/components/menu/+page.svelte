@@ -52,22 +52,37 @@
 	</Typography>
 {/snippet}
 
+{#snippet options()}
+	<MenuItem>Item 1</MenuItem>
+	<MenuItem>Item 2</MenuItem>
+	<MenuItem>Item 3</MenuItem>
+	<MenuItem>Item 4</MenuItem>
+{/snippet}
+
 {#snippet examples()}
 	<div class="example-row">
 		<Typography variant="small" bold>1. Default size menu</Typography>
-		<MenuTitle content="Menu-title" dimension="default" />
+		<MenuTitle content="Menu-title" dimension="default">
+			{@render options()}
+		</MenuTitle>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>2. Large size menu</Typography>
-		<MenuTitle content="Menu-title" dimension="large" />
+		<MenuTitle content="Menu-title" dimension="large">
+			{@render options()}
+		</MenuTitle>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>3. Compact size menu</Typography>
-		<MenuTitle content="Menu-title" dimension="compact" />
+		<MenuTitle content="Menu-title" dimension="compact">
+			{@render options()}
+		</MenuTitle>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>4. Small size menu</Typography>
-		<MenuTitle content="Menu-title" dimension="small" />
+		<MenuTitle content="Menu-title" dimension="small">
+			{@render options()}
+		</MenuTitle>
 	</div>
 {/snippet}
 
@@ -91,10 +106,7 @@
 		<TabContent value="Preview">
 			<div class="preview-tabs preview-tab">
 				<MenuTitle {content} {dimension}>
-					<MenuItem>Item 1</MenuItem>
-					<MenuItem>Item 2</MenuItem>
-					<MenuItem>Item 3</MenuItem>
-					<MenuItem>Item 4</MenuItem>
+					{@render options()}
 				</MenuTitle>
 			</div>
 		</TabContent>
@@ -123,7 +135,7 @@
 
 <ComponentTemplate
 	name="Menu"
-	tagline="Choose one of 4 available sizes"
+	tagline="Menus allow people to reveal and access additional options or actions."
 	{description}
 	{examples}
 	{controls}
