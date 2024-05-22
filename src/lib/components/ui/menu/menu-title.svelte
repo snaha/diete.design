@@ -61,7 +61,7 @@
 	})
 </script>
 
-<div class="root {dimension} {className}" {...restProps}>
+<div class="root {dimension} {className}" {...restProps} onclick={() => open = !open} role="menuitem" tabindex={-1}>
 	<input type="checkbox" class:focus id={labelFor} bind:checked={open} {disabled} />
 	<div class="wrapper" class:hover class:active>
 		<label class="title" for={labelFor}>
@@ -87,6 +87,7 @@
 		flex-direction: column;
 		width: 100%;
 		color: var(--colors-ultra-high);
+		cursor: pointer;
 
 		.wrapper {
 			display: flex;
