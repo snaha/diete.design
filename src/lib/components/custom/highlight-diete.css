@@ -35,6 +35,7 @@ pre code.hljs {
 	display: block;
 	padding: 16px;
 	overflow-x: auto;
+	white-space: break-spaces;
 }
 code.hljs {
 	padding: 3px 5px;
