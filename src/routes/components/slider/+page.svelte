@@ -106,9 +106,9 @@ ${
 	{#if withHelperText}
 		<Input bind:value={optionalHelperText} label="Helper text" />
 	{/if}
-	<Switch bind:checked={withStep} label="With step" />
+	<Switch bind:checked={withStep} label="With steps" />
 	{#if withStep}
-		<Input bind:value={step} label="Number of step" />
+		<Input bind:value={step} label="Number of steps" />
 		<Switch bind:checked={withSnap} label="With snapping" />
 	{/if}
 	<Switch bind:checked={centered} label="Centered" />
