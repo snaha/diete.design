@@ -30,7 +30,6 @@
 		class: className = '',
 		...restProps
 	}: Props = $props()
-	let labelFor = Math.random().toString(16)
 	const store = withMenuStore(dimension, open, disabled)
 	setContext('menu-store', store)
 
@@ -62,7 +61,7 @@
 </script>
 
 <label class="root {dimension} {className}" {...restProps}>
-	<input type="checkbox" class:focus id={labelFor} bind:checked={open} {disabled} />
+	<input type="checkbox" class:focus bind:checked={open} {disabled} />
 	<div class="wrapper" class:hover class:active>
 		<span class="title">
 			<Typography class="content" {element} {variant}>{content}</Typography>
