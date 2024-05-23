@@ -88,7 +88,7 @@
 		</div>
 		<span class="max">{max}</span>
 	</div>
-	{#if helperText}
+	{#if helperText && layout === 'vertical'}
 		<div class="helper-text">
 			{@render helperText()}
 		</div>
