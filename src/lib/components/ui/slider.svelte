@@ -30,7 +30,7 @@
 		active,
 		focus,
 		snap = false,
-		value = $bindable(),
+		value = $bindable(min),
 		helperText,
 		children,
 		...restProps
