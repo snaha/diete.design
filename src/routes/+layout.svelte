@@ -27,6 +27,7 @@
 			'/components/input': 'Input',
 			'/components/menu': 'Menu',
 			'/components/radio': 'Radio',
+			'/components/select': 'Select',
 			'/components/slider': 'Slider',
 			'/components/switch': 'Switch',
 		},
