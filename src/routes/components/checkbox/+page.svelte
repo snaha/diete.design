@@ -65,12 +65,8 @@ import Checkbox from '$lib/components/ui/checkbox.svelte'
 	</div>
 {/snippet}
 
-{#snippet helperTextCheckboxSizes()}
-	Learn more about button size: <a href="#about-sizes">About sizes</a>
-{/snippet}
-
 {#snippet controls()}
-	<Select bind:value={dimension} label="Button size" helperText={helperTextCheckboxSizes}>
+	<Select bind:value={dimension} label="Button size">
 		<Option value="default">Default</Option>
 		<Option value="large">Large</Option>
 		<Option value="compact">Compact</Option>
