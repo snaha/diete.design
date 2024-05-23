@@ -118,8 +118,8 @@
 
 				<section id="footer">
 					<Typography>
-						Made by diete. Source code is available on <a
-							href="https://github.com/diete-design/diete.design">Github</a
+						Source code is available on <a href="https://github.com/diete-design/diete.design"
+							>Github</a
 						>.
 					</Typography>
 				</section>
