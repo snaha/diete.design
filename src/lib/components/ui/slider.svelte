@@ -78,14 +78,11 @@
 			<div class="slider-progress"></div>
 			<div class="slider-progress-centered"></div>
 			{#if step}
+				{@const stepCount = max - min / step}
 				<div class="slider-tick-container">
 					<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-					{#each Array.from({ length: (max - min) / step + 1 }) as _, i}
-						{#if i === (max - min) / step / 2 && centered}
-							<span class="tick__center"></span>
-						{:else}
-							<span class="tick"></span>
-						{/if}
+					{#each Array.from({ length: stepCount + 1 }) as _, i}
+						<span class="tick" class:hidden={i === stepCount / 2 && centered}></span>
 					{/each}
 				</div>
 			{/if}
@@ -329,7 +326,7 @@
 			width: 0.125rem;
 			height: 1.5rem;
 		}
-		.__center {
+		.hidden {
 			opacity: 0;
 		}
 	}
