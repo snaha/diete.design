@@ -61,15 +61,15 @@
 	})
 </script>
 
-<div class="root {dimension} {className}" {...restProps}>
+<label class="root {dimension} {className}" {...restProps}>
 	<input type="checkbox" class:focus id={labelFor} bind:checked={open} {disabled} />
 	<div class="wrapper" class:hover class:active>
-		<label class="title" for={labelFor}>
+		<span class="title">
 			<Typography class="content" {element} {variant}>{content}</Typography>
-		</label>
-		<label class="icon" for={labelFor}>
+		</span>
+		<span class="icon">
 			<ChevronDown size={dimension === 'small' ? 16 : 24} />
-		</label>
+		</span>
 	</div>
 	{#if children}
 		<div class="panel">
@@ -78,13 +78,14 @@
 			</div>
 		</div>
 	{/if}
-</div>
+</label>
 
 <style lang="postcss">
 	.root {
 		display: flex;
 		position: relative;
 		flex-direction: column;
+		cursor: pointer;
 		width: 100%;
 		color: var(--colors-ultra-high);
 
@@ -104,7 +105,7 @@
 				&:active,
 				&.active {
 					background: var(--colors-low);
-					label {
+					span {
 						color: var(--colors-high);
 						:global(.content) {
 							color: var(--colors-high);
@@ -119,7 +120,7 @@
 				outline: 4px solid var(--colors-top);
 				outline-offset: -4px;
 				background: var(--colors-base);
-				label {
+				span {
 					color: var(--colors-top);
 					:global(.content) {
 						color: var(--colors-top);
@@ -136,9 +137,6 @@
 			justify-content: center;
 			align-items: center;
 			transition: transform 0.3s ease-in-out;
-		}
-		label {
-			cursor: pointer;
 		}
 		input[type='checkbox'] {
 			position: absolute;
@@ -160,7 +158,7 @@
 			&:checked + .wrapper > .icon {
 				transform: rotate(-180deg);
 			}
-			&:disabled + .wrapper > label {
+			&:disabled + .wrapper > span {
 				opacity: 0.25;
 				cursor: not-allowed;
 			}
