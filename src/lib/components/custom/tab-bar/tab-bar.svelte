@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { setContext, type Snippet } from 'svelte'
 	import { withTabStore, type TabStore } from './tab-store.svelte'
-	import { Button } from '$lib/components'
+	import Button from '$lib/components/ui/button.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Props = {

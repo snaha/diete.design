@@ -11,7 +11,7 @@
 	import Switch from '$lib/components/ui/switch.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
 	import { ColorPalette, ArrowLeft } from 'carbon-icons-svelte'
-	import { Button } from '$lib/components'
+	import Button from '$lib/components/ui/button.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
