@@ -16,9 +16,14 @@
 
 <style lang="postcss">
 	.vertical-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		display: flex;
+		flex-wrap: wrap;
 		gap: 16px;
-		max-width: inherit;
+
+		:global(section) {
+			flex: 1;
+			box-sizing: border-box;
+			min-width: 320px;
+		}
 	}
 </style>

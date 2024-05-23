@@ -24,8 +24,11 @@
 		'Basic components': {
 			'/components/button': 'Button',
 			'/components/checkbox': 'Checkbox',
+			'/components/input': 'Input',
+			'/components/menu': 'Menu',
 			'/components/radio': 'Radio',
 			'/components/select': 'Select',
+			'/components/slider': 'Slider',
 			'/components/switch': 'Switch',
 		},
 	}

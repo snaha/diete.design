@@ -45,7 +45,6 @@
 </VerticalContainer>
 
 <hr />
-
 <section id="use">
 	<Typography class="title" variant="h4" bold>Use</Typography>
 	<VerticalContainer>
@@ -63,9 +62,7 @@
 
 <section id="implement">
 	<Typography class="title" variant="h4" bold>Implement</Typography>
-	<VerticalContainer>
-		{@render implement()}
-	</VerticalContainer>
+	{@render implement()}
 </section>
 
 <hr />
@@ -94,7 +91,7 @@
 		flex-direction: column;
 		margin-bottom: var(--double-padding);
 		font-family: var(--font-family-sans-serif);
-		:global(.title) {
+		& > :global(.title) {
 			margin-bottom: var(--double-padding);
 		}
 	}
