@@ -102,12 +102,8 @@ ${
 	</div>
 {/snippet}
 
-{#snippet helperTextSelectSizes()}
-	Learn more about select size: <a href="#about-sizes">About sizes</a>
-{/snippet}
-
 {#snippet controls()}
-	<Select bind:value={dimension} label="Select size" helperText={helperTextSelectSizes}>
+	<Select bind:value={dimension} label="Select size">
 		<Option value="default">Default</Option>
 		<Option value="large">Large</Option>
 		<Option value="compact">Compact</Option>

@@ -61,12 +61,8 @@
 	</div>
 {/snippet}
 
-{#snippet helperTextSwitchSize()}
-	Learn more about switch size: <a href="#about-sizes">About sizes</a>
-{/snippet}
-
 {#snippet controls()}
-	<Select bind:value={dimension} label="Switch size" helperText={helperTextSwitchSize}>
+	<Select bind:value={dimension} label="Switch size">
 		<Option value="default">Default</Option>
 		<Option value="large">Large</Option>
 		<Option value="compact">Compact</Option>
