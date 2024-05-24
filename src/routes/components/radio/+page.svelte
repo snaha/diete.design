@@ -151,25 +151,16 @@
 {/snippet}
 
 {#snippet preview()}
-	<TabBar dimension="small">
-		<TabContent value="Preview">
-			<div class="preview-tabs preview-tab">
-				<RadioGroup
-					{dimension}
-					{layout}
-					name="rb"
-					helperText={withHelperText ? helperText : undefined}
-					label={withLabel ? label : undefined}
-				>
-					<Radio>Choice 1</Radio>
-					<Radio>Choice 2</Radio>
-				</RadioGroup>
-			</div>
-		</TabContent>
-		<TabContent value="Svelte">
-			<Code language="svelte" code={useCode} class="preview-tab" />
-		</TabContent>
-	</TabBar>
+	<RadioGroup
+		{dimension}
+		{layout}
+		name="rb"
+		helperText={withHelperText ? helperText : undefined}
+		label={withLabel ? label : undefined}
+	>
+		<Radio>Choice 1</Radio>
+		<Radio>Choice 2</Radio>
+	</RadioGroup>
 {/snippet}
 
 {#snippet implement()}
@@ -197,20 +188,11 @@
 	{examples}
 	{controls}
 	{preview}
+	{useCode}
 	{implement}
 />
 
 <style lang="postcss">
-	.preview-tabs {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--colors-ultra-low);
-	}
-	:global(.preview-tab) {
-		height: 288px;
-	}
 	.example-row {
 		display: flex;
 		flex: 1;

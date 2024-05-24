@@ -2,6 +2,9 @@
 	import Typography from '$lib/components/ui/typography.svelte'
 	import VerticalContainer from '$lib/components/custom/vertical-container.svelte'
 	import type { Snippet } from 'svelte'
+	import TabBar from './tab-bar/tab-bar.svelte'
+	import TabContent from './tab-bar/tab-content.svelte'
+	import Code from './code.svelte'
 
 	type Props = {
 		name: string
@@ -10,6 +13,7 @@
 		examples: Snippet
 		controls: Snippet
 		preview: Snippet
+		useCode: string
 		implement: Snippet
 		choose?: Snippet
 		sizes?: Snippet
@@ -22,6 +26,7 @@
 		examples,
 		controls,
 		preview,
+		useCode,
 		implement,
 		choose,
 		sizes,
@@ -53,7 +58,14 @@
 		</section>
 
 		<section class="preview">
-			{@render preview()}
+			<TabBar dimension="small">
+				<TabContent value="Preview">
+					<div class="preview-tab">
+						{@render preview()}
+					</div>
+				</TabContent>
+				<TabContent value="Svelte"><Code language="svelte" code={useCode} /></TabContent>
+			</TabBar>
 		</section>
 	</VerticalContainer>
 </section>
@@ -109,6 +121,15 @@
 	}
 	.preview {
 		flex: 1;
+	}
+	.preview-tab {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		border: transparent 1px solid;
+		background-color: var(--colors-ultra-low);
+		height: 288px;
 	}
 	.controls {
 		display: flex;
