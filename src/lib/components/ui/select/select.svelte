@@ -102,6 +102,7 @@
 			class:active
 			class:focus
 			class:focused
+			class:open={store.open}
 			onclick={() => {
 				if (!store.open)
 					setTimeout(() => {
@@ -220,14 +221,15 @@
 		flex-grow: 1;
 		appearance: none;
 		cursor: pointer;
-		border: 1px solid var(--colors-ultra-high);
+		border: 1px solid var(--colors-low);
 		border-radius: 0.25rem;
-		background: transparent;
+		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 		&::placeholder {
 			opacity: 0.5;
 			color: var(--colors-ultra-high);
 		}
+
 		&:hover:not(:disabled),
 		&:hover:not(:disabled),
 		&.hover:not(:disabled) {
@@ -236,16 +238,6 @@
 			color: var(--colors-top);
 			& + .wrapper > button {
 				color: var(--colors-top);
-			}
-		}
-		&:active:not(:disabled),
-		&.active:not(:disabled) {
-			outline: none;
-			border: 1px solid var(--colors-high);
-			background: var(--colors-low);
-			color: var(--colors-high);
-			& + .wrapper > button {
-				color: var(--colors-high);
 			}
 		}
 		&:focus:not(:disabled),
@@ -258,6 +250,26 @@
 			color: var(--colors-top);
 			& + .wrapper > button {
 				color: var(--colors-top);
+			}
+		}
+		&.open:not(:disabled) {
+			background: var(--colors-top);
+			color: var(--colors-base);
+			&::placeholder {
+				color: var(--colors-base);
+			}
+			& + .wrapper > button {
+				color: var(--colors-base);
+			}
+		}
+		&:active:not(:disabled),
+		&.active:not(:disabled) {
+			outline: none;
+			border: 1px solid var(--colors-high);
+			background: var(--colors-low);
+			color: var(--colors-high);
+			& + .wrapper > button {
+				color: var(--colors-high);
 			}
 		}
 		&:disabled {
