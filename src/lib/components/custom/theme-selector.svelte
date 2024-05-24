@@ -9,6 +9,33 @@
 	// without this line the dropdown does not appear...
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const mode = $derived(theme.mode)
+	let invalidColor = $state(false)
+
+	function formatHexColor() {
+		let timeout
+		clearTimeout(timeout)
+		timeout = setTimeout(() => {
+			// Odstranění případného znaku #
+			let hex = theme.baseColor
+			hex = hex.replace(/^#/, '')
+
+			// Pokud je hex ve zkráceném formátu, rozšíříme jej
+			if (hex.length === 3) {
+				hex = hex.replace(/(.)/g, '$1$1')
+			}
+
+			return (theme.baseColor = '#' + hex)
+		}, 3000)
+	}
+	function validateColor() {
+		const hexRegex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i
+		formatHexColor()
+		if (!hexRegex.test(theme.baseColor)) {
+			invalidColor = true
+		} else {
+			invalidColor = false
+		}
+	}
 </script>
 
 <div class="theme-selector">
@@ -20,13 +47,17 @@
 		<Radio value={'dark'}>Dark</Radio>
 		<Radio value={'system'}>Auto</Radio>
 	</RadioGroup>
-
+	{#snippet error()}
+		Invalid hex format color
+	{/snippet}
 	<Input
 		bind:value={theme.baseColor}
 		type="text"
+		oninput={validateColor}
 		placeholder="Accent color (hex)"
 		label="Accent color (hex)"
 		controls={true}
+		error={invalidColor ? error : undefined}
 	>
 		{#snippet buttons()}
 			<Button variant="secondary" style="padding: 0;">
