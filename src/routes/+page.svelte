@@ -30,6 +30,7 @@
 				<Button hover>Strong hover</Button>
 				<Button active>Strong active</Button>
 				<Button focus>Strong focus</Button>
+				<Button focus active>Strong focus active</Button>
 				<Button disabled>Strong disabled</Button>
 			</div>
 			<div class="col">
@@ -37,6 +38,7 @@
 				<Button hover><Checkmark size={24} /></Button>
 				<Button active><Checkmark size={24} /></Button>
 				<Button focus><Checkmark size={24} /></Button>
+				<Button focus active><Checkmark size={24} /></Button>
 				<Button disabled><Checkmark size={24} /></Button>
 			</div>
 			<div class="col">
@@ -44,6 +46,7 @@
 				<Button hover><Checkmark size={24} />Strong hover</Button>
 				<Button active><Checkmark size={24} />Strong active</Button>
 				<Button focus><Checkmark size={24} />Strong focus</Button>
+				<Button focus active><Checkmark size={24} />Strong focus active</Button>
 				<Button disabled><Checkmark size={24} />Strong disabled</Button>
 			</div>
 			<div class="col">
@@ -51,6 +54,7 @@
 				<Button hover>Strong hover<ArrowRight size={24} /></Button>
 				<Button active>Strong active<ArrowRight size={24} /></Button>
 				<Button focus>Strong focus<ArrowRight size={24} /></Button>
+				<Button focus active>Strong focus active<ArrowRight size={24} /></Button>
 				<Button disabled>Strong disabled<ArrowRight size={24} /></Button>
 			</div>
 			<div class="col">
@@ -58,6 +62,7 @@
 				<Button variant="secondary" hover>Secondary hover</Button>
 				<Button variant="secondary" active>Secondary active</Button>
 				<Button variant="secondary" focus>Secondary focus</Button>
+				<Button variant="secondary" focus active>Secondary focus active</Button>
 				<Button variant="secondary" disabled>Secondary disabled</Button>
 			</div>
 			<div class="col">
@@ -65,6 +70,7 @@
 				<Button variant="ghost" hover>Ghost hover</Button>
 				<Button variant="ghost" active>Ghost active</Button>
 				<Button variant="ghost" focus>Ghost focus</Button>
+				<Button variant="ghost" focus active>Ghost focus active</Button>
 				<Button variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
@@ -72,6 +78,7 @@
 				<Button variant="solid" hover>Solid hover</Button>
 				<Button variant="solid" active>Solid active</Button>
 				<Button variant="solid" focus>Solid focus</Button>
+				<Button variant="solid" focus active>Solid focus active</Button>
 				<Button variant="solid" disabled>Solid disabled</Button>
 			</div>
 			<div class="col">
@@ -79,6 +86,7 @@
 				<Button variant="darkoverlay" hover>Dark overlay hover</Button>
 				<Button variant="darkoverlay" active>Dark overlay active</Button>
 				<Button variant="darkoverlay" focus>Dark overlay focus</Button>
+				<Button variant="darkoverlay" focus active>Dark overlay focus active</Button>
 				<Button variant="darkoverlay" disabled>Dark overlay disabled</Button>
 			</div>
 			<div class="col">
@@ -86,6 +94,7 @@
 				<Button variant="lightoverlay" hover>Light overlay hover</Button>
 				<Button variant="lightoverlay" active>Light overlay active</Button>
 				<Button variant="lightoverlay" focus>Light overlay focus</Button>
+				<Button variant="lightoverlay" focus active>Light overlay focus active</Button>
 				<Button variant="lightoverlay" disabled>Light overlay disabled</Button>
 			</div>
 		</div>
@@ -95,6 +104,7 @@
 				<Button dimension="large" hover>Strong hover</Button>
 				<Button dimension="large" active>Strong active</Button>
 				<Button dimension="large" focus>Strong focus</Button>
+				<Button dimension="large" focus active>Strong focus active</Button>
 				<Button dimension="large" disabled>Strong disabled</Button>
 			</div>
 			<div class="col">
@@ -102,6 +112,7 @@
 				<Button dimension="large" hover><Checkmark size={32} /></Button>
 				<Button dimension="large" active><Checkmark size={32} /></Button>
 				<Button dimension="large" focus><Checkmark size={32} /></Button>
+				<Button dimension="large" focus active><Checkmark size={32} /></Button>
 				<Button dimension="large" disabled><Checkmark size={32} /></Button>
 			</div>
 			<div class="col">
@@ -109,6 +120,7 @@
 				<Button dimension="large" hover><Checkmark size={32} />Strong hover</Button>
 				<Button dimension="large" active><Checkmark size={32} />Strong active</Button>
 				<Button dimension="large" focus><Checkmark size={32} />Strong focus</Button>
+				<Button dimension="large" focus active><Checkmark size={32} />Strong focus active</Button>
 				<Button dimension="large" disabled><Checkmark size={32} />Strong disabled</Button>
 			</div>
 			<div class="col">
@@ -116,6 +128,7 @@
 				<Button dimension="large" hover>Strong hover<ArrowRight size={32} /></Button>
 				<Button dimension="large" active>Strong active<ArrowRight size={32} /></Button>
 				<Button dimension="large" focus>Strong focus<ArrowRight size={32} /></Button>
+				<Button dimension="large" focus active>Strong focus active<ArrowRight size={32} /></Button>
 				<Button dimension="large" disabled>Strong disabled<ArrowRight size={32} /></Button>
 			</div>
 			<div class="col">
@@ -123,6 +136,7 @@
 				<Button dimension="large" variant="secondary" hover>Secondary hover</Button>
 				<Button dimension="large" variant="secondary" active>Secondary active</Button>
 				<Button dimension="large" variant="secondary" focus>Secondary focus</Button>
+				<Button dimension="large" variant="secondary" focus active>Secondary focus active</Button>
 				<Button dimension="large" variant="secondary" disabled>Secondary disabled</Button>
 			</div>
 			<div class="col">
@@ -130,6 +144,7 @@
 				<Button dimension="large" variant="ghost" hover>Ghost hover</Button>
 				<Button dimension="large" variant="ghost" active>Ghost active</Button>
 				<Button dimension="large" variant="ghost" focus>Ghost focus</Button>
+				<Button dimension="large" variant="ghost" focus active>Ghost focus active</Button>
 				<Button dimension="large" variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
@@ -137,6 +152,7 @@
 				<Button dimension="large" variant="solid" hover>Solid hover</Button>
 				<Button dimension="large" variant="solid" active>Solid active</Button>
 				<Button dimension="large" variant="solid" focus>Solid focus</Button>
+				<Button dimension="large" variant="solid" focus active>Solid focus active</Button>
 				<Button dimension="large" variant="solid" disabled>Solid disabled</Button>
 			</div>
 			<div class="col">
@@ -144,6 +160,9 @@
 				<Button dimension="large" variant="darkoverlay" hover>Dark overlay hover</Button>
 				<Button dimension="large" variant="darkoverlay" active>Dark overlay active</Button>
 				<Button dimension="large" variant="darkoverlay" focus>Dark overlay focus</Button>
+				<Button dimension="large" variant="darkoverlay" focus active
+					>Dark overlay focus active</Button
+				>
 				<Button dimension="large" variant="darkoverlay" disabled>Dark overlay disabled</Button>
 			</div>
 			<div class="col">
@@ -151,6 +170,9 @@
 				<Button dimension="large" variant="lightoverlay" hover>Light overlay hover</Button>
 				<Button dimension="large" variant="lightoverlay" active>Light overlay active</Button>
 				<Button dimension="large" variant="lightoverlay" focus>Light overlay focus</Button>
+				<Button dimension="large" variant="lightoverlay" focus active
+					>Light overlay focus active</Button
+				>
 				<Button dimension="large" variant="lightoverlay" disabled>Light overlay disabled</Button>
 			</div>
 		</div>
@@ -160,6 +182,7 @@
 				<Button dimension="compact" hover>Strong hover</Button>
 				<Button dimension="compact" active>Strong active</Button>
 				<Button dimension="compact" focus>Strong focus</Button>
+				<Button dimension="compact" focus active>Strong focus active</Button>
 				<Button dimension="compact" disabled>Strong disabled</Button>
 			</div>
 			<div class="col">
@@ -167,6 +190,7 @@
 				<Button dimension="compact" hover><Checkmark size={24} /></Button>
 				<Button dimension="compact" active><Checkmark size={24} /></Button>
 				<Button dimension="compact" focus><Checkmark size={24} /></Button>
+				<Button dimension="compact" focus active><Checkmark size={24} /></Button>
 				<Button dimension="compact" disabled><Checkmark size={24} /></Button>
 			</div>
 			<div class="col">
@@ -174,6 +198,7 @@
 				<Button dimension="compact" hover><Checkmark size={24} />Strong hover</Button>
 				<Button dimension="compact" active><Checkmark size={24} />Strong active</Button>
 				<Button dimension="compact" focus><Checkmark size={24} />Strong focus</Button>
+				<Button dimension="compact" focus active><Checkmark size={24} />Strong focus active</Button>
 				<Button dimension="compact" disabled><Checkmark size={24} />Strong disabled</Button>
 			</div>
 			<div class="col">
@@ -181,6 +206,8 @@
 				<Button dimension="compact" hover>Strong hover<ArrowRight size={24} /></Button>
 				<Button dimension="compact" active>Strong active<ArrowRight size={24} /></Button>
 				<Button dimension="compact" focus>Strong focus<ArrowRight size={24} /></Button>
+				<Button dimension="compact" focus active>Strong focus active<ArrowRight size={24} /></Button
+				>
 				<Button dimension="compact" disabled>Strong disabled<ArrowRight size={24} /></Button>
 			</div>
 			<div class="col">
@@ -188,6 +215,7 @@
 				<Button dimension="compact" variant="secondary" hover>Secondary hover</Button>
 				<Button dimension="compact" variant="secondary" active>Secondary active</Button>
 				<Button dimension="compact" variant="secondary" focus>Secondary focus</Button>
+				<Button dimension="compact" variant="secondary" focus active>Secondary focus active</Button>
 				<Button dimension="compact" variant="secondary" disabled>Secondary disabled</Button>
 			</div>
 			<div class="col">
@@ -195,6 +223,7 @@
 				<Button dimension="compact" variant="ghost" hover>Ghost hover</Button>
 				<Button dimension="compact" variant="ghost" active>Ghost active</Button>
 				<Button dimension="compact" variant="ghost" focus>Ghost focus</Button>
+				<Button dimension="compact" variant="ghost" focus active>Ghost focus active</Button>
 				<Button dimension="compact" variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
@@ -202,6 +231,7 @@
 				<Button dimension="compact" variant="solid" hover>Solid hover</Button>
 				<Button dimension="compact" variant="solid" active>Solid active</Button>
 				<Button dimension="compact" variant="solid" focus>Solid focus</Button>
+				<Button dimension="compact" variant="solid" focus active>Solid focus active</Button>
 				<Button dimension="compact" variant="solid" disabled>Solid disabled</Button>
 			</div>
 			<div class="col">
@@ -209,6 +239,9 @@
 				<Button dimension="compact" variant="darkoverlay" hover>Dark overlay hover</Button>
 				<Button dimension="compact" variant="darkoverlay" active>Dark overlay active</Button>
 				<Button dimension="compact" variant="darkoverlay" focus>Dark overlay focus</Button>
+				<Button dimension="compact" variant="darkoverlay" focus active
+					>Dark overlay focus active</Button
+				>
 				<Button dimension="compact" variant="darkoverlay" disabled>Dark overlay disabled</Button>
 			</div>
 			<div class="col">
@@ -216,6 +249,9 @@
 				<Button dimension="compact" variant="lightoverlay" hover>Light overlay hover</Button>
 				<Button dimension="compact" variant="lightoverlay" active>Light overlay active</Button>
 				<Button dimension="compact" variant="lightoverlay" focus>Light overlay focus</Button>
+				<Button dimension="compact" variant="lightoverlay" focus active
+					>Light overlay focus active</Button
+				>
 				<Button dimension="compact" variant="lightoverlay" disabled>Light overlay disabled</Button>
 			</div>
 		</div>
@@ -225,13 +261,15 @@
 				<Button dimension="small" hover>Strong hover</Button>
 				<Button dimension="small" active>Strong active</Button>
 				<Button dimension="small" focus>Strong focus</Button>
+				<Button dimension="small" focus active>Strong focus active</Button>
 				<Button dimension="small" disabled>Strong disabled</Button>
 			</div>
 			<div class="col">
 				<Button dimension="small"><Checkmark size={16} /></Button>
-				<Button dimension="small"><Checkmark size={16} />Strong</Button>
+				<Button dimension="small" hover><Checkmark size={16} /></Button>
 				<Button dimension="small" active><Checkmark size={16} /></Button>
-				<Button dimension="small" disabled><Checkmark size={16} /></Button>
+				<Button dimension="small" focus><Checkmark size={16} /></Button>
+				<Button dimension="small" focus active><Checkmark size={16} /></Button>
 				<Button dimension="small" disabled><Checkmark size={16} /></Button>
 			</div>
 			<div class="col">
@@ -239,6 +277,7 @@
 				<Button dimension="small" hover><Checkmark size={16} />Strong hover</Button>
 				<Button dimension="small" active><Checkmark size={16} />Strong active</Button>
 				<Button dimension="small" focus><Checkmark size={16} />Strong focus</Button>
+				<Button dimension="small" focus active><Checkmark size={16} />Strong focus active</Button>
 				<Button dimension="small" disabled><Checkmark size={16} />Strong disabled</Button>
 			</div>
 			<div class="col">
@@ -246,6 +285,7 @@
 				<Button dimension="small" hover>Strong hover<ArrowRight size={16} /></Button>
 				<Button dimension="small" active>Strong active<ArrowRight size={16} /></Button>
 				<Button dimension="small" focus>Strong focus<ArrowRight size={16} /></Button>
+				<Button dimension="small" focus active>Strong focus active<ArrowRight size={16} /></Button>
 				<Button dimension="small" disabled>Strong disabled<ArrowRight size={16} /></Button>
 			</div>
 			<div class="col">
@@ -253,6 +293,7 @@
 				<Button dimension="small" variant="secondary" hover>Secondary hover</Button>
 				<Button dimension="small" variant="secondary" active>Secondary active</Button>
 				<Button dimension="small" variant="secondary" focus>Secondary focus</Button>
+				<Button dimension="small" variant="secondary" focus active>Secondary focus active</Button>
 				<Button dimension="small" variant="secondary" disabled>Secondary disabled</Button>
 			</div>
 			<div class="col">
@@ -260,6 +301,7 @@
 				<Button dimension="small" variant="ghost" hover>Ghost hover</Button>
 				<Button dimension="small" variant="ghost" active>Ghost active</Button>
 				<Button dimension="small" variant="ghost" focus>Ghost focus</Button>
+				<Button dimension="small" variant="ghost" focus active>Ghost focus active</Button>
 				<Button dimension="small" variant="ghost" disabled>Ghost disabled</Button>
 			</div>
 			<div class="col">
@@ -267,6 +309,7 @@
 				<Button dimension="small" variant="solid" hover>Solid hover</Button>
 				<Button dimension="small" variant="solid" active>Solid active</Button>
 				<Button dimension="small" variant="solid" focus>Solid focus</Button>
+				<Button dimension="small" variant="solid" focus active>Solid focus active</Button>
 				<Button dimension="small" variant="solid" disabled>Solid disabled</Button>
 			</div>
 			<div class="col">
@@ -274,6 +317,9 @@
 				<Button dimension="small" variant="darkoverlay" hover>Dark overlay hover</Button>
 				<Button dimension="small" variant="darkoverlay" active>Dark overlay active</Button>
 				<Button dimension="small" variant="darkoverlay" focus>Dark overlay focus</Button>
+				<Button dimension="small" variant="darkoverlay" focus active
+					>Dark overlay focus active</Button
+				>
 				<Button dimension="small" variant="darkoverlay" disabled>Dark overlay disabled</Button>
 			</div>
 			<div class="col">
@@ -281,6 +327,9 @@
 				<Button dimension="small" variant="lightoverlay" hover>Light overlay hover</Button>
 				<Button dimension="small" variant="lightoverlay" active>Light overlay active</Button>
 				<Button dimension="small" variant="lightoverlay" focus>Light overlay focus</Button>
+				<Button dimension="small" variant="lightoverlay" focus active
+					>Light overlay focus active</Button
+				>
 				<Button dimension="small" variant="lightoverlay" disabled>Light overlay disabled</Button>
 			</div>
 		</div>

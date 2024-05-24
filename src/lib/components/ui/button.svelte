@@ -133,15 +133,22 @@
 			color: var(--colors-top);
 		}
 
+		&:focus-visible:not(:disabled):active,
+		&.focus:not(:disabled).active {
+			outline: none;
+			background: var(--colors-top);
+			color: var(--colors-base);
+		}
+
 		&:hover:not(:disabled),
 		&.hover:not(:disabled) {
-			background: var(--colors-top);
+			background: var(--colors-high);
 			color: var(--colors-base);
 		}
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
-			background: var(--colors-high);
+			background: var(--colors-top);
 			color: var(--colors-base);
 		}
 	}
@@ -159,18 +166,25 @@
 			color: var(--colors-top);
 		}
 
+		&:focus-visible:not(:disabled):active,
+		&.focus:not(:disabled).active {
+			outline: none;
+			background: var(--colors-top);
+			color: var(--colors-base);
+		}
+
 		&:hover:not(:disabled),
 		&.hover:not(:disabled) {
-			border: 1px solid var(--colors-top);
+			border: 1px solid var(--colors-high);
 			background: var(--colors-low);
-			color: var(--colors-top);
+			color: var(--colors-high);
 		}
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
-			border: 1px solid var(--colors-high);
+			border: 1px solid var(--colors-top);
 			background: var(--colors-low);
-			color: var(--colors-high);
+			color: var(--colors-top);
 		}
 	}
 	.ghost {
@@ -186,20 +200,27 @@
 			color: var(--colors-top);
 		}
 
+		&:focus-visible:not(:disabled):active,
+		&.focus:not(:disabled).active {
+			outline: none;
+			background: var(--colors-top);
+			color: var(--colors-base);
+		}
+
 		&:hover:not(:disabled),
 		&.hover:not(:disabled) {
 			background: var(--colors-low);
-			color: var(--colors-top);
+			color: var(--colors-high);
 		}
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
 			background: var(--colors-low);
-			color: var(--colors-high);
+			color: var(--colors-top);
 		}
 	}
 	.solid {
-		border: 1px solid transparent;
+		border: 1px solid var(--colors-low);
 		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 
@@ -211,16 +232,23 @@
 			color: var(--colors-top);
 		}
 
+		&:focus-visible:not(:disabled):active,
+		&.focus:not(:disabled).active {
+			outline: none;
+			background: var(--colors-top);
+			color: var(--colors-base);
+		}
+
 		&:hover:not(:disabled),
 		&.hover:not(:disabled) {
 			background: var(--colors-low);
-			color: var(--colors-top);
+			color: var(--colors-high);
 		}
 
 		&:active:not(:disabled),
 		&.active:not(:disabled) {
 			background: var(--colors-low);
-			color: var(--colors-high);
+			color: var(--colors-top);
 		}
 	}
 	.darkoverlay {
@@ -234,6 +262,13 @@
 			outline-offset: -4px;
 			background: var(--colors-base);
 			color: var(--colors-top);
+		}
+
+		&:focus-visible:not(:disabled):active,
+		&.focus:not(:disabled).active {
+			outline: none;
+			background: var(--colors-top);
+			color: var(--colors-base);
 		}
 
 		&:hover:not(:disabled),
@@ -260,6 +295,13 @@
 			outline-offset: -4px;
 			background: var(--colors-base);
 			color: var(--colors-top);
+		}
+
+		&:focus-visible:not(:disabled):active,
+		&.focus:not(:disabled).active {
+			outline: none;
+			background: var(--colors-top);
+			color: var(--colors-base);
 		}
 
 		&:hover:not(:disabled),
