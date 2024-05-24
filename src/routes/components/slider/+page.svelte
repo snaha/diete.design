@@ -119,26 +119,17 @@ ${
 {/snippet}
 
 {#snippet preview()}
-	<TabBar dimension="small">
-		<TabContent value="Preview">
-			<div class="preview-tabs preview-tab">
-				<Slider
-					{dimension}
-					{layout}
-					helperText={withHelperText ? helperText : undefined}
-					step={withStep ? step : undefined}
-					snap={withSnap ? true : undefined}
-					{centered}
-					bind:value
-				>
-					{label}
-				</Slider>
-			</div>
-		</TabContent>
-		<TabContent value="Svelte"
-			><Code language="svelte" code={useCode} class="preview-tab" /></TabContent
-		>
-	</TabBar>
+	<Slider
+		{dimension}
+		{layout}
+		helperText={withHelperText ? helperText : undefined}
+		step={withStep ? step : undefined}
+		snap={withSnap ? true : undefined}
+		{centered}
+		bind:value
+	>
+		{label}
+	</Slider>
 {/snippet}
 
 {#snippet implement()}
@@ -155,21 +146,11 @@ ${
 	{examples}
 	{controls}
 	{preview}
+	{useCode}
 	{implement}
 />
 
 <style lang="postcss">
-	.preview-tabs {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--colors-ultra-low);
-		padding: 0 5rem;
-	}
-	:global(.preview-tab) {
-		height: 288px;
-	}
 	.example-row {
 		display: flex;
 		flex: 1;

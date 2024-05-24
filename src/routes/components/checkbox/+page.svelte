@@ -77,16 +77,7 @@ import Checkbox from '$lib/components/ui/checkbox.svelte'
 {/snippet}
 
 {#snippet preview()}
-	<TabBar dimension="small">
-		<TabContent value="Preview">
-			<div class="preview-tabs preview-tab">
-				<Checkbox {dimension} {label} />
-			</div>
-		</TabContent>
-		<TabContent value="Svelte"
-			><Code language="svelte" code={useCode} class="preview-tab" /></TabContent
-		>
-	</TabBar>
+	<Checkbox {dimension} {label} />
 {/snippet}
 
 {#snippet implement()}
@@ -103,20 +94,11 @@ import Checkbox from '$lib/components/ui/checkbox.svelte'
 	{examples}
 	{controls}
 	{preview}
+	{useCode}
 	{implement}
 />
 
 <style lang="postcss">
-	.preview-tabs {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--colors-ultra-low);
-	}
-	:global(.preview-tab) {
-		height: 288px;
-	}
 	.example-row {
 		display: flex;
 		flex: 1;

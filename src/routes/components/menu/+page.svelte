@@ -98,18 +98,9 @@
 {/snippet}
 
 {#snippet preview()}
-	<TabBar dimension="small">
-		<TabContent value="Preview">
-			<div class="preview-tabs preview-tab">
-				<MenuTitle {content} {dimension}>
-					{@render options()}
-				</MenuTitle>
-			</div>
-		</TabContent>
-		<TabContent value="Svelte"
-			><Code language="svelte" code={useCode} class="preview-tab" /></TabContent
-		>
-	</TabBar>
+	<MenuTitle {content} {dimension}>
+		{@render options()}
+	</MenuTitle>
 {/snippet}
 
 {#snippet implement()}
@@ -136,20 +127,11 @@
 	{examples}
 	{controls}
 	{preview}
+	{useCode}
 	{implement}
 />
 
 <style lang="postcss">
-	.preview-tabs {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--colors-ultra-low);
-	}
-	:global(.preview-tab) {
-		height: 288px;
-	}
 	.example-row {
 		display: flex;
 		flex: 1;

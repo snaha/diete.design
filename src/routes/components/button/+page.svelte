@@ -170,24 +170,15 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 {/snippet}
 
 {#snippet preview()}
-	<TabBar dimension="small">
-		<TabContent value="Preview">
-			<div class="preview-tabs preview-tab">
-				<Button {variant} {dimension}>
-					{#if leftIcon}
-						<Close size={24} />
-					{/if}
-					Close
-					{#if rightIcon}
-						<Close size={24} />
-					{/if}
-				</Button>
-			</div>
-		</TabContent>
-		<TabContent value="Svelte"
-			><Code language="svelte" code={useCode} class="preview-tab" /></TabContent
-		>
-	</TabBar>
+	<Button {variant} {dimension}>
+		{#if leftIcon}
+			<Close size={24} />
+		{/if}
+		Close
+		{#if rightIcon}
+			<Close size={24} />
+		{/if}
+	</Button>
 {/snippet}
 
 {#snippet implement()}
@@ -204,20 +195,11 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	{examples}
 	{controls}
 	{preview}
+	{useCode}
 	{implement}
 />
 
 <style lang="postcss">
-	.preview-tabs {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--colors-ultra-low);
-	}
-	:global(.preview-tab) {
-		height: 288px;
-	}
 	.example-row {
 		display: flex;
 		flex: 1;

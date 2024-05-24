@@ -130,27 +130,18 @@ ${
 	{optionalHelperText}
 {/snippet}
 {#snippet preview()}
-	<TabBar dimension="small">
-		<TabContent value="Preview">
-			<div class="preview-tabs preview-tab">
-				<Select
-					{dimension}
-					{layout}
-					label={withLabel ? label : undefined}
-					helperText={withHelperText ? helperText : undefined}
-					placeholder={withPlaceholder ? placeholder : undefined}
-				>
-					<Option value="1">Option 1</Option>
-					<Option value="2">Option 2</Option>
-					<Option value="3">Option 3</Option>
-					<Option value="4">Option 4</Option>
-				</Select>
-			</div>
-		</TabContent>
-		<TabContent value="Svelte"
-			><Code language="svelte" code={useCode} class="preview-tab" /></TabContent
-		>
-	</TabBar>
+	<Select
+		{dimension}
+		{layout}
+		label={withLabel ? label : undefined}
+		helperText={withHelperText ? helperText : undefined}
+		placeholder={withPlaceholder ? placeholder : undefined}
+	>
+		<Option value="1">Option 1</Option>
+		<Option value="2">Option 2</Option>
+		<Option value="3">Option 3</Option>
+		<Option value="4">Option 4</Option>
+	</Select>
 {/snippet}
 
 {#snippet implement()}
@@ -182,21 +173,12 @@ ${
 	{examples}
 	{controls}
 	{preview}
+	{useCode}
 	{implement}
 	{sizes}
 />
 
 <style lang="postcss">
-	.preview-tabs {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--colors-ultra-low);
-	}
-	:global(.preview-tab) {
-		height: 288px;
-	}
 	.example-row {
 		display: flex;
 		flex: 1;
