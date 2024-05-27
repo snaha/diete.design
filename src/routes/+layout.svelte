@@ -210,6 +210,7 @@
 		justify-content: center;
 	}
 	.content {
+		flex: 1;
 		margin-bottom: var(--header-size);
 		padding: 0 var(--padding);
 		max-width: var(--max-content-width);
