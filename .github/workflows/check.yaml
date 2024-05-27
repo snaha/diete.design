@@ -14,8 +14,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Use Node.js 20
         uses: actions/setup-node@v4
@@ -24,7 +22,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: Install npm deps
         run: pnpm install --frozen-lockfile
@@ -34,3 +32,9 @@ jobs:
 
       - name: Code linting
         run: pnpm run lint
+
+      # This is a workaround until https://github.com/webpro/knip/issues/565 gets resolved
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
+      - name: Check dependencies and unused files
+        run: bunx --bun knip

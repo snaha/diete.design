@@ -23,7 +23,7 @@
 	}: Props = $props()
 
 	let buttonIcon = $state('copy')
-	let buttonIconTimeout: number | undefined = undefined
+	let buttonIconTimeout: ReturnType<typeof setTimeout> | undefined = undefined
 
 	function onclick() {
 		navigator.clipboard.writeText(code)
