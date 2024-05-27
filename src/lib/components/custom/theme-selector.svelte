@@ -12,29 +12,32 @@
 	let invalidColor = $state(false)
 
 	function formatHexColor() {
-		let timeout
-		clearTimeout(timeout)
-		timeout = setTimeout(() => {
-			// Odstranění případného znaku #
-			let hex = theme.baseColor
-			hex = hex.replace(/^#/, '')
+		let hex = theme.baseColor
+		hex = hex.replace(/^#/, '')
 
-			// Pokud je hex ve zkráceném formátu, rozšíříme jej
-			if (hex.length === 3) {
-				hex = hex.replace(/(.)/g, '$1$1')
-			}
+		if (hex.length === 3) {
+			hex = hex.replace(/(.)/g, '$1$1')
+		}
 
-			return (theme.baseColor = '#' + hex)
-		}, 3000)
+		return (theme.baseColor = '#' + hex)
 	}
 	function validateColor() {
 		const hexRegex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i
-		formatHexColor()
+
+		if (!theme.baseColor.startsWith('#')) {
+			theme.baseColor = '#' + theme.baseColor
+		}
+		let timeout = setTimeout(() => {
+			if (theme.baseColor.length === 4) {
+				formatHexColor()
+			}
+		}, 3000)
 		if (!hexRegex.test(theme.baseColor)) {
 			invalidColor = true
 		} else {
 			invalidColor = false
 		}
+		return () => clearTimeout(timeout)
 	}
 </script>
 
