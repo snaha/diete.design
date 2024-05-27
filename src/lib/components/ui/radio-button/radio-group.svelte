@@ -89,6 +89,7 @@
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
 			border-radius: 0.25rem;
+			background: var(--colors-base);
 		}
 	}
 	.vertical {
