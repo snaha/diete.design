@@ -213,6 +213,7 @@
 		margin-bottom: var(--header-size);
 		padding: 0 var(--padding);
 		max-width: var(--max-content-width);
+		flex: 1;
 	}
 	.header {
 		height: var(--header-size);
