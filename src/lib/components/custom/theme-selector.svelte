@@ -6,10 +6,14 @@
 	import RadioGroup from '../ui/radio-button/radio-group.svelte'
 	import Button from '../ui/button.svelte'
 
-	// without this line the dropdown does not appear...
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const mode = $derived(theme.mode)
+	const colorHexRegex = /^#?[a-f0-9]{6}$/i
+
+	let validHexColor = $derived(colorHexRegex.test(theme.baseColor))
 </script>
+
+{#snippet error()}
+	Invalid hex format color
+{/snippet}
 
 <div class="theme-selector">
 	<RadioGroup bind:value={theme.mode} name="mode" layout="horizontal">
@@ -20,13 +24,13 @@
 		<Radio value={'dark'}>Dark</Radio>
 		<Radio value={'system'}>Auto</Radio>
 	</RadioGroup>
-
 	<Input
 		bind:value={theme.baseColor}
 		type="text"
 		placeholder="Accent color (hex)"
 		label="Accent color (hex)"
 		controls={true}
+		error={validHexColor ? undefined : error}
 	>
 		{#snippet buttons()}
 			<Button variant="secondary" style="padding: 0;">

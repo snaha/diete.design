@@ -77,9 +77,11 @@ export function changeColors(baseColor: string, isDarkMode: boolean) {
 
 	const targetPrecision = 0.001
 
+	const baseColorHex = baseColor.startsWith('#') ? baseColor : `#${baseColor}`
+
 	const colors = isDarkMode ? darkColorVars : lightColorVars
 	colors.forEach(({ name, luminance }) => {
-		const color = getClosestColor(baseColor, luminance, targetPrecision)
+		const color = getClosestColor(baseColorHex, luminance, targetPrecision)
 		document.documentElement.style.setProperty(name, color)
 	})
 
@@ -87,7 +89,7 @@ export function changeColors(baseColor: string, isDarkMode: boolean) {
 
 	darkColors.forEach(({ name, luminance }) => {
 		const darkName = name.replace('--colors', '--colors-dark')
-		const color = getClosestColor(baseColor, luminance, targetPrecision)
+		const color = getClosestColor(baseColorHex, luminance, targetPrecision)
 		document.documentElement.style.setProperty(darkName, color)
 	})
 
@@ -95,15 +97,15 @@ export function changeColors(baseColor: string, isDarkMode: boolean) {
 
 	lightColors.forEach(({ name, luminance }) => {
 		const lightName = name.replace('--colors', '--colors-light')
-		const color = getClosestColor(baseColor, luminance, targetPrecision)
+		const color = getClosestColor(baseColorHex, luminance, targetPrecision)
 		document.documentElement.style.setProperty(lightName, color)
 	})
 
-	const darkOverlay = getClosestColor(baseColor, darkColorVars[0].luminance, targetPrecision)
+	const darkOverlay = getClosestColor(baseColorHex, darkColorVars[0].luminance, targetPrecision)
 	const darkOpacity = Math.round(256 * 0.7).toString(16)
 	document.documentElement.style.setProperty('--colors-dark-overlay', darkOverlay + darkOpacity)
 
-	const lightOverlay = getClosestColor(baseColor, lightColors[0].luminance, targetPrecision)
+	const lightOverlay = getClosestColor(baseColorHex, lightColors[0].luminance, targetPrecision)
 	const lightOpacity = Math.round(256 * 0.7).toString(16)
 	document.documentElement.style.setProperty('--colors-light-overlay', lightOverlay + lightOpacity)
 }
