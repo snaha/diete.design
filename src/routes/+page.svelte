@@ -15,23 +15,28 @@
 	import type { Dimension } from '$lib/components/ui/menu/menu-store.svelte'
 	import Code from '$lib/components/custom/code.svelte'
 
-	let dimension: Dimension = $state("default")
+	let dimension: Dimension = $state('default')
 	let size: 16 | 24 | 32 = $derived(
 		dimension === 'default' || dimension === 'compact'
-		? 24
-		: dimension === 'large'
-			? 32
-			: dimension === 'small'
-				? 16
-				: 24
+			? 24
+			: dimension === 'large'
+				? 32
+				: dimension === 'small'
+					? 16
+					: 24,
 	)
 </script>
 
-<Typography variant="h1" bold>Open-source, customisable & fully accessible design system – built with Svelte</Typography>
+<Typography variant="h1" bold
+	>Open-source, customisable & fully accessible design system – built with Svelte</Typography
+>
 
 <section id="introduction">
 	<Typography>
-		Diète is made by, and for, free-spirited app makers who want to remain independent. All components are minimally-designed, built with Svelte 5, easily customisable and comply with the highest accessibility standards. Check our growing library of open-source UI components, that you can copy directly into your project. 
+		Diète is made by, and for, free-spirited app makers who want to remain independent. All
+		components are minimally-designed, built with Svelte 5, easily customisable and comply with the
+		highest accessibility standards. Check our growing library of open-source UI components, that
+		you can copy directly into your project.
 	</Typography>
 </section>
 
@@ -40,7 +45,7 @@
 	<Button variant="secondary" dimension="large" href="/components/button">Learn more</Button>
 </section>
 
-<hr/>
+<hr />
 
 <VerticalContainer>
 	<section id="preview-title">
@@ -52,7 +57,7 @@
 			<Option value="large">Large</Option>
 			<Option value="compact">Compact</Option>
 			<Option value="small">Small</Option>
-		</Select>	
+		</Select>
 	</section>
 </VerticalContainer>
 
@@ -68,14 +73,14 @@
 		<Button variant="secondary" {dimension}>Outline button</Button>
 		<Button variant="secondary" {dimension}><Checkmark {size} /> Outline button</Button>
 		<Button variant="secondary" {dimension}>Outline button <ArrowRight {size} /></Button>
-		<Button variant="secondary" {dimension}><Settings {size}/></Button>
+		<Button variant="secondary" {dimension}><Settings {size} /></Button>
 	</section>
 
 	<section id="solid-buttons" class="controls buttons solid">
 		<Button variant="solid" {dimension}>Solid button</Button>
 		<Button variant="solid" {dimension}><Checkmark {size} /> Solid button</Button>
 		<Button variant="solid" {dimension}>Solid button <ArrowRight {size} /></Button>
-		<Button variant="solid" {dimension}><Settings {size}/></Button>
+		<Button variant="solid" {dimension}><Settings {size} /></Button>
 	</section>
 </VerticalContainer>
 
@@ -91,14 +96,14 @@
 		<Button variant="darkoverlay" {dimension}>Dark overlay</Button>
 		<Button variant="darkoverlay" {dimension}><Checkmark {size} /> Dark overlay</Button>
 		<Button variant="darkoverlay" {dimension}>Dark overlay <ArrowRight {size} /></Button>
-		<Button variant="darkoverlay" {dimension}><Settings {size}/></Button>
+		<Button variant="darkoverlay" {dimension}><Settings {size} /></Button>
 	</section>
 
 	<section id="light-overlay" class="controls buttons">
 		<Button variant="lightoverlay" {dimension}>Light overlay</Button>
 		<Button variant="lightoverlay" {dimension}><Checkmark {size} /> Light overlay</Button>
 		<Button variant="lightoverlay" {dimension}>Light overlay <ArrowRight {size} /></Button>
-		<Button variant="lightoverlay" {dimension}><Settings {size}/></Button>
+		<Button variant="lightoverlay" {dimension}><Settings {size} /></Button>
 	</section>
 </VerticalContainer>
 
@@ -111,7 +116,7 @@
 	</section>
 
 	<section id="radio" class="controls">
-		<RadioGroup value="1" dimension={dimension}>
+		<RadioGroup value="1" {dimension}>
 			<Radio value="1">Humblebrag</Radio>
 			<Radio value="2">Solarpunk shaman</Radio>
 			<Radio value="3">Single-origin</Radio>
@@ -129,15 +134,17 @@
 
 <VerticalContainer>
 	<section id="sliders" class="controls">
-		<Slider layout="vertical" {dimension}>Continuous slider with min/max
+		<Slider layout="vertical" {dimension}
+			>Continuous slider with min/max
 			{#snippet helperText()}
 				A simple continuous slider, showing the selected value on the right
 			{/snippet}
 		</Slider>
 
-		<hr/>
+		<hr />
 
-		<Slider layout="vertical" {dimension} step={10} snap={true}>Discrete slider with min/max
+		<Slider layout="vertical" {dimension} step={10} snap={true}
+			>Discrete slider with min/max
 			{#snippet helperText()}
 				Discrete slider can also show minimum and maximum values
 			{/snippet}
@@ -145,15 +152,17 @@
 	</section>
 
 	<section id="centered-sliders" class="controls">
-		<Slider layout="vertical" {dimension} centered={true} min={-5} max={5}>Continuous centered slider with min/max
+		<Slider layout="vertical" {dimension} centered={true} min={-5} max={5}
+			>Continuous centered slider with min/max
 			{#snippet helperText()}
 				Selected value is shown on hover, pressed and focused states
 			{/snippet}
 		</Slider>
 
-		<hr/>
+		<hr />
 
-		<Slider layout="vertical" {dimension} step={1} snap={true} centered={true} min={-5} max={5}>Discrete slider with min/max
+		<Slider layout="vertical" {dimension} step={1} snap={true} centered={true} min={-5} max={5}
+			>Discrete slider with min/max
 			{#snippet helperText()}
 				Discrete slider can also show minimum and maximum values
 			{/snippet}
@@ -163,7 +172,7 @@
 
 <VerticalContainer>
 	<section id="search" class="controls">
-		<Input {dimension} placeholder="Search" class="align-self-stretch"/>
+		<Input {dimension} placeholder="Search" class="align-self-stretch" />
 
 		<Input {dimension} placeholder="Search" controls={true} class="align-self-stretch">
 			{#snippet buttons()}
@@ -173,7 +182,7 @@
 	</section>
 
 	<section id="search-solid" class="controls solid">
-		<Input {dimension} placeholder="Search" class="align-self-stretch"/>
+		<Input {dimension} placeholder="Search" class="align-self-stretch" />
 
 		<Input {dimension} placeholder="Search" controls={true} class="align-self-stretch">
 			{#snippet buttons()}
@@ -185,27 +194,49 @@
 
 <VerticalContainer>
 	<section id="input" class="controls">
-		<Input {dimension} value="Williamsburg" label="Text input" class="align-self-stretch">This is some helper text</Input>
+		<Input {dimension} value="Williamsburg" label="Text input" class="align-self-stretch"
+			>This is some helper text</Input
+		>
 
-		<hr/>
+		<hr />
 
-		<Input {dimension} type="number" value="1.420" label="Number input" unit="EUR" class="align-self-stretch">This is some helper text</Input>
+		<Input
+			{dimension}
+			type="number"
+			value="1.420"
+			label="Number input"
+			unit="EUR"
+			class="align-self-stretch">This is some helper text</Input
+		>
 
-		<hr/>
+		<hr />
 
-		<Input {dimension} type="date" value="01/05/2024" label="Date input" class="align-self-stretch">This is some helper text</Input>
+		<Input {dimension} type="date" value="01/05/2024" label="Date input" class="align-self-stretch"
+			>This is some helper text</Input
+		>
 	</section>
 
 	<section id="input" class="controls solid">
-		<Input {dimension} value="Williamsburg" label="Text input" class="align-self-stretch">This is some helper text</Input>
+		<Input {dimension} value="Williamsburg" label="Text input" class="align-self-stretch"
+			>This is some helper text</Input
+		>
 
-		<hr/>
+		<hr />
 
-		<Input {dimension} type="number" value="1.420" label="Number input" unit="EUR" class="align-self-stretch">This is some helper text</Input>
+		<Input
+			{dimension}
+			type="number"
+			value="1.420"
+			label="Number input"
+			unit="EUR"
+			class="align-self-stretch">This is some helper text</Input
+		>
 
-		<hr/>
+		<hr />
 
-		<Input {dimension} type="date" value="01/05/2024" label="Date input" class="align-self-stretch">This is some helper text</Input>
+		<Input {dimension} type="date" value="01/05/2024" label="Date input" class="align-self-stretch"
+			>This is some helper text</Input
+		>
 	</section>
 </VerticalContainer>
 
@@ -234,7 +265,6 @@
 		</Select>
 	</section>
 </VerticalContainer>
-
 
 <VerticalContainer>
 	<section id="text-sans" class="controls">
@@ -285,21 +315,27 @@
 
 <VerticalContainer>
 	<section id="quote" class="controls">
-		<Typography font="serif" italic variant="large">“One could describe design as a plan for arranging elements to accomplish a particular purpose.”</Typography>
+		<Typography font="serif" italic variant="large"
+			>“One could describe design as a plan for arranging elements to accomplish a particular
+			purpose.”</Typography
+		>
 		<Typography>Charles Eames</Typography>
 	</section>
 
 	<section id="code" class="controls">
-		<Code language="svelte" code={`<script lang="ts">
+		<Code
+			language="svelte"
+			code={`<script lang="ts">
 	import Button from '$lib/components/ui/button.svelte'
 	import { Close } from 'carbon-icons-svelte'
-</` + `script>
+</` +
+				`script>
 
 <Button variant="strong" dimension="default">
 	<Close/>Close
 </Button>
-`} />
-
+`}
+		/>
 	</section>
 </VerticalContainer>
 
@@ -313,38 +349,38 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-top: var(--double-padding);
 		gap: var(--padding);
+		margin-top: var(--double-padding);
 	}
 	hr {
 		appearance: none;
-		margin-bottom: var(--double-padding);
 		margin-top: var(--double-padding);
+		margin-bottom: var(--double-padding);
 		border-width: 1px;
 		border-style: solid;
-		color: var(--colors-low);
 		width: 100%;
+		color: var(--colors-low);
 	}
 	#preview-title {
 		display: flex;
 		align-items: center;
 	}
 	#size-select {
-		flex: 1;
 		display: flex;
+		flex: 1;
 		justify-content: stretch;
 	}
 	.controls {
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: flex-start;
-		flex-direction: column;
 		gap: var(--padding);
-		background-color: var(--colors-base);
+		margin-top: var(--padding);
 		border: var(--colors-low) 1px solid;
 		border-radius: var(--border-radius);
+		background-color: var(--colors-base);
 		padding: var(--double-padding);
-		margin-top: var(--padding);
 	}
 	.buttons {
 		align-items: center;
@@ -361,8 +397,8 @@
 		background-size: cover;
 	}
 	#code {
-		padding: 0;
 		align-items: stretch;
+		padding: 0;
 	}
 	#bottom {
 		margin-top: calc(2 * var(--double-padding));
@@ -370,5 +406,4 @@
 	:global(.align-self-stretch) {
 		align-self: stretch;
 	}
-
 </style>
