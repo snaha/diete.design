@@ -9,8 +9,6 @@
 	import Switch from '$lib/components/ui/switch.svelte'
 	import Select from '$lib/components/ui/select/select.svelte'
 	import Option from '$lib/components/ui/select/option.svelte'
-	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
-	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
 	import VerticalContainer from '$lib/components/custom/vertical-container.svelte'
@@ -49,7 +47,7 @@
 		<Typography variant="h4">Quick preview</Typography>
 	</section>
 	<section id="size-select">
-		<Select layout="horizontal" label="Size" bind:value={dimension} style="flex: 1">
+		<Select layout="horizontal" label="Size" bind:value={dimension}>
 			<Option value="default">Default</Option>
 			<Option value="large">Large</Option>
 			<Option value="compact">Compact</Option>
@@ -165,25 +163,78 @@
 
 <VerticalContainer>
 	<section id="search" class="controls">
-		<Input {dimension} placeholder="Search"/>
+		<Input {dimension} placeholder="Search" class="align-self-stretch"/>
 
-		<Input {dimension} placeholder="Search" controls={true}>
+		<Input {dimension} placeholder="Search" controls={true} class="align-self-stretch">
 			{#snippet buttons()}
 				<Button {dimension} variant="secondary"><Search {size} /></Button>
 			{/snippet}
 		</Input>
 	</section>
 
-	<section id="search" class="controls solid">
-		<Input {dimension} placeholder="Search"/>
+	<section id="search-solid" class="controls solid">
+		<Input {dimension} placeholder="Search" class="align-self-stretch"/>
 
-		<Input {dimension} placeholder="Search" controls={true}>
+		<Input {dimension} placeholder="Search" controls={true} class="align-self-stretch">
 			{#snippet buttons()}
 				<Button {dimension} variant="secondary"><Search {size} /></Button>
 			{/snippet}
 		</Input>
 	</section>
 </VerticalContainer>
+
+<VerticalContainer>
+	<section id="input" class="controls">
+		<Input {dimension} value="Williamsburg" label="Text input" class="align-self-stretch">This is some helper text</Input>
+
+		<hr/>
+
+		<Input {dimension} type="number" value="1.420" label="Number input" unit="EUR" class="align-self-stretch">This is some helper text</Input>
+
+		<hr/>
+
+		<Input {dimension} type="date" value="01/05/2024" label="Date input" class="align-self-stretch">This is some helper text</Input>
+	</section>
+
+	<section id="input" class="controls solid">
+		<Input {dimension} value="Williamsburg" label="Text input" class="align-self-stretch">This is some helper text</Input>
+
+		<hr/>
+
+		<Input {dimension} type="number" value="1.420" label="Number input" unit="EUR" class="align-self-stretch">This is some helper text</Input>
+
+		<hr/>
+
+		<Input {dimension} type="date" value="01/05/2024" label="Date input" class="align-self-stretch">This is some helper text</Input>
+	</section>
+</VerticalContainer>
+
+<VerticalContainer>
+	<section id="input" class="controls">
+		<Select value="1" label="Select" class="align-self-stretch">
+			{#snippet helperText()}
+				This is some helper text
+			{/snippet}
+			<Option value="1">Banjo tacos</Option>
+			<Option value="2">Pickled chicharrones</Option>
+			<Option value="3">Vinegar vape</Option>
+			<Option value="4">Denim brunch vinyl</Option>
+		</Select>
+	</section>
+
+	<section id="input" class="controls solid">
+		<Select value="1" label="Select" class="align-self-stretch">
+			{#snippet helperText()}
+				This is some helper text
+			{/snippet}
+			<Option value="1">Banjo tacos</Option>
+			<Option value="2">Pickled chicharrones</Option>
+			<Option value="3">Vinegar vape</Option>
+			<Option value="4">Denim brunch vinyl</Option>
+		</Select>
+	</section>
+</VerticalContainer>
+
 
 <VerticalContainer>
 	<section id="text-sans" class="controls">
@@ -316,4 +367,8 @@
 	#bottom {
 		margin-top: calc(2 * var(--double-padding));
 	}
+	:global(.align-self-stretch) {
+		align-self: stretch;
+	}
+
 </style>

@@ -159,6 +159,7 @@
 		width: calc(var(--sidebar-size) - var(--double-padding));
 		overflow-x: hidden;
 		overflow-y: auto;
+		border-right: var(--colors-low) 1px solid;
 	}
 	.menu-header {
 		position: fixed;
@@ -167,6 +168,7 @@
 		background-color: var(--colors-ultra-low);
 		min-width: var(--sidebar-size);
 		height: var(--header-size);
+		border-right: var(--colors-low) 1px solid;
 	}
 	.menu-open-placeholder {
 		transition:
