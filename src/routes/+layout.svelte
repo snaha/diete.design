@@ -154,6 +154,7 @@
 		top: var(--header-size);
 		bottom: 0px;
 		left: 0px;
+		border-right: var(--colors-low) 1px solid;
 		background-color: var(--colors-ultra-low);
 		padding: var(--padding);
 		width: calc(var(--sidebar-size) - var(--double-padding));
@@ -164,6 +165,7 @@
 		position: fixed;
 		top: 0px;
 		left: 0px;
+		border-right: var(--colors-low) 1px solid;
 		background-color: var(--colors-ultra-low);
 		min-width: var(--sidebar-size);
 		height: var(--header-size);
