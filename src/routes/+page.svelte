@@ -216,7 +216,7 @@
 		>
 	</section>
 
-	<section id="input" class="controls solid">
+	<section id="input-solid" class="controls solid">
 		<Input {dimension} value="Williamsburg" label="Text input" class="align-self-stretch"
 			>This is some helper text</Input
 		>
@@ -241,7 +241,7 @@
 </VerticalContainer>
 
 <VerticalContainer>
-	<section id="input" class="controls">
+	<section id="select" class="controls">
 		<Select value="1" label="Select" class="align-self-stretch">
 			{#snippet helperText()}
 				This is some helper text
@@ -253,7 +253,7 @@
 		</Select>
 	</section>
 
-	<section id="input" class="controls solid">
+	<section id="select-solid" class="controls solid">
 		<Select value="1" label="Select" class="align-self-stretch">
 			{#snippet helperText()}
 				This is some helper text
@@ -403,7 +403,7 @@
 	#bottom {
 		margin-top: calc(2 * var(--double-padding));
 	}
-	:global(.align-self-stretch) {
+	section > :global(.align-self-stretch) {
 		align-self: stretch;
 	}
 </style>
