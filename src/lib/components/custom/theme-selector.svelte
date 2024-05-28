@@ -6,7 +6,7 @@
 	import RadioGroup from '../ui/radio-button/radio-group.svelte'
 	import Button from '../ui/button.svelte'
 
-	const colorHexRegex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i
+	const colorHexRegex = /^#?[a-f0-9]{6}$/i
 
 	let validHexColor = $derived(colorHexRegex.test(theme.baseColor))
 </script>
