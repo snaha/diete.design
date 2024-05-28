@@ -6,40 +6,14 @@
 	import RadioGroup from '../ui/radio-button/radio-group.svelte'
 	import Button from '../ui/button.svelte'
 
-	// without this line the dropdown does not appear...
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const mode = $derived(theme.mode)
-	let invalidColor = $state(false)
+	const colorHexRegex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i
 
-	function formatHexColor() {
-		let hex = theme.baseColor
-		hex = hex.replace(/^#/, '')
-
-		if (hex.length === 3) {
-			hex = hex.replace(/(.)/g, '$1$1')
-		}
-
-		return (theme.baseColor = '#' + hex)
-	}
-	function validateColor() {
-		const hexRegex = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i
-
-		if (!theme.baseColor.startsWith('#')) {
-			theme.baseColor = '#' + theme.baseColor
-		}
-		let timeout = setTimeout(() => {
-			if (theme.baseColor.length === 4) {
-				formatHexColor()
-			}
-		}, 3000)
-		if (!hexRegex.test(theme.baseColor)) {
-			invalidColor = true
-		} else {
-			invalidColor = false
-		}
-		return () => clearTimeout(timeout)
-	}
+	let validHexColor = $derived(colorHexRegex.test(theme.baseColor))
 </script>
+
+{#snippet error()}
+	Invalid hex format color
+{/snippet}
 
 <div class="theme-selector">
 	<RadioGroup bind:value={theme.mode} name="mode" layout="horizontal">
@@ -50,17 +24,13 @@
 		<Radio value={'dark'}>Dark</Radio>
 		<Radio value={'system'}>Auto</Radio>
 	</RadioGroup>
-	{#snippet error()}
-		Invalid hex format color
-	{/snippet}
 	<Input
 		bind:value={theme.baseColor}
 		type="text"
-		oninput={validateColor}
 		placeholder="Accent color (hex)"
 		label="Accent color (hex)"
 		controls={true}
-		error={invalidColor ? error : undefined}
+		error={validHexColor ? undefined : error}
 	>
 		{#snippet buttons()}
 			<Button variant="secondary" style="padding: 0;">
