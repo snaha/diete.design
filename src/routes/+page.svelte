@@ -172,7 +172,7 @@
 
 <VerticalContainer>
 	<section id="search" class="controls">
-		<Input {dimension} placeholder="Search" class="align-self-stretch" />
+		<Input {dimension} placeholder="Search" class="align-self-stretch"><Search {size} /></Input>
 
 		<Input {dimension} placeholder="Search" controls={true} class="align-self-stretch">
 			{#snippet buttons()}
@@ -203,6 +203,9 @@
 		<Input
 			{dimension}
 			type="number"
+			min="0"
+			max="69420"
+			step="0.001"
 			value="1.420"
 			label="Number input"
 			unit="EUR"
@@ -226,6 +229,9 @@
 		<Input
 			{dimension}
 			type="number"
+			min="0"
+			max="69420"
+			step="0.001"
 			value="1.420"
 			label="Number input"
 			unit="EUR"
