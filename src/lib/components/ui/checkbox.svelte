@@ -126,9 +126,9 @@
 	.default {
 		& {
 			padding: 0.75rem;
-			font-size: 1rem;
-			line-height: 1.5rem;
-			letter-spacing: 0.02rem;
+			font-size: var(--font-size);
+			line-height: var(--line-height);
+			letter-spacing: var(--letter-spacing);
 		}
 		input[type='checkbox']:checked::after {
 			width: 0.5rem;
@@ -142,9 +142,9 @@
 	.large {
 		& {
 			padding: 0.75rem;
-			font-size: 1.5rem;
-			line-height: 1rem;
-			letter-spacing: 0.03rem;
+			font-size: var(--font-size-large);
+			line-height: var(--line-height-large);
+			letter-spacing: var(--letter-spacing-large);
 		}
 		input[type='checkbox']:checked::after {
 			border-right-width: 3px;
@@ -160,9 +160,9 @@
 	.compact {
 		& {
 			padding: 0.5rem;
-			font-size: 1rem;
-			line-height: 1.5rem;
-			letter-spacing: 0.02rem;
+			font-size: var(--font-size);
+			line-height: var(--line-height);
+			letter-spacing: var(--letter-spacing);
 		}
 		input[type='checkbox']:checked::after {
 			width: 0.5rem;
@@ -177,9 +177,9 @@
 		& {
 			gap: 0.25rem;
 			padding: 0.5rem;
-			font-size: 0.75rem;
-			line-height: 1rem;
-			letter-spacing: 0.0375rem;
+			font-size: var(--font-size-small);
+			line-height: var(--line-height-small);
+			letter-spacing: var(--letter-spacing-small);
 		}
 		input[type='checkbox']:checked::after {
 			border-right-width: 1.5px;
