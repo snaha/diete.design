@@ -33,9 +33,11 @@
   */
 pre code.hljs {
 	display: block;
-	padding: 16px;
+	padding: var(--padding);
 	overflow-x: auto;
 	white-space: break-spaces;
+  font-size: var(--font-size);
+  font-family: var(--font-family-monospace);
 }
 code.hljs {
 	padding: 3px 5px;
