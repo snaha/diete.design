@@ -124,7 +124,7 @@
 						{#each Object.entries(pages) as [path, title]}
 							<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}
 								>{#if isExternalLink(path)}
-									<Launch size={24}/>
+									<Launch size={24} />
 								{/if}{title}</MenuItem
 							>
 						{/each}

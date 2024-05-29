@@ -6,13 +6,13 @@ a {
 	color: var(--colors-top);
 }
 ol {
-	list-style: none;
 	counter-reset: li;
 	margin-left: 0;
 	padding-left: 0;
+	list-style: none;
 }
 ol li:before {
-	content: counter(li) ". ";
+	content: counter(li) '. ';
 	color: var(--colors-top);
 	font-family: var(--font-family-sans-serif);
 }
