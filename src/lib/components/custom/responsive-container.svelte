@@ -19,6 +19,6 @@
 	.responsive-container {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-		gap: 16px;
+		gap: var(--padding);
 	}
 </style>
