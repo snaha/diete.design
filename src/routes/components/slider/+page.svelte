@@ -20,7 +20,7 @@
 	let dimension: Dimension = $state('default')
 	let label = $state('Slider label')
 	let withStep: boolean = $state(false)
-	let withSnap: boolean = $state(false)
+	let showSteps: boolean = $state(false)
 	let step: number | undefined = $state(undefined)
 	let centered: boolean = $state(false)
 	let withHelperText: boolean = $state(false)
@@ -42,7 +42,7 @@ ${
 {/snippet}`
 		: ''
 }
-<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${withSnap ? ` snap` : ''}${centered ? ` centered` : ''}>${label}</Slider>
+<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${showSteps ? ` showSteps` : ''}${centered ? ` centered` : ''}>${label}</Slider>
 `,
 	)
 
@@ -108,8 +108,8 @@ ${
 	{/if}
 	<Switch bind:checked={withStep} label="With steps" />
 	{#if withStep}
-		<Input bind:value={step} label="Number of steps" />
-		<Switch bind:checked={withSnap} label="With snapping" />
+		<Input bind:value={step} label="Step size" type="number" controls />
+		<Switch bind:checked={showSteps} label="Show steps" />
 	{/if}
 	<Switch bind:checked={centered} label="Centered" />
 {/snippet}
@@ -124,7 +124,7 @@ ${
 		{layout}
 		helperText={withHelperText ? helperText : undefined}
 		step={withStep ? step : undefined}
-		snap={withSnap ? true : undefined}
+		{showSteps}
 		{centered}
 		bind:value
 	>
