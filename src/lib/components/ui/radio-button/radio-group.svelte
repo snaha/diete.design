@@ -25,6 +25,7 @@
 		label,
 		helperText,
 		children,
+		...restProps
 	}: Props = $props()
 
 	const store = withRadioStore(dimension, value, name)
@@ -63,7 +64,7 @@
 			{@render label()}
 		</Typography>
 	{/if}
-	<div class="radio-group {layout}" role="radiogroup">
+	<div class="radio-group {layout}" role="radiogroup" {...restProps}>
 		{#if children}
 			{@render children()}
 		{/if}

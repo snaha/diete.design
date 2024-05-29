@@ -112,7 +112,7 @@
 	</section>
 
 	<section id="radio" class="controls">
-		<RadioGroup value="1" {dimension}>
+		<RadioGroup value="1" {dimension} style="gap:1rem;">
 			<Radio value="1">Humblebrag</Radio>
 			<Radio value="2">Solarpunk shaman</Radio>
 			<Radio value="3">Single-origin</Radio>
