@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Typography from '$lib/components/ui/typography.svelte'
-	import VerticalContainer from '$lib/components/custom/vertical-container.svelte'
+	import ResponsiveContainer from '$lib/components/custom/responsive-container.svelte'
 	import type { Snippet } from 'svelte'
 	import TabBar from './tab-bar/tab-bar.svelte'
 	import TabContent from './tab-bar/tab-content.svelte'
@@ -40,19 +40,19 @@
 	</Typography>
 </section>
 
-<VerticalContainer>
+<ResponsiveContainer>
 	<section class="description">
 		{@render description()}
 	</section>
 	<section class="examples">
 		{@render examples()}
 	</section>
-</VerticalContainer>
+</ResponsiveContainer>
 
 <hr />
 <section id="use">
 	<Typography class="title" variant="h4" bold>Use</Typography>
-	<VerticalContainer>
+	<ResponsiveContainer>
 		<section class="controls">
 			{@render controls()}
 		</section>
@@ -67,7 +67,7 @@
 				<TabContent value="Svelte"><Code language="svelte" code={useCode} /></TabContent>
 			</TabBar>
 		</section>
-	</VerticalContainer>
+	</ResponsiveContainer>
 </section>
 
 <hr />

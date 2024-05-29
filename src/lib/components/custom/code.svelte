@@ -33,12 +33,12 @@
 	}
 </script>
 
-<div class="container">
+<div class="container {classProp}">
 	<div class="inside">
 		{#if language === 'css'}
-			<Highlight class="highlight {classProp}" {...restProps} language={css} {code} />
+			<Highlight class="highlight" {...restProps} language={css} {code} />
 		{:else}
-			<HighlightSvelte class="highlight {classProp}" {code} />
+			<HighlightSvelte class="highlight" {code} />
 		{/if}
 	</div>
 	<div class="copy-button">

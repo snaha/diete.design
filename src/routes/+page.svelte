@@ -11,7 +11,7 @@
 	import Option from '$lib/components/ui/select/option.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
-	import VerticalContainer from '$lib/components/custom/vertical-container.svelte'
+	import ResponsiveContainer from '$lib/components/custom/responsive-container.svelte'
 	import type { Dimension } from '$lib/components/ui/menu/menu-store.svelte'
 	import Code from '$lib/components/custom/code.svelte'
 
@@ -47,7 +47,7 @@
 
 <hr />
 
-<VerticalContainer>
+<ResponsiveContainer class="vspace">
 	<section id="preview-title">
 		<Typography variant="h4">Quick preview</Typography>
 	</section>
@@ -59,9 +59,9 @@
 			<Option value="small">Small</Option>
 		</Select>
 	</section>
-</VerticalContainer>
+</ResponsiveContainer>
 
-<VerticalContainer>
+<ResponsiveContainer class="vspace">
 	<section id="strong-buttons" class="controls buttons">
 		<Button variant="strong" {dimension}>Strong button</Button>
 		<Button variant="strong" {dimension}><Checkmark {size} /> Strong button</Button>
@@ -82,9 +82,7 @@
 		<Button variant="solid" {dimension}>Solid button <ArrowRight {size} /></Button>
 		<Button variant="solid" {dimension}><Settings {size} /></Button>
 	</section>
-</VerticalContainer>
 
-<VerticalContainer>
 	<section id="ghost-buttons" class="controls buttons">
 		<Button variant="ghost" {dimension}>Ghost button</Button>
 		<Button variant="ghost" {dimension}><Checkmark {size} /> Ghost button</Button>
@@ -105,9 +103,7 @@
 		<Button variant="lightoverlay" {dimension}>Light overlay <ArrowRight {size} /></Button>
 		<Button variant="lightoverlay" {dimension}><Settings {size} /></Button>
 	</section>
-</VerticalContainer>
 
-<VerticalContainer>
 	<section id="checkboxes" class="controls">
 		<Checkbox {dimension} label="Succulents" checked={true} />
 		<Checkbox {dimension} label="Tattooed fingerstache" checked={false} />
@@ -130,9 +126,9 @@
 		<Switch {dimension} label="Farm-to-table" checked={true} />
 		<Switch {dimension} label="Flexitarian mixtape" checked={false} />
 	</section>
-</VerticalContainer>
+</ResponsiveContainer>
 
-<VerticalContainer>
+<ResponsiveContainer class="vspace">
 	<section id="sliders" class="controls">
 		<Slider layout="vertical" {dimension}
 			>Continuous slider with min/max
@@ -168,12 +164,10 @@
 			{/snippet}
 		</Slider>
 	</section>
-</VerticalContainer>
+</ResponsiveContainer>
 
-<VerticalContainer>
+<ResponsiveContainer class="vspace">
 	<section id="search" class="controls">
-		<Input {dimension} placeholder="Search" class="align-self-stretch"><Search {size} /></Input>
-
 		<Input {dimension} placeholder="Search" controls={true} class="align-self-stretch">
 			{#snippet buttons()}
 				<Button {dimension} variant="secondary"><Search {size} /></Button>
@@ -181,18 +175,6 @@
 		</Input>
 	</section>
 
-	<section id="search-solid" class="controls solid">
-		<Input {dimension} placeholder="Search" class="align-self-stretch" />
-
-		<Input {dimension} placeholder="Search" controls={true} class="align-self-stretch">
-			{#snippet buttons()}
-				<Button {dimension} variant="secondary"><Search {size} /></Button>
-			{/snippet}
-		</Input>
-	</section>
-</VerticalContainer>
-
-<VerticalContainer>
 	<section id="input" class="controls">
 		<Input {dimension} value="Williamsburg" label="Text input" class="align-self-stretch"
 			>This is some helper text</Input
@@ -211,42 +193,10 @@
 			unit="EUR"
 			class="align-self-stretch">This is some helper text</Input
 		>
-
-		<hr />
-
-		<Input {dimension} type="date" value="01/05/2024" label="Date input" class="align-self-stretch"
-			>This is some helper text</Input
-		>
 	</section>
+</ResponsiveContainer>
 
-	<section id="input-solid" class="controls solid">
-		<Input {dimension} value="Williamsburg" label="Text input" class="align-self-stretch"
-			>This is some helper text</Input
-		>
-
-		<hr />
-
-		<Input
-			{dimension}
-			type="number"
-			min="0"
-			max="69420"
-			step="0.001"
-			value="1.420"
-			label="Number input"
-			unit="EUR"
-			class="align-self-stretch">This is some helper text</Input
-		>
-
-		<hr />
-
-		<Input {dimension} type="date" value="01/05/2024" label="Date input" class="align-self-stretch"
-			>This is some helper text</Input
-		>
-	</section>
-</VerticalContainer>
-
-<VerticalContainer>
+<ResponsiveContainer class="vspace">
 	<section id="select" class="controls">
 		<Select value="1" label="Select" class="align-self-stretch">
 			{#snippet helperText()}
@@ -259,20 +209,10 @@
 		</Select>
 	</section>
 
-	<section id="select-solid" class="controls solid">
-		<Select value="1" label="Select" class="align-self-stretch">
-			{#snippet helperText()}
-				This is some helper text
-			{/snippet}
-			<Option value="1">Banjo tacos</Option>
-			<Option value="2">Pickled chicharrones</Option>
-			<Option value="3">Vinegar vape</Option>
-			<Option value="4">Denim brunch vinyl</Option>
-		</Select>
-	</section>
-</VerticalContainer>
+	<section id="select-solid" style="padding: var(--double-padding);"></section>
+</ResponsiveContainer>
 
-<VerticalContainer>
+<ResponsiveContainer class="vspace">
 	<section id="text-sans" class="controls">
 		<Typography font="sans" variant="h1">H1 title</Typography>
 		<Typography font="sans" variant="h2">H2 title</Typography>
@@ -317,33 +257,35 @@
 		<Typography font="mono" variant="small">Small paragraph</Typography>
 		<Typography font="mono" variant="small"><a href="#/">Small text link</a></Typography>
 	</section>
-</VerticalContainer>
+</ResponsiveContainer>
 
-<VerticalContainer>
+<ResponsiveContainer class="vspace">
 	<section id="quote" class="controls">
-		<Typography font="serif" italic variant="large"
-			>“One could describe design as a plan for arranging elements to accomplish a particular
-			purpose.”</Typography
-		>
-		<Typography>Charles Eames</Typography>
+		<div class="quote">
+			<Typography font="serif" italic variant="large"
+				>“One could describe design as a plan for arranging elements to accomplish a particular
+				purpose.”</Typography
+			>
+			<Typography>Charles Eames</Typography>
+		</div>
 	</section>
 
-	<section id="code" class="controls">
-		<Code
-			language="svelte"
-			code={`<script lang="ts">
+	<!-- <section id="code" class="padding"> -->
+	<Code
+		language="svelte"
+		code={`<script lang="ts">
 	import Button from '$lib/components/ui/button.svelte'
 	import { Close } from 'carbon-icons-svelte'
 </` +
-				`script>
+			`script>
 
 <Button variant="strong" dimension="default">
 	<Close/>Close
 </Button>
 `}
-		/>
-	</section>
-</VerticalContainer>
+	/>
+	<!-- </section> -->
+</ResponsiveContainer>
 
 <section id="bottom"></section>
 
@@ -382,7 +324,6 @@
 		justify-content: center;
 		align-items: flex-start;
 		gap: var(--padding);
-		margin-top: var(--padding);
 		border: var(--colors-low) 1px solid;
 		border-radius: var(--border-radius);
 		background-color: var(--colors-base);
@@ -394,6 +335,9 @@
 	.solid {
 		background-color: var(--colors-ultra-low);
 	}
+	:global(.vspace) {
+		margin-top: var(--padding);
+	}
 	#dark-overlay {
 		background-image: url('/backgrounds/noita-digital-QZX8jbK1xEw-unsplash.jpg');
 		background-size: cover;
@@ -404,12 +348,19 @@
 	}
 	#code {
 		align-items: stretch;
-		padding: 0;
+		border: var(--colors-low) 1px solid;
+		border-radius: var(--border-radius);
+		background-color: var(--colors-base);
+		padding: var(--double-padding);
 	}
 	#bottom {
 		margin-top: calc(2 * var(--double-padding));
 	}
 	section > :global(.align-self-stretch) {
 		align-self: stretch;
+	}
+	.quote {
+		border-left: var(--colors-low) 1px solid;
+		padding-left: var(--padding);
 	}
 </style>
