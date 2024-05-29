@@ -143,7 +143,7 @@
 
 		<hr />
 
-		<Slider layout="vertical" {dimension} step={10} snap={true}
+		<Slider layout="vertical" {dimension} step={10} showSteps
 			>Discrete slider with min/max
 			{#snippet helperText()}
 				Discrete slider can also show minimum and maximum values
@@ -152,7 +152,7 @@
 	</section>
 
 	<section id="centered-sliders" class="controls">
-		<Slider layout="vertical" {dimension} centered={true} min={-5} max={5}
+		<Slider layout="vertical" {dimension} centered min={-5} max={5}
 			>Continuous centered slider with min/max
 			{#snippet helperText()}
 				Selected value is shown on hover, pressed and focused states
@@ -161,7 +161,7 @@
 
 		<hr />
 
-		<Slider layout="vertical" {dimension} step={1} snap={true} centered={true} min={-5} max={5}
+		<Slider layout="vertical" {dimension} step={1} showSteps centered min={-5} max={5}
 			>Discrete slider with min/max
 			{#snippet helperText()}
 				Discrete slider can also show minimum and maximum values

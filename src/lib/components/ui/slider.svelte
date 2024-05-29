@@ -15,7 +15,7 @@
 		hover?: boolean
 		active?: boolean
 		focus?: boolean
-		snap?: boolean
+		showSteps?: boolean
 		helperText?: Snippet
 	}
 	let {
@@ -29,7 +29,7 @@
 		hover,
 		active,
 		focus,
-		snap = false,
+		showSteps = false,
 		value = $bindable(min),
 		helperText,
 		children,
@@ -65,7 +65,7 @@
 				bind:value
 				{min}
 				{max}
-				step={snap ? step : undefined}
+				{step}
 				{...restProps}
 			/>
 			{#if centered}
@@ -77,7 +77,7 @@
 			<div class="slider-background"></div>
 			<div class="slider-progress"></div>
 			<div class="slider-progress-centered"></div>
-			{#if step}
+			{#if showSteps && step}
 				{@const stepCount = (max - min) / step}
 				<div class="slider-tick-container">
 					<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
