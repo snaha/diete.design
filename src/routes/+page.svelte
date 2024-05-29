@@ -176,9 +176,7 @@
 	</section>
 
 	<section id="input" class="controls">
-		<Input {dimension} value="Williamsburg" label="Text input" class="align-self-stretch"
-			>This is some helper text</Input
-		>
+		<Input {dimension} value="Williamsburg" label="Text input">This is some helper text</Input>
 
 		<hr />
 
@@ -190,15 +188,14 @@
 			step="0.001"
 			value="1.420"
 			label="Number input"
-			unit="EUR"
-			class="align-self-stretch">This is some helper text</Input
+			unit="EUR">This is some helper text</Input
 		>
 	</section>
 </ResponsiveContainer>
 
 <ResponsiveContainer class="vspace">
 	<section id="select" class="controls">
-		<Select value="1" label="Select" class="align-self-stretch">
+		<Select value="1" label="Select">
 			{#snippet helperText()}
 				This is some helper text
 			{/snippet}

@@ -135,6 +135,7 @@
 	}
 
 	.root {
+		align-self: stretch;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
