@@ -271,6 +271,7 @@
 	</section>
 
 	<Code
+		class="landing-code-min-height"
 		language="svelte"
 		code={`<script lang="ts">
 	import Button from '$lib/components/ui/button.svelte'
@@ -344,13 +345,6 @@
 		background-image: url('/backgrounds/augustine-wong-li0iC0rjvvg-unsplash.jpg');
 		background-size: cover;
 	}
-	#code {
-		align-items: stretch;
-		border: var(--colors-low) 1px solid;
-		border-radius: var(--border-radius);
-		background-color: var(--colors-base);
-		padding: var(--double-padding);
-	}
 	#bottom {
 		margin-top: calc(2 * var(--double-padding));
 	}
@@ -358,7 +352,15 @@
 		align-self: stretch;
 	}
 	.quote {
+		display: flex;
+		flex-direction: column;
+		gap: var(--half-padding);
+		margin-top: var(--padding);
+		margin-bottom: var(--padding);
 		border-left: var(--colors-low) 1px solid;
 		padding-left: var(--padding);
+	}
+	:global(.landing-code-min-height) {
+		min-height: initial !important;
 	}
 </style>

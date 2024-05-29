@@ -60,6 +60,7 @@
 		justify-content: stretch;
 		align-items: stretch;
 		border: var(--colors-dark-low) 1px solid;
+		border-radius: var(--border-radius);
 		background: var(--colors-dark-base);
 		isolation: isolate;
 		max-width: calc(100vw - var(--double-padding));
@@ -71,6 +72,7 @@
 		display: flex;
 		flex-grow: 1;
 		align-self: stretch;
+		border-radius: var(--border-radius);
 		background: var(--colors-dark-base);
 		overflow: auto;
 	}
