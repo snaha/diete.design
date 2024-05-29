@@ -12,6 +12,7 @@ function cssPreprocess() {
 	return {
 		...vite,
 		async style(args) {
+			console.debug(args.filename)
 			const prettierOptions = await prettier.resolveConfig('.prettierrc')
 			const preprocessedStyle = await viteStyle(args)
 			const match = args.filename.match(/^.*\/src\/lib\/components(.*\/)(.*)\.svelte/)
@@ -29,6 +30,7 @@ function cssPreprocess() {
 				})
 				fs.writeFileSync(cssFilePath, prettifiedCode)
 			}
+
 			return preprocessedStyle
 		},
 	}

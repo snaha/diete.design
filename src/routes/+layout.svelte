@@ -3,8 +3,9 @@
 	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 	import Button from '$lib/components/ui/button.svelte'
-	import { Light, SidePanelCloseFilled, SidePanelOpenFilled } from 'carbon-icons-svelte'
+	import { Light, SidePanelCloseFilled, SidePanelOpenFilled, Launch } from 'carbon-icons-svelte'
 	import '../app.pcss'
+	import '../diete.css'
 	import Dropdown from '$lib/components/custom/dropdown.svelte'
 	import ThemeSelector from '$lib/components/custom/theme-selector.svelte'
 	import { page } from '$app/stores'
@@ -19,6 +20,8 @@
 	const menu: { [title: string]: { [path: string]: string } } = {
 		Diète: {
 			'/': 'Intro',
+			'/build': 'Build with Diète',
+			'https://github.com/diete-design/diete.design': 'Github',
 		},
 		'Basic components': {
 			'/components/badge': 'Badge',
@@ -74,6 +77,10 @@
 		return menuOpen
 	}
 
+	function isExternalLink(link: string) {
+		return link.startsWith('https://')
+	}
+
 	function menuOnClick() {
 		// close the menu after a click on mobile
 		if (innerWidth && innerWidth < mobileWidth) {
@@ -89,7 +96,7 @@
 <svelte:window bind:innerWidth />
 
 <div class="menu-button-container">
-	<Button variant={isMenuOpen ? 'ghost' : 'solid'} onclick={() => (isMenuOpen = !isMenuOpen)}>
+	<Button variant="solid" onclick={() => (isMenuOpen = !isMenuOpen)}>
 		{#if isMenuOpen}
 			<SidePanelCloseFilled size={24} />
 		{:else}
@@ -116,7 +123,9 @@
 					<MenuTitle content={title} bold bind:open={menuTitleIsOpen[title]}>
 						{#each Object.entries(pages) as [path, title]}
 							<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}
-								>{title}</MenuItem
+								>{#if isExternalLink(path)}
+									<Launch size={24}/>
+								{/if}{title}</MenuItem
 							>
 						{/each}
 					</MenuTitle>
