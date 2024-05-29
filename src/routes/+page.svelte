@@ -270,7 +270,6 @@
 		</div>
 	</section>
 
-	<!-- <section id="code" class="padding"> -->
 	<Code
 		language="svelte"
 		code={`<script lang="ts">
@@ -284,7 +283,6 @@
 </Button>
 `}
 	/>
-	<!-- </section> -->
 </ResponsiveContainer>
 
 <section id="bottom"></section>
