@@ -8,12 +8,12 @@ const DIST_DIR = './static/generated/css'
 async function copyDieteCss() {
 	const dieteCssFilename = 'diete.css'
 	const dieteCss = fs.readFileSync(`./src/${dieteCssFilename}`, { encoding: 'utf-8' })
-	console.debug({ dieteCss })
 	const prettierOptions = await prettier.resolveConfig('.prettierrc')
 	const prettifiedCode = await prettier.format(dieteCss, {
 		...prettierOptions,
 		parser: 'css',
 	})
+	fs.mkdirSync(DIST_DIR, { recursive: true })
 	fs.writeFileSync(`${DIST_DIR}/${dieteCssFilename}`, prettifiedCode)
 }
 
