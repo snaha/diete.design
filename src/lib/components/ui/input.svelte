@@ -83,12 +83,9 @@
 				{/if}
 			</div>
 			{#if search}
-				<div class="delete-button">
-					<Button {dimension} {disabled} variant="secondary">
-						<Delete
-							size={dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24}
-							onclick={() => (value = value.slice(0, -1))}
-						/>
+				<div class="control-buttons">
+					<Button {dimension} {disabled} variant="secondary" onclick={() => (value = '')}>
+						<Delete size={dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24} />
 					</Button>
 				</div>
 			{/if}
@@ -149,6 +146,9 @@
 			input {
 				border-radius: 0.25rem 0 0 0.25rem;
 			}
+			.control-buttons {
+				display: flex;
+			}
 		}
 	}
 	.wrapper:has(.search:not(:disabled):not(:placeholder-shown)) {
@@ -157,8 +157,8 @@
 		input {
 			border-radius: 0.25rem 0 0 0.25rem;
 		}
-		.delete-button {
-			display: block;
+		.control-buttons {
+			display: flex;
 		}
 	}
 	.root {
@@ -196,8 +196,7 @@
 			flex-grow: 1;
 			flex-direction: row;
 		}
-		.control-buttons,
-		.delete-button {
+		.control-buttons {
 			display: flex;
 			flex-direction: row;
 
@@ -216,7 +215,7 @@
 				border-radius: 0 0.25rem 0.25rem 0;
 			}
 		}
-		.delete-button {
+		.control-buttons {
 			display: none;
 		}
 		input {
