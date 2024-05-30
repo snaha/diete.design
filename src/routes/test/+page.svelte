@@ -746,6 +746,34 @@
 		</div>
 	</section>
 	<section>
+		<div class="row">
+			<div class="col">
+				<Input placeholder="Placeholder" search />
+				<Input value="" search />
+				<Input value="Diete" search />
+				<Input search disabled />
+			</div>
+			<div class="col">
+				<Input dimension="large" placeholder="Placeholder" search />
+				<Input dimension="large" value="" search />
+				<Input dimension="large" value="Diete" search />
+				<Input dimension="large" search disabled />
+			</div>
+			<div class="col">
+				<Input dimension="compact" placeholder="Placeholder" search />
+				<Input dimension="compact" value="" search />
+				<Input dimension="compact" value="Diete" search />
+				<Input dimension="compact" search disabled />
+			</div>
+			<div class="col">
+				<Input dimension="small" placeholder="Placeholder" search />
+				<Input dimension="small" value="" search />
+				<Input dimension="small" value="Diete" search />
+				<Input dimension="small" search disabled />
+			</div>
+		</div>
+	</section>
+	<section>
 		<Typography variant="h1">Number input (vertical)</Typography>
 		<div class="row">
 			<div class="col">
