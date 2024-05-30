@@ -13,6 +13,7 @@
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
+	import Textarea from '$lib/components/ui/textarea.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -924,6 +925,16 @@
 					disabled
 					controls>This is an optional helper text</Input
 				>
+			</div>
+		</div>
+	</section>
+	<section>
+		{#snippet helperText()}
+			This is an optional helper text
+		{/snippet}
+		<div class="row">
+			<div class="col">
+				<Textarea label="Input label" {helperText} placeholder="Placeholder"></Textarea>
 			</div>
 		</div>
 	</section>
