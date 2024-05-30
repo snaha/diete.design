@@ -33,12 +33,12 @@
 	}
 </script>
 
-<div class="container">
+<div class="container {classProp}">
 	<div class="inside">
 		{#if language === 'css'}
-			<Highlight class="highlight {classProp}" {...restProps} language={css} {code} />
+			<Highlight class="highlight" {...restProps} language={css} {code} />
 		{:else}
-			<HighlightSvelte class="highlight {classProp}" {code} />
+			<HighlightSvelte class="highlight" {code} />
 		{/if}
 	</div>
 	<div class="copy-button">
@@ -60,6 +60,7 @@
 		justify-content: stretch;
 		align-items: stretch;
 		border: var(--colors-dark-low) 1px solid;
+		border-radius: var(--border-radius);
 		background: var(--colors-dark-base);
 		isolation: isolate;
 		max-width: calc(100vw - var(--double-padding));
@@ -71,6 +72,7 @@
 		display: flex;
 		flex-grow: 1;
 		align-self: stretch;
+		border-radius: var(--border-radius);
 		background: var(--colors-dark-base);
 		overflow: auto;
 	}
