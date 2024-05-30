@@ -5,14 +5,32 @@ import * as prettier from 'prettier'
 
 const DIST_DIR = './static/generated/css'
 
+async function copyDieteCss() {
+	const dieteCssFilename = 'diete.css'
+	const dieteCss = fs.readFileSync(`./src/${dieteCssFilename}`, { encoding: 'utf-8' })
+	console.debug({ dieteCss })
+	const prettierOptions = await prettier.resolveConfig('.prettierrc')
+	const prettifiedCode = await prettier.format(dieteCss, {
+		...prettierOptions,
+		parser: 'css',
+	})
+	fs.writeFileSync(`${DIST_DIR}/${dieteCssFilename}`, prettifiedCode)
+}
+
 function cssPreprocess() {
 	const vite = vitePreprocess()
 	const viteStyle = vite.style
 
+	let copyDieteCssPromise = copyDieteCss()
+
 	return {
 		...vite,
 		async style(args) {
-			console.debug(args.filename)
+			if (copyDieteCssPromise) {
+				await copyDieteCssPromise
+				copyDieteCssPromise = undefined
+			}
+
 			const prettierOptions = await prettier.resolveConfig('.prettierrc')
 			const preprocessedStyle = await viteStyle(args)
 			const match = args.filename.match(/^.*\/src\/lib\/components(.*\/)(.*)\.svelte/)
