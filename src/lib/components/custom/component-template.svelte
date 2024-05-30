@@ -124,7 +124,7 @@
 	}
 	.preview-tab {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		border: transparent 1px solid;
