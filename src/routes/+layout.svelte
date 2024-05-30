@@ -122,7 +122,11 @@
 				{#each Object.entries(menu) as [title, pages]}
 					<MenuTitle content={title} bold bind:open={menuTitleIsOpen[title]}>
 						{#each Object.entries(pages) as [path, title]}
-							<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}
+							<MenuItem
+								active={isActivePage(path)}
+								href={path}
+								onclick={menuOnClick}
+								target={isExternalLink(path) ? '_blank' : undefined}
 								>{#if isExternalLink(path)}
 									<Launch size={24} />
 								{/if}{title}</MenuItem
