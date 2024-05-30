@@ -935,6 +935,169 @@
 		<div class="row">
 			<div class="col">
 				<Textarea label="Input label" {helperText} placeholder="Placeholder"></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea dimension="large" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea dimension="compact" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea dimension="small" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
 			</div>
 		</div>
 	</section>

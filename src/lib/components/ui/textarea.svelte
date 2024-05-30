@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Draggable } from 'carbon-icons-svelte'
 	import type { Snippet } from 'svelte'
 	import type { HTMLTextareaAttributes } from 'svelte/elements'
 
@@ -24,7 +23,6 @@
 		active,
 		focus,
 		helperText,
-		children,
 		class: classProps,
 		...restProps
 	}: Props = $props()
@@ -34,15 +32,18 @@
 	<label class="label" for={labelFor}>
 		{label}
 	</label>
-	<textarea
-		id={labelFor}
-		class:hover
-		class:active
-		class:focus
-		bind:value
-		{placeholder}
-		{...restProps}
-	></textarea>
+	<div class="relative">
+		<textarea
+			class="textarea"
+			id={labelFor}
+			class:hover
+			class:active
+			class:focus
+			bind:value
+			{placeholder}
+			{...restProps}
+		></textarea>
+	</div>
 	{#if helperText}
 		<div class="helper-text">
 			{@render helperText()}
@@ -68,13 +69,13 @@
 		width: fit-content;
 	}
 	textarea {
+		position: relative;
 		border: 1px solid var(--colors-ultra-high);
 		border-radius: 0.25rem;
 		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		&::-webkit-resizer {
-			
 		}
 		&:hover:not(:disabled),
 		&.hover:not(:disabled),
@@ -100,6 +101,14 @@
 			opacity: 0.25;
 			cursor: not-allowed;
 		}
+	}
+	.icon {
+		display: flex;
+		position: absolute;
+		right: 0;
+		bottom: 0.5rem;
+		cursor: e-resize;
+		resize: both;
 	}
 	.default {
 		label {
