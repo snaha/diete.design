@@ -1,5 +1,13 @@
 <script lang="ts">
-	import { Checkmark, ArrowRight } from 'carbon-icons-svelte'
+	import {
+		Checkmark,
+		ArrowRight,
+		CheckmarkFilled,
+		NotificationNew,
+		ThumbsUpFilled,
+		ThumbsDown,
+		Error,
+	} from 'carbon-icons-svelte'
 
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
@@ -13,6 +21,7 @@
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
+	import Badge from '$lib/components/ui/badge.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -1714,6 +1723,103 @@
 			</div>
 		</div>
 	</section>
+	<section>
+		<div class="row">
+			<div class="col">
+				<Badge>
+					{#snippet icon()}
+						<CheckmarkFilled size={16}></CheckmarkFilled>
+					{/snippet}
+					Small badge
+				</Badge>
+				<Badge variant="strong">
+					{#snippet icon()}
+						<CheckmarkFilled size={16}></CheckmarkFilled>
+					{/snippet}
+					Small badge
+				</Badge>
+				<Badge variant="dark-overlay">
+					{#snippet icon()}
+						<CheckmarkFilled size={16}></CheckmarkFilled>
+					{/snippet}
+					Small badge
+				</Badge>
+				<Badge variant="light-overlay">
+					{#snippet icon()}
+						<CheckmarkFilled size={16}></CheckmarkFilled>
+					{/snippet}
+					Small badge
+				</Badge>
+			</div>
+			<div class="col">
+				<div class="badge-row">
+					<Typography variant="h5">h5 Title</Typography><Badge>Small badge</Badge>
+				</div>
+				<div class="badge-row">
+					{#snippet icon()}
+						<NotificationNew size={16} />
+					{/snippet}
+					<Typography variant="h5">Messages</Typography>
+					<Badge variant="strong" {icon}>16</Badge>
+				</div>
+				<div class="badge-row">
+					<Typography variant="h5">Aqualung divide</Typography>
+					<Badge variant="strong">NEW</Badge>
+				</div>
+				<div class="badge-row">
+					<Badge variant="light-overlay">
+						{#snippet icon()}
+							<ThumbsUpFilled size={16} />
+						{/snippet}
+						21
+					</Badge>
+					<Badge variant="light-overlay">
+						{#snippet icon()}
+							<ThumbsDown size={16} />
+						{/snippet}
+						6
+					</Badge>
+				</div>
+			</div>
+			<div class="col">
+				{#snippet icon()}
+					<Error size={24}></Error>
+				{/snippet}
+				<Badge dimension="large" {icon}>Large badge</Badge>
+				<Badge dimension="large" variant="strong" {icon}>Large badge</Badge>
+				<Badge dimension="large" variant="dark-overlay" {icon}>Large badge</Badge>
+				<Badge dimension="large" variant="light-overlay" {icon}>Large badge</Badge>
+			</div>
+			<div class="col">
+				<div class="badge-row">
+					<Typography variant="h4">h4 Title</Typography><Badge dimension="large">Large badge</Badge>
+				</div>
+				<div class="badge-row">
+					<Typography variant="h4">h4 Title</Typography><Badge dimension="small">Small badge</Badge>
+				</div>
+				<div class="badge-row">
+					<Typography variant="h4">System</Typography>
+					<Badge variant="default">
+						{#snippet icon()}
+							<CheckmarkFilled size={16} />
+						{/snippet}
+						Updated
+					</Badge>
+				</div>
+				<div class="badge-row">
+					{#snippet icon()}
+						<Error size={24}></Error>
+					{/snippet}
+					<Typography variant="h3">David's computer</Typography>
+					<Badge dimension="large" variant="strong" {icon}>Error</Badge>
+				</div>
+				<div class="badge-row">
+					<Typography variant="h4">Posts</Typography>
+					<Badge dimension="large" variant="light-overlay">12</Badge>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
 
 <style>
@@ -1738,5 +1844,10 @@
 		gap: 1rem;
 		border: 1px dashed var(--colors-ultra-high);
 		padding: 1rem;
+	}
+	.badge-row {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
 	}
 </style>
