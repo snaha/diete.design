@@ -7,6 +7,7 @@
 
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	type Variant = 'outline' | 'solid'
 	interface Props extends HTMLInputAttributes {
 		helperText?: Snippet
 		label?: string
@@ -17,6 +18,7 @@
 		hover?: boolean
 		active?: boolean
 		focus?: boolean
+		variant?: Variant
 	}
 	let {
 		helperText,
@@ -31,6 +33,7 @@
 		focus,
 		class: className = '',
 		children,
+		variant = 'outline',
 		...restProps
 	}: Props = $props()
 
@@ -97,7 +100,7 @@
 		<input
 			bind:this={input}
 			value={store.value ? store.labels[store.value] ?? store.value : value}
-			class="select"
+			class="select {variant}"
 			class:hover
 			class:active
 			class:focus
@@ -220,10 +223,16 @@
 		flex-grow: 1;
 		appearance: none;
 		cursor: pointer;
-		border: 1px solid var(--colors-ultra-high);
 		border-radius: 0.25rem;
-		background: transparent;
 		color: var(--colors-ultra-high);
+		&.outline {
+			border: 1px solid var(--colors-ultra-high);
+			background: transparent;
+		}
+		&.solid {
+			border: 1px solid var(--colors-low);
+			background: var(--colors-base);
+		}
 		&::placeholder {
 			opacity: 0.5;
 			color: var(--colors-ultra-high);

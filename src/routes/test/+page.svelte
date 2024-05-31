@@ -928,6 +928,140 @@
 		</div>
 	</section>
 	<section>
+		<Typography variant="h1">Select (outline)</Typography>
+		<div class="row">
+			<div class="col">
+				<Select label="Outline select" placeholder="Placeholder" />
+				<Select label="Outline select" placeholder="Placeholder" value="With value" />
+				<Select label="Outline select" placeholder="Hover" hover />
+				<Select label="Outline select" placeholder="Active" hover />
+				<Select label="Outline select" placeholder="Active" focus />
+				<Select label="Outline select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select dimension="large" label="Outline select" placeholder="Placeholder" />
+				<Select
+					dimension="large"
+					label="Outline select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select dimension="large" label="Outline select" placeholder="Hover" hover />
+				<Select dimension="large" label="Outline select" placeholder="Active" hover />
+				<Select dimension="large" label="Outline select" placeholder="Active" focus />
+				<Select dimension="large" label="Outline select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select dimension="compact" label="Outline select" placeholder="Placeholder" />
+				<Select
+					dimension="compact"
+					label="Outline select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select dimension="compact" label="Outline select" placeholder="Hover" hover />
+				<Select dimension="compact" label="Outline select" placeholder="Active" hover />
+				<Select dimension="compact" label="Outline select" placeholder="Active" focus />
+				<Select dimension="compact" label="Outline select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select dimension="small" label="Outline select" placeholder="Placeholder" />
+				<Select
+					dimension="small"
+					label="Outline select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select dimension="small" label="Outline select" placeholder="Hover" hover />
+				<Select dimension="small" label="Outline select" placeholder="Active" hover />
+				<Select dimension="small" label="Outline select" placeholder="Active" focus />
+				<Select dimension="small" label="Outline select" value="Disabled" disabled />
+			</div>
+		</div>
+		<Typography variant="h1">Select (solid)</Typography>
+		<div class="row">
+			<div class="col">
+				<Select variant="solid" label="Solid select" placeholder="Placeholder" />
+				<Select variant="solid" label="Solid select" placeholder="Placeholder" value="With value" />
+				<Select variant="solid" label="Solid select" placeholder="Hover" hover />
+				<Select variant="solid" label="Solid select" placeholder="Active" hover />
+				<Select variant="solid" label="Solid select" placeholder="Active" focus />
+				<Select variant="solid" label="Solid select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Placeholder" />
+				<Select
+					variant="solid"
+					dimension="large"
+					label="Solid select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Hover" hover />
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Active" hover />
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Active" focus />
+				<Select variant="solid" dimension="large" label="Solid select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Placeholder"
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Hover"
+					hover
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Active"
+					hover
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Active"
+					focus
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					value="Disabled"
+					disabled
+				/>
+			</div>
+			<div class="col">
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Placeholder" />
+				<Select
+					variant="solid"
+					dimension="small"
+					label="Solid select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Hover" hover />
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Active" hover />
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Active" focus />
+				<Select variant="solid" dimension="small" label="Solid select" value="Disabled" disabled />
+			</div>
+		</div>
+	</section>
+	<section>
 		<Typography variant="h1">Select</Typography>
 		<div class="row">
 			<div class="col">
