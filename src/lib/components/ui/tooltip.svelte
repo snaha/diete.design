@@ -6,8 +6,9 @@
 	interface Props extends HTMLAttributes<HTMLElement> {
 		helperText?: Snippet
 		position?: Position
+		large?: boolean
 	}
-	let { position = 'top', children, helperText }: Props = $props()
+	let { position = 'top', children, helperText, large = false }: Props = $props()
 
 	let showTooltip = $state(false)
 	let tooltip: HTMLDivElement | undefined = $state(undefined)
@@ -81,7 +82,7 @@
 </script>
 
 <div class="tooltip">
-	<div class="tooltip-text" bind:this={tooltip}>
+	<div class="tooltip-text" class:large bind:this={tooltip}>
 		{#if helperText}
 			{@render helperText()}
 		{/if}
@@ -108,20 +109,29 @@
 		&:has(.showTooltip) {
 			.tooltip-text {
 				opacity: 1;
+				z-index: 10;
 			}
 		}
 		.tooltip-text {
 			position: fixed;
 			opacity: 0;
-			z-index: 10;
-			border-radius: 0.25rem;
+			z-index: -1;
+			border-radius: 0.75rem;
 			background-color: var(--colors-top);
 			padding: 0.25rem 0.5rem;
 			color: var(--colors-base);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
+			font-family: var(--font-family-sans-serif);
 			letter-spacing: var(--letter-spacing-small);
 			white-space: nowrap;
+			&.large {
+				border-radius: 1.25rem;
+				padding: 0.5rem 0.75rem;
+				font-size: var(--font-size);
+				line-height: var(--line-height);
+				letter-spacing: var(--letter-spacing);
+			}
 		}
 	}
 </style>
