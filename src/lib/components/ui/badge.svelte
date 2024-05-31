@@ -19,7 +19,7 @@
 	}: Props = $props()
 </script>
 
-<div class="root {variant} {dimension}" {...restProps}>
+<div class="root {variant} {dimension} {className}" {...restProps}>
 	{#if icon}
 		{@render icon()}
 	{/if}
