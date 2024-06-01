@@ -112,7 +112,7 @@
 	</section>
 
 	<section id="radio" class="controls">
-		<RadioGroup value="1" {dimension} style="gap:1rem;">
+		<RadioGroup value="1" {dimension} style="gap:0.5rem;">
 			<Radio value="1">Humblebrag</Radio>
 			<Radio value="2">Solarpunk shaman</Radio>
 			<Radio value="3">Single-origin</Radio>
@@ -327,6 +327,11 @@
 		border-radius: var(--border-radius);
 		background-color: var(--colors-base);
 		padding: var(--double-padding);
+	}
+
+	#checkboxes,
+	#switches {
+		gap: var(--half-padding);
 	}
 	.buttons {
 		align-items: center;
