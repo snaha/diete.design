@@ -6,7 +6,7 @@
 <Typography variant="h3">Build with Diète</Typography>
 
 <section id="introduction">
-	<Typography>
+	<Typography variant="large">
 		Diète is an open-source design system. Guided by an essential design approach, built with the
 		highest usability standards, it lays great emphasis on accessibility and flexibility. UI
 		components can be copy-pasted directly into your own code, easily customised and assembled
@@ -56,48 +56,28 @@
 	<section id="essential-design">
 		<Typography variant="h5" class="box-title">Essential design</Typography>
 		<Typography>
-			Diète aims for simplicity and timeless design by avoiding superfluous effects or trendy
-			styles. Not merely the superficial simplicity that comes from a minimalist appearance, but the
-			simplicity that stems from deeply understanding the underlying challenges of designing a
-			product interface. Diète advocates for no-nonsense, unobtrusive design and clean elegance that
-			efficiently help everyone using your app.
-		</Typography>
+            Diète aims for simplicity and timeless design by avoiding superfluous effects or trendy styles. Not merely the superficial simplicity that comes from a minimalist appearance, but the simplicity that stems from deeply understanding the underlying challenges of designing a product interface. Diète advocates for no-nonsense, unobtrusive design and clean elegance that efficiently help everyone using your app.		</Typography>
 	</section>
 
 	<section id="fully-accessible">
-		<Typography variant="h5" class="box-title">Fully accessible (WIP)</Typography>
+		<Typography variant="h5" class="box-title">Fully accessible</Typography>
 		<Typography>
-			Diète complies to the highest usability standards and strives to be as inclusive as possible.
-			<ul>
-				<li>color contrast ratio</li>
-				<li>font sizes</li>
-				<li>component sizes</li>
-				<li>screen reader / no mouse</li>
-			</ul>
-		</Typography>
+            Diète complies to the highest usability standards and strives to be as inclusive as possible. Color contrast, fonts and default components sizes all feature Triple-A conformance to the latest Web Content Accessibility Guidelines (WCAG 2.2). Furthermore, all components come with carefully designed, high-emphasis focused states allowing people to easily interact without a mouse — using the keyboard or voice control.		</Typography>
 	</section>
 </ResponsiveContainer>
 
 <ResponsiveContainer class="vspace">
 	<section id="essential-design">
-		<Typography variant="h5" class="box-title">Flexible (WIP)</Typography>
+		<Typography variant="h5" class="box-title">Flexible</Typography>
 		<Typography>
-			Diète aims for simplicity Diète is designed with flexibility in mind.
-			<ul>
-				<li>Easy to combine components into vertical or horizontal layouts</li>
-				<li>Easy customisation color customisation</li>
-				<li>Easy fonts/icons change</li>
-				<li>Easy to change anything in the code, no dependencies</li>
-			</ul>
+            All components come in 4 sizes (default, compact, small and large) and variants for vertical or horizontal layouts. Margins and spacing are built in the components themselves, so they can be perfectly assembled together to build advanced layouts. Moreover, Diète comes with a dynamic colour system that generates light or dark themes from any colour. You can also change the default system fonts and icon set to your preferences.
 		</Typography>
 	</section>
 
 	<section id="no-dependencies">
-		<Typography variant="h5" class="box-title">No dependencies</Typography>
+		<Typography variant="h5" class="box-title">Minimum dependencies</Typography>
 		<Typography>
-			Diete is not a dependency you install, instead you download the source and copy the components
-			into your own project where they become the starting point for your own component system.
-		</Typography>
+            Diète is not a dependency you install. You download the source code and copy the components into your own project, where they become the starting point for your own component system. This way, you remain independent and gain complete control over the code. Diète comes with high-quality defaults that you can use as is, but you have the freedom to decide how to use and customise each component to your own needs. Your app, your code.		</Typography>
 	</section>
 </ResponsiveContainer>
 
