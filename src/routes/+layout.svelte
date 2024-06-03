@@ -29,6 +29,7 @@
 			'/components/select': 'Select',
 			'/components/slider': 'Slider',
 			'/components/switch': 'Switch',
+			'/components/typography': 'Typography',
 		},
 	}
 
