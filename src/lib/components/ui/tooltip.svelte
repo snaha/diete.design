@@ -43,7 +43,6 @@
 		if (tooltip && element) {
 			const elementRect = element.getBoundingClientRect()
 			const tooltipRect = tooltip.getBoundingClientRect()
-			console.log(elementRect.top)
 			// Set tooltip initial position
 			let top = 0,
 				left = 0
