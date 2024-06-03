@@ -41,6 +41,9 @@
 			opacity: 0.25;
 			cursor: not-allowed;
 		}
+		&:has(input[type='radio']:checked) {
+			color: var(--colors-high);
+		}
 		&:hover:has(input[type='radio']:not(:disabled)),
 		&.hover:has(input[type='radio']:not(:disabled)),
 		&:active:has(input[type='radio']:not(:disabled)),
