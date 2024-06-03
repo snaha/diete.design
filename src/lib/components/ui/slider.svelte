@@ -82,7 +82,11 @@
 				<div class="slider-tick-container">
 					<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 					{#each Array.from({ length: stepCount + 1 }) as _, i}
-						<span class="tick" class:hidden={i === stepCount / 2 && centered}></span>
+						<span
+							class="tick"
+							style={`left: ${i * step}%`}
+							class:hidden={i === stepCount / 2 && centered}
+						></span>
 					{/each}
 				</div>
 			{/if}
@@ -364,15 +368,14 @@
 		border-radius: 0;
 	}
 	.slider-tick-container {
-		display: flex;
 		position: absolute;
-		left: calc(0.75rem - 2px);
-		justify-content: space-between;
-		align-items: center;
+		left: 0.75rem;
 		z-index: 0;
-		width: calc(100% - 1.25rem);
+		width: calc(100% - 1.5rem);
 	}
 	.tick {
+		position: absolute;
+		transform: translate(-50%, -50%);
 		border-radius: 50%;
 		background-color: var(--colors-ultra-high);
 		width: 4px;
@@ -421,7 +424,7 @@
 		}
 		.slider-progress {
 			top: 10px;
-			left: calc(0.75rem - 2px);
+			left: 0.75rem;
 			width: calc(var(--valuePercent) - 0.75rem);
 		}
 	}
@@ -472,11 +475,11 @@
 		}
 		.slider-progress {
 			top: 14px;
-			left: calc(1rem - 2px);
+			left: 1rem;
 			width: calc(var(--valuePercent) - 1rem);
 		}
 		.slider-tick-container {
-			left: calc(1rem - 2px);
+			left: 1rem;
 			width: calc(100% - 1.75rem);
 		}
 	}
@@ -520,11 +523,11 @@
 		}
 		.slider-progress {
 			top: 6px;
-			left: calc(0.5rem - 2px);
+			left: 0.5rem;
 			width: calc(var(--valuePercent) - 0.5rem);
 		}
 		.slider-tick-container {
-			left: calc(0.5rem - 2px);
+			left: 0.5rem;
 			width: calc(100% - 0.75rem);
 		}
 	}
