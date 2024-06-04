@@ -1,18 +1,15 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte'
 	import type { HTMLAttributes } from 'svelte/elements'
 	type Variant = 'default' | 'strong' | 'dark-overlay' | 'light-overlay'
 	type Dimension = 'small' | 'large'
 	interface Props extends HTMLAttributes<HTMLDivElement> {
 		variant?: Variant
 		dimension?: Dimension
-		icon?: Snippet
 		class?: string
 	}
 	let {
 		variant = 'default',
 		dimension = 'small',
-		icon,
 		children,
 		class: className = '',
 		...restProps
@@ -20,9 +17,6 @@
 </script>
 
 <div class="root {variant} {dimension} {className}" {...restProps}>
-	{#if icon}
-		{@render icon()}
-	{/if}
 	{#if children}
 		{@render children()}
 	{/if}

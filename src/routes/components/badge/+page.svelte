@@ -30,7 +30,7 @@
 	let withText = $state(true)
 	let badgeText = $state('Badge text')
 	let withIcon = $state(false)
-	let badgeIcon = $state('')
+	let badgeIcon: any = $state(undefined)
 	let size: 16 | 24 = $derived(dimension === 'small' ? 16 : 24)
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
@@ -38,39 +38,11 @@
 		`<script lang="ts">
 	import Badge from '$lib/components/ui/badge.svelte'
 </script` +
-			`>${
-				withIcon
-					? `
-{#snippet icon()}${
-							badgeIcon === '1'
-								? `
-	<CheckmarkFilled size={${size}} />`
-								: ''
-						}${
-							badgeIcon === '2'
-								? `
-	<NotificationNew size={${size}} />`
-								: ''
-						}${
-							badgeIcon === '3'
-								? `
-	<ThumbsUpFilled size={${size}} />`
-								: ''
-						}${
-							badgeIcon === '4'
-								? `
-	<ThumbsDown size={${size}} />`
-								: ''
-						}${
-							badgeIcon === '5'
-								? `
-	<ErrorOutline size={${size}} />`
-								: ''
-						}
-{/snippet}`
-					: ''
-			}
-<Badge dimension=${dimension} variant=${variant} ${withIcon ? `{icon}` : ''}>${withText ? badgeText : ''}</Badge>
+			`>
+<Badge dimension="${dimension}" variant="${variant}">
+	${withIcon ? badgeIcon : ''}
+	${withText ? badgeText : ''}
+</Badge>
 
 `,
 	)
@@ -95,19 +67,27 @@
 {#snippet examples()}
 	<div class="example-row">
 		<Typography variant="small" bold>1. Default badge</Typography>
-		<Badge variant="default" icon={withIcon ? icon : undefined}>{badgeText}</Badge>
+		<Badge variant="default">{badgeText}</Badge>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>2. Strong badge</Typography>
-		<Badge variant="strong" icon={withIcon ? icon : undefined}>{badgeText}</Badge>
+		<Badge variant="strong">{badgeText}</Badge>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>3. Dark-overlay badge</Typography>
-		<Badge variant="dark-overlay" icon={withIcon ? icon : undefined}>{badgeText}</Badge>
+		<Badge variant="dark-overlay">{badgeText}</Badge>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>4. Light-overlay badge</Typography>
-		<Badge variant="light-overlay" icon={withIcon ? icon : undefined}>{badgeText}</Badge>
+		<Badge variant="light-overlay">{badgeText}</Badge>
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>1. Small badge</Typography>
+		<Badge dimension="small">{badgeText}</Badge>
+	</div>
+	<div class="example-row">
+		<Typography variant="small" bold>2. Large badge</Typography>
+		<Badge dimension="large">{badgeText}</Badge>
 	</div>
 {/snippet}
 
@@ -136,32 +116,23 @@
 	{/if}
 	<Switch label="With icon" bind:checked={withIcon} />
 	{#if withIcon}
-		<RadioGroup bind:value={badgeIcon} {label} helperText={radioGroupHelperText} name="badege">
-			<Radio value="1"><CheckmarkFilled /></Radio>
-			<Radio value="2"><NotificationNew /></Radio>
-			<Radio value="3"><ThumbsUpFilled /></Radio>
-			<Radio value="4"><ThumbsDown /></Radio>
-			<Radio value="5"><ErrorOutline /></Radio>
+		<RadioGroup bind:value={badgeIcon} {label} helperText={radioGroupHelperText} name="badge">
+			<Radio value={CheckmarkFilled}><CheckmarkFilled /></Radio>
+			<Radio value={NotificationNew}><NotificationNew /></Radio>
+			<Radio value={ThumbsUpFilled}><ThumbsUpFilled /></Radio>
+			<Radio value={ThumbsDown}><ThumbsDown /></Radio>
+			<Radio value={ErrorOutline}><ErrorOutline /></Radio>
 		</RadioGroup>
 	{/if}
 {/snippet}
 
-{#snippet icon()}
-	{#if badgeIcon === '1'}
-		<CheckmarkFilled {size} />
-	{:else if badgeIcon === '2'}
-		<NotificationNew {size} />
-	{:else if badgeIcon === '3'}
-		<ThumbsUpFilled {size} />
-	{:else if badgeIcon === '4'}
-		<ThumbsDown {size} />
-	{:else if badgeIcon === '5'}
-		<ErrorOutline {size} />
-	{/if}
-{/snippet}
 {#snippet preview()}
-	<Badge {dimension} {variant} icon={withIcon ? icon : undefined}>{withText ? badgeText : ''}</Badge
-	>
+	<Badge {dimension} {variant}>
+		{#if withIcon}
+			<svelte:component this={badgeIcon} {size} />
+		{/if}
+		{withText ? badgeText : ''}
+	</Badge>
 {/snippet}
 
 {#snippet implement()}

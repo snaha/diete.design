@@ -1727,27 +1727,19 @@
 		<div class="row">
 			<div class="col">
 				<Badge>
-					{#snippet icon()}
-						<CheckmarkFilled size={16}></CheckmarkFilled>
-					{/snippet}
+					<CheckmarkFilled size={16} />
 					Small badge
 				</Badge>
 				<Badge variant="strong">
-					{#snippet icon()}
-						<CheckmarkFilled size={16}></CheckmarkFilled>
-					{/snippet}
+					<CheckmarkFilled size={16} />
 					Small badge
 				</Badge>
 				<Badge variant="dark-overlay">
-					{#snippet icon()}
-						<CheckmarkFilled size={16}></CheckmarkFilled>
-					{/snippet}
+					<CheckmarkFilled size={16} />
 					Small badge
 				</Badge>
 				<Badge variant="light-overlay">
-					{#snippet icon()}
-						<CheckmarkFilled size={16}></CheckmarkFilled>
-					{/snippet}
+					<CheckmarkFilled size={16} />
 					Small badge
 				</Badge>
 			</div>
@@ -1756,11 +1748,9 @@
 					<Typography variant="h5">h5 Title</Typography><Badge>Small badge</Badge>
 				</div>
 				<div class="badge-row">
-					{#snippet icon()}
-						<NotificationNew size={16} />
-					{/snippet}
+					<NotificationNew size={16} />
 					<Typography variant="h5">Messages</Typography>
-					<Badge variant="strong" {icon}>16</Badge>
+					<Badge variant="strong">16</Badge>
 				</div>
 				<div class="badge-row">
 					<Typography variant="h5">Aqualung divide</Typography>
@@ -1768,27 +1758,32 @@
 				</div>
 				<div class="badge-row">
 					<Badge variant="light-overlay">
-						{#snippet icon()}
-							<ThumbsUpFilled size={16} />
-						{/snippet}
+						<ThumbsUpFilled size={16} />
 						21
 					</Badge>
 					<Badge variant="light-overlay">
-						{#snippet icon()}
-							<ThumbsDown size={16} />
-						{/snippet}
+						<ThumbsDown size={16} />
 						6
 					</Badge>
 				</div>
 			</div>
 			<div class="col">
-				{#snippet icon()}
-					<Error size={24}></Error>
-				{/snippet}
-				<Badge dimension="large" {icon}>Large badge</Badge>
-				<Badge dimension="large" variant="strong" {icon}>Large badge</Badge>
-				<Badge dimension="large" variant="dark-overlay" {icon}>Large badge</Badge>
-				<Badge dimension="large" variant="light-overlay" {icon}>Large badge</Badge>
+				<Badge dimension="large">
+					<Error size={24} />
+					Large badge
+				</Badge>
+				<Badge dimension="large" variant="strong">
+					<Error size={24} />
+					Large badge
+				</Badge>
+				<Badge dimension="large" variant="dark-overlay">
+					<Error size={24} />
+					Large badge
+				</Badge>
+				<Badge dimension="large" variant="light-overlay">
+					<Error size={24} />
+					Large badge
+				</Badge>
 			</div>
 			<div class="col">
 				<div class="badge-row">
@@ -1800,18 +1795,16 @@
 				<div class="badge-row">
 					<Typography variant="h4">System</Typography>
 					<Badge variant="default">
-						{#snippet icon()}
-							<CheckmarkFilled size={16} />
-						{/snippet}
+						<CheckmarkFilled size={16} />
 						Updated
 					</Badge>
 				</div>
 				<div class="badge-row">
-					{#snippet icon()}
-						<Error size={24}></Error>
-					{/snippet}
 					<Typography variant="h3">David's computer</Typography>
-					<Badge dimension="large" variant="strong" {icon}>Error</Badge>
+					<Badge dimension="large" variant="strong">
+						<Error size={24} />
+						Error
+					</Badge>
 				</div>
 				<div class="badge-row">
 					<Typography variant="h4">Posts</Typography>
