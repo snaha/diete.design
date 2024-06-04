@@ -71,9 +71,11 @@
 			{#if centered}
 				<span class="center"></span>
 			{/if}
-			<span class="value">
-				{value}
-			</span>
+			<div class="value-container">
+				<span class="value">
+					{value}
+				</span>
+			</div>
 			<div class="slider-background"></div>
 			<div class="slider-progress"></div>
 			<div class="slider-progress-centered"></div>
@@ -246,8 +248,8 @@
 			& ~ .center {
 				background: var(--colors-high);
 			}
-			& ~ .value {
-				display: inline-block;
+			& ~ .value-container > .value {
+				opacity: 1;
 			}
 			& ~ .slider-background {
 				background: var(--colors-high);
@@ -294,8 +296,8 @@
 			& ~ .center {
 				background: var(--colors-top);
 			}
-			& ~ .value {
-				display: inline-block;
+			& ~ .value-container > .value {
+				opacity: 1;
 			}
 			& ~ .slider-background {
 				background: var(--colors-top);
@@ -334,12 +336,19 @@
 			opacity: 0;
 		}
 	}
-	.value {
-		display: none;
+	.value-container {
 		position: absolute;
-		top: -1.75rem;
 		left: var(--valuePercent);
 		transform: translateX(calc(var(--valuePercent) * -1));
+		padding: 0 0.75rem;
+	}
+	.value {
+		display: flex;
+		position: absolute;
+		top: -1.25rem;
+		align-items: center;
+		transform: translate(-50%, -100%);
+		opacity: 0;
 		border-radius: 0.75rem;
 		background: var(--colors-top);
 		padding: 0.25rem 0.5rem;
@@ -461,8 +470,11 @@
 				width: calc((var(--valuePercent) - 50%));
 			}
 		}
+		.value-container {
+			padding: 0 1rem;
+		}
 		.value {
-			top: -2.75rem;
+			top: -1.5rem;
 			border-radius: 1.25rem;
 			padding: 0.5rem 0.75rem;
 			font-size: var(--font-size);
@@ -516,6 +528,12 @@
 				right: calc(100% - var(--valuePercent));
 				width: calc((var(--valuePercent) - 50%));
 			}
+		}
+		.value-container {
+			padding: 0 0.5rem;
+		}
+		.value {
+			top: -1rem;
 		}
 		.slider-background {
 			top: 7.5px;
