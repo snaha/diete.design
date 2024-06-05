@@ -13,6 +13,7 @@
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
+	import RangeSlider from '$lib/components/ui/range-slider.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -1712,6 +1713,278 @@
 					disabled>Slider label</Slider
 				>
 			</div>
+		</div>
+		<div class="row">
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} hover
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} leftActive
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} rightActive
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} leftFocus
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} leftFocus leftActive
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} rightFocus
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} disabled
+				>Slider label</RangeSlider
+			>
+		</div>
+		<div class="row">
+			<RangeSlider dimension="large" step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				hover>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				disabled>Slider label</RangeSlider
+			>
+		</div>
+		<div class="row">
+			<RangeSlider dimension="default" step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				hover>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				disabled>Slider label</RangeSlider
+			>
+		</div>
+		<div class="row">
+			<RangeSlider dimension="small" step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				hover>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				disabled>Slider label</RangeSlider
+			>
 		</div>
 	</section>
 </div>
