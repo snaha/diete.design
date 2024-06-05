@@ -10,16 +10,8 @@
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
 	import Input from '$lib/components/ui/input.svelte'
 	import Badge from '$lib/components/ui/badge.svelte'
-	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
-	import Radio from '$lib/components/ui/radio-button/radio.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
-	import {
-		CheckmarkFilled,
-		NotificationNew,
-		ThumbsUpFilled,
-		ThumbsDown,
-		ErrorOutline,
-	} from 'carbon-icons-svelte'
+	import { CheckmarkFilled } from 'carbon-icons-svelte'
 
 	type Dimension = 'small' | 'large'
 	type Variant = 'default' | 'strong' | 'dark-overlay' | 'light-overlay'
@@ -27,10 +19,8 @@
 
 	let dimension: Dimension = $state('small')
 	let variant: Variant = $state('default')
-	let withText = $state(true)
 	let badgeText = $state('Badge text')
 	let withIcon = $state(false)
-	let badgeIcon: any = $state(undefined)
 	let size: 16 | 24 = $derived(dimension === 'small' ? 16 : 24)
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
@@ -40,8 +30,7 @@
 </script` +
 			`>
 <Badge dimension="${dimension}" variant="${variant}">
-	${withIcon ? badgeIcon : ''}
-	${withText ? badgeText : ''}
+	${withIcon ? `<CheckmarkFilled size={${size}}/>` : ''}${badgeText}
 </Badge>
 
 `,
@@ -91,14 +80,6 @@
 	</div>
 {/snippet}
 
-{#snippet label()}
-	Badge Icon
-{/snippet}
-
-{#snippet radioGroupHelperText()}
-	Choose from one possible icon
-{/snippet}
-
 {#snippet controls()}
 	<Select bind:value={dimension} label="Badge size">
 		<Option value="small">Small</Option>
@@ -110,28 +91,16 @@
 		<Option value="dark-overlay">Dark overlay</Option>
 		<Option value="light-overlay">Light overlay</Option>
 	</Select>
-	<Switch label="With text" bind:checked={withText} />
-	{#if withText}
-		<Input bind:value={badgeText} label="Badge text" />
-	{/if}
+	<Input bind:value={badgeText} label="Badge text" />
 	<Switch label="With icon" bind:checked={withIcon} />
-	{#if withIcon}
-		<RadioGroup bind:value={badgeIcon} {label} helperText={radioGroupHelperText} name="badge">
-			<Radio value={CheckmarkFilled}><CheckmarkFilled /></Radio>
-			<Radio value={NotificationNew}><NotificationNew /></Radio>
-			<Radio value={ThumbsUpFilled}><ThumbsUpFilled /></Radio>
-			<Radio value={ThumbsDown}><ThumbsDown /></Radio>
-			<Radio value={ErrorOutline}><ErrorOutline /></Radio>
-		</RadioGroup>
-	{/if}
 {/snippet}
 
 {#snippet preview()}
 	<Badge {dimension} {variant}>
 		{#if withIcon}
-			<svelte:component this={badgeIcon} {size} />
+			<CheckmarkFilled {size} />
 		{/if}
-		{withText ? badgeText : ''}
+		{badgeText}
 	</Badge>
 {/snippet}
 
