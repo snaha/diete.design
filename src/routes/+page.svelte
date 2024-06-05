@@ -104,7 +104,7 @@
 		<Button variant="lightoverlay" {dimension}><Settings {size} /></Button>
 	</section>
 
-	<section id="checkboxes" class="controls column-half-padded">
+	<section id="checkboxes" class="controls no-gap">
 		<Checkbox {dimension} label="Succulents" checked={true} />
 		<Checkbox {dimension} label="Tattooed fingerstache" checked={false} />
 		<Checkbox {dimension} label="Asymmetrical" checked={true} />
@@ -120,7 +120,7 @@
 		</RadioGroup>
 	</section>
 
-	<section id="switches" class="controls column-half-padded">
+	<section id="switches" class="controls no-gap">
 		<Switch {dimension} label="Vape cleanse" checked={true} />
 		<Switch {dimension} label="Moustache" checked={false} />
 		<Switch {dimension} label="Farm-to-table" checked={true} />
@@ -329,8 +329,8 @@
 		padding: var(--double-padding);
 	}
 
-	.column-half-padded {
-		gap: var(--half-padding);
+	.no-gap {
+		gap: 0px;
 	}
 	.buttons {
 		align-items: center;

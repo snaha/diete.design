@@ -87,7 +87,6 @@
 	.radio-group {
 		display: flex;
 		flex-direction: column;
-		gap: var(--half-padding);
 		&:global(:has(input[type='radio']:focus-visible)) {
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
