@@ -168,7 +168,7 @@
 
 <ResponsiveContainer class="vspace">
 	<section id="search" class="controls">
-		<Input {dimension} placeholder="Search" controls={true} class="align-self-stretch">
+		<Input {dimension} placeholder="Search" controls={true}>
 			{#snippet buttons()}
 				<Button {dimension} variant="secondary"><Search {size} /></Button>
 			{/snippet}
@@ -344,9 +344,6 @@
 	}
 	#bottom {
 		margin-top: calc(2 * var(--double-padding));
-	}
-	section > :global(.align-self-stretch) {
-		align-self: stretch;
 	}
 	.quote {
 		display: flex;
