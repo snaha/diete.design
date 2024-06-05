@@ -418,17 +418,17 @@
 	}
 	.slider-background {
 		position: absolute;
+		transform: translateY(-50%);
 		z-index: 0;
 		border-radius: 0.25rem;
 		background: var(--colors-ultra-high);
-		transform: translateY(-50%);
 		height: 1px;
 	}
 	.slider-progress {
 		position: absolute;
+		transform: translateY(-50%);
 		border-radius: 0.25rem;
 		background-color: var(--colors-ultra-high);
-		transform: translateY(-50%);
 		width: calc(var(--valuePercentMax) - var(--valuePercentMin));
 		height: 4px;
 	}

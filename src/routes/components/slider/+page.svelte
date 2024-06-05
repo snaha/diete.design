@@ -11,6 +11,7 @@
 	import Input from '$lib/components/ui/input.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
+	import RangeSlider from '$lib/components/ui/range-slider.svelte'
 
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
@@ -27,22 +28,33 @@
 	let optionalHelperText: string = $state('Helper text')
 	let layout: Layout = $state('vertical')
 	let value = $state(30)
+	let range = $state(false)
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
-		`<script lang="ts">
-    import Slider from '$lib/components/ui/slider.svelte'
+		`<script lang="ts">${
+			!range
+				? `
+	import Slider from '$lib/components/ui/slider.svelte'`
+				: `
+	import RangeSlider from '$lib/components/ui/range-slider.svelte'`
+		}
 </script` +
-			`>
-${
-	withHelperText
-		? `
+			`>${
+				withHelperText
+					? `
 {#snippet helperText()}
     ${optionalHelperText}
 {/snippet}`
-		: ''
-}
-<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${showSteps ? ` showSteps` : ''}${centered ? ` centered` : ''}>${label}</Slider>
+					: ''
+			}${
+				!range
+					? `
+<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${showSteps ? ` showSteps` : ''}${centered ? ` centered` : ''}>${label}</Slider>`
+					: `
+	<RangeSlider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${showSteps ? ` showSteps` : ''}>${label}</RangeSlider>`
+			}
+
 `,
 	)
 
@@ -111,7 +123,10 @@ ${
 		<Input bind:value={step} label="Step size" type="number" controls />
 		<Switch bind:checked={showSteps} label="Show steps" />
 	{/if}
-	<Switch bind:checked={centered} label="Centered" />
+	{#if !range}
+		<Switch bind:checked={centered} label="Centered" />
+	{/if}
+	<Switch bind:checked={range} label="Range slider" />
 {/snippet}
 
 {#snippet helperText()}
@@ -119,17 +134,29 @@ ${
 {/snippet}
 
 {#snippet preview()}
-	<Slider
-		{dimension}
-		{layout}
-		helperText={withHelperText ? helperText : undefined}
-		step={withStep ? step : undefined}
-		{showSteps}
-		{centered}
-		bind:value
-	>
-		{label}
-	</Slider>
+	{#if range}
+		<RangeSlider
+			{dimension}
+			{layout}
+			helperText={withHelperText ? helperText : undefined}
+			step={withStep ? step : undefined}
+			{showSteps}
+		>
+			{label}
+		</RangeSlider>
+	{:else}
+		<Slider
+			{dimension}
+			{layout}
+			helperText={withHelperText ? helperText : undefined}
+			step={withStep ? step : undefined}
+			{showSteps}
+			{centered}
+			bind:value
+		>
+			{label}
+		</Slider>
+	{/if}
 {/snippet}
 
 {#snippet implement()}
