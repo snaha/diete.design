@@ -421,20 +421,20 @@
 		z-index: 0;
 		border-radius: 0.25rem;
 		background: var(--colors-ultra-high);
+		transform: translateY(-50%);
 		height: 1px;
 	}
 	.slider-progress {
 		position: absolute;
-		z-index: 0;
 		border-radius: 0.25rem;
 		background-color: var(--colors-ultra-high);
+		transform: translateY(-50%);
 		width: calc(var(--valuePercentMax) - var(--valuePercentMin));
 		height: 4px;
 	}
 	.slider-tick-container {
 		position: absolute;
 		left: 0.75rem;
-		z-index: 0;
 		width: calc(100% - 1.5rem);
 	}
 	.tick {
@@ -469,12 +469,12 @@
 			}
 		}
 		.slider-background {
-			top: 11.5px;
+			top: 0.75rem;
 			left: 0.75rem;
 			width: calc(100% - 1.5rem);
 		}
 		.slider-progress {
-			top: 10px;
+			top: 0.75rem;
 			left: var(--valuePercentMin);
 		}
 	}
@@ -507,12 +507,12 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		.slider-background {
-			top: 15.5px;
+			top: 1rem;
 			left: 1rem;
 			width: calc(100% - 2rem);
 		}
 		.slider-progress {
-			top: 14px;
+			top: 1rem;
 			left: var(--valuePercentMin);
 		}
 		.slider-tick-container {
@@ -546,13 +546,13 @@
 			top: -0.75rem;
 		}
 		.slider-background {
-			top: 7.5px;
+			top: 0.5rem;
 			left: 0.5rem;
 			width: calc(100% - 1rem);
 		}
 		.slider-progress {
-			top: 6px;
-			left: 0.5rem;
+			top: 0.5rem;
+			left: var(--valuePercentMin);
 		}
 		.slider-tick-container {
 			left: 0.5rem;
