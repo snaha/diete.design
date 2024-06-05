@@ -7,29 +7,17 @@
 		helperText?: Snippet
 		position?: Position
 		large?: boolean
+		show?: boolean
 	}
-	let { position = 'top', children, helperText, large = false }: Props = $props()
-
-	let showTooltip = $state(false)
+	let { position = 'top', children, helperText, large = false, show = false }: Props = $props()
 	let tooltip: HTMLDivElement | undefined = $state(undefined)
 	let element: HTMLDivElement | undefined = $state(undefined)
 
 	$effect(() => {
-		function clickToolTip(e: MouseEvent) {
-			const target = e.target as unknown as Node
-			if (element?.contains(target)) {
-				showTooltip = true
-			} else {
-				showTooltip = false
-			}
-		}
-		window.addEventListener('click', clickToolTip)
-		return () => {
-			window.removeEventListener('click', clickToolTip)
-		}
-	})
+		// Update tooltip position when large or show changes
+		large
+		show
 
-	$effect(() => {
 		updateTooltipPosition()
 		window.addEventListener('resize', updateTooltipPosition)
 		window.addEventListener('scroll', updateTooltipPosition)
@@ -87,7 +75,7 @@
 		{/if}
 	</div>
 	{#if children}
-		<div class="tooltip-trigger" class:showTooltip bind:this={element}>
+		<div class="tooltip-trigger" class:show bind:this={element}>
 			{@render children()}
 		</div>
 	{/if}
@@ -105,16 +93,14 @@
 			padding: 8px;
 		}
 		&:has(.tooltip-trigger:hover),
-		&:has(.showTooltip) {
+		&:has(.show) {
 			.tooltip-text {
 				opacity: 1;
-				z-index: 10;
 			}
 		}
 		.tooltip-text {
 			position: fixed;
 			opacity: 0;
-			z-index: -1;
 			border-radius: 0.75rem;
 			background-color: var(--colors-top);
 			padding: 0.25rem 0.5rem;

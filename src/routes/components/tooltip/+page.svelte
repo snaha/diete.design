@@ -16,6 +16,7 @@
 	let css: string = $state('Loading...')
 	type Position = 'top' | 'bottom' | 'left' | 'right'
 	let position: Position = $state('top')
+	let show: boolean = $state(true)
 	let large: boolean = $state(false)
 	let tooltipText: string = $state('This is some tooltip text')
 
@@ -28,7 +29,7 @@
 {#snippet helperText()}
 	${tooltipText}
 {/snippet}	
-<Tooltip position=${position} {helperText}${large ? ` large` : ''}><Information size={24} /></Tooltip>
+<Tooltip position=${position} {helperText}${large ? ` large` : ''}${show ? ' show' : ''}><Information size={24} /></Tooltip>
 `,
 	)
 
@@ -76,6 +77,7 @@
 {/snippet}
 
 {#snippet controls()}
+	<Switch label="Always show" bind:checked={show} />
 	<Select bind:value={position} label="Tooltip position">
 		<Option value="top">Top</Option>
 		<Option value="bottom">Bottom</Option>
@@ -87,18 +89,9 @@
 {/snippet}
 
 {#snippet preview()}
-	<TabBar dimension="small">
-		<TabContent value="Preview">
-			<div class="preview-tabs preview-tab">
-				<Tooltip {position} {helperText} large={large ? large : undefined}
-					><Information size={24} /></Tooltip
-				>
-			</div>
-		</TabContent>
-		<TabContent value="Svelte"
-			><Code language="svelte" code={useCode} class="preview-tab" /></TabContent
-		>
-	</TabBar>
+	<Tooltip {position} {helperText} {large} {show}>
+		<Information size={24} />
+	</Tooltip>
 {/snippet}
 
 {#snippet implement()}
@@ -115,17 +108,11 @@
 	{examples}
 	{controls}
 	{preview}
+	{useCode}
 	{implement}
 />
 
 <style lang="postcss">
-	.preview-tabs {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--colors-ultra-low);
-	}
 	:global(.preview-tab) {
 		height: 288px;
 	}
