@@ -104,7 +104,7 @@
 		<Button variant="lightoverlay" {dimension}><Settings {size} /></Button>
 	</section>
 
-	<section id="checkboxes" class="controls">
+	<section id="checkboxes" class="controls column-half-padded">
 		<Checkbox {dimension} label="Succulents" checked={true} />
 		<Checkbox {dimension} label="Tattooed fingerstache" checked={false} />
 		<Checkbox {dimension} label="Asymmetrical" checked={true} />
@@ -112,7 +112,7 @@
 	</section>
 
 	<section id="radio" class="controls">
-		<RadioGroup value="1" {dimension} style="gap:0.5rem;">
+		<RadioGroup value="1" {dimension}>
 			<Radio value="1">Humblebrag</Radio>
 			<Radio value="2">Solarpunk shaman</Radio>
 			<Radio value="3">Single-origin</Radio>
@@ -120,7 +120,7 @@
 		</RadioGroup>
 	</section>
 
-	<section id="switches" class="controls">
+	<section id="switches" class="controls column-half-padded">
 		<Switch {dimension} label="Vape cleanse" checked={true} />
 		<Switch {dimension} label="Moustache" checked={false} />
 		<Switch {dimension} label="Farm-to-table" checked={true} />
@@ -329,8 +329,7 @@
 		padding: var(--double-padding);
 	}
 
-	#checkboxes,
-	#switches {
+	.column-half-padded {
 		gap: var(--half-padding);
 	}
 	.buttons {
