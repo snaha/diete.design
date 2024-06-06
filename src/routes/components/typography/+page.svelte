@@ -98,8 +98,10 @@ import Typography from '$lib/components/ui/typography.svelte'
 		{variant}
 		{font}
 		bold={bold ? bold : undefined}
-		italic={italic ? italic : undefined}>{text}</Typography
+		italic={italic ? italic : undefined}
 	>
+		{text}
+	</Typography>
 {/snippet}
 
 {#snippet implement()}

@@ -27,8 +27,10 @@
 					variant="ghost"
 					active={store.selected === i}
 					{dimension}
-					onclick={() => selectTab(i)}>{item}</Button
+					onclick={() => selectTab(i)}
 				>
+					{item}
+				</Button>
 			</li>
 		{/each}
 	</ul>

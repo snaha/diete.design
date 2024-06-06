@@ -66,9 +66,9 @@
 </script>
 
 {#snippet description()}
-	<Typography
-		>Each radio group is available in 4 sizes: Default, Large, Compact and Small.</Typography
-	>
+	<Typography>
+		Each radio group is available in 4 sizes: Default, Large, Compact and Small.
+	</Typography>
 	<br />
 	<br />
 	<Typography>Radio group is available in vertical and horizontal layout.</Typography>

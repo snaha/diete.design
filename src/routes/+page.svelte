@@ -27,9 +27,9 @@
 	)
 </script>
 
-<Typography variant="h1" bold
-	>Open-source, customisable & fully accessible design system – built with Svelte</Typography
->
+<Typography variant="h1" bold>
+	Open-source, customisable & fully accessible design system – built with Svelte
+</Typography>
 
 <section id="introduction">
 	<Typography>
@@ -130,8 +130,8 @@
 
 <ResponsiveContainer class="vspace">
 	<section id="sliders" class="controls">
-		<Slider layout="vertical" {dimension}
-			>Continuous slider with min/max
+		<Slider layout="vertical" {dimension}>
+			Continuous slider with min/max
 			{#snippet helperText()}
 				A simple continuous slider, showing the selected value on the right
 			{/snippet}
@@ -139,8 +139,8 @@
 
 		<hr />
 
-		<Slider layout="vertical" {dimension} step={10} showSteps
-			>Discrete slider with min/max
+		<Slider layout="vertical" {dimension} step={10} showSteps>
+			Discrete slider with min/max
 			{#snippet helperText()}
 				Discrete slider can also show minimum and maximum values
 			{/snippet}
@@ -148,8 +148,8 @@
 	</section>
 
 	<section id="centered-sliders" class="controls">
-		<Slider layout="vertical" {dimension} centered min={-5} max={5}
-			>Continuous centered slider with min/max
+		<Slider layout="vertical" {dimension} centered min={-5} max={5}>
+			Continuous centered slider with min/max
 			{#snippet helperText()}
 				Selected value is shown on hover, pressed and focused states
 			{/snippet}
@@ -157,8 +157,8 @@
 
 		<hr />
 
-		<Slider layout="vertical" {dimension} step={1} showSteps centered min={-5} max={5}
-			>Discrete slider with min/max
+		<Slider layout="vertical" {dimension} step={1} showSteps centered min={-5} max={5}>
+			Discrete slider with min/max
 			{#snippet helperText()}
 				Discrete slider can also show minimum and maximum values
 			{/snippet}
@@ -188,8 +188,10 @@
 			step="0.001"
 			value="1.420"
 			label="Number input"
-			unit="EUR">This is some helper text</Input
+			unit="EUR"
 		>
+			This is some helper text
+		</Input>
 	</section>
 </ResponsiveContainer>
 
@@ -259,10 +261,10 @@
 <ResponsiveContainer class="vspace">
 	<section id="quote" class="controls">
 		<div class="quote">
-			<Typography font="serif" italic variant="large"
-				>“One could describe design as a plan for arranging elements to accomplish a particular
-				purpose.”</Typography
-			>
+			<Typography font="serif" italic variant="large">
+				“One could describe design as a plan for arranging elements to accomplish a particular
+				purpose.”
+			</Typography>
 			<Typography>Charles Eames</Typography>
 		</div>
 	</section>
