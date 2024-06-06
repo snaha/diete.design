@@ -21,6 +21,7 @@
 		Diète: {
 			'/': 'Intro',
 			'/build': 'Build with Diète',
+			'/colors': 'CSS colors',
 			'https://github.com/diete-design/diete.design': 'Github',
 		},
 		'Basic components': {
@@ -72,7 +73,7 @@
 	function makeMenuItemOpenMapping() {
 		const menuOpen: { [title: string]: boolean } = {}
 
-		Object.keys(menu).forEach((menu) => (menuOpen[menu] = isActivePageInMenu(menu)))
+		Object.keys(menu).forEach((menu) => (menuOpen[menu] = true || isActivePageInMenu(menu)))
 
 		return menuOpen
 	}

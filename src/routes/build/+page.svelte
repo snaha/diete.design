@@ -21,14 +21,14 @@
 <ol>
 	<li>
 		<Typography
-			>Add the <a href="https://www.npmjs.com/package/carbon-icons-svelte">carbon-icons-svelte</a> package
-			as a dependency that contains necessary icons.</Typography
+			>Copy the <a href="/generated/css/diete.css">diete.css</a> file to your projects that contain shared
+			variable definitions. You may customize this file (<a href="/colors">colors</a>, fonts etc.) however you wish.</Typography
 		>
 	</li>
 	<li>
 		<Typography
-			>Copy the <a href="/generated/css/diete.css">diete.css</a> file to your projects that contain shared
-			variable definitions.</Typography
+			>Add the <a href="https://www.npmjs.com/package/carbon-icons-svelte">carbon-icons-svelte</a> package
+			as a dependency that contains necessary icons.</Typography
 		>
 	</li>
 	<li>
