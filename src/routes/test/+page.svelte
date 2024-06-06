@@ -22,6 +22,7 @@
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
 	import Badge from '$lib/components/ui/badge.svelte'
+	import Loader from '$lib/components/ui/loader.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -1905,6 +1906,14 @@
 					<Typography variant="h4">Posts</Typography>
 					<Badge dimension="large" variant="light-overlay">12</Badge>
 				</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="row">
+			<div class="col">
+				<Loader />
+				<Loader dimension="large" />
 			</div>
 		</div>
 	</section>
