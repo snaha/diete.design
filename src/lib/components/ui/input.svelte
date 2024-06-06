@@ -135,6 +135,7 @@
 	}
 
 	.root {
+		align-self: stretch;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
@@ -153,6 +154,7 @@
 	}
 	.col {
 		display: flex;
+		flex-grow: 1;
 		flex-direction: column;
 		gap: 0.25rem;
 	}

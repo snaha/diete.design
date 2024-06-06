@@ -208,11 +208,13 @@
 		--transition: 0;
 		display: flex;
 		justify-content: center;
+		align-self: stretch;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		.select-container {
 			display: flex;
+			flex-grow: 1;
 			flex-direction: column;
 		}
 	}

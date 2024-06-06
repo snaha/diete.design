@@ -168,7 +168,7 @@
 
 <ResponsiveContainer class="vspace">
 	<section id="search" class="controls">
-		<Input {dimension} placeholder="Search" controls={true} class="align-self-stretch">
+		<Input {dimension} placeholder="Search" controls={true}>
 			{#snippet buttons()}
 				<Button {dimension} variant="secondary"><Search {size} /></Button>
 			{/snippet}
@@ -176,9 +176,7 @@
 	</section>
 
 	<section id="input" class="controls">
-		<Input {dimension} value="Williamsburg" label="Text input" class="align-self-stretch"
-			>This is some helper text</Input
-		>
+		<Input {dimension} value="Williamsburg" label="Text input">This is some helper text</Input>
 
 		<hr />
 
@@ -190,15 +188,14 @@
 			step="0.001"
 			value="1.420"
 			label="Number input"
-			unit="EUR"
-			class="align-self-stretch">This is some helper text</Input
+			unit="EUR">This is some helper text</Input
 		>
 	</section>
 </ResponsiveContainer>
 
 <ResponsiveContainer class="vspace">
 	<section id="select" class="controls">
-		<Select value="1" label="Select" class="align-self-stretch">
+		<Select value="1" label="Select">
 			{#snippet helperText()}
 				This is some helper text
 			{/snippet}
@@ -351,9 +348,6 @@
 	}
 	#bottom {
 		margin-top: calc(2 * var(--double-padding));
-	}
-	section > :global(.align-self-stretch) {
-		align-self: stretch;
 	}
 	.quote {
 		display: flex;
