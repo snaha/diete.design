@@ -16,6 +16,7 @@
 	let innerWidth: number | undefined = $state()
 
 	const mobileWidth = 700
+	const menuAlwaysOpen = true
 
 	const menu: { [title: string]: { [path: string]: string } } = {
 		Diète: {
@@ -73,7 +74,9 @@
 	function makeMenuItemOpenMapping() {
 		const menuOpen: { [title: string]: boolean } = {}
 
-		Object.keys(menu).forEach((menu) => (menuOpen[menu] = true || isActivePageInMenu(menu)))
+		Object.keys(menu).forEach(
+			(menu) => (menuOpen[menu] = menuAlwaysOpen || isActivePageInMenu(menu)),
+		)
 
 		return menuOpen
 	}
