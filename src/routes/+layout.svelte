@@ -21,6 +21,7 @@
 			'/': 'Intro',
 		},
 		'Basic components': {
+			'/components/badge': 'Badge',
 			'/components/button': 'Button',
 			'/components/checkbox': 'Checkbox',
 			'/components/input': 'Input',
