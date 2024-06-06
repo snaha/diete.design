@@ -75,7 +75,8 @@
 			store.marked = store.value
 		}
 	})
-	let lastTabInteraction = false
+	let lastTabInteraction = $state(false)
+	let focused = $state(false)
 	$effect(() => {
 		const keyDown = (e: KeyboardEvent) => {
 			if (e.key.toLowerCase() === 'tab') {
@@ -83,25 +84,27 @@
 			}
 		}
 
-		const focused = () => {
-			if (lastTabInteraction) input?.classList.add('focused')
+		function addFocus() {
+			if (lastTabInteraction) {
+				focused = true
+			}
 		}
 
-		const unfocused = () => {
+		function removeFocus() {
 			lastTabInteraction = false
-			input?.classList.remove('focused')
+			focused = false
 		}
 
 		window.addEventListener('keydown', keyDown)
-		window.addEventListener('mousedown', unfocused)
-		input?.addEventListener('blur', unfocused)
-		input?.addEventListener('focus', focused)
+		window.addEventListener('mousedown', removeFocus)
+		input?.addEventListener('blur', removeFocus)
+		input?.addEventListener('focus', addFocus)
 
 		return () => {
 			window.removeEventListener('keydown', keyDown)
-			window.removeEventListener('mousedown', unfocused)
-			input?.removeEventListener('blur', unfocused)
-			input?.removeEventListener('focus', focused)
+			window.removeEventListener('mousedown', removeFocus)
+			input?.removeEventListener('blur', removeFocus)
+			input?.removeEventListener('focus', addFocus)
 		}
 	})
 </script>
@@ -118,7 +121,7 @@
 			class:hover
 			class:active
 			class:focus
-			class:focused={input?.classList.contains('focused')}
+			class:focused
 			class:open={store.open}
 			onclick={() => {
 				if (!store.open)
