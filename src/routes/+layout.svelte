@@ -106,14 +106,16 @@
 		<ThemeSelector />
 	</Dropdown>
 </div>
-
 <div class="container">
 	<div class="menu-{isMenuOpen ? 'open' : 'closed'}-placeholder">
 		{#if isMenuOpen}
 			<div class="menu-header"></div>
 			<div class="menu">
 				{#each Object.entries(menu) as [title, pages]}
-					<MenuTitle content={title} bold bind:open={menuTitleIsOpen[title]}>
+					{#snippet content()}
+						{title}
+					{/snippet}
+					<MenuTitle {content} bold bind:open={menuTitleIsOpen[title]}>
 						{#each Object.entries(pages) as [path, title]}
 							<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}
 								>{title}</MenuItem
