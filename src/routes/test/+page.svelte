@@ -23,6 +23,7 @@
 	import Slider from '$lib/components/ui/slider.svelte'
 	import Badge from '$lib/components/ui/badge.svelte'
 	import Loader from '$lib/components/ui/loader.svelte'
+	import ProgressBar from '$lib/components/ui/progress.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -2113,6 +2114,17 @@
 				<Loader />
 				<Loader dimension="large" />
 			</div>
+		</div>
+	</section>
+	<section>
+		<div class="row">
+			<ProgressBar value={50}>Loading...</ProgressBar>
+		</div>
+		<div class="row">
+			<ProgressBar dimension="large" value={50}>Loading...</ProgressBar>
+		</div>
+		<div class="row">
+			<ProgressBar dimension="small" value={50}>Loading...</ProgressBar>
 		</div>
 	</section>
 </div>
