@@ -16,6 +16,7 @@
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Layout = 'vertical' | 'horizontal'
+	type Variant = 'outline' | 'solid'
 
 	let css: string = $state('Loading...')
 
@@ -32,6 +33,7 @@
 	let arrowButton = $state(false)
 	let withHelperText: boolean = $state(false)
 	let optionalHelperText: string = $state('Helper text')
+	let variant: Variant = $state('outline')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -84,7 +86,8 @@
 			}
 <Input 
 	dimension="${dimension}" 
-	layout="${layout}" 
+	layout="${layout}"
+	variant="${variant}" 
 	label="${label}" 
 	placeholder="${placeholder}"${
 		unit
@@ -159,6 +162,10 @@
 		<Option value="vertical">Vertical</Option>
 		<Option value="horizontal">Horizontal</Option>
 	</Select>
+	<Select bind:value={variant} label="Variant">
+		<Option value="outline">Outline</Option>
+		<Option value="solid">Solid</Option>
+	</Select>
 	<Input bind:value={label} {label} />
 	<Input bind:value={placeholder} label="Placeholder" />
 	<Switch bind:checked={withHelperText} label="With helper text" />
@@ -200,6 +207,7 @@
 	<Input
 		{dimension}
 		{layout}
+		{variant}
 		{label}
 		{placeholder}
 		unit={unit ? stringUnit : ''}

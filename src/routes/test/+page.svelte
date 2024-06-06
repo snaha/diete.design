@@ -561,7 +561,7 @@
 		This is an error message
 	{/snippet}
 	<section>
-		<Typography variant="h1">Input (vertical)</Typography>
+		<Typography variant="h1">Input outline (vertical)</Typography>
 		<div class="row">
 			<div class="col">
 				<Input label="Input label" placeholder="Placeholder">This is an optional helper text</Input>
@@ -639,6 +639,101 @@
 					>This is an optional helper text</Input
 				>
 				<Input dimension="small" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
+			</div>
+		</div>
+		<Typography variant="h1">Input solid (vertical)</Typography>
+		<div class="row">
+			<div class="col">
+				<Input variant="solid" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
+			</div>
+			<div class="col">
+				<Input variant="solid" dimension="large" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
+			</div>
+			<div class="col">
+				<Input variant="solid" dimension="compact" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
+			</div>
+			<div class="col">
+				<Input variant="solid" dimension="small" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="With error" {error}
 					>This is an optional helper text</Input
 				>
 			</div>
