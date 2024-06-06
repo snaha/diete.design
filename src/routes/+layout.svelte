@@ -115,9 +115,9 @@
 				{#each Object.entries(menu) as [title, pages]}
 					<MenuTitle content={title} bold bind:open={menuTitleIsOpen[title]}>
 						{#each Object.entries(pages) as [path, title]}
-							<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}
-								>{title}</MenuItem
-							>
+							<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}>
+								{title}
+							</MenuItem>
 						{/each}
 					</MenuTitle>
 				{/each}
@@ -135,9 +135,10 @@
 
 				<section id="footer">
 					<Typography>
-						Source code is available on <a href="https://github.com/diete-design/diete.design"
-							>Github</a
-						>.
+						Source code is available on <a href="https://github.com/diete-design/diete.design">
+							Github
+						</a>
+						.
 					</Typography>
 				</section>
 			</div>

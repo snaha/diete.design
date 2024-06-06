@@ -217,8 +217,8 @@
 	>
 		{#if withHelperText}
 			{optionalHelperText}
-		{/if}</Input
-	>
+		{/if}
+	</Input>
 {/snippet}
 
 {#snippet implement()}

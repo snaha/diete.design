@@ -72,11 +72,12 @@
 
 <Typography variant="h1" class="margin-bottom">CSS colors</Typography>
 
-<Typography element="p" class="margin-bottom"
-	>Choosing a different color from the appearance menu (marked by the <Light /> icon) changes the values
-	here. You can copy and paste these values in your <a href="/generated/css/diete.css">diete.css</a>
-	file.</Typography
->
+<Typography element="p" class="margin-bottom">
+	Choosing a different color from the appearance menu (marked by the <Light /> icon) changes the values
+	here. You can copy and paste these values in your
+	<a href="/generated/css/diete.css">diete.css</a>
+	file.
+</Typography>
 <Code class="code-max-height margin-bottom" language="css" code={css} />
 
 <style>
