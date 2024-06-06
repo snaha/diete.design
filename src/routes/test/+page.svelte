@@ -13,6 +13,7 @@
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
+	import ProgressBar from '$lib/components/ui/progress.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -1712,6 +1713,17 @@
 					disabled>Slider label</Slider
 				>
 			</div>
+		</div>
+	</section>
+	<section>
+		<div class="row">
+			<ProgressBar value={50}>Loading...</ProgressBar>
+		</div>
+		<div class="row">
+			<ProgressBar dimension="large" value={50}>Loading...</ProgressBar>
+		</div>
+		<div class="row">
+			<ProgressBar dimension="small" value={50}>Loading...</ProgressBar>
 		</div>
 	</section>
 </div>
