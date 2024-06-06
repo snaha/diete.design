@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
 	import Code from '$lib/components/custom/code.svelte'
-	import { onMount } from 'svelte'
+	import Typography from '$lib/components/ui/typography.svelte'
+	import { Light } from 'carbon-icons-svelte'
+	import { onDestroy, onMount } from 'svelte'
 
 	const getCSSProperty = (name: string) => {
 		if (!browser) {
@@ -10,14 +12,18 @@
 		return document?.documentElement?.style?.getPropertyValue(name)
 	}
 	let css = $state('')
+	let interval: ReturnType<typeof setInterval> | undefined = undefined
 
 	onMount(() => {
-		setInterval(() => getColors(), 500)
+		interval = setInterval(() => getColors(), 500)
+	})
+
+	onDestroy(() => {
+		clearInterval(interval)
 	})
 
 	const getColors = () => {
-		css = `
-	--colors-top: ${getCSSProperty('--colors-top')};
+		css = `	--colors-top: ${getCSSProperty('--colors-top')};
 	--colors-ultra-high: ${getCSSProperty('--colors-ultra-high')};
 	--colors-high: ${getCSSProperty('--colors-high')};
 	--colors-low: ${getCSSProperty('--colors-low')};
@@ -44,10 +50,16 @@
 	}
 </script>
 
+<Typography
+	>Choosing a different color from the appearance menu (marked by the <Light /> icon) changes the values
+	here. You can copy and paste these values in your <a href="/generated/css/diete.css">diete.css</a>
+	file.</Typography
+>
 <Code class="code-max-height" language="css" code={css} />
 
 <style>
 	:global(.code-max-height) {
+		margin-top: var(--double-padding);
 		margin-bottom: var(--double-padding);
 		max-height: 80vh !important;
 	}
