@@ -12,15 +12,34 @@
 		return document?.documentElement?.style?.getPropertyValue(name)
 	}
 	let css = $state('')
-	let interval: ReturnType<typeof setInterval> | undefined = undefined
+	let observer: MutationObserver | undefined
 
 	onMount(() => {
 		getColors()
-		interval = setInterval(() => getColors(), 500)
+
+		if (browser) {
+			observer = new MutationObserver((mutations) => {
+				mutations.forEach((mutation) => {
+					if (
+						mutation.type === 'attributes' &&
+						mutation.attributeName &&
+						mutation.target === document.documentElement
+					) {
+						getColors()
+					}
+				})
+			})
+			observer.observe(document.documentElement, {
+				attributes: true,
+				attributeFilter: ['style'],
+			})
+		}
 	})
 
 	onDestroy(() => {
-		clearInterval(interval)
+		if (observer) {
+			observer.disconnect()
+		}
 	})
 
 	const getColors = () => {
