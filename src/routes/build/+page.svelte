@@ -21,20 +21,22 @@
 <ol>
 	<li>
 		<Typography
-			>Copy the <a href="/generated/css/diete.css">diete.css</a> file to your projects that contain shared
-			variable definitions. You may customize this file (<a href="/colors">colors</a>, fonts etc.) however you wish.</Typography
-		>
-	</li>
-	<li>
-		<Typography
-			>Add the <a href="https://www.npmjs.com/package/carbon-icons-svelte">carbon-icons-svelte</a> package
-			as a dependency that contains necessary icons.</Typography
+			>Copy the <a href="/generated/css/diete.css">diete.css</a> file to your projects that contain
+			shared variable definitions. You may customize this file (<a href="/colors">colors</a>, fonts
+			etc.) however you wish.</Typography
 		>
 	</li>
 	<li>
 		<Typography
 			>Find the component you need and copy the necessary files from the Implement section to your
 			project.</Typography
+		>
+	</li>
+	<li>
+		<Typography
+			>Optional step: add the <a href="https://www.npmjs.com/package/carbon-icons-svelte"
+				>carbon-icons-svelte</a
+			> package as a dependency that contains necessary icons.</Typography
 		>
 	</li>
 </ol>
@@ -56,13 +58,23 @@
 	<section id="essential-design">
 		<Typography variant="h5" class="box-title">Essential design</Typography>
 		<Typography>
-            Diète aims for simplicity and timeless design by avoiding superfluous effects or trendy styles. Not merely the superficial simplicity that comes from a minimalist appearance, but the simplicity that stems from deeply understanding the underlying challenges of designing a product interface. Diète advocates for no-nonsense, unobtrusive design and clean elegance that efficiently help everyone using your app.		</Typography>
+			Diète aims for simplicity and timeless design by avoiding superfluous effects or trendy
+			styles. Not merely the superficial simplicity that comes from a minimalist appearance, but the
+			simplicity that stems from deeply understanding the underlying challenges of designing a
+			product interface. Diète advocates for no-nonsense, unobtrusive design and clean elegance that
+			efficiently help everyone using your app.
+		</Typography>
 	</section>
 
 	<section id="fully-accessible">
 		<Typography variant="h5" class="box-title">Fully accessible</Typography>
 		<Typography>
-            Diète complies to the highest usability standards and strives to be as inclusive as possible. Color contrast, fonts and default components sizes all feature Triple-A conformance to the latest Web Content Accessibility Guidelines (WCAG 2.2). Furthermore, all components come with carefully designed, high-emphasis focused states allowing people to easily interact without a mouse — using the keyboard or voice control.		</Typography>
+			Diète complies to the highest usability standards and strives to be as inclusive as possible.
+			Color contrast, fonts and default components sizes all feature Triple-A conformance to the
+			latest Web Content Accessibility Guidelines (WCAG 2.2). Furthermore, all components come with
+			carefully designed, high-emphasis focused states allowing people to easily interact without a
+			mouse — using the keyboard or voice control.
+		</Typography>
 	</section>
 </ResponsiveContainer>
 
@@ -70,14 +82,23 @@
 	<section id="essential-design">
 		<Typography variant="h5" class="box-title">Flexible</Typography>
 		<Typography>
-            All components come in 4 sizes (default, compact, small and large) and variants for vertical or horizontal layouts. Margins and spacing are built in the components themselves, so they can be perfectly assembled together to build advanced layouts. Moreover, Diète comes with a dynamic colour system that generates light or dark themes from any colour. You can also change the default system fonts and icon set to your preferences.
+			All components come in 4 sizes (default, compact, small and large) and variants for vertical
+			or horizontal layouts. Margins and spacing are built in the components themselves, so they can
+			be perfectly assembled together to build advanced layouts. Moreover, Diète comes with a
+			dynamic colour system that generates light or dark themes from any colour. You can also change
+			the default system fonts and icon set to your preferences.
 		</Typography>
 	</section>
 
 	<section id="no-dependencies">
 		<Typography variant="h5" class="box-title">Minimum dependencies</Typography>
 		<Typography>
-            Diète is not a dependency you install. You download the source code and copy the components into your own project, where they become the starting point for your own component system. This way, you remain independent and gain complete control over the code. Diète comes with high-quality defaults that you can use as is, but you have the freedom to decide how to use and customise each component to your own needs. Your app, your code.		</Typography>
+			Diète is not a dependency you install. You download the source code and copy the components
+			into your own project, where they become the starting point for your own component system.
+			This way, you remain independent and gain complete control over the code. Diète comes with
+			high-quality defaults that you can use as is, but you have the freedom to decide how to use
+			and customise each component to your own needs. Your app, your code.
+		</Typography>
 	</section>
 </ResponsiveContainer>
 
