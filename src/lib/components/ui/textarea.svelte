@@ -75,8 +75,6 @@
 		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
-		&::-webkit-resizer {
-		}
 		&:hover:not(:disabled),
 		&.hover:not(:disabled),
 		&:active:not(:disabled),
