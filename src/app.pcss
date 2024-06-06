@@ -66,6 +66,7 @@
 
 	--padding: var(--font-size);
 	--double-padding: calc(2 * var(--padding));
+	--half-padding: calc(var(--padding) / 2);
 	--border-radius: 0.25rem;
 }
 
@@ -80,4 +81,8 @@ a {
 	&:focus-visible:not(:disabled) {
 		outline: 4px solid var(--colors-top);
 	}
+}
+*::before,
+*::after {
+	box-sizing: border-box;
 }

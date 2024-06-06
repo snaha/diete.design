@@ -20,7 +20,6 @@
 		Diète: {
 			'/': 'Intro',
 		},
-		Elements: {},
 		'Basic components': {
 			'/components/button': 'Button',
 			'/components/checkbox': 'Checkbox',
@@ -30,8 +29,16 @@
 			'/components/select': 'Select',
 			'/components/slider': 'Slider',
 			'/components/switch': 'Switch',
+			'/components/typography': 'Typography',
 		},
 	}
+
+	const inverseMenu = Object.fromEntries(
+		Object.keys(menu).reduce(
+			(r, key) => r.concat(Object.entries(menu[key])),
+			[] as [string, string][],
+		),
+	)
 
 	// for some reason using $page is now an error
 	// https://github.com/sveltejs/eslint-plugin-svelte/issues/652#issuecomment-2028495896
@@ -39,6 +46,10 @@
 	// eslint-disable-next-line svelte/valid-compile
 	const pathname = $derived($page.url.pathname)
 	let menuTitleIsOpen = $state(makeMenuItemOpenMapping())
+
+	const title = $derived(
+		'Diète design system' + (inverseMenu[pathname] ? ` - ${inverseMenu[pathname]}` : ''),
+	)
 
 	$effect(() => {
 		pathname
@@ -68,6 +79,10 @@
 		}
 	}
 </script>
+
+<svelte:head>
+	<title>{title}</title>
+</svelte:head>
 
 <svelte:window bind:innerWidth />
 
