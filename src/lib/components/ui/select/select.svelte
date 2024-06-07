@@ -35,6 +35,7 @@
 	}: Props = $props()
 
 	let input: HTMLInputElement | undefined = $state(undefined)
+	let focused = $state(false)
 
 	const store = withSelectStore(dimension, value ?? (placeholder ? '' : undefined))
 	setContext('select-store', store)
@@ -75,9 +76,8 @@
 			store.marked = store.value
 		}
 	})
-	let lastTabInteraction = $state(false)
-	let focused = $state(false)
 	$effect(() => {
+		let lastTabInteraction = false
 		const keyDown = (e: KeyboardEvent) => {
 			if (e.key.toLowerCase() === 'tab') {
 				lastTabInteraction = true
