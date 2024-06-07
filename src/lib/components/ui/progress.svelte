@@ -33,8 +33,10 @@
 		display: flex;
 		flex: 1;
 		align-items: center;
+		align-self: stretch;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
+		font-family: var(--font-family-sans-serif);
 		&.default,
 		&.compact {
 			font-size: var(--font-size);
@@ -61,6 +63,7 @@
 	.progress-bar {
 		position: absolute;
 		top: 50%;
+		flex: 1;
 		transform: translateY(-50%);
 		border-radius: 0.125rem;
 		background: var(--colors-high);
