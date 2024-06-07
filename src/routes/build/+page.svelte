@@ -132,4 +132,18 @@
 	:global(.section-title) {
 		margin-bottom: var(--double-padding) !important;
 	}
+	ol {
+		counter-reset: li;
+		margin-left: 0;
+		padding-left: 0;
+		list-style: none;
+	}
+	ol li:before {
+		content: counter(li) '. ';
+		color: var(--colors-top);
+		font-family: var(--font-family-sans-serif);
+	}
+	ol li {
+		counter-increment: li;
+	}
 </style>
