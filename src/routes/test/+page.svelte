@@ -1520,33 +1520,69 @@
 	</section>
 	<section id="menu">
 		<Typography variant="h1">Menu</Typography>
+		{#snippet content()}
+			Organic taiyaki
+		{/snippet}
 		<div class="row">
 			<div class="col">
-				<MenuTitle bold content="List title"></MenuTitle>
-				<MenuTitle bold content="List title hover" hover></MenuTitle>
-				<MenuTitle bold content="List title pressed" active></MenuTitle>
-				<MenuTitle bold content="List title focus" focus></MenuTitle>
-				<MenuTitle bold content="List title disabled" disabled></MenuTitle>
+				<MenuTitle bold>
+					{#snippet content()}
+						List title
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold hover>
+					{#snippet content()}
+						List title hover
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold active>
+					{#snippet content()}
+						List title pressed
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold focus>
+					{#snippet content()}
+						List title focus
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold disabled>
+					{#snippet content()}
+						List title disabled
+					{/snippet}
+				</MenuTitle>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<MenuTitle bold content="Closed">
+				<MenuTitle bold>
+					{#snippet content()}
+						Closed
+					{/snippet}
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Opened" open>
+				<MenuTitle bold open>
+					{#snippet content()}
+						Opened
+					{/snippet}
 					<MenuItem href="#button" disabled>Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Disabled" disabled />
-				<MenuTitle bold content="Open disabled" open disabled>
+				<MenuTitle bold disabled>
+					{#snippet content()}
+						Disabled
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold open disabled>
+					{#snippet content()}
+						Open disabled
+					{/snippet}
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
@@ -1555,76 +1591,76 @@
 				</MenuTitle>
 			</div>
 			<div class="col">
-				<MenuTitle bold content="Organic taiyaki" dimension="large">
+				<MenuTitle bold {content} dimension="large">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Organic taiyaki" dimension="large" open />
+				<MenuTitle bold {content} dimension="large" open />
 			</div>
 			<div class="col">
-				<MenuTitle bold content="Organic taiyaki" dimension="compact">
+				<MenuTitle bold {content} dimension="compact">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Organic taiyaki" dimension="compact" open />
+				<MenuTitle bold {content} dimension="compact" open />
 			</div>
 			<div class="col">
-				<MenuTitle bold content="Organic taiyaki" dimension="small">
+				<MenuTitle bold {content} dimension="small">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Organic taiyaki" dimension="small" open />
+				<MenuTitle bold {content} dimension="small" open />
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<MenuTitle content="Organic taiyaki">
+				<MenuTitle {content}>
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" open />
+				<MenuTitle {content} open />
 			</div>
 			<div class="col">
-				<MenuTitle content="Organic taiyaki" dimension="large">
+				<MenuTitle {content} dimension="large">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" dimension="large" open />
+				<MenuTitle {content} dimension="large" open />
 			</div>
 			<div class="col">
-				<MenuTitle content="Organic taiyaki" dimension="compact">
+				<MenuTitle {content} dimension="compact">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" dimension="compact" open />
+				<MenuTitle {content} dimension="compact" open />
 			</div>
 			<div class="col">
-				<MenuTitle content="Organic taiyaki" dimension="small">
+				<MenuTitle {content} dimension="small">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" dimension="small" open />
+				<MenuTitle {content} dimension="small" open />
 			</div>
 		</div>
 	</section>
@@ -2051,6 +2087,7 @@
 
 	.row {
 		display: flex;
+		flex: 1;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: flex-start;
