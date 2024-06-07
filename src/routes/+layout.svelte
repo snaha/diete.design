@@ -31,6 +31,7 @@
 			'/components/switch': 'Switch',
 			'/components/tooltip': 'Tooltip',
 			'/components/typography': 'Typography',
+			'/components/progress': 'Progress bar',
 		},
 	}
 
