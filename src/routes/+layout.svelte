@@ -25,6 +25,7 @@
 			'/components/button': 'Button',
 			'/components/checkbox': 'Checkbox',
 			'/components/input': 'Input',
+			'/components/loader': 'Loader',
 			'/components/menu': 'Menu',
 			'/components/radio': 'Radio',
 			'/components/select': 'Select',
@@ -32,7 +33,6 @@
 			'/components/switch': 'Switch',
 			'/components/tooltip': 'Tooltip',
 			'/components/typography': 'Typography',
-			'/components/loader': 'Loader',
 		},
 	}
 
