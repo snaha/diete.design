@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	import { WarningAltFilled, Information, Subtract, Add } from 'carbon-icons-svelte'
+	import { WarningAltFilled, Information, Subtract, Add, Calendar } from 'carbon-icons-svelte'
 	import Button from './button.svelte'
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
@@ -42,6 +42,7 @@
 		variant = 'outline',
 		...restProps
 	}: Props = $props()
+	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 </script>
 
 <div class="root {layout} {dimension} {className}" class:controls>
@@ -78,13 +79,20 @@
 					</label>
 				{/if}
 			</div>
+			{#if controls && type === 'date'}
+				<div class="control-buttons">
+					<Button {dimension} {disabled} variant={variant === 'outline' ? 'secondary' : 'solid'}>
+						<Calendar {size} />
+					</Button>
+				</div>
+			{/if}
 			{#if controls && type === 'number'}
 				<div class="control-buttons">
 					<Button {dimension} {disabled} variant="secondary" onclick={() => (value -= 1)}>
-						<Subtract size={dimension === 'small' ? 16 : 24} />
+						<Subtract {size} />
 					</Button>
 					<Button {dimension} {disabled} variant="secondary" onclick={() => (value += 1)}>
-						<Add size={dimension === 'small' ? 16 : 24} />
+						<Add {size} />
 					</Button>
 				</div>
 			{/if}
@@ -115,6 +123,17 @@
 	input[type='number'] {
 		-moz-appearance: textfield;
 	}
+	input[type='date'] {
+		cursor: text;
+	}
+	input[type='date']::-webkit-calendar-picker-indicator {
+		display: none;
+	}
+	input[type='date']::-webkit-datetime-edit {
+		font-family: var(--font-family-sans-serif);
+		text-transform: uppercase;
+	}
+
 	.vertical {
 		&.root {
 			display: flex;
