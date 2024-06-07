@@ -425,7 +425,7 @@
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
 			&.search {
-				padding-left: 32px;
+				padding-left: var(--double-padding);
 			}
 		}
 		.search-icon {
