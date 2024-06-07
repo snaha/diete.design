@@ -1032,6 +1032,127 @@
 		</div>
 	</section>
 	<section>
+		<Typography variant="h1">Date input</Typography>
+		<div class="row">
+			<div class="col">
+				<Input type="date" label="Date picker" controls />
+				<Input type="date" label="Date picker" value="2024-05-01" controls />
+				<Input type="date" label="Date picker" value="2024-05-01" controls hover />
+				<Input type="date" label="Date picker" value="2024-05-01" controls active />
+				<Input type="date" label="Date picker" value="2024-05-01" controls focus />
+				<Input type="date" label="Date picker" value="2024-05-01" controls disabled />
+			</div>
+			<div class="col">
+				<Input dimension="large" type="date" label="Date picker" controls />
+				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" controls />
+				<Input
+					dimension="large"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					hover
+				/>
+				<Input
+					dimension="large"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					active
+				/>
+				<Input
+					dimension="large"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					focus
+				/>
+				<Input
+					dimension="large"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					disabled
+				/>
+			</div>
+			<div class="col">
+				<Input dimension="compact" type="date" label="Date picker" controls />
+				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" controls />
+				<Input
+					dimension="compact"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					hover
+				/>
+				<Input
+					dimension="compact"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					active
+				/>
+				<Input
+					dimension="compact"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					focus
+				/>
+				<Input
+					dimension="compact"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					disabled
+				/>
+			</div>
+			<div class="col">
+				<Input dimension="small" type="date" label="Date picker" controls />
+				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" controls />
+				<Input
+					dimension="small"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					hover
+				/>
+				<Input
+					dimension="small"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					active
+				/>
+				<Input
+					dimension="small"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					focus
+				/>
+				<Input
+					dimension="small"
+					type="date"
+					label="Date picker"
+					value="2024-05-01"
+					controls
+					disabled
+				/>
+			</div>
+		</div>
+	</section>
+	<section>
 		<Typography variant="h1">Select (outline)</Typography>
 		<div class="row">
 			<div class="col">
