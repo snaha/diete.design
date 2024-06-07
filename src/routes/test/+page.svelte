@@ -1,5 +1,13 @@
 <script lang="ts">
-	import { Checkmark, ArrowRight } from 'carbon-icons-svelte'
+	import {
+		Checkmark,
+		ArrowRight,
+		CheckmarkFilled,
+		NotificationNew,
+		ThumbsUpFilled,
+		ThumbsDown,
+		Error,
+	} from 'carbon-icons-svelte'
 
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
@@ -13,6 +21,7 @@
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
+	import Badge from '$lib/components/ui/badge.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -561,7 +570,7 @@
 		This is an error message
 	{/snippet}
 	<section>
-		<Typography variant="h1">Input (vertical)</Typography>
+		<Typography variant="h1">Input outline (vertical)</Typography>
 		<div class="row">
 			<div class="col">
 				<Input label="Input label" placeholder="Placeholder">This is an optional helper text</Input>
@@ -639,6 +648,101 @@
 					>This is an optional helper text</Input
 				>
 				<Input dimension="small" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
+			</div>
+		</div>
+		<Typography variant="h1">Input solid (vertical)</Typography>
+		<div class="row">
+			<div class="col">
+				<Input variant="solid" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
+			</div>
+			<div class="col">
+				<Input variant="solid" dimension="large" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="large" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
+			</div>
+			<div class="col">
+				<Input variant="solid" dimension="compact" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="compact" label="Input label" value="With error" {error}
+					>This is an optional helper text</Input
+				>
+			</div>
+			<div class="col">
+				<Input variant="solid" dimension="small" label="Input label" placeholder="Placeholder"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="With text"
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="Hover" hover
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="Pressed" active
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="Focused" focus
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="Disabled" disabled
+					>This is an optional helper text</Input
+				>
+				<Input variant="solid" dimension="small" label="Input label" value="With error" {error}
 					>This is an optional helper text</Input
 				>
 			</div>
@@ -952,6 +1056,140 @@
 					disabled
 					controls>This is an optional helper text</Input
 				>
+			</div>
+		</div>
+	</section>
+	<section>
+		<Typography variant="h1">Select (outline)</Typography>
+		<div class="row">
+			<div class="col">
+				<Select label="Outline select" placeholder="Placeholder" />
+				<Select label="Outline select" placeholder="Placeholder" value="With value" />
+				<Select label="Outline select" placeholder="Hover" hover />
+				<Select label="Outline select" placeholder="Active" hover />
+				<Select label="Outline select" placeholder="Active" focus />
+				<Select label="Outline select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select dimension="large" label="Outline select" placeholder="Placeholder" />
+				<Select
+					dimension="large"
+					label="Outline select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select dimension="large" label="Outline select" placeholder="Hover" hover />
+				<Select dimension="large" label="Outline select" placeholder="Active" hover />
+				<Select dimension="large" label="Outline select" placeholder="Active" focus />
+				<Select dimension="large" label="Outline select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select dimension="compact" label="Outline select" placeholder="Placeholder" />
+				<Select
+					dimension="compact"
+					label="Outline select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select dimension="compact" label="Outline select" placeholder="Hover" hover />
+				<Select dimension="compact" label="Outline select" placeholder="Active" hover />
+				<Select dimension="compact" label="Outline select" placeholder="Active" focus />
+				<Select dimension="compact" label="Outline select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select dimension="small" label="Outline select" placeholder="Placeholder" />
+				<Select
+					dimension="small"
+					label="Outline select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select dimension="small" label="Outline select" placeholder="Hover" hover />
+				<Select dimension="small" label="Outline select" placeholder="Active" hover />
+				<Select dimension="small" label="Outline select" placeholder="Active" focus />
+				<Select dimension="small" label="Outline select" value="Disabled" disabled />
+			</div>
+		</div>
+		<Typography variant="h1">Select (solid)</Typography>
+		<div class="row">
+			<div class="col">
+				<Select variant="solid" label="Solid select" placeholder="Placeholder" />
+				<Select variant="solid" label="Solid select" placeholder="Placeholder" value="With value" />
+				<Select variant="solid" label="Solid select" placeholder="Hover" hover />
+				<Select variant="solid" label="Solid select" placeholder="Active" hover />
+				<Select variant="solid" label="Solid select" placeholder="Active" focus />
+				<Select variant="solid" label="Solid select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Placeholder" />
+				<Select
+					variant="solid"
+					dimension="large"
+					label="Solid select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Hover" hover />
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Active" hover />
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Active" focus />
+				<Select variant="solid" dimension="large" label="Solid select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Placeholder"
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Hover"
+					hover
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Active"
+					hover
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Active"
+					focus
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					value="Disabled"
+					disabled
+				/>
+			</div>
+			<div class="col">
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Placeholder" />
+				<Select
+					variant="solid"
+					dimension="small"
+					label="Solid select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Hover" hover />
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Active" hover />
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Active" focus />
+				<Select variant="solid" dimension="small" label="Solid select" value="Disabled" disabled />
 			</div>
 		</div>
 	</section>
@@ -1310,33 +1548,69 @@
 	</section>
 	<section id="menu">
 		<Typography variant="h1">Menu</Typography>
+		{#snippet content()}
+			Organic taiyaki
+		{/snippet}
 		<div class="row">
 			<div class="col">
-				<MenuTitle bold content="List title"></MenuTitle>
-				<MenuTitle bold content="List title hover" hover></MenuTitle>
-				<MenuTitle bold content="List title pressed" active></MenuTitle>
-				<MenuTitle bold content="List title focus" focus></MenuTitle>
-				<MenuTitle bold content="List title disabled" disabled></MenuTitle>
+				<MenuTitle bold>
+					{#snippet content()}
+						List title
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold hover>
+					{#snippet content()}
+						List title hover
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold active>
+					{#snippet content()}
+						List title pressed
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold focus>
+					{#snippet content()}
+						List title focus
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold disabled>
+					{#snippet content()}
+						List title disabled
+					{/snippet}
+				</MenuTitle>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<MenuTitle bold content="Closed">
+				<MenuTitle bold>
+					{#snippet content()}
+						Closed
+					{/snippet}
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Opened" open>
+				<MenuTitle bold open>
+					{#snippet content()}
+						Opened
+					{/snippet}
 					<MenuItem href="#button" disabled>Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Disabled" disabled />
-				<MenuTitle bold content="Open disabled" open disabled>
+				<MenuTitle bold disabled>
+					{#snippet content()}
+						Disabled
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold open disabled>
+					{#snippet content()}
+						Open disabled
+					{/snippet}
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
@@ -1345,76 +1619,76 @@
 				</MenuTitle>
 			</div>
 			<div class="col">
-				<MenuTitle bold content="Organic taiyaki" dimension="large">
+				<MenuTitle bold {content} dimension="large">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Organic taiyaki" dimension="large" open />
+				<MenuTitle bold {content} dimension="large" open />
 			</div>
 			<div class="col">
-				<MenuTitle bold content="Organic taiyaki" dimension="compact">
+				<MenuTitle bold {content} dimension="compact">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Organic taiyaki" dimension="compact" open />
+				<MenuTitle bold {content} dimension="compact" open />
 			</div>
 			<div class="col">
-				<MenuTitle bold content="Organic taiyaki" dimension="small">
+				<MenuTitle bold {content} dimension="small">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Organic taiyaki" dimension="small" open />
+				<MenuTitle bold {content} dimension="small" open />
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<MenuTitle content="Organic taiyaki">
+				<MenuTitle {content}>
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" open />
+				<MenuTitle {content} open />
 			</div>
 			<div class="col">
-				<MenuTitle content="Organic taiyaki" dimension="large">
+				<MenuTitle {content} dimension="large">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" dimension="large" open />
+				<MenuTitle {content} dimension="large" open />
 			</div>
 			<div class="col">
-				<MenuTitle content="Organic taiyaki" dimension="compact">
+				<MenuTitle {content} dimension="compact">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" dimension="compact" open />
+				<MenuTitle {content} dimension="compact" open />
 			</div>
 			<div class="col">
-				<MenuTitle content="Organic taiyaki" dimension="small">
+				<MenuTitle {content} dimension="small">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" dimension="small" open />
+				<MenuTitle {content} dimension="small" open />
 			</div>
 		</div>
 	</section>
@@ -1742,6 +2016,96 @@
 			</div>
 		</div>
 	</section>
+	<section>
+		<div class="row">
+			<div class="col">
+				<Badge>
+					<CheckmarkFilled size={16} />
+					Small badge
+				</Badge>
+				<Badge variant="strong">
+					<CheckmarkFilled size={16} />
+					Small badge
+				</Badge>
+				<Badge variant="dark-overlay">
+					<CheckmarkFilled size={16} />
+					Small badge
+				</Badge>
+				<Badge variant="light-overlay">
+					<CheckmarkFilled size={16} />
+					Small badge
+				</Badge>
+			</div>
+			<div class="col">
+				<div class="badge-row">
+					<Typography variant="h5">h5 Title</Typography><Badge>Small badge</Badge>
+				</div>
+				<div class="badge-row">
+					<NotificationNew size={16} />
+					<Typography variant="h5">Messages</Typography>
+					<Badge variant="strong">16</Badge>
+				</div>
+				<div class="badge-row">
+					<Typography variant="h5">Aqualung divide</Typography>
+					<Badge variant="strong">NEW</Badge>
+				</div>
+				<div class="badge-row">
+					<Badge variant="light-overlay">
+						<ThumbsUpFilled size={16} />
+						21
+					</Badge>
+					<Badge variant="light-overlay">
+						<ThumbsDown size={16} />
+						6
+					</Badge>
+				</div>
+			</div>
+			<div class="col">
+				<Badge dimension="large">
+					<Error size={24} />
+					Large badge
+				</Badge>
+				<Badge dimension="large" variant="strong">
+					<Error size={24} />
+					Large badge
+				</Badge>
+				<Badge dimension="large" variant="dark-overlay">
+					<Error size={24} />
+					Large badge
+				</Badge>
+				<Badge dimension="large" variant="light-overlay">
+					<Error size={24} />
+					Large badge
+				</Badge>
+			</div>
+			<div class="col">
+				<div class="badge-row">
+					<Typography variant="h4">h4 Title</Typography><Badge dimension="large">Large badge</Badge>
+				</div>
+				<div class="badge-row">
+					<Typography variant="h4">h4 Title</Typography><Badge dimension="small">Small badge</Badge>
+				</div>
+				<div class="badge-row">
+					<Typography variant="h4">System</Typography>
+					<Badge variant="default">
+						<CheckmarkFilled size={16} />
+						Updated
+					</Badge>
+				</div>
+				<div class="badge-row">
+					<Typography variant="h3">David's computer</Typography>
+					<Badge dimension="large" variant="strong">
+						<Error size={24} />
+						Error
+					</Badge>
+				</div>
+				<div class="badge-row">
+					<Typography variant="h4">Posts</Typography>
+					<Badge dimension="large" variant="light-overlay">12</Badge>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
 
 <style>
@@ -1751,6 +2115,7 @@
 
 	.row {
 		display: flex;
+		flex: 1;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: flex-start;
@@ -1766,5 +2131,10 @@
 		gap: 1rem;
 		border: 1px dashed var(--colors-ultra-high);
 		padding: 1rem;
+	}
+	.badge-row {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
 	}
 </style>

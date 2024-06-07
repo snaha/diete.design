@@ -5,6 +5,7 @@
 	import Button from './button.svelte'
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	type Variant = 'outline' | 'solid'
 	interface Props extends HTMLInputAttributes {
 		label?: string
 		labelFor?: string
@@ -19,6 +20,7 @@
 		disabled?: boolean
 		buttons?: Snippet
 		search?: boolean
+		variant?: Variant
 	}
 	let {
 		label,
@@ -39,6 +41,7 @@
 		class: className = '',
 		children,
 		buttons,
+		variant = 'outline',
 		...restProps
 	}: Props = $props()
 	let input: HTMLInputElement
@@ -58,6 +61,7 @@
 			<div class="relative">
 				<input
 					id={labelFor}
+					class={variant}
 					class:active
 					class:hover
 					class:focus
@@ -192,6 +196,7 @@
 	}
 	.col {
 		display: flex;
+		flex-grow: 1;
 		flex-direction: column;
 		gap: 0.25rem;
 	}
@@ -229,11 +234,17 @@
 		.control-buttons {
 			display: none;
 		}
+		.outline {
+			border: 1px solid var(--colors-ultra-high);
+			background: transparent;
+		}
+		.solid {
+			border: 1px solid var(--colors-low);
+			background: var(--colors-base);
+		}
 		input {
 			flex-grow: 1;
-			border: 1px solid var(--colors-ultra-high);
 			border-radius: 0.25rem;
-			background: transparent;
 			color: var(--colors-ultra-high);
 			&::placeholder {
 				opacity: 0.5;
@@ -270,7 +281,6 @@
 			&:active:not(:disabled),
 			&.active:not(:disabled) {
 				border: 1px solid var(--colors-top);
-				background: var(--colors-base);
 				color: var(--colors-top);
 			}
 			&.error:not(:disabled) {
