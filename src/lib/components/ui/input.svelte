@@ -41,6 +41,7 @@
 		buttons,
 		...restProps
 	}: Props = $props()
+	let input: HTMLInputElement
 </script>
 
 <div class="root {layout} {dimension} {className}" class:controls>
@@ -63,6 +64,7 @@
 					class:error
 					class:search
 					bind:value
+					bind:this={input}
 					{placeholder}
 					{type}
 					{disabled}
@@ -84,7 +86,15 @@
 			</div>
 			{#if search}
 				<div class="control-buttons">
-					<Button {dimension} {disabled} variant="secondary" onclick={() => (value = '')}>
+					<Button
+						{dimension}
+						{disabled}
+						variant="secondary"
+						onclick={() => {
+							value = ''
+							input.focus()
+						}}
+					>
 						<Delete size={dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24} />
 					</Button>
 				</div>
