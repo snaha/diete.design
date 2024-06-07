@@ -32,6 +32,7 @@
 			'/components/switch': 'Switch',
 			'/components/tooltip': 'Tooltip',
 			'/components/typography': 'Typography',
+			'/components/loader': 'Loader',
 		},
 	}
 
