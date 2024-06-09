@@ -32,13 +32,13 @@
 			'/components/input': 'Input',
 			'/components/loader': 'Loader',
 			'/components/menu': 'Menu',
+			'/components/progress': 'Progress bar',
 			'/components/radio': 'Radio',
 			'/components/select': 'Select',
 			'/components/slider': 'Slider',
 			'/components/switch': 'Switch',
 			'/components/tooltip': 'Tooltip',
 			'/components/typography': 'Typography',
-			'/components/progress': 'Progress bar',
 		},
 	}
 
