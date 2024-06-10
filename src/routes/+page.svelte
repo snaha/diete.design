@@ -1,5 +1,16 @@
 <script lang="ts">
-	import { Checkmark, ArrowRight, Settings, Search } from 'carbon-icons-svelte'
+	import {
+		Checkmark,
+		ArrowRight,
+		Settings,
+		Search,
+		Fire,
+		NotificationNew,
+		ThumbsUp,
+		Star,
+		CheckmarkFilled,
+		WarningAltFilled,
+	} from 'carbon-icons-svelte'
 
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
@@ -14,6 +25,7 @@
 	import ResponsiveContainer from '$lib/components/custom/responsive-container.svelte'
 	import type { Dimension } from '$lib/components/ui/menu/menu-store.svelte'
 	import Code from '$lib/components/custom/code.svelte'
+	import Badge from '$lib/components/ui/badge.svelte'
 
 	let dimension: Dimension = $state('default')
 	let size: 16 | 24 | 32 = $derived(
@@ -299,6 +311,114 @@
 </ResponsiveContainer>
 
 <ResponsiveContainer class="vspace">
+	<section id="badge" class="controls no-gap">
+		<div class="row">
+			<Typography>Skatebord</Typography>
+			<Badge dimension="small">20% off</Badge>
+		</div>
+
+		<hr class="half-margin" />
+
+		<div class="row space-between">
+			<Typography variant="h5">Teriyaki chicken</Typography>
+			<Badge dimension="small">
+				<Fire size={16} />
+				Spicy
+			</Badge>
+		</div>
+
+		<hr class="half-margin" />
+
+		<div class="row">
+			<Typography variant="large">KGLW</Typography>
+			<Badge dimension="small" variant="strong">NEW RELEASE</Badge>
+		</div>
+
+		<hr class="half-margin" />
+
+		<div class="row space-between">
+			<Typography variant="h5">Messages</Typography>
+			<Badge dimension="small" variant="strong">
+				<NotificationNew size={16} />
+				420
+			</Badge>
+		</div>
+
+		<hr class="half-margin" />
+
+		<div class="row space-between">
+			<Typography variant="h3">Yuccie</Typography>
+			<Badge dimension="large">On sale</Badge>
+		</div>
+
+		<hr class="half-margin" />
+
+		<div class="row">
+			<Typography variant="large">Sriracha</Typography>
+			<Badge dimension="large">
+				<ThumbsUp size={24} />
+				2,288
+			</Badge>
+		</div>
+
+		<hr class="half-margin" />
+
+		<div class="row">
+			<Typography variant="h3">Trust fund</Typography>
+			<Badge dimension="large" variant="strong">NEW!</Badge>
+		</div>
+
+		<hr class="half-margin" />
+
+		<div class="row space-between">
+			<Typography variant="large">Kale chips</Typography>
+			<Badge dimension="large">
+				<Star size={24} />
+				17
+			</Badge>
+		</div>
+	</section>
+
+	<section id="dark-overlay" class="controls">
+		<div class="col">
+			<div class="row space-between">
+				<Badge dimension="small" variant="dark-overlay">Trending</Badge>
+				<Badge dimension="small" variant="dark-overlay">
+					<CheckmarkFilled size={16} />
+					Latest version
+				</Badge>
+			</div>
+			<div class="row space-between">
+				<Badge dimension="large" variant="dark-overlay">
+					<WarningAltFilled size={24} />
+					Error
+				</Badge>
+				<Badge dimension="large" variant="dark-overlay">Category</Badge>
+			</div>
+		</div>
+	</section>
+
+	<section id="light-overlay" class="controls">
+		<div class="col">
+			<div class="row space-between">
+				<Badge dimension="small" variant="light-overlay">Trending</Badge>
+				<Badge dimension="small" variant="light-overlay">
+					<CheckmarkFilled size={16} />
+					Latest version
+				</Badge>
+			</div>
+			<div class="row space-between">
+				<Badge dimension="large" variant="light-overlay">
+					<WarningAltFilled size={24} />
+					Error
+				</Badge>
+				<Badge dimension="large" variant="light-overlay">Category</Badge>
+			</div>
+		</div>
+	</section>
+</ResponsiveContainer>
+
+<ResponsiveContainer class="vspace">
 	<section id="quote" class="controls">
 		<div class="quote">
 			<Typography font="serif" italic variant="large"
@@ -315,7 +435,7 @@
 		code={`<script lang="ts">
 	import Button from '$lib/components/ui/button.svelte'
 	import { Close } from 'carbon-icons-svelte'
-</` +
+</R` +
 			`script>
 
 <Button variant="strong" dimension="default">
@@ -346,6 +466,10 @@
 		border-style: solid;
 		width: 100%;
 		color: var(--colors-low);
+	}
+	.half-margin {
+		margin-top: var(--padding);
+		margin-bottom: var(--padding);
 	}
 	#preview-title {
 		display: flex;
@@ -390,6 +514,22 @@
 	}
 	#bottom {
 		margin-top: calc(2 * var(--double-padding));
+	}
+	.row {
+		display: flex;
+		align-items: center;
+		align-self: stretch;
+		gap: 0.5rem;
+	}
+	.space-between {
+		justify-content: space-between;
+	}
+	.col {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
+		justify-content: space-between;
+		align-self: stretch;
 	}
 	.quote {
 		display: flex;
