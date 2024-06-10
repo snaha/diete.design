@@ -238,7 +238,17 @@
 		</Select>
 	</section>
 
-	<section id="select-solid" style="padding: var(--double-padding);"></section>
+	<section id="select-solid" class="controls solid">
+		<Select value="1" label="Select" variant="solid">
+			{#snippet helperText()}
+				This is some helper text
+			{/snippet}
+			<Option value="1">Banjo tacos</Option>
+			<Option value="2">Pickled chicharrones</Option>
+			<Option value="3">Vinegar vape</Option>
+			<Option value="4">Denim brunch vinyl</Option>
+		</Select>
+	</section>
 </ResponsiveContainer>
 
 <ResponsiveContainer class="vspace">
