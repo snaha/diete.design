@@ -176,6 +176,17 @@
 		</Input>
 	</section>
 
+	<section id="search-solid" class="controls solid">
+		<Input {dimension} variant="solid" placeholder="Search" search={true} />
+		<Input {dimension} variant="solid" placeholder="Search" controls={true}>
+			{#snippet buttons()}
+				<Button {dimension} variant="solid"><Search {size} /></Button>
+			{/snippet}
+		</Input>
+	</section>
+</ResponsiveContainer>
+
+<ResponsiveContainer class="vspace">
 	<section id="input" class="controls">
 		<Input {dimension} value="Williamsburg" label="Text input">This is some helper text</Input>
 
