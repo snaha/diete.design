@@ -2121,7 +2121,6 @@
 	.page-wrapper {
 		background-color: var(--colors-ultra-low);
 	}
-
 	.row {
 		display: flex;
 		flex: 1;
