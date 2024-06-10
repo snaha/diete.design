@@ -1,5 +1,6 @@
 <script lang="ts">
 	import slider from '$lib/components/ui/slider.svelte?raw'
+	import rangeSlider from '$lib/components/ui/range-slider.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
 	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
@@ -16,7 +17,8 @@
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 
-	let css: string = $state('Loading...')
+	let sliderCss: string = $state('Loading...')
+	let rangeSliderCss: string = $state('Loading...')
 
 	let dimension: Dimension = $state('default')
 	let label = $state('Slider label')
@@ -59,8 +61,10 @@
 	)
 
 	onMount(async () => {
-		const response = await fetch('/generated/css/ui/slider.css')
-		css = await response.text()
+		const responseSlider = await fetch('/generated/css/ui/slider.css')
+		sliderCss = await responseSlider.text()
+		const responseRangeSlider = await fetch('/generated/css/ui/range-slider.css')
+		rangeSliderCss = await responseRangeSlider.text()
 	})
 </script>
 
@@ -161,8 +165,26 @@
 
 {#snippet implement()}
 	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={slider} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
+		<TabContent value="Svelte">
+			<TabBar dimension="small">
+				<TabContent value="slider">
+					<Code language="svelte" code={slider} />
+				</TabContent>
+				<TabContent value="range-slider">
+					<Code language="svelte" code={rangeSlider} />
+				</TabContent>
+			</TabBar>
+		</TabContent>
+		<TabContent value="CSS">
+			<TabBar dimension="small">
+				<TabContent value="slider">
+					<Code language="css" code={sliderCss} />
+				</TabContent>
+				<TabContent value="range-slider">
+					<Code language="css" code={rangeSliderCss} />
+				</TabContent>
+			</TabBar>
+		</TabContent>
 	</TabBar>
 {/snippet}
 
