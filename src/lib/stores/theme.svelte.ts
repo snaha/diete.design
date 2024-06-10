@@ -12,8 +12,11 @@ function updateColors(baseColor: string, mode: Mode) {
 }
 
 function withThemeStore(): Theme {
-	let baseColor = $state('#fefefe')
-	let mode: Mode = $state('system')
+	let storedBaseColor = browser ? localStorage.getItem('baseColor') || '#fefefe' : '#fefefe'
+	let storedMode = browser ? (localStorage.getItem('mode') as Mode) || 'system' : 'system'
+
+	let baseColor = $state(storedBaseColor)
+	let mode: Mode = $state(storedMode)
 
 	return {
 		get baseColor() {
@@ -22,6 +25,9 @@ function withThemeStore(): Theme {
 		set baseColor(value: string) {
 			baseColor = value
 			updateColors(baseColor, mode)
+			if (browser) {
+				localStorage.setItem('baseColor', baseColor)
+			}
 		},
 		get mode() {
 			return mode
@@ -29,6 +35,9 @@ function withThemeStore(): Theme {
 		set mode(value: Mode) {
 			mode = value
 			updateColors(baseColor, mode)
+			if (browser) {
+				localStorage.setItem('mode', mode)
+			}
 		},
 	}
 }
