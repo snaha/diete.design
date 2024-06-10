@@ -10,6 +10,11 @@
 		Star,
 		CheckmarkFilled,
 		WarningAltFilled,
+		GameWireless,
+		Basketball,
+		Analytics,
+		Encryption,
+		MachineLearning,
 	} from 'carbon-icons-svelte'
 
 	import Button from '$lib/components/ui/button.svelte'
@@ -26,6 +31,8 @@
 	import type { Dimension } from '$lib/components/ui/menu/menu-store.svelte'
 	import Code from '$lib/components/custom/code.svelte'
 	import Badge from '$lib/components/ui/badge.svelte'
+	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
+	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 
 	let dimension: Dimension = $state('default')
 	let size: 16 | 24 | 32 = $derived(
@@ -260,6 +267,133 @@
 			<Option value="3">Vinegar vape</Option>
 			<Option value="4">Denim brunch vinyl</Option>
 		</Select>
+	</section>
+</ResponsiveContainer>
+
+<ResponsiveContainer class="vspace">
+	<section class="controls">
+		<MenuTitle bold open>
+			{#snippet content()}
+				Topics
+			{/snippet}
+			<MenuItem>
+				<div class="row space-between grow">
+					<div class="row">
+						<GameWireless size={24} />
+						Gaming
+					</div>
+					<Badge>6</Badge>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					<div class="row">
+						<Basketball size={24} />
+						Sports
+					</div>
+					<Badge>12</Badge>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					<div class="row">
+						<Analytics size={24} />
+						Business
+					</div>
+					<Badge>8</Badge>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					<div class="row">
+						<Encryption size={24} />
+						Crypto
+					</div>
+					<Badge>24</Badge>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					<div class="row">
+						<Fire size={24} />
+						Trending
+					</div>
+					<Badge>420</Badge>
+				</div>
+			</MenuItem>
+		</MenuTitle>
+	</section>
+
+	<section class="controls">
+		<MenuTitle bold open>
+			{#snippet content()}
+				<MachineLearning size={24} />
+				Letterpress intelligentsia
+			{/snippet}
+			<MenuItem>
+				<div class="row space-between grow">
+					Enamel pin
+					<ArrowRight size={24} />
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Cold-pressed hammock
+					<ArrowRight size={24} />
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Polaroid shaman
+					<ArrowRight size={24} />
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Sriracha master
+					<ArrowRight size={24} />
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Thundercats
+					<ArrowRight size={24} />
+				</div>
+			</MenuItem>
+		</MenuTitle>
+	</section>
+
+	<section class="controls">
+		<MenuTitle open>
+			{#snippet content()}
+				File
+			{/snippet}
+			<MenuItem>
+				<div class="row space-between grow">
+					Edit
+					<span class="opacity"> Ctrl+E </span>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Copy
+					<span class="opacity"> Ctrl+C </span>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Find
+					<span class="opacity"> Ctrl+F </span>
+				</div>
+			</MenuItem>
+			<MenuItem>Emojis & symbols</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Speech
+					<span class="opacity"> Ctrl+P </span>
+				</div>
+			</MenuItem>
+		</MenuTitle>
 	</section>
 </ResponsiveContainer>
 
@@ -515,6 +649,12 @@
 	#bottom {
 		margin-top: calc(2 * var(--double-padding));
 	}
+	.opacity {
+		opacity: 0.5;
+	}
+	.grow {
+		flex: 1;
+	}
 	.row {
 		display: flex;
 		align-items: center;
@@ -526,7 +666,7 @@
 	}
 	.col {
 		display: flex;
-		flex-grow: 1;
+		flex: 1;
 		flex-direction: column;
 		justify-content: space-between;
 		align-self: stretch;
