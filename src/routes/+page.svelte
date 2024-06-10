@@ -203,6 +203,26 @@
 			unit="EUR">This is some helper text</Input
 		>
 	</section>
+
+	<section id="input-solid" class="controls solid">
+		<Input {dimension} variant="solid" value="Williamsburg" label="Text input"
+			>This is some helper text</Input
+		>
+
+		<hr />
+
+		<Input
+			{dimension}
+			variant="solid"
+			type="number"
+			min="0"
+			max="69420"
+			step="0.001"
+			value="1.420"
+			label="Number input"
+			unit="EUR">This is some helper text</Input
+		>
+	</section>
 </ResponsiveContainer>
 
 <ResponsiveContainer class="vspace">
