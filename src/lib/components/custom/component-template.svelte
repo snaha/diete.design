@@ -124,7 +124,6 @@
 	}
 	.preview-tab {
 		display: flex;
-		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		box-sizing: border-box;
@@ -137,5 +136,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--padding);
+		height: fit-content;
 	}
 </style>
