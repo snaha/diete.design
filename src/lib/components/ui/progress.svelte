@@ -34,7 +34,7 @@
 		flex: 1;
 		align-items: center;
 		align-self: stretch;
-		gap: 0.5rem;
+		gap: var(--half-padding);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		&.default,
