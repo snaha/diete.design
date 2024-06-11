@@ -42,7 +42,7 @@
 
 <section id="call-to-action">
 	<Button variant="strong" dimension="large" href="/components/button">Explore components</Button>
-	<Button variant="secondary" dimension="large" href="/components/button">Learn more</Button>
+	<Button variant="secondary" dimension="large" href="/build">Learn more</Button>
 </section>
 
 <hr />

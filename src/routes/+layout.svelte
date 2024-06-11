@@ -3,8 +3,9 @@
 	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 	import Button from '$lib/components/ui/button.svelte'
-	import { Light, SidePanelCloseFilled, SidePanelOpenFilled } from 'carbon-icons-svelte'
+	import { Light, SidePanelCloseFilled, SidePanelOpenFilled, Launch } from 'carbon-icons-svelte'
 	import '../app.pcss'
+	import '../diete.css'
 	import Dropdown from '$lib/components/custom/dropdown.svelte'
 	import ThemeSelector from '$lib/components/custom/theme-selector.svelte'
 	import { page } from '$app/stores'
@@ -15,16 +16,23 @@
 	let innerWidth: number | undefined = $state()
 
 	const mobileWidth = 700
+	const menuAlwaysOpen = true
 
 	const menu: { [title: string]: { [path: string]: string } } = {
 		Diète: {
 			'/': 'Intro',
+			'/build': 'Build with Diète',
+			'/colors': 'CSS colors',
+			'https://github.com/diete-design/diete.design': 'Github',
 		},
 		'Basic components': {
+			'/components/badge': 'Badge',
 			'/components/button': 'Button',
 			'/components/checkbox': 'Checkbox',
 			'/components/input': 'Input',
+			'/components/loader': 'Loader',
 			'/components/menu': 'Menu',
+			'/components/progress': 'Progress bar',
 			'/components/radio': 'Radio',
 			'/components/select': 'Select',
 			'/components/slider': 'Slider',
@@ -69,9 +77,15 @@
 	function makeMenuItemOpenMapping() {
 		const menuOpen: { [title: string]: boolean } = {}
 
-		Object.keys(menu).forEach((menu) => (menuOpen[menu] = isActivePageInMenu(menu)))
+		Object.keys(menu).forEach(
+			(menu) => (menuOpen[menu] = menuAlwaysOpen || isActivePageInMenu(menu)),
+		)
 
 		return menuOpen
+	}
+
+	function isExternalLink(link: string) {
+		return link.startsWith('https://')
 	}
 
 	function menuOnClick() {
@@ -89,7 +103,7 @@
 <svelte:window bind:innerWidth />
 
 <div class="menu-button-container">
-	<Button variant={isMenuOpen ? 'ghost' : 'solid'} onclick={() => (isMenuOpen = !isMenuOpen)}>
+	<Button variant="solid" onclick={() => (isMenuOpen = !isMenuOpen)}>
 		{#if isMenuOpen}
 			<SidePanelCloseFilled size={24} />
 		{:else}
@@ -106,17 +120,25 @@
 		<ThemeSelector />
 	</Dropdown>
 </div>
-
 <div class="container">
 	<div class="menu-{isMenuOpen ? 'open' : 'closed'}-placeholder">
 		{#if isMenuOpen}
 			<div class="menu-header"></div>
 			<div class="menu">
 				{#each Object.entries(menu) as [title, pages]}
-					<MenuTitle content={title} bold bind:open={menuTitleIsOpen[title]}>
+					{#snippet content()}
+						{title}
+					{/snippet}
+					<MenuTitle {content} bold bind:open={menuTitleIsOpen[title]}>
 						{#each Object.entries(pages) as [path, title]}
-							<MenuItem active={isActivePage(path)} href={path} onclick={menuOnClick}
-								>{title}</MenuItem
+							<MenuItem
+								active={isActivePage(path)}
+								href={path}
+								onclick={menuOnClick}
+								target={isExternalLink(path) ? '_blank' : undefined}
+								>{#if isExternalLink(path)}
+									<Launch size={24} />
+								{/if}{title}</MenuItem
 							>
 						{/each}
 					</MenuTitle>

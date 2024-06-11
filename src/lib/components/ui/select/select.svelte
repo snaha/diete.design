@@ -7,6 +7,7 @@
 
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	type Variant = 'outline' | 'solid'
 	interface Props extends HTMLInputAttributes {
 		helperText?: Snippet
 		label?: string
@@ -17,6 +18,7 @@
 		hover?: boolean
 		active?: boolean
 		focus?: boolean
+		variant?: Variant
 	}
 	let {
 		helperText,
@@ -31,12 +33,12 @@
 		focus,
 		class: className = '',
 		children,
+		variant = 'outline',
 		...restProps
 	}: Props = $props()
 
-	let focused: boolean = $state(false)
-	let input: HTMLInputElement
-	let icon: HTMLButtonElement
+	let input: HTMLInputElement | undefined = $state(undefined)
+	let focused = $state(false)
 
 	const store = withSelectStore(dimension, value ?? (placeholder ? '' : undefined))
 	setContext('select-store', store)
@@ -47,14 +49,6 @@
 		function closeMenu() {
 			if (store.open) store.open = false
 		}
-		function focus(e: MouseEvent) {
-			const target = e.target as unknown as Node
-			if (input?.contains(target) || icon?.contains(target)) {
-				focused = true
-			} else {
-				focused = false
-			}
-		}
 
 		function closeMenuKeyboard(e: KeyboardEvent) {
 			if (e.key === 'Tab') closeMenu()
@@ -62,12 +56,10 @@
 
 		window.addEventListener('click', closeMenu)
 		window.addEventListener('keydown', closeMenuKeyboard)
-		window.addEventListener('mousedown', focus)
 
 		return () => {
 			window.removeEventListener('click', closeMenu)
 			window.removeEventListener('keydown', closeMenuKeyboard)
-			window.removeEventListener('mousedown', focus)
 		}
 	})
 
@@ -87,6 +79,37 @@
 			store.marked = store.value
 		}
 	})
+	$effect(() => {
+		let lastTabInteraction = false
+		const keyDown = (e: KeyboardEvent) => {
+			if (e.key.toLowerCase() === 'tab') {
+				lastTabInteraction = true
+			}
+		}
+
+		function addFocus() {
+			if (lastTabInteraction) {
+				focused = true
+			}
+		}
+
+		function removeFocus() {
+			lastTabInteraction = false
+			focused = false
+		}
+
+		window.addEventListener('keydown', keyDown)
+		window.addEventListener('mousedown', removeFocus)
+		input?.addEventListener('blur', removeFocus)
+		input?.addEventListener('focus', addFocus)
+
+		return () => {
+			window.removeEventListener('keydown', keyDown)
+			window.removeEventListener('mousedown', removeFocus)
+			input?.removeEventListener('blur', removeFocus)
+			input?.removeEventListener('focus', addFocus)
+		}
+	})
 </script>
 
 <div class="root {dimension} {layout} {className}">
@@ -97,11 +120,12 @@
 		<input
 			bind:this={input}
 			value={store.value ? store.labels[store.value] ?? store.value : value}
-			class="select"
+			class="select {variant}"
 			class:hover
 			class:active
 			class:focus
 			class:focused
+			class:open={store.open}
 			onclick={() => {
 				if (!store.open)
 					setTimeout(() => {
@@ -158,13 +182,10 @@
 		/>
 		<div class="wrapper">
 			<button
-				bind:this={icon}
 				class="icon"
 				onclick={() => {
 					if (!store.open) setTimeout(() => (store.open = true))
 				}}
-				onmouseenter={() => (hover = true)}
-				onmouseleave={() => (hover = false)}
 				tabindex="-1"
 			>
 				<div>
@@ -216,16 +237,32 @@
 			display: flex;
 			flex-grow: 1;
 			flex-direction: column;
+			&:has(.icon:hover) {
+				.select:not(:disabled):not(.open):not(.focused) {
+					border: 1px solid var(--colors-top);
+					background: var(--colors-low);
+					color: var(--colors-top);
+					& + .wrapper > button {
+						color: var(--colors-top);
+					}
+				}
+			}
 		}
 	}
 	.select {
 		flex-grow: 1;
 		appearance: none;
 		cursor: pointer;
-		border: 1px solid var(--colors-ultra-high);
 		border-radius: 0.25rem;
-		background: transparent;
 		color: var(--colors-ultra-high);
+		&.outline {
+			border: 1px solid var(--colors-ultra-high);
+			background: transparent;
+		}
+		&.solid {
+			border: 1px solid var(--colors-low);
+			background: var(--colors-base);
+		}
 		&::placeholder {
 			opacity: 0.5;
 			color: var(--colors-ultra-high);
@@ -241,7 +278,8 @@
 			}
 		}
 		&:active:not(:disabled),
-		&.active:not(:disabled) {
+		&.active:not(:disabled),
+		&.open:not(:disabled):not(.focused) {
 			outline: none;
 			border: 1px solid var(--colors-high);
 			background: var(--colors-low);
@@ -250,8 +288,9 @@
 				color: var(--colors-high);
 			}
 		}
-		&:focus:not(:disabled),
-		&:focus-visible:not(:disabled),
+		&:focus {
+			outline: none;
+		}
 		&.focus:not(:disabled),
 		&.focused:not(:disabled) {
 			outline: 4px solid var(--colors-top);
@@ -260,6 +299,17 @@
 			color: var(--colors-top);
 			& + .wrapper > button {
 				color: var(--colors-top);
+			}
+		}
+		&.focused.open:not(:disabled) {
+			border: 1px var(--colors-top);
+			background: var(--colors-top);
+			color: var(--colors-base);
+			& + .wrapper > button {
+				color: var(--colors-base);
+			}
+			&::placeholder {
+				color: var(--colors-base);
 			}
 		}
 		&:disabled {
