@@ -32,6 +32,7 @@
 			'/components/input': 'Input',
 			'/components/loader': 'Loader',
 			'/components/menu': 'Menu',
+			'/components/progress': 'Progress bar',
 			'/components/radio': 'Radio',
 			'/components/select': 'Select',
 			'/components/slider': 'Slider',
