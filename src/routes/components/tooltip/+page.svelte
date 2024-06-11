@@ -60,19 +60,24 @@
 {#snippet examples()}
 	<div class="example-row">
 		<Typography variant="small" bold>1. Tooltip on top</Typography>
-		<Tooltip position="top" {helperText}><Information size={24} /></Tooltip>
+		<Tooltip position="top" tooltipName="tooltip-1" {helperText}><Information size={24} /></Tooltip>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>1. Tooltip on bottom</Typography>
-		<Tooltip position="bottom" {helperText}><Information size={24} /></Tooltip>
+		<Tooltip position="bottom" tooltipName="tooltip-2" {helperText}
+			><Information size={24} /></Tooltip
+		>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>1. Tooltip on left</Typography>
-		<Tooltip position="left" {helperText}><Information size={24} /></Tooltip>
+		<Tooltip position="left" tooltipName="tooltip-3" {helperText}><Information size={24} /></Tooltip
+		>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>1. Tooltip on right</Typography>
-		<Tooltip position="right" {helperText}><Information size={24} /></Tooltip>
+		<Tooltip position="right" tooltipName="tooltip-4" {helperText}
+			><Information size={24} /></Tooltip
+		>
 	</div>
 {/snippet}
 
@@ -89,7 +94,7 @@
 {/snippet}
 
 {#snippet preview()}
-	<Tooltip {position} {helperText} {large} {show}>
+	<Tooltip {position} {helperText} {large} {show} tooltipName="tooltip-5">
 		<Information size={24} />
 	</Tooltip>
 {/snippet}
