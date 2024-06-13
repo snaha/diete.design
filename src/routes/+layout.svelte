@@ -28,6 +28,7 @@
 		'Basic components': {
 			'/components/badge': 'Badge',
 			'/components/button': 'Button',
+			'/components/hr': 'Horizontal rule',
 			'/components/checkbox': 'Checkbox',
 			'/components/input': 'Input',
 			'/components/loader': 'Loader',
