@@ -58,10 +58,22 @@
 			return 'default'
 		}
 	})
+	let input: HTMLInputElement
+	$effect(() => {
+		function openAtKeyPress(e: KeyboardEvent) {
+			if (e.key === 'Enter') {
+				open = !open
+			}
+		}
+		input.addEventListener('keypress', openAtKeyPress)
+		return () => {
+			input.removeEventListener('keypress', openAtKeyPress)
+		}
+	})
 </script>
 
 <label class="root {dimension} {className}" {...restProps}>
-	<input type="checkbox" class:focus bind:checked={open} {disabled} />
+	<input type="checkbox" class:focus bind:checked={open} {disabled} bind:this={input} />
 	<div class="wrapper" class:hover class:active>
 		<span class="title">
 			<Typography class="content" {element} {variant}>{@render content()}</Typography>
