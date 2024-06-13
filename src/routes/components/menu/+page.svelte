@@ -19,7 +19,7 @@
 	let menuTitleCss: string = $state('Loading...')
 
 	let dimension: Dimension = $state('default')
-	let content = $state('Menu-title')
+	let title = $state('Menu-title')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -29,8 +29,10 @@
     import menuStore from '$lib/components/ui/menu/menu-store.svelte.ts'
 </script` +
 			`>
-
-<MenuTitle content="${content}" dimension="${dimension}">
+{#snippet content()}
+	${title}
+{/snippet}
+<MenuTitle dimension="${dimension} {content}">
     <MenuItem>Item 1</MenuItem>
     <MenuItem>Item 2</MenuItem>
     <MenuItem>Item 3</MenuItem>
@@ -59,28 +61,32 @@
 	<MenuItem>Item 4</MenuItem>
 {/snippet}
 
+{#snippet content()}
+	Menu-title
+{/snippet}
+
 {#snippet examples()}
 	<div class="example-row">
 		<Typography variant="small" bold>1. Default size menu</Typography>
-		<MenuTitle content="Menu-title" dimension="default">
+		<MenuTitle {content} dimension="default">
 			{@render options()}
 		</MenuTitle>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>2. Large size menu</Typography>
-		<MenuTitle content="Menu-title" dimension="large">
+		<MenuTitle {content} dimension="large">
 			{@render options()}
 		</MenuTitle>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>3. Compact size menu</Typography>
-		<MenuTitle content="Menu-title" dimension="compact">
+		<MenuTitle {content} dimension="compact">
 			{@render options()}
 		</MenuTitle>
 	</div>
 	<div class="example-row">
 		<Typography variant="small" bold>4. Small size menu</Typography>
-		<MenuTitle content="Menu-title" dimension="small">
+		<MenuTitle {content} dimension="small">
 			{@render options()}
 		</MenuTitle>
 	</div>
@@ -94,7 +100,7 @@
 		<Option value="small">Small</Option>
 	</Select>
 
-	<Input bind:value={content} label="Menu content" />
+	<Input bind:value={title} label="Menu content" />
 {/snippet}
 
 {#snippet preview()}

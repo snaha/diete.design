@@ -15,6 +15,7 @@
 
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	type Variant = 'outline' | 'solid'
 
 	let selectCss: string = $state('Loading...')
 	let optionCss: string = $state('Loading...')
@@ -27,6 +28,7 @@
 	let withPlaceholder: boolean = $state(false)
 	let placeholder: string = $state('Placeholder')
 	let layout: Layout = $state('vertical')
+	let variant: Variant = $state('outline')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -42,7 +44,7 @@ ${
 {/snippet}`
 		: ''
 }
-<Select dimension="${dimension}" layout="${layout}"${withLabel ? ` label="${label}"` : ''}${withHelperText ? ` {helperText}` : ''}${withPlaceholder ? ` placeholder="${placeholder}"` : ''}>${
+<Select dimension="${dimension}" layout="${layout}" variant="${variant}"${withLabel ? ` label="${label}"` : ''}${withHelperText ? ` {helperText}` : ''}${withPlaceholder ? ` placeholder="${placeholder}"` : ''}>${
 				withPlaceholder
 					? `
 	<Option class="placeholder" value="">${placeholder}</Option>`
@@ -113,6 +115,10 @@ ${
 		<Option value="vertical">Vertical</Option>
 		<Option value="horizontal">Horizontal</Option>
 	</Select>
+	<Select bind:value={variant} label="Variant">
+		<Option value="outline">Outline</Option>
+		<Option value="solid">Solid</Option>
+	</Select>
 	<Switch bind:checked={withLabel} label="With label" />
 	{#if withLabel}
 		<Input bind:value={label} label="Add label" />
@@ -133,6 +139,7 @@ ${
 	<Select
 		{dimension}
 		{layout}
+		{variant}
 		label={withLabel ? label : undefined}
 		helperText={withHelperText ? helperText : undefined}
 		placeholder={withPlaceholder ? placeholder : undefined}

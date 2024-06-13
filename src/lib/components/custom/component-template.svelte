@@ -124,11 +124,13 @@
 	}
 	.preview-tab {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		box-sizing: border-box;
 		border: transparent 1px solid;
 		background-color: var(--colors-ultra-low);
+		padding: var(--padding);
 		height: 288px;
 	}
 	.controls {
