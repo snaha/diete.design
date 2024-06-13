@@ -25,7 +25,7 @@
 			'/colors': 'CSS colors',
 			'https://github.com/diete-design/diete.design': 'Github',
 		},
-		'Basic components': {
+		'Components': {
 			'/components/badge': 'Badge',
 			'/components/button': 'Button',
 			'/components/checkbox': 'Checkbox',
