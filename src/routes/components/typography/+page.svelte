@@ -1,7 +1,6 @@
 <script lang="ts">
 	import typography from '$lib/components/ui/typography.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
-	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
 	import { onMount } from 'svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
@@ -10,6 +9,7 @@
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
 	import Input from '$lib/components/ui/input.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
+	import CodeComponentTemplate from '$lib/components/custom/code-component-template.svelte'
 
 	type Font = 'sans' | 'serif' | 'mono'
 	type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'large' | 'default' | 'small'
@@ -102,11 +102,16 @@ import Typography from '$lib/components/ui/typography.svelte'
 	>
 {/snippet}
 
+{#snippet extraSvelte()}
+	<TabContent value="typography"><Code language="svelte" code={typography} /></TabContent>
+{/snippet}
+
+{#snippet extraCss()}
+	<TabContent value="typography"><Code language="css" code={css} /></TabContent>
+{/snippet}
+
 {#snippet implement()}
-	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={typography} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
-	</TabBar>
+	<CodeComponentTemplate {extraSvelte} {extraCss} />
 {/snippet}
 
 <ComponentTemplate
