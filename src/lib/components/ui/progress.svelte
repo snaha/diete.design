@@ -6,14 +6,21 @@
 		value?: number
 		dimension?: Dimension
 		class?: string
+		min?: number
+		max?: number
+		unit?: string
 	}
 	let {
+		min = 0,
+		max = 100,
+		unit = '%',
 		value = 0,
 		dimension = 'default',
 		class: className = '',
 		children,
 		...restProps
 	}: Props = $props()
+	let percent = $derived(((value - min) / Math.abs(max - min)) * 100)
 </script>
 
 <div class="root {dimension} {className}" {...restProps}>
@@ -21,9 +28,9 @@
 		{@render children()}
 	{/if}
 	<span class="progress-container">
-		<span class="progress-bar" style={`width: ${value}%`}></span>
+		<span class="progress-bar" style={`width: ${percent}%`}></span>
 	</span>
-	<div class="value">
+	<div class="value" style={`--unit: "${unit}"`}>
 		{value}
 	</div>
 </div>
@@ -70,6 +77,6 @@
 		height: 4px;
 	}
 	.value::after {
-		content: '%';
+		content: var(--unit);
 	}
 </style>
