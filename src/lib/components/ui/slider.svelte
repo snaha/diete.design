@@ -17,7 +17,7 @@
 		focus?: boolean
 		showSteps?: boolean
 		helperText?: Snippet
-		continuous?: boolean
+		alwaysShowValue?: boolean
 	}
 	let {
 		labelFor = Math.random().toString(16),
@@ -34,7 +34,7 @@
 		value = $bindable(min),
 		helperText,
 		children,
-		continuous = false,
+		alwaysShowValue = false,
 		...restProps
 	}: Props = $props()
 
@@ -56,7 +56,7 @@
 		</div>
 	{/if}
 	<div class="wrapper">
-		{#if !continuous}
+		{#if !alwaysShowValue}
 			<span>{min}</span>
 		{/if}
 		<div class="slider-container" class:centered>
@@ -75,7 +75,7 @@
 			{#if centered}
 				<span class="center"></span>
 			{/if}
-			{#if !continuous}
+			{#if !alwaysShowValue}
 				<div class="value-container">
 					<span class="value">
 						{value}
@@ -99,7 +99,7 @@
 				</div>
 			{/if}
 		</div>
-		{#if !continuous}
+		{#if !alwaysShowValue}
 			<span class="max">{max}</span>
 		{:else}
 			<span class="continuous-value">{value}</span>

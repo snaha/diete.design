@@ -43,7 +43,7 @@ ${
 {/snippet}`
 		: ''
 }
-<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${showSteps ? ` showSteps` : ''}${centered ? ` centered` : ''}>${label}</Slider>
+<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${showSteps ? ` showSteps` : ''}${centered ? ` centered` : ''}${continuous ? ' alwaysShowValue' : ''}>${label}</Slider>
 `,
 	)
 
@@ -128,7 +128,7 @@ ${
 		step={withStep ? step : undefined}
 		{showSteps}
 		{centered}
-		{continuous}
+		alwaysShowValue={continuous ? true : undefined}
 		bind:value
 	>
 		{label}
