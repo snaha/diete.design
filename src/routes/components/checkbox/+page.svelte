@@ -1,7 +1,6 @@
 <script lang="ts">
 	import checkbox from '$lib/components/ui/checkbox.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
-	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
 	import { onMount } from 'svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
