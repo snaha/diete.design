@@ -21,27 +21,32 @@
 	}: Props = $props()
 </script>
 
-{#if children}
-	<button popovertarget={tooltipId} style={`--anchor-name: --${tooltipName}`}>
-		{@render children()}
-	</button>
-{/if}
-{#if helperText}
-	<span
-		id={tooltipId}
-		style={`--anchor: --${tooltipName}`}
-		role="note"
-		popover="auto"
-		class={position}
-		class:show
-	>
-		<span class="popover-inner" class:large>
-			{@render helperText()}
+<div class="root">
+	{#if children}
+		<button popovertarget={tooltipId} style={`--anchor-name: --${tooltipName}`}>
+			{@render children()}
+		</button>
+	{/if}
+	{#if helperText}
+		<span
+			id={tooltipId}
+			style={`--anchor: --${tooltipName}`}
+			role="note"
+			popover="auto"
+			class={position}
+			class:show
+		>
+			<span class="popover-inner" class:large>
+				{@render helperText()}
+			</span>
 		</span>
-	</span>
-{/if}
+	{/if}
+</div>
 
 <style lang="postcss">
+	.root {
+		position: relative;
+	}
 	button {
 		display: flex;
 		align-items: center;
@@ -52,7 +57,8 @@
 		cursor: pointer;
 		margin: 0;
 		padding: 0;
-		&:hover ~ span {
+		color: var(--colors-ultra-high);
+		&:hover ~ [popover] {
 			display: block;
 		}
 	}
@@ -83,6 +89,7 @@
 		top: anchor(var(--anchor) top);
 		left: anchor(var(--anchor) center);
 		transform-origin: center;
+		z-index: 1;
 		margin: 0;
 		border: none;
 		background: none;
@@ -113,6 +120,39 @@
 		&:has(.large) {
 			top: anchor(var(--anchor) center);
 			transform: translateY(-50%);
+		}
+	}
+	@-moz-document url-prefix() {
+		.top {
+			top: 0;
+			left: 50%;
+			transform: translate(-50%, -100%);
+			padding-bottom: 0.5rem;
+		}
+		.bottom {
+			top: 100%;
+			left: 50%;
+			transform: translate(-50%, 0);
+			padding-top: 0.5rem;
+		}
+		.left {
+			top: 0;
+			right: 100%;
+			transform: translate(0, 0);
+			padding-right: 0.5rem;
+			&:has(.large) {
+				top: 50%;
+				transform: translate(0, -50%);
+			}
+		}
+		.right {
+			top: 0;
+			left: 100%;
+			padding-left: 0.5rem;
+			&:has(.large) {
+				top: 50%;
+				transform: translate(0, -50%);
+			}
 		}
 	}
 </style>
