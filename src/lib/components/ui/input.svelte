@@ -177,7 +177,7 @@
 		}
 	}
 	.root {
-		align-self: stretch;
+		flex-grow: 1;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
