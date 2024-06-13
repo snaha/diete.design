@@ -25,6 +25,7 @@
 		label,
 		helperText,
 		children,
+		...restProps
 	}: Props = $props()
 
 	const store = withRadioStore(dimension, value, name)
@@ -63,7 +64,7 @@
 			{@render label()}
 		</Typography>
 	{/if}
-	<div class="radio-group {layout}" role="radiogroup">
+	<div class="radio-group {layout}" role="radiogroup" {...restProps}>
 		{#if children}
 			{@render children()}
 		{/if}
@@ -79,12 +80,13 @@
 	.root {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: var(--half-padding);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 	}
 	.radio-group {
 		display: flex;
+		flex-direction: column;
 		&:global(:has(input[type='radio']:focus-visible)) {
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;

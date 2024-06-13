@@ -1,10 +1,11 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	import { WarningAltFilled, Information, Subtract, Add } from 'carbon-icons-svelte'
+	import { WarningAltFilled, Information, Subtract, Add, Search, Delete } from 'carbon-icons-svelte'
 	import Button from './button.svelte'
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	type Variant = 'outline' | 'solid'
 	interface Props extends HTMLInputAttributes {
 		label?: string
 		labelFor?: string
@@ -18,11 +19,13 @@
 		controls?: boolean
 		disabled?: boolean
 		buttons?: Snippet
+		search?: boolean
+		variant?: Variant
 	}
 	let {
 		label,
 		labelFor = Math.random().toString(16),
-		placeholder,
+		placeholder = '',
 		value = $bindable(),
 		dimension = 'default',
 		layout = 'vertical',
@@ -33,12 +36,15 @@
 		focus,
 		controls,
 		type,
+		search = false,
 		disabled,
 		class: className = '',
 		children,
 		buttons,
+		variant = 'outline',
 		...restProps
 	}: Props = $props()
+	let input: HTMLInputElement
 </script>
 
 <div class="root {layout} {dimension} {className}" class:controls>
@@ -55,16 +61,24 @@
 			<div class="relative">
 				<input
 					id={labelFor}
+					class={variant}
 					class:active
 					class:hover
 					class:focus
 					class:error
+					class:search
 					bind:value
+					bind:this={input}
 					{placeholder}
 					{type}
 					{disabled}
 					{...restProps}
 				/>
+				{#if search}
+					<label for={labelFor} class="search-icon">
+						<Search size={dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24} />
+					</label>
+				{/if}
 				{#if unit && !error}
 					<label class="unit" for={labelFor}>{unit}</label>
 				{/if}
@@ -74,6 +88,21 @@
 					</label>
 				{/if}
 			</div>
+			{#if search}
+				<div class="control-buttons">
+					<Button
+						{dimension}
+						{disabled}
+						variant="secondary"
+						onclick={() => {
+							value = ''
+							input.focus()
+						}}
+					>
+						<Delete size={dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24} />
+					</Button>
+				</div>
+			{/if}
 			{#if controls && type === 'number'}
 				<div class="control-buttons">
 					<Button {dimension} {disabled} variant="secondary" onclick={() => (value -= 1)}>
@@ -115,6 +144,7 @@
 		&.root {
 			display: flex;
 			flex-direction: column;
+			justify-content: center;
 		}
 	}
 	.horizontal {
@@ -131,10 +161,23 @@
 			input {
 				border-radius: 0.25rem 0 0 0.25rem;
 			}
+			.control-buttons {
+				display: flex;
+			}
 		}
 	}
-
+	.wrapper:has(.search:not(:disabled):not(:placeholder-shown)) {
+		flex-direction: row;
+		gap: 0;
+		input {
+			border-radius: 0.25rem 0 0 0.25rem;
+		}
+		.control-buttons {
+			display: flex;
+		}
+	}
 	.root {
+		align-self: stretch;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
@@ -153,6 +196,7 @@
 	}
 	.col {
 		display: flex;
+		flex-grow: 1;
 		flex-direction: column;
 		gap: 0.25rem;
 	}
@@ -187,11 +231,20 @@
 				border-radius: 0 0.25rem 0.25rem 0;
 			}
 		}
+		.control-buttons {
+			display: none;
+		}
+		.outline {
+			border: 1px solid var(--colors-ultra-high);
+			background: transparent;
+		}
+		.solid {
+			border: 1px solid var(--colors-low);
+			background: var(--colors-base);
+		}
 		input {
 			flex-grow: 1;
-			border: 1px solid var(--colors-ultra-high);
 			border-radius: 0.25rem;
-			background: transparent;
 			color: var(--colors-ultra-high);
 			&::placeholder {
 				opacity: 0.5;
@@ -200,6 +253,7 @@
 			&:disabled {
 				opacity: 0.25;
 				cursor: not-allowed;
+				& ~ .search-icon,
 				& ~ .unit,
 				& ~ .error-icon {
 					opacity: 0.25;
@@ -227,7 +281,6 @@
 			&:active:not(:disabled),
 			&.active:not(:disabled) {
 				border: 1px solid var(--colors-top);
-				background: var(--colors-base);
 				color: var(--colors-top);
 			}
 			&.error:not(:disabled) {
@@ -235,6 +288,13 @@
 				outline-offset: -2px;
 			}
 		}
+	}
+	.search-icon {
+		display: flex;
+		position: absolute;
+		align-items: center;
+		cursor: text;
+		color: var(--colors-ultra-high);
 	}
 	.unit {
 		position: absolute;
@@ -260,6 +320,12 @@
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
+			&.search {
+				padding-left: 44px;
+			}
+		}
+		.search-icon {
+			padding: 0.75rem 0.5rem 0.75rem 0.75rem;
 		}
 		.unit {
 			top: 0.75rem;
@@ -287,6 +353,12 @@
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
+			&.search {
+				padding-left: 52px;
+			}
+		}
+		.search-icon {
+			padding: 0.75rem 0.5rem 0.75rem 0.75rem;
 		}
 		.unit {
 			top: 0.75rem;
@@ -319,6 +391,12 @@
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
+			&.search {
+				padding-left: 40px;
+			}
+		}
+		.search-icon {
+			padding: 0.5rem;
 		}
 		.unit {
 			top: 0.5rem;
@@ -346,6 +424,12 @@
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
+			&.search {
+				padding-left: var(--double-padding);
+			}
+		}
+		.search-icon {
+			padding: 0.5rem;
 		}
 		.unit {
 			top: 0.5rem;

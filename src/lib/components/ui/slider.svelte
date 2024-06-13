@@ -71,9 +71,11 @@
 			{#if centered}
 				<span class="center"></span>
 			{/if}
-			<span class="value">
-				{value}
-			</span>
+			<div class="value-container">
+				<span class="value">
+					{value}
+				</span>
+			</div>
 			<div class="slider-background"></div>
 			<div class="slider-progress"></div>
 			<div class="slider-progress-centered"></div>
@@ -82,7 +84,11 @@
 				<div class="slider-tick-container">
 					<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 					{#each Array.from({ length: stepCount + 1 }) as _, i}
-						<span class="tick" class:hidden={i === stepCount / 2 && centered}></span>
+						<span
+							class="tick"
+							style={`left: ${i * step}%`}
+							class:hidden={i === stepCount / 2 && centered}
+						></span>
 					{/each}
 				</div>
 			{/if}
@@ -242,8 +248,8 @@
 			& ~ .center {
 				background: var(--colors-high);
 			}
-			& ~ .value {
-				display: inline-block;
+			& ~ .value-container > .value {
+				opacity: 1;
 			}
 			& ~ .slider-background {
 				background: var(--colors-high);
@@ -290,8 +296,8 @@
 			& ~ .center {
 				background: var(--colors-top);
 			}
-			& ~ .value {
-				display: inline-block;
+			& ~ .value-container > .value {
+				opacity: 1;
 			}
 			& ~ .slider-background {
 				background: var(--colors-top);
@@ -330,12 +336,19 @@
 			opacity: 0;
 		}
 	}
-	.value {
-		display: none;
+	.value-container {
 		position: absolute;
-		top: -1.75rem;
 		left: var(--valuePercent);
 		transform: translateX(calc(var(--valuePercent) * -1));
+		padding: 0 0.75rem;
+	}
+	.value {
+		display: flex;
+		position: absolute;
+		top: -1.25rem;
+		align-items: center;
+		transform: translate(-50%, -100%);
+		opacity: 0;
 		border-radius: 0.75rem;
 		background: var(--colors-top);
 		padding: 0.25rem 0.5rem;
@@ -364,15 +377,14 @@
 		border-radius: 0;
 	}
 	.slider-tick-container {
-		display: flex;
 		position: absolute;
-		left: calc(0.75rem - 2px);
-		justify-content: space-between;
-		align-items: center;
+		left: 0.75rem;
 		z-index: 0;
-		width: calc(100% - 1.25rem);
+		width: calc(100% - 1.5rem);
 	}
 	.tick {
+		position: absolute;
+		transform: translate(-50%, -50%);
 		border-radius: 50%;
 		background-color: var(--colors-ultra-high);
 		width: 4px;
@@ -421,7 +433,7 @@
 		}
 		.slider-progress {
 			top: 10px;
-			left: calc(0.75rem - 2px);
+			left: 0.75rem;
 			width: calc(var(--valuePercent) - 0.75rem);
 		}
 	}
@@ -458,8 +470,11 @@
 				width: calc((var(--valuePercent) - 50%));
 			}
 		}
+		.value-container {
+			padding: 0 1rem;
+		}
 		.value {
-			top: -2.75rem;
+			top: -1.5rem;
 			border-radius: 1.25rem;
 			padding: 0.5rem 0.75rem;
 			font-size: var(--font-size);
@@ -472,11 +487,11 @@
 		}
 		.slider-progress {
 			top: 14px;
-			left: calc(1rem - 2px);
+			left: 1rem;
 			width: calc(var(--valuePercent) - 1rem);
 		}
 		.slider-tick-container {
-			left: calc(1rem - 2px);
+			left: 1rem;
 			width: calc(100% - 1.75rem);
 		}
 	}
@@ -514,17 +529,23 @@
 				width: calc((var(--valuePercent) - 50%));
 			}
 		}
+		.value-container {
+			padding: 0 0.5rem;
+		}
+		.value {
+			top: -1rem;
+		}
 		.slider-background {
 			top: 7.5px;
 			width: calc(100% - var(--valuePercent) - 0.5rem);
 		}
 		.slider-progress {
 			top: 6px;
-			left: calc(0.5rem - 2px);
+			left: 0.5rem;
 			width: calc(var(--valuePercent) - 0.5rem);
 		}
 		.slider-tick-container {
-			left: calc(0.5rem - 2px);
+			left: 0.5rem;
 			width: calc(100% - 0.75rem);
 		}
 	}

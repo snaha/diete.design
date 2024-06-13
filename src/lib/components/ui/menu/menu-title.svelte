@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { setContext } from 'svelte'
+	import { setContext, type Snippet } from 'svelte'
 	import type { HTMLAttributes } from 'svelte/elements'
 	import { ChevronDown } from 'carbon-icons-svelte'
 	import Typography from '../typography.svelte'
@@ -11,7 +11,7 @@
 		dimension?: Dimension
 		element?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
 		disabled?: boolean
-		content: string
+		content: Snippet
 		hover?: boolean
 		active?: boolean
 		focus?: boolean
@@ -58,13 +58,25 @@
 			return 'default'
 		}
 	})
+	let input: HTMLInputElement
+	$effect(() => {
+		function openAtKeyPress(e: KeyboardEvent) {
+			if (e.key === 'Enter') {
+				open = !open
+			}
+		}
+		input.addEventListener('keypress', openAtKeyPress)
+		return () => {
+			input.removeEventListener('keypress', openAtKeyPress)
+		}
+	})
 </script>
 
 <label class="root {dimension} {className}" {...restProps}>
-	<input type="checkbox" class:focus bind:checked={open} {disabled} />
+	<input type="checkbox" class:focus bind:checked={open} {disabled} bind:this={input} />
 	<div class="wrapper" class:hover class:active>
 		<span class="title">
-			<Typography class="content" {element} {variant}>{content}</Typography>
+			<Typography class="content" {element} {variant}>{@render content()}</Typography>
 		</span>
 		<span class="icon">
 			<ChevronDown size={dimension === 'small' ? 16 : 24} />
