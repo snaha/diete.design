@@ -69,3 +69,8 @@
 	--half-padding: calc(var(--padding) / 2);
 	--border-radius: 0.25rem;
 }
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
