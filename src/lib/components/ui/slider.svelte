@@ -17,6 +17,7 @@
 		focus?: boolean
 		showSteps?: boolean
 		helperText?: Snippet
+		alwaysShowValue?: boolean
 	}
 	let {
 		labelFor = Math.random().toString(16),
@@ -33,6 +34,7 @@
 		value = $bindable(min),
 		helperText,
 		children,
+		alwaysShowValue = false,
 		...restProps
 	}: Props = $props()
 
@@ -54,7 +56,9 @@
 		</div>
 	{/if}
 	<div class="wrapper">
-		<span>{min}</span>
+		{#if !alwaysShowValue}
+			<span>{min}</span>
+		{/if}
 		<div class="slider-container" class:centered>
 			<input
 				type="range"
@@ -71,11 +75,13 @@
 			{#if centered}
 				<span class="center"></span>
 			{/if}
-			<div class="value-container">
-				<span class="value">
-					{value}
-				</span>
-			</div>
+			{#if !alwaysShowValue}
+				<div class="value-container">
+					<span class="value">
+						{value}
+					</span>
+				</div>
+			{/if}
 			<div class="slider-background"></div>
 			<div class="slider-progress"></div>
 			<div class="slider-progress-centered"></div>
@@ -93,7 +99,11 @@
 				</div>
 			{/if}
 		</div>
-		<span class="max">{max}</span>
+		{#if !alwaysShowValue}
+			<span class="max">{max}</span>
+		{:else}
+			<span class="continuous-value">{value}</span>
+		{/if}
 	</div>
 	{#if helperText && layout === 'vertical'}
 		<div class="helper-text">
@@ -357,6 +367,9 @@
 		line-height: var(--line-height-small);
 		letter-spacing: var(--letter-spacing-small);
 	}
+	.continuous-value {
+		text-align: center;
+	}
 	.slider-background {
 		position: absolute;
 		left: calc(var(--valuePercent));
@@ -427,6 +440,9 @@
 				width: calc((var(--valuePercent) - 50%));
 			}
 		}
+		.continuous-value {
+			width: 1.75rem;
+		}
 		.slider-background {
 			top: 11.5px;
 			width: calc(100% - var(--valuePercent) - 0.75rem);
@@ -481,6 +497,9 @@
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
+		.continuous-value {
+			width: 2.625rem;
+		}
 		.slider-background {
 			top: 15.5px;
 			width: calc(100% - var(--valuePercent) - 1rem);
@@ -534,6 +553,9 @@
 		}
 		.value {
 			top: -1rem;
+		}
+		.continuous-value {
+			width: 1.375rem;
 		}
 		.slider-background {
 			top: 7.5px;

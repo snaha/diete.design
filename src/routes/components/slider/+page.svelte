@@ -27,6 +27,7 @@
 	let optionalHelperText: string = $state('Helper text')
 	let layout: Layout = $state('vertical')
 	let value = $state(30)
+	let continuous: boolean = $state(false)
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -42,7 +43,7 @@ ${
 {/snippet}`
 		: ''
 }
-<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${showSteps ? ` showSteps` : ''}${centered ? ` centered` : ''}>${label}</Slider>
+<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${showSteps ? ` showSteps` : ''}${centered ? ` centered` : ''}${continuous ? ' alwaysShowValue' : ''}>${label}</Slider>
 `,
 	)
 
@@ -112,6 +113,7 @@ ${
 		<Switch bind:checked={showSteps} label="Show steps" />
 	{/if}
 	<Switch bind:checked={centered} label="Centered" />
+	<Switch bind:checked={continuous} label="Continuous" />
 {/snippet}
 
 {#snippet helperText()}
@@ -126,6 +128,7 @@ ${
 		step={withStep ? step : undefined}
 		{showSteps}
 		{centered}
+		alwaysShowValue={continuous ? true : undefined}
 		bind:value
 	>
 		{label}
