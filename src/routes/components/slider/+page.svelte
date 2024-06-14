@@ -1,5 +1,6 @@
 <script lang="ts">
 	import slider from '$lib/components/ui/slider.svelte?raw'
+	import rangeSlider from '$lib/components/ui/range-slider.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
 	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
@@ -11,11 +12,13 @@
 	import Input from '$lib/components/ui/input.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
+	import RangeSlider from '$lib/components/ui/range-slider.svelte'
 
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 
-	let css: string = $state('Loading...')
+	let sliderCss: string = $state('Loading...')
+	let rangeSliderCss: string = $state('Loading...')
 
 	let dimension: Dimension = $state('default')
 	let label = $state('Slider label')
@@ -27,29 +30,42 @@
 	let optionalHelperText: string = $state('Helper text')
 	let layout: Layout = $state('vertical')
 	let value = $state(30)
+	let range = $state(false)
 	let continuous: boolean = $state(false)
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
-		`<script lang="ts">
-    import Slider from '$lib/components/ui/slider.svelte'
+		`<script lang="ts">${
+			!range
+				? `
+	import Slider from '$lib/components/ui/slider.svelte'`
+				: `
+	import RangeSlider from '$lib/components/ui/range-slider.svelte'`
+		}
 </script` +
-			`>
-${
-	withHelperText
-		? `
+			`>${
+				withHelperText
+					? `
 {#snippet helperText()}
     ${optionalHelperText}
 {/snippet}`
-		: ''
-}
-<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${showSteps ? ` showSteps` : ''}${centered ? ` centered` : ''}${continuous ? ' alwaysShowValue' : ''}>${label}</Slider>
+					: ''
+			}${
+				!range
+					? `
+<Slider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${showSteps ? ` showSteps` : ''}${centered ? ` centered` : ''}>${label}</Slider>`
+					: `
+	<RangeSlider dimension="${dimension}" layout="${layout}"${withHelperText ? ` {helperText}` : ''}${withStep ? ` step={${step}}` : ''}${showSteps ? ` showSteps` : ''}>${label}</RangeSlider>`
+			}
+
 `,
 	)
 
 	onMount(async () => {
-		const response = await fetch('/generated/css/ui/slider.css')
-		css = await response.text()
+		const responseSlider = await fetch('/generated/css/ui/slider.css')
+		sliderCss = await responseSlider.text()
+		const responseRangeSlider = await fetch('/generated/css/ui/range-slider.css')
+		rangeSliderCss = await responseRangeSlider.text()
 	})
 </script>
 
@@ -112,6 +128,10 @@ ${
 		<Input bind:value={step} label="Step size" type="number" controls />
 		<Switch bind:checked={showSteps} label="Show steps" />
 	{/if}
+	{#if !range}
+		<Switch bind:checked={centered} label="Centered" />
+	{/if}
+	<Switch bind:checked={range} label="Range slider" />
 	<Switch bind:checked={centered} label="Centered" />
 	<Switch bind:checked={continuous} label="Continuous" />
 {/snippet}
@@ -121,24 +141,53 @@ ${
 {/snippet}
 
 {#snippet preview()}
-	<Slider
-		{dimension}
-		{layout}
-		helperText={withHelperText ? helperText : undefined}
-		step={withStep ? step : undefined}
-		{showSteps}
-		{centered}
-		alwaysShowValue={continuous ? true : undefined}
-		bind:value
-	>
-		{label}
-	</Slider>
+	{#if range}
+		<RangeSlider
+			{dimension}
+			{layout}
+			helperText={withHelperText ? helperText : undefined}
+			step={withStep ? step : undefined}
+			{showSteps}
+		>
+			{label}
+		</RangeSlider>
+	{:else}
+		<Slider
+			{dimension}
+			{layout}
+			helperText={withHelperText ? helperText : undefined}
+			step={withStep ? step : undefined}
+			{showSteps}
+			{centered}
+			bind:value
+		>
+			{label}
+		</Slider>
+	{/if}
 {/snippet}
 
 {#snippet implement()}
 	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={slider} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
+		<TabContent value="Svelte">
+			<TabBar dimension="small">
+				<TabContent value="slider">
+					<Code language="svelte" code={slider} />
+				</TabContent>
+				<TabContent value="range-slider">
+					<Code language="svelte" code={rangeSlider} />
+				</TabContent>
+			</TabBar>
+		</TabContent>
+		<TabContent value="CSS">
+			<TabBar dimension="small">
+				<TabContent value="slider">
+					<Code language="css" code={sliderCss} />
+				</TabContent>
+				<TabContent value="range-slider">
+					<Code language="css" code={rangeSliderCss} />
+				</TabContent>
+			</TabBar>
+		</TabContent>
 	</TabBar>
 {/snippet}
 
