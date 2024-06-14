@@ -8,40 +8,60 @@
 		labelFor?: string
 		dimension?: Dimension
 		layout?: Layout
-		centered?: boolean
 		min?: number
 		max?: number
 		step?: number
 		hover?: boolean
-		active?: boolean
-		focus?: boolean
+		leftActive?: boolean
+		rightActive?: boolean
+		leftFocus?: boolean
+		rightFocus?: boolean
 		showSteps?: boolean
 		helperText?: Snippet
-		alwaysShowValue?: boolean
+		valueMin?: number
+		valueMax?: number
 	}
 	let {
 		labelFor = Math.random().toString(16),
 		dimension = 'default',
 		layout = 'vertical',
-		centered,
 		min = 0,
 		max = 100,
 		step,
 		hover,
-		active,
-		focus,
+		leftActive,
+		rightActive,
+		leftFocus,
+		rightFocus,
 		showSteps = false,
-		value = $bindable(min),
+		valueMin = $bindable(min),
+		valueMax = $bindable(max),
 		helperText,
 		children,
-		alwaysShowValue = false,
 		...restProps
 	}: Props = $props()
 
-	let percent = $derived(((value - min) / Math.abs(max - min)) * 100)
+	let percentMin = $derived(((valueMin - min) / Math.abs(max - min)) * 100)
+	let percentMax = $derived(((valueMax - min) / Math.abs(max - min)) * 100)
+
+	function changeValueMin(newValue: number) {
+		if (newValue >= valueMax) {
+			valueMax = newValue
+		}
+		valueMin = newValue
+	}
+	function changeValueMax(newValue: number) {
+		if (newValue <= valueMin) {
+			valueMin = newValue
+		}
+		valueMax = newValue
+	}
 </script>
 
-<div class="root {dimension} {layout}" style={`--valuePercent: ${percent}%`}>
+<div
+	class="root {dimension} {layout}"
+	style={`--valuePercentMin: ${percentMin}%;--valuePercentMax: ${percentMax}%`}
+>
 	<label for={labelFor}>
 		{#if children}
 			{@render children()}
@@ -56,32 +76,43 @@
 		</div>
 	{/if}
 	<div class="wrapper">
-		{#if !alwaysShowValue}
-			<span>{min}</span>
-		{/if}
-		<div class="slider-container" class:centered>
+		<span>{min}</span>
+		<div class="slider-container">
 			<input
 				type="range"
+				class="min-range"
 				class:hover
-				class:active
-				class:focus
+				class:leftActive
+				class:leftFocus
+				oninput={() => changeValueMin(valueMin)}
 				id={labelFor}
-				bind:value
 				{min}
 				{max}
+				bind:value={valueMin}
 				{step}
 				{...restProps}
 			/>
-			{#if centered}
-				<span class="center"></span>
-			{/if}
-			{#if !alwaysShowValue}
-				<div class="value-container">
-					<span class="value">
-						{value}
-					</span>
-				</div>
-			{/if}
+			<input
+				type="range"
+				class:hover
+				class:rightActive
+				class:rightFocus
+				oninput={() => changeValueMax(valueMax)}
+				{step}
+				bind:value={valueMax}
+				class="max-range"
+				{...restProps}
+			/>
+			<div class="value-min-container">
+				<span class="value">
+					{valueMin}
+				</span>
+			</div>
+			<div class="value-max-container">
+				<span class="value">
+					{valueMax}
+				</span>
+			</div>
 			<div class="slider-background"></div>
 			<div class="slider-progress"></div>
 			<div class="slider-progress-centered"></div>
@@ -90,20 +121,12 @@
 				<div class="slider-tick-container">
 					<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 					{#each Array.from({ length: stepCount + 1 }) as _, i}
-						<span
-							class="tick"
-							style={`left: ${i * step}%`}
-							class:hidden={i === stepCount / 2 && centered}
-						></span>
+						<span class="tick" style={`left: ${i * step}%`}></span>
 					{/each}
 				</div>
 			{/if}
 		</div>
-		{#if !alwaysShowValue}
-			<span class="max">{max}</span>
-		{:else}
-			<span class="continuous-value">{value}</span>
-		{/if}
+		<span>{max}</span>
 	</div>
 	{#if helperText && layout === 'vertical'}
 		<div class="helper-text">
@@ -158,12 +181,15 @@
 	}
 	.wrapper {
 		display: flex;
+		position: relative;
 		flex-grow: 1;
 		align-items: center;
 		gap: 0.5rem;
+		z-index: 0;
 		padding: 0.75rem;
 		&:has(input:not(:disabled):active),
-		&:has(input:not(:disabled).active) {
+		&:has(input:not(:disabled).leftActive),
+		&:has(input:not(:disabled).rightActive) {
 			color: var(--colors-high);
 		}
 		&:has(input:not(:disabled):hover),
@@ -171,7 +197,8 @@
 			color: var(--colors-high);
 		}
 		&:has(input:not(:disabled):focus-visible),
-		&:has(input:not(:disabled).focus) {
+		&:has(input:not(:disabled).leftFocus),
+		&:has(input:not(:disabled).rightFocus) {
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
 			border-radius: 0.25rem;
@@ -182,22 +209,144 @@
 			opacity: 0.25;
 			cursor: not-allowed;
 		}
-		&:has(.centered) {
-			.max::before {
-				content: '+';
-			}
-		}
 	}
 	.slider-container {
 		display: flex;
 		position: relative;
 		flex-grow: 1;
 		align-items: center;
+		&:has(input:hover:not(:disabled)),
+		&:has(input.hover:not(:disabled)),
+		&:has(input:active:not(:disabled)),
+		&:has(input.leftActive:not(:disabled)),
+		&:has(input.rightActive:not(:disabled)) {
+			input[type='range']::-webkit-slider-thumb {
+				background: var(--colors-high);
+			}
+			input[type='range']::-moz-range-thumb {
+				background: var(--colors-high);
+			}
+			& > .slider-background {
+				background: var(--colors-high);
+			}
+			& > .slider-progress {
+				background: var(--colors-high);
+			}
+			& > .slider-tick-container > .tick {
+				background: var(--colors-high);
+			}
+		}
+		&:has(input:hover:not(:disabled)),
+		&:has(input.hover:not(:disabled)) {
+			& > .value-min-container > .value {
+				opacity: 1;
+			}
+			& > .value-max-container > .value {
+				opacity: 1;
+			}
+		}
+		&:has(.min-range:active:not(:disabled)),
+		&:has(.min-range:focus-visible:not(:disabled)),
+		&:has(.leftActive:not(:disabled)),
+		&:has(.leftFocus:not(:disabled)) {
+			& > .value-min-container > .value {
+				opacity: 1;
+			}
+			& > .value-max-container > .value {
+				opacity: 0;
+			}
+		}
+		&:has(.max-range:active:not(:disabled)),
+		&:has(.max-range:focus-visible:not(:disabled)),
+		&:has(.rightActive:not(:disabled)),
+		&:has(.rightFocus:not(:disabled)) {
+			& > .value-min-container > .value {
+				opacity: 0;
+			}
+			& > .value-max-container > .value {
+				opacity: 1;
+			}
+		}
+		&:has(.min-range:focus-visible:not(:disabled)),
+		&:has(.leftFocus:not(:disabled)) {
+			.min-range::-webkit-slider-thumb {
+				outline: 4px solid var(--colors-top);
+				outline-offset: -4px;
+				background: var(--colors-base);
+			}
+			.min-range::-moz-range-thumb {
+				outline: 4px solid var(--colors-top);
+				outline-offset: -4px;
+				background: var(--colors-base);
+			}
+			.max-range::-webkit-slider-thumb {
+				border: 1px solid var(--colors-top);
+				background: var(--colors-top);
+			}
+			.max-range::-moz-range-thumb {
+				border: 1px solid var(--colors-top);
+				background: var(--colors-top);
+			}
+		}
+		&:has(.min-range:focus-visible:active:not(:disabled)),
+		&:has(.leftFocus.leftActive:not(:disabled)) {
+			.min-range::-webkit-slider-thumb {
+				background: var(--colors-top);
+			}
+			.min-range::-moz-range-thumb {
+				background: var(--colors-top);
+			}
+		}
+		&:has(.max-range:focus-visible:not(:disabled)),
+		&:has(.rightFocus:not(:disabled)) {
+			.max-range::-webkit-slider-thumb {
+				outline: 4px solid var(--colors-top);
+				outline-offset: -4px;
+				background: var(--colors-base);
+			}
+			.max-range::-moz-range-thumb {
+				outline: 4px solid var(--colors-top);
+				outline-offset: -4px;
+				background: var(--colors-base);
+			}
+			.min-range::-webkit-slider-thumb {
+				border: 1px solid var(--colors-top);
+				background: var(--colors-top);
+			}
+			.min-range::-moz-range-thumb {
+				border: 1px solid var(--colors-top);
+				background: var(--colors-top);
+			}
+		}
+		&:has(.max-range:focus-visible:active:not(:disabled)),
+		&:has(.rightFocus.rightActive:not(:disabled)) {
+			.max-range::-webkit-slider-thumb {
+				background: var(--colors-top);
+			}
+			.max-range::-moz-range-thumb {
+				background: var(--colors-top);
+			}
+		}
+		&:has(input:not(:disabled):focus-visible),
+		&:has(input:not(:disabled).leftFocus),
+		&:has(input:not(:disabled).rightFocus) {
+			input {
+				outline: none;
+			}
+			& > .slider-background {
+				background: var(--colors-top);
+			}
+			& > .slider-progress {
+				background: var(--colors-top);
+			}
+			& > .slider-tick-container > .tick {
+				background: var(--colors-top);
+			}
+		}
 	}
 
 	input[type='range'] {
 		appearance: none;
-		z-index: 1;
 		cursor: pointer;
 		margin: 0;
 		background: transparent;
@@ -244,121 +393,31 @@
 		&:disabled::-moz-range-track {
 			cursor: not-allowed;
 		}
-
-		&:hover:not(:disabled):not(:focus-visible),
-		&:active:not(:disabled):not(:focus-visible),
-		&.hover:not(:disabled):not(:focus-visible),
-		&.active:not(:disabled):not(:focus-visible) {
-			&::-webkit-slider-thumb {
-				background: var(--colors-high);
-			}
-			&::-moz-range-thumb {
-				background: var(--colors-high);
-			}
-			& ~ .center {
-				background: var(--colors-high);
-			}
-			& ~ .value-container > .value {
-				opacity: 1;
-			}
-			& ~ .slider-background {
-				background: var(--colors-high);
-			}
-			& ~ .slider-progress {
-				background: var(--colors-high);
-			}
-			& ~ .slider-progress-centered {
-				background: var(--colors-high);
-			}
-			& ~ .slider-tick-container > .tick {
-				background: var(--colors-high);
-			}
-		}
-		&:active:not(:disabled):focus-visible,
-		&.active:not(:disabled).focus {
-			&::-webkit-slider-thumb {
-				background: var(--colors-top);
-			}
-			&::-moz-range-thumb {
-				background: var(--colors-top);
-			}
-			& ~ .center,
-			& ~ .slider-background,
-			& ~ .slider-progress,
-			& ~ .slider-progress-centered,
-			& ~ .slider-tick-container > .tick {
-				background: var(--colors-top);
-			}
-		}
-		&:focus-visible:not(:disabled),
-		&.focus:not(:disabled) {
-			outline: none;
-			&::-webkit-slider-thumb {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
-				background: var(--colors-base);
-			}
-			&::-moz-range-thumb {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
-				background: var(--colors-base);
-			}
-			& ~ .center {
-				background: var(--colors-top);
-			}
-			& ~ .value-container > .value {
-				opacity: 1;
-			}
-			& ~ .slider-background {
-				background: var(--colors-top);
-			}
-			& ~ .slider-progress {
-				background: var(--colors-top);
-			}
-			& ~ .slider-progress-centered {
-				background: var(--colors-top);
-			}
-			& ~ .slider-tick-container > .tick {
-				background: var(--colors-top);
-			}
-		}
 	}
-	.centered {
-		.slider-background {
-			width: 100%;
-		}
-		.slider-progress {
-			border-radius: 0;
-		}
-		.slider-progress-centered {
-			border-radius: 0;
-		}
-		.center {
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			border-radius: 0.125rem;
-			background: var(--colors-ultra-high);
-			width: 0.125rem;
-			height: 1.5rem;
-		}
-		.hidden {
-			opacity: 0;
-		}
-	}
-	.value-container {
+	.max-range {
 		position: absolute;
-		left: var(--valuePercent);
-		transform: translateX(calc(var(--valuePercent) * -1));
+	}
+	.value-min-container {
+		position: absolute;
+		left: var(--valuePercentMin);
+		transform: translateX(calc(var(--valuePercentMin) * -1));
+		z-index: 10;
+		padding: 0 0.75rem;
+	}
+	.value-max-container {
+		position: absolute;
+		left: var(--valuePercentMax);
+		transform: translateX(calc(var(--valuePercentMax) * -1));
 		padding: 0 0.75rem;
 	}
 	.value {
 		display: flex;
 		position: absolute;
-		top: -1.25rem;
+		top: -1rem;
 		align-items: center;
 		transform: translate(-50%, -100%);
 		opacity: 0;
+		z-index: 1;
 		border-radius: 0.75rem;
 		background: var(--colors-top);
 		padding: 0.25rem 0.5rem;
@@ -367,32 +426,25 @@
 		line-height: var(--line-height-small);
 		letter-spacing: var(--letter-spacing-small);
 	}
-	.continuous-value {
-		text-align: center;
-	}
 	.slider-background {
 		position: absolute;
-		left: calc(var(--valuePercent));
+		transform: translateY(-50%);
 		z-index: 0;
 		border-radius: 0.25rem;
 		background: var(--colors-ultra-high);
 		height: 1px;
 	}
-	.slider-progress,
-	.slider-progress-centered {
+	.slider-progress {
 		position: absolute;
-		z-index: 0;
+		transform: translateY(-50%);
 		border-radius: 0.25rem;
 		background-color: var(--colors-ultra-high);
+		width: calc(var(--valuePercentMax) - var(--valuePercentMin));
 		height: 4px;
-	}
-	.slider-progress-centered {
-		border-radius: 0;
 	}
 	.slider-tick-container {
 		position: absolute;
 		left: 0.75rem;
-		z-index: 0;
 		width: calc(100% - 1.5rem);
 	}
 	.tick {
@@ -426,31 +478,14 @@
 				height: 1.5rem;
 			}
 		}
-		.centered {
-			.slider-background {
-				left: 0.75rem;
-				width: calc(100% - 1.5rem);
-			}
-			.slider-progress {
-				left: var(--valuePercent);
-				width: calc((50% - var(--valuePercent)));
-			}
-			.slider-progress-centered {
-				right: calc(100% - var(--valuePercent));
-				width: calc((var(--valuePercent) - 50%));
-			}
-		}
-		.continuous-value {
-			width: 1.75rem;
-		}
 		.slider-background {
-			top: 11.5px;
-			width: calc(100% - var(--valuePercent) - 0.75rem);
+			top: 0.75rem;
+			left: 0.75rem;
+			width: calc(100% - 1.5rem);
 		}
 		.slider-progress {
-			top: 10px;
-			left: 0.75rem;
-			width: calc(var(--valuePercent) - 0.75rem);
+			top: 0.75rem;
+			left: var(--valuePercentMin);
 		}
 	}
 	.large {
@@ -469,49 +504,30 @@
 				height: 2rem;
 			}
 		}
-		.centered {
-			.center {
-				height: 2rem;
-			}
-			.slider-background {
-				left: 1rem;
-				width: calc(100% - 2rem);
-			}
-			.slider-progress {
-				left: var(--valuePercent);
-				width: calc((50% - var(--valuePercent)));
-			}
-			.slider-progress-centered {
-				right: calc(100% - var(--valuePercent));
-				width: calc((var(--valuePercent) - 50%));
-			}
-		}
-		.value-container {
+		.value-min-container,
+		.value-max-container {
 			padding: 0 1rem;
 		}
 		.value {
-			top: -1.5rem;
+			top: -1.25rem;
 			border-radius: 1.25rem;
 			padding: 0.5rem 0.75rem;
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
-		.continuous-value {
-			width: 2.625rem;
-		}
 		.slider-background {
-			top: 15.5px;
-			width: calc(100% - var(--valuePercent) - 1rem);
+			top: 1rem;
+			left: 1rem;
+			width: calc(100% - 2rem);
 		}
 		.slider-progress {
-			top: 14px;
-			left: 1rem;
-			width: calc(var(--valuePercent) - 1rem);
+			top: 1rem;
+			left: var(--valuePercentMin);
 		}
 		.slider-tick-container {
 			left: 1rem;
-			width: calc(100% - 1.75rem);
+			width: calc(100% - 2rem);
 		}
 	}
 	.small {
@@ -531,44 +547,26 @@
 				height: 1rem;
 			}
 		}
-		.centered {
-			.center {
-				height: 1rem;
-			}
-			.slider-background {
-				left: 0.5rem;
-				width: calc(100% - 1rem);
-			}
-			.slider-progress {
-				left: var(--valuePercent);
-				width: calc((50% - var(--valuePercent)));
-			}
-			.slider-progress-centered {
-				right: calc(100% - var(--valuePercent));
-				width: calc((var(--valuePercent) - 50%));
-			}
-		}
-		.value-container {
+
+		.value-min-container,
+		.value-max-container {
 			padding: 0 0.5rem;
 		}
 		.value {
-			top: -1rem;
-		}
-		.continuous-value {
-			width: 1.375rem;
+			top: -0.75rem;
 		}
 		.slider-background {
-			top: 7.5px;
-			width: calc(100% - var(--valuePercent) - 0.5rem);
+			top: 0.5rem;
+			left: 0.5rem;
+			width: calc(100% - 1rem);
 		}
 		.slider-progress {
-			top: 6px;
-			left: 0.5rem;
-			width: calc(var(--valuePercent) - 0.5rem);
+			top: 0.5rem;
+			left: var(--valuePercentMin);
 		}
 		.slider-tick-container {
 			left: 0.5rem;
-			width: calc(100% - 0.75rem);
+			width: calc(100% - 1rem);
 		}
 	}
 </style>

@@ -21,7 +21,11 @@
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
+	import RangeSlider from '$lib/components/ui/range-slider.svelte'
+	import Textarea from '$lib/components/ui/textarea.svelte'
 	import Badge from '$lib/components/ui/badge.svelte'
+	import Loader from '$lib/components/ui/loader.svelte'
+	import ProgressBar from '$lib/components/ui/progress.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -850,6 +854,34 @@
 		</div>
 	</section>
 	<section>
+		<div class="row">
+			<div class="col">
+				<Input placeholder="Placeholder" search />
+				<Input value="" search />
+				<Input value="Diete" search />
+				<Input search disabled />
+			</div>
+			<div class="col">
+				<Input dimension="large" placeholder="Placeholder" search />
+				<Input dimension="large" value="" search />
+				<Input dimension="large" value="Diete" search />
+				<Input dimension="large" search disabled />
+			</div>
+			<div class="col">
+				<Input dimension="compact" placeholder="Placeholder" search />
+				<Input dimension="compact" value="" search />
+				<Input dimension="compact" value="Diete" search />
+				<Input dimension="compact" search disabled />
+			</div>
+			<div class="col">
+				<Input dimension="small" placeholder="Placeholder" search />
+				<Input dimension="small" value="" search />
+				<Input dimension="small" value="Diete" search />
+				<Input dimension="small" search disabled />
+			</div>
+		</div>
+	</section>
+	<section>
 		<Typography variant="h1">Number input (vertical)</Typography>
 		<div class="row">
 			<div class="col">
@@ -1070,135 +1102,370 @@
 	</section>
 	<section>
 		<Typography variant="h1">Select (outline)</Typography>
+		{#snippet helperText()}
+			This is an optional helper text
+		{/snippet}
 		<div class="row">
 			<div class="col">
-				<Select label="Outline select" placeholder="Placeholder" />
-				<Select label="Outline select" placeholder="Placeholder" value="With value" />
-				<Select label="Outline select" placeholder="Hover" hover />
-				<Select label="Outline select" placeholder="Active" hover />
-				<Select label="Outline select" placeholder="Active" focus />
-				<Select label="Outline select" value="Disabled" disabled />
-			</div>
-			<div class="col">
-				<Select dimension="large" label="Outline select" placeholder="Placeholder" />
-				<Select
-					dimension="large"
-					label="Outline select"
+				<Textarea label="Input label" {helperText} placeholder="Placeholder"></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
 					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select dimension="large" label="Outline select" placeholder="Hover" hover />
-				<Select dimension="large" label="Outline select" placeholder="Active" hover />
-				<Select dimension="large" label="Outline select" placeholder="Active" focus />
-				<Select dimension="large" label="Outline select" value="Disabled" disabled />
-			</div>
-			<div class="col">
-				<Select dimension="compact" label="Outline select" placeholder="Placeholder" />
-				<Select
-					dimension="compact"
-					label="Outline select"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
 					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select dimension="compact" label="Outline select" placeholder="Hover" hover />
-				<Select dimension="compact" label="Outline select" placeholder="Active" hover />
-				<Select dimension="compact" label="Outline select" placeholder="Active" focus />
-				<Select dimension="compact" label="Outline select" value="Disabled" disabled />
-			</div>
-			<div class="col">
-				<Select dimension="small" label="Outline select" placeholder="Placeholder" />
-				<Select
-					dimension="small"
-					label="Outline select"
-					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select dimension="small" label="Outline select" placeholder="Hover" hover />
-				<Select dimension="small" label="Outline select" placeholder="Active" hover />
-				<Select dimension="small" label="Outline select" placeholder="Active" focus />
-				<Select dimension="small" label="Outline select" value="Disabled" disabled />
-			</div>
-		</div>
-		<Typography variant="h1">Select (solid)</Typography>
-		<div class="row">
-			<div class="col">
-				<Select variant="solid" label="Solid select" placeholder="Placeholder" />
-				<Select variant="solid" label="Solid select" placeholder="Placeholder" value="With value" />
-				<Select variant="solid" label="Solid select" placeholder="Hover" hover />
-				<Select variant="solid" label="Solid select" placeholder="Active" hover />
-				<Select variant="solid" label="Solid select" placeholder="Active" focus />
-				<Select variant="solid" label="Solid select" value="Disabled" disabled />
-			</div>
-			<div class="col">
-				<Select variant="solid" dimension="large" label="Solid select" placeholder="Placeholder" />
-				<Select
-					variant="solid"
-					dimension="large"
-					label="Solid select"
-					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select variant="solid" dimension="large" label="Solid select" placeholder="Hover" hover />
-				<Select variant="solid" dimension="large" label="Solid select" placeholder="Active" hover />
-				<Select variant="solid" dimension="large" label="Solid select" placeholder="Active" focus />
-				<Select variant="solid" dimension="large" label="Solid select" value="Disabled" disabled />
-			</div>
-			<div class="col">
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					placeholder="Placeholder"
-				/>
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					placeholder="Hover"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
 					hover
-				/>
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					placeholder="Active"
-					hover
-				/>
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					placeholder="Active"
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
 					focus
-				/>
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					value="Disabled"
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
 					disabled
-				/>
+				></Textarea>
 			</div>
 			<div class="col">
-				<Select variant="solid" dimension="small" label="Solid select" placeholder="Placeholder" />
-				<Select
-					variant="solid"
-					dimension="small"
-					label="Solid select"
+				<Textarea dimension="large" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
 					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select variant="solid" dimension="small" label="Solid select" placeholder="Hover" hover />
-				<Select variant="solid" dimension="small" label="Solid select" placeholder="Active" hover />
-				<Select variant="solid" dimension="small" label="Solid select" placeholder="Active" focus />
-				<Select variant="solid" dimension="small" label="Solid select" value="Disabled" disabled />
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea dimension="compact" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea dimension="small" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+				<Typography variant="h1">Select (outline)</Typography>
+				<div class="row">
+					<div class="col">
+						<Select label="Outline select" placeholder="Placeholder" />
+						<Select label="Outline select" placeholder="Placeholder" value="With value" />
+						<Select label="Outline select" placeholder="Hover" hover />
+						<Select label="Outline select" placeholder="Active" hover />
+						<Select label="Outline select" placeholder="Active" focus />
+						<Select label="Outline select" value="Disabled" disabled />
+					</div>
+					<div class="col">
+						<Select dimension="large" label="Outline select" placeholder="Placeholder" />
+						<Select
+							dimension="large"
+							label="Outline select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select dimension="large" label="Outline select" placeholder="Hover" hover />
+						<Select dimension="large" label="Outline select" placeholder="Active" hover />
+						<Select dimension="large" label="Outline select" placeholder="Active" focus />
+						<Select dimension="large" label="Outline select" value="Disabled" disabled />
+					</div>
+					<div class="col">
+						<Select dimension="compact" label="Outline select" placeholder="Placeholder" />
+						<Select
+							dimension="compact"
+							label="Outline select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select dimension="compact" label="Outline select" placeholder="Hover" hover />
+						<Select dimension="compact" label="Outline select" placeholder="Active" hover />
+						<Select dimension="compact" label="Outline select" placeholder="Active" focus />
+						<Select dimension="compact" label="Outline select" value="Disabled" disabled />
+					</div>
+					<div class="col">
+						<Select dimension="small" label="Outline select" placeholder="Placeholder" />
+						<Select
+							dimension="small"
+							label="Outline select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select dimension="small" label="Outline select" placeholder="Hover" hover />
+						<Select dimension="small" label="Outline select" placeholder="Active" hover />
+						<Select dimension="small" label="Outline select" placeholder="Active" focus />
+						<Select dimension="small" label="Outline select" value="Disabled" disabled />
+					</div>
+				</div>
+				<Typography variant="h1">Select (solid)</Typography>
+				<div class="row">
+					<div class="col">
+						<Select variant="solid" label="Solid select" placeholder="Placeholder" />
+						<Select
+							variant="solid"
+							label="Solid select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select variant="solid" label="Solid select" placeholder="Hover" hover />
+						<Select variant="solid" label="Solid select" placeholder="Active" hover />
+						<Select variant="solid" label="Solid select" placeholder="Active" focus />
+						<Select variant="solid" label="Solid select" value="Disabled" disabled />
+					</div>
+					<div class="col">
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							placeholder="Placeholder"
+						/>
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							placeholder="Hover"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							placeholder="Active"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							placeholder="Active"
+							focus
+						/>
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							value="Disabled"
+							disabled
+						/>
+					</div>
+					<div class="col">
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							placeholder="Placeholder"
+						/>
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							placeholder="Hover"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							placeholder="Active"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							placeholder="Active"
+							focus
+						/>
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							value="Disabled"
+							disabled
+						/>
+					</div>
+					<div class="col">
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							placeholder="Placeholder"
+						/>
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							placeholder="Hover"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							placeholder="Active"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							placeholder="Active"
+							focus
+						/>
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							value="Disabled"
+							disabled
+						/>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -1557,33 +1824,69 @@
 	</section>
 	<section id="menu">
 		<Typography variant="h1">Menu</Typography>
+		{#snippet content()}
+			Organic taiyaki
+		{/snippet}
 		<div class="row">
 			<div class="col">
-				<MenuTitle bold content="List title"></MenuTitle>
-				<MenuTitle bold content="List title hover" hover></MenuTitle>
-				<MenuTitle bold content="List title pressed" active></MenuTitle>
-				<MenuTitle bold content="List title focus" focus></MenuTitle>
-				<MenuTitle bold content="List title disabled" disabled></MenuTitle>
+				<MenuTitle bold>
+					{#snippet content()}
+						List title
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold hover>
+					{#snippet content()}
+						List title hover
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold active>
+					{#snippet content()}
+						List title pressed
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold focus>
+					{#snippet content()}
+						List title focus
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold disabled>
+					{#snippet content()}
+						List title disabled
+					{/snippet}
+				</MenuTitle>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<MenuTitle bold content="Closed">
+				<MenuTitle bold>
+					{#snippet content()}
+						Closed
+					{/snippet}
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Opened" open>
+				<MenuTitle bold open>
+					{#snippet content()}
+						Opened
+					{/snippet}
 					<MenuItem href="#button" disabled>Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Disabled" disabled />
-				<MenuTitle bold content="Open disabled" open disabled>
+				<MenuTitle bold disabled>
+					{#snippet content()}
+						Disabled
+					{/snippet}
+				</MenuTitle>
+				<MenuTitle bold open disabled>
+					{#snippet content()}
+						Open disabled
+					{/snippet}
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
@@ -1592,76 +1895,76 @@
 				</MenuTitle>
 			</div>
 			<div class="col">
-				<MenuTitle bold content="Organic taiyaki" dimension="large">
+				<MenuTitle bold {content} dimension="large">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Organic taiyaki" dimension="large" open />
+				<MenuTitle bold {content} dimension="large" open />
 			</div>
 			<div class="col">
-				<MenuTitle bold content="Organic taiyaki" dimension="compact">
+				<MenuTitle bold {content} dimension="compact">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Organic taiyaki" dimension="compact" open />
+				<MenuTitle bold {content} dimension="compact" open />
 			</div>
 			<div class="col">
-				<MenuTitle bold content="Organic taiyaki" dimension="small">
+				<MenuTitle bold {content} dimension="small">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle bold content="Organic taiyaki" dimension="small" open />
+				<MenuTitle bold {content} dimension="small" open />
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<MenuTitle content="Organic taiyaki">
+				<MenuTitle {content}>
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" open />
+				<MenuTitle {content} open />
 			</div>
 			<div class="col">
-				<MenuTitle content="Organic taiyaki" dimension="large">
+				<MenuTitle {content} dimension="large">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" dimension="large" open />
+				<MenuTitle {content} dimension="large" open />
 			</div>
 			<div class="col">
-				<MenuTitle content="Organic taiyaki" dimension="compact">
+				<MenuTitle {content} dimension="compact">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" dimension="compact" open />
+				<MenuTitle {content} dimension="compact" open />
 			</div>
 			<div class="col">
-				<MenuTitle content="Organic taiyaki" dimension="small">
+				<MenuTitle {content} dimension="small">
 					<MenuItem href="#button">Button</MenuItem>
 					<MenuItem href="#checkbox">Checkbox</MenuItem>
 					<MenuItem href="#radio">Radio button</MenuItem>
 					<MenuItem href="#switch">Switch</MenuItem>
 					<MenuItem href="#typography">Typography</MenuItem>
 				</MenuTitle>
-				<MenuTitle content="Organic taiyaki" dimension="small" open />
+				<MenuTitle {content} dimension="small" open />
 			</div>
 		</div>
 	</section>
@@ -1988,6 +2291,278 @@
 				>
 			</div>
 		</div>
+		<div class="row">
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} hover
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} leftActive
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} rightActive
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} leftFocus
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} leftFocus leftActive
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} rightFocus
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} disabled
+				>Slider label</RangeSlider
+			>
+		</div>
+		<div class="row">
+			<RangeSlider dimension="large" step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				hover>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				disabled>Slider label</RangeSlider
+			>
+		</div>
+		<div class="row">
+			<RangeSlider dimension="default" step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				hover>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				disabled>Slider label</RangeSlider
+			>
+		</div>
+		<div class="row">
+			<RangeSlider dimension="small" step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				hover>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				disabled>Slider label</RangeSlider
+			>
+		</div>
 	</section>
 	<section>
 		<div class="row">
@@ -2079,6 +2654,25 @@
 			</div>
 		</div>
 	</section>
+	<section>
+		<div class="row">
+			<div class="col">
+				<Loader />
+				<Loader dimension="large" />
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="row">
+			<ProgressBar value={50}>Loading...</ProgressBar>
+		</div>
+		<div class="row">
+			<ProgressBar dimension="large" value={50}>Loading...</ProgressBar>
+		</div>
+		<div class="row">
+			<ProgressBar dimension="small" value={50}>Loading...</ProgressBar>
+		</div>
+	</section>
 </div>
 
 <style>
@@ -2088,6 +2682,7 @@
 
 	.row {
 		display: flex;
+		flex: 1;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: flex-start;
