@@ -33,7 +33,6 @@
 	import Badge from '$lib/components/ui/badge.svelte'
 	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
-	import Layout from './+layout.svelte'
 	import RangeSlider from '$lib/components/ui/range-slider.svelte'
 
 	let dimension: Dimension = $state('default')
@@ -287,6 +286,11 @@
 			label="Number input"
 			unit="EUR">This is some helper text</Input
 		>
+		<hr />
+
+		<Input {dimension} type="date" value="2024-05-01" label="Date input"
+			>This is some helper text</Input
+		>
 	</section>
 
 	<section id="input-solid" class="controls solid">
@@ -306,6 +310,12 @@
 			value="1.420"
 			label="Number input"
 			unit="EUR">This is some helper text</Input
+		>
+
+		<hr />
+
+		<Input {dimension} variant="solid" type="date" value="2024-05-01" label="Date input"
+			>This is some helper text</Input
 		>
 	</section>
 </ResponsiveContainer>
