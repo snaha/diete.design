@@ -33,6 +33,8 @@
 	import Badge from '$lib/components/ui/badge.svelte'
 	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
+	import Layout from './+layout.svelte'
+	import RangeSlider from '$lib/components/ui/range-slider.svelte'
 
 	let dimension: Dimension = $state('default')
 	let size: 16 | 24 | 32 = $derived(
@@ -149,10 +151,28 @@
 
 <ResponsiveContainer class="vspace">
 	<section id="sliders" class="controls">
+		<Slider layout="vertical" {dimension} alwaysShowValue>
+			Continuous slider
+			{#snippet helperText()}
+				A simple continuous slider, showing the selected value on the right
+			{/snippet}
+		</Slider>
+
+		<hr />
+
 		<Slider layout="vertical" {dimension}
 			>Continuous slider with min/max
 			{#snippet helperText()}
-				A simple continuous slider, showing the selected value on the right
+				Selected value is shown on hover, pressed and focused states
+			{/snippet}
+		</Slider>
+
+		<hr />
+
+		<Slider layout="vertical" {dimension} step={10} showSteps alwaysShowValue
+			>Discrete slider
+			{#snippet helperText()}
+				Selects a value from a range of predetermined values, marked by stop indicators
 			{/snippet}
 		</Slider>
 
@@ -167,10 +187,36 @@
 	</section>
 
 	<section id="centered-sliders" class="controls">
+		<Slider layout="vertical" {dimension} centered min={-5} max={5} alwaysShowValue>
+			Continuous centered slider
+			{#snippet helperText()}
+				Selects a value from a negative/positive range, starting value is in the center
+			{/snippet}
+		</Slider>
+
+		<hr />
+
 		<Slider layout="vertical" {dimension} centered min={-5} max={5}
 			>Continuous centered slider with min/max
 			{#snippet helperText()}
 				Selected value is shown on hover, pressed and focused states
+			{/snippet}
+		</Slider>
+
+		<hr />
+
+		<Slider
+			layout="vertical"
+			{dimension}
+			step={1}
+			showSteps
+			centered
+			min={-5}
+			max={5}
+			alwaysShowValue
+			>Discrete centered slider
+			{#snippet helperText()}
+				Selects a value from a range of predetermined values, marked by stop indicators
 			{/snippet}
 		</Slider>
 
@@ -182,6 +228,26 @@
 				Discrete slider can also show minimum and maximum values
 			{/snippet}
 		</Slider>
+	</section>
+</ResponsiveContainer>
+
+<ResponsiveContainer class="vspace">
+	<section class="controls">
+		<RangeSlider layout="vertical" {dimension}>
+			Continuous range slider
+			{#snippet helperText()}
+				Selects two values on one slider to create a range
+			{/snippet}
+		</RangeSlider>
+
+		<hr />
+
+		<RangeSlider layout="vertical" {dimension} step={10} showSteps>
+			Discrete slider with min/max
+			{#snippet helperText()}
+				Range slider is also available with discrete values
+			{/snippet}
+		</RangeSlider>
 	</section>
 </ResponsiveContainer>
 
