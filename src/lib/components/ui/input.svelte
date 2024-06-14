@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	import { WarningAltFilled, Information, Subtract, Add, Calendar } from 'carbon-icons-svelte'
+	import { WarningAltFilled, Information, Subtract, Add } from 'carbon-icons-svelte'
 	import Button from './button.svelte'
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
@@ -70,9 +70,6 @@
 					{disabled}
 					{...restProps}
 				/>
-				{#if type === 'date'}
-					<label for={labelFor} class="date-wrapper"></label>
-				{/if}
 				{#if unit && !error}
 					<label class="unit" for={labelFor}>{unit}</label>
 				{/if}
@@ -82,13 +79,6 @@
 					</label>
 				{/if}
 			</div>
-			{#if controls && type === 'date'}
-				<div class="control-buttons">
-					<Button {dimension} {disabled} variant={variant === 'outline' ? 'secondary' : 'solid'}>
-						<Calendar {size} />
-					</Button>
-				</div>
-			{/if}
 			{#if controls && type === 'number'}
 				<div class="control-buttons">
 					<Button {dimension} {disabled} variant="secondary" onclick={() => (value -= 1)}>
@@ -131,33 +121,9 @@
 		font-family: var(--font-family-sans-serif);
 		text-transform: uppercase;
 	}
-	input[type='date']::-webkit-calendar-picker-indicator {
-		display: none;
-	}
 	input[type='date']::-webkit-datetime-edit {
 		font-family: var(--font-family-sans-serif);
 		text-transform: uppercase;
-	}
-	.date-wrapper {
-		display: none;
-		position: relative;
-		cursor: text;
-		width: fit-content;
-	}
-	.date-wrapper::after {
-		position: absolute;
-		top: 50%;
-		right: 0.75rem;
-		transform: translate(0, -50%);
-		background: var(--colors-ultra-low);
-		width: 26px;
-		height: var(--line-height);
-		content: '';
-	}
-	@-moz-document url-prefix() {
-		.date-wrapper {
-			display: block;
-		}
 	}
 
 	.vertical {
@@ -277,9 +243,6 @@
 					opacity: 1;
 					color: var(--colors-top);
 				}
-				& ~ .date-wrapper::after {
-					background: var(--colors-base);
-				}
 			}
 			&:active:not(:disabled),
 			&.active:not(:disabled) {
@@ -350,10 +313,6 @@
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
 		}
-		.date-wrapper::after {
-			width: 34px;
-			height: var(--line-height-large);
-		}
 		.unit {
 			top: 0.75rem;
 			right: 0.75rem;
@@ -386,9 +345,6 @@
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
-		.date-wrapper::after {
-			right: 0.5rem;
-		}
 		.unit {
 			top: 0.5rem;
 			right: 0.5rem;
@@ -415,11 +371,6 @@
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
-		}
-		.date-wrapper::after {
-			right: 0.5rem;
-			width: 18px;
-			height: var(--line-height-small);
 		}
 		.unit {
 			top: 0.5rem;
