@@ -21,8 +21,10 @@
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
+	import Textarea from '$lib/components/ui/textarea.svelte'
 	import Badge from '$lib/components/ui/badge.svelte'
 	import Loader from '$lib/components/ui/loader.svelte'
+	import ProgressBar from '$lib/components/ui/progress.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -1061,136 +1063,370 @@
 		</div>
 	</section>
 	<section>
-		<Typography variant="h1">Select (outline)</Typography>
+		{#snippet helperText()}
+			This is an optional helper text
+		{/snippet}
 		<div class="row">
 			<div class="col">
-				<Select label="Outline select" placeholder="Placeholder" />
-				<Select label="Outline select" placeholder="Placeholder" value="With value" />
-				<Select label="Outline select" placeholder="Hover" hover />
-				<Select label="Outline select" placeholder="Active" hover />
-				<Select label="Outline select" placeholder="Active" focus />
-				<Select label="Outline select" value="Disabled" disabled />
-			</div>
-			<div class="col">
-				<Select dimension="large" label="Outline select" placeholder="Placeholder" />
-				<Select
-					dimension="large"
-					label="Outline select"
+				<Textarea label="Input label" {helperText} placeholder="Placeholder"></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
 					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select dimension="large" label="Outline select" placeholder="Hover" hover />
-				<Select dimension="large" label="Outline select" placeholder="Active" hover />
-				<Select dimension="large" label="Outline select" placeholder="Active" focus />
-				<Select dimension="large" label="Outline select" value="Disabled" disabled />
-			</div>
-			<div class="col">
-				<Select dimension="compact" label="Outline select" placeholder="Placeholder" />
-				<Select
-					dimension="compact"
-					label="Outline select"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
 					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select dimension="compact" label="Outline select" placeholder="Hover" hover />
-				<Select dimension="compact" label="Outline select" placeholder="Active" hover />
-				<Select dimension="compact" label="Outline select" placeholder="Active" focus />
-				<Select dimension="compact" label="Outline select" value="Disabled" disabled />
-			</div>
-			<div class="col">
-				<Select dimension="small" label="Outline select" placeholder="Placeholder" />
-				<Select
-					dimension="small"
-					label="Outline select"
-					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select dimension="small" label="Outline select" placeholder="Hover" hover />
-				<Select dimension="small" label="Outline select" placeholder="Active" hover />
-				<Select dimension="small" label="Outline select" placeholder="Active" focus />
-				<Select dimension="small" label="Outline select" value="Disabled" disabled />
-			</div>
-		</div>
-		<Typography variant="h1">Select (solid)</Typography>
-		<div class="row">
-			<div class="col">
-				<Select variant="solid" label="Solid select" placeholder="Placeholder" />
-				<Select variant="solid" label="Solid select" placeholder="Placeholder" value="With value" />
-				<Select variant="solid" label="Solid select" placeholder="Hover" hover />
-				<Select variant="solid" label="Solid select" placeholder="Active" hover />
-				<Select variant="solid" label="Solid select" placeholder="Active" focus />
-				<Select variant="solid" label="Solid select" value="Disabled" disabled />
-			</div>
-			<div class="col">
-				<Select variant="solid" dimension="large" label="Solid select" placeholder="Placeholder" />
-				<Select
-					variant="solid"
-					dimension="large"
-					label="Solid select"
-					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select variant="solid" dimension="large" label="Solid select" placeholder="Hover" hover />
-				<Select variant="solid" dimension="large" label="Solid select" placeholder="Active" hover />
-				<Select variant="solid" dimension="large" label="Solid select" placeholder="Active" focus />
-				<Select variant="solid" dimension="large" label="Solid select" value="Disabled" disabled />
-			</div>
-			<div class="col">
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					placeholder="Placeholder"
-				/>
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					placeholder="Hover"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
 					hover
-				/>
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					placeholder="Active"
-					hover
-				/>
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					placeholder="Active"
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
 					focus
-				/>
-				<Select
-					variant="solid"
-					dimension="compact"
-					label="Solid select"
-					value="Disabled"
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
 					disabled
-				/>
+				></Textarea>
 			</div>
 			<div class="col">
-				<Select variant="solid" dimension="small" label="Solid select" placeholder="Placeholder" />
-				<Select
-					variant="solid"
-					dimension="small"
-					label="Solid select"
+				<Textarea dimension="large" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
 					placeholder="Placeholder"
-					value="With value"
-				/>
-				<Select variant="solid" dimension="small" label="Solid select" placeholder="Hover" hover />
-				<Select variant="solid" dimension="small" label="Solid select" placeholder="Active" hover />
-				<Select variant="solid" dimension="small" label="Solid select" placeholder="Active" focus />
-				<Select variant="solid" dimension="small" label="Solid select" value="Disabled" disabled />
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea dimension="compact" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea dimension="small" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+				<Typography variant="h1">Select (outline)</Typography>
+				<div class="row">
+					<div class="col">
+						<Select label="Outline select" placeholder="Placeholder" />
+						<Select label="Outline select" placeholder="Placeholder" value="With value" />
+						<Select label="Outline select" placeholder="Hover" hover />
+						<Select label="Outline select" placeholder="Active" hover />
+						<Select label="Outline select" placeholder="Active" focus />
+						<Select label="Outline select" value="Disabled" disabled />
+					</div>
+					<div class="col">
+						<Select dimension="large" label="Outline select" placeholder="Placeholder" />
+						<Select
+							dimension="large"
+							label="Outline select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select dimension="large" label="Outline select" placeholder="Hover" hover />
+						<Select dimension="large" label="Outline select" placeholder="Active" hover />
+						<Select dimension="large" label="Outline select" placeholder="Active" focus />
+						<Select dimension="large" label="Outline select" value="Disabled" disabled />
+					</div>
+					<div class="col">
+						<Select dimension="compact" label="Outline select" placeholder="Placeholder" />
+						<Select
+							dimension="compact"
+							label="Outline select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select dimension="compact" label="Outline select" placeholder="Hover" hover />
+						<Select dimension="compact" label="Outline select" placeholder="Active" hover />
+						<Select dimension="compact" label="Outline select" placeholder="Active" focus />
+						<Select dimension="compact" label="Outline select" value="Disabled" disabled />
+					</div>
+					<div class="col">
+						<Select dimension="small" label="Outline select" placeholder="Placeholder" />
+						<Select
+							dimension="small"
+							label="Outline select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select dimension="small" label="Outline select" placeholder="Hover" hover />
+						<Select dimension="small" label="Outline select" placeholder="Active" hover />
+						<Select dimension="small" label="Outline select" placeholder="Active" focus />
+						<Select dimension="small" label="Outline select" value="Disabled" disabled />
+					</div>
+				</div>
+				<Typography variant="h1">Select (solid)</Typography>
+				<div class="row">
+					<div class="col">
+						<Select variant="solid" label="Solid select" placeholder="Placeholder" />
+						<Select
+							variant="solid"
+							label="Solid select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select variant="solid" label="Solid select" placeholder="Hover" hover />
+						<Select variant="solid" label="Solid select" placeholder="Active" hover />
+						<Select variant="solid" label="Solid select" placeholder="Active" focus />
+						<Select variant="solid" label="Solid select" value="Disabled" disabled />
+					</div>
+					<div class="col">
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							placeholder="Placeholder"
+						/>
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							placeholder="Hover"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							placeholder="Active"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							placeholder="Active"
+							focus
+						/>
+						<Select
+							variant="solid"
+							dimension="large"
+							label="Solid select"
+							value="Disabled"
+							disabled
+						/>
+					</div>
+					<div class="col">
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							placeholder="Placeholder"
+						/>
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							placeholder="Hover"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							placeholder="Active"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							placeholder="Active"
+							focus
+						/>
+						<Select
+							variant="solid"
+							dimension="compact"
+							label="Solid select"
+							value="Disabled"
+							disabled
+						/>
+					</div>
+					<div class="col">
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							placeholder="Placeholder"
+						/>
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							placeholder="Placeholder"
+							value="With value"
+						/>
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							placeholder="Hover"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							placeholder="Active"
+							hover
+						/>
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							placeholder="Active"
+							focus
+						/>
+						<Select
+							variant="solid"
+							dimension="small"
+							label="Solid select"
+							value="Disabled"
+							disabled
+						/>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -2113,6 +2349,17 @@
 				<Loader />
 				<Loader dimension="large" />
 			</div>
+		</div>
+	</section>
+	<section>
+		<div class="row">
+			<ProgressBar value={50}>Loading...</ProgressBar>
+		</div>
+		<div class="row">
+			<ProgressBar dimension="large" value={50}>Loading...</ProgressBar>
+		</div>
+		<div class="row">
+			<ProgressBar dimension="small" value={50}>Loading...</ProgressBar>
 		</div>
 	</section>
 </div>

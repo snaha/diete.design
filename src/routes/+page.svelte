@@ -614,11 +614,14 @@
 		flex: 1;
 		justify-content: stretch;
 	}
+	section {
+		height: fit-content;
+	}
 	.controls {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: flex-start;
+		align-items: stretch;
 		gap: var(--padding);
 		border: var(--colors-low) 1px solid;
 		border-radius: var(--border-radius);

@@ -25,13 +25,14 @@
 			'/colors': 'CSS colors',
 			'https://github.com/diete-design/diete.design': 'Github',
 		},
-		'Basic components': {
+		Components: {
 			'/components/badge': 'Badge',
 			'/components/button': 'Button',
 			'/components/checkbox': 'Checkbox',
 			'/components/input': 'Input',
 			'/components/loader': 'Loader',
 			'/components/menu': 'Menu',
+			'/components/progress': 'Progress bar',
 			'/components/radio': 'Radio',
 			'/components/select': 'Select',
 			'/components/slider': 'Slider',
