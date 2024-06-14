@@ -44,6 +44,7 @@
 		variant = 'outline',
 		...restProps
 	}: Props = $props()
+	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 	let input: HTMLInputElement
 </script>
 
@@ -106,10 +107,10 @@
 			{#if controls && type === 'number'}
 				<div class="control-buttons">
 					<Button {dimension} {disabled} variant="secondary" onclick={() => (value -= 1)}>
-						<Subtract size={dimension === 'small' ? 16 : 24} />
+						<Subtract {size} />
 					</Button>
 					<Button {dimension} {disabled} variant="secondary" onclick={() => (value += 1)}>
-						<Add size={dimension === 'small' ? 16 : 24} />
+						<Add {size} />
 					</Button>
 				</div>
 			{/if}
@@ -140,6 +141,16 @@
 	input[type='number'] {
 		-moz-appearance: textfield;
 	}
+	input[type='date'] {
+		cursor: text;
+		font-family: var(--font-family-sans-serif);
+		text-transform: uppercase;
+	}
+	input[type='date']::-webkit-datetime-edit {
+		font-family: var(--font-family-sans-serif);
+		text-transform: uppercase;
+	}
+
 	.vertical {
 		&.root {
 			display: flex;
@@ -241,6 +252,9 @@
 		.solid {
 			border: 1px solid var(--colors-low);
 			background: var(--colors-base);
+			&.date-wrapper::after {
+				background: var(--colors-base);
+			}
 		}
 		input {
 			flex-grow: 1;
