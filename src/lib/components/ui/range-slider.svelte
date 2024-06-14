@@ -43,11 +43,19 @@
 
 	let percentMin = $derived(((valueMin - min) / Math.abs(max - min)) * 100)
 	let percentMax = $derived(((valueMax - min) / Math.abs(max - min)) * 100)
-	$effect(() => {
-		if (valueMin > valueMax) {
-			valueMin = valueMax
+
+	function changeValueMin(newValue: number) {
+		if (newValue >= valueMax) {
+			valueMax = newValue
 		}
-	})
+		valueMin = newValue
+	}
+	function changeValueMax(newValue: number) {
+		if (newValue <= valueMin) {
+			valueMin = newValue
+		}
+		valueMax = newValue
+	}
 </script>
 
 <div
@@ -76,6 +84,7 @@
 				class:hover
 				class:leftActive
 				class:leftFocus
+				oninput={() => changeValueMin(valueMin)}
 				id={labelFor}
 				{min}
 				{max}
@@ -88,6 +97,7 @@
 				class:hover
 				class:rightActive
 				class:rightFocus
+				oninput={() => changeValueMax(valueMax)}
 				{step}
 				bind:value={valueMax}
 				class="max-range"
