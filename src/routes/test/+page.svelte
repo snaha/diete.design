@@ -1064,6 +1064,44 @@
 		</div>
 	</section>
 	<section>
+		<Typography variant="h1">Date input</Typography>
+		<div class="row">
+			<div class="col">
+				<Input type="date" label="Date picker" />
+				<Input type="date" label="Date picker" value="2024-05-01" />
+				<Input type="date" label="Date picker" value="2024-05-01" hover />
+				<Input type="date" label="Date picker" value="2024-05-01" active />
+				<Input type="date" label="Date picker" value="2024-05-01" focus />
+				<Input type="date" label="Date picker" value="2024-05-01" disabled />
+			</div>
+			<div class="col">
+				<Input dimension="large" type="date" label="Date picker" />
+				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" />
+				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" hover />
+				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" active />
+				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" focus />
+				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" disabled />
+			</div>
+			<div class="col">
+				<Input dimension="compact" type="date" label="Date picker" />
+				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" />
+				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" hover />
+				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" active />
+				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" focus />
+				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" disabled />
+			</div>
+			<div class="col">
+				<Input dimension="small" type="date" label="Date picker" />
+				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" />
+				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" hover />
+				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" active />
+				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" focus />
+				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" disabled />
+			</div>
+		</div>
+	</section>
+	<section>
+		<Typography variant="h1">Select (outline)</Typography>
 		{#snippet helperText()}
 			This is an optional helper text
 		{/snippet}
