@@ -306,9 +306,7 @@
 		flex: 1;
 		justify-content: stretch;
 	}
-	section {
-		height: fit-content;
-	}
+
 	.controls {
 		display: flex;
 		flex-direction: column;
