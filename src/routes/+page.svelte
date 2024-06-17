@@ -14,6 +14,7 @@
 	import ResponsiveContainer from '$lib/components/custom/responsive-container.svelte'
 	import type { Dimension } from '$lib/components/ui/menu/menu-store.svelte'
 	import Code from '$lib/components/custom/code.svelte'
+	import Divider from '$lib/components/ui/divider.svelte'
 
 	let dimension: Dimension = $state('default')
 	let size: 16 | 24 | 32 = $derived(
@@ -45,7 +46,7 @@
 	<Button variant="secondary" dimension="large" href="/build">Learn more</Button>
 </section>
 
-<hr />
+<Divider />
 
 <ResponsiveContainer class="vspace">
 	<section id="preview-title">
@@ -137,7 +138,7 @@
 			{/snippet}
 		</Slider>
 
-		<hr />
+		<Divider />
 
 		<Slider layout="vertical" {dimension} step={10} showSteps
 			>Discrete slider with min/max
@@ -155,7 +156,7 @@
 			{/snippet}
 		</Slider>
 
-		<hr />
+		<Divider />
 
 		<Slider layout="vertical" {dimension} step={1} showSteps centered min={-5} max={5}
 			>Discrete slider with min/max
@@ -178,7 +179,7 @@
 	<section id="input" class="controls">
 		<Input {dimension} value="Williamsburg" label="Text input">This is some helper text</Input>
 
-		<hr />
+		<Divider />
 
 		<Input
 			{dimension}
@@ -295,15 +296,6 @@
 		align-items: center;
 		gap: var(--padding);
 		margin-top: var(--double-padding);
-	}
-	hr {
-		appearance: none;
-		margin-top: var(--double-padding);
-		margin-bottom: var(--double-padding);
-		border-width: 1px;
-		border-style: solid;
-		width: 100%;
-		color: var(--colors-low);
 	}
 	#preview-title {
 		display: flex;
