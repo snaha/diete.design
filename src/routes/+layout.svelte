@@ -37,6 +37,7 @@
 			'/components/select': 'Select',
 			'/components/slider': 'Slider',
 			'/components/switch': 'Switch',
+			'/components/textarea': 'Textarea',
 			'/components/tooltip': 'Tooltip',
 			'/components/typography': 'Typography',
 		},
