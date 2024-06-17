@@ -341,7 +341,8 @@
 			{helperText}
 			{dimension}
 			value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
-		></Textarea>
+			variant="solid"
+        ></Textarea>
 	</section>
 </ResponsiveContainer>
 
