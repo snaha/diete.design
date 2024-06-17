@@ -34,6 +34,7 @@
 	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RangeSlider from '$lib/components/ui/range-slider.svelte'
+	import Textarea from '$lib/components/ui/textarea.svelte'
 
 	let dimension: Dimension = $state('default')
 	let size: 16 | 24 | 32 = $derived(
@@ -317,6 +318,29 @@
 		<Input {dimension} variant="solid" type="date" value="2024-05-01" label="Date input"
 			>This is some helper text</Input
 		>
+	</section>
+</ResponsiveContainer>
+
+{#snippet helperText()}
+	This is an optional helper text
+{/snippet}
+
+<ResponsiveContainer class="vspace">
+	<section id="textarea" class="controls">
+		<Textarea
+			label="Text area"
+			{helperText}
+			{dimension}
+			value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+		></Textarea>
+	</section>
+	<section id="textarea-solid" class="controls solid">
+		<Textarea
+			label="Text area"
+			{helperText}
+			{dimension}
+			value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+		></Textarea>
 	</section>
 </ResponsiveContainer>
 
@@ -689,9 +713,6 @@
 		display: flex;
 		flex: 1;
 		justify-content: stretch;
-	}
-	section {
-		height: fit-content;
 	}
 	.controls {
 		display: flex;
