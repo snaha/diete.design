@@ -28,6 +28,7 @@
 		Components: {
 			'/components/badge': 'Badge',
 			'/components/button': 'Button',
+			'/components/divider': 'Divider',
 			'/components/checkbox': 'Checkbox',
 			'/components/input': 'Input',
 			'/components/loader': 'Loader',

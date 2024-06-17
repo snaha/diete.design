@@ -35,6 +35,7 @@
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RangeSlider from '$lib/components/ui/range-slider.svelte'
 	import Textarea from '$lib/components/ui/textarea.svelte'
+	import Divider from '$lib/components/ui/divider.svelte'
 
 	let dimension: Dimension = $state('default')
 	let size: 16 | 24 | 32 = $derived(
@@ -66,7 +67,7 @@
 	<Button variant="secondary" dimension="large" href="/build">Learn more</Button>
 </section>
 
-<hr />
+<Divider />
 
 <ResponsiveContainer class="vspace">
 	<section id="preview-title">
@@ -176,7 +177,7 @@
 			{/snippet}
 		</Slider>
 
-		<hr />
+		<Divider />
 
 		<Slider layout="vertical" {dimension} step={10} showSteps
 			>Discrete slider with min/max
@@ -203,7 +204,7 @@
 			{/snippet}
 		</Slider>
 
-		<hr />
+		<Divider />
 
 		<Slider
 			layout="vertical"
@@ -275,7 +276,7 @@
 	<section id="input" class="controls">
 		<Input {dimension} value="Williamsburg" label="Text input">This is some helper text</Input>
 
-		<hr />
+		<Divider />
 
 		<Input
 			{dimension}
@@ -714,6 +715,7 @@
 		flex: 1;
 		justify-content: stretch;
 	}
+
 	.controls {
 		display: flex;
 		flex-direction: column;
