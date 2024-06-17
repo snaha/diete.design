@@ -3,6 +3,8 @@
 	import type { HTMLTextareaAttributes } from 'svelte/elements'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	type Variant = 'outline' | 'solid'
+
 	interface Props extends HTMLTextareaAttributes {
 		label?: string
 		labelFor?: string
@@ -12,6 +14,7 @@
 		active?: boolean
 		focus?: boolean
 		helperText?: Snippet
+		variant?: Variant
 	}
 	let {
 		label,
@@ -23,6 +26,7 @@
 		active,
 		focus,
 		helperText,
+		variant = 'outline',
 		class: classProps,
 		...restProps
 	}: Props = $props()
@@ -34,7 +38,7 @@
 	</label>
 	<div class="relative">
 		<textarea
-			class="textarea"
+			class={variant}
 			id={labelFor}
 			class:hover
 			class:active
@@ -70,18 +74,24 @@
 	}
 	textarea {
 		position: relative;
-		border: 1px solid var(--colors-ultra-high);
 		border-radius: 0.25rem;
-		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
-		&:hover:not(:disabled),
-		&.hover:not(:disabled),
-		&:active:not(:disabled),
-		&.active:not(:disabled) {
-			border: 1px solid var(--colors-top);
+		&::placeholder {
+			opacity: 0.5;
+			color: var(--colors-ultra-high);
+		}
+		&:disabled {
+			opacity: 0.25;
+			cursor: not-allowed;
+		}
+		&.outline {
+			border: 1px solid var(--colors-ultra-high);
+			background: transparent;
+		}
+		&.solid {
+			border: 1px solid var(--colors-low);
 			background: var(--colors-base);
-			color: var(--colors-top);
 		}
 		&:focus:not(:disabled),
 		&:focus-visible:not(:disabled),
@@ -91,13 +101,16 @@
 			background: var(--colors-base);
 			color: var(--colors-top);
 		}
-		&::placeholder {
-			opacity: 0.5;
-			color: var(--colors-ultra-high);
+		&:active:not(:disabled),
+		&.active:not(:disabled) {
+			outline: none;
 		}
-		&:disabled {
-			opacity: 0.25;
-			cursor: not-allowed;
+		&:hover:not(:disabled),
+		&.hover:not(:disabled),
+		&:active:not(:disabled),
+		&.active:not(:disabled) {
+			border: 1px solid var(--colors-top);
+			color: var(--colors-top);
 		}
 	}
 	.icon {
