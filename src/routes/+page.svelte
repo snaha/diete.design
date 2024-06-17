@@ -168,13 +168,11 @@
 
 <ResponsiveContainer class="vspace">
 	<section id="search" class="controls">
-		<div>
-			<Input {dimension} placeholder="Search" controls={true}>
-				{#snippet buttons()}
-					<Button {dimension} variant="secondary"><Search {size} /></Button>
-				{/snippet}
-			</Input>
-		</div>
+		<Input {dimension} placeholder="Search" controls={true}>
+			{#snippet buttons()}
+				<Button {dimension} variant="secondary"><Search {size} /></Button>
+			{/snippet}
+		</Input>
 	</section>
 
 	<section id="input" class="controls">
