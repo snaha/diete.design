@@ -159,7 +159,7 @@
 			{/snippet}
 		</Slider>
 
-		<hr />
+		<Divider />
 
 		<Slider layout="vertical" {dimension}
 			>Continuous slider with min/max
@@ -168,7 +168,7 @@
 			{/snippet}
 		</Slider>
 
-		<hr />
+		<Divider />
 
 		<Slider layout="vertical" {dimension} step={10} showSteps alwaysShowValue
 			>Discrete slider
@@ -195,7 +195,7 @@
 			{/snippet}
 		</Slider>
 
-		<hr />
+		<Divider />
 
 		<Slider layout="vertical" {dimension} centered min={-5} max={5}
 			>Continuous centered slider with min/max
@@ -221,7 +221,7 @@
 			{/snippet}
 		</Slider>
 
-		<hr />
+		<Divider />
 
 		<Slider layout="vertical" {dimension} step={1} showSteps centered min={-5} max={5}
 			>Discrete slider with min/max
@@ -241,7 +241,7 @@
 			{/snippet}
 		</RangeSlider>
 
-		<hr />
+		<Divider />
 
 		<RangeSlider layout="vertical" {dimension} step={10} showSteps>
 			Discrete slider with min/max
@@ -288,7 +288,7 @@
 			label="Number input"
 			unit="EUR">This is some helper text</Input
 		>
-		<hr />
+		<Divider />
 
 		<Input {dimension} type="date" value="2024-05-01" label="Date input"
 			>This is some helper text</Input
@@ -300,7 +300,7 @@
 			>This is some helper text</Input
 		>
 
-		<hr />
+		<Divider />
 
 		<Input
 			{dimension}
@@ -314,7 +314,7 @@
 			unit="EUR">This is some helper text</Input
 		>
 
-		<hr />
+		<Divider />
 
 		<Input {dimension} variant="solid" type="date" value="2024-05-01" label="Date input"
 			>This is some helper text</Input
@@ -552,7 +552,7 @@
 			<Badge dimension="small">20% off</Badge>
 		</div>
 
-		<hr class="half-margin" />
+		<Divider class="half-margin" />
 
 		<div class="row space-between">
 			<Typography variant="h5">Teriyaki chicken</Typography>
@@ -562,14 +562,14 @@
 			</Badge>
 		</div>
 
-		<hr class="half-margin" />
+		<Divider class="half-margin" />
 
 		<div class="row">
 			<Typography variant="large">KGLW</Typography>
 			<Badge dimension="small" variant="strong">NEW RELEASE</Badge>
 		</div>
 
-		<hr class="half-margin" />
+		<Divider class="half-margin" />
 
 		<div class="row space-between">
 			<Typography variant="h5">Messages</Typography>
@@ -579,14 +579,14 @@
 			</Badge>
 		</div>
 
-		<hr class="half-margin" />
+		<Divider class="half-margin" />
 
 		<div class="row space-between">
 			<Typography variant="h3">Yuccie</Typography>
 			<Badge dimension="large">On sale</Badge>
 		</div>
 
-		<hr class="half-margin" />
+		<Divider class="half-margin" />
 
 		<div class="row">
 			<Typography variant="large">Sriracha</Typography>
@@ -596,14 +596,14 @@
 			</Badge>
 		</div>
 
-		<hr class="half-margin" />
+		<Divider class="half-margin" />
 
 		<div class="row">
 			<Typography variant="h3">Trust fund</Typography>
 			<Badge dimension="large" variant="strong">NEW!</Badge>
 		</div>
 
-		<hr class="half-margin" />
+		<Divider class="half-margin" />
 
 		<div class="row space-between">
 			<Typography variant="large">Kale chips</Typography>
@@ -693,19 +693,6 @@
 		gap: var(--padding);
 		margin-top: var(--double-padding);
 	}
-	hr {
-		appearance: none;
-		margin-top: var(--double-padding);
-		margin-bottom: var(--double-padding);
-		border-width: 1px;
-		border-style: solid;
-		width: 100%;
-		color: var(--colors-low);
-	}
-	.half-margin {
-		margin-top: var(--padding);
-		margin-bottom: var(--padding);
-	}
 	#preview-title {
 		display: flex;
 		align-items: center;
@@ -740,6 +727,10 @@
 	:global(.vspace) {
 		margin-top: var(--padding);
 	}
+	:global(.half-margin) {
+		margin-top: var(--padding) !important;
+		margin-bottom: var(--padding) !important;
+	}
 	#dark-overlay {
 		background-image: url('/backgrounds/noita-digital-QZX8jbK1xEw-unsplash.jpg');
 		background-size: cover;
@@ -751,6 +742,7 @@
 	#bottom {
 		margin-top: calc(2 * var(--double-padding));
 	}
+
 	.opacity {
 		opacity: 0.5;
 	}
