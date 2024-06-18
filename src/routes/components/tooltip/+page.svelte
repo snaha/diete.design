@@ -11,7 +11,7 @@
 	import Tooltip from '$lib/components/ui/tooltip.svelte'
 	import { Information } from 'carbon-icons-svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
-	import Input from '$lib/components/ui/input.svelte'
+	import Input from '$lib/components/ui/input/input.svelte'
 
 	let css: string = $state('Loading...')
 	type Position = 'top' | 'bottom' | 'left' | 'right'

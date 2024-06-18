@@ -1,12 +1,13 @@
-<script lang="ts">
+<script lang="ts" context="module">
 	import type { Snippet } from 'svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	import { WarningAltFilled, Information, Subtract, Add, Search, Delete } from 'carbon-icons-svelte'
-	import Button from './button.svelte'
+	import { WarningAltFilled, Information } from 'carbon-icons-svelte'
+
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Variant = 'outline' | 'solid'
-	interface Props extends HTMLInputAttributes {
+
+	export type Props = {
 		label?: string
 		labelFor?: string
 		dimension?: Dimension
@@ -16,12 +17,14 @@
 		hover?: boolean
 		active?: boolean
 		focus?: boolean
-		controls?: boolean
 		disabled?: boolean
-		buttons?: Snippet
-		search?: boolean
+		buttons?: Snippet<[HTMLInputElement]>
 		variant?: Variant
+		iconStart?: Snippet
 	}
+</script>
+
+<script lang="ts">
 	let {
 		label,
 		labelFor = Math.random().toString(16),
@@ -32,27 +35,25 @@
 		unit,
 		error,
 		hover,
+		iconStart,
 		active,
 		focus,
-		controls,
 		type,
-		search = false,
 		disabled,
 		class: className = '',
 		children,
 		buttons,
 		variant = 'outline',
 		...restProps
-	}: Props = $props()
-	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
-	let input: HTMLInputElement
+	}: Props & HTMLInputAttributes = $props()
+	let input: HTMLInputElement | undefined = $state()
 </script>
 
-<div class="root {layout} {dimension} {className}" class:controls>
+<div class="root {layout} {dimension} {className}">
 	<label class="label" for={labelFor}>
 		{label}
 	</label>
-	{#if children && layout === 'horizontal' && type !== 'number'}
+	{#if children && layout === 'horizontal'}
 		<div class="helper-button">
 			<Information size={dimension === 'small' ? 16 : 24} />
 		</div>
@@ -67,7 +68,6 @@
 					class:hover
 					class:focus
 					class:error
-					class:search
 					bind:value
 					bind:this={input}
 					{placeholder}
@@ -75,9 +75,9 @@
 					{disabled}
 					{...restProps}
 				/>
-				{#if search}
+				{#if iconStart}
 					<label for={labelFor} class="search-icon">
-						<Search size={dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24} />
+						{@render iconStart()}
 					</label>
 				{/if}
 				{#if unit && !error}
@@ -89,35 +89,10 @@
 					</label>
 				{/if}
 			</div>
-			{#if search}
-				<div class="control-buttons">
-					<Button
-						{dimension}
-						{disabled}
-						variant="secondary"
-						onclick={() => {
-							value = ''
-							input.focus()
-						}}
-					>
-						<Delete size={dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24} />
-					</Button>
-				</div>
-			{/if}
-			{#if controls && type === 'number'}
-				<div class="control-buttons">
-					<Button {dimension} {disabled} variant="secondary" onclick={() => (value -= 1)}>
-						<Subtract {size} />
-					</Button>
-					<Button {dimension} {disabled} variant="secondary" onclick={() => (value += 1)}>
-						<Add {size} />
-					</Button>
-				</div>
-			{/if}
 			{#if buttons}
-				<div class="control-buttons">
-					{@render buttons()}
-				</div>
+				<label for={labelFor} class="control-buttons">
+					{@render buttons(input)}
+				</label>
 			{/if}
 		</div>
 		{#if error}
@@ -134,6 +109,13 @@
 </div>
 
 <style lang="postcss">
+	input[type='search'] {
+		-moz-appearance: textfield;
+	}
+	input[type='search']::-webkit-search-cancel-button {
+		display: none;
+	}
+
 	input[type='number']::-webkit-outer-spin-button,
 	input[type='number']::-webkit-inner-spin-button {
 		appearance: none;
@@ -165,7 +147,7 @@
 			align-items: center;
 		}
 	}
-	.controls {
+	.root:has(.control-buttons) {
 		.wrapper {
 			flex-direction: row;
 			gap: 0;
@@ -177,14 +159,14 @@
 			}
 		}
 	}
-	.wrapper:has(.search:not(:disabled):not(:placeholder-shown)) {
+	.wrapper:has(.relative):has(input:placeholder-shown):has(.search-icon) {
 		flex-direction: row;
 		gap: 0;
 		input {
-			border-radius: 0.25rem 0 0 0.25rem;
+			border-radius: 0.25rem;
 		}
 		.control-buttons {
-			display: flex;
+			display: none;
 		}
 	}
 	.root {
@@ -320,6 +302,11 @@
 		color: var(--colors-top);
 	}
 	.default {
+		&:has(.search-icon) {
+			input {
+				padding-left: 44px;
+			}
+		}
 		.label {
 			font-size: var(--font-size);
 			line-height: var(--line-height);
@@ -333,9 +320,6 @@
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
-			&.search {
-				padding-left: 44px;
-			}
 		}
 		.search-icon {
 			padding: 0.75rem 0.5rem 0.75rem 0.75rem;
@@ -353,6 +337,11 @@
 		}
 	}
 	.large {
+		&:has(.search-icon) {
+			input {
+				padding-left: 52px;
+			}
+		}
 		.label {
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
@@ -366,9 +355,6 @@
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
-			&.search {
-				padding-left: 52px;
-			}
 		}
 		.search-icon {
 			padding: 0.75rem 0.5rem 0.75rem 0.75rem;
@@ -391,6 +377,11 @@
 		}
 	}
 	.compact {
+		&:has(.search-icon) {
+			input {
+				padding-left: 40px;
+			}
+		}
 		.label {
 			font-size: var(--font-size);
 			line-height: var(--line-height);
@@ -404,9 +395,6 @@
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
-			&.search {
-				padding-left: 40px;
-			}
 		}
 		.search-icon {
 			padding: 0.5rem;
@@ -424,6 +412,11 @@
 		}
 	}
 	.small {
+		&:has(.search-icon) {
+			input {
+				padding-left: var(--double-padding);
+			}
+		}
 		.label {
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
@@ -437,9 +430,6 @@
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
-			&.search {
-				padding-left: var(--double-padding);
-			}
 		}
 		.search-icon {
 			padding: 0.5rem;
