@@ -134,6 +134,9 @@
 </div>
 
 <style lang="postcss">
+	input {
+		font-family: var(--font-family-sans-serif);
+	}
 	input[type='number']::-webkit-outer-spin-button,
 	input[type='number']::-webkit-inner-spin-button {
 		appearance: none;
