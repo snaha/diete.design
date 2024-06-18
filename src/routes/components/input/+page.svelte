@@ -1,5 +1,5 @@
 <script lang="ts">
-	import input from '$lib/components/ui/input.svelte?raw'
+	import input from '$lib/components/ui/input/input.svelte?raw'
 	import button from '$lib/components/ui/button.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
 	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
