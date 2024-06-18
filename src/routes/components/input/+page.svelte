@@ -40,7 +40,7 @@
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
 		`<script lang="ts">
-	import Input from '$lib/components/ui/input.svelte'${
+	import Input from '$lib/components/ui/input/input.svelte'${
 		colorButton || arrowButton
 			? `
 	import Button from '$lib/components/ui/button.svelte'${
