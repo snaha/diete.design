@@ -169,6 +169,11 @@
 			display: none;
 		}
 	}
+	.wrapper:has(.relative):has(input[type='search']:placeholder-shown) {
+		.control-buttons > :global(*:first-child) :global(button) {
+			display: none;
+		}
+	}
 	.root {
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);

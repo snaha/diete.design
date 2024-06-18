@@ -858,6 +858,7 @@
 		</div>
 	</section>
 	<section>
+		<Typography variant="h1">Search input</Typography>
 		<div class="row">
 			<div class="col">
 				<SearchInput placeholder="Placeholder" />
@@ -882,6 +883,35 @@
 				<SearchInput dimension="small" value="" />
 				<SearchInput dimension="small" value="Diete" />
 				<SearchInput dimension="small" disabled />
+			</div>
+		</div>
+	</section>
+	<section>
+		<Typography variant="h1">Search input (with button)</Typography>
+		<div class="row">
+			<div class="col">
+				<SearchInput placeholder="Placeholder" withButton />
+				<SearchInput value="" withButton />
+				<SearchInput value="Diete" withButton />
+				<SearchInput disabled withButton />
+			</div>
+			<div class="col">
+				<SearchInput dimension="large" placeholder="Placeholder" withButton />
+				<SearchInput dimension="large" value="" withButton />
+				<SearchInput dimension="large" value="Diete" withButton />
+				<SearchInput dimension="large" disabled withButton />
+			</div>
+			<div class="col">
+				<SearchInput dimension="compact" placeholder="Placeholder" withButton />
+				<SearchInput dimension="compact" value="" withButton />
+				<SearchInput dimension="compact" value="Diete" withButton />
+				<SearchInput dimension="compact" disabled withButton />
+			</div>
+			<div class="col">
+				<SearchInput dimension="small" placeholder="Placeholder" withButton />
+				<SearchInput dimension="small" value="" withButton />
+				<SearchInput dimension="small" value="Diete" withButton />
+				<SearchInput dimension="small" disabled withButton />
 			</div>
 		</div>
 	</section>
