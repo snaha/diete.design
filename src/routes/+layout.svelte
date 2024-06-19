@@ -25,9 +25,10 @@
 			'/colors': 'CSS colors',
 			'https://github.com/diete-design/diete.design': 'Github',
 		},
-		'Basic components': {
+		Components: {
 			'/components/badge': 'Badge',
 			'/components/button': 'Button',
+			'/components/divider': 'Divider',
 			'/components/checkbox': 'Checkbox',
 			'/components/input': 'Input',
 			'/components/loader': 'Loader',
@@ -37,6 +38,7 @@
 			'/components/select': 'Select',
 			'/components/slider': 'Slider',
 			'/components/switch': 'Switch',
+			'/components/textarea': 'Textarea',
 			'/components/tooltip': 'Tooltip',
 			'/components/typography': 'Typography',
 		},

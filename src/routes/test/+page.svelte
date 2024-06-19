@@ -21,6 +21,8 @@
 	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
+	import RangeSlider from '$lib/components/ui/range-slider.svelte'
+	import Textarea from '$lib/components/ui/textarea.svelte'
 	import Badge from '$lib/components/ui/badge.svelte'
 	import Loader from '$lib/components/ui/loader.svelte'
 	import ProgressBar from '$lib/components/ui/progress.svelte'
@@ -1062,6 +1064,427 @@
 		</div>
 	</section>
 	<section>
+		<Typography variant="h1">Date input</Typography>
+		<div class="row">
+			<div class="col">
+				<Input type="date" label="Date picker" />
+				<Input type="date" label="Date picker" value="2024-05-01" />
+				<Input type="date" label="Date picker" value="2024-05-01" hover />
+				<Input type="date" label="Date picker" value="2024-05-01" active />
+				<Input type="date" label="Date picker" value="2024-05-01" focus />
+				<Input type="date" label="Date picker" value="2024-05-01" disabled />
+			</div>
+			<div class="col">
+				<Input dimension="large" type="date" label="Date picker" />
+				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" />
+				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" hover />
+				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" active />
+				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" focus />
+				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" disabled />
+			</div>
+			<div class="col">
+				<Input dimension="compact" type="date" label="Date picker" />
+				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" />
+				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" hover />
+				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" active />
+				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" focus />
+				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" disabled />
+			</div>
+			<div class="col">
+				<Input dimension="small" type="date" label="Date picker" />
+				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" />
+				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" hover />
+				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" active />
+				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" focus />
+				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" disabled />
+			</div>
+		</div>
+	</section>
+	<section>
+		<Typography variant="h1">Textarea (outline)</Typography>
+		{#snippet helperText()}
+			This is an optional helper text
+		{/snippet}
+		<div class="row">
+			<div class="col">
+				<Textarea label="Input label" {helperText} placeholder="Placeholder"></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea dimension="large" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea dimension="compact" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea dimension="small" label="Input label" {helperText} placeholder="Placeholder"
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					hover
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					active
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					focus
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					disabled
+				></Textarea>
+			</div>
+		</div>
+	</section>
+	<section>
+		<Typography variant="h1">Textarea (solid)</Typography>
+		{#snippet helperText()}
+			This is an optional helper text
+		{/snippet}
+		<div class="row">
+			<div class="col">
+				<Textarea label="Input label" {helperText} placeholder="Placeholder" variant="solid"
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					hover
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					active
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					focus
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					hover
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					active
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					focus
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					hover
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					active
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					focus
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					hover
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					active
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					focus
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					disabled
+				></Textarea>
+			</div>
+		</div>
+	</section>
+	<section>
 		<Typography variant="h1">Select (outline)</Typography>
 		<div class="row">
 			<div class="col">
@@ -2017,6 +2440,278 @@
 				>
 			</div>
 		</div>
+		<div class="row">
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} hover
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} leftActive
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} rightActive
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} leftFocus
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} leftFocus leftActive
+				>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} rightFocus
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider step={10} showSteps valueMin={0} valueMax={50} {helperText} disabled
+				>Slider label</RangeSlider
+			>
+		</div>
+		<div class="row">
+			<RangeSlider dimension="large" step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				hover>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="large"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				disabled>Slider label</RangeSlider
+			>
+		</div>
+		<div class="row">
+			<RangeSlider dimension="default" step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				hover>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="default"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				disabled>Slider label</RangeSlider
+			>
+		</div>
+		<div class="row">
+			<RangeSlider dimension="small" step={10} showSteps valueMin={0} valueMax={50} {helperText}
+				>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				hover>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				leftFocus
+				leftActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				rightFocus
+				rightActive>Slider label</RangeSlider
+			>
+			<RangeSlider
+				dimension="small"
+				step={10}
+				showSteps
+				valueMin={0}
+				valueMax={50}
+				{helperText}
+				disabled>Slider label</RangeSlider
+			>
+		</div>
 	</section>
 	<section>
 		<div class="row">
@@ -2133,7 +2828,6 @@
 	.page-wrapper {
 		background-color: var(--colors-ultra-low);
 	}
-
 	.row {
 		display: flex;
 		flex: 1;

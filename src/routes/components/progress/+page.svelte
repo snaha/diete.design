@@ -19,6 +19,9 @@
 	let dimension: Dimension = $state('default')
 	let label = $state('Loading...')
 	let value = $state(50)
+	let min = $state(0)
+	let max = $state(100)
+	let unit = $state('%')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -27,7 +30,7 @@ import ProgressBar from '$lib/components/ui/progress.svelte'
 </script` +
 			`>
 
-<ProgressBar value={${value}} dimension="${dimension}">${label}</ProgressBar>
+<ProgressBar value={${value}} dimension="${dimension}" min={${min}} max={${max}} unit="${unit}">${label}</ProgressBar>
 `,
 	)
 
@@ -67,11 +70,14 @@ import ProgressBar from '$lib/components/ui/progress.svelte'
 	</Select>
 
 	<Input bind:value={label} label="Progress label" />
-	<Slider bind:value min={0} max={100}>Progress value</Slider>
+	<Input type="number" bind:value={min} label="Min" />
+	<Input type="number" bind:value={max} label="Max" />
+	<Slider bind:value {min} {max}>Progress value</Slider>
+	<Input bind:value={unit} label="Unit" />
 {/snippet}
 
 {#snippet preview()}
-	<ProgressBar {value} {dimension}>{label}</ProgressBar>
+	<ProgressBar {value} {dimension} {min} {max} {unit}>{label}</ProgressBar>
 {/snippet}
 
 {#snippet extraSvelte()}

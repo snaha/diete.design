@@ -1,5 +1,6 @@
 <script lang="ts">
 	import input from '$lib/components/ui/input.svelte?raw'
+	import button from '$lib/components/ui/button.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
 	import { onMount } from 'svelte'
@@ -18,7 +19,8 @@
 	type Layout = 'vertical' | 'horizontal'
 	type Variant = 'outline' | 'solid'
 
-	let css: string = $state('Loading...')
+	let inputCss: string = $state('Loading...')
+	let buttonCss: string = $state('Loading...')
 
 	let dimension: Dimension = $state('default' as Dimension)
 	let layout: Layout = $state('vertical')
@@ -111,8 +113,10 @@
 	)
 
 	onMount(async () => {
-		const response = await fetch('/generated/css/ui/input.css')
-		css = await response.text()
+		const responseInput = await fetch('/generated/css/ui/input.css')
+		inputCss = await responseInput.text()
+		const responseButton = await fetch('/generated/css/ui/button.css')
+		buttonCss = await responseButton.text()
 	})
 </script>
 

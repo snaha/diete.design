@@ -44,6 +44,7 @@
 		variant = 'outline',
 		...restProps
 	}: Props = $props()
+	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 	let input: HTMLInputElement
 </script>
 
@@ -106,10 +107,10 @@
 			{#if controls && type === 'number'}
 				<div class="control-buttons">
 					<Button {dimension} {disabled} variant="secondary" onclick={() => (value -= 1)}>
-						<Subtract size={dimension === 'small' ? 16 : 24} />
+						<Subtract {size} />
 					</Button>
 					<Button {dimension} {disabled} variant="secondary" onclick={() => (value += 1)}>
-						<Add size={dimension === 'small' ? 16 : 24} />
+						<Add {size} />
 					</Button>
 				</div>
 			{/if}
@@ -133,6 +134,9 @@
 </div>
 
 <style lang="postcss">
+	input {
+		font-family: var(--font-family-sans-serif);
+	}
 	input[type='number']::-webkit-outer-spin-button,
 	input[type='number']::-webkit-inner-spin-button {
 		appearance: none;
@@ -140,6 +144,16 @@
 	input[type='number'] {
 		-moz-appearance: textfield;
 	}
+	input[type='date'] {
+		cursor: text;
+		font-family: var(--font-family-sans-serif);
+		text-transform: uppercase;
+	}
+	input[type='date']::-webkit-datetime-edit {
+		font-family: var(--font-family-sans-serif);
+		text-transform: uppercase;
+	}
+
 	.vertical {
 		&.root {
 			display: flex;
@@ -159,7 +173,7 @@
 			flex-direction: row;
 			gap: 0;
 			input {
-				border-radius: 0.25rem 0 0 0.25rem;
+				border-radius: var(--border-radius) 0 0 var(--border-radius);
 			}
 			.control-buttons {
 				display: flex;
@@ -170,14 +184,13 @@
 		flex-direction: row;
 		gap: 0;
 		input {
-			border-radius: 0.25rem 0 0 0.25rem;
+			border-radius: var(--border-radius) 0 0 var(--border-radius);
 		}
 		.control-buttons {
 			display: flex;
 		}
 	}
 	.root {
-		align-self: stretch;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
@@ -228,7 +241,7 @@
 			}
 
 			& > :global(*:last-child) :global(button) {
-				border-radius: 0 0.25rem 0.25rem 0;
+				border-radius: 0 var(--border-radius) var(--border-radius) 0;
 			}
 		}
 		.control-buttons {
@@ -241,10 +254,13 @@
 		.solid {
 			border: 1px solid var(--colors-low);
 			background: var(--colors-base);
+			&.date-wrapper::after {
+				background: var(--colors-base);
+			}
 		}
 		input {
 			flex-grow: 1;
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			color: var(--colors-ultra-high);
 			&::placeholder {
 				opacity: 0.5;

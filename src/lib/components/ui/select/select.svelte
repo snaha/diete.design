@@ -228,8 +228,8 @@
 		--transition-delay: 50ms;
 		--transition: 0;
 		display: flex;
+		flex-grow: 1;
 		justify-content: center;
-		align-self: stretch;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
