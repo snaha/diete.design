@@ -116,6 +116,9 @@
 		display: none;
 	}
 
+	input {
+		font-family: var(--font-family-sans-serif);
+	}
 	input[type='number']::-webkit-outer-spin-button,
 	input[type='number']::-webkit-inner-spin-button {
 		appearance: none;
@@ -152,7 +155,7 @@
 			flex-direction: row;
 			gap: 0;
 			input {
-				border-radius: 0.25rem 0 0 0.25rem;
+				border-radius: var(--border-radius) 0 0 var(--border-radius);
 			}
 			.control-buttons {
 				display: flex;
@@ -163,7 +166,7 @@
 		flex-direction: row;
 		gap: 0;
 		input {
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius) 0 0 var(--border-radius);
 		}
 		.control-buttons {
 			display: none;
@@ -225,7 +228,7 @@
 			}
 
 			& > :global(*:last-child) :global(button) {
-				border-radius: 0 0.25rem 0.25rem 0;
+				border-radius: 0 var(--border-radius) var(--border-radius) 0;
 			}
 		}
 		.control-buttons {
@@ -244,7 +247,7 @@
 		}
 		input {
 			flex-grow: 1;
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			color: var(--colors-ultra-high);
 			&::placeholder {
 				opacity: 0.5;
