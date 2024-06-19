@@ -11,7 +11,7 @@
 	import Radio from '$lib/components/ui/radio-button/radio.svelte'
 	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
-	import Input from '$lib/components/ui/input.svelte'
+	import Input from '$lib/components/ui/input/input.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 	import CodeComponentTemplate from '$lib/components/custom/code-component-template.svelte'
 

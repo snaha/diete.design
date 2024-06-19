@@ -1,5 +1,5 @@
 <script lang="ts">
-	import input from '$lib/components/ui/input.svelte?raw'
+	import input from '$lib/components/ui/input/input.svelte?raw'
 	import button from '$lib/components/ui/button.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
@@ -7,7 +7,7 @@
 	import Select from '$lib/components/ui/select/select.svelte'
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
-	import Input from '$lib/components/ui/input.svelte'
+	import Input from '$lib/components/ui/input/input.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
 	import { ColorPalette, ArrowLeft } from 'carbon-icons-svelte'
@@ -40,7 +40,7 @@
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
 		`<script lang="ts">
-	import Input from '$lib/components/ui/input.svelte'${
+	import Input from '$lib/components/ui/input/input.svelte'${
 		colorButton || arrowButton
 			? `
 	import Button from '$lib/components/ui/button.svelte'${
@@ -216,7 +216,6 @@
 		{placeholder}
 		unit={unit ? stringUnit : ''}
 		error={errorMessage ? error : undefined}
-		controls={controlButton}
 		buttons={controlButton ? buttons : undefined}
 	>
 		{#if withHelperText}

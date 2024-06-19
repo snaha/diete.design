@@ -9,7 +9,7 @@
 	import Select from '$lib/components/ui/select/select.svelte'
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
-	import Input from '$lib/components/ui/input.svelte'
+	import Input from '$lib/components/ui/input/input.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 	import CodeComponentTemplate from '$lib/components/custom/code-component-template.svelte'
 
