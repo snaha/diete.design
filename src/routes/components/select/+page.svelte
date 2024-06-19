@@ -3,7 +3,6 @@
 	import selectStore from '$lib/components/ui/select/select-store.svelte.ts?raw'
 	import option from '$lib/components/ui/select/option.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
-	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
 	import { onMount } from 'svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
@@ -12,6 +11,7 @@
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
 	import Input from '$lib/components/ui/input/input.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
+	import CodeComponentTemplate from '$lib/components/custom/code-component-template.svelte'
 
 	type Layout = 'vertical' | 'horizontal'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
@@ -151,26 +151,19 @@ ${
 	</Select>
 {/snippet}
 
-{#snippet implement()}
-	<TabBar dimension="small">
-		<TabContent value="Svelte">
-			<TabBar dimension="small">
-				<TabContent value="select"><Code language="svelte" code={select} /></TabContent>
-				<TabContent value="option"><Code language="svelte" code={option} /></TabContent>
-				<TabContent value="select-store"><Code language="svelte" code={selectStore} /></TabContent>
-			</TabBar>
-		</TabContent>
-		<TabContent value="CSS">
-			<TabBar dimension="small">
-				<TabContent value="select"><Code language="css" code={selectCss} /></TabContent>
-				<TabContent value="option"><Code language="css" code={optionCss} /></TabContent>
-			</TabBar>
-		</TabContent>
-	</TabBar>
+{#snippet extraSvelte()}
+	<TabContent value="select"><Code language="svelte" code={select} /></TabContent>
+	<TabContent value="option"><Code language="svelte" code={option} /></TabContent>
+	<TabContent value="select-store"><Code language="svelte" code={selectStore} /></TabContent>
 {/snippet}
 
-{#snippet sizes()}
-	<Typography></Typography>
+{#snippet extraCss()}
+	<TabContent value="select"><Code language="css" code={selectCss} /></TabContent>
+	<TabContent value="option"><Code language="css" code={optionCss} /></TabContent>
+{/snippet}
+
+{#snippet implement()}
+	<CodeComponentTemplate {extraSvelte} {extraCss} />
 {/snippet}
 
 <ComponentTemplate
@@ -182,7 +175,6 @@ ${
 	{preview}
 	{useCode}
 	{implement}
-	{sizes}
 />
 
 <style lang="postcss">
