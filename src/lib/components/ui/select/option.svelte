@@ -72,21 +72,21 @@
 		}
 	}
 	.default {
-		padding: 0.75rem;
+		padding: var(--three-quaters-padding);
 		min-width: 3rem;
 		font-size: var(--font-size);
 		line-height: var(--line-height);
 		letter-spacing: var(--letter-spacing);
 	}
 	.large {
-		padding: 0.75rem;
+		padding: var(--three-quaters-padding);
 		min-width: 3.5rem;
 		font-size: var(--font-size-large);
 		line-height: var(--line-height-large);
 		letter-spacing: var(--letter-spacing-large);
 	}
 	.compact {
-		padding: 0.5rem;
+		padding: var(--half-padding);
 		min-width: 2.5rem;
 		font-size: var(--font-size);
 		line-height: var(--line-height);
@@ -94,7 +94,7 @@
 	}
 	.small {
 		gap: 0.25rem;
-		padding: 0.5rem;
+		padding: var(--half-padding);
 		min-width: 2rem;
 		font-size: var(--font-size-small);
 		line-height: var(--line-height-small);

@@ -141,7 +141,7 @@
 		}
 		.title {
 			flex-grow: 1;
-			padding-right: 0.5rem;
+			padding-right: var(--half-padding);
 		}
 		.icon {
 			display: flex;
@@ -183,13 +183,13 @@
 	.default,
 	.large {
 		.wrapper {
-			padding: 0.75rem;
+			padding: var(--three-quaters-padding);
 		}
 	}
 	.compact,
 	.small {
 		.wrapper {
-			padding: 0.5rem;
+			padding: var(--half-padding);
 		}
 	}
 </style>
