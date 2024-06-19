@@ -12,7 +12,7 @@
 		disabled,
 		withButton = false,
 		...restProps
-	}: SearchProps & HTMLInputAttributes = $props()
+	}: SearchProps & Omit<HTMLInputAttributes, 'type'> = $props()
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 </script>
 
@@ -52,11 +52,11 @@
 {/snippet}
 
 <Input
-	type="search"
 	{dimension}
 	{disabled}
 	iconStart={!withButton ? iconStart : undefined}
 	{buttons}
 	bind:value
 	{...restProps}
+	type="search"
 />

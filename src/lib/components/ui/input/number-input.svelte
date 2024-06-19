@@ -8,7 +8,7 @@
 		dimension,
 		disabled,
 		...restProps
-	}: Props & HTMLInputAttributes = $props()
+	}: Props & Omit<HTMLInputAttributes, 'type'> = $props()
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 </script>
 
@@ -21,4 +21,4 @@
 	</Button>
 {/snippet}
 
-<Input type="number" bind:value {dimension} {disabled} {buttons} {...restProps} />
+<Input bind:value {dimension} {disabled} {buttons} {...restProps} type="number" />

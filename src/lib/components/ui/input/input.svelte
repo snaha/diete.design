@@ -76,7 +76,7 @@
 					{...restProps}
 				/>
 				{#if iconStart}
-					<label for={labelFor} class="search-icon">
+					<label for={labelFor} class="start-icon">
 						{@render iconStart()}
 					</label>
 				{/if}
@@ -84,9 +84,9 @@
 					<label class="unit" for={labelFor}>{unit}</label>
 				{/if}
 				{#if error}
-					<label class="error-icon" for={labelFor}>
+					<div class="error-icon">
 						<WarningAltFilled size={dimension === 'small' ? 16 : 24} />
-					</label>
+					</div>
 				{/if}
 			</div>
 			{#if buttons}
@@ -159,7 +159,7 @@
 			}
 		}
 	}
-	.wrapper:has(.relative):has(input:placeholder-shown):has(.search-icon) {
+	.wrapper:has(.relative):has(input:placeholder-shown):has(.start-icon) {
 		flex-direction: row;
 		gap: 0;
 		input {
@@ -253,7 +253,7 @@
 			&:disabled {
 				opacity: 0.25;
 				cursor: not-allowed;
-				& ~ .search-icon,
+				& ~ .start-icon,
 				& ~ .unit,
 				& ~ .error-icon {
 					opacity: 0.25;
@@ -289,7 +289,7 @@
 			}
 		}
 	}
-	.search-icon {
+	.start-icon {
 		display: flex;
 		position: absolute;
 		align-items: center;
@@ -307,7 +307,7 @@
 		color: var(--colors-top);
 	}
 	.default {
-		&:has(.search-icon) {
+		&:has(.start-icon) {
 			input {
 				padding-left: 44px;
 			}
@@ -326,7 +326,7 @@
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
-		.search-icon {
+		.start-icon {
 			padding: 0.75rem 0.5rem 0.75rem 0.75rem;
 		}
 		.unit {
@@ -342,7 +342,7 @@
 		}
 	}
 	.large {
-		&:has(.search-icon) {
+		&:has(.start-icon) {
 			input {
 				padding-left: 52px;
 			}
@@ -361,7 +361,7 @@
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
 		}
-		.search-icon {
+		.start-icon {
 			padding: 0.75rem 0.5rem 0.75rem 0.75rem;
 		}
 		.unit {
@@ -382,7 +382,7 @@
 		}
 	}
 	.compact {
-		&:has(.search-icon) {
+		&:has(.start-icon) {
 			input {
 				padding-left: 40px;
 			}
@@ -401,7 +401,7 @@
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
-		.search-icon {
+		.start-icon {
 			padding: 0.5rem;
 		}
 		.unit {
@@ -417,7 +417,7 @@
 		}
 	}
 	.small {
-		&:has(.search-icon) {
+		&:has(.start-icon) {
 			input {
 				padding-left: var(--double-padding);
 			}
@@ -436,7 +436,7 @@
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
 		}
-		.search-icon {
+		.start-icon {
 			padding: 0.5rem;
 		}
 		.unit {
