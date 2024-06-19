@@ -329,10 +329,10 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		.helper-button {
-			padding: var(--three-quaters-padding);
+			padding: var(--three-quarters-padding);
 		}
 		input {
-			padding: var(--three-quaters-padding);
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -341,19 +341,19 @@
 			}
 		}
 		.search-icon {
-			padding: var(--three-quaters-padding) var(--half-padding) var(--three-quaters-padding)
-				var(--three-quaters-padding);
+			padding: var(--three-quarters-padding) var(--half-padding) var(--three-quarters-padding)
+				var(--three-quarters-padding);
 		}
 		.unit {
-			top: var(--three-quaters-padding);
-			right: var(--three-quaters-padding);
+			top: var(--three-quarters-padding);
+			right: var(--three-quarters-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
 		.error-icon {
-			top: var(--three-quaters-padding);
-			right: var(--three-quaters-padding);
+			top: var(--three-quarters-padding);
+			right: var(--three-quarters-padding);
 		}
 	}
 	.large {
@@ -363,10 +363,10 @@
 			letter-spacing: var(--letter-spacing-large);
 		}
 		.helper-button {
-			padding: var(--three-quaters-padding);
+			padding: var(--three-quarters-padding);
 		}
 		input {
-			padding: var(--three-quaters-padding);
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
@@ -375,19 +375,19 @@
 			}
 		}
 		.search-icon {
-			padding: var(--three-quaters-padding) var(--half-padding) var(--three-quaters-padding)
-				var(--three-quaters-padding);
+			padding: var(--three-quarters-padding) var(--half-padding) var(--three-quarters-padding)
+				var(--three-quarters-padding);
 		}
 		.unit {
-			top: var(--three-quaters-padding);
-			right: var(--three-quaters-padding);
+			top: var(--three-quarters-padding);
+			right: var(--three-quarters-padding);
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
 		}
 		.error-icon {
 			top: var(--padding);
-			right: var(--three-quaters-padding);
+			right: var(--three-quarters-padding);
 		}
 		.error-message {
 			font-size: var(--font-size-large);
@@ -470,7 +470,7 @@
 		border: 1px solid var(--colors-top);
 		border-radius: 0.25rem;
 		background: var(--colors-top);
-		padding: var(--quater-padding) var(--half-padding);
+		padding: var(--quarter-padding) var(--half-padding);
 		color: var(--colors-base);
 		font-size: var(--font-size);
 		line-height: var(--line-height);

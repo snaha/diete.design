@@ -32,14 +32,14 @@
 	}
 	.small {
 		border-radius: 0.75rem;
-		padding: var(--quater-padding) var(--half-padding);
+		padding: var(--quarter-padding) var(--half-padding);
 		font-size: var(--font-size-small);
 		line-height: var(--line-height-small);
 		letter-spacing: var(--letter-spacing-small);
 	}
 	.large {
 		border-radius: 1.25rem;
-		padding: var(--half-padding) var(--three-quaters-padding);
+		padding: var(--half-padding) var(--three-quarters-padding);
 		font-size: var(--font-size);
 		line-height: var(--line-height);
 		letter-spacing: var(--letter-spacing);

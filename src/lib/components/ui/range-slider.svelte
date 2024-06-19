@@ -171,7 +171,7 @@
 			transform: translateX(-50%) translateY(-100%);
 			border-radius: 0.25rem;
 			background-color: var(--colors-top);
-			padding: var(--quater-padding) var(--half-padding);
+			padding: var(--quarter-padding) var(--half-padding);
 			color: var(--colors-base);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
@@ -186,7 +186,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		z-index: 0;
-		padding: var(--three-quaters-padding);
+		padding: var(--three-quarters-padding);
 		&:has(input:not(:disabled):active),
 		&:has(input:not(:disabled).leftActive),
 		&:has(input:not(:disabled).rightActive) {
@@ -418,9 +418,9 @@
 		transform: translate(-50%, -100%);
 		opacity: 0;
 		z-index: 1;
-		border-radius: var(--three-quaters-padding);
+		border-radius: var(--three-quarters-padding);
 		background: var(--colors-top);
-		padding: var(--quater-padding) var(--half-padding);
+		padding: var(--quarter-padding) var(--half-padding);
 		color: var(--colors-base);
 		font-size: var(--font-size-small);
 		line-height: var(--line-height-small);
@@ -511,7 +511,7 @@
 		.value {
 			top: -1.25rem;
 			border-radius: 1.25rem;
-			padding: var(--half-padding) var(--three-quaters-padding);
+			padding: var(--half-padding) var(--three-quarters-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);

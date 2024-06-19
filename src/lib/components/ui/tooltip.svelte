@@ -100,7 +100,7 @@
 			opacity: 0;
 			border-radius: 0.75rem;
 			background-color: var(--colors-top);
-			padding: var(--quater-padding) var(--half-padding);
+			padding: var(--quarter-padding) var(--half-padding);
 			color: var(--colors-base);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
@@ -110,7 +110,7 @@
 
 			&.large {
 				border-radius: 1.25rem;
-				padding: var(--quater-padding) var(--half-padding);
+				padding: var(--quarter-padding) var(--half-padding);
 				font-size: var(--font-size);
 				line-height: var(--line-height);
 				letter-spacing: var(--letter-spacing);

@@ -342,7 +342,7 @@
 	}
 	.default {
 		.select {
-			padding: var(--three-quaters-padding);
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -353,13 +353,13 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		button {
-			right: var(--three-quaters-padding);
-			bottom: var(--three-quaters-padding);
+			right: var(--three-quarters-padding);
+			bottom: var(--three-quarters-padding);
 		}
 	}
 	.large {
 		.select {
-			padding: var(--three-quaters-padding);
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
@@ -370,8 +370,8 @@
 			letter-spacing: var(--letter-spacing-large);
 		}
 		button {
-			right: var(--three-quaters-padding);
-			bottom: calc(var(--three-quaters-padding) + var(--three-quaters-padding) / 3);
+			right: var(--three-quarters-padding);
+			bottom: calc(var(--three-quarters-padding) + var(--three-quarters-padding) / 3);
 		}
 	}
 	.compact {

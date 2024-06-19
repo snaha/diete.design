@@ -148,7 +148,7 @@
 			transform: translateX(-50%) translateY(-100%);
 			border-radius: 0.25rem;
 			background-color: var(--colors-top);
-			padding: var(--quater-padding) var(--half-padding);
+			padding: var(--quarter-padding) var(--half-padding);
 			color: var(--colors-base);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
@@ -161,7 +161,7 @@
 		flex-grow: 1;
 		align-items: center;
 		gap: 0.5rem;
-		padding: var(--three-quaters-padding);
+		padding: var(--three-quarters-padding);
 		&:has(input:not(:disabled):active),
 		&:has(input:not(:disabled).active) {
 			color: var(--colors-high);

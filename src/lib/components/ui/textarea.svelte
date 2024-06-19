@@ -128,7 +128,7 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		textarea {
-			padding: var(--three-quaters-padding);
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -141,7 +141,7 @@
 			letter-spacing: var(--letter-spacing-large);
 		}
 		textarea {
-			padding: var(--three-quaters-padding);
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);

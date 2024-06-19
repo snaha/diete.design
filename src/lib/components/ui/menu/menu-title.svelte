@@ -183,7 +183,7 @@
 	.default,
 	.large {
 		.wrapper {
-			padding: var(--three-quaters-padding);
+			padding: var(--three-quarters-padding);
 		}
 	}
 	.compact,

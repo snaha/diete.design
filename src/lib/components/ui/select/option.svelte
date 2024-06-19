@@ -72,14 +72,14 @@
 		}
 	}
 	.default {
-		padding: var(--three-quaters-padding);
+		padding: var(--three-quarters-padding);
 		min-width: 3rem;
 		font-size: var(--font-size);
 		line-height: var(--line-height);
 		letter-spacing: var(--letter-spacing);
 	}
 	.large {
-		padding: var(--three-quaters-padding);
+		padding: var(--three-quarters-padding);
 		min-width: 3.5rem;
 		font-size: var(--font-size-large);
 		line-height: var(--line-height-large);
