@@ -227,10 +227,12 @@
 
 {#snippet extraSvelte()}
 	<TabContent value="input"><Code language="svelte" code={input} /></TabContent>
+	<TabContent value="button"><Code language="svelte" code={button} /></TabContent>
 {/snippet}
 
 {#snippet extraCss()}
-	<TabContent value="input"><Code language="css" code={css} /></TabContent>
+	<TabContent value="input"><Code language="css" code={inputCss} /></TabContent>
+	<TabContent value="button"><Code language="css" code={buttonCss} /></TabContent>
 {/snippet}
 
 {#snippet implement()}

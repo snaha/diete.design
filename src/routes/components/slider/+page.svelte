@@ -168,10 +168,12 @@
 
 {#snippet extraSvelte()}
 	<TabContent value="slider"><Code language="svelte" code={slider} /></TabContent>
+	<TabContent value="range-slider"><Code language="svelte" code={rangeSlider} /></TabContent>
 {/snippet}
 
 {#snippet extraCss()}
-	<TabContent value="slider"><Code language="css" code={css} /></TabContent>
+	<TabContent value="slider"><Code language="css" code={sliderCss} /></TabContent>
+	<TabContent value="range-slider"><Code language="css" code={rangeSliderCss} /></TabContent>
 {/snippet}
 
 {#snippet implement()}
