@@ -1,7 +1,6 @@
 <script lang="ts">
 	import button from '$lib/components/ui/button.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
-	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
 	import { onMount } from 'svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
@@ -23,6 +22,7 @@
 	import Select from '$lib/components/ui/select/select.svelte'
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
+	import CodeComponentTemplate from '$lib/components/custom/code-component-template.svelte'
 
 	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay' | 'lightoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
@@ -181,11 +181,16 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 	</Button>
 {/snippet}
 
+{#snippet extraSvelte()}
+	<TabContent value="button"><Code language="svelte" code={button} /></TabContent>
+{/snippet}
+
+{#snippet extraCss()}
+	<TabContent value="button"><Code language="css" code={css} /></TabContent>
+{/snippet}
+
 {#snippet implement()}
-	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={button} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
-	</TabBar>
+	<CodeComponentTemplate {extraSvelte} {extraCss} />
 {/snippet}
 
 <ComponentTemplate

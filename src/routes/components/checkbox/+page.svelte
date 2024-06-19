@@ -1,7 +1,6 @@
 <script lang="ts">
 	import checkbox from '$lib/components/ui/checkbox.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
-	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
 	import { onMount } from 'svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
@@ -10,6 +9,7 @@
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
 	import Input from '$lib/components/ui/input.svelte'
+	import CodeComponentTemplate from '$lib/components/custom/code-component-template.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 
@@ -80,11 +80,16 @@ import Checkbox from '$lib/components/ui/checkbox.svelte'
 	<Checkbox {dimension} {label} />
 {/snippet}
 
+{#snippet extraSvelte()}
+	<TabContent value="checkbox"><Code language="svelte" code={checkbox} /></TabContent>
+{/snippet}
+
+{#snippet extraCss()}
+	<TabContent value="checkbox"><Code language="css" code={css} /></TabContent>
+{/snippet}
+
 {#snippet implement()}
-	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={checkbox} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
-	</TabBar>
+	<CodeComponentTemplate {extraSvelte} {extraCss} />
 {/snippet}
 
 <ComponentTemplate

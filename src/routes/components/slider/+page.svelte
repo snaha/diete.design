@@ -2,7 +2,6 @@
 	import slider from '$lib/components/ui/slider.svelte?raw'
 	import rangeSlider from '$lib/components/ui/range-slider.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
-	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
 	import { onMount } from 'svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
@@ -12,6 +11,7 @@
 	import Input from '$lib/components/ui/input.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
+	import CodeComponentTemplate from '$lib/components/custom/code-component-template.svelte'
 	import RangeSlider from '$lib/components/ui/range-slider.svelte'
 
 	type Layout = 'vertical' | 'horizontal'
@@ -166,29 +166,18 @@
 	{/if}
 {/snippet}
 
+{#snippet extraSvelte()}
+	<TabContent value="slider"><Code language="svelte" code={slider} /></TabContent>
+	<TabContent value="range-slider"><Code language="svelte" code={rangeSlider} /></TabContent>
+{/snippet}
+
+{#snippet extraCss()}
+	<TabContent value="slider"><Code language="css" code={sliderCss} /></TabContent>
+	<TabContent value="range-slider"><Code language="css" code={rangeSliderCss} /></TabContent>
+{/snippet}
+
 {#snippet implement()}
-	<TabBar dimension="small">
-		<TabContent value="Svelte">
-			<TabBar dimension="small">
-				<TabContent value="slider">
-					<Code language="svelte" code={slider} />
-				</TabContent>
-				<TabContent value="range-slider">
-					<Code language="svelte" code={rangeSlider} />
-				</TabContent>
-			</TabBar>
-		</TabContent>
-		<TabContent value="CSS">
-			<TabBar dimension="small">
-				<TabContent value="slider">
-					<Code language="css" code={sliderCss} />
-				</TabContent>
-				<TabContent value="range-slider">
-					<Code language="css" code={rangeSliderCss} />
-				</TabContent>
-			</TabBar>
-		</TabContent>
-	</TabBar>
+	<CodeComponentTemplate {extraSvelte} {extraCss} />
 {/snippet}
 
 <ComponentTemplate

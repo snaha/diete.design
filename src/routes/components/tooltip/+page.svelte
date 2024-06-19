@@ -1,7 +1,6 @@
 <script lang="ts">
 	import tooltip from '$lib/components/ui/tooltip.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
-	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
 	import { onMount } from 'svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
@@ -12,6 +11,7 @@
 	import { Information } from 'carbon-icons-svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 	import Input from '$lib/components/ui/input.svelte'
+	import CodeComponentTemplate from '$lib/components/custom/code-component-template.svelte'
 
 	let css: string = $state('Loading...')
 	type Position = 'top' | 'bottom' | 'left' | 'right'
@@ -94,11 +94,16 @@
 	</Tooltip>
 {/snippet}
 
+{#snippet extraSvelte()}
+	<TabContent value="tooltip"><Code language="svelte" code={tooltip} /></TabContent>
+{/snippet}
+
+{#snippet extraCss()}
+	<TabContent value="tooltip"><Code language="css" code={css} /></TabContent>
+{/snippet}
+
 {#snippet implement()}
-	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={tooltip} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
-	</TabBar>
+	<CodeComponentTemplate {extraSvelte} {extraCss} />
 {/snippet}
 
 <ComponentTemplate
