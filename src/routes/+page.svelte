@@ -19,7 +19,7 @@
 
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
-	import Input from '$lib/components/ui/input.svelte'
+	import Input from '$lib/components/ui/input/input.svelte'
 	import Radio from '$lib/components/ui/radio-button/radio.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
@@ -254,8 +254,7 @@
 
 <ResponsiveContainer class="vspace">
 	<section id="search" class="controls">
-		<Input {dimension} placeholder="Search" search={true} />
-		<Input {dimension} placeholder="Search" controls={true}>
+		<Input {dimension} placeholder="Search">
 			{#snippet buttons()}
 				<Button {dimension} variant="secondary"><Search {size} /></Button>
 			{/snippet}

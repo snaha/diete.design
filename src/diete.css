@@ -65,7 +65,15 @@
 	--letter-spacing-h6: 0.0375rem;
 
 	--padding: var(--font-size);
-	--double-padding: calc(2 * var(--padding));
+	--quarter-padding: calc(var(--padding) / 4);
 	--half-padding: calc(var(--padding) / 2);
+	--three-quarters-padding: calc(var(--quarter-padding) * 3);
+	--one-and-a-half-padding: calc(var(--half-padding) * 3);
+	--double-padding: calc(2 * var(--padding));
 	--border-radius: 0.25rem;
+}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }

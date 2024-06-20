@@ -342,7 +342,7 @@
 	}
 	.default {
 		.select {
-			padding: 0.75rem;
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -353,13 +353,13 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		button {
-			right: 0.75rem;
-			bottom: 0.75rem;
+			right: var(--three-quarters-padding);
+			bottom: var(--three-quarters-padding);
 		}
 	}
 	.large {
 		.select {
-			padding: 0.75rem;
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
@@ -370,13 +370,13 @@
 			letter-spacing: var(--letter-spacing-large);
 		}
 		button {
-			right: 0.75rem;
-			bottom: 1rem;
+			right: var(--three-quarters-padding);
+			bottom: calc(var(--three-quarters-padding) + var(--three-quarters-padding) / 3);
 		}
 	}
 	.compact {
 		.select {
-			padding: 0.5rem;
+			padding: var(--half-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -387,13 +387,13 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		button {
-			right: 0.5rem;
-			bottom: 0.5rem;
+			right: var(--half-padding);
+			bottom: var(--half-padding);
 		}
 	}
 	.small {
 		.select {
-			padding: 0.5rem;
+			padding: var(--half-padding);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
@@ -404,8 +404,8 @@
 			letter-spacing: var(--letter-spacing-small);
 		}
 		button {
-			right: 0.5rem;
-			bottom: 0.5rem;
+			right: var(--half-padding);
+			bottom: var(--half-padding);
 			width: 1rem;
 			height: 1rem;
 		}
@@ -435,7 +435,7 @@
 			align-items: stretch;
 			border: 1px solid var(--colors-low);
 			border-radius: 0.25rem;
-			padding: 0.5rem;
+			padding: var(--half-padding);
 			:global(.placeholder) {
 				opacity: 0.5;
 			}
