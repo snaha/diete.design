@@ -3,7 +3,6 @@
 		Checkmark,
 		ArrowRight,
 		Settings,
-		Search,
 		Fire,
 		NotificationNew,
 		ThumbsUp,
@@ -36,6 +35,7 @@
 	import RangeSlider from '$lib/components/ui/range-slider.svelte'
 	import Textarea from '$lib/components/ui/textarea.svelte'
 	import Divider from '$lib/components/ui/divider.svelte'
+	import SearchInput from '$lib/components/ui/input/search-input.svelte'
 
 	let dimension: Dimension = $state('default')
 	let size: 16 | 24 | 32 = $derived(
@@ -254,20 +254,13 @@
 
 <ResponsiveContainer class="vspace">
 	<section id="search" class="controls">
-		<Input {dimension} placeholder="Search">
-			{#snippet buttons()}
-				<Button {dimension} variant="secondary"><Search {size} /></Button>
-			{/snippet}
-		</Input>
+		<SearchInput {dimension} placeholder="Search" />
+		<SearchInput {dimension} placeholder="Search" withButton={true} />
 	</section>
 
 	<section id="search-solid" class="controls solid">
-		<Input {dimension} variant="solid" placeholder="Search" search={true} />
-		<Input {dimension} variant="solid" placeholder="Search" controls={true}>
-			{#snippet buttons()}
-				<Button {dimension} variant="solid"><Search {size} /></Button>
-			{/snippet}
-		</Input>
+		<SearchInput {dimension} variant="solid" placeholder="Search" />
+		<SearchInput {dimension} variant="solid" placeholder="Search" withButton={true} />
 	</section>
 </ResponsiveContainer>
 
@@ -341,7 +334,7 @@
 			{dimension}
 			value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
 			variant="solid"
-        ></Textarea>
+		></Textarea>
 	</section>
 </ResponsiveContainer>
 
