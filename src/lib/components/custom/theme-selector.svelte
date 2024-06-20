@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Input from '../ui/input.svelte'
+	import Input from '../ui/input/input.svelte'
 	import Radio from '../ui/radio-button/radio.svelte'
 	import { ColorPalette } from 'carbon-icons-svelte'
 	import { theme } from '$lib/stores/theme.svelte'
@@ -29,7 +29,6 @@
 		type="text"
 		placeholder="Accent color (hex)"
 		label="Accent color (hex)"
-		controls={true}
 		error={validHexColor ? undefined : error}
 	>
 		{#snippet buttons()}
