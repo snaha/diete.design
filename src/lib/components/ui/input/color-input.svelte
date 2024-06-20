@@ -3,23 +3,46 @@
 	import Button from '../button.svelte'
 	import Input, { type Props } from './input.svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	let { dimension, disabled, ...restProps }: Props & HTMLInputAttributes = $props()
+	let { dimension, disabled, value, ...restProps }: Props & HTMLInputAttributes = $props()
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
-	let color = $state()
+
+	let colorInput: HTMLInputElement | undefined = $state(undefined)
+	let open = $state(false)
 </script>
 
 {#snippet buttons()}
-	<Button {dimension} {disabled} variant="secondary" style="padding: 0;">
-		<label>
+	<Button
+		id="colorButton"
+		{dimension}
+		{disabled}
+		variant="secondary"
+		onclick={() => {
+			if (!open) {
+				colorInput?.click()
+				open = true
+			} else {
+				open = false
+			}
+		}}
+		onblur={() => {
+			open = false
+		}}
+		onkeypress={(e:KeyboardEvent)=>{
+			if(e.key === 'Enter'){
+                open = false
+            }
+		}}
+	>
+		<div class="relative">
 			<div class="palette-icon">
 				<ColorPalette {size} />
 			</div>
-			<input type="color" bind:value={color} />
-		</label>
+			<input type="color" bind:value bind:this={colorInput} />
+		</div>
 	</Button>
 {/snippet}
 
-<Input bind:value={color} {dimension} {disabled} type="text" {buttons} {...restProps} />
+<Input bind:value {dimension} {disabled} type="text" {buttons} {...restProps} />
 
 <style lang="postcss">
 	label {
