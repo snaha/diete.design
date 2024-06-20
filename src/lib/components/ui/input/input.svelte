@@ -321,27 +321,28 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		.helper-button {
-			padding: 0.75rem;
+			padding: var(--three-quarters-padding);
 		}
 		input {
-			padding: 0.75rem;
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
 		.start-icon {
-			padding: 0.75rem 0.5rem 0.75rem 0.75rem;
+			padding: var(--three-quarters-padding) var(--half-padding) var(--three-quarters-padding)
+				var(--three-quarters-padding);
 		}
 		.unit {
-			top: 0.75rem;
-			right: 0.75rem;
+			top: var(--three-quarters-padding);
+			right: var(--three-quarters-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
 		.error-icon {
-			top: 0.75rem;
-			right: 0.75rem;
+			top: var(--three-quarters-padding);
+			right: var(--three-quarters-padding);
 		}
 	}
 	.large {
@@ -356,27 +357,28 @@
 			letter-spacing: var(--letter-spacing-large);
 		}
 		.helper-button {
-			padding: 0.75rem;
+			padding: var(--three-quarters-padding);
 		}
 		input {
-			padding: 0.75rem;
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
 		}
 		.start-icon {
-			padding: 0.75rem 0.5rem 0.75rem 0.75rem;
+			padding: var(--three-quarters-padding) var(--half-padding) var(--three-quarters-padding)
+				var(--three-quarters-padding);
 		}
 		.unit {
-			top: 0.75rem;
-			right: 0.75rem;
+			top: var(--three-quarters-padding);
+			right: var(--three-quarters-padding);
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
 		}
 		.error-icon {
-			top: 1rem;
-			right: 0.75rem;
+			top: var(--padding);
+			right: var(--three-quarters-padding);
 		}
 		.error-message {
 			font-size: var(--font-size-large);
@@ -396,27 +398,27 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		.helper-button {
-			padding: 0.5rem;
+			padding: var(--half-padding);
 		}
 		input {
-			padding: 0.5rem;
+			padding: var(--half-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
 		.start-icon {
-			padding: 0.5rem;
+			padding: var(--half-padding);
 		}
 		.unit {
-			top: 0.5rem;
-			right: 0.5rem;
+			top: var(--half-padding);
+			right: var(--half-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
 		}
 		.error-icon {
-			top: 0.5rem;
-			right: 0.5rem;
+			top: var(--half-padding);
+			right: var(--half-padding);
 		}
 	}
 	.small {
@@ -431,27 +433,27 @@
 			letter-spacing: var(--letter-spacing-small);
 		}
 		.helper-button {
-			padding: 0.5rem;
+			padding: var(--half-padding);
 		}
 		input {
-			padding: 0.5rem;
+			padding: var(--half-padding);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
 		}
 		.start-icon {
-			padding: 0.5rem;
+			padding: var(--half-padding);
 		}
 		.unit {
-			top: 0.5rem;
-			right: 0.5rem;
+			top: var(--half-padding);
+			right: var(--half-padding);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
 		}
 		.error-icon {
-			top: 0.5rem;
-			right: 0.5rem;
+			top: var(--half-padding);
+			right: var(--half-padding);
 		}
 		.error-message {
 			font-size: var(--font-size-small);
@@ -463,7 +465,7 @@
 		border: 1px solid var(--colors-top);
 		border-radius: 0.25rem;
 		background: var(--colors-top);
-		padding: 0.25rem 0.5rem;
+		padding: var(--quarter-padding) var(--half-padding);
 		color: var(--colors-base);
 		font-size: var(--font-size);
 		line-height: var(--line-height);

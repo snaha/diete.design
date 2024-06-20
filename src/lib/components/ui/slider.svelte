@@ -143,12 +143,12 @@
 		.helper-text-horizontal {
 			display: none;
 			position: absolute;
-			top: -0.5rem;
+			top: calc(var(--half-padding) * -1);
 			left: 50%;
 			transform: translateX(-50%) translateY(-100%);
 			border-radius: 0.25rem;
 			background-color: var(--colors-top);
-			padding: 0.25rem 0.5rem;
+			padding: var(--quarter-padding) var(--half-padding);
 			color: var(--colors-base);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
@@ -161,7 +161,7 @@
 		flex-grow: 1;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.75rem;
+		padding: var(--three-quarters-padding);
 		&:has(input:not(:disabled):active),
 		&:has(input:not(:disabled).active) {
 			color: var(--colors-high);
