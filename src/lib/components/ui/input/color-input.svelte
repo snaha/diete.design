@@ -28,8 +28,8 @@
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
-		width: 3rem;
-		height: 3rem;
+		width: 100%;
+		height: 100%;
 		overflow: hidden;
 		line-height: 0;
 	}
