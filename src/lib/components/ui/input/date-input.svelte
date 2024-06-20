@@ -17,21 +17,27 @@
 
 	let showYearPicker = $state(false)
 
-	const months = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December',
-	]
-	const days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+	const months = getLocalMonthNames()
+	const days = getLocalDayNames()
+
+	function getLocalMonthNames() {
+		const formatter = new Intl.DateTimeFormat(undefined, { month: 'long' })
+		const monthNames = []
+		for (let month = 0; month < 12; month++) {
+			const date = new Date(2020, month, 1)
+			monthNames.push(formatter.format(date))
+		}
+		return monthNames
+	}
+	function getLocalDayNames() {
+		const formatter = new Intl.DateTimeFormat(undefined, { weekday: 'short' })
+		const dayNames = []
+		for (let day = 0; day < 7; day++) {
+			const date = new Date(2020, 0, day - 1)
+			dayNames.push(formatter.format(date))
+		}
+		return dayNames
+	}
 
 	function selectDate(date: number) {
 		selectedDate = new Date(currentYear, currentMonth, date)
