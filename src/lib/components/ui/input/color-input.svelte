@@ -12,7 +12,7 @@
 
 {#snippet buttons()}
 	<Button
-		id="colorButton"
+		class="color-button"
 		{dimension}
 		{disabled}
 		variant="secondary"
@@ -33,28 +33,18 @@
             }
 		}}
 	>
-		<div class="relative">
-			<div class="palette-icon">
-				<ColorPalette {size} />
-			</div>
-			<input type="color" bind:value bind:this={colorInput} />
+		<div class="palette-icon">
+			<ColorPalette {size} />
 		</div>
+		<input type="color" bind:value bind:this={colorInput} />
 	</Button>
 {/snippet}
 
 <Input bind:value {dimension} {disabled} type="text" {buttons} {...restProps} />
 
 <style lang="postcss">
-	label {
-		display: flex;
+	:global(.color-button) {
 		position: relative;
-		justify-content: center;
-		align-items: center;
-		cursor: pointer;
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
-		line-height: 0;
 	}
 	input[type='color'] {
 		appearance: none;
