@@ -129,6 +129,7 @@
 		}
 		textarea {
 			padding: var(--three-quarters-padding);
+			min-height: calc(var(--three-quarters-padding) * 2 + var(--line-height));
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -142,6 +143,7 @@
 		}
 		textarea {
 			padding: var(--three-quarters-padding);
+			min-height: calc(var(--three-quarters-padding) * 2 + var(--line-height-large));
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
@@ -155,6 +157,7 @@
 		}
 		textarea {
 			padding: var(--half-padding);
+			min-height: calc(var(--half-padding) * 2 + var(--line-height));
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -168,6 +171,7 @@
 		}
 		textarea {
 			padding: var(--half-padding);
+			min-height: calc(var(--half-padding) * 2 + var(--line-height-small));
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
