@@ -118,6 +118,21 @@
 	let variant: Variant = $derived(
 		dimension === 'large' ? 'large' : dimension === 'small' ? 'small' : 'default',
 	)
+	let datePicker: HTMLDivElement | undefined
+	function close(e: MouseEvent) {
+		const target = e.target as unknown as Node
+		if (datePicker?.contains(target)) {
+			// Clicked on the root of date input
+		} else {
+			showDatePicker = false
+		}
+	}
+	$effect(() => {
+		window.addEventListener('click', close)
+		return () => {
+			window.removeEventListener('click', close)
+		}
+	})
 </script>
 
 {#snippet buttons()}
@@ -133,7 +148,7 @@
 	</Button>
 {/snippet}
 
-<div class="calendar-root {dimension}">
+<div class="calendar-root {dimension}" bind:this={datePicker}>
 	<Input
 		{dimension}
 		{disabled}
