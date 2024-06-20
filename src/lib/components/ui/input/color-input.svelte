@@ -10,13 +10,7 @@
 </script>
 
 {#snippet buttons()}
-	<Button
-		{dimension}
-		{disabled}
-		onclick={() => colorInput.click()}
-		variant="secondary"
-		style="padding: 0;"
-	>
+	<Button {dimension} {disabled} onclick={() => colorInput.click()} variant="secondary">
 		<div class="relative">
 			<div class="palette-icon">
 				<ColorPalette {size} />
