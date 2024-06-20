@@ -6,7 +6,9 @@
 	import type { HTMLInputAttributes } from 'svelte/elements'
 	import Typography from '../typography.svelte'
 
-	let { dimension, disabled, ...restProps }: Props & HTMLInputAttributes = $props()
+	type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'large' | 'default' | 'small'
+
+	let { dimension = 'default', disabled, ...restProps }: Props & HTMLInputAttributes = $props()
 
 	let currentDate = new Date()
 	let currentMonth = $state(currentDate.getMonth())
@@ -53,6 +55,10 @@
 
 	function toggleYearPicker() {
 		showYearPicker = !showYearPicker
+	}
+
+	function isCurrentYear(year: number) {
+		return year === currentDate.getFullYear()
 	}
 
 	function isSelected(date: number) {
@@ -103,6 +109,9 @@
 	)
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 	let showDatePicker = $state(false)
+	let variant: Variant = $derived(
+		dimension === 'large' ? 'large' : dimension === 'small' ? 'small' : 'default',
+	)
 </script>
 
 {#snippet buttons()}
@@ -118,7 +127,7 @@
 	</Button>
 {/snippet}
 
-<div class="calendar-root">
+<div class="calendar-root {dimension}">
 	<Input
 		{dimension}
 		{disabled}
@@ -130,23 +139,27 @@
 	<div class="date-picker" class:showDatePicker>
 		<div class="header">
 			<div class="month">
-				<Button variant="ghost" onclick={() => changeMonth(-1)}><ChevronLeft size={24} /></Button>
+				<Button {dimension} variant="ghost" onclick={() => changeMonth(-1)}
+					><ChevronLeft {size} /></Button
+				>
 				<div class="current-month">
-					<Typography variant="h5">{months[currentMonth]} {currentYear}</Typography>
-					<Button variant="ghost" onclick={toggleYearPicker}>
+					<Typography {variant} bold>{months[currentMonth]} {currentYear}</Typography>
+					<Button {dimension} variant="ghost" onclick={toggleYearPicker}>
 						{#if showYearPicker}
-							<CaretUp size={24} />
+							<CaretUp {size} />
 						{:else}
-							<CaretDown size={24} />
+							<CaretDown {size} />
 						{/if}
 					</Button>
 				</div>
-				<Button variant="ghost" onclick={() => changeMonth(1)}><ChevronRight size={24} /></Button>
+				<Button {dimension} variant="ghost" onclick={() => changeMonth(1)}
+					><ChevronRight {size} /></Button
+				>
 			</div>
 			{#if !showYearPicker}
 				<div class="days">
 					{#each days as day}
-						<Typography>{day}</Typography>
+						<Typography {variant}>{day}</Typography>
 					{/each}
 				</div>
 			{/if}
@@ -157,14 +170,20 @@
 		{#if showYearPicker}
 			<div class="year-picker">
 				<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-				{#each Array(30) as _, i}
-					<Button variant="ghost" onclick={() => changeYear(2020 + i)}>{2020 + i}</Button>
+				{#each Array(131) as _, i}
+					<Button
+						{dimension}
+						variant="ghost"
+						active={isSelected(1970 + i) || isCurrentYear(1970 + i)}
+						onclick={() => changeYear(1970 + i)}>{1970 + i}</Button
+					>
 				{/each}
 			</div>
 		{:else}
 			<div class="calendar">
 				{#each calendarDays as { date, type }}
 					<Button
+						{dimension}
 						class={type === 'current' && isCurrentDay(date) && !isSelected(date)
 							? 'current-day'
 							: ''}
@@ -194,14 +213,16 @@
 	}
 	.date-picker {
 		display: none;
-		/* position: absolute;
-		bottom: 100%; */
+		position: absolute;
+		bottom: -0.25rem;
+		left: 0;
 		flex-direction: column;
 		gap: 1rem;
-		z-index: 10;
+		transform: translateY(100%);
+		z-index: 1;
 		border: 1px solid var(--colors-low);
 		border-radius: var(--border-radius);
-		background: var(--color-base);
+		background: var(--colors-base);
 		padding: 1rem;
 		&.showDatePicker {
 			display: flex;
@@ -240,5 +261,26 @@
 		grid-template-columns: repeat(5, 1fr);
 		justify-content: center;
 		gap: 0.5rem;
+		overflow-y: scroll;
+	}
+	.default {
+		.year-picker {
+			max-height: 388px;
+		}
+	}
+	.large {
+		.year-picker {
+			max-height: 444px;
+		}
+	}
+	.compact {
+		.year-picker {
+			max-height: 340px;
+		}
+	}
+	.small {
+		.year-picker {
+			max-height: 284px;
+		}
 	}
 </style>
