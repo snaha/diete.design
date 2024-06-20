@@ -32,7 +32,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		cursor: pointer;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		&:has(input[type='checkbox']:checked) {
@@ -98,7 +98,7 @@
 		align-items: flex-start;
 		cursor: pointer;
 		border: 1px solid var(--colors-ultra-high);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		content: '';
 	}
 	input[type='checkbox']:checked::before {

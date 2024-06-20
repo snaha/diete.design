@@ -83,7 +83,7 @@
 		gap: 0.5rem;
 		cursor: pointer;
 		border: 1px solid var(--colors-ultra-high);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		font-style: normal;
 		font-weight: 400;
 		font-family: var(--font-family-sans-serif);

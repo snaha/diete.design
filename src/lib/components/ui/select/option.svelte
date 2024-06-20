@@ -53,7 +53,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		cursor: pointer;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		font-style: normal;
 		font-weight: 400;
 		font-family: var(--font-family-sans-serif);
