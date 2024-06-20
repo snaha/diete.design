@@ -36,6 +36,7 @@
 	import Textarea from '$lib/components/ui/textarea.svelte'
 	import Divider from '$lib/components/ui/divider.svelte'
 	import SearchInput from '$lib/components/ui/input/search-input.svelte'
+	import DateInput from '$lib/components/ui/input/date-input.svelte'
 
 	let dimension: Dimension = $state('default')
 	let size: 16 | 24 | 32 = $derived(
@@ -282,8 +283,7 @@
 		>
 		<Divider />
 
-		<Input {dimension} type="date" value="2024-05-01" label="Date input"
-			>This is some helper text</Input
+		<DateInput {dimension} value="2024-05-01" label="Date input">This is some helper text</DateInput
 		>
 	</section>
 
@@ -308,8 +308,8 @@
 
 		<Divider />
 
-		<Input {dimension} variant="solid" type="date" value="2024-05-01" label="Date input"
-			>This is some helper text</Input
+		<DateInput {dimension} variant="solid" value="2024-05-01" label="Date input"
+			>This is some helper text</DateInput
 		>
 	</section>
 </ResponsiveContainer>
