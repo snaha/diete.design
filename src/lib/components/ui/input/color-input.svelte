@@ -6,32 +6,36 @@
 	let { dimension, disabled, ...restProps }: Props & HTMLInputAttributes = $props()
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 	let color = $state()
+	let colorInput: HTMLInputElement
 </script>
 
 {#snippet buttons()}
-	<Button {dimension} {disabled} variant="secondary" style="padding: 0;">
-		<label>
+	<Button
+		{dimension}
+		{disabled}
+		onclick={() => colorInput.click()}
+		variant="secondary"
+		style="padding: 0;"
+	>
+		<div class="relative">
 			<div class="palette-icon">
 				<ColorPalette {size} />
 			</div>
-			<input type="color" bind:value={color} />
-		</label>
+			<input type="color" bind:value={color} bind:this={colorInput} />
+		</div>
 	</Button>
 {/snippet}
 
 <Input bind:value={color} {dimension} {disabled} type="text" {buttons} {...restProps} />
 
 <style lang="postcss">
-	label {
+	.relative {
 		display: flex;
 		position: relative;
 		justify-content: center;
 		align-items: center;
-		cursor: pointer;
-		width: 3rem;
-		height: 3rem;
-		overflow: hidden;
-		line-height: 0;
+		width: 100%;
+		height: 100%;
 	}
 	input[type='color'] {
 		appearance: none;
