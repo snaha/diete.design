@@ -16,6 +16,7 @@
 		{dimension}
 		{disabled}
 		variant="secondary"
+		style="padding:0;"
 		onclick={() => {
 			if (!open) {
 				colorInput?.click()
