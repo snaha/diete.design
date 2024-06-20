@@ -91,33 +91,33 @@
 		white-space: nowrap;
 	}
 	.default {
-		padding: 0.75rem;
+		padding: var(--three-quarters-padding);
 		min-width: 3rem;
-		font-size: 1rem;
-		line-height: 1.5rem;
-		letter-spacing: 0.02rem;
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
 	}
 	.large {
-		padding: 0.75rem;
+		padding: var(--three-quarters-padding);
 		min-width: 3.5rem;
-		font-size: 1.5rem;
-		line-height: 2rem;
-		letter-spacing: 0.03rem;
+		font-size: var(--font-size-large);
+		line-height: var(--line-height-large);
+		letter-spacing: var(--letter-spacing-large);
 	}
 	.compact {
-		padding: 0.5rem;
+		padding: var(--half-padding);
 		min-width: 2.5rem;
-		font-size: 1rem;
-		line-height: 1.5rem;
-		letter-spacing: 0.02rem;
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		letter-spacing: var(--letter-spacing);
 	}
 	.small {
 		gap: 0.25rem;
-		padding: 0.5rem;
+		padding: var(--half-padding);
 		min-width: 2rem;
-		font-size: 0.75rem;
-		line-height: 1rem;
-		letter-spacing: 0.0375rem;
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
+		letter-spacing: var(--letter-spacing-small);
 	}
 
 	.strong {
