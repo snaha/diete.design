@@ -128,8 +128,8 @@
 		&:has(input[type='checkbox']:not(:disabled):focus-visible),
 		&:has(input[type='checkbox']:not(:disabled).focus) {
 			.wrapper {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
+				outline: var(--focus-outline) solid var(--colors-top);
+				outline-offset: calc(-1 * var(--focus-outline));
 				background: var(--colors-base);
 				span {
 					color: var(--colors-top);

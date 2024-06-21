@@ -67,11 +67,11 @@
 		&.focus:has(input[type='radio']:not(:disabled)) {
 			color: var(--colors-top);
 			input[type='radio'] {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
+				outline: var(--focus-outline) solid var(--colors-top);
+				outline-offset: calc(-1 * var(--focus-outline));
 				&:checked {
-					outline: 4px solid var(--colors-top);
-					outline-offset: -4px;
+					outline: var(--focus-outline) solid var(--colors-top);
+					outline-offset: calc(-1 * var(--focus-outline));
 				}
 				&:checked::after {
 					background: var(--colors-top);
