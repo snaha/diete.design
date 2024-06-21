@@ -59,13 +59,15 @@
 	.root {
 		display: flex;
 		position: relative;
+		flex-grow: 1;
 		flex-direction: column;
-		align-items: stretch;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		.relative {
+			display: flex;
 			position: relative;
+			flex-grow: 1;
 		}
 	}
 	label {
@@ -74,7 +76,10 @@
 	}
 	textarea {
 		position: relative;
+		flex-grow: 1;
+		border: 1px solid var(--colors-ultra-high);
 		border-radius: var(--border-radius);
+		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		&::placeholder {
