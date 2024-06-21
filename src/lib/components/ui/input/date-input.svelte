@@ -11,11 +11,43 @@
 	let { dimension = 'default', disabled, ...restProps }: Props & HTMLInputAttributes = $props()
 
 	let currentDate = new Date()
-	let currentMonth = $state(currentDate.getMonth())
-	let currentYear = $state(currentDate.getFullYear())
+	let selectedMonth = $state(currentDate.getMonth())
+	let selectedYear = $state(currentDate.getFullYear())
 	let selectedDate = $state(currentDate)
-
 	let showYearPicker = $state(false)
+	let showDatePicker = $state(false)
+	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
+	let variant: Variant = $derived(
+		dimension === 'large' ? 'large' : dimension === 'small' ? 'small' : 'default',
+	)
+	let daysInMonth = $derived(new Date(selectedYear, selectedMonth + 1, 0).getDate())
+	let firstDayOfMonth = $derived((new Date(selectedYear, selectedMonth, 1).getDay() + 6) % 7)
+	let prevMonthDays = $derived(new Date(selectedYear, selectedMonth, 0).getDate())
+	let totalCells = 42
+	let calendarDays = $derived(
+		Array.from({ length: totalCells }, (_, i) => {
+			const dayNumber = i - firstDayOfMonth + 1
+			if (dayNumber <= 0) {
+				return {
+					date: prevMonthDays + dayNumber,
+					type: 'prev',
+				}
+			} else if (dayNumber > daysInMonth) {
+				return {
+					date: dayNumber - daysInMonth,
+					type: 'next',
+				}
+			} else {
+				return {
+					date: dayNumber,
+					type: 'current',
+				}
+			}
+		}),
+	)
+
+	let datePicker: HTMLDivElement | undefined
+	let selectedYearElement: HTMLSpanElement | undefined = $state(undefined)
 
 	const months = getLocalMonthNames()
 	const days = getLocalDayNames()
@@ -39,48 +71,43 @@
 		return dayNames
 	}
 
-	function selectDate(date: number) {
-		selectedDate = new Date(currentYear, currentMonth, date)
-	}
-
 	function changeMonth(direction: number) {
-		currentMonth += direction
-		if (currentMonth < 0) {
-			currentMonth = 11
-			currentYear--
-		} else if (currentMonth > 11) {
-			currentMonth = 0
-			currentYear++
+		selectedMonth += direction
+		if (selectedMonth < 0) {
+			selectedMonth = 11
+			selectedYear--
+		} else if (selectedMonth > 11) {
+			selectedMonth = 0
+			selectedYear++
 		}
 	}
 
 	function changeYear(year: number) {
-		currentYear = year
+		selectedYear = year
+		selectDate(currentDate.getDate())
 		showYearPicker = false
 	}
 
-	function toggleYearPicker() {
-		showYearPicker = !showYearPicker
-	}
-
-	function isCurrentYear(year: number) {
-		return year === currentDate.getFullYear()
+	function selectDate(date: number) {
+		selectedDate = new Date(selectedYear, selectedMonth, date)
 	}
 
 	function isSelected(date: number) {
 		return (
 			selectedDate.getDate() === date &&
-			selectedDate.getMonth() === currentMonth &&
-			selectedDate.getFullYear() === currentYear
+			selectedDate.getMonth() === selectedMonth &&
+			selectedDate.getFullYear() === selectedYear
 		)
 	}
+
 	function isCurrentDay(date: number) {
 		return (
 			date === currentDate.getDate() &&
-			currentMonth === currentDate.getMonth() &&
-			currentYear === currentDate.getFullYear()
+			selectedMonth === currentDate.getMonth() &&
+			selectedYear === currentDate.getFullYear()
 		)
 	}
+
 	function formatDate(date: Date) {
 		const year = date.getFullYear()
 		const month = String(date.getMonth() + 1).padStart(2, '0')
@@ -88,49 +115,45 @@
 		return `${year}-${month}-${day}`
 	}
 
-	let daysInMonth = $derived(new Date(currentYear, currentMonth + 1, 0).getDate())
-	let firstDayOfMonth = $derived((new Date(currentYear, currentMonth, 1).getDay() + 6) % 7)
-	let prevMonthDays = $derived(new Date(currentYear, currentMonth, 0).getDate())
-	let totalCells = 42
-	let calendarDays = $derived(
-		Array.from({ length: totalCells }, (_, i) => {
-			const dayNumber = i - firstDayOfMonth + 1
-			if (dayNumber <= 0) {
-				return {
-					date: prevMonthDays + dayNumber,
-					type: 'prev',
-				}
-			} else if (dayNumber > daysInMonth) {
-				return {
-					date: dayNumber - daysInMonth,
-					type: 'next',
-				}
-			} else {
-				return {
-					date: dayNumber,
-					type: 'current',
-				}
-			}
-		}),
-	)
-	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
-	let showDatePicker = $state(false)
-	let variant: Variant = $derived(
-		dimension === 'large' ? 'large' : dimension === 'small' ? 'small' : 'default',
-	)
-	let datePicker: HTMLDivElement | undefined
+	function parseDate(dateString: string) {
+		const [year, month, day] = dateString.split('-').map(Number)
+		return new Date(year, month - 1, day)
+	}
+
+	function inputChange(event: Event) {
+		const input = event.target as HTMLInputElement
+		const newDate = parseDate(input.value)
+		selectedDate = newDate
+		selectedMonth = newDate.getMonth()
+		selectedYear = newDate.getFullYear()
+		showYearPicker = false
+	}
+
 	function close(e: MouseEvent) {
 		const target = e.target as unknown as Node
 		if (datePicker?.contains(target)) {
-			// Clicked on the root of date input
+			// Clicked on the date picker
 		} else {
 			showDatePicker = false
+			showYearPicker = false
 		}
 	}
+
 	$effect(() => {
 		window.addEventListener('click', close)
 		return () => {
 			window.removeEventListener('click', close)
+		}
+	})
+
+	$effect(() => {
+		selectedYear = selectedDate.getFullYear()
+		selectedMonth = selectedDate.getMonth()
+	})
+
+	$effect(() => {
+		if (showYearPicker) {
+			selectedYearElement?.scrollIntoView({ block: 'center', behavior: 'auto' })
 		}
 	})
 </script>
@@ -140,32 +163,39 @@
 		{dimension}
 		{disabled}
 		variant="secondary"
-		onclick={() => {
+		onclick={(e:MouseEvent) => {
+			e.stopPropagation()
 			showDatePicker = !showDatePicker
+			showYearPicker = false
 		}}
 	>
 		<Calendar {size} />
 	</Button>
 {/snippet}
 
-<div class="calendar-root {dimension}" bind:this={datePicker}>
+<div class="calendar-root {dimension}">
 	<Input
 		{dimension}
 		{disabled}
 		{...restProps}
 		value={formatDate(selectedDate)}
+		oninput={inputChange}
 		{buttons}
 		type="date"
 	/>
-	<div class="date-picker" class:showDatePicker>
+	<div class="date-picker" class:showDatePicker bind:this={datePicker}>
 		<div class="header">
 			<div class="month">
 				<Button {dimension} variant="ghost" onclick={() => changeMonth(-1)}
 					><ChevronLeft {size} /></Button
 				>
 				<div class="current-month">
-					<Typography {variant} bold>{months[currentMonth]} {currentYear}</Typography>
-					<Button {dimension} variant="ghost" onclick={toggleYearPicker}>
+					<Typography {variant} bold>{months[selectedMonth]} {selectedYear}</Typography>
+					<Button
+						{dimension}
+						variant="ghost"
+						onclick={(e:MouseEvent)=>{e.stopPropagation(); showYearPicker=!showYearPicker}}
+					>
 						{#if showYearPicker}
 							<CaretUp {size} />
 						{:else}
@@ -192,12 +222,27 @@
 			<div class="year-picker">
 				<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 				{#each Array(131) as _, i}
-					<Button
-						{dimension}
-						variant="ghost"
-						active={isSelected(1970 + i) || isCurrentYear(1970 + i)}
-						onclick={() => changeYear(1970 + i)}>{1970 + i}</Button
-					>
+					{#if selectedYear === 1970 + i}
+						<span bind:this={selectedYearElement}>
+							<Button
+								{dimension}
+								variant="ghost"
+								active={selectedYear === 1970 + i}
+								onclick={() => {
+									changeYear(1970 + i)
+								}}>{1970 + i}</Button
+							>
+						</span>
+					{:else}
+						<Button
+							{dimension}
+							variant="ghost"
+							active={selectedYear === 1970 + i}
+							onclick={() => {
+								changeYear(1970 + i)
+							}}>{1970 + i}</Button
+						>
+					{/if}
 				{/each}
 			</div>
 		{:else}
