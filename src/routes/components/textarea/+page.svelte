@@ -8,10 +8,11 @@
 	import Select from '$lib/components/ui/select/select.svelte'
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
-	import Input from '$lib/components/ui/input.svelte'
+	import Input from '$lib/components/ui/input/input.svelte'
 	import Textarea from '$lib/components/ui/textarea.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 
+	type Variant = 'outline' | 'solid'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 
 	let css: string = $state('Loading...')
@@ -21,6 +22,7 @@
 	let placeholder = $state('Placeholder')
 	let withHelperText = $state(false)
 	let optionalHelperText = $state('Helper text')
+	let variant: Variant = $state('outline')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -36,7 +38,7 @@ import Textarea from '$lib/components/ui/textarea.svelte'
 					: ''
 			}
 
-<Textarea dimension="${dimension}" label="${label}" placeholder="${placeholder}"${withHelperText ? ' {helperText}' : ''} />
+<Textarea dimension="${dimension}" label="${label}" placeholder="${placeholder}"${withHelperText ? ' {helperText}' : ''} variant="${variant}" />
 `,
 	)
 
@@ -79,7 +81,10 @@ import Textarea from '$lib/components/ui/textarea.svelte'
 		<Option value="compact">Compact</Option>
 		<Option value="small">Small</Option>
 	</Select>
-
+	<Select bind:value={variant} label="Variant">
+		<Option value="outline">Outline</Option>
+		<Option value="solid">Solid</Option>
+	</Select>
 	<Input bind:value={label} label="Textarea label" />
 	<Input bind:value={placeholder} label="Placeholder" />
 	<Switch bind:checked={withHelperText} label="With helper text" />
@@ -93,7 +98,12 @@ import Textarea from '$lib/components/ui/textarea.svelte'
 {/snippet}
 
 {#snippet preview()}
-	<Textarea {dimension} {label} {placeholder} helperText={withHelperText ? helperText : undefined}
+	<Textarea
+		{dimension}
+		{label}
+		{placeholder}
+		helperText={withHelperText ? helperText : undefined}
+		{variant}
 	></Textarea>
 {/snippet}
 

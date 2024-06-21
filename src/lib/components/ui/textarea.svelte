@@ -3,6 +3,8 @@
 	import type { HTMLTextareaAttributes } from 'svelte/elements'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	type Variant = 'outline' | 'solid'
+
 	interface Props extends HTMLTextareaAttributes {
 		label?: string
 		labelFor?: string
@@ -12,6 +14,7 @@
 		active?: boolean
 		focus?: boolean
 		helperText?: Snippet
+		variant?: Variant
 	}
 	let {
 		label,
@@ -23,6 +26,7 @@
 		active,
 		focus,
 		helperText,
+		variant = 'outline',
 		class: classProps,
 		...restProps
 	}: Props = $props()
@@ -34,7 +38,7 @@
 	</label>
 	<div class="relative">
 		<textarea
-			class="textarea"
+			class={variant}
 			id={labelFor}
 			class:hover
 			class:active
@@ -74,17 +78,25 @@
 		position: relative;
 		flex-grow: 1;
 		border: 1px solid var(--colors-ultra-high);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
-		&:hover:not(:disabled),
-		&.hover:not(:disabled),
-		&:active:not(:disabled),
-		&.active:not(:disabled) {
-			border: 1px solid var(--colors-top);
+		&::placeholder {
+			opacity: 0.5;
+			color: var(--colors-ultra-high);
+		}
+		&:disabled {
+			opacity: 0.25;
+			cursor: not-allowed;
+		}
+		&.outline {
+			border: 1px solid var(--colors-ultra-high);
+			background: transparent;
+		}
+		&.solid {
+			border: 1px solid var(--colors-low);
 			background: var(--colors-base);
-			color: var(--colors-top);
 		}
 		&:focus:not(:disabled),
 		&:focus-visible:not(:disabled),
@@ -94,13 +106,16 @@
 			background: var(--colors-base);
 			color: var(--colors-top);
 		}
-		&::placeholder {
-			opacity: 0.5;
-			color: var(--colors-ultra-high);
+		&:active:not(:disabled),
+		&.active:not(:disabled) {
+			outline: none;
 		}
-		&:disabled {
-			opacity: 0.25;
-			cursor: not-allowed;
+		&:hover:not(:disabled),
+		&.hover:not(:disabled),
+		&:active:not(:disabled),
+		&.active:not(:disabled) {
+			border: 1px solid var(--colors-top);
+			color: var(--colors-top);
 		}
 	}
 	.icon {
@@ -118,7 +133,8 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		textarea {
-			padding: 0.75rem;
+			padding: var(--three-quarters-padding);
+			min-height: calc(var(--three-quarters-padding) * 2 + var(--line-height));
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -131,7 +147,8 @@
 			letter-spacing: var(--letter-spacing-large);
 		}
 		textarea {
-			padding: 0.75rem;
+			padding: var(--three-quarters-padding);
+			min-height: calc(var(--three-quarters-padding) * 2 + var(--line-height-large));
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
@@ -144,7 +161,8 @@
 			letter-spacing: var(--letter-spacing);
 		}
 		textarea {
-			padding: 0.5rem;
+			padding: var(--half-padding);
+			min-height: calc(var(--half-padding) * 2 + var(--line-height));
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -157,7 +175,8 @@
 			letter-spacing: var(--letter-spacing-small);
 		}
 		textarea {
-			padding: 0.5rem;
+			padding: var(--half-padding);
+			min-height: calc(var(--half-padding) * 2 + var(--line-height-small));
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);

@@ -1,17 +1,17 @@
 <script lang="ts">
 	import badge from '$lib/components/ui/badge.svelte?raw'
 	import Code from '$lib/components/custom/code.svelte'
-	import TabBar from '$lib/components/custom/tab-bar/tab-bar.svelte'
 	import TabContent from '$lib/components/custom/tab-bar/tab-content.svelte'
 	import { onMount } from 'svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 	import Select from '$lib/components/ui/select/select.svelte'
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
-	import Input from '$lib/components/ui/input.svelte'
+	import Input from '$lib/components/ui/input/input.svelte'
 	import Badge from '$lib/components/ui/badge.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 	import { CheckmarkFilled } from 'carbon-icons-svelte'
+	import CodeComponentTemplate from '$lib/components/custom/code-component-template.svelte'
 
 	type Dimension = 'small' | 'large'
 	type Variant = 'default' | 'strong' | 'dark-overlay' | 'light-overlay'
@@ -104,11 +104,16 @@
 	</Badge>
 {/snippet}
 
+{#snippet extraSvelte()}
+	<TabContent value="badge"><Code language="svelte" code={badge} /></TabContent>
+{/snippet}
+
+{#snippet extraCss()}
+	<TabContent value="badge"><Code language="css" code={css} /></TabContent>
+{/snippet}
+
 {#snippet implement()}
-	<TabBar dimension="small">
-		<TabContent value="Svelte"><Code language="svelte" code={badge} /></TabContent>
-		<TabContent value="CSS"><Code language="css" code={css} /></TabContent>
-	</TabBar>
+	<CodeComponentTemplate {extraSvelte} {extraCss} />
 {/snippet}
 
 <ComponentTemplate

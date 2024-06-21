@@ -32,7 +32,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		cursor: pointer;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		&:has(input[type='checkbox']:checked) {
@@ -98,7 +98,7 @@
 		align-items: flex-start;
 		cursor: pointer;
 		border: 1px solid var(--colors-ultra-high);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		content: '';
 	}
 	input[type='checkbox']:checked::before {
@@ -125,7 +125,7 @@
 
 	.default {
 		& {
-			padding: 0.75rem;
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -141,7 +141,7 @@
 	}
 	.large {
 		& {
-			padding: 0.75rem;
+			padding: var(--three-quarters-padding);
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
@@ -159,7 +159,7 @@
 	}
 	.compact {
 		& {
-			padding: 0.5rem;
+			padding: var(--half-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -176,7 +176,7 @@
 	.small {
 		& {
 			gap: 0.25rem;
-			padding: 0.5rem;
+			padding: var(--half-padding);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);

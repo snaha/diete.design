@@ -105,7 +105,7 @@
 			flex-direction: row;
 			justify-content: stretch;
 			align-items: center;
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 		}
 		&:has(input[type='checkbox']:not(:disabled)) {
 			.wrapper {
@@ -141,7 +141,7 @@
 		}
 		.title {
 			flex-grow: 1;
-			padding-right: 0.5rem;
+			padding-right: var(--half-padding);
 		}
 		.icon {
 			display: flex;
@@ -183,13 +183,13 @@
 	.default,
 	.large {
 		.wrapper {
-			padding: 0.75rem;
+			padding: var(--three-quarters-padding);
 		}
 	}
 	.compact,
 	.small {
 		.wrapper {
-			padding: 0.5rem;
+			padding: var(--half-padding);
 		}
 	}
 </style>

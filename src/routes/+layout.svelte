@@ -28,6 +28,7 @@
 		Components: {
 			'/components/badge': 'Badge',
 			'/components/button': 'Button',
+			'/components/divider': 'Divider',
 			'/components/checkbox': 'Checkbox',
 			'/components/input': 'Input',
 			'/components/loader': 'Loader',
@@ -193,10 +194,10 @@
 		top: var(--header-size);
 		bottom: 0px;
 		left: 0px;
-		border-right: var(--colors-low) 1px solid;
+		border-right: 1px solid var(--colors-low);
 		background-color: var(--colors-ultra-low);
 		padding: var(--padding);
-		width: calc(var(--sidebar-size) - var(--double-padding));
+		width: var(--sidebar-size);
 		overflow-x: hidden;
 		overflow-y: auto;
 	}

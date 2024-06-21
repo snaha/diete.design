@@ -143,12 +143,12 @@
 		.helper-text-horizontal {
 			display: none;
 			position: absolute;
-			top: -0.5rem;
+			top: calc(var(--half-padding) * -1);
 			left: 50%;
 			transform: translateX(-50%) translateY(-100%);
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			background-color: var(--colors-top);
-			padding: 0.25rem 0.5rem;
+			padding: var(--quarter-padding) var(--half-padding);
 			color: var(--colors-base);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
@@ -161,7 +161,7 @@
 		flex-grow: 1;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.75rem;
+		padding: var(--three-quarters-padding);
 		&:has(input:not(:disabled):active),
 		&:has(input:not(:disabled).active) {
 			color: var(--colors-high);
@@ -174,7 +174,7 @@
 		&:has(input:not(:disabled).focus) {
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			background-color: var(--colors-base);
 			color: var(--colors-top);
 		}
@@ -374,7 +374,7 @@
 		position: absolute;
 		left: calc(var(--valuePercent));
 		z-index: 0;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background: var(--colors-ultra-high);
 		height: 1px;
 	}
@@ -382,7 +382,7 @@
 	.slider-progress-centered {
 		position: absolute;
 		z-index: 0;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background-color: var(--colors-ultra-high);
 		height: 4px;
 	}

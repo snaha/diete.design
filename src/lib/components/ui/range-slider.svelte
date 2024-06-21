@@ -166,12 +166,12 @@
 		.helper-text-horizontal {
 			display: none;
 			position: absolute;
-			top: -0.5rem;
+			top: calc(var(--half-padding) * -1);
 			left: 50%;
 			transform: translateX(-50%) translateY(-100%);
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			background-color: var(--colors-top);
-			padding: 0.25rem 0.5rem;
+			padding: var(--quarter-padding) var(--half-padding);
 			color: var(--colors-base);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
@@ -186,7 +186,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		z-index: 0;
-		padding: 0.75rem;
+		padding: var(--three-quarters-padding);
 		&:has(input:not(:disabled):active),
 		&:has(input:not(:disabled).leftActive),
 		&:has(input:not(:disabled).rightActive) {
@@ -201,7 +201,7 @@
 		&:has(input:not(:disabled).rightFocus) {
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			background-color: var(--colors-base);
 			color: var(--colors-top);
 		}
@@ -413,14 +413,14 @@
 	.value {
 		display: flex;
 		position: absolute;
-		top: -1rem;
+		top: calc(var(--padding) * -1);
 		align-items: center;
 		transform: translate(-50%, -100%);
 		opacity: 0;
 		z-index: 1;
-		border-radius: 0.75rem;
+		border-radius: var(--three-quarters-padding);
 		background: var(--colors-top);
-		padding: 0.25rem 0.5rem;
+		padding: var(--quarter-padding) var(--half-padding);
 		color: var(--colors-base);
 		font-size: var(--font-size-small);
 		line-height: var(--line-height-small);
@@ -430,14 +430,14 @@
 		position: absolute;
 		transform: translateY(-50%);
 		z-index: 0;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background: var(--colors-ultra-high);
 		height: 1px;
 	}
 	.slider-progress {
 		position: absolute;
 		transform: translateY(-50%);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background-color: var(--colors-ultra-high);
 		width: calc(var(--valuePercentMax) - var(--valuePercentMin));
 		height: 4px;
@@ -511,7 +511,7 @@
 		.value {
 			top: -1.25rem;
 			border-radius: 1.25rem;
-			padding: 0.5rem 0.75rem;
+			padding: var(--half-padding) var(--three-quarters-padding);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);

@@ -11,7 +11,7 @@
 
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
-	import Input from '$lib/components/ui/input.svelte'
+	import Input from '$lib/components/ui/input/input.svelte'
 	import Radio from '$lib/components/ui/radio-button/radio.svelte'
 	import Typography from '$lib/components/ui/typography.svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
@@ -26,6 +26,10 @@
 	import Badge from '$lib/components/ui/badge.svelte'
 	import Loader from '$lib/components/ui/loader.svelte'
 	import ProgressBar from '$lib/components/ui/progress.svelte'
+	import NumberInput from '$lib/components/ui/input/number-input.svelte'
+	import SearchInput from '$lib/components/ui/input/search-input.svelte'
+	import ColorInput from '$lib/components/ui/input/color-input.svelte'
+	import DateInput from '$lib/components/ui/input/date-input.svelte'
 </script>
 
 <div class="page-wrapper">
@@ -854,30 +858,60 @@
 		</div>
 	</section>
 	<section>
+		<Typography variant="h1">Search input</Typography>
 		<div class="row">
 			<div class="col">
-				<Input placeholder="Placeholder" search />
-				<Input value="" search />
-				<Input value="Diete" search />
-				<Input search disabled />
+				<SearchInput placeholder="Placeholder" />
+				<SearchInput value="" />
+				<SearchInput value="Diete" />
+				<SearchInput disabled />
 			</div>
 			<div class="col">
-				<Input dimension="large" placeholder="Placeholder" search />
-				<Input dimension="large" value="" search />
-				<Input dimension="large" value="Diete" search />
-				<Input dimension="large" search disabled />
+				<SearchInput dimension="large" placeholder="Placeholder" />
+				<SearchInput dimension="large" value="" />
+				<SearchInput dimension="large" value="Diete" />
+				<SearchInput dimension="large" disabled />
 			</div>
 			<div class="col">
-				<Input dimension="compact" placeholder="Placeholder" search />
-				<Input dimension="compact" value="" search />
-				<Input dimension="compact" value="Diete" search />
-				<Input dimension="compact" search disabled />
+				<SearchInput dimension="compact" placeholder="Placeholder" />
+				<SearchInput dimension="compact" value="" />
+				<SearchInput dimension="compact" value="Diete" />
+				<SearchInput dimension="compact" disabled />
 			</div>
 			<div class="col">
-				<Input dimension="small" placeholder="Placeholder" search />
-				<Input dimension="small" value="" search />
-				<Input dimension="small" value="Diete" search />
-				<Input dimension="small" search disabled />
+				<SearchInput dimension="small" placeholder="Placeholder" />
+				<SearchInput dimension="small" value="" />
+				<SearchInput dimension="small" value="Diete" />
+				<SearchInput dimension="small" disabled />
+			</div>
+		</div>
+	</section>
+	<section>
+		<Typography variant="h1">Search input (with button)</Typography>
+		<div class="row">
+			<div class="col">
+				<SearchInput placeholder="Placeholder" withButton />
+				<SearchInput value="" withButton />
+				<SearchInput value="Diete" withButton />
+				<SearchInput disabled withButton />
+			</div>
+			<div class="col">
+				<SearchInput dimension="large" placeholder="Placeholder" withButton />
+				<SearchInput dimension="large" value="" withButton />
+				<SearchInput dimension="large" value="Diete" withButton />
+				<SearchInput dimension="large" disabled withButton />
+			</div>
+			<div class="col">
+				<SearchInput dimension="compact" placeholder="Placeholder" withButton />
+				<SearchInput dimension="compact" value="" withButton />
+				<SearchInput dimension="compact" value="Diete" withButton />
+				<SearchInput dimension="compact" disabled withButton />
+			</div>
+			<div class="col">
+				<SearchInput dimension="small" placeholder="Placeholder" withButton />
+				<SearchInput dimension="small" value="" withButton />
+				<SearchInput dimension="small" value="Diete" withButton />
+				<SearchInput dimension="small" disabled withButton />
 			</div>
 		</div>
 	</section>
@@ -885,67 +919,23 @@
 		<Typography variant="h1">Number input (vertical)</Typography>
 		<div class="row">
 			<div class="col">
-				<Input type="number" label="Number input" unit="EUR" placeholder="0"
-					>This is an optional helper text</Input
+				<NumberInput label="Number input" unit="EUR" placeholder="0"
+					>This is an optional helper text</NumberInput
 				>
-				<Input type="number" label="Number input" unit="EUR" placeholder="0" value="1420"
-					>This is an optional helper text</Input
+				<NumberInput label="Number input" unit="EUR" placeholder="0" value="1420"
+					>This is an optional helper text</NumberInput
 				>
-				<Input type="number" label="Number input" unit="EUR" placeholder="0" value="1420" hover
-					>This is an optional helper text</Input
+				<NumberInput label="Number input" unit="EUR" placeholder="0" value="1420" hover
+					>This is an optional helper text</NumberInput
 				>
-				<Input type="number" label="Number input" unit="EUR" placeholder="0" value="1420" active
-					>This is an optional helper text</Input
+				<NumberInput label="Number input" unit="EUR" placeholder="0" value="1420" active
+					>This is an optional helper text</NumberInput
 				>
-				<Input type="number" label="Number input" unit="EUR" placeholder="0" value="1420" focus
-					>This is an optional helper text</Input
+				<NumberInput label="Number input" unit="EUR" placeholder="0" value="1420" focus
+					>This is an optional helper text</NumberInput
 				>
-				<Input type="number" label="Number input" unit="EUR" placeholder="0" value="1420" disabled
-					>This is an optional helper text</Input
-				>
-			</div>
-			<div class="col">
-				<Input type="number" label="Number input" unit="EUR" placeholder="0" controls
-					>This is an optional helper text</Input
-				>
-				<Input type="number" label="Number input" unit="EUR" placeholder="0" value={1420} controls
-					>This is an optional helper text</Input
-				>
-				<Input
-					type="number"
-					label="Number input"
-					unit="EUR"
-					placeholder="0"
-					value={1420}
-					hover
-					controls>This is an optional helper text</Input
-				>
-				<Input
-					type="number"
-					label="Number input"
-					unit="EUR"
-					placeholder="0"
-					value={1420}
-					active
-					controls>This is an optional helper text</Input
-				>
-				<Input
-					type="number"
-					label="Number input"
-					unit="EUR"
-					placeholder="0"
-					value={1420}
-					focus
-					controls>This is an optional helper text</Input
-				>
-				<Input
-					type="number"
-					label="Number input"
-					unit="EUR"
-					placeholder="0"
-					value={1420}
-					disabled
-					controls>This is an optional helper text</Input
+				<NumberInput label="Number input" unit="EUR" placeholder="0" value="1420" disabled
+					>This is an optional helper text</NumberInput
 				>
 			</div>
 		</div>
@@ -954,111 +944,47 @@
 		<Typography variant="h1">Number input (horizontal)</Typography>
 		<div class="row">
 			<div class="col">
-				<Input layout="horizontal" type="number" label="Number input" unit="EUR" placeholder="0"
-					>This is an optional helper text</Input
+				<NumberInput layout="horizontal" label="Number input" unit="EUR" placeholder="0"
+					>This is an optional helper text</NumberInput
 				>
-				<Input
+				<NumberInput
 					layout="horizontal"
-					type="number"
 					label="Number input"
 					unit="EUR"
 					placeholder="0"
-					value="1420">This is an optional helper text</Input
+					value="1420">This is an optional helper text</NumberInput
 				>
-				<Input
+				<NumberInput
 					layout="horizontal"
-					type="number"
-					label="Number input"
-					unit="EUR"
-					placeholder="0"
-					value="1420"
-					hover>This is an optional helper text</Input
-				>
-				<Input
-					layout="horizontal"
-					type="number"
 					label="Number input"
 					unit="EUR"
 					placeholder="0"
 					value="1420"
-					active>This is an optional helper text</Input
+					hover>This is an optional helper text</NumberInput
 				>
-				<Input
+				<NumberInput
 					layout="horizontal"
-					type="number"
 					label="Number input"
 					unit="EUR"
 					placeholder="0"
 					value="1420"
-					focus>This is an optional helper text</Input
+					active>This is an optional helper text</NumberInput
 				>
-				<Input
+				<NumberInput
 					layout="horizontal"
-					type="number"
 					label="Number input"
 					unit="EUR"
 					placeholder="0"
 					value="1420"
-					disabled>This is an optional helper text</Input
+					focus>This is an optional helper text</NumberInput
 				>
-			</div>
-			<div class="col">
-				<Input
+				<NumberInput
 					layout="horizontal"
-					type="number"
 					label="Number input"
 					unit="EUR"
 					placeholder="0"
-					controls>This is an optional helper text</Input
-				>
-				<Input
-					layout="horizontal"
-					type="number"
-					label="Number input"
-					unit="EUR"
-					placeholder="0"
-					value={1420}
-					controls>This is an optional helper text</Input
-				>
-				<Input
-					layout="horizontal"
-					type="number"
-					label="Number input"
-					unit="EUR"
-					placeholder="0"
-					value={1420}
-					hover
-					controls>This is an optional helper text</Input
-				>
-				<Input
-					layout="horizontal"
-					type="number"
-					label="Number input"
-					unit="EUR"
-					placeholder="0"
-					value={1420}
-					active
-					controls>This is an optional helper text</Input
-				>
-				<Input
-					layout="horizontal"
-					type="number"
-					label="Number input"
-					unit="EUR"
-					placeholder="0"
-					value={1420}
-					focus
-					controls>This is an optional helper text</Input
-				>
-				<Input
-					layout="horizontal"
-					type="number"
-					label="Number input"
-					unit="EUR"
-					placeholder="0"
-					value={1420}
-					disabled
-					controls>This is an optional helper text</Input
+					value="1420"
+					disabled>This is an optional helper text</NumberInput
 				>
 			</div>
 		</div>
@@ -1067,41 +993,41 @@
 		<Typography variant="h1">Date input</Typography>
 		<div class="row">
 			<div class="col">
-				<Input type="date" label="Date picker" />
-				<Input type="date" label="Date picker" value="2024-05-01" />
-				<Input type="date" label="Date picker" value="2024-05-01" hover />
-				<Input type="date" label="Date picker" value="2024-05-01" active />
-				<Input type="date" label="Date picker" value="2024-05-01" focus />
-				<Input type="date" label="Date picker" value="2024-05-01" disabled />
+				<DateInput label="Date picker" />
+				<DateInput label="Date picker" value="2024-05-01" />
+				<DateInput label="Date picker" value="2024-05-01" hover />
+				<DateInput label="Date picker" value="2024-05-01" active />
+				<DateInput label="Date picker" value="2024-05-01" focus />
+				<DateInput label="Date picker" value="2024-05-01" disabled />
 			</div>
 			<div class="col">
-				<Input dimension="large" type="date" label="Date picker" />
-				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" />
-				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" hover />
-				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" active />
-				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" focus />
-				<Input dimension="large" type="date" label="Date picker" value="2024-05-01" disabled />
+				<DateInput dimension="large" label="Date picker" />
+				<DateInput dimension="large" label="Date picker" value="2024-05-01" />
+				<DateInput dimension="large" label="Date picker" value="2024-05-01" hover />
+				<DateInput dimension="large" label="Date picker" value="2024-05-01" active />
+				<DateInput dimension="large" label="Date picker" value="2024-05-01" focus />
+				<DateInput dimension="large" label="Date picker" value="2024-05-01" disabled />
 			</div>
 			<div class="col">
-				<Input dimension="compact" type="date" label="Date picker" />
-				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" />
-				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" hover />
-				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" active />
-				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" focus />
-				<Input dimension="compact" type="date" label="Date picker" value="2024-05-01" disabled />
+				<DateInput dimension="compact" label="Date picker" />
+				<DateInput dimension="compact" label="Date picker" value="2024-05-01" />
+				<DateInput dimension="compact" label="Date picker" value="2024-05-01" hover />
+				<DateInput dimension="compact" label="Date picker" value="2024-05-01" active />
+				<DateInput dimension="compact" label="Date picker" value="2024-05-01" focus />
+				<DateInput dimension="compact" label="Date picker" value="2024-05-01" disabled />
 			</div>
 			<div class="col">
-				<Input dimension="small" type="date" label="Date picker" />
-				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" />
-				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" hover />
-				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" active />
-				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" focus />
-				<Input dimension="small" type="date" label="Date picker" value="2024-05-01" disabled />
+				<DateInput dimension="small" label="Date picker" />
+				<DateInput dimension="small" label="Date picker" value="2024-05-01" />
+				<DateInput dimension="small" label="Date picker" value="2024-05-01" hover />
+				<DateInput dimension="small" label="Date picker" value="2024-05-01" active />
+				<DateInput dimension="small" label="Date picker" value="2024-05-01" focus />
+				<DateInput dimension="small" label="Date picker" value="2024-05-01" disabled />
 			</div>
 		</div>
 	</section>
 	<section>
-		<Typography variant="h1">Select (outline)</Typography>
+		<Typography variant="h1">Textarea (outline)</Typography>
 		{#snippet helperText()}
 			This is an optional helper text
 		{/snippet}
@@ -1271,201 +1197,350 @@
 					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
 					disabled
 				></Textarea>
-				<Typography variant="h1">Select (outline)</Typography>
-				<div class="row">
-					<div class="col">
-						<Select label="Outline select" placeholder="Placeholder" />
-						<Select label="Outline select" placeholder="Placeholder" value="With value" />
-						<Select label="Outline select" placeholder="Hover" hover />
-						<Select label="Outline select" placeholder="Active" hover />
-						<Select label="Outline select" placeholder="Active" focus />
-						<Select label="Outline select" value="Disabled" disabled />
-					</div>
-					<div class="col">
-						<Select dimension="large" label="Outline select" placeholder="Placeholder" />
-						<Select
-							dimension="large"
-							label="Outline select"
-							placeholder="Placeholder"
-							value="With value"
-						/>
-						<Select dimension="large" label="Outline select" placeholder="Hover" hover />
-						<Select dimension="large" label="Outline select" placeholder="Active" hover />
-						<Select dimension="large" label="Outline select" placeholder="Active" focus />
-						<Select dimension="large" label="Outline select" value="Disabled" disabled />
-					</div>
-					<div class="col">
-						<Select dimension="compact" label="Outline select" placeholder="Placeholder" />
-						<Select
-							dimension="compact"
-							label="Outline select"
-							placeholder="Placeholder"
-							value="With value"
-						/>
-						<Select dimension="compact" label="Outline select" placeholder="Hover" hover />
-						<Select dimension="compact" label="Outline select" placeholder="Active" hover />
-						<Select dimension="compact" label="Outline select" placeholder="Active" focus />
-						<Select dimension="compact" label="Outline select" value="Disabled" disabled />
-					</div>
-					<div class="col">
-						<Select dimension="small" label="Outline select" placeholder="Placeholder" />
-						<Select
-							dimension="small"
-							label="Outline select"
-							placeholder="Placeholder"
-							value="With value"
-						/>
-						<Select dimension="small" label="Outline select" placeholder="Hover" hover />
-						<Select dimension="small" label="Outline select" placeholder="Active" hover />
-						<Select dimension="small" label="Outline select" placeholder="Active" focus />
-						<Select dimension="small" label="Outline select" value="Disabled" disabled />
-					</div>
-				</div>
-				<Typography variant="h1">Select (solid)</Typography>
-				<div class="row">
-					<div class="col">
-						<Select variant="solid" label="Solid select" placeholder="Placeholder" />
-						<Select
-							variant="solid"
-							label="Solid select"
-							placeholder="Placeholder"
-							value="With value"
-						/>
-						<Select variant="solid" label="Solid select" placeholder="Hover" hover />
-						<Select variant="solid" label="Solid select" placeholder="Active" hover />
-						<Select variant="solid" label="Solid select" placeholder="Active" focus />
-						<Select variant="solid" label="Solid select" value="Disabled" disabled />
-					</div>
-					<div class="col">
-						<Select
-							variant="solid"
-							dimension="large"
-							label="Solid select"
-							placeholder="Placeholder"
-						/>
-						<Select
-							variant="solid"
-							dimension="large"
-							label="Solid select"
-							placeholder="Placeholder"
-							value="With value"
-						/>
-						<Select
-							variant="solid"
-							dimension="large"
-							label="Solid select"
-							placeholder="Hover"
-							hover
-						/>
-						<Select
-							variant="solid"
-							dimension="large"
-							label="Solid select"
-							placeholder="Active"
-							hover
-						/>
-						<Select
-							variant="solid"
-							dimension="large"
-							label="Solid select"
-							placeholder="Active"
-							focus
-						/>
-						<Select
-							variant="solid"
-							dimension="large"
-							label="Solid select"
-							value="Disabled"
-							disabled
-						/>
-					</div>
-					<div class="col">
-						<Select
-							variant="solid"
-							dimension="compact"
-							label="Solid select"
-							placeholder="Placeholder"
-						/>
-						<Select
-							variant="solid"
-							dimension="compact"
-							label="Solid select"
-							placeholder="Placeholder"
-							value="With value"
-						/>
-						<Select
-							variant="solid"
-							dimension="compact"
-							label="Solid select"
-							placeholder="Hover"
-							hover
-						/>
-						<Select
-							variant="solid"
-							dimension="compact"
-							label="Solid select"
-							placeholder="Active"
-							hover
-						/>
-						<Select
-							variant="solid"
-							dimension="compact"
-							label="Solid select"
-							placeholder="Active"
-							focus
-						/>
-						<Select
-							variant="solid"
-							dimension="compact"
-							label="Solid select"
-							value="Disabled"
-							disabled
-						/>
-					</div>
-					<div class="col">
-						<Select
-							variant="solid"
-							dimension="small"
-							label="Solid select"
-							placeholder="Placeholder"
-						/>
-						<Select
-							variant="solid"
-							dimension="small"
-							label="Solid select"
-							placeholder="Placeholder"
-							value="With value"
-						/>
-						<Select
-							variant="solid"
-							dimension="small"
-							label="Solid select"
-							placeholder="Hover"
-							hover
-						/>
-						<Select
-							variant="solid"
-							dimension="small"
-							label="Solid select"
-							placeholder="Active"
-							hover
-						/>
-						<Select
-							variant="solid"
-							dimension="small"
-							label="Solid select"
-							placeholder="Active"
-							focus
-						/>
-						<Select
-							variant="solid"
-							dimension="small"
-							label="Solid select"
-							value="Disabled"
-							disabled
-						/>
-					</div>
-				</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<Typography variant="h1">Textarea (solid)</Typography>
+		{#snippet helperText()}
+			This is an optional helper text
+		{/snippet}
+		<div class="row">
+			<div class="col">
+				<Textarea label="Input label" {helperText} placeholder="Placeholder" variant="solid"
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					hover
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					active
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					focus
+				></Textarea>
+				<Textarea
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					hover
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					active
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					focus
+				></Textarea>
+				<Textarea
+					dimension="large"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					hover
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					active
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					focus
+				></Textarea>
+				<Textarea
+					dimension="compact"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					disabled
+				></Textarea>
+			</div>
+			<div class="col">
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					hover
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					active
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					focus
+				></Textarea>
+				<Textarea
+					dimension="small"
+					label="Input label"
+					{helperText}
+					placeholder="Placeholder"
+					value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+					variant="solid"
+					disabled
+				></Textarea>
+			</div>
+		</div>
+	</section>
+	<section>
+		<Typography variant="h1">Select (outline)</Typography>
+		<div class="row">
+			<div class="col">
+				<Select label="Outline select" placeholder="Placeholder" />
+				<Select label="Outline select" placeholder="Placeholder" value="With value" />
+				<Select label="Outline select" placeholder="Hover" hover />
+				<Select label="Outline select" placeholder="Active" hover />
+				<Select label="Outline select" placeholder="Active" focus />
+				<Select label="Outline select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select dimension="large" label="Outline select" placeholder="Placeholder" />
+				<Select
+					dimension="large"
+					label="Outline select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select dimension="large" label="Outline select" placeholder="Hover" hover />
+				<Select dimension="large" label="Outline select" placeholder="Active" hover />
+				<Select dimension="large" label="Outline select" placeholder="Active" focus />
+				<Select dimension="large" label="Outline select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select dimension="compact" label="Outline select" placeholder="Placeholder" />
+				<Select
+					dimension="compact"
+					label="Outline select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select dimension="compact" label="Outline select" placeholder="Hover" hover />
+				<Select dimension="compact" label="Outline select" placeholder="Active" hover />
+				<Select dimension="compact" label="Outline select" placeholder="Active" focus />
+				<Select dimension="compact" label="Outline select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select dimension="small" label="Outline select" placeholder="Placeholder" />
+				<Select
+					dimension="small"
+					label="Outline select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select dimension="small" label="Outline select" placeholder="Hover" hover />
+				<Select dimension="small" label="Outline select" placeholder="Active" hover />
+				<Select dimension="small" label="Outline select" placeholder="Active" focus />
+				<Select dimension="small" label="Outline select" value="Disabled" disabled />
+			</div>
+		</div>
+		<Typography variant="h1">Select (solid)</Typography>
+		<div class="row">
+			<div class="col">
+				<Select variant="solid" label="Solid select" placeholder="Placeholder" />
+				<Select variant="solid" label="Solid select" placeholder="Placeholder" value="With value" />
+				<Select variant="solid" label="Solid select" placeholder="Hover" hover />
+				<Select variant="solid" label="Solid select" placeholder="Active" hover />
+				<Select variant="solid" label="Solid select" placeholder="Active" focus />
+				<Select variant="solid" label="Solid select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Placeholder" />
+				<Select
+					variant="solid"
+					dimension="large"
+					label="Solid select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Hover" hover />
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Active" hover />
+				<Select variant="solid" dimension="large" label="Solid select" placeholder="Active" focus />
+				<Select variant="solid" dimension="large" label="Solid select" value="Disabled" disabled />
+			</div>
+			<div class="col">
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Placeholder"
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Hover"
+					hover
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Active"
+					hover
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					placeholder="Active"
+					focus
+				/>
+				<Select
+					variant="solid"
+					dimension="compact"
+					label="Solid select"
+					value="Disabled"
+					disabled
+				/>
+			</div>
+			<div class="col">
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Placeholder" />
+				<Select
+					variant="solid"
+					dimension="small"
+					label="Solid select"
+					placeholder="Placeholder"
+					value="With value"
+				/>
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Hover" hover />
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Active" hover />
+				<Select variant="solid" dimension="small" label="Solid select" placeholder="Active" focus />
+				<Select variant="solid" dimension="small" label="Solid select" value="Disabled" disabled />
 			</div>
 		</div>
 	</section>
@@ -2673,13 +2748,22 @@
 			<ProgressBar dimension="small" value={50}>Loading...</ProgressBar>
 		</div>
 	</section>
+	<section>
+		<div class="row">
+			<div class="col">
+				<NumberInput label="Number input" placeholder="Add number" />
+				<SearchInput label="Search input" placeholder="Add text" />
+				<ColorInput label="Color input" placeholder="Add color" />
+				<DateInput label="Date input" />
+			</div>
+		</div>
+	</section>
 </div>
 
 <style>
 	.page-wrapper {
 		background-color: var(--colors-ultra-low);
 	}
-
 	.row {
 		display: flex;
 		flex: 1;
@@ -2694,7 +2778,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
-		align-items: flex-start;
+		align-items: stretch;
 		gap: 1rem;
 		border: 1px dashed var(--colors-ultra-high);
 		padding: 1rem;
