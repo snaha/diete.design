@@ -105,7 +105,7 @@
 			flex-direction: row;
 			justify-content: stretch;
 			align-items: center;
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 		}
 		&:has(input[type='checkbox']:not(:disabled)) {
 			.wrapper {

@@ -463,7 +463,7 @@
 	}
 	.error-message {
 		border: 1px solid var(--colors-top);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background: var(--colors-top);
 		padding: var(--quarter-padding) var(--half-padding);
 		color: var(--colors-base);

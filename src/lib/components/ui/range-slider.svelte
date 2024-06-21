@@ -169,7 +169,7 @@
 			top: calc(var(--half-padding) * -1);
 			left: 50%;
 			transform: translateX(-50%) translateY(-100%);
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			background-color: var(--colors-top);
 			padding: var(--quarter-padding) var(--half-padding);
 			color: var(--colors-base);
@@ -201,7 +201,7 @@
 		&:has(input:not(:disabled).rightFocus) {
 			outline: 4px solid var(--colors-top);
 			outline-offset: -4px;
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			background-color: var(--colors-base);
 			color: var(--colors-top);
 		}
@@ -430,14 +430,14 @@
 		position: absolute;
 		transform: translateY(-50%);
 		z-index: 0;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background: var(--colors-ultra-high);
 		height: 1px;
 	}
 	.slider-progress {
 		position: absolute;
 		transform: translateY(-50%);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background-color: var(--colors-ultra-high);
 		width: calc(var(--valuePercentMax) - var(--valuePercentMin));
 		height: 4px;
