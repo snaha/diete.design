@@ -76,6 +76,9 @@
 		background: var(--colors-dark-base);
 		overflow: auto;
 	}
+	:global(code) {
+		white-space: preserve nowrap !important;
+	}
 
 	.copy-button {
 		position: absolute;
