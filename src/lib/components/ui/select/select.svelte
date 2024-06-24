@@ -253,7 +253,7 @@
 		flex-grow: 1;
 		appearance: none;
 		cursor: pointer;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		color: var(--colors-ultra-high);
 		&.outline {
 			border: 1px solid var(--colors-ultra-high);
@@ -424,7 +424,7 @@
 		left: 0;
 		z-index: 1;
 		margin-top: 0.25rem;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background: var(--colors-base);
 		width: 100%;
 
@@ -434,7 +434,7 @@
 			justify-content: stretch;
 			align-items: stretch;
 			border: 1px solid var(--colors-low);
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			padding: var(--half-padding);
 			:global(.placeholder) {
 				opacity: 0.5;

@@ -90,7 +90,7 @@
 		&:global(:has(input[type='radio']:focus-visible)) {
 			outline: var(--focus-outline);
 			outline-offset: var(--focus-outline-offset);
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			background: var(--colors-base);
 		}
 	}

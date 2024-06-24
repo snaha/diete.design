@@ -34,7 +34,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		cursor: pointer;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		&:has(input[type='radio']:disabled) {

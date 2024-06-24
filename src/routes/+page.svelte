@@ -1,5 +1,20 @@
 <script lang="ts">
-	import { Checkmark, ArrowRight, Settings, Search } from 'carbon-icons-svelte'
+	import {
+		Checkmark,
+		ArrowRight,
+		Settings,
+		Fire,
+		NotificationNew,
+		ThumbsUp,
+		Star,
+		CheckmarkFilled,
+		WarningAltFilled,
+		GameWireless,
+		Basketball,
+		Analytics,
+		Encryption,
+		MachineLearning,
+	} from 'carbon-icons-svelte'
 
 	import Button from '$lib/components/ui/button.svelte'
 	import Checkbox from '$lib/components/ui/checkbox.svelte'
@@ -14,7 +29,15 @@
 	import ResponsiveContainer from '$lib/components/custom/responsive-container.svelte'
 	import type { Dimension } from '$lib/components/ui/menu/menu-store.svelte'
 	import Code from '$lib/components/custom/code.svelte'
+	import Badge from '$lib/components/ui/badge.svelte'
+	import MenuTitle from '$lib/components/ui/menu/menu-title.svelte'
+	import MenuItem from '$lib/components/ui/menu/menu-item.svelte'
+	import RangeSlider from '$lib/components/ui/range-slider.svelte'
+	import Textarea from '$lib/components/ui/textarea.svelte'
 	import Divider from '$lib/components/ui/divider.svelte'
+	import SearchInput from '$lib/components/ui/input/search-input.svelte'
+	import DateInput from '$lib/components/ui/input/date-input.svelte'
+	import ColorInput from '$lib/components/ui/input/color-input.svelte'
 
 	let dimension: Dimension = $state('default')
 	let size: 16 | 24 | 32 = $derived(
@@ -131,10 +154,28 @@
 
 <ResponsiveContainer class="vspace">
 	<section id="sliders" class="controls">
+		<Slider layout="vertical" {dimension} alwaysShowValue>
+			Continuous slider
+			{#snippet helperText()}
+				A simple continuous slider, showing the selected value on the right
+			{/snippet}
+		</Slider>
+
+		<Divider />
+
 		<Slider layout="vertical" {dimension}
 			>Continuous slider with min/max
 			{#snippet helperText()}
-				A simple continuous slider, showing the selected value on the right
+				Selected value is shown on hover, pressed and focused states
+			{/snippet}
+		</Slider>
+
+		<Divider />
+
+		<Slider layout="vertical" {dimension} step={10} showSteps alwaysShowValue
+			>Discrete slider
+			{#snippet helperText()}
+				Selects a value from a range of predetermined values, marked by stop indicators
 			{/snippet}
 		</Slider>
 
@@ -149,10 +190,36 @@
 	</section>
 
 	<section id="centered-sliders" class="controls">
+		<Slider layout="vertical" {dimension} centered min={-5} max={5} alwaysShowValue>
+			Continuous centered slider
+			{#snippet helperText()}
+				Selects a value from a negative/positive range, starting value is in the center
+			{/snippet}
+		</Slider>
+
+		<Divider />
+
 		<Slider layout="vertical" {dimension} centered min={-5} max={5}
 			>Continuous centered slider with min/max
 			{#snippet helperText()}
 				Selected value is shown on hover, pressed and focused states
+			{/snippet}
+		</Slider>
+
+		<Divider />
+
+		<Slider
+			layout="vertical"
+			{dimension}
+			step={1}
+			showSteps
+			centered
+			min={-5}
+			max={5}
+			alwaysShowValue
+			>Discrete centered slider
+			{#snippet helperText()}
+				Selects a value from a range of predetermined values, marked by stop indicators
 			{/snippet}
 		</Slider>
 
@@ -168,14 +235,38 @@
 </ResponsiveContainer>
 
 <ResponsiveContainer class="vspace">
-	<section id="search" class="controls">
-		<Input {dimension} placeholder="Search">
-			{#snippet buttons()}
-				<Button {dimension} variant="secondary"><Search {size} /></Button>
+	<section class="controls">
+		<RangeSlider layout="vertical" {dimension}>
+			Continuous range slider
+			{#snippet helperText()}
+				Selects two values on one slider to create a range
 			{/snippet}
-		</Input>
+		</RangeSlider>
+
+		<Divider />
+
+		<RangeSlider layout="vertical" {dimension} step={10} showSteps>
+			Discrete slider with min/max
+			{#snippet helperText()}
+				Range slider is also available with discrete values
+			{/snippet}
+		</RangeSlider>
+	</section>
+</ResponsiveContainer>
+
+<ResponsiveContainer class="vspace">
+	<section id="search" class="controls">
+		<SearchInput {dimension} placeholder="Search" />
+		<SearchInput {dimension} placeholder="Search" withButton={true} />
 	</section>
 
+	<section id="search-solid" class="controls solid">
+		<SearchInput {dimension} variant="solid" placeholder="Search" />
+		<SearchInput {dimension} variant="solid" placeholder="Search" withButton={true} />
+	</section>
+</ResponsiveContainer>
+
+<ResponsiveContainer class="vspace">
 	<section id="input" class="controls">
 		<Input {dimension} value="Williamsburg" label="Text input">This is some helper text</Input>
 
@@ -191,6 +282,69 @@
 			label="Number input"
 			unit="EUR">This is some helper text</Input
 		>
+		<Divider />
+
+		<DateInput {dimension} value="2024-05-01" label="Date input">This is some helper text</DateInput
+		>
+
+		<Divider />
+
+		<ColorInput {dimension} label="Color input">This is some helper text</ColorInput>
+	</section>
+
+	<section id="input-solid" class="controls solid">
+		<Input {dimension} variant="solid" value="Williamsburg" label="Text input"
+			>This is some helper text</Input
+		>
+
+		<Divider />
+
+		<Input
+			{dimension}
+			variant="solid"
+			type="number"
+			min="0"
+			max="69420"
+			step="0.001"
+			value="1.420"
+			label="Number input"
+			unit="EUR">This is some helper text</Input
+		>
+
+		<Divider />
+
+		<DateInput {dimension} variant="solid" value="2024-05-01" label="Date input"
+			>This is some helper text</DateInput
+		>
+
+		<Divider />
+
+		<ColorInput {dimension} variant="solid" label="Color input">This is some helper text</ColorInput
+		>
+	</section>
+</ResponsiveContainer>
+
+{#snippet helperText()}
+	This is an optional helper text
+{/snippet}
+
+<ResponsiveContainer class="vspace">
+	<section id="textarea" class="controls">
+		<Textarea
+			label="Text area"
+			{helperText}
+			{dimension}
+			value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+		></Textarea>
+	</section>
+	<section id="textarea-solid" class="controls solid">
+		<Textarea
+			label="Text area"
+			{helperText}
+			{dimension}
+			value="I'm baby glossier artisan cred austin, yuccie venmo aesthetic seitan franzen pour-over taiyaki."
+			variant="solid"
+		></Textarea>
 	</section>
 </ResponsiveContainer>
 
@@ -207,7 +361,144 @@
 		</Select>
 	</section>
 
-	<section id="select-solid" style="padding: var(--double-padding);"></section>
+	<section id="select-solid" class="controls solid">
+		<Select value="1" label="Select" variant="solid">
+			{#snippet helperText()}
+				This is some helper text
+			{/snippet}
+			<Option value="1">Banjo tacos</Option>
+			<Option value="2">Pickled chicharrones</Option>
+			<Option value="3">Vinegar vape</Option>
+			<Option value="4">Denim brunch vinyl</Option>
+		</Select>
+	</section>
+</ResponsiveContainer>
+
+<ResponsiveContainer class="vspace">
+	<section class="controls">
+		<MenuTitle bold open>
+			{#snippet content()}
+				Topics
+			{/snippet}
+			<MenuItem>
+				<div class="row space-between grow">
+					<div class="row">
+						<GameWireless size={24} />
+						Gaming
+					</div>
+					<Badge>6</Badge>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					<div class="row">
+						<Basketball size={24} />
+						Sports
+					</div>
+					<Badge>12</Badge>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					<div class="row">
+						<Analytics size={24} />
+						Business
+					</div>
+					<Badge>8</Badge>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					<div class="row">
+						<Encryption size={24} />
+						Crypto
+					</div>
+					<Badge>24</Badge>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					<div class="row">
+						<Fire size={24} />
+						Trending
+					</div>
+					<Badge>420</Badge>
+				</div>
+			</MenuItem>
+		</MenuTitle>
+	</section>
+
+	<section class="controls">
+		<MenuTitle bold open>
+			{#snippet content()}
+				<MachineLearning size={24} />
+				Letterpress intelligentsia
+			{/snippet}
+			<MenuItem>
+				<div class="row space-between grow">
+					Enamel pin
+					<ArrowRight size={24} />
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Cold-pressed hammock
+					<ArrowRight size={24} />
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Polaroid shaman
+					<ArrowRight size={24} />
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Sriracha master
+					<ArrowRight size={24} />
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Thundercats
+					<ArrowRight size={24} />
+				</div>
+			</MenuItem>
+		</MenuTitle>
+	</section>
+
+	<section class="controls">
+		<MenuTitle open>
+			{#snippet content()}
+				File
+			{/snippet}
+			<MenuItem>
+				<div class="row space-between grow">
+					Edit
+					<span class="opacity"> Ctrl+E </span>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Copy
+					<span class="opacity"> Ctrl+C </span>
+				</div>
+			</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Find
+					<span class="opacity"> Ctrl+F </span>
+				</div>
+			</MenuItem>
+			<MenuItem>Emojis & symbols</MenuItem>
+			<MenuItem>
+				<div class="row space-between grow">
+					Speech
+					<span class="opacity"> Ctrl+P </span>
+				</div>
+			</MenuItem>
+		</MenuTitle>
+	</section>
 </ResponsiveContainer>
 
 <ResponsiveContainer class="vspace">
@@ -258,6 +549,114 @@
 </ResponsiveContainer>
 
 <ResponsiveContainer class="vspace">
+	<section id="badge" class="controls no-gap">
+		<div class="row">
+			<Typography>Skatebord</Typography>
+			<Badge dimension="small">20% off</Badge>
+		</div>
+
+		<Divider class="half-margin" />
+
+		<div class="row space-between">
+			<Typography variant="h5">Teriyaki chicken</Typography>
+			<Badge dimension="small">
+				<Fire size={16} />
+				Spicy
+			</Badge>
+		</div>
+
+		<Divider class="half-margin" />
+
+		<div class="row">
+			<Typography variant="large">KGLW</Typography>
+			<Badge dimension="small" variant="strong">NEW RELEASE</Badge>
+		</div>
+
+		<Divider class="half-margin" />
+
+		<div class="row space-between">
+			<Typography variant="h5">Messages</Typography>
+			<Badge dimension="small" variant="strong">
+				<NotificationNew size={16} />
+				420
+			</Badge>
+		</div>
+
+		<Divider class="half-margin" />
+
+		<div class="row space-between">
+			<Typography variant="h3">Yuccie</Typography>
+			<Badge dimension="large">On sale</Badge>
+		</div>
+
+		<Divider class="half-margin" />
+
+		<div class="row">
+			<Typography variant="large">Sriracha</Typography>
+			<Badge dimension="large">
+				<ThumbsUp size={24} />
+				2,288
+			</Badge>
+		</div>
+
+		<Divider class="half-margin" />
+
+		<div class="row">
+			<Typography variant="h3">Trust fund</Typography>
+			<Badge dimension="large" variant="strong">NEW!</Badge>
+		</div>
+
+		<Divider class="half-margin" />
+
+		<div class="row space-between">
+			<Typography variant="large">Kale chips</Typography>
+			<Badge dimension="large">
+				<Star size={24} />
+				17
+			</Badge>
+		</div>
+	</section>
+
+	<section id="dark-overlay" class="controls">
+		<div class="col">
+			<div class="row space-between">
+				<Badge dimension="small" variant="dark-overlay">Trending</Badge>
+				<Badge dimension="small" variant="dark-overlay">
+					<CheckmarkFilled size={16} />
+					Latest version
+				</Badge>
+			</div>
+			<div class="row space-between">
+				<Badge dimension="large" variant="dark-overlay">
+					<WarningAltFilled size={24} />
+					Error
+				</Badge>
+				<Badge dimension="large" variant="dark-overlay">Category</Badge>
+			</div>
+		</div>
+	</section>
+
+	<section id="light-overlay" class="controls">
+		<div class="col">
+			<div class="row space-between">
+				<Badge dimension="small" variant="light-overlay">Trending</Badge>
+				<Badge dimension="small" variant="light-overlay">
+					<CheckmarkFilled size={16} />
+					Latest version
+				</Badge>
+			</div>
+			<div class="row space-between">
+				<Badge dimension="large" variant="light-overlay">
+					<WarningAltFilled size={24} />
+					Error
+				</Badge>
+				<Badge dimension="large" variant="light-overlay">Category</Badge>
+			</div>
+		</div>
+	</section>
+</ResponsiveContainer>
+
+<ResponsiveContainer class="vspace">
 	<section id="quote" class="controls">
 		<div class="quote">
 			<Typography font="serif" italic variant="large"
@@ -274,7 +673,7 @@
 		code={`<script lang="ts">
 	import Button from '$lib/components/ui/button.svelte'
 	import { Close } from 'carbon-icons-svelte'
-</` +
+</R` +
 			`script>
 
 <Button variant="strong" dimension="default">
@@ -332,6 +731,10 @@
 	:global(.vspace) {
 		margin-top: var(--padding);
 	}
+	:global(.half-margin) {
+		margin-top: var(--padding) !important;
+		margin-bottom: var(--padding) !important;
+	}
 	#dark-overlay {
 		background-image: url('/backgrounds/noita-digital-QZX8jbK1xEw-unsplash.jpg');
 		background-size: cover;
@@ -342,6 +745,29 @@
 	}
 	#bottom {
 		margin-top: calc(2 * var(--double-padding));
+	}
+
+	.opacity {
+		opacity: 0.5;
+	}
+	.grow {
+		flex: 1;
+	}
+	.row {
+		display: flex;
+		align-items: center;
+		align-self: stretch;
+		gap: 0.5rem;
+	}
+	.space-between {
+		justify-content: space-between;
+	}
+	.col {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		justify-content: space-between;
+		align-self: stretch;
 	}
 	.quote {
 		display: flex;

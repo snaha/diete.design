@@ -59,13 +59,15 @@
 	.root {
 		display: flex;
 		position: relative;
+		flex-grow: 1;
 		flex-direction: column;
-		align-items: stretch;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		.relative {
+			display: flex;
 			position: relative;
+			flex-grow: 1;
 		}
 	}
 	label {
@@ -74,7 +76,10 @@
 	}
 	textarea {
 		position: relative;
-		border-radius: 0.25rem;
+		flex-grow: 1;
+		border: 1px solid var(--colors-ultra-high);
+		border-radius: var(--border-radius);
+		background: var(--colors-base);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		&::placeholder {
@@ -129,6 +134,7 @@
 		}
 		textarea {
 			padding: var(--three-quarters-padding);
+			min-height: calc(var(--three-quarters-padding) * 2 + var(--line-height));
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -142,6 +148,7 @@
 		}
 		textarea {
 			padding: var(--three-quarters-padding);
+			min-height: calc(var(--three-quarters-padding) * 2 + var(--line-height-large));
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
@@ -155,6 +162,7 @@
 		}
 		textarea {
 			padding: var(--half-padding);
+			min-height: calc(var(--half-padding) * 2 + var(--line-height));
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -168,6 +176,7 @@
 		}
 		textarea {
 			padding: var(--half-padding);
+			min-height: calc(var(--half-padding) * 2 + var(--line-height-small));
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);

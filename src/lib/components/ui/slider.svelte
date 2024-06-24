@@ -146,7 +146,7 @@
 			top: calc(var(--half-padding) * -1);
 			left: 50%;
 			transform: translateX(-50%) translateY(-100%);
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			background-color: var(--colors-top);
 			padding: var(--quarter-padding) var(--half-padding);
 			color: var(--colors-base);
@@ -174,7 +174,7 @@
 		&:has(input:not(:disabled).focus) {
 			outline: var(--focus-outline);
 			outline-offset: var(--focus-outline-offset);
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			background-color: var(--colors-base);
 			color: var(--colors-top);
 		}
@@ -374,7 +374,7 @@
 		position: absolute;
 		left: calc(var(--valuePercent));
 		z-index: 0;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background: var(--colors-ultra-high);
 		height: 1px;
 	}
@@ -382,7 +382,7 @@
 	.slider-progress-centered {
 		position: absolute;
 		z-index: 0;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background-color: var(--colors-ultra-high);
 		height: 4px;
 	}
