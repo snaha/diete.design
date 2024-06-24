@@ -266,8 +266,8 @@
 			&:focus:not(:disabled),
 			&:focus-visible:not(:disabled),
 			&.focus:not(:disabled) {
-				outline: var(--focus-outline) solid var(--colors-top);
-				outline-offset: calc(-1 * var(--focus-outline));
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 				color: var(--colors-top);
 				& ~ .unit {

@@ -199,8 +199,8 @@
 		&:has(input:not(:disabled):focus-visible),
 		&:has(input:not(:disabled).leftFocus),
 		&:has(input:not(:disabled).rightFocus) {
-			outline: var(--focus-outline) solid var(--colors-top);
-			outline-offset: calc(-1 * var(--focus-outline));
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
 			border-radius: 0.25rem;
 			background-color: var(--colors-base);
 			color: var(--colors-top);
@@ -270,13 +270,13 @@
 		&:has(.min-range:focus-visible:not(:disabled)),
 		&:has(.leftFocus:not(:disabled)) {
 			.min-range::-webkit-slider-thumb {
-				outline: var(--focus-outline) solid var(--colors-top);
-				outline-offset: calc(-1 * var(--focus-outline));
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			.min-range::-moz-range-thumb {
-				outline: var(--focus-outline) solid var(--colors-top);
-				outline-offset: calc(-1 * var(--focus-outline));
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			.max-range::-webkit-slider-thumb {
@@ -300,13 +300,13 @@
 		&:has(.max-range:focus-visible:not(:disabled)),
 		&:has(.rightFocus:not(:disabled)) {
 			.max-range::-webkit-slider-thumb {
-				outline: var(--focus-outline) solid var(--colors-top);
-				outline-offset: calc(-1 * var(--focus-outline));
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			.max-range::-moz-range-thumb {
-				outline: var(--focus-outline) solid var(--colors-top);
-				outline-offset: calc(-1 * var(--focus-outline));
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			.min-range::-webkit-slider-thumb {

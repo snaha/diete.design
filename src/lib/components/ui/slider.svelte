@@ -172,8 +172,8 @@
 		}
 		&:has(input:not(:disabled):focus-visible),
 		&:has(input:not(:disabled).focus) {
-			outline: var(--focus-outline) solid var(--colors-top);
-			outline-offset: calc(-1 * var(--focus-outline));
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
 			border-radius: 0.25rem;
 			background-color: var(--colors-base);
 			color: var(--colors-top);
@@ -294,13 +294,13 @@
 		&.focus:not(:disabled) {
 			outline: none;
 			&::-webkit-slider-thumb {
-				outline: var(--focus-outline) solid var(--colors-top);
-				outline-offset: calc(-1 * var(--focus-outline));
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			&::-moz-range-thumb {
-				outline: var(--focus-outline) solid var(--colors-top);
-				outline-offset: calc(-1 * var(--focus-outline));
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			& ~ .center {

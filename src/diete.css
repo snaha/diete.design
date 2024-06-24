@@ -71,7 +71,8 @@
 	--one-and-a-half-padding: calc(var(--half-padding) * 3);
 	--double-padding: calc(2 * var(--padding));
 	--border-radius: 0.25rem;
-	--focus-outline: 4px;
+	--focus-outline: 4px solid var(--colors-top);
+	--focus-outline-offset: -4px;
 }
 *,
 *::before,
