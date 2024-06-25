@@ -1,17 +1,19 @@
 <script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements'
+
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Props = {
 		dimension?: Dimension
 	}
-	let { dimension = 'default' }: Props = $props()
+	let { dimension = 'default', ...restProps }: Props & HTMLAttributes<HTMLDivElement> = $props()
 </script>
 
-<div class="loader {dimension}"></div>
+<div class="loader {dimension}" {...restProps}></div>
 
 <style lang="postcss">
 	.loader {
 		animation: spin 1s linear infinite;
-		border: 2px solid var(--colors-ultra-high);
+		border: 2px solid var(--loader-color, var(--colors-ultra-high));
 		border-top: 2px solid transparent;
 		border-radius: 50%;
 		&.default,
