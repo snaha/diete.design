@@ -8,7 +8,12 @@
 
 	type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'large' | 'default' | 'small'
 
-	let { dimension = 'default', disabled, ...restProps }: Props & HTMLInputAttributes = $props()
+	let {
+		dimension = 'default',
+		disabled,
+		value = $bindable(),
+		...restProps
+	}: Props & HTMLInputAttributes = $props()
 
 	let currentDate = new Date()
 	let selectedMonth = $state(currentDate.getMonth())
@@ -85,11 +90,12 @@
 	function changeYear(year: number) {
 		selectedYear = year
 		selectDate(currentDate.getDate())
-		showYearPicker = false
+		setTimeout(() => (showDatePicker = true))
 	}
 
 	function selectDate(date: number) {
 		selectedDate = new Date(selectedYear, selectedMonth, date)
+		value = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}`
 	}
 
 	function isSelected(date: number) {
@@ -106,13 +112,6 @@
 			selectedMonth === currentDate.getMonth() &&
 			selectedYear === currentDate.getFullYear()
 		)
-	}
-
-	function formatDate(date: Date) {
-		const year = date.getFullYear()
-		const month = String(date.getMonth() + 1).padStart(2, '0')
-		const day = String(date.getDate()).padStart(2, '0')
-		return `${year}-${month}-${day}`
 	}
 
 	function parseDate(dateString: string) {
@@ -178,7 +177,7 @@
 		{dimension}
 		{disabled}
 		{...restProps}
-		value={formatDate(selectedDate)}
+		bind:value
 		oninput={inputChange}
 		{buttons}
 		type="date"
@@ -221,26 +220,26 @@
 		{#if showYearPicker}
 			<div class="year-picker">
 				<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-				{#each Array(131) as _, i}
-					{#if selectedYear === 1970 + i}
+				{#each Array(200) as _, i}
+					{#if selectedYear === 1900 + i}
 						<span bind:this={selectedYearElement}>
 							<Button
 								{dimension}
 								variant="ghost"
-								active={selectedYear === 1970 + i}
+								active={selectedYear === 1900 + i}
 								onclick={() => {
-									changeYear(1970 + i)
-								}}>{1970 + i}</Button
+									changeYear(1900 + i)
+								}}>{1900 + i}</Button
 							>
 						</span>
 					{:else}
 						<Button
 							{dimension}
 							variant="ghost"
-							active={selectedYear === 1970 + i}
+							active={selectedYear === 1900 + i}
 							onclick={() => {
-								changeYear(1970 + i)
-							}}>{1970 + i}</Button
+								changeYear(1900 + i)
+							}}>{1900 + i}</Button
 						>
 					{/if}
 				{/each}
