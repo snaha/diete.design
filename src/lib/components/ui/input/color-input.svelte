@@ -8,6 +8,15 @@
 
 	let colorInput: HTMLInputElement | undefined = $state(undefined)
 	let open = $state(false)
+
+	function toggleColorInput() {
+		if (!open) {
+			colorInput?.click()
+			open = true
+		} else {
+			open = false
+		}
+	}
 </script>
 
 {#snippet buttons()}
@@ -17,21 +26,9 @@
 		{disabled}
 		variant="secondary"
 		style="padding:0;"
-		onclick={() => {
-			if (!open) {
-				colorInput?.click()
-				open = true
-			} else {
-				open = false
-			}
-		}}
+		onclick={toggleColorInput}
 		onblur={() => {
 			open = false
-		}}
-		onkeypress={(e:KeyboardEvent)=>{
-			if(e.key === 'Enter'){
-                open = false
-            }
 		}}
 	>
 		<div class="palette-icon">
