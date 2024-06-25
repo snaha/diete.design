@@ -673,7 +673,7 @@
 		code={`<script lang="ts">
 	import Button from '$lib/components/ui/button.svelte'
 	import { Close } from 'carbon-icons-svelte'
-</R` +
+</` +
 			`script>
 
 <Button variant="strong" dimension="default">
