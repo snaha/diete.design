@@ -21,9 +21,16 @@
 	let selectedDate = $state(currentDate)
 	let showYearPicker = $state(false)
 	let showDatePicker = $state(false)
+	let isMobile = $state(false)
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 	let variant: Variant = $derived(
-		dimension === 'large' ? 'large' : dimension === 'small' ? 'small' : 'default',
+		isMobile
+			? 'small'
+			: dimension === 'large'
+				? 'large'
+				: dimension === 'small'
+					? 'small'
+					: 'default',
 	)
 	let daysInMonth = $derived(new Date(selectedYear, selectedMonth + 1, 0).getDate())
 	let firstDayOfMonth = $derived((new Date(selectedYear, selectedMonth, 1).getDay() + 6) % 7)
@@ -155,6 +162,29 @@
 			selectedYearElement?.scrollIntoView({ block: 'center', behavior: 'auto' })
 		}
 	})
+	$effect(() => {
+		const resize = () => {
+			isMobile = window.innerWidth < 768
+		}
+		resize()
+		window.addEventListener('resize', resize)
+		return () => {
+			window.removeEventListener('resize', resize)
+		}
+	})
+	$effect(() => {
+		const menuButton = document.querySelector('.menu-button-container') as HTMLElement
+		const modeButton = document.querySelector('.dark-mode-button-container') as HTMLElement
+		if (isMobile && showDatePicker) {
+			menuButton.style.zIndex = '1'
+			modeButton.style.zIndex = '1'
+			document.body.style.overflow = 'hidden'
+		} else {
+			menuButton.style.zIndex = '100'
+			modeButton.style.zIndex = '100'
+			document.body.style.overflow = 'auto'
+		}
+	})
 </script>
 
 {#snippet buttons()}
@@ -182,90 +212,94 @@
 		{buttons}
 		type="date"
 	/>
-	<div class="date-picker" class:showDatePicker bind:this={datePicker}>
-		<div class="header">
-			<div class="month">
-				<Button {dimension} variant="ghost" onclick={() => changeMonth(-1)}
-					><ChevronLeft {size} /></Button
-				>
-				<div class="current-month">
-					<Typography {variant} bold>{months[selectedMonth]} {selectedYear}</Typography>
+	<div class:modal={isMobile}>
+		<div class="date-picker" class:showDatePicker bind:this={datePicker}>
+			<div class="header">
+				<div class="month">
 					<Button
-						{dimension}
+						dimension={isMobile ? 'small' : dimension}
 						variant="ghost"
-						onclick={(e:MouseEvent)=>{e.stopPropagation(); showYearPicker=!showYearPicker}}
+						onclick={() => changeMonth(-1)}><ChevronLeft size={isMobile ? 16 : size} /></Button
 					>
-						{#if showYearPicker}
-							<CaretUp {size} />
-						{:else}
-							<CaretDown {size} />
-						{/if}
-					</Button>
+					<div class="current-month">
+						<Typography {variant} bold>{months[selectedMonth]} {selectedYear}</Typography>
+						<Button
+							dimension={isMobile ? 'small' : dimension}
+							variant="ghost"
+							onclick={(e:MouseEvent)=>{e.stopPropagation(); showYearPicker=!showYearPicker}}
+						>
+							{#if showYearPicker}
+								<CaretUp size={isMobile ? 16 : size} />
+							{:else}
+								<CaretDown size={isMobile ? 16 : size} />
+							{/if}
+						</Button>
+					</div>
+					<Button
+						dimension={isMobile ? 'small' : dimension}
+						variant="ghost"
+						onclick={() => changeMonth(1)}><ChevronRight size={isMobile ? 16 : size} /></Button
+					>
 				</div>
-				<Button {dimension} variant="ghost" onclick={() => changeMonth(1)}
-					><ChevronRight {size} /></Button
-				>
+				{#if !showYearPicker}
+					<div class="days">
+						{#each days as day}
+							<Typography {variant}>{day}</Typography>
+						{/each}
+					</div>
+				{/if}
 			</div>
-			{#if !showYearPicker}
-				<div class="days">
-					{#each days as day}
-						<Typography {variant}>{day}</Typography>
-					{/each}
-				</div>
-			{/if}
-		</div>
-
-		<Divider class="no-margin" />
-
-		{#if showYearPicker}
-			<div class="year-picker">
-				<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-				{#each Array(200) as _, i}
-					{#if selectedYear === 1900 + i}
-						<span bind:this={selectedYearElement}>
+			<Divider class="no-margin" />
+			{#if showYearPicker}
+				<div class="year-picker">
+					<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+					{#each Array(200) as _, i}
+						{#if selectedYear === 1900 + i}
+							<span bind:this={selectedYearElement}>
+								<Button
+									dimension={isMobile ? 'small' : dimension}
+									variant="ghost"
+									active={selectedYear === 1900 + i}
+									onclick={() => {
+										changeYear(1900 + i)
+									}}>{1900 + i}</Button
+								>
+							</span>
+						{:else}
 							<Button
-								{dimension}
+								dimension={isMobile ? 'small' : dimension}
 								variant="ghost"
 								active={selectedYear === 1900 + i}
 								onclick={() => {
 									changeYear(1900 + i)
 								}}>{1900 + i}</Button
 							>
-						</span>
-					{:else}
+						{/if}
+					{/each}
+				</div>
+			{:else}
+				<div class="calendar">
+					{#each calendarDays as { date, type }}
 						<Button
-							{dimension}
+							dimension={isMobile ? 'small' : dimension}
+							class={type === 'current' && isCurrentDay(date) && !isSelected(date)
+								? 'current-day'
+								: ''}
+							active={type === 'current' && isSelected(date)}
+							disabled={type === 'prev' || type === 'next'}
+							style="justify-content:center;"
 							variant="ghost"
-							active={selectedYear === 1900 + i}
 							onclick={() => {
-								changeYear(1900 + i)
-							}}>{1900 + i}</Button
+								type === 'current' && selectDate(date)
+								showDatePicker = false
+							}}
 						>
-					{/if}
-				{/each}
-			</div>
-		{:else}
-			<div class="calendar">
-				{#each calendarDays as { date, type }}
-					<Button
-						{dimension}
-						class={type === 'current' && isCurrentDay(date) && !isSelected(date)
-							? 'current-day'
-							: ''}
-						active={type === 'current' && isSelected(date)}
-						disabled={type === 'prev' || type === 'next'}
-						style="justify-content:center;"
-						variant="ghost"
-						onclick={() => {
-							type === 'current' && selectDate(date)
-							showDatePicker = false
-						}}
-					>
-						{date}
-					</Button>
-				{/each}
-			</div>
-		{/if}
+							{date}
+						</Button>
+					{/each}
+				</div>
+			{/if}
+		</div>
 	</div>
 </div>
 
@@ -293,6 +327,29 @@
 			display: flex;
 		}
 	}
+	.modal {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		background-color: rgba(0, 0, 0, 0.6);
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		&:has(.showDatePicker) {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.date-picker {
+			bottom: unset;
+			left: unset;
+			transform: unset;
+			width: fit-content;
+			height: fit-content;
+		}
+	}
 	.month {
 		display: flex;
 		justify-content: space-between;
@@ -315,6 +372,7 @@
 	.calendar {
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
+		flex-shrink: 1;
 		gap: 0.5rem;
 	}
 	:global(.current-day) {
