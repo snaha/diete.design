@@ -56,7 +56,7 @@
 >
 
 <section id="introduction">
-	<Typography>
+	<Typography variant="large">
 		Diète is made by, and for, free-spirited app makers who want to remain independent. All
 		components are minimally-designed, built with Svelte 5, easily customisable and comply with the
 		highest accessibility standards. Check our growing library of open-source UI components, that
