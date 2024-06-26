@@ -293,8 +293,8 @@
 		}
 		&.focus:not(:disabled),
 		&.focused:not(:disabled) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
 			background: var(--colors-base);
 			color: var(--colors-top);
 			& + .wrapper > button {
