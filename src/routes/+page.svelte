@@ -769,6 +769,9 @@
 		justify-content: space-between;
 		align-self: stretch;
 	}
+	.col:has(.row.space-between) {
+		gap: var(--double-padding);
+	}
 	.quote {
 		display: flex;
 		flex-direction: column;
