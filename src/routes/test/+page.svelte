@@ -35,6 +35,8 @@
 	import Tr from '$lib/components/ui/table/tr.svelte'
 	import Th from '$lib/components/ui/table/th.svelte'
 	import Td from '$lib/components/ui/table/td.svelte'
+	import Thead from '$lib/components/ui/table/thead.svelte'
+	import Tbody from '$lib/components/ui/table/tbody.svelte'
 
 	let selected: boolean[] = $state([])
 	let selectedCount = $state(0)
@@ -2789,63 +2791,67 @@
 	</section>
 	<section class="table">
 		<Table>
-			<Tr>
-				<Th noPadding
-					><Checkbox
-						class="align"
-						label="Table header"
-						mixed={selectedCount > 0 && selectedCount < selected.length}
-						bind:checked={selectionAll}
-						onclick={selectAll}
-					/><ChevronDown class="align" size={24} /></Th
-				>
-				<Th>Table header</Th>
-				<Th>Table header</Th>
-				<Th>Table header</Th>
-				<Th>Table header</Th>
-			</Tr>
-			<Tr class="with-checkbox" active={selected[0]}>
-				<Td noPadding
-					><Checkbox
-						class="align"
-						label="Cornhole"
-						bind:checked={selected[0]}
-						onclick={() => toggleSelection(0)}
-					/></Td
-				>
-				<Td>Glossier</Td>
-				<Td>Skateboard</Td>
-				<Td>Paleo</Td>
-				<Td>Fingerstache</Td>
-			</Tr>
-			<Tr class="with-checkbox" active={selected[1]}>
-				<Td noPadding
-					><Checkbox
-						class="align"
-						label="Cornhole"
-						bind:checked={selected[1]}
-						onclick={() => toggleSelection(1)}
-					/></Td
-				>
-				<Td>Glossier</Td>
-				<Td>Skateboard</Td>
-				<Td>Paleo</Td>
-				<Td>Fingerstache</Td>
-			</Tr>
-			<Tr class="with-checkbox" active={selected[2]}>
-				<Td noPadding
-					><Checkbox
-						class="align"
-						label="Cornhole"
-						bind:checked={selected[2]}
-						onclick={() => toggleSelection(2)}
-					/></Td
-				>
-				<Td>Glossier</Td>
-				<Td>Skateboard</Td>
-				<Td>Paleo</Td>
-				<Td>Fingerstache</Td>
-			</Tr>
+			<Thead>
+				<Tr>
+					<Th noPadding
+						><Checkbox
+							class="align"
+							label="Table header"
+							mixed={selectedCount > 0 && selectedCount < selected.length}
+							bind:checked={selectionAll}
+							onclick={selectAll}
+						/><ChevronDown class="align" size={24} /></Th
+					>
+					<Th>Table header</Th>
+					<Th>Table header</Th>
+					<Th>Table header</Th>
+					<Th>Table header</Th>
+				</Tr>
+			</Thead>
+			<Tbody>
+				<Tr class="with-checkbox" active={selected[0]}>
+					<Td noPadding
+						><Checkbox
+							class="align"
+							label="Cornhole"
+							bind:checked={selected[0]}
+							onclick={() => toggleSelection(0)}
+						/></Td
+					>
+					<Td>Glossier</Td>
+					<Td>Skateboard</Td>
+					<Td>Paleo</Td>
+					<Td>Fingerstache</Td>
+				</Tr>
+				<Tr class="with-checkbox" active={selected[1]}>
+					<Td noPadding
+						><Checkbox
+							class="align"
+							label="Cornhole"
+							bind:checked={selected[1]}
+							onclick={() => toggleSelection(1)}
+						/></Td
+					>
+					<Td>Glossier</Td>
+					<Td>Skateboard</Td>
+					<Td>Paleo</Td>
+					<Td>Fingerstache</Td>
+				</Tr>
+				<Tr class="with-checkbox" active={selected[2]}>
+					<Td noPadding
+						><Checkbox
+							class="align"
+							label="Cornhole"
+							bind:checked={selected[2]}
+							onclick={() => toggleSelection(2)}
+						/></Td
+					>
+					<Td>Glossier</Td>
+					<Td>Skateboard</Td>
+					<Td>Paleo</Td>
+					<Td>Fingerstache</Td>
+				</Tr>
+			</Tbody>
 		</Table>
 	</section>
 	<section class="table">
