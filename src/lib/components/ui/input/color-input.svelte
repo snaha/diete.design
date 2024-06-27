@@ -3,7 +3,12 @@
 	import Button from '../button.svelte'
 	import Input, { type Props } from './input.svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
-	let { dimension, disabled, value, ...restProps }: Props & HTMLInputAttributes = $props()
+	let {
+		dimension,
+		disabled,
+		value = $bindable(),
+		...restProps
+	}: Props & HTMLInputAttributes = $props()
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 
 	let colorInput: HTMLInputElement | undefined = $state(undefined)
