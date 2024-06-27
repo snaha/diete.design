@@ -36,33 +36,29 @@
 	import Th from '$lib/components/ui/table/th.svelte'
 	import Td from '$lib/components/ui/table/td.svelte'
 
-	let selected = $state([false, false])
-	let mixed = $state(false)
+	let selected: boolean[] = $state([])
+	let selectedCount = $state(0)
 	let selectionAll = $state(false)
 	function selectAll() {
-		selectionAll = !selectionAll
-		const allChecked = selected.every((value) => value)
-		if (allChecked) {
-			mixed = false
-			selected = selected.map(() => false)
-		} else {
-			mixed = false
-			selected = selected.map(() => true)
-		}
+		const allChecked = selectedCount === selected.length
+		selected = selected.map(() => !allChecked)
+		selectedCount = allChecked ? 0 : selected.length
 	}
 	function toggleSelection(index: number) {
 		selected[index] = !selected[index]
-		if (selected[0] && selected[1]) {
-			mixed = false
+		selectedCount += selected[index] ? 1 : -1
+	}
+	$effect(() => {
+		const row = document.querySelectorAll('.with-checkbox')
+		selected = new Array(row.length).fill(false)
+	})
+	$effect(() => {
+		if (selectedCount === selected.length) {
 			selectionAll = true
-		} else if (selected[0] || selected[1]) {
-			mixed = true
-			selectionAll = false
 		} else {
-			mixed = false
 			selectionAll = false
 		}
-	}
+	})
 </script>
 
 <div class="page-wrapper">
@@ -2794,11 +2790,11 @@
 	<section class="table">
 		<Table>
 			<Tr>
-				<Th class="no-padding"
+				<Th noPadding
 					><Checkbox
 						class="align"
 						label="Table header"
-						{mixed}
+						mixed={selectedCount > 0 && selectedCount < selected.length}
 						bind:checked={selectionAll}
 						onclick={selectAll}
 					/><ChevronDown class="align" size={24} /></Th
@@ -2808,8 +2804,8 @@
 				<Th>Table header</Th>
 				<Th>Table header</Th>
 			</Tr>
-			<Tr active={selected[0]}>
-				<Td class="no-padding"
+			<Tr class="with-checkbox" active={selected[0]}>
+				<Td noPadding
 					><Checkbox
 						class="align"
 						label="Cornhole"
@@ -2822,13 +2818,27 @@
 				<Td>Paleo</Td>
 				<Td>Fingerstache</Td>
 			</Tr>
-			<Tr active={selected[1]}>
-				<Td class="no-padding"
+			<Tr class="with-checkbox" active={selected[1]}>
+				<Td noPadding
 					><Checkbox
 						class="align"
 						label="Cornhole"
 						bind:checked={selected[1]}
 						onclick={() => toggleSelection(1)}
+					/></Td
+				>
+				<Td>Glossier</Td>
+				<Td>Skateboard</Td>
+				<Td>Paleo</Td>
+				<Td>Fingerstache</Td>
+			</Tr>
+			<Tr class="with-checkbox" active={selected[2]}>
+				<Td noPadding
+					><Checkbox
+						class="align"
+						label="Cornhole"
+						bind:checked={selected[2]}
+						onclick={() => toggleSelection(2)}
 					/></Td
 				>
 				<Td>Glossier</Td>
@@ -2876,9 +2886,6 @@
 <style>
 	.table {
 		margin-bottom: 5rem;
-	}
-	:global(.no-padding) {
-		padding: 0 !important;
 	}
 	:global(.align) {
 		vertical-align: middle;
