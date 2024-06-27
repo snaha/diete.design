@@ -358,6 +358,7 @@
 			cursor: grab;
 			margin-bottom: 0;
 			outline: none;
+			box-shadow: none;
 			border: none;
 			border-radius: 50%;
 			background: var(--colors-ultra-high);
@@ -369,6 +370,7 @@
 			cursor: grab;
 			margin-bottom: 0;
 			outline: none;
+			box-shadow: none;
 			border: none;
 			border-radius: 50%;
 			background: var(--colors-ultra-high);
