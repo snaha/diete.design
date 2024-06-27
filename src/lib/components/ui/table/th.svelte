@@ -1,9 +1,12 @@
 <script lang="ts">
 	import type { HTMLThAttributes } from 'svelte/elements'
-	let { children, ...restProps }: HTMLThAttributes = $props()
+	interface Props extends HTMLThAttributes {
+		noPadding?: boolean
+	}
+	let { noPadding = false, children, ...restProps }: Props = $props()
 </script>
 
-<th {...restProps}>
+<th class:noPadding {...restProps}>
 	{#if children}
 		{@render children()}
 	{/if}
@@ -20,5 +23,8 @@
 		font-family: var(--font-family-sans-serif);
 		letter-spacing: var(--letter-spacing-h5);
 		text-align: left;
+		&.noPadding {
+			padding: 0;
+		}
 	}
 </style>
