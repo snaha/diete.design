@@ -2732,7 +2732,7 @@
 	<section>
 		<div class="row">
 			<div class="col">
-				<Loader />
+				<Button><Loader color="low" /></Button>
 				<Loader dimension="large" />
 			</div>
 		</div>
