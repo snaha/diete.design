@@ -92,7 +92,7 @@
 					{#each Array.from({ length: stepCount + 1 }) as _, i}
 						<span
 							class="tick"
-							style={`left: ${i * step}%`}
+							style={`left: ${((i * step) / (max - min)) * 100}%`}
 							class:hidden={i === stepCount / 2 && centered}
 						></span>
 					{/each}

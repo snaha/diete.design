@@ -25,7 +25,7 @@
 	let label = $state('Slider label')
 	let withStep: boolean = $state(false)
 	let showSteps: boolean = $state(false)
-	let step: number | undefined = $state(undefined)
+	let step: number = $state(1)
 	let centered: boolean = $state(false)
 	let withHelperText: boolean = $state(false)
 	let optionalHelperText: string = $state('Helper text')
