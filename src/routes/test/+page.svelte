@@ -2856,35 +2856,42 @@
 	</section>
 	<section class="table">
 		<Table>
-			<Tr>
-				<Th><div class="space-between">Table header<ChevronDown class="align" size={24} /></div></Th
-				>
-				<Th>Simple text</Th>
-				<Th>Longer text</Th>
-				<Th>Badge</Th>
-				<Th style="text-align: right;">Number</Th>
-				<Th style="text-align: right;">Button</Th>
-			</Tr>
-			<Tr>
-				<Td>Cornhole</Td>
-				<Td>Glossier</Td>
-				<Td>Copper mug skateboard fingerstache</Td>
-				<Td><Badge dimension="small"><CheckmarkFilled size={16} />Small Badge</Badge></Td>
-				<Td style="text-align: right;">999 EUR</Td>
-				<Td style="text-align: right;"
-					><Button variant="secondary" dimension="compact">Outline button</Button></Td
-				>
-			</Tr>
-			<Tr>
-				<Td>Cornhole</Td>
-				<Td>Glossier</Td>
-				<Td>Copper mug skateboard fingerstache</Td>
-				<Td><Badge dimension="small"><CheckmarkFilled size={16} />Small Badge</Badge></Td>
-				<Td style="text-align: right;">999 EUR</Td>
-				<Td style="text-align: right;"
-					><Button variant="secondary" dimension="compact">Outline button</Button></Td
-				>
-			</Tr>
+			<Thead>
+				<Tr>
+					<Th
+						><div class="space-between">
+							Table header<ChevronDown class="align" size={24} />
+						</div></Th
+					>
+					<Th>Simple text</Th>
+					<Th>Longer text</Th>
+					<Th>Badge</Th>
+					<Th style="text-align: right;">Number</Th>
+					<Th style="text-align: right;">Button</Th>
+				</Tr>
+			</Thead>
+			<Tbody>
+				<Tr>
+					<Td>Cornhole</Td>
+					<Td>Glossier</Td>
+					<Td>Copper mug skateboard fingerstache</Td>
+					<Td><Badge dimension="small"><CheckmarkFilled size={16} />Small Badge</Badge></Td>
+					<Td style="text-align: right;">999 EUR</Td>
+					<Td style="text-align: right;"
+						><Button variant="secondary" dimension="compact">Outline button</Button></Td
+					>
+				</Tr>
+				<Tr>
+					<Td>Cornhole</Td>
+					<Td>Glossier</Td>
+					<Td>Copper mug skateboard fingerstache</Td>
+					<Td><Badge dimension="small"><CheckmarkFilled size={16} />Small Badge</Badge></Td>
+					<Td style="text-align: right;">999 EUR</Td>
+					<Td style="text-align: right;"
+						><Button variant="secondary" dimension="compact">Outline button</Button></Td
+					>
+				</Tr>
+			</Tbody>
 		</Table>
 	</section>
 </div>

@@ -14,6 +14,8 @@
 	import Tr from '$lib/components/ui/table/tr.svelte'
 	import Th from '$lib/components/ui/table/th.svelte'
 	import Td from '$lib/components/ui/table/td.svelte'
+	import Thead from '$lib/components/ui/table/thead.svelte'
+	import TBody from '$lib/components/ui/table/tbody.svelte'
 
 	let tableCss: string = $state('Loading...')
 	let theadCss: string = $state('Loading...')
@@ -35,21 +37,25 @@
 			`>
 
 <Table>
-    <Tr>
-        <Th>Table header</Th>
-        <Th>Table header</Th>
-        <Th>Table header</Th>
-    </Tr>
-    <Tr>
-        <Td>Table cell</Td>
-        <Td>Table cell</Td>
-        <Td>Table cell</Td>
-    </Tr>
-    <Tr>
-        <Td>Table cell</Td>
-        <Td>Table cell</Td>
-        <Td>Table cell</Td>
-    </Tr>
+	<THead>
+		<Tr>
+			<Th>Table header</Th>
+			<Th>Table header</Th>
+			<Th>Table header</Th>
+		</Tr>
+	</THead>
+	<TBody>
+		<Tr>
+			<Td>Table cell</Td>
+			<Td>Table cell</Td>
+			<Td>Table cell</Td>
+		</Tr>
+		<Tr>
+			<Td>Table cell</Td>
+			<Td>Table cell</Td>
+			<Td>Table cell</Td>
+		</Tr>
+	</TBody>
 </Table>
 `,
 	)
@@ -74,21 +80,25 @@
 
 {#snippet examples()}
 	<Table>
-		<Tr>
-			<Th>Table header</Th>
-			<Th>Table header</Th>
-			<Th>Table header</Th>
-		</Tr>
-		<Tr>
-			<Td>Table cell</Td>
-			<Td>Table cell</Td>
-			<Td>Table cell</Td>
-		</Tr>
-		<Tr>
-			<Td>Table cell</Td>
-			<Td>Table cell</Td>
-			<Td>Table cell</Td>
-		</Tr>
+		<Thead>
+			<Tr>
+				<Th>Table header</Th>
+				<Th>Table header</Th>
+				<Th>Table header</Th>
+			</Tr>
+		</Thead>
+		<TBody>
+			<Tr>
+				<Td>Table cell</Td>
+				<Td>Table cell</Td>
+				<Td>Table cell</Td>
+			</Tr>
+			<Tr>
+				<Td>Table cell</Td>
+				<Td>Table cell</Td>
+				<Td>Table cell</Td>
+			</Tr>
+		</TBody>
 	</Table>
 {/snippet}
 
@@ -96,21 +106,25 @@
 
 {#snippet preview()}
 	<Table>
-		<Tr>
-			<Th>Table header</Th>
-			<Th>Table header</Th>
-			<Th>Table header</Th>
-		</Tr>
-		<Tr>
-			<Td>Table cell</Td>
-			<Td>Table cell</Td>
-			<Td>Table cell</Td>
-		</Tr>
-		<Tr>
-			<Td>Table cell</Td>
-			<Td>Table cell</Td>
-			<Td>Table cell</Td>
-		</Tr>
+		<Thead>
+			<Tr>
+				<Th>Table header</Th>
+				<Th>Table header</Th>
+				<Th>Table header</Th>
+			</Tr>
+		</Thead>
+		<TBody>
+			<Tr>
+				<Td>Table cell</Td>
+				<Td>Table cell</Td>
+				<Td>Table cell</Td>
+			</Tr>
+			<Tr>
+				<Td>Table cell</Td>
+				<Td>Table cell</Td>
+				<Td>Table cell</Td>
+			</Tr>
+		</TBody>
 	</Table>
 {/snippet}
 
