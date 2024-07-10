@@ -35,6 +35,6 @@ jobs:
 
       # This is a workaround until https://github.com/webpro/knip/issues/565 gets resolved
       - name: Setup bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
       - name: Check dependencies and unused files
         run: bunx --bun knip

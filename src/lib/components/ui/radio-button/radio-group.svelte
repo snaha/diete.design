@@ -88,9 +88,9 @@
 		display: flex;
 		flex-direction: column;
 		&:global(:has(input[type='radio']:focus-visible)) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
-			border-radius: 0.25rem;
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
+			border-radius: var(--border-radius);
 			background: var(--colors-base);
 		}
 	}

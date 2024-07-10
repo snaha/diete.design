@@ -2732,7 +2732,7 @@
 	<section>
 		<div class="row">
 			<div class="col">
-				<Loader />
+				<Button><Loader color="low" /></Button>
 				<Loader dimension="large" />
 			</div>
 		</div>
@@ -2755,6 +2755,15 @@
 				<SearchInput label="Search input" placeholder="Add text" />
 				<ColorInput label="Color input" placeholder="Add color" />
 				<DateInput label="Date input" />
+			</div>
+			<div class="col">
+				<DateInput label="Date input" dimension="large" />
+			</div>
+			<div class="col">
+				<DateInput label="Date input" dimension="compact" />
+			</div>
+			<div class="col">
+				<DateInput label="Date input" dimension="small" />
 			</div>
 		</div>
 	</section>

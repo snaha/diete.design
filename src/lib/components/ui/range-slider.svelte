@@ -169,7 +169,7 @@
 			top: calc(var(--half-padding) * -1);
 			left: 50%;
 			transform: translateX(-50%) translateY(-100%);
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			background-color: var(--colors-top);
 			padding: var(--quarter-padding) var(--half-padding);
 			color: var(--colors-base);
@@ -199,9 +199,9 @@
 		&:has(input:not(:disabled):focus-visible),
 		&:has(input:not(:disabled).leftFocus),
 		&:has(input:not(:disabled).rightFocus) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
-			border-radius: 0.25rem;
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
+			border-radius: var(--border-radius);
 			background-color: var(--colors-base);
 			color: var(--colors-top);
 		}
@@ -270,13 +270,13 @@
 		&:has(.min-range:focus-visible:not(:disabled)),
 		&:has(.leftFocus:not(:disabled)) {
 			.min-range::-webkit-slider-thumb {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			.min-range::-moz-range-thumb {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			.max-range::-webkit-slider-thumb {
@@ -300,13 +300,13 @@
 		&:has(.max-range:focus-visible:not(:disabled)),
 		&:has(.rightFocus:not(:disabled)) {
 			.max-range::-webkit-slider-thumb {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			.max-range::-moz-range-thumb {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			.min-range::-webkit-slider-thumb {
@@ -358,6 +358,7 @@
 			cursor: grab;
 			margin-bottom: 0;
 			outline: none;
+			box-shadow: none;
 			border: none;
 			border-radius: 50%;
 			background: var(--colors-ultra-high);
@@ -369,6 +370,7 @@
 			cursor: grab;
 			margin-bottom: 0;
 			outline: none;
+			box-shadow: none;
 			border: none;
 			border-radius: 50%;
 			background: var(--colors-ultra-high);
@@ -430,14 +432,14 @@
 		position: absolute;
 		transform: translateY(-50%);
 		z-index: 0;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background: var(--colors-ultra-high);
 		height: 1px;
 	}
 	.slider-progress {
 		position: absolute;
 		transform: translateY(-50%);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background-color: var(--colors-ultra-high);
 		width: calc(var(--valuePercentMax) - var(--valuePercentMin));
 		height: 4px;

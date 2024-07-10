@@ -83,7 +83,7 @@
 		gap: 0.5rem;
 		cursor: pointer;
 		border: 1px solid var(--colors-ultra-high);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		font-style: normal;
 		font-weight: 400;
 		font-family: var(--font-family-sans-serif);
@@ -127,8 +127,8 @@
 
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
 			background: var(--colors-base);
 			color: var(--colors-top);
 		}
@@ -159,8 +159,8 @@
 
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
 			border: 1px solid transparent;
 			background: var(--colors-base);
 			color: var(--colors-top);
@@ -194,8 +194,8 @@
 
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
 			background: var(--colors-base);
 			color: var(--colors-top);
 		}
@@ -226,8 +226,8 @@
 
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
 			background: var(--colors-base);
 			color: var(--colors-top);
 		}
@@ -258,8 +258,8 @@
 
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
 			background: var(--colors-base);
 			color: var(--colors-top);
 		}
@@ -291,8 +291,8 @@
 
 		&:focus-visible:not(:disabled),
 		&.focus:not(:disabled) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
 			background: var(--colors-base);
 			color: var(--colors-top);
 		}

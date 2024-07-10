@@ -105,7 +105,7 @@
 			flex-direction: row;
 			justify-content: stretch;
 			align-items: center;
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 		}
 		&:has(input[type='checkbox']:not(:disabled)) {
 			.wrapper {
@@ -128,8 +128,8 @@
 		&:has(input[type='checkbox']:not(:disabled):focus-visible),
 		&:has(input[type='checkbox']:not(:disabled).focus) {
 			.wrapper {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 				span {
 					color: var(--colors-top);

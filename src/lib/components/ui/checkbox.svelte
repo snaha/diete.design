@@ -32,7 +32,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		cursor: pointer;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		&:has(input[type='checkbox']:checked) {
@@ -43,8 +43,8 @@
 		}
 		&:has(input[type='checkbox']:not(:disabled):focus-visible),
 		&.focus:has(input[type='checkbox']:not(:disabled)) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
 			background: var(--colors-base);
 			color: var(--colors-top);
 
@@ -98,7 +98,7 @@
 		align-items: flex-start;
 		cursor: pointer;
 		border: 1px solid var(--colors-ultra-high);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		content: '';
 	}
 	input[type='checkbox']:checked::before {

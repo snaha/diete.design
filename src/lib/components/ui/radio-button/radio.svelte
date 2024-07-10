@@ -34,7 +34,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		cursor: pointer;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		&:has(input[type='radio']:disabled) {
@@ -67,11 +67,11 @@
 		&.focus:has(input[type='radio']:not(:disabled)) {
 			color: var(--colors-top);
 			input[type='radio'] {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				&:checked {
-					outline: 4px solid var(--colors-top);
-					outline-offset: -4px;
+					outline: var(--focus-outline);
+					outline-offset: var(--focus-outline-offset);
 				}
 				&:checked::after {
 					background: var(--colors-top);

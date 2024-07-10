@@ -146,7 +146,7 @@
 			top: calc(var(--half-padding) * -1);
 			left: 50%;
 			transform: translateX(-50%) translateY(-100%);
-			border-radius: 0.25rem;
+			border-radius: var(--border-radius);
 			background-color: var(--colors-top);
 			padding: var(--quarter-padding) var(--half-padding);
 			color: var(--colors-base);
@@ -172,9 +172,9 @@
 		}
 		&:has(input:not(:disabled):focus-visible),
 		&:has(input:not(:disabled).focus) {
-			outline: 4px solid var(--colors-top);
-			outline-offset: -4px;
-			border-radius: 0.25rem;
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
+			border-radius: var(--border-radius);
 			background-color: var(--colors-base);
 			color: var(--colors-top);
 		}
@@ -209,6 +209,7 @@
 			cursor: grab;
 			margin-bottom: 0;
 			outline: none;
+			box-shadow: none;
 			border: none;
 			border-radius: 50%;
 			background: var(--colors-ultra-high);
@@ -220,6 +221,7 @@
 			cursor: grab;
 			margin-bottom: 0;
 			outline: none;
+			box-shadow: none;
 			border: none;
 			border-radius: 50%;
 			background: var(--colors-ultra-high);
@@ -294,13 +296,13 @@
 		&.focus:not(:disabled) {
 			outline: none;
 			&::-webkit-slider-thumb {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			&::-moz-range-thumb {
-				outline: 4px solid var(--colors-top);
-				outline-offset: -4px;
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
 				background: var(--colors-base);
 			}
 			& ~ .center {
@@ -374,7 +376,7 @@
 		position: absolute;
 		left: calc(var(--valuePercent));
 		z-index: 0;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background: var(--colors-ultra-high);
 		height: 1px;
 	}
@@ -382,7 +384,7 @@
 	.slider-progress-centered {
 		position: absolute;
 		z-index: 0;
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		background-color: var(--colors-ultra-high);
 		height: 4px;
 	}
