@@ -45,9 +45,7 @@
 			return parsedValue
 		}
 	}
-	let cursorPosition: number | null = 0
-	let distanceFromEnd = 0
-	function updateCursorPosition() {
+	function updateCursorPosition(distanceFromEnd: number) {
 		const input = document.querySelector('.input input') as HTMLInputElement
 		let newCursorPosition = () => {
 			let position = input.value.length - distanceFromEnd
@@ -58,7 +56,6 @@
 		}
 		input?.setSelectionRange(newCursorPosition(), newCursorPosition())
 	}
-	$inspect(typeof value, '-', value)
 </script>
 
 {#snippet buttons()}
@@ -90,9 +87,10 @@
 	class="input"
 	value={stringValue}
 	oninput={(e) => {
-		stringValue = e.currentTarget.value
-		cursorPosition = e.currentTarget.selectionStart
-		distanceFromEnd = stringValue.length - (cursorPosition ?? 0)
+		const regex = /[^\d\.,\s]+/g
+		stringValue = e.currentTarget.value.replace(regex,'')
+		const cursorPosition = e.currentTarget.selectionStart
+		const distanceFromEnd = stringValue.length - (cursorPosition ?? 0)
 		const temp = localeStringToNumber(stringValue, formatter)
 		if (temp === undefined) {
 			console.error('Not a number')
@@ -102,7 +100,7 @@
 			stringValue = numberToLocalString(value, formatter)
 		}
 		setTimeout(() => {
-			updateCursorPosition()
+			updateCursorPosition(distanceFromEnd)
 		}, 0)
 	}}
 	{dimension}
