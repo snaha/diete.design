@@ -7,7 +7,7 @@
 		formatter?: Intl.NumberFormat
 	}
 	let {
-		formatter = new Intl.NumberFormat(undefined, { maximumFractionDigits: 12 }),
+		formatter,
 		value = $bindable(0),
 		dimension,
 		disabled,
@@ -17,33 +17,41 @@
 
 	let stringValue = $state(numberToLocalString(value, formatter))
 
-	function numberToLocalString(value: number, formatter: Intl.NumberFormat): string {
-		return formatter.format(value)
+	function numberToLocalString(value: number, formatter?: Intl.NumberFormat): string | undefined {
+		return formatter ? formatter.format(value) : value.toString()
 	}
 
 	function localeStringToNumber(
 		numberString: string,
-		formatter: Intl.NumberFormat,
+		formatter?: Intl.NumberFormat,
 	): number | undefined {
+		const regex = /^-?([0-9]+(,+[0-9]+)?(\.[0-9]+)?|(\.|,)[0-9]+)$/g
+
+		if (!formatter) {
+			if (regex.test(numberString)) {
+				numberString = numberString.replace(',', '.')
+				const parsedValue = parseFloat(numberString)
+				return isNaN(parsedValue) ? undefined : parsedValue
+			}
+			return undefined
+		}
+
 		const groupSeparator = formatter.format(11111).replace(/\p{Number}/gu, '')
 		const decimalSeparator = formatter.format(1.1).replace(/\p{Number}/gu, '')
 
-		// Replace the group separator and decimal separator with appropriate characters
+		// Nahradíme oddělovače skupin a desetinné tečky odpovídajícími znaky
 		const sanitizedNumberString = numberString
 			.split(groupSeparator)
 			.join('')
 			.replace(decimalSeparator, '.')
-		const regex = /^-?([0-9]+(.[0-9]+)?|.[0-9]+)$/
-		if (!regex.test(sanitizedNumberString)) {
-			console.error('Invalid number format')
-			return undefined
+		// Pokud je číslo validní a odpovídá formátu, vrátíme ho
+		if (regex.test(sanitizedNumberString)) {
+			const parsedValue = parseFloat(sanitizedNumberString)
+			return isNaN(parsedValue) ? undefined : parsedValue
 		}
-		const parsedValue = parseFloat(sanitizedNumberString)
-		if (Number.isNaN(parsedValue)) {
-			return undefined
-		} else {
-			return parsedValue
-		}
+
+		console.error('Invalid number format')
+		return undefined
 	}
 	function updateCursorPosition(distanceFromEnd: number) {
 		const input = document.querySelector('.input input') as HTMLInputElement
@@ -87,12 +95,17 @@
 	class="input"
 	value={stringValue}
 	oninput={(e) => {
-		const regex = /[^\d\.,\s]+/g
-		stringValue = e.currentTarget.value.replace(regex,'')
+		stringValue = e.currentTarget.value
 		const cursorPosition = e.currentTarget.selectionStart
 		const distanceFromEnd = stringValue.length - (cursorPosition ?? 0)
+		stringValue = stringValue.replace(/[^-?0-9.,]+/g, '').replace(/(?!^)-/g, '')
 		const temp = localeStringToNumber(stringValue, formatter)
 		if (temp === undefined) {
+			const parts = stringValue.split('.')
+			// If there are more than two parts, join only the first two and ignore the rest
+			if (parts.length > 2) {
+				stringValue = parts[0] + '.' + parts.slice(1).join('').replace(/\./g, '')
+			}
 			console.error('Not a number')
 		} else {
 			console.log('Valid number')
