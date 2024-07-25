@@ -36,18 +36,16 @@
 	<label class="label" for={labelFor}>
 		{label}
 	</label>
-	<div class="relative">
-		<textarea
-			class={variant}
-			id={labelFor}
-			class:hover
-			class:active
-			class:focus
-			bind:value
-			{placeholder}
-			{...restProps}
-		></textarea>
-	</div>
+	<textarea
+		class={variant}
+		id={labelFor}
+		class:hover
+		class:active
+		class:focus
+		bind:value
+		{placeholder}
+		{...restProps}
+	></textarea>
 	{#if helperText}
 		<div class="helper-text">
 			{@render helperText()}
@@ -62,24 +60,19 @@
 		flex-grow: 1;
 		flex-direction: column;
 		gap: 0.5rem;
+		max-width: 100%;
+		max-height: 100%;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
-		.relative {
-			display: flex;
-			position: relative;
-			flex-grow: 1;
-		}
 	}
 	label {
 		cursor: pointer;
 		width: fit-content;
 	}
 	textarea {
-		position: relative;
-		flex-grow: 1;
-		border: 1px solid var(--colors-ultra-high);
-		border-radius: var(--border-radius);
-		background: var(--colors-base);
+		border-radius: 0.25rem;
+		max-width: 100%;
+		max-height: 100%;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		&::placeholder {
@@ -117,14 +110,6 @@
 			border: 1px solid var(--colors-top);
 			color: var(--colors-top);
 		}
-	}
-	.icon {
-		display: flex;
-		position: absolute;
-		right: 0;
-		bottom: 0.5rem;
-		cursor: e-resize;
-		resize: both;
 	}
 	.default {
 		label {
