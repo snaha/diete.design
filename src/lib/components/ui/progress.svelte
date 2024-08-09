@@ -9,6 +9,7 @@
 		min?: number
 		max?: number
 		unit?: string
+		showValue?: boolean
 	}
 	let {
 		min = 0,
@@ -17,6 +18,7 @@
 		value = 0,
 		dimension = 'default',
 		class: className = '',
+		showValue = true,
 		children,
 		...restProps
 	}: Props = $props()
@@ -30,9 +32,11 @@
 	<span class="progress-container">
 		<span class="progress-bar" style={`width: ${percent}%`}></span>
 	</span>
-	<div class="value" style={`--unit: "${unit}"`}>
-		{value}
-	</div>
+	{#if showValue}
+		<div class="value" style={`--unit: "${unit}"`}>
+			{value}
+		</div>
+	{/if}
 </div>
 
 <style lang="postcss">
