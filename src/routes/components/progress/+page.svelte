@@ -75,8 +75,8 @@ import ProgressBar from '$lib/components/ui/progress.svelte'
 	<Input type="number" bind:value={min} label="Min" />
 	<Input type="number" bind:value={max} label="Max" />
 	<Slider bind:value {min} {max}>Progress value</Slider>
-	<Switch bind:checked={showValue} label="Show value"/>
-	<Input bind:value={unit} label="Unit" disabled={!showValue}/>
+	<Switch bind:checked={showValue} label="Show value" />
+	<Input bind:value={unit} label="Unit" disabled={!showValue} />
 {/snippet}
 
 {#snippet preview()}
