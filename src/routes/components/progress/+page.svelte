@@ -11,6 +11,7 @@
 	import ProgressBar from '$lib/components/ui/progress.svelte'
 	import Slider from '$lib/components/ui/slider.svelte'
 	import CodeComponentTemplate from '$lib/components/custom/code-component-template.svelte'
+	import Switch from '$lib/components/ui/switch.svelte'
 
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 
@@ -22,6 +23,7 @@
 	let min = $state(0)
 	let max = $state(100)
 	let unit = $state('%')
+	let showValue = $state(true)
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -73,11 +75,12 @@ import ProgressBar from '$lib/components/ui/progress.svelte'
 	<Input type="number" bind:value={min} label="Min" />
 	<Input type="number" bind:value={max} label="Max" />
 	<Slider bind:value {min} {max}>Progress value</Slider>
-	<Input bind:value={unit} label="Unit" />
+	<Switch bind:checked={showValue} label="Show value"/>
+	<Input bind:value={unit} label="Unit" disabled={!showValue}/>
 {/snippet}
 
 {#snippet preview()}
-	<ProgressBar {value} {dimension} {min} {max} {unit}>{label}</ProgressBar>
+	<ProgressBar {value} {dimension} {min} {max} {unit} {showValue}>{label}</ProgressBar>
 {/snippet}
 
 {#snippet extraSvelte()}
