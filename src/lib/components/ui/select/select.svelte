@@ -254,6 +254,7 @@
 		appearance: none;
 		cursor: pointer;
 		border-radius: var(--border-radius);
+		width: 100%;
 		color: var(--colors-ultra-high);
 		&.outline {
 			border: 1px solid var(--colors-ultra-high);
