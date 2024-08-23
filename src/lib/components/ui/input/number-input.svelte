@@ -8,7 +8,7 @@
 	}
 	let {
 		value = $bindable(0),
-		showControls = true,
+		showControls = false,
 		dimension,
 		disabled,
 		...restProps
