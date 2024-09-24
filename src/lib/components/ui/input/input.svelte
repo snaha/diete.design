@@ -301,6 +301,9 @@
 				& ~ .date-wrapper::after {
 					background: var(--colors-base);
 				}
+				& ~ .start-icon {
+					display: none;
+				}
 			}
 			&:active:not(:disabled),
 			&.active:not(:disabled) {
@@ -317,8 +320,14 @@
 				outline: 2px solid var(--colors-top);
 				outline-offset: -2px;
 			}
+			&:not(:placeholder-shown) {
+				& ~ .start-icon {
+					display: none;
+				}
+			}
 		}
 	}
+
 	.start-icon {
 		display: flex;
 		position: absolute;
@@ -340,6 +349,12 @@
 		&:has(.start-icon) {
 			input {
 				padding-left: 44px;
+				&:focus {
+					padding-left: var(--three-quarters-padding);
+				}
+				&:not(:placeholder-shown) {
+					padding-left: var(--three-quarters-padding);
+				}
 			}
 		}
 		.label {
@@ -376,6 +391,12 @@
 		&:has(.start-icon) {
 			input {
 				padding-left: 52px;
+				&:focus {
+					padding-left: var(--three-quarters-padding);
+				}
+				&:not(:placeholder-shown) {
+					padding-left: var(--three-quarters-padding);
+				}
 			}
 		}
 		.label {
@@ -421,6 +442,12 @@
 		&:has(.start-icon) {
 			input {
 				padding-left: 40px;
+				&:focus {
+					padding-left: var(--half-padding);
+				}
+				&:not(:placeholder-shown) {
+					padding-left: var(--half-padding);
+				}
 			}
 		}
 		.label {
@@ -459,6 +486,12 @@
 		&:has(.start-icon) {
 			input {
 				padding-left: var(--double-padding);
+				&:focus {
+					padding-left: var(--half-padding);
+				}
+				&:not(:placeholder-shown) {
+					padding-left: var(--half-padding);
+				}
 			}
 		}
 		.label {
