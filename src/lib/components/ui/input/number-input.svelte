@@ -3,12 +3,16 @@
 	import Button from '../button.svelte'
 	import Input, { type Props } from './input.svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
+	interface CustomProps extends Props {
+		showControls?: boolean
+	}
 	let {
 		value = $bindable(0),
+		showControls = false,
 		dimension,
 		disabled,
 		...restProps
-	}: Props & Omit<HTMLInputAttributes, 'type'> = $props()
+	}: CustomProps & Omit<HTMLInputAttributes, 'type'> = $props()
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 </script>
 
@@ -21,4 +25,11 @@
 	</Button>
 {/snippet}
 
-<Input bind:value {dimension} {disabled} {buttons} {...restProps} type="number" />
+<Input
+	bind:value
+	{dimension}
+	{disabled}
+	buttons={showControls ? buttons : undefined}
+	{...restProps}
+	type="number"
+/>
