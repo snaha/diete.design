@@ -2767,9 +2767,24 @@
 			</div>
 		</div>
 	</section>
+	<div class="sidebar vertical">
+		<Button>Test</Button>
+	</div>
 </div>
 
 <style>
+	.sidebar {
+		border-right: 1px solid var(--colors-low);
+		padding: var(--padding);
+		width: 320px;
+		height: 100%;
+	}
+	.vertical {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: var(--padding);
+	}
 	.page-wrapper {
 		background-color: var(--colors-ultra-low);
 	}

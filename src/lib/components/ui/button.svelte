@@ -78,7 +78,7 @@
 		display: inline-flex;
 		flex-grow: 1;
 		flex-shrink: 0;
-		justify-content: left;
+		justify-content: center;
 		align-items: center;
 		gap: 0.5rem;
 		cursor: pointer;
