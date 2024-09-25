@@ -58,6 +58,7 @@
 
 <style>
 	.root {
+		display: inherit;
 		margin: 0;
 		padding: 0;
 		color: var(--colors-ultra-high);
