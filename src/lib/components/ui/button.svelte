@@ -78,7 +78,7 @@
 		display: inline-flex;
 		flex-grow: 1;
 		flex-shrink: 0;
-		justify-content: center;
+		justify-content: left;
 		align-items: center;
 		gap: 0.5rem;
 		cursor: pointer;
@@ -90,6 +90,7 @@
 		text-decoration: none;
 		white-space: nowrap;
 	}
+
 	.default {
 		padding: var(--three-quarters-padding);
 		min-width: 3rem;
