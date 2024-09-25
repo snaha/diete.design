@@ -64,21 +64,26 @@
 	type="search"
 />
 
-
 <style>
-	:global(.default.noEmpty .wrapper, input) {
+	:global(
+			.default.noEmpty > .col > .wrapper,
+			.default.noEmpty > .col > .wrapper > .relative > input
+		) {
 		width: calc(100% - 49px);
 	}
-	:global(.large.noEmpty .wrapper, input) {
+	:global(.large.noEmpty > .col > .wrapper, .large.noEmpty > .col > .wrapper > .relative > input) {
 		width: calc(100% - 57px);
 	}
-	:global(.compact.noEmpty .wrapper, input) {
+	:global(
+			.compact.noEmpty > .col > .wrapper,
+			.compact.noEmpty > .col > .wrapper > .relative > input
+		) {
 		width: calc(100% - 41px);
 	}
-	:global(.small.noEmpty .wrapper, input) {
+	:global(.small.noEmpty > .col > .wrapper, .small.noEmpty > .col > .wrapper > .relative > input) {
 		width: calc(100% - 33px);
 	}
-	:global(.control-buttons) {
+	:global(.noEmpty > .col > .wrapper > .control-buttons) {
 		position: absolute;
 		right: 0;
 		transform: translateX(100%);
