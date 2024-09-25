@@ -58,7 +58,7 @@
 		}),
 	)
 
-	let datePicker: HTMLDivElement | undefined
+	let datePicker: HTMLDivElement
 	let selectedYearElement: HTMLSpanElement | undefined = $state(undefined)
 
 	const months = getLocalMonthNames()
@@ -137,7 +137,7 @@
 
 	function close(e: MouseEvent) {
 		const target = e.target as unknown as Node
-		if (datePicker?.contains(target)) {
+		if (datePicker.contains(target)) {
 			// Clicked on the date picker
 		} else {
 			showDatePicker = false
@@ -187,7 +187,7 @@
 	})
 </script>
 
-{#snippet buttons()}
+{#snippet buttons(input: HTMLInputElement)}
 	<Button
 		{dimension}
 		{disabled}
@@ -196,6 +196,7 @@
 			e.stopPropagation()
 			showDatePicker = !showDatePicker
 			showYearPicker = false
+			input.focus()
 		}}
 	>
 		<Calendar {size} />
