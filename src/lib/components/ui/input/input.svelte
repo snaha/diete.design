@@ -21,6 +21,7 @@
 		buttons?: Snippet<[HTMLInputElement]>
 		variant?: Variant
 		iconStart?: Snippet
+		hideIcon?: boolean
 	}
 </script>
 
@@ -36,6 +37,7 @@
 		error,
 		hover,
 		iconStart,
+		hideIcon = false,
 		active,
 		focus,
 		type,
@@ -79,7 +81,7 @@
 					<label for={labelFor} class="date-wrapper"></label>
 				{/if}
 				{#if iconStart}
-					<label for={labelFor} class="start-icon">
+					<label for={labelFor} class="start-icon" class:hideIcon>
 						{@render iconStart()}
 					</label>
 				{/if}
@@ -301,9 +303,6 @@
 				& ~ .date-wrapper::after {
 					background: var(--colors-base);
 				}
-				& ~ .start-icon {
-					display: none;
-				}
 			}
 			&:active:not(:disabled),
 			&.active:not(:disabled) {
@@ -321,7 +320,7 @@
 				outline-offset: -2px;
 			}
 			&:not(:placeholder-shown) {
-				& ~ .start-icon {
+				& ~ .hideIcon {
 					display: none;
 				}
 			}
@@ -349,12 +348,11 @@
 		&:has(.start-icon) {
 			input {
 				padding-left: 44px;
-				&:focus {
-					padding-left: var(--three-quarters-padding);
-				}
-				&:not(:placeholder-shown) {
-					padding-left: var(--three-quarters-padding);
-				}
+			}
+		}
+		&:has(.hideIcon) {
+			input:not(:placeholder-shown) {
+				padding-left: var(--three-quarters-padding);
 			}
 		}
 		.label {
@@ -391,10 +389,11 @@
 		&:has(.start-icon) {
 			input {
 				padding-left: 52px;
-				&:focus {
-					padding-left: var(--three-quarters-padding);
-				}
-				&:not(:placeholder-shown) {
+			}
+		}
+		&:has(.hideIcon) {
+			&:has(.hideIcon) {
+				input:not(:placeholder-shown) {
 					padding-left: var(--three-quarters-padding);
 				}
 			}
@@ -442,12 +441,11 @@
 		&:has(.start-icon) {
 			input {
 				padding-left: 40px;
-				&:focus {
-					padding-left: var(--half-padding);
-				}
-				&:not(:placeholder-shown) {
-					padding-left: var(--half-padding);
-				}
+			}
+		}
+		&:has(.hideIcon) {
+			input:not(:placeholder-shown) {
+				padding-left: var(--half-padding);
 			}
 		}
 		.label {
@@ -486,10 +484,11 @@
 		&:has(.start-icon) {
 			input {
 				padding-left: var(--double-padding);
-				&:focus {
-					padding-left: var(--half-padding);
-				}
-				&:not(:placeholder-shown) {
+			}
+		}
+		&:has(.hideIcon) {
+			&:has(.hideIcon) {
+				input:not(:placeholder-shown) {
 					padding-left: var(--half-padding);
 				}
 			}
