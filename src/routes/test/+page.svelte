@@ -2769,7 +2769,7 @@
 		</div>
 	</section>
 	<div class="sidebar">
-		<Button class="center">
+		<Button>
 			<Add />
 			Add Investment
 		</Button>
@@ -2777,9 +2777,6 @@
 </div>
 
 <style>
-	:global(.center > button) {
-		justify-content: center;
-	}
 	.sidebar {
 		display: flex;
 		flex-direction: column;
