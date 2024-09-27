@@ -48,7 +48,7 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.39.0",
 		"globals": "^15.3.0",
-		"knip": "5.17.4",
+		"knip": "5.30.5",
 		"postcss": "^8.4.38",
 		"postcss-nesting": "^12.1.5",
 		"prettier": "^3.3.1",
