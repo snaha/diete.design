@@ -11,10 +11,14 @@
 	let {
 		dimension = 'default',
 		disabled,
-		value = $bindable(),
-		class: className = '',
+		value = $bindable(new Date()),
 		...restProps
 	}: Props & HTMLInputAttributes = $props()
+
+	let triggerId = 'trigger' + Math.random().toString(16).slice(2)
+	let calendarId = 'calendar' + Math.random().toString(16).slice(2)
+
+	let stringValue = $state(formatDate(value))
 
 	let currentDate = new Date()
 	let selectedMonth = $state(currentDate.getMonth())
@@ -103,7 +107,8 @@
 
 	function selectDate(date: number) {
 		selectedDate = new Date(selectedYear, selectedMonth, date)
-		value = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}`
+		value = selectedDate
+		stringValue = formatDate(selectedDate)
 	}
 
 	function isSelected(date: number) {
@@ -127,12 +132,23 @@
 		return new Date(year, month - 1, day)
 	}
 
+	function formatDate(date: Date) {
+		if (!(date instanceof Date) || isNaN(date.getTime())) {
+			return ''
+		}
+		const year = date.getFullYear()
+		const month = String(date.getMonth() + 1).padStart(2, '0')
+		const day = String(date.getDate()).padStart(2, '0')
+		return `${year}-${month}-${day}`
+	}
+
 	function inputChange(event: Event) {
 		const input = event.target as HTMLInputElement
 		const newDate = parseDate(input.value)
 		selectedDate = newDate
 		selectedMonth = newDate.getMonth()
 		selectedYear = newDate.getFullYear()
+		value = newDate
 		showYearPicker = false
 	}
 
@@ -193,28 +209,31 @@
 		{dimension}
 		{disabled}
 		variant="secondary"
-		onclick={(e:MouseEvent) => {
-			e.stopPropagation()
-			showDatePicker = !showDatePicker
-			showYearPicker = false
-		}}
+		popovertarget={calendarId}
+		style={`anchor-name: --${triggerId};`}
 	>
 		<Calendar {size} />
 	</Button>
 {/snippet}
 
-<div class="calendar-root {dimension} {className}">
+<div class="calendar-root {dimension}">
 	<Input
 		{dimension}
 		{disabled}
 		{...restProps}
-		bind:value
+		value={stringValue}
 		oninput={inputChange}
 		{buttons}
 		type="date"
 	/>
 	<div class:modal={isMobile}>
-		<div class="date-picker" class:showDatePicker bind:this={datePicker}>
+		<div
+			class="date-picker"
+			id={calendarId}
+			bind:this={datePicker}
+			popover="auto"
+			style="position-anchor: --{triggerId}; top: anchor(--{triggerId} bottom); left: anchor(--{triggerId} right);transform: translate(-100%,0.25rem);"
+		>
 			<div class="header">
 				<div class="month">
 					<Button
@@ -305,6 +324,12 @@
 </div>
 
 <style lang="postcss">
+	[popover] {
+		margin: 0;
+		border: 0;
+		padding: 0;
+	}
+
 	:global(input[type='date']::-webkit-calendar-picker-indicator) {
 		display: none;
 	}
@@ -312,21 +337,13 @@
 		position: relative;
 	}
 	.date-picker {
-		display: none;
-		position: absolute;
-		bottom: -0.25rem;
-		left: 0;
 		flex-direction: column;
 		gap: 1rem;
-		transform: translateY(100%);
 		z-index: 1;
 		border: 1px solid var(--colors-low);
 		border-radius: var(--border-radius);
 		background: var(--colors-base);
 		padding: 1rem;
-		&.showDatePicker {
-			display: flex;
-		}
 	}
 	.modal {
 		display: none;
@@ -338,18 +355,6 @@
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-		&:has(.showDatePicker) {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		.date-picker {
-			bottom: unset;
-			left: unset;
-			transform: unset;
-			width: fit-content;
-			height: fit-content;
-		}
 	}
 	.month {
 		display: flex;
