@@ -12,6 +12,7 @@
 		dimension = 'default',
 		disabled,
 		value = $bindable(),
+		class: className = '',
 		...restProps
 	}: Props & HTMLInputAttributes = $props()
 
@@ -202,7 +203,7 @@
 	</Button>
 {/snippet}
 
-<div class="calendar-root {dimension}">
+<div class="calendar-root {dimension} {className}">
 	<Input
 		{dimension}
 		{disabled}
