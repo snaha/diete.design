@@ -18,6 +18,8 @@
 	})
 	let marked = $derived(store.marked === value)
 	let selected = $derived(store.value === value)
+
+	let size: 16 | 24 | 32 = $derived(store.size === 'large' ? 32 : store.size === 'small' ? 16 : 24)
 </script>
 
 <button
@@ -42,7 +44,7 @@
 		{value}
 	{/if}
 	{#if selected}
-		<Checkmark size={store.size === 'small' ? 16 : 24} />
+		<Checkmark {size} />
 	{/if}
 </button>
 
