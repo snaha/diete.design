@@ -88,7 +88,6 @@
 	input[type='checkbox'] {
 		position: relative;
 		appearance: none;
-		z-index: auto;
 		margin: 0;
 	}
 	input[type='checkbox']:focus {
