@@ -40,7 +40,6 @@
 	let input: HTMLInputElement | undefined = $state(undefined)
 	let focused = $state(false)
 
-	
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 
 	const store = withSelectStore(dimension, value ?? (placeholder ? '' : undefined))
