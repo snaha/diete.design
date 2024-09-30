@@ -7,7 +7,7 @@
 		withButton?: boolean
 	}
 	let {
-		value = $bindable(),
+		value = $bindable(''),
 		variant = 'outline',
 		dimension,
 		disabled,
@@ -17,7 +17,7 @@
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 </script>
 
-{#snippet buttons(input)}
+{#snippet buttons(input:HTMLInputElement)}
 	{#if withButton}
 		<Button
 			{dimension}
@@ -53,6 +53,7 @@
 {/snippet}
 
 <Input
+	class={`${value !== '' ? 'noEmpty' : ''}`}
 	{dimension}
 	{disabled}
 	iconStart={!withButton ? iconStart : undefined}
@@ -62,3 +63,29 @@
 	{...restProps}
 	type="search"
 />
+
+<style>
+	:global(
+			.default.noEmpty > .col > .wrapper,
+			.default.noEmpty > .col > .wrapper > .relative > input
+		) {
+		width: calc(100% - 49px);
+	}
+	:global(.large.noEmpty > .col > .wrapper, .large.noEmpty > .col > .wrapper > .relative > input) {
+		width: calc(100% - 57px);
+	}
+	:global(
+			.compact.noEmpty > .col > .wrapper,
+			.compact.noEmpty > .col > .wrapper > .relative > input
+		) {
+		width: calc(100% - 41px);
+	}
+	:global(.small.noEmpty > .col > .wrapper, .small.noEmpty > .col > .wrapper > .relative > input) {
+		width: calc(100% - 33px);
+	}
+	:global(.noEmpty > .col > .wrapper > .control-buttons) {
+		position: absolute;
+		right: 0;
+		transform: translateX(100%);
+	}
+</style>
