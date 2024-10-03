@@ -17,7 +17,7 @@
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 </script>
 
-{#snippet buttons(input)}
+{#snippet buttons(input: HTMLInputElement)}
 	{#if withButton}
 		<Button
 			{dimension}
