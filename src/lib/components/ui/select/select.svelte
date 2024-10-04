@@ -257,6 +257,7 @@
 		cursor: pointer;
 		border-radius: var(--border-radius);
 		color: var(--colors-ultra-high);
+		font-family: var(--font-family-sans-serif);
 		&.outline {
 			border: 1px solid var(--colors-ultra-high);
 			background: transparent;
