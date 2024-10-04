@@ -133,6 +133,7 @@
 					<MenuTitle {content} bold bind:open={menuTitleIsOpen[title]}>
 						{#each Object.entries(pages) as [path, title]}
 							<MenuItem
+								leftAlign
 								active={isActivePage(path)}
 								href={path}
 								onclick={menuOnClick}

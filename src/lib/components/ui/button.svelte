@@ -8,6 +8,7 @@
 		hover?: boolean
 		focus?: boolean
 		dimension?: Dimension
+		leftAlign?: boolean
 	}
 	interface AnchorElement extends HTMLAnchorAttributes, ButtonProps {
 		href?: HTMLAnchorAttributes['href']
@@ -33,6 +34,7 @@
 		disabled,
 		href,
 		class: className = '',
+		leftAlign = false,
 		children,
 		...restProps
 	}: Props = $props()
@@ -42,6 +44,7 @@
 	<svelte:element
 		this={href ? 'a' : 'button'}
 		class={`${dimension} ${variant}`}
+		class:leftAlign
 		class:active
 		class:hover
 		class:focus
@@ -78,7 +81,7 @@
 		display: inline-flex;
 		flex-grow: 1;
 		flex-shrink: 0;
-		justify-content: left;
+		justify-content: center;
 		align-items: center;
 		gap: 0.5rem;
 		cursor: pointer;
@@ -90,6 +93,11 @@
 		text-decoration: none;
 		white-space: nowrap;
 	}
+
+	.leftAlign {
+		justify-content: flex-start;
+	}
+
 	.default {
 		padding: var(--three-quarters-padding);
 		min-width: 3rem;
