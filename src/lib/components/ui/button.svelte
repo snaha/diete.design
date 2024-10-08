@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
 	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay' | 'lightoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
@@ -10,6 +10,7 @@
 		focus?: boolean
 		dimension?: Dimension
 		mode?: Mode
+		leftAlign?: boolean
 	}
 	interface AnchorElement extends HTMLAnchorAttributes, ButtonProps {
 		href?: HTMLAnchorAttributes['href']
@@ -35,6 +36,7 @@
 		disabled,
 		href,
 		class: className = '',
+		leftAlign = false,
 		children,
 		mode,
 		...restProps
@@ -45,6 +47,7 @@
 	<svelte:element
 		this={href ? 'a' : 'button'}
 		class={`${dimension} ${variant} ${mode ? 'mode-' + mode : ''}`}
+		class:leftAlign
 		class:active
 		class:hover
 		class:focus
@@ -81,7 +84,7 @@
 		display: inline-flex;
 		flex-grow: 1;
 		flex-shrink: 0;
-		justify-content: left;
+		justify-content: center;
 		align-items: center;
 		gap: 0.5rem;
 		cursor: pointer;
@@ -93,6 +96,11 @@
 		text-decoration: none;
 		white-space: nowrap;
 	}
+
+	.leftAlign {
+		justify-content: flex-start;
+	}
+
 	.default {
 		padding: var(--three-quarters-padding);
 		min-width: 3rem;

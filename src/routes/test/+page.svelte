@@ -7,6 +7,7 @@
 		ThumbsUpFilled,
 		ThumbsDown,
 		Error,
+		Add,
 	} from 'carbon-icons-svelte'
 
 	import Button from '$lib/components/ui/button.svelte'
@@ -2767,9 +2768,24 @@
 			</div>
 		</div>
 	</section>
+	<div class="sidebar">
+		<Button>
+			<Add />
+			Add Investment
+		</Button>
+	</div>
 </div>
 
 <style>
+	.sidebar {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		border: 1px solid var(--colors-low);
+		padding: var(--padding);
+		width: 320px;
+		height: 200px;
+	}
 	.page-wrapper {
 		background-color: var(--colors-ultra-low);
 	}
