@@ -39,6 +39,8 @@
 		store.open = open
 	})
 
+	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
+
 	let variant: 'h4' | 'h6' | 'h5' | 'large' | 'default' | 'small' = $derived.by(() => {
 		if (bold) {
 			switch (dimension) {
@@ -79,7 +81,7 @@
 			<Typography class="content" {element} {variant}>{@render content()}</Typography>
 		</span>
 		<span class="icon">
-			<ChevronDown size={dimension === 'small' ? 16 : 24} />
+			<ChevronDown {size} />
 		</span>
 	</div>
 	{#if children}

@@ -40,6 +40,8 @@
 	let input: HTMLInputElement | undefined = $state(undefined)
 	let focused = $state(false)
 
+	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
+
 	const store = withSelectStore(dimension, value ?? (placeholder ? '' : undefined))
 	setContext('select-store', store)
 
@@ -190,9 +192,9 @@
 			>
 				<div>
 					{#if store.open}
-						<CaretUp size={dimension === 'small' ? 16 : 24} />
+						<CaretUp {size} />
 					{:else}
-						<CaretDown size={dimension === 'small' ? 16 : 24} />
+						<CaretDown {size} />
 					{/if}
 				</div>
 			</button>
@@ -255,6 +257,7 @@
 		cursor: pointer;
 		border-radius: var(--border-radius);
 		color: var(--colors-ultra-high);
+		font-family: var(--font-family-sans-serif);
 		&.outline {
 			border: 1px solid var(--colors-ultra-high);
 			background: transparent;
