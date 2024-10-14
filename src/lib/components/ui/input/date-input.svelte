@@ -6,10 +6,11 @@
 	import type { HTMLInputAttributes } from 'svelte/elements'
 	import Typography from '../typography.svelte'
 
-	type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'large' | 'default' | 'small'
+	type TypoVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'large' | 'default' | 'small'
 
 	let {
 		dimension = 'default',
+		variant = 'outline',
 		disabled,
 		value = $bindable(new Date()),
 		class: className = '',
@@ -26,7 +27,7 @@
 	let showDatePicker = $state(false)
 	let isMobile = $state(false)
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
-	let variant: Variant = $derived(
+	let typoVariant: TypoVariant = $derived(
 		isMobile
 			? 'small'
 			: dimension === 'large'
@@ -206,7 +207,7 @@
 	<Button
 		{dimension}
 		{disabled}
-		variant="secondary"
+		variant={variant === 'outline' ? 'secondary' : 'solid'}
 		onclick={(e:MouseEvent) => {
 			e.stopPropagation()
 			showDatePicker = !showDatePicker
@@ -227,6 +228,7 @@
 		oninput={inputChange}
 		{buttons}
 		type="date"
+		{variant}
 	/>
 	<div class:modal={isMobile}>
 		<div class="date-picker" class:showDatePicker bind:this={datePicker}>
@@ -238,7 +240,9 @@
 						onclick={() => changeMonth(-1)}><ChevronLeft size={isMobile ? 16 : size} /></Button
 					>
 					<div class="current-month">
-						<Typography {variant} bold>{months[selectedMonth]} {selectedYear}</Typography>
+						<Typography variant={typoVariant} bold
+							>{months[selectedMonth]} {selectedYear}</Typography
+						>
 						<Button
 							dimension={isMobile ? 'small' : dimension}
 							variant="ghost"
@@ -260,7 +264,7 @@
 				{#if !showYearPicker}
 					<div class="days">
 						{#each days as day}
-							<Typography {variant}>{day}</Typography>
+							<Typography variant={typoVariant}>{day}</Typography>
 						{/each}
 					</div>
 				{/if}
