@@ -207,7 +207,7 @@
 		{dimension}
 		{disabled}
 		variant="secondary"
-		onclick={(e:MouseEvent) => {
+		onclick={(e: MouseEvent) => {
 			e.stopPropagation()
 			showDatePicker = !showDatePicker
 			showYearPicker = false
@@ -242,7 +242,10 @@
 						<Button
 							dimension={isMobile ? 'small' : dimension}
 							variant="ghost"
-							onclick={(e:MouseEvent)=>{e.stopPropagation(); showYearPicker=!showYearPicker}}
+							onclick={(e: MouseEvent) => {
+								e.stopPropagation()
+								showYearPicker = !showYearPicker
+							}}
 						>
 							{#if showYearPicker}
 								<CaretUp size={isMobile ? 16 : size} />
@@ -306,7 +309,9 @@
 							style="justify-content:center;"
 							variant="ghost"
 							onclick={() => {
-								type === 'current' && selectDate(date)
+								if (type === 'current') {
+									selectDate(date)
+								}
 								showDatePicker = false
 							}}
 						>

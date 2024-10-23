@@ -15,9 +15,9 @@
 
 	$effect(() => {
 		// Update tooltip position when large or show changes
-		large
-		show
-
+		if (show && large) {
+			updateTooltipPosition()
+		}
 		updateTooltipPosition()
 		window.addEventListener('resize', updateTooltipPosition)
 		window.addEventListener('scroll', updateTooltipPosition)
