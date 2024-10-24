@@ -15,7 +15,8 @@
 
 	$effect(() => {
 		// Update tooltip position when large or show changes
-		// TODO: UPADTE ON https://github.com/sveltejs/svelte/issues/9248
+		// TODO: update when svelte introduces way to track state in effect
+		// https://github.com/sveltejs/svelte/issues/9248
 		show //eslint-disable-line @typescript-eslint/no-unused-expressions
 		large //eslint-disable-line @typescript-eslint/no-unused-expressions
 		updateTooltipPosition()

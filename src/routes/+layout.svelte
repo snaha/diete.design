@@ -59,7 +59,8 @@
 	)
 
 	$effect(() => {
-		// TODO: UPADTE ONCE https://github.com/sveltejs/svelte/issues/9248
+		// TODO: update when svelte introduces way to track state in effect
+		// https://github.com/sveltejs/svelte/issues/9248
 		pathname //eslint-disable-line @typescript-eslint/no-unused-expressions
 		menuTitleIsOpen = makeMenuItemOpenMapping()
 	})
