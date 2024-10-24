@@ -121,7 +121,7 @@
 	<div class="select-container">
 		<input
 			bind:this={input}
-			value={store.value ? store.labels[store.value] ?? store.value : value}
+			value={store.value ? (store.labels[store.value] ?? store.value) : value}
 			class="select {variant}"
 			class:hover
 			class:active

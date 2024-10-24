@@ -51,10 +51,6 @@
 		),
 	)
 
-	// for some reason using $page is now an error
-	// https://github.com/sveltejs/eslint-plugin-svelte/issues/652#issuecomment-2028495896
-
-	// eslint-disable-next-line svelte/valid-compile
 	const pathname = $derived($page.url.pathname)
 	let menuTitleIsOpen = $state(makeMenuItemOpenMapping())
 
@@ -63,7 +59,9 @@
 	)
 
 	$effect(() => {
-		pathname
+		// TODO: update when svelte introduces way to track state in effect
+		// https://github.com/sveltejs/svelte/issues/9248
+		pathname //eslint-disable-line @typescript-eslint/no-unused-expressions
 		menuTitleIsOpen = makeMenuItemOpenMapping()
 	})
 
