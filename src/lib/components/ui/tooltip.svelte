@@ -15,9 +15,9 @@
 
 	$effect(() => {
 		// Update tooltip position when large or show changes
-		if (show && large) {
-			updateTooltipPosition()
-		}
+		// TODO: UPADTE ON https://github.com/sveltejs/svelte/issues/9248
+		show //eslint-disable-line @typescript-eslint/no-unused-expressions
+		large //eslint-disable-line @typescript-eslint/no-unused-expressions
 		updateTooltipPosition()
 		window.addEventListener('resize', updateTooltipPosition)
 		window.addEventListener('scroll', updateTooltipPosition)
