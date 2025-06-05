@@ -93,10 +93,21 @@
 			isMenuOpen = false
 		}
 	}
+
+	function isProductionEnvironment() {
+		return $page.url.origin === 'https://diete.design'
+	}
 </script>
 
 <svelte:head>
 	<title>{title}</title>
+	{#if isProductionEnvironment()}
+		<script
+			defer
+			src="https://cloud.umami.is/script.js"
+			data-website-id="901bf01e-f8bf-4544-b399-e434683d7272"
+		></script>
+	{/if}
 </svelte:head>
 
 <svelte:window bind:innerWidth />
