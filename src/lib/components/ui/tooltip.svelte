@@ -1,24 +1,28 @@
-<script lang="ts">
+<script lang="ts" module>
 	import type { Snippet } from 'svelte'
-	import type { HTMLAttributes } from 'svelte/elements'
 
 	type Position = 'top' | 'bottom' | 'left' | 'right'
-	interface Props extends HTMLAttributes<HTMLElement> {
-		helperText?: Snippet
+	export interface Props {
+		children?: Snippet
+		helperText?: Snippet | string
 		position?: Position
 		large?: boolean
 		show?: boolean
 	}
+</script>
+
+<script lang="ts">
 	let { position = 'top', children, helperText, large = false, show = false }: Props = $props()
 	let tooltip: HTMLDivElement | undefined = $state(undefined)
 	let element: HTMLDivElement | undefined = $state(undefined)
 
 	$effect(() => {
 		// Update tooltip position when large or show changes
-		// TODO: update when svelte introduces way to track state in effect
-		// https://github.com/sveltejs/svelte/issues/9248
-		show //eslint-disable-line @typescript-eslint/no-unused-expressions
-		large //eslint-disable-line @typescript-eslint/no-unused-expressions
+		// eslint-disable-next-line
+		large
+		// eslint-disable-next-line
+		show
+
 		updateTooltipPosition()
 		window.addEventListener('resize', updateTooltipPosition)
 		window.addEventListener('scroll', updateTooltipPosition)
@@ -72,11 +76,17 @@
 </script>
 
 <div class="tooltip">
-	<div class="tooltip-text" class:large bind:this={tooltip}>
-		{#if helperText}
-			{@render helperText()}
-		{/if}
-	</div>
+	{#if show}
+		<div class="tooltip-text" class:large bind:this={tooltip}>
+			{#if helperText}
+				{#if typeof helperText === 'string'}
+					{helperText}
+				{:else}
+					{@render helperText()}
+				{/if}
+			{/if}
+		</div>
+	{/if}
 	{#if children}
 		<div class="tooltip-trigger" class:show bind:this={element}>
 			{@render children()}
@@ -89,12 +99,6 @@
 		.tooltip-trigger {
 			display: flex;
 			cursor: help;
-		}
-		&:has(.tooltip-trigger:hover),
-		&:has(.show) {
-			.tooltip-text {
-				opacity: 1;
-			}
 		}
 		.tooltip-text {
 			position: fixed;
