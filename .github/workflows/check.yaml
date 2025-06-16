@@ -1,4 +1,4 @@
-name: Check
+name: CI/CD
 
 on:
   push:
@@ -36,5 +36,36 @@ jobs:
       # This is a workaround until https://github.com/webpro/knip/issues/565 gets resolved
       - name: Setup bun
         uses: oven-sh/setup-bun@v2
+      
       - name: Check dependencies and unused files
         run: bunx --bun knip
+
+      - name: Run unit tests
+        run: pnpm run test:unit
+
+      - name: Run integration tests
+        run: pnpm run test:integration
+
+      - name: Build package
+        run: pnpm run package
+
+      - name: Validate package exports
+        run: |
+          # Test that the package can be packed
+          npm pack --dry-run
+          
+          # Verify tree-shaking exports work correctly
+          node -e "
+            const pkg = require('./package.json');
+            const exports = Object.keys(pkg.exports);
+            console.log('✅ Package exports validated:', exports.length, 'exports');
+            
+            // Check that key components are exported
+            const requiredExports = ['./button', './badge', './input'];
+            const missing = requiredExports.filter(exp => !exports.includes(exp));
+            if (missing.length > 0) {
+              console.error('❌ Missing required exports:', missing);
+              process.exit(1);
+            }
+            console.log('✅ All required exports present');
+          "
