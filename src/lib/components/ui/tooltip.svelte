@@ -1,4 +1,4 @@
-<script lang="ts" module>
+<script lang="ts">
 	import type { Snippet } from 'svelte'
 
 	type Position = 'top' | 'bottom' | 'left' | 'right'
@@ -9,9 +9,7 @@
 		large?: boolean
 		show?: boolean
 	}
-</script>
 
-<script lang="ts">
 	let { position = 'top', children, helperText, large = false, show = false }: Props = $props()
 	let tooltip: HTMLDivElement | undefined = $state(undefined)
 	let element: HTMLDivElement | undefined = $state(undefined)

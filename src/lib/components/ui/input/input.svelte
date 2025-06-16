@@ -1,4 +1,4 @@
-<script lang="ts" module>
+<script lang="ts">
 	import type { Snippet } from 'svelte'
 	import type { HTMLInputAttributes } from 'svelte/elements'
 	import { WarningAltFilled, Information } from 'carbon-icons-svelte'
@@ -22,9 +22,7 @@
 		variant?: Variant
 		iconStart?: Snippet
 	}
-</script>
 
-<script lang="ts">
 	let {
 		label,
 		labelFor = Math.random().toString(16),

@@ -1,5 +1,6 @@
-<script lang="ts" module>
+<script lang="ts">
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
+
 	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay' | 'lightoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Mode = 'light' | 'dark' | 'auto'
@@ -24,9 +25,7 @@
 		disabled?: boolean
 	}
 	export type Props = AnchorElement | ButtonElement
-</script>
 
-<script lang="ts">
 	let {
 		dimension = 'default',
 		variant = 'strong',
