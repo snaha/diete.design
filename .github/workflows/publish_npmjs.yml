@@ -1,0 +1,61 @@
+# Publishes to npmjs when a release is created by release-please
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.release.prerelease }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run quality checks
+        run: |
+          pnpm run lint
+          pnpm run check
+
+      - name: Run tests
+        run: |
+          pnpm run test:unit
+          # Skip integration tests for faster publishing
+          # pnpm run test:integration
+
+      - name: Build package
+        run: pnpm run package
+
+      - name: Verify package before publish
+        run: |
+          # Dry run to verify package is ready
+          pnpm publish --dry-run --access public
+
+          # Verify package contents and size
+          npm pack --dry-run
+
+          echo "✅ Package verification completed"
+
+      - name: Publish to npm
+        run: pnpm publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Output publish success
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          echo "🚀 Successfully published diete.design@$PACKAGE_VERSION to npm!"
+          echo "📦 Install with: npm install diete.design@$PACKAGE_VERSION"

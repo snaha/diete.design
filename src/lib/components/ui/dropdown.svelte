@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
-	import Button from '$lib/components/ui/button.svelte'
+	import Button, { type Variant, type Dimension, type Mode } from '$lib/components/ui/button.svelte'
 
 	type Props = {
 		disabled?: boolean
@@ -8,27 +8,48 @@
 		left?: boolean
 		button: Snippet
 		children: Snippet
+		buttonVariant?: Variant
+		buttonDimension?: Dimension
+		autoClose?: boolean
+		class?: string
+		open?: boolean
+		mode?: Mode
 	}
 
-	let { disabled = false, up = false, left = false, button, children }: Props = $props()
+	let {
+		disabled = false,
+		up = false,
+		left = false,
+		button,
+		children,
+		buttonVariant = 'ghost',
+		buttonDimension = 'default',
+		autoClose = true,
+		class: className,
+		open = $bindable(false),
+		mode = 'auto',
+	}: Props = $props()
 
-	let showDropdown = $state(false)
 	let dropdownElement: HTMLElement
-	let dropdownId: string
+	let dropdownMenu: HTMLElement
+	let dropdownId: string = Math.random().toString(16).substring(10)
 
 	function close(ev: MouseEvent) {
 		const target = ev.target as unknown as Node
 		if (dropdownElement.contains(target)) {
 			// Clicked on the dropdown button or inside the dropdown
+			if (dropdownMenu.contains(target) && autoClose) {
+				open = false
+			}
 		} else {
 			// Clicked outside the dropdown
-			showDropdown = false
+			open = false
 		}
 	}
 
 	function onKeyUp(ev: KeyboardEvent) {
 		if (ev.key === 'Escape') {
-			showDropdown = false
+			open = false
 		}
 	}
 
@@ -43,7 +64,7 @@
 	})
 
 	function onClick() {
-		if (!disabled) showDropdown = !showDropdown
+		if (!disabled) open = !open
 	}
 
 	function onKeyPress() {
@@ -56,17 +77,25 @@
 	class="dropdown"
 	role="combobox"
 	aria-haspopup="listbox"
-	aria-expanded={showDropdown}
+	aria-expanded={open}
 	aria-controls={dropdownId}
 	tabindex={-1}
 >
 	<div onclick={onClick} onkeypress={onKeyPress} role="button" tabindex={-1}>
-		<Button variant="solid" active={showDropdown}>{@render button()}</Button>
+		<Button
+			style="max-width:320px;"
+			variant={buttonVariant}
+			dimension={buttonDimension}
+			{mode}
+			active={open}>{@render button()}</Button
+		>
 	</div>
 
-	<div class={`root`} aria-hidden={!showDropdown}>
+	<div class={`root`} aria-hidden={!open}>
 		<div
-			class:hidden={!showDropdown}
+			bind:this={dropdownMenu}
+			class={className}
+			class:hidden={!open}
 			class:up
 			class:left
 			id={dropdownId}
@@ -85,7 +114,7 @@
 
 		div {
 			position: absolute;
-			z-index: 1;
+			z-index: 1000;
 			backdrop-filter: blur(var(--blur));
 			inset: calc(100% + var(--spacing-6)) 0 auto auto;
 			box-shadow: 0 1px 5px 0 rgba(var(--color-accent-rgb, var(--color-dark-base-rgb)), 0.25);

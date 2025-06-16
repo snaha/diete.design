@@ -6,7 +6,7 @@
 	import { Light, SidePanelCloseFilled, SidePanelOpenFilled, Launch } from 'carbon-icons-svelte'
 	import '../app.pcss'
 	import '../diete.css'
-	import Dropdown from '$lib/components/custom/dropdown.svelte'
+	import Dropdown from '$lib/components/ui/dropdown.svelte'
 	import ThemeSelector from '$lib/components/custom/theme-selector.svelte'
 	import { page } from '$app/stores'
 
