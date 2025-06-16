@@ -1,7 +1,17 @@
 {
 	"name": "diete.design",
 	"version": "0.0.1",
+	"description": "A modern Svelte UI component library with tree-shaking support",
 	"license": "MIT",
+	"keywords": ["svelte", "ui", "components", "design-system", "tree-shaking"],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yourusername/diete.design"
+	},
+	"homepage": "https://diete.design",
+	"bugs": {
+		"url": "https://github.com/yourusername/diete.design/issues"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && pnpm run package",
@@ -21,6 +31,118 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
+		},
+		"./badge": {
+			"types": "./dist/components/ui/badge.svelte.d.ts",
+			"svelte": "./dist/components/ui/badge.svelte"
+		},
+		"./button": {
+			"types": "./dist/components/ui/button.svelte.d.ts",
+			"svelte": "./dist/components/ui/button.svelte"
+		},
+		"./checkbox": {
+			"types": "./dist/components/ui/checkbox.svelte.d.ts",
+			"svelte": "./dist/components/ui/checkbox.svelte"
+		},
+		"./divider": {
+			"types": "./dist/components/ui/divider.svelte.d.ts",
+			"svelte": "./dist/components/ui/divider.svelte"
+		},
+		"./loader": {
+			"types": "./dist/components/ui/loader.svelte.d.ts",
+			"svelte": "./dist/components/ui/loader.svelte"
+		},
+		"./progress": {
+			"types": "./dist/components/ui/progress.svelte.d.ts",
+			"svelte": "./dist/components/ui/progress.svelte"
+		},
+		"./range-slider": {
+			"types": "./dist/components/ui/range-slider.svelte.d.ts",
+			"svelte": "./dist/components/ui/range-slider.svelte"
+		},
+		"./slider": {
+			"types": "./dist/components/ui/slider.svelte.d.ts",
+			"svelte": "./dist/components/ui/slider.svelte"
+		},
+		"./switch": {
+			"types": "./dist/components/ui/switch.svelte.d.ts",
+			"svelte": "./dist/components/ui/switch.svelte"
+		},
+		"./textarea": {
+			"types": "./dist/components/ui/textarea.svelte.d.ts",
+			"svelte": "./dist/components/ui/textarea.svelte"
+		},
+		"./tooltip": {
+			"types": "./dist/components/ui/tooltip.svelte.d.ts",
+			"svelte": "./dist/components/ui/tooltip.svelte"
+		},
+		"./typography": {
+			"types": "./dist/components/ui/typography.svelte.d.ts",
+			"svelte": "./dist/components/ui/typography.svelte"
+		},
+		"./input": {
+			"types": "./dist/components/ui/input/input.svelte.d.ts",
+			"svelte": "./dist/components/ui/input/input.svelte"
+		},
+		"./color-input": {
+			"types": "./dist/components/ui/input/color-input.svelte.d.ts",
+			"svelte": "./dist/components/ui/input/color-input.svelte"
+		},
+		"./date-input": {
+			"types": "./dist/components/ui/input/date-input.svelte.d.ts",
+			"svelte": "./dist/components/ui/input/date-input.svelte"
+		},
+		"./number-input": {
+			"types": "./dist/components/ui/input/number-input.svelte.d.ts",
+			"svelte": "./dist/components/ui/input/number-input.svelte"
+		},
+		"./search-input": {
+			"types": "./dist/components/ui/input/search-input.svelte.d.ts",
+			"svelte": "./dist/components/ui/input/search-input.svelte"
+		},
+		"./menu-item": {
+			"types": "./dist/components/ui/menu/menu-item.svelte.d.ts",
+			"svelte": "./dist/components/ui/menu/menu-item.svelte"
+		},
+		"./menu-title": {
+			"types": "./dist/components/ui/menu/menu-title.svelte.d.ts",
+			"svelte": "./dist/components/ui/menu/menu-title.svelte"
+		},
+		"./menu-store": {
+			"types": "./dist/components/ui/menu/menu-store.svelte.d.ts",
+			"svelte": "./dist/components/ui/menu/menu-store.svelte.js"
+		},
+		"./radio": {
+			"types": "./dist/components/ui/radio-button/radio.svelte.d.ts",
+			"svelte": "./dist/components/ui/radio-button/radio.svelte"
+		},
+		"./radio-group": {
+			"types": "./dist/components/ui/radio-button/radio-group.svelte.d.ts",
+			"svelte": "./dist/components/ui/radio-button/radio-group.svelte"
+		},
+		"./radio-store": {
+			"types": "./dist/components/ui/radio-button/radio-store.svelte.d.ts",
+			"svelte": "./dist/components/ui/radio-button/radio-store.svelte.js"
+		},
+		"./select": {
+			"types": "./dist/components/ui/select/select.svelte.d.ts",
+			"svelte": "./dist/components/ui/select/select.svelte"
+		},
+		"./option": {
+			"types": "./dist/components/ui/select/option.svelte.d.ts",
+			"svelte": "./dist/components/ui/select/option.svelte"
+		},
+		"./select-store": {
+			"types": "./dist/components/ui/select/select-store.svelte.d.ts",
+			"svelte": "./dist/components/ui/select/select-store.svelte.js"
+		},
+		"./theme-store": {
+			"types": "./dist/stores/theme.svelte.d.ts",
+			"svelte": "./dist/stores/theme.svelte.js"
+		},
+		"./colors": {
+			"types": "./dist/utils/colors.d.ts",
+			"svelte": "./dist/utils/colors.js"
 		}
 	},
 	"files": [
@@ -29,7 +151,8 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"svelte": "5"
+		"svelte": "5",
+		"@sveltejs/kit": "^2.0.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.13.0",
