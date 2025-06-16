@@ -1,9 +1,8 @@
-<script lang="ts">
+<script lang="ts" module>
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
-
-	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay' | 'lightoverlay'
-	type Dimension = 'default' | 'large' | 'compact' | 'small'
-	type Mode = 'light' | 'dark' | 'auto'
+	export type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay' | 'lightoverlay'
+	export type Dimension = 'default' | 'large' | 'compact' | 'small'
+	export type Mode = 'light' | 'dark' | 'auto'
 	type ButtonProps = {
 		variant?: Variant
 		active?: boolean
@@ -25,7 +24,9 @@
 		disabled?: boolean
 	}
 	export type Props = AnchorElement | ButtonElement
+</script>
 
+<script lang="ts">
 	let {
 		dimension = 'default',
 		variant = 'strong',
@@ -38,11 +39,12 @@
 		leftAlign = false,
 		children,
 		mode = 'auto',
+		style,
 		...restProps
 	}: Props = $props()
 </script>
 
-<span class={`root ${className}`} class:disabled>
+<span class={`root ${className}`} class:disabled {style}>
 	<svelte:element
 		this={href ? 'a' : 'button'}
 		class={`${dimension} ${variant} ${mode}`}
@@ -62,7 +64,7 @@
 
 <style lang="postcss">
 	.root {
-		display: inline-flex;
+		display: flex;
 		flex-grow: 0;
 		flex-direction: row;
 		justify-content: stretch;

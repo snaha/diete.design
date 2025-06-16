@@ -22,7 +22,6 @@
 		variant?: Variant
 		iconStart?: Snippet
 	}
-
 	let {
 		label,
 		labelFor = Math.random().toString(16),

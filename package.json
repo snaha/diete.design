@@ -12,7 +12,7 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/yourusername/diete.design"
+		"url": "git+https://github.com/yourusername/diete.design.git"
 	},
 	"homepage": "https://diete.design",
 	"bugs": {
@@ -161,39 +161,43 @@
 		"@sveltejs/kit": "^2.0.0"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.13.0",
-		"@playwright/test": "^1.48.1",
+		"@eslint/js": "^9.19.0",
+		"@playwright/test": "^1.50.0",
 		"@sveltejs/adapter-auto": "^3.3.0",
-		"@sveltejs/kit": "^2.7.2",
+		"@sveltejs/kit": "^2.16.1",
+		"@sveltejs/vite-plugin-svelte": "5.0.3",
 		"@sveltejs/package": "^2.3.6",
-		"@sveltejs/vite-plugin-svelte": "4.0.0",
 		"@types/eslint-config-prettier": "^6.11.3",
 		"@types/eslint__js": "^8.42.3",
-		"@types/node": "^22.7.9",
+		"@types/node": "^22.10.10",
 		"@waku-objects/luminance": "^2.0.1",
 		"autoprefixer": "^10.4.20",
-		"carbon-icons-svelte": "^12.12.0",
-		"eslint": "^9.13.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.46.0",
-		"globals": "^15.11.0",
-		"knip": "5.34.0",
-		"postcss": "^8.4.47",
+		"carbon-icons-svelte": "^12.13.0",
+		"eslint": "^9.19.0",
+		"eslint-config-prettier": "^10.0.1",
+		"eslint-plugin-svelte": "^2.46.1",
+		"globals": "^15.14.0",
+		"knip": "5.43.3",
+		"postcss": "^8.5.1",
 		"postcss-nesting": "^13.0.1",
-		"prettier": "^3.3.3",
+		"prettier": "^3.4.2",
 		"prettier-plugin-css-order": "^2.1.2",
-		"prettier-plugin-svelte": "^3.2.7",
+		"prettier-plugin-svelte": "^3.3.3",
 		"publint": "^0.2.12",
-		"svelte": "5.1.0",
-		"svelte-check": "^4.0.5",
+		"svelte": "5.19.2",
+		"svelte-check": "^4.1.4",
 		"svelte-eslint-parser": "^0.43.0",
 		"svelte-highlight": "^7.7.0",
-		"typescript": "^5.6.3",
-		"typescript-eslint": "8.11.0",
-		"vite": "^5.4.10",
-		"vitest": "^2.1.3"
+		"typescript": "^5.8.0",
+		"typescript-eslint": "8.21.0",
+		"vite": "^6.0.11",
+		"vitest": "^3.0.4"
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"type": "module"
+	"type": "module",
+	"engines": {
+		"node": ">=22",
+		"pnpm": ">=10"
+	}
 }
