@@ -3,7 +3,13 @@
 	"version": "0.0.1",
 	"description": "A modern Svelte UI component library with tree-shaking support",
 	"license": "MIT",
-	"keywords": ["svelte", "ui", "components", "design-system", "tree-shaking"],
+	"keywords": [
+		"svelte",
+		"ui",
+		"components",
+		"design-system",
+		"tree-shaking"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/yourusername/diete.design"

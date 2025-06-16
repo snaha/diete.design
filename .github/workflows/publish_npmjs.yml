@@ -43,10 +43,10 @@ jobs:
         run: |
           # Dry run to verify package is ready
           pnpm publish --dry-run --access public
-          
+
           # Verify package contents and size
           npm pack --dry-run
-          
+
           echo "✅ Package verification completed"
 
       - name: Publish to npm

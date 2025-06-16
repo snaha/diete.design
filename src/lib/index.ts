@@ -22,7 +22,11 @@ export { default as SearchInput } from './components/ui/input/search-input.svelt
 // Menu components
 export { default as MenuItem } from './components/ui/menu/menu-item.svelte'
 export { default as MenuTitle } from './components/ui/menu/menu-title.svelte'
-export { withMenuStore, type MenuStore, type Dimension } from './components/ui/menu/menu-store.svelte'
+export {
+	withMenuStore,
+	type MenuStore,
+	type Dimension,
+} from './components/ui/menu/menu-store.svelte'
 
 // Radio button components
 export { default as Radio } from './components/ui/radio-button/radio.svelte'

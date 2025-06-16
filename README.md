@@ -18,9 +18,9 @@ Thanks to tree-shaking support, you can import individual components to keep you
 
 ```svelte
 <script>
-  import Button from 'diete.design/button'
-  import Badge from 'diete.design/badge'
-  import Input from 'diete.design/input'
+	import Button from 'diete.design/button'
+	import Badge from 'diete.design/badge'
+	import Input from 'diete.design/input'
 </script>
 
 <Button>Click me</Button>
@@ -31,8 +31,9 @@ Thanks to tree-shaking support, you can import individual components to keep you
 ## Available Components
 
 ### Basic Components
+
 - `diete.design/badge` - Badge component
-- `diete.design/button` - Button component  
+- `diete.design/button` - Button component
 - `diete.design/checkbox` - Checkbox component
 - `diete.design/divider` - Divider component
 - `diete.design/loader` - Loading spinner component
@@ -45,28 +46,33 @@ Thanks to tree-shaking support, you can import individual components to keep you
 - `diete.design/typography` - Typography component
 
 ### Input Components
+
 - `diete.design/input` - Basic input component
 - `diete.design/color-input` - Color picker input
 - `diete.design/date-input` - Date input component
-- `diete.design/number-input` - Number input component  
+- `diete.design/number-input` - Number input component
 - `diete.design/search-input` - Search input component
 
 ### Menu Components
+
 - `diete.design/menu-item` - Menu item component
 - `diete.design/menu-title` - Menu title component
 - `diete.design/menu-store` - Menu state management
 
 ### Radio Button Components
+
 - `diete.design/radio` - Radio button component
 - `diete.design/radio-group` - Radio button group
 - `diete.design/radio-store` - Radio state management
 
 ### Select Components
+
 - `diete.design/select` - Select dropdown component
 - `diete.design/option` - Select option component
 - `diete.design/select-store` - Select state management
 
 ### Utilities
+
 - `diete.design/theme-store` - Theme management store
 - `diete.design/colors` - Color utilities
 
@@ -76,7 +82,7 @@ You can also import all components at once (though this will include everything 
 
 ```svelte
 <script>
-  import { Button, Badge, Input } from 'diete.design'
+	import { Button, Badge, Input } from 'diete.design'
 </script>
 ```
 
