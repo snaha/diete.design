@@ -136,7 +136,7 @@
 			"types": "./dist/components/ui/select/select-store.svelte.d.ts",
 			"svelte": "./dist/components/ui/select/select-store.svelte.js"
 		},
-		"./theme-store": {
+		"./theme": {
 			"types": "./dist/stores/theme.svelte.d.ts",
 			"svelte": "./dist/stores/theme.svelte.js"
 		},

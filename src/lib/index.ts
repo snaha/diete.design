@@ -22,18 +22,18 @@ export { default as SearchInput } from './components/ui/input/search-input.svelt
 // Menu components
 export { default as MenuItem } from './components/ui/menu/menu-item.svelte'
 export { default as MenuTitle } from './components/ui/menu/menu-title.svelte'
-export { menuStore } from './components/ui/menu/menu-store.svelte'
+export { withMenuStore, type MenuStore, type Dimension } from './components/ui/menu/menu-store.svelte'
 
 // Radio button components
 export { default as Radio } from './components/ui/radio-button/radio.svelte'
 export { default as RadioGroup } from './components/ui/radio-button/radio-group.svelte'
-export { radioStore } from './components/ui/radio-button/radio-store.svelte'
+export { withRadioStore, type RadioStore } from './components/ui/radio-button/radio-store.svelte'
 
 // Select components
 export { default as Select } from './components/ui/select/select.svelte'
 export { default as Option } from './components/ui/select/option.svelte'
-export { selectStore } from './components/ui/select/select-store.svelte'
+export { withSelectStore, type SelectStore } from './components/ui/select/select-store.svelte'
 
 // Utilities
 export * from './utils/colors'
-export { default as themeStore } from './stores/theme.svelte'
+export { theme } from './stores/theme.svelte'
